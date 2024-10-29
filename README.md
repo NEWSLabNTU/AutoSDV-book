@@ -7,16 +7,12 @@ modern online books. Follow the [mdBook installation
 guide](https://rust-lang.github.io/mdBook/guide/installation.html) to
 install the `mdbook` command.
 
-## Usage
+## Read the Book
 
-To compile this book, run the Makefile receipt. The compiled book will
-be generated in the `book` directory.
+You can start by [here](src/SUMMARY.md) to read the book on GitHub.
 
-```sh
-make build
-```
-
-If you want to read the book locally, run
+This book can be compiled into fancy HTML documents. Download this
+repository and run this command to view this book in a web browser.
 
 ```sh
 make serve

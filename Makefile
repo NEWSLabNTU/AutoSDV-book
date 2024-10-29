@@ -15,7 +15,7 @@ build:
 	mdbook build
 
 serve:
-	mdbook serve
+	mdbook serve --open
 
 clean:
 	rm -rf book
