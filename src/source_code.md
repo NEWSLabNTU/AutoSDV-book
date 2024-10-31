@@ -93,9 +93,18 @@ You can find the parameter directories within this package.
 | `        └── f1eighth_sensor_kit_launch/`      | Another launch files for sensors.  |
 
 
-## The Autoware.Core Library
+## Autoware Packages
 
-`F1EIGHTH/src/autoware/core/`
+Autoware packages are categorized into the _Core_ and _Universe_
+divisions. The Core library brings the stable and well-tested
+packages, while the Universe library brings the packages with
+bleeding-edge and more advanced features from the Autoware community.
+
+The Core library is located at:
+
+```
+F1EIGHTH/src/autoware/core/
+```
 
 | Directory                  | Function |
 |----------------------------|----------|
@@ -106,24 +115,25 @@ You can find the parameter directories within this package.
 | `└── autoware_msgs/`       |          |
 
 
+The Universe library is located at:
 
-## The Autoware.Universe Library
+```
+F1EIGHTH/src/autoware/universe/autoware.universe/
+```
 
-`F1EIGHTH/src/autoware/universe/autoware.universe/`
-
-| Directory                                           | Function |
-|-----------------------------------------------------|----------|
+| Directory                | Function |
+|--------------------------|----------|
 | `.../autoware.universe/` |          |
-| `├── common/`                                       |          |
-| `├── control/`                                      |          |
-| `├── evaluator/`                                    |          |
-| `├── launch/`                                       |          |
-| `├── localization/`                                 |          |
-| `├── map/`                                          |          |
-| `├── perception/`                                   |          |
-| `├── planning/`                                     |          |
-| `├── sensing/`                                      |          |
-| `├── simulator/`                                    |          |
-| `├── system/`                                       |          |
-| `└── vehicle/`                                      |          |
+| `├── common/`            |          |
+| `├── control/`           |          |
+| `├── evaluator/`         |          |
+| `├── launch/`            |          |
+| `├── localization/`      |          |
+| `├── map/`               |          |
+| `├── perception/`        |          |
+| `├── planning/`          |          |
+| `├── sensing/`           |          |
+| `├── simulator/`         |          |
+| `├── system/`            |          |
+| `└── vehicle/`           |          |
 
