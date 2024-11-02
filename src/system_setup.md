@@ -1,4 +1,4 @@
-# Installation Guide
+# System Setup
 
 ## Download the Project
 

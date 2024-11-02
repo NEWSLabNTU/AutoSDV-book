@@ -1,8 +1,8 @@
 # Summary
 
 - [About the F1EIGHTH Project](./introduction.md)
-- [Installation](./installation.md)
 - [Vehicle Setup](./vehicle_setup.md)
+- [System Setup](./system_setup.md)
 - [Run the F1EIGHTH System](usage.md)
 - [Source Code Walk Through](./source_code.md)
 - [Version Control](./version_control.md)
