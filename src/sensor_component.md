@@ -19,7 +19,6 @@ official packages.
 - Blickfeld Cube1 LiDAR
 - MPU9250 Nine-Axis Motion Sensor
 
-
 ## ZED X Mini Camera
 
 The ROS2 package requires ZED SDK 4.2 to be installed on the
@@ -31,7 +30,7 @@ at:
 src/autoware/sensor_component/external/zed-ros2-wrapper
 ```
 
-To run the standalone ZED camera driver:
+To run the standalone ZED camera driver,
 
 ```sh
 ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedxm
@@ -39,14 +38,31 @@ ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedxm
 
 ## Blickfeld Cube1 LiDAR
 
+The driver package is located at
 
 ```
 src/autoware/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
 ```
 
-## MPU9250 Nine-Axis Motion Sensor
+To run the standalone driver,
 
+```sh
+ros2 launch blickfeld_driver live_scanner_node.launch.py
+```
+
+## MPU9250 Nine-Axis Accelerometer Gyroscope Sensor
+
+MPU9250 measures the motion state of the vehicle, including the linear
+acceleration, angular acceleration and angular speed. The source
+package is located at
 
 ```
-src/autoware/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
+src/autoware/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
 ```
+
+To run the standalone driver,
+
+```sh
+ros2 run mpu9250driver mpu9250driver
+```
+
