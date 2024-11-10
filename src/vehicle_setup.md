@@ -1,7 +1,5 @@
 # Vehicle Setup
 
-
-
 ## GPIO/I2C Device Pinout
 
 ### AGX Orin Expansion Header Pinout
@@ -10,28 +8,28 @@ The detailed pinout specification can be found on this
 [website](https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/).
 
 
-| Device  | Label                                   | Pin No. (Upper) | Pin No. (Lower) | Label                                   | Device  |
-|---------|-----------------------------------------|-----------------|-----------------|-----------------------------------------|---------|
-|         | 3.3 VDC Power, 1A max                   | 1               | 2               | 5.0 VDC Power, 1A max                   | KY-003  |
-| PCA9685 | I2C5_DAT General I2C5 Data I2C Bus 7    | 3               | 4               | 5.0 VDC Power, 1A max                   | PCA9685 |
-| PCA9685 | I2C5_CLK General I2C #5 Clock I2C Bus 7 | 5               | 6               | GND                                     | PCA9685 |
-|         | MCLK05 Audio Master Clock               | 7               | 8               | UART1_TX UART #1 Transmit               |         |
-|         | GND                                     | 9               | 10              | UART1_RX UART #1 Receive                |         |
-|         | UART1_RTS UART #1 Request to Send       | 11              | 12              | I2S2_CLK Audio I2S #2 Clock             |         |
-|         | GPIO32 GPIO #32                         | 13              | 14              | GND                                     | KY-003  |
-| KY-003  | GPIO27 (PWM)                            | 15              | 16              | GPIO8                                   |         |
-| MPU9250 | 3.3 VDC Power, 1A max                   | 17              | 18              | GPIO35 (PWM)                            |         |
-|         | SPI1_MOSI SPI #1 Master Out/Slave In    | 19              | 20              | GND                                     | MPU9250 |
-|         | SPI1_MISO SPI #1 Master In/Slave Out    | 21              | 22              | GPIO17 GPIO                             |         |
-|         | SPI1_SCK SPI #1 Shift Clock             | 23              | 24              | SPI1_CS0_N SPI #1 Chip Select #0        |         |
-|         | GND                                     | 25              | 26              | SPI1_CS1_N SPI #1 Chip Select #1        |         |
-| MPU9250 | I2C2_DAT General I2C #2 Data I2C Bus 1  | 27              | 28              | I2C2_CLK General I2C #2 Clock I2C Bus 1 | MPU9250 |
-|         | CAN0_DIN CAN #0 Data In                 | 29              | 30              | GND                                     |         |
-|         | CAN0_DOUT CAN #0 Data Out               | 31              | 32              | GPIO9                                   |         |
-|         | CAN1_DOUT CAN #1 Data Out               | 33              | 34              | GND                                     |         |
-|         | I2S_FS AUDIO I2S #2 Left/Right Clock    | 35              | 36              | UART1_CTS UART #1 Clear to Send         |         |
-|         | CAN1_DIN CAN #1 Data In                 | 37              | 38              | I2S_SDIN Audio I2S #2 Data In           |         |
-|         | GND                                     | 39              | 40              | I2S_SDOUT Audio I2S #2 Data Out         |         |
+| Device  | Label                                    | Pin No. (Upper) | Pin No. (Lower) | Label                                    | Device  |
+|---------|------------------------------------------|-----------------|-----------------|------------------------------------------|---------|
+|         | 3.3 VDC Power, 1A max                    | 1               | 2               | 5.0 VDC Power, 1A max                    | KY-003  |
+| PCA9685 | I2C5\_DAT General I2C5 Data I2C Bus 7    | 3               | 4               | 5.0 VDC Power, 1A max                    | PCA9685 |
+| PCA9685 | I2C5\_CLK General I2C #5 Clock I2C Bus 7 | 5               | 6               | GND                                      | PCA9685 |
+|         | MCLK05 Audio Master Clock                | 7               | 8               | UART1\_TX UART #1 Transmit               |         |
+|         | GND                                      | 9               | 10              | UART1\_RX UART #1 Receive                |         |
+|         | UART1\_RTS UART #1 Request to Send       | 11              | 12              | I2S2\_CLK Audio I2S #2 Clock             |         |
+|         | GPIO32 GPIO #32                          | 13              | 14              | GND                                      | KY-003  |
+| KY-003  | GPIO27 (PWM)                             | 15              | 16              | GPIO8                                    |         |
+| MPU9250 | 3.3 VDC Power, 1A max                    | 17              | 18              | GPIO35 (PWM)                             |         |
+|         | SPI1\_MOSI SPI #1 Master Out/Slave In    | 19              | 20              | GND                                      | MPU9250 |
+|         | SPI1\_MISO SPI #1 Master In/Slave Out    | 21              | 22              | GPIO17 GPIO                              |         |
+|         | SPI1\_SCK SPI #1 Shift Clock             | 23              | 24              | SPI1\_CS0\_N SPI #1 Chip Select #0       |         |
+|         | GND                                      | 25              | 26              | SPI1\_CS1\_N SPI #1 Chip Select #1       |         |
+| MPU9250 | I2C2\_DAT General I2C #2 Data I2C Bus 1  | 27              | 28              | I2C2\_CLK General I2C #2 Clock I2C Bus 1 | MPU9250 |
+|         | CAN0\_DIN CAN #0 Data In                 | 29              | 30              | GND                                      |         |
+|         | CAN0\_DOUT CAN #0 Data Out               | 31              | 32              | GPIO9                                    |         |
+|         | CAN1\_DOUT CAN #1 Data Out               | 33              | 34              | GND                                      |         |
+|         | I2S\_FS AUDIO I2S #2 Left/Right Clock    | 35              | 36              | UART1\_CTS UART #1 Clear to Send         |         |
+|         | CAN1\_DIN CAN #1 Data In                 | 37              | 38              | I2S\_SDIN Audio I2S #2 Data In           |         |
+|         | GND                                      | 39              | 40              | I2S\_SDOUT Audio I2S #2 Data Out         |         |
 
 *Table: Pinout for AGX Orin.*
 
@@ -65,8 +63,10 @@ supply and a GPIO wire for input or output signals.
 
 ## Blickfeld Cube1 LiDAR
 
-TODO
+The LiDAR is connected through an Ethernet cable to Orin. A static IP
+is configured on the network.
 
 ## ZED X Mini Camera
 
-TODO
+The camera is connected through a GMSL2 FAKRA interface to a ZED Box
+on Orin.
