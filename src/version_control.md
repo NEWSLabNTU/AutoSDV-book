@@ -71,12 +71,12 @@ fashion.
 Let's see `src/autoware/sensor_kit/f1eighth_sensor_kit_launch`
 submodule for example.
 
-| Committed Changes                                             | Pushed to Upstream Repository                                                                          |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| Changes within the `f1eighth_sensor_kit_launch` submodule.    | [f1eighth_sensor_kit_launch](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch) subproject repo |
-| New commit hash on the `f1eighth_sensor_kit_launch` submodule | [F1EIGHTH](https://github.com/NEWSLabNTU/F1EIGHTH) mother repo                                         |
+| Committed Changes                                             | Pushed to Upstream Repository                                                                            |
+|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Changes within the `f1eighth_sensor_kit_launch` submodule.    | [f1eighth\_sensor\_kit_launch](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch) subproject repo |
+| New commit hash on the `f1eighth_sensor_kit_launch` submodule | [F1EIGHTH](https://github.com/NEWSLabNTU/F1EIGHTH) mother repo                                           |
 
-The walkthrough goes like this.
+The walk through goes like this.
 
 ```sh
 # Go into the submodule and check to the branch we want to work on.
