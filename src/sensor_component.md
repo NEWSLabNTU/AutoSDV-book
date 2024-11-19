@@ -37,6 +37,7 @@ ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedxm
 ```
 
 ## Blickfeld Cube1 LiDAR
+The IP address of Blickfeld Cube1 LiDAR and Jetson is `192.168.26.26` and `192.168.26.1`, respectively.
 
 The driver package is located at
 
