@@ -1,4 +1,56 @@
-# Vehicle Setup
+# Build the Vehicle
+
+The recommended vehicle setup is 16×11×5 inch
+
+
+## Materials
+
+| Items                                                              |
+|--------------------------------------------------------------------|
+| **Chassis**                                                        |
+| Tekno TKR9500 Truck Kit (16×11×5 inch)                             |
+|                                                                    |
+| **Powertrain**                                                     |
+| Brushless Motor4274 / 1500kv                                       |
+| PCA9685 PWM Driver                                                 |
+| DC-DC Converter IN 24V OUT 12V10A                                  |
+|                                                                    |
+| **Computer**                                                       |
+| NVIDIA Jetson AGX ORIN Dev. kit 64GB                               |
+| Micron P3 PLUS 1000GB SSD                                          |
+|                                                                    |
+| **Camera**                                                         |
+| ZED X Mini Stereo Camera (Lens Focal Length 2.2mm, with polarizer) |
+| ZED Link Capture Card                                              |
+| GMSL2 Fakra Cable F-F(0.3m)                                        |
+|                                                                    |
+| **LiDAR**                                                          |
+| Blickfeld Cube1                                                    |
+|                                                                    |
+| **Battery and Power Supply**                                       |
+| Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60                       |
+| Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21                          |
+| Breaker 4230-T110-K0BE-8AB8                                        |
+
+
+
+## Battery and Power Supply
+
+The vehicle has separate power supply for motors and on-board
+computers and sensors. The purpose is to serve higher voltage on the
+sensors and current protection.
+
+![](./figures/vehicle_parts.jpg)
+
+*Yellow: The onboard computer and sensors are connected to 25V
+power. Red: Battery and power supply. Blue: Chassis and powertrain.*
+
+
+## 5G and WiFi Mount
+
+![](./figures/vehicle_top_mount.jpg)
+
+*Blue: The vehicle mount on the top. Red: The 5G antenna.*
 
 ## GPIO/I2C Device Pinout
 
