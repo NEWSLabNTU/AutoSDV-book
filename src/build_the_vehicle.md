@@ -1,7 +1,6 @@
 # Build the Vehicle
 
-The recommended vehicle setup is 16×11×5 inch
-
+The recommended vehicle setup is 16×11×5 inch.
 
 ## Materials
 
@@ -33,14 +32,18 @@ The recommended vehicle setup is 16×11×5 inch
 | Breaker 4230-T110-K0BE-8AB8                                        |
 
 
+## Components
 
-## Battery and Power Supply
+The vehicle has three major parts: the lower chassis, the upper
+platform and the power supply system. They are respectively painted in
+blue, yellow and red in the figure.
+
+![](./figures/vehicle_parts.jpg)
+*Vehicle Components*
 
 The vehicle has separate power supply for motors and on-board
 computers and sensors. The purpose is to serve higher voltage on the
 sensors and current protection.
-
-![](./figures/vehicle_parts.jpg)
 
 *Yellow: The onboard computer and sensors are connected to 25V
 power. Red: Battery and power supply. Blue: Chassis and powertrain.*
