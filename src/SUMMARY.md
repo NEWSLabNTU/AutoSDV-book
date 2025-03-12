@@ -2,8 +2,8 @@
 
 - [About the Race Vehicle Project](./introduction.md)
 - [Build the Vehicle](./build_the_vehicle.md)
-- [System Setup](./system_setup.md)
 - [Run the F1EIGHTH System](usage.md)
+- [System Installation](./system_setup.md)
 - [Source Code Walk Through](./source_code.md)
 - [Version Control](./version_control.md)
 - [Sensor Component](./sensor_component.md)

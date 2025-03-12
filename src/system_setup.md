@@ -1,36 +1,39 @@
-# System Setup
+# System Installation
 
-## Download the Project
+## Download This Project
 
-Download the F1EIGHTH project repository on GitHub.
+Download the project repository.
 
 ```sh
-git clone --recursive https://github.com/NEWSLabNTU/F1EIGHTH.git
+git clone -b 2024.11 --recursive https://github.com/NEWSLabNTU/F1EIGHTH.git
 cd F1EIGHTH
 ```
 
-## Environment
+## Prepare the Operating System
 
-### Operating System
-
-**Jetson Linux 36.3** on Jeton AGX Orin 64G is the preferred
-environment. You can flash the Jetson box using [NVIDIA SDK
+**Jetson Linux 36.3.0** on Jeton AGX Orin 64G is preferred. You can
+flash the Jetson box using [NVIDIA SDK
 manager](https://developer.nvidia.com/sdk-manager). Please make sure
-CUDA and TensorRT are selected during flashing.
+CUDA and TensorRT installation are enabled before flashing the box.
 
-If you're not using a Jetson box, the Ubuntu 22.04 is preferred. You
-must install CUDA 12.3 and TensorRT manually.
+If you're install on a PC or a laptop, Ubuntu 22.04 is preferred. You
+have to install CUDA 12.3 and TensorRT 8 manually in anticipation.
 
-### Setup the Development Environment
+## Environment Setup
 
-The project ships an Ansible playbook that can configure the
-environment automatically. Run this command to launch the playbook.
+### The Recommended Way
+
+The project ships an Ansible playbook that configures the environment
+automatically. Run this command and it does the job for you.
 
 ```sh
 make setup
 ```
 
-If you prefer to setup the environment manually,
+### The Manual Way
+
+If you prefer to configure environment manually, please install the
+following packages.
 
 - ROS 2 Humble
 
@@ -51,7 +54,7 @@ If you prefer to setup the environment manually,
   the _ZED SDK for Ubuntu 22 4.0.8_ version.
 
 
-## Build This Project
+## Build Autoware
 
 This is a meta step for all following commands. Always enable ROS
 environment whenever you start a new shell.
