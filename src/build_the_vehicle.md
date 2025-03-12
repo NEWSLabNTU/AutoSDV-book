@@ -2,58 +2,86 @@
 
 The recommended vehicle setup is 16×11×5 inch.
 
+## Components
+
+The vehicle has three major parts shown in the Figure 1.
+
+- <span style="color: Yellow">Yellow</span>: The onboard computer and sensors.
+- <span style="color: Red">Red</span>: Battery and power supply system.
+- <span style="color: DodgerBlue">Blue</span>: Chassis and powertrain.
+
+<figure style="width: 80%; text-align: center;">
+	<img src="./figures/vehicle_parts.jpg" alt="Vehicle parts.">
+	<figcaption>Figure 1. Vehicle components from top to bottom: onboard computer, power supply and powertrain.</figcaption>
+</figure>
+
+### Power Supply
+
+The power supplies for DC motors and on-board computer/sensors are
+separated due to distinct voltage requirements. The upper on-board
+computer and sensors are powered by a 22.2V 6S battery, while the
+lower powertrain is powered by a 7.4V 2S battery.
+
+The battery installation steps are shown in Figure 2. First, install
+the battery on the red docker. Second, connect battery to the cable.
+Last, switch on the power supply demonstrated in Figure 3.
+
+Please be cautious that the power switch must be turned off before
+installing or removing the battery. It's necessary to protect the
+system from voltage spikes.
+
+<figure style="width: 80%; text-align: center;">
+	<img src="./figures/battery_installation_steps.jpg" alt="Battery installation steps.">
+	<figcaption>Figure 2. Battery installation steps.</figcaption>
+</figure>
+
+<figure style="width: 80%; text-align: center;">
+	<img src="./figures/upper_power_switch_with_arrow.jpg" alt="Power switch">
+	<figcaption>Figure 3. Power switch turned on.</figcaption>
+</figure>
+
+## 5G and WiFi Mount
+
+The cellular gateway could be installed as shown in Figure 4.
+
+- <span style="color: DodgerBlue">Blue</span>: The vehicle mount on the top.
+- <span style="color: Red">Red</span>: The 5G cellular gateway.
+
+<figure style="width: 50%; text-align: center;">
+	<img src="./figures/vehicle_top_mount.jpg" alt="5G cellular gateway installation">
+	<figcaption>Figure 4. 5G cellular gateway installation example.</figcaption>
+</figure>
+
 ## Materials
 
 | Items                                                              |
 |--------------------------------------------------------------------|
 | **Chassis**                                                        |
 | Tekno TKR9500 Truck Kit (16×11×5 inch)                             |
-|                                                                    |
+| ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **Powertrain**                                                     |
 | Brushless Motor4274 / 1500kv                                       |
 | PCA9685 PWM Driver                                                 |
 | DC-DC Converter IN 24V OUT 12V10A                                  |
-|                                                                    |
+| ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **Computer**                                                       |
 | NVIDIA Jetson AGX ORIN Dev. kit 64GB                               |
 | Micron P3 PLUS 1000GB SSD                                          |
-|                                                                    |
+| ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **Camera**                                                         |
 | ZED X Mini Stereo Camera (Lens Focal Length 2.2mm, with polarizer) |
 | ZED Link Capture Card                                              |
 | GMSL2 Fakra Cable F-F(0.3m)                                        |
-|                                                                    |
+| ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **LiDAR**                                                          |
 | Blickfeld Cube1                                                    |
-|                                                                    |
+| ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **Battery and Power Supply**                                       |
 | Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60                       |
 | Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21                          |
 | Breaker 4230-T110-K0BE-8AB8                                        |
 
-
-## Components
-
-The vehicle has three major parts: the lower chassis, the upper
-platform and the power supply system. They are respectively painted in
-blue, yellow and red in the figure.
-
-![](./figures/vehicle_parts.jpg)
-*Vehicle Components*
-
-The vehicle has separate power supply for motors and on-board
-computers and sensors. The purpose is to serve higher voltage on the
-sensors and current protection.
-
-*Yellow: The onboard computer and sensors are connected to 25V
-power. Red: Battery and power supply. Blue: Chassis and powertrain.*
-
-
-## 5G and WiFi Mount
-
-![](./figures/vehicle_top_mount.jpg)
-
-*Blue: The vehicle mount on the top. Red: The 5G antenna.*
+*Table 1. Materials of the vehicle.*
 
 ## GPIO/I2C Device Pinout
 
@@ -86,7 +114,7 @@ The detailed pinout specification can be found on this
 |         | CAN1\_DIN CAN #1 Data In                 | 37              | 38              | I2S\_SDIN Audio I2S #2 Data In           |         |
 |         | GND                                      | 39              | 40              | I2S\_SDOUT Audio I2S #2 Data Out         |         |
 
-*Table: Pinout for AGX Orin.*
+*Table 2. Pinout for NVIDIA AGX Orin box.*
 
 
 ### I2C Device Pinout
@@ -100,7 +128,7 @@ SDA/SCL associates with a I2C bus number.
 | PCA9685 PWM/servo driver          | 7       | 4   | 6   | 3   | 5   |
 | MPU9250 inertial measurement unit | 1       | 17  | 20  | 27  | 28  |
 
-*Table: I2C device ports and connected pin numbers.*
+*Table 3. I2C device ports and connected pin numbers.*
 
 ### GPIO Device Pinout
 
@@ -112,7 +140,7 @@ supply and a GPIO wire for input or output signals.
 |----------------------------------------------|-----|-----|------|
 | KY-003 Hall effect sensor                    | 2   | 14  | 15   |
 
-*Table: GPIO device ports and connected pin numbers.*
+*Table 4. GPIO device ports and connected pin numbers.*
 
 
 
