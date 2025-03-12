@@ -1,4 +1,4 @@
-# Run the F1EIGHTH System
+# Drive the Vehicle
 
 Before start reading this article, please make sure you followed the
 [installation guide](installation.md) and built the project. The
@@ -16,7 +16,6 @@ The Makefile has a receipt to start the whole system.
 make launch
 ```
 
-
 ### Termination
 
 The recommended way to terminate the launch is to press the _Ctrl-Z +
@@ -33,7 +32,7 @@ The trick is preferred rather than Ctrl-C because the launch system
 sometimes cannot handle the Ctrl-C properly and hang in the middle of
 termination process, leaving orphan processes in the background.
 
-## Launch Customization
+## The Advanced Way: Launch Customization
 
 You can either modify the launch file directly located here:
 
