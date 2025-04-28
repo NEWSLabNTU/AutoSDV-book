@@ -1,6 +1,6 @@
 # Summary
 
-- [About the Race Vehicle Project](./introduction.md)
+- [About the Project](./introduction.md)
 - [Build the Vehicle](./build_the_vehicle.md)
 - [System Installation](./system_setup.md)
 - [Drive the Vehicle](usage.md)
