@@ -2,7 +2,7 @@
 
 - [About the Project](./introduction.md)
 - [Build the Vehicle](./build_the_vehicle.md)
-- [System Installation](./system_setup.md)
+- [Driving Software Installation](./system_setup.md)
 - [Drive the Vehicle](usage.md)
 - [Source Code Walk Through](./source_code.md)
 - [Version Control](./version_control.md)

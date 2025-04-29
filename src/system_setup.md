@@ -5,8 +5,8 @@
 Download the project repository.
 
 ```sh
-git clone -b 2024.11 --recursive https://github.com/NEWSLabNTU/F1EIGHTH.git
-cd F1EIGHTH
+git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+cd AutoSDV
 ```
 
 ## Prepare the Operating System
