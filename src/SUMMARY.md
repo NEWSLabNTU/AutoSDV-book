@@ -11,3 +11,4 @@
 - [Vehicle Interface](./vehicle_interface.md)
 - [Replay Simulation](./replay_simulation.md)
 - [5G/LTE Deployment](./5g_deployment.md)
+- [Hardware Components and Wiring](./hardware_and_wiring.md)
