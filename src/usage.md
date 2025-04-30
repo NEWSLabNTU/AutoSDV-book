@@ -8,36 +8,18 @@ start the whole driving system.
 
 ## The Simple Way
 
-### Startup
-
 The Makefile has a receipt to start the whole system.
 
 ```sh
 make launch
 ```
 
-### Termination
-
-The recommended way to terminate the launch is to press the _Ctrl-Z +
-kill_ combo. The key sequence goes like this.
-
-| Step | Shell Output                                | Action                             |
-|------|---------------------------------------------|------------------------------------|
-| T    | `$ make launch`                             | Launch the system.                 |
-| T+1  |                                             | Press Ctrl-Z to freeze the launch. |
-| T+1  | `[1]+  Stopped                 make launch` | Read job number `[1]`.             |
-| T+3  | `$ kill %1`                                 | Kill the `%1` job number.          |
-
-The trick is preferred rather than Ctrl-C because the launch system
-sometimes cannot handle the Ctrl-C properly and hang in the middle of
-termination process, leaving orphan processes in the background.
-
-## The Advanced Way: Launch Customization
+## Customize the Launch
 
 You can either modify the launch file directly located here:
 
 ```
-F1EIGHTH/src/autoware/launcher/f1eighth_launch/launch/f1eighth.launch.yaml
+AutoSDV/src/autoware/launcher/f1eighth_launch/launch/f1eighth.launch.yaml
 ```
 
 or assign argument values to the launch command. For example, to set
