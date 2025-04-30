@@ -6,7 +6,7 @@
   </a>
 </p>
 
-This repository contains the Markdown source files for the F1EIGHTH
+This repository contains the Markdown source files for the AutoSDV
 book.
 
 ## Contribute to the Book
