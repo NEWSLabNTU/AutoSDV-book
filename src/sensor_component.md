@@ -1,9 +1,9 @@
 # Sensor Component
 
 The
-[`sensor_component`](https://github.com/NEWSLabNTU/F1EIGHTH/tree/main/src/autoware/sensor_component)
+[`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component)
 directory contains a collection of drivers data processros for sensors
-on the F1EIGHTH vehicle. They are mostly provided by vendors and
+on the AutoSDV vehicle. They are mostly provided by vendors and
 existing open source projects.
 
 > **Notice**
@@ -12,7 +12,7 @@ existing open source projects.
 > Autoware. If you're looking for the composition of the sensor
 > drivers, please refer to [Sensor Kit](sensor_kit.md) Chapter.
 
-The F1EIGHTH Autoware adds the following ROS packages along with
+The AutoSDV Autoware adds the following ROS packages along with
 official packages.
 
 - ZED X Mini camera
@@ -125,28 +125,28 @@ If you do not get data on the topic, make sure, the configuration is correct by 
 
 1. Enable the GNSS Driver at:
 ```
-F1EIGHTH/src/autoware/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/sensing.launch.xml
+AutoSDV/src/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/sensing.launch.xml
 ```
 
 2. Enable the Garmin Driver at:
 ```
-F1EIGHTH/src/autoware/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/gnss.launch.xml
+AutoSDV/src/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/gnss.launch.xml
 ```
 
 3. No mistake in the Python script at (the script composes configuration to launch the GNSS Driver):
 ```
-F1EIGHTH/src/autoware/sensor_component/external/gps_umd/gpsd_client/launch/gpsd_client-launch.py
+AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/launch/gpsd_client-launch.py
 ```
 -  Note: the topic *fix* is remaped as *garmin/fix*
 
 3.1 Parameters for the Python script is at:
 ```
- F1EIGHTH/src/autoware/sensor_component/external/gps_umd/gpsd_client/config/gpsd_client.yaml
+AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/config/gpsd_client.yaml
 ```
 
 4. GNSS Client connecting to the gpsd (GPS Deamon) is located at:
 ```
- F1EIGHTH/src/autoware/sensor_component/external/gps_umd/gpsd_client/src/client.cpp
+AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/src/client.cpp
 ```
 
 
