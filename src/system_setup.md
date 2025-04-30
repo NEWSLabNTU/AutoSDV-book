@@ -1,39 +1,18 @@
-# System Installation
+# Driving Software Installation
 
-## Download This Project
+## Prepare the Development Environment
 
-Download the project repository.
+**Jetson Linux 36.3.0 for Jetson AGX Orin 64G** is the preferred
+choice. Flash using [NVIDIA SDK
+Manager](https://developer.nvidia.com/sdk-manager). Ensure CUDA and
+TensorRT are enabled during flashing.
 
-```sh
-git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
-cd AutoSDV
-```
+For installations on a PC or laptop, use **Ubuntu 22.04**. Manually
+install **CUDA 12.3** and **TensorRT 8** in advance.
 
-## Prepare the Operating System
+## Prerequisites
 
-**Jetson Linux 36.3.0** on Jeton AGX Orin 64G is preferred. You can
-flash the Jetson box using [NVIDIA SDK
-manager](https://developer.nvidia.com/sdk-manager). Please make sure
-CUDA and TensorRT installation are enabled before flashing the box.
-
-If you're install on a PC or a laptop, Ubuntu 22.04 is preferred. You
-have to install CUDA 12.3 and TensorRT 8 manually in anticipation.
-
-## Environment Setup
-
-### The Recommended Way
-
-The project ships an Ansible playbook that configures the environment
-automatically. Run this command and it does the job for you.
-
-```sh
-make setup
-```
-
-### The Manual Way
-
-If you prefer to configure environment manually, please install the
-following packages.
+Install the following dependent packages on your Orin box.
 
 - ROS 2 Humble
 
@@ -53,25 +32,37 @@ following packages.
   page](https://www.stereolabs.com/developers/release) and download
   the _ZED SDK for Ubuntu 22 4.0.8_ version.
 
+## Install Autoware
 
-## Build Autoware
+It is recommended to download and install the binary package from
+NEWSLab Releases
+[here](https://github.com/NEWSLabNTU/autoware/releases/tag/rosdebian%2F2025.02-1).
+For Orin users, download
+[`autoware-localrepo_2025.2-1_jetpack6.0.deb`](https://github.com/NEWSLabNTU/autoware/releases/download/rosdebian%2F2025.02-1/autoware-localrepo_2025.2-1_jetpack6.0.deb)
+and follow the installation instructions on that page.
+
+## Build the AutoSDV Project
+
+Download the project repository. The option `-b 2025.02` ensures the
+correct version.
+
+```sh
+git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+cd AutoSDV
+```
+
+Configure the system.
+
+```sh
+make setup
+```
 
 This is a meta step for all following commands. Always enable ROS
 environment whenever you start a new shell.
 
 ```bash
 source /opt/ros/humble/setup.bash
-```
-
-Install required dependencies.
-
-```bash
 make prepare
-```
-
-Build the whole project.
-
-```bash
 make build
 ```
 
