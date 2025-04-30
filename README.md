@@ -1,18 +1,24 @@
-# F1EIGHTH Book
+<p align="center">
+  <img src="logo/logo_brand_gray.png" width=""/>
+  <br>
+  <a href="https://newslabntu.github.io/autosdv-book/">
+    <strong>Read the Book »</strong>
+  </a>
+</p>
 
 This repository contains the Markdown source files for the F1EIGHTH
-book. The book is built by
-[mdBook](https://github.com/rust-lang/mdBook), a utility to create
-modern online books. Follow the [mdBook installation
+book.
+
+## Contribute to the Book
+
+You can start from the [summary page](src/SUMMARY.md) to learn about
+the organization of this book.
+
+The book can be compiled to HTML files locally. To get started, follow
+the [installation
 guide](https://rust-lang.github.io/mdBook/guide/installation.html) to
-install the `mdbook` command.
-
-## Read the Book
-
-You can start by [here](src/SUMMARY.md) to read the book on GitHub.
-
-This book can be compiled into fancy HTML documents. Download this
-repository and run this command to view this book in a web browser.
+install the `mdbook` compiler. Download the repository and run this
+command to view this book in a browser.
 
 ```sh
 make serve
