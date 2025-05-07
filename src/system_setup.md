@@ -1,72 +1,157 @@
 # Driving Software Installation
 
-## Prepare the Development Environment
+## Prepare the Onboard Computer
 
-**Jetson Linux 36.3.0 for Jetson AGX Orin 64G** is the preferred
-choice. Flash using [NVIDIA SDK
-Manager](https://developer.nvidia.com/sdk-manager). Ensure CUDA and
-TensorRT are enabled during flashing.
+### Recommended: NVIDIA Jetson AGX Orin
 
-For installations on a PC or laptop, use **Ubuntu 22.04**. Manually
-install **CUDA 12.3** and **TensorRT 8** in advance.
+NVIDIA Jetson AGX Orin 64G is the major platform for the onboard
+computer. Flash the Jetson box using [SDK
+manager](https://developer.nvidia.com/sdk-manager) with the following
+configuration.
 
-## Prerequisites
+- **JetPack SDK** with exact version **6.0**.
 
-Install the following dependent packages on your Orin box.
+    > Note that newer releases such as 6.1 and 6.2 are not compatible.
 
-- ROS 2 Humble
+- Install all CUDA and TensorRT packages in the SDK manager window.
+- Flash the system on the external NVMe SSD disk with size at least
+  256GB .
 
-  Please follow the official installation
-  [guide](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html).
+    > It's not recommended to boot on the builtin EMMC due to limited
+    > capacity.
 
-- Blickfeld Scanner Library 2.20.6
-  
-  Install the prebuilt Debian package:
-  [amd64](https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_amd64.deb),
-  [arm64](https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_arm64.deb).
+### Alternative: Ubuntu 22.04
 
-- ZED SDK 4.0.8
+The fresh Ubuntu 22.04 operating system with the following
+dependencies is preferable.
 
-  This is required for the ZED X mini camera. Please visit the
-  official [download
-  page](https://www.stereolabs.com/developers/release) and download
-  the _ZED SDK for Ubuntu 22 4.0.8_ version.
+-  Visit the [CUDA
+  Archive](https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
+  and install **CUDA 12.3** with "deb (network)" installer type.
 
-## Install Autoware
+    > Don't ubuntu-drivers
 
-It is recommended to download and install the binary package from
-NEWSLab Releases
-[here](https://github.com/NEWSLabNTU/autoware/releases/tag/rosdebian%2F2025.02-1).
-For Orin users, download
-[`autoware-localrepo_2025.2-1_jetpack6.0.deb`](https://github.com/NEWSLabNTU/autoware/releases/download/rosdebian%2F2025.02-1/autoware-localrepo_2025.2-1_jetpack6.0.deb)
-and follow the installation instructions on that page.
+- NVIDIA Driver 550 or above is recommended.
+
+- Proceed the [download
+  page](https://developer.nvidia.com/nvidia-tensorrt-8x-download) and
+  install TensorRT 8.6 GA.
+
+
+## Prepare the Environment (Recommended Way)
+
+The project ships an Ansible playbook that configures the environment
+automatically. The following tasks are done during the process.
+
+- Install ROS Humble.
+- Install Autoware 2025.02 binary release and its dependencies.
+- Install Blickfeld Scanner Lib required by the Blickfeld Cube 1 LiDAR.
+- Download artifacts for Autoware.
+- Set default RMW library to Cyclone DDS and optimize system-wide
+  settings.
+
+```sh
+make setup
+```
+
+Installation for following packages still need manual manipulation.
+
+- Visit the [release
+  archive](https://www.stereolabs.com/en-tw/developers/release/4.2)
+  and install **ZED SDK 4.2**
+  - NVIDIA AGX Orin users install the [ZED SDK for JetPack 6.0
+    GA](https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)
+    release.
+  - Ubuntu 22.04 PC/laptop users install the [ZED SDK for Ubuntu 22
+    ](https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22)
+    release.
+
+- Install the `innovusion` ROS driver for Seyond Robin-W LiDAR. You
+  may contact the LiDAR vendor to obtain the Debian package.
+
+## Prepare the Environment (Manual Installation)
+
+If you prefer to configure environment manually, please install the
+following packages.
+
+### Step 1: Install ROS Humble
+
+Visit this
+[guide](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
+and install **ROS Humble**. Please install both `ros-humble-desktop`
+and `ros-dev-tools`.
+
+### Step 2: Install Sensor Drivers and SDKs
+
+- **Blickfeld Scanner Library 2.20.6**
+
+  - NVIDIA AGX Orin users Install the
+    [amd64](https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_arm64.deb)
+    release.
+  - PC/laptop users install the
+    [amd64](https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_amd64.deb)
+    release.
+
+- Visit the [release
+  archive](https://www.stereolabs.com/en-tw/developers/release/4.2)
+  and install **ZED SDK 4.2**
+  - NVIDIA AGX Orin users install the [ZED SDK for JetPack 6.0
+    GA](https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)
+    release.
+  - Ubuntu 22.04 PC/laptop users install the [ZED SDK for Ubuntu 22
+    ](https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22)
+    release.
+
+- Install the `innovusion` ROS driver for Seyond Robin-W LiDAR. You
+  may contact the LiDAR vendor to obtain the Debian package.
+
+### Step 3: Install Autoware
+
+**Method 1: Debian Binary Release**
+
+Check Autoware 2025.02 [binary
+release](https://github.com/NEWSLabNTU/autoware/releases/tag/rosdebian%2F2025.02-1).
+It performs automated system configuration.
+
+After the installation is complete, activate the development
+environment.
+
+```sh
+source /opt/autoware/autoware-env
+```
+
+
+**Method 2: Build from Source**
+
+Visit the official
+[tutorial](https://autowarefoundation.github.io/autoware-documentation/main/installation/autoware/source-installation/)
+and build the Autoware step by step.
+
+After the installation is complete, activate the development
+environment.
+
+```bash
+source ~/autoware/install/setup.bash
+```
 
 ## Build the AutoSDV Project
 
-Download the project repository. The option `-b 2025.02` ensures the
-correct version.
+Download the AutoSDV source repository.
 
 ```sh
 git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
 cd AutoSDV
 ```
 
-Configure the system.
-
-```sh
-make setup
-```
-
-This is a meta step for all following commands. Always enable ROS
-environment whenever you start a new shell.
+Assume that Autoware development environment is activated. Build the
+project in the following steps.
 
 ```bash
-source /opt/ros/humble/setup.bash
 make prepare
 make build
 ```
 
-When the project is successfully built, activate the development
+After the project is successfully built, activate the development
 environment.
 
 ```sh
