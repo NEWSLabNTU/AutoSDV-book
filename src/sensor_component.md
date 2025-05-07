@@ -125,12 +125,12 @@ If you do not get data on the topic, make sure, the configuration is correct by 
 
 1. Enable the GNSS Driver at:
 ```
-AutoSDV/src/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/sensing.launch.xml
+AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/sensing.launch.xml
 ```
 
 2. Enable the Garmin Driver at:
 ```
-AutoSDV/src/sensor_kit/f1eighth_sensor_kit_launch/f1eighth_sensor_kit_launch/launch/gnss.launch.xml
+AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/gnss.launch.xml
 ```
 
 3. No mistake in the Python script at (the script composes configuration to launch the GNSS Driver):

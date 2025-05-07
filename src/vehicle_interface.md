@@ -1,29 +1,29 @@
 # Vehicle Interface
 
 The vehicle interface bridges the Autoware control and vehicle
-actuators. It is served by the `f1eighth_vehicle_launch` repository
-located at `src/autoware/vehicle/f1eighth_vehicle_launch`. It includes
+actuators. It is served by the `autosdv_vehicle_launch` repository
+located at `src/autoware/vehicle/autosdv_vehicle_launch`. It includes
 the following packages.
 
-- `f1eighth_vehicle_description`
+- `autosdv_vehicle_description`
 
   It provides vehicle appearance parameters.
 
-- `f1eighth_vehicle_launch`
+- `autosdv_vehicle_launch`
 
   It provides a launch file that runs necessary nodes to drive the
   vehicle.
 
-- `f1eighth_vehicle_interface`
+- `autosdv_vehicle_interface`
 
   The package provides the node to conversion the Autoware control
   commands to motor power and provides vehicle status reporting nodes
   for cruise control.
 
-To launch the vehicle interface for F1EIGHTH,
+To launch the vehicle interface for the vehicle,
 
 ```sh
-ros2 launch f1eighth_vehicle_launch vehicle_interface.launch.xml
+ros2 launch autosdv_vehicle_launch vehicle_interface.launch.xml
 ```
 
 ## The Velocity Reporting Node

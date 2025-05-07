@@ -2,10 +2,10 @@
 
 The sensor kit consists of the _description_ package and the _launch_
 package. The _description_ package,
-[`f1eighth_sensor_kit_description`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/tree/main/f1eighth_sensor_kit_description),
+[`autosdv_sensor_kit_description`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_description),
 stores the relative coordinates for each sensor on the vehicle. The
 _launch_ package,
-[`f1eighth_sensor_kit_launch`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/f1eighth_sensor_kit_launch),
+[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/autosdv_sensor_kit_launch),
 contains a set of launch files for all kinds of sensors along with
 their runtime parameters.
 
@@ -21,12 +21,12 @@ The description package stores the coordinates of each sensor
 installed on the vehicle. It's done by working on these two
 configuration files.
 
-- `../f1eighth_sensor_kit_description/config/sensor_kit_calibration.yaml`
-- `../f1eighth_sensor_kit_description/urdf/sensor_kit.xacro`
+- `../autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml`
+- `../autosdv_sensor_kit_description/urdf/sensor_kit.xacro`
 
 For example, the coordinate for the ZED camera is named as
 `zedxm_camera_link`, which pose parameters are defined in
-[`sensor_kit_calibration.yaml`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/blob/main/f1eighth_sensor_kit_description/config/sensor_kit_calibration.yaml).
+[`sensor_kit_calibration.yaml`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml).
 
 ```yaml
 sensor_kit_base_link:
@@ -40,7 +40,7 @@ sensor_kit_base_link:
 ```
 
 The
-[`sensor_kit.xacro`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/blob/main/f1eighth_sensor_kit_description/urdf/sensor_kit.xacro)
+[`sensor_kit.xacro`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/urdf/sensor_kit.xacro)
 file has corresponding entries for the coordinate. In the xacro
 snipplet, it defines a `<xacro:zed_camera>` component and a joint from
 `sensor_kit_base_link` to `zedxm_camera_link`.
@@ -74,9 +74,9 @@ snipplet, it defines a `<xacro:zed_camera>` component and a joint from
 ## The Launch Package
 
 The
-[`f1eighth_sensor_kit_launch`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/tree/main/f1eighth_sensor_kit_launch)
+[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch)
 package contains a collection of launch files in the
-[`launch`](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch/tree/main/f1eighth_sensor_kit_launch/launch)
+[`launch`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch/launch)
 directory. The notable one is `sensing.launch.xml`. It is the mother
 launch file used to start the whole sensing module and all the other
 launch files are included.

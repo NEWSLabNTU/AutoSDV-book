@@ -105,7 +105,7 @@ switch on the power (2).
 </figure>
 
 
-## Sensor Docks
+## Docks
 
 The vehicle has three docks to mount your favorite sensors. The figure
 below shows two kinds of builds with three docks marked on the figure:
@@ -173,7 +173,7 @@ The details of two builds are described in the table below.
   </tbody>
 </table>
 
-## Components and Wirings
+## Components and Wiring
 
 The vehicle incorporates essential components such as the chassis,
 body, onboard computer, among others, along with additional LiDARs and

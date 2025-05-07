@@ -1,9 +1,9 @@
 # Version Control
 
 The project adopts the **superproject** approach to manage a large
-number of Git repositories. The F1EIGHTH repository itself, the said
+number of Git repositories. The AutoSDV repository itself, the said
 superproject, saves the sub-projects as _Git submodules_ but does not
-store their actual data. You can read the WikiBook
+store their actual data. You can learn from the tutorial
 [here](https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects)
 to get the impression of superproject.
 
@@ -26,14 +26,14 @@ Always add the `--recursive` option when downloading a repository
 containing submodules.
 
 ```sh
-git clone --recursive https://github.com/NEWSLabNTU/F1EIGHTH.git
+git clone --recursive https://github.com/NEWSLabNTU/AutoSDV.git
 ```
 
 If you forget to add the option, the submodule directories will be
 empty. You can get the submodule contents afterwards.
 
 ```sh
-cd F1EIGHTH/
+cd AutoSDV/
 git submodule update --init --recursive
 ```
 
@@ -68,19 +68,19 @@ To save the changes within a submodule, you must commit the changes
 both in the submodule repo and in the mother repo in a two-step
 fashion.
 
-Let's see `src/autoware/sensor_kit/f1eighth_sensor_kit_launch`
+Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch`
 submodule for example.
 
-| Committed Changes                                             | Pushed to Upstream Repository                                                                            |
-|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| Changes within the `f1eighth_sensor_kit_launch` submodule.    | [f1eighth\_sensor\_kit_launch](https://github.com/NEWSLabNTU/f1eighth_sensor_kit_launch) subproject repo |
-| New commit hash on the `f1eighth_sensor_kit_launch` submodule | [F1EIGHTH](https://github.com/NEWSLabNTU/F1EIGHTH) mother repo                                           |
+| Committed Changes                                            | Pushed to Upstream Repository                                                                                 |
+|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| Changes within the `autosdv_sensor_kit_launch` submodule.    | [autosdv\_sensor\_kit\_launch](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch) subproject repository |
+| New commit hash on the `autosdv_sensor_kit_launch` submodule | [AutoSDV](https://github.com/NEWSLabNTU/AutoSDV) mother repository                                            |
 
 The walk through goes like this.
 
 ```sh
 # Go into the submodule and check to the branch we want to work on.
-cd src/autoware/sensor_kit/f1eighth_sensor_kit_launch
+cd src/autoware/sensor_kit/autosdv_sensor_kit_launch
 git checkout main
 
 # Do some work in the submodule.
