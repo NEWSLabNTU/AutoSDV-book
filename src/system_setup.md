@@ -29,16 +29,16 @@ dependencies is preferable.
   Archive](https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
   and install **CUDA 12.3** with "deb (network)" installer type.
 
-    > Don't ubuntu-drivers
-
-- NVIDIA Driver 550 or above is recommended.
+- NVIDIA driver 550 or above is recommended.
 
 - Proceed the [download
   page](https://developer.nvidia.com/nvidia-tensorrt-8x-download) and
   install TensorRT 8.6 GA.
 
 
-## Prepare the Environment (Recommended Way)
+## Prepare the Environment (Recommended Method)
+
+### Step 1: Run Ansible Automated Setup Script
 
 The project ships an Ansible playbook that configures the environment
 automatically. The following tasks are done during the process.
@@ -53,6 +53,8 @@ automatically. The following tasks are done during the process.
 ```sh
 make setup
 ```
+
+### Step 2: Install Sensor Drivers
 
 Installation for following packages still need manual manipulation.
 
@@ -69,10 +71,7 @@ Installation for following packages still need manual manipulation.
 - Install the `innovusion` ROS driver for Seyond Robin-W LiDAR. You
   may contact the LiDAR vendor to obtain the Debian package.
 
-## Prepare the Environment (Manual Installation)
-
-If you prefer to configure environment manually, please install the
-following packages.
+## Prepare the Environment Manually (If Not Using the Recommended Method)
 
 ### Step 1: Install ROS Humble
 
