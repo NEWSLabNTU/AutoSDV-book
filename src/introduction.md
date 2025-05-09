@@ -13,13 +13,19 @@ great flexibility and extensivity on the vehicle software.
 <table align="center" border="0">
   <tr>
     <td align="center" valign="bottom">
-      <img src="figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+      <a href="figures/model_robin-w.webp" target="_blank">
+        <img src="figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+      </a>
     </td>
     <td align="center" valign="bottom">
-      <img src="figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
+      <a href="figures/model_velodyne_32c.webp" target="_blank">
+        <img src="figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
+      </a>
     </td>
     <td align="center" valign="bottom">
-      <img src="figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+      <a href="figures/model_cube1_moxa-5g.webp" target="_blank">
+        <img src="figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+      </a>
     </td>
   </tr>
   <tr>
