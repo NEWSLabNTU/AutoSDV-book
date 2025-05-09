@@ -4,6 +4,7 @@
 - [Get Started](./get_started.md)
   - [Build the Vehicle](./build_the_vehicle.md)
   - [Driving Software Installation](./system_setup.md)
+    - [Docker Environment Setup](./docker_environment.md)
   - [Drive the Vehicle](usage.md)
 - [Development Guide](./development_guide.md)
   - [Source Code Walk Through](./source_code.md)

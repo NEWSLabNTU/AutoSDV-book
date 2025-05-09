@@ -26,8 +26,8 @@ The fresh Ubuntu 22.04 operating system with the following
 dependencies is preferable.
 
 -  Visit the [CUDA
-  Archive](https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
-  and install **CUDA 12.3** with "deb (network)" installer type.
+   Archive](https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network)
+   and install **CUDA 12.3** with "deb (network)" installer type.
 
 - NVIDIA driver 550 or above is recommended.
 
@@ -35,6 +35,12 @@ dependencies is preferable.
   page](https://developer.nvidia.com/nvidia-tensorrt-8x-download) and
   install TensorRT 8.6 GA.
 
+### Alternative: Docker Environment
+
+If you don't have access to an NVIDIA Jetson AGX Orin or prefer a
+containerized approach, you can use our Docker environment. See the
+[Docker Environment Setup](./docker_environment.md) page for detailed
+instructions.
 
 ## Prepare the Environment (Recommended Method)
 
