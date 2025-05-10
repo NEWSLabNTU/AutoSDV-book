@@ -21,7 +21,7 @@ Figure 1 shows an example setup of the private 5G infrastructure in the outdoor 
 
 5G signal range can extend up to 600 meters. Compared to Wi-Fi, it maintains stable latency and bandwidth within that area regardless of the distance to the base station.
 
-When setting up 5G equipment, there are several points to consider. First, the 5G receiver in a vehicle must be placed on the exterior of the body and not inside to avoid poor reception. Second, buildings near to the base station can affect signal range. Base station antennas usually have directional capabilities, so ensure that the vehicle's activity range is within the antenna's coverage area.
+When setting up 5G equipment, there are several points to consider. First, the 5G receiver in a vehicle must be placed on the exterior of the body and not inside to avoid poor reception. Second, buildings near the base station can affect signal range. Base station antennas usually have directional capabilities, so ensure that the vehicle's activity range is within the antenna's coverage area.
 
 ## Network Architecture
 

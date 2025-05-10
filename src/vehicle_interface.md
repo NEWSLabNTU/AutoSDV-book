@@ -12,7 +12,7 @@ The vehicle interface bridges the Autoware control and vehicle actuators. It is 
 
 - `autosdv_vehicle_interface`
 
-  The package provides the node to conversion the Autoware control commands to motor power and provides vehicle status reporting nodes for cruise control.
+  The package provides the node that converts the Autoware control commands to motor power and provides vehicle status reporting nodes for cruise control.
 
 To launch the vehicle interface for the vehicle,
 

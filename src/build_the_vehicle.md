@@ -24,7 +24,7 @@ The vehicle has three major layers shown in the Figure 1 from top to bottom.
 - <span style="color: Red">Red</span>: Power supply system for the onboard computer and sensors in the yellow layer.
 - <span style="color: DodgerBlue">Blue</span>: Powertrain system and power supply for the powertrain.
 
-By using this vehicle, additional sensor and 5G mounts go to the <span style="color: Yellow">yellow</span> layer, which power supply comes from the <span style="color: Red">red</span> layer. The motors have an separated battery and power supply in the <span style="color: DodgerBlue">blue</span> layer due to distinct voltage requirement.
+By using this vehicle, additional sensors and 5G mounts go to the <span style="color: Yellow">yellow</span> layer, which power supply comes from the <span style="color: Red">red</span> layer. The motors have a separate battery and power supply in the <span style="color: DodgerBlue">blue</span> layer due to distinct voltage requirements.
 
 <figure style="width: 80%; text-align: center;">
 	<img src="./figures/vehicle_parts.jpg" alt="Vehicle parts.">
@@ -35,9 +35,9 @@ By using this vehicle, additional sensor and 5G mounts go to the <span style="co
 
 #### Batteries
 
-There are two batteries for respective two power supplies, namely the *upper power* and *lower power*. The batteries are shown in Figure 2. The upper power provides electricity to the on-board computer and sensors from 22.2V 6S battery (1), while the lower power provides the electricity to the DC motor and powertrain from a 7.4V 2S battery (2).
+There are two batteries for the respective two power supplies, namely the *upper power* and *lower power*. The batteries are shown in Figure 2. The upper power provides electricity to the on-board computer and sensors from a 22.2V 6S battery (1), while the lower power provides electricity to the DC motor and powertrain from a 7.4V 2S battery (2).
 
-Both batteries have a yellow XT60 power plug and a white JST-XT connector as shown in Figure 3. The JST-XT connector is plugged to a voltage monitor in Figure 4. It beeps when the voltage becomes low.
+Both batteries have a yellow XT60 power plug and a white JST-XH connector as shown in Figure 3. The JST-XH connector is plugged to a voltage monitor in Figure 4. It beeps when the voltage becomes low.
 
 <figure style="width: 80%; text-align: center; margin: auto;">
 	<img src="./figures/lipo_batteries.webp" alt="Lithium polymer battery examples.">

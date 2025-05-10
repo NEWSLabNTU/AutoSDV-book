@@ -1,6 +1,6 @@
 # Source Code Walkthrough
 
-The AutoSDV follows the [_superproject_](https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects) convention. It collects hundreds of packages as Git submodules classified by their functions into directories. It is built atop of Autoware plus additional pacakges specific to the project and consitutes a large ROS workspace.
+The AutoSDV follows the [superproject](https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects) convention. It collects hundreds of packages as Git submodules classified by their functions into directories. It is built atop Autoware plus additional packages specific to the project and constitutes a large ROS workspace.
 
 Here you can visit the GitHub repository:
 
@@ -13,10 +13,10 @@ Here you can visit the GitHub repository:
 | `├── book/`     | The source documents for this book.                                            |
 | `├── data/`     | It includes data files used or loaded in the runtime.                          |
 | `├── docker/`   | The Docker container build script.                                             |
-| `├── scripts/`  | Auxiliary script files. It contanis Ansible scripts to set up the environment. |
+| `├── scripts/`  | Auxiliary script files. It contains Ansible scripts to set up the environment. |
 | `├── src/`      | The source code packages.                                                      |
-| `├── Makefile`  | It includes commonly used receipts.                                            |
-| `└── README.md` | The introductory document to git the first impression to the project.          |
+| `├── Makefile`  | It includes commonly used recipes.                                             |
+| `└── README.md` | The introductory document to get the first impression of the project.          |
 
 
 ## Source Package Categories

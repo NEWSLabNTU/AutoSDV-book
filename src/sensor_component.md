@@ -1,6 +1,6 @@
 # Sensor Component
 
-The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component) directory contains a collection of drivers data processros for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
+The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component) directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
 
 > **Notice**
 >
@@ -77,13 +77,13 @@ $GPGSV,3,2,10,25,65,108,26,28,42,271,25,29,04,141,25,31,15,250,18*7B
 $GPGSV,3,3,10,32,44,335,21,26,05,208,00*74
 ```
 
-Note: If you see something else, for example binary data, make sure, you use the correct baund rate - 4800.
+Note: If you see something else, for example binary data, make sure you use the correct baud rate - 9600.
 
-2.1 Check the current bound rate by this command:
+2.1 Check the current baud rate by this command:
 ```
 stty -F /dev/ttyUSB0
 ```
-Set the 4800 baund rate by this command:
+Set the 4800 baud rate by this command:
 ```
 sudo stty -F /dev/ttyUSB0 4800
 ```
@@ -102,7 +102,7 @@ or GUI app:
 xgps
 ```
 
-Wait till you get the proper longitute and latitude coordination and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is receiving.
+Wait till you get the proper longitude and latitude coordinates and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is being received.
 
 4. Since you get the signal, you can launch Autoware and subscribe the topic:
 ```
@@ -127,7 +127,7 @@ AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launc
 ```
 AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/launch/gpsd_client-launch.py
 ```
--  Note: the topic *fix* is remaped as *garmin/fix*
+-  Note: the topic *fix* is remapped as *garmin/fix*
 
 3.1 Parameters for the Python script is at:
 ```
