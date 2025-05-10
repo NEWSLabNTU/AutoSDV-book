@@ -38,3 +38,19 @@ AutoSDV provides a complete stack from hardware specifications to software imple
     </td>
   </tr>
 </table>
+
+
+## Citation
+
+If you use AutoSDV in your research or educational projects, please cite our work using the following BibTeX entry:
+
+```latex
+@misc{autosdv2025,
+  author = {Hsiang-Jui Lin, Chi-Sheng Shih},
+  title = {AutoSDV: A Software-Defined Vehicle Platform for Research and Education},
+  year = {2025},
+  institution = {National Taiwan University},
+  url = {https://github.com/NEWSLabNTU/AutoSDV},
+  note = {Accessed: 2025-04-28}
+}
+```
