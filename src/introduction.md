@@ -1,8 +1,12 @@
 <figure style="text-align: center">
 	<img src="./figures/logo/logo_brand_gray.png" alt="The AutoSDV Project logo">
-</figure> 
+</figure>
 
-The AutoSDV project, namely the Autoware Software Defined Vehicle, features an affordable autonomous driving platform with practical vehicle equipment for educational and research institutes. This project allows you to build a self-driving platform at home and use it in real outdoor road environments. Driven by Autoware, the leading open-source software project for autonomous driving, it gives you great flexibility and extensivity on the vehicle software.
+# About the Project
+
+The AutoSDV project, namely the *Autoware Software-Defined Vehicle*, features an affordable autonomous driving platform with practical vehicle equipment for educational and research institutes. This project allows you to build a self-driving platform at home and use it in real outdoor road environments. Driven by Autoware, the leading open-source software project for autonomous driving, it gives you great flexibility and extensivity on the vehicle software.
+
+AutoSDV provides a complete stack from hardware specifications to software implementation, offering an accessible entry point into real-world autonomous systems using industry-standard tools and practices.
 
 <table align="center" border="0">
   <tr>
