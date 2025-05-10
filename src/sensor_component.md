@@ -1,4 +1,4 @@
-# Sensor Component
+# Sensor Components and Drivers
 
 The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component) directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
 

@@ -21,8 +21,6 @@ Here you can visit the GitHub repository:
 
 ## Source Package Categories
 
-The whole AutoSDV driving system have 400+ packages by the time this article was written. It's important to understand the way these packages are classified.
-
 | Directory               | Function                                                |
 |-------------------------|---------------------------------------------------------|
 | `AutoSDV/src/`          | The entry to the Autoware source tree.                  |
@@ -32,7 +30,6 @@ The whole AutoSDV driving system have 400+ packages by the time this article was
 | `├── param/`            | Parameters specific to vehicle models.                  |
 | `├── sensor_component/` | Sensor drivers and sensing data processors.             |
 | `└── sensor_kit/`       | Sensor related parameters and launch files.             |
-
 
 
 ## Vehicle Interface Packages
@@ -66,19 +63,18 @@ You can find the parameter directories within this package.
 | `.../default/`                        |                                     |
 | `├── awsim_sensor_kit`                | Parameters for the AWSIM vehicle.   |
 | `└── autosdv_sensor_kit`              | Parameters for the AutoSDV vehicle. |
-| `    ├── imu_corrector.param.yaml`    |                                     |
-| `    ├── sensor_kit_calibration.yaml` |                                     |
-| `    └── sensors_calibration.yaml`    |                                     |
+| `    ├── imu_corrector.param.yaml`    |                                     |
+| `    ├── sensor_kit_calibration.yaml` |                                     |
+| `    └── sensors_calibration.yaml`    |                                     |
 
 
 ## Sensor Related Packages
 
-| Directory                                     | Function                          |
-|-----------------------------------------------|-----------------------------------|
-| `AutoSDV/src/`                                |                                   |
-| `├── sensor_component/`                       | Sensor drivers and preprocessors. |
-| `└── sensor_kit/`                             |                                   |
-| `    └── autosdv_sensor_kit_launch/`          |                                   |
-| `        ├── autosdv_sensor_kit_description/` | Coordinates of each sensor.       |
-| `        └── autosdv_sensor_kit_launch/`      | Another launch files for sensors. |
-
+| Directory                                     | Function                             |
+|-----------------------------------------------|--------------------------------------|
+| `AutoSDV/src/`                                |                                      |
+| `├── sensor_component/`                       | Sensor drivers and preprocessors.    |
+| `└── sensor_kit/`                             |                                      |
+| `    └── autosdv_sensor_kit_launch/`          |                                      |
+| `        ├── autosdv_sensor_kit_description/` | Coordinates of each sensor.          |
+| `        └── autosdv_sensor_kit_launch/`      | Additional launch files for sensors. |

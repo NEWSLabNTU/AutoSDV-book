@@ -1,4 +1,4 @@
-# Driving Software Installation
+# Software Installation
 
 ## Prepare the Onboard Computer
 

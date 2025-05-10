@@ -1,4 +1,4 @@
-# Build the Vehicle
+# Building the Vehicle
 
 The recommended vehicle build bases on 16×11×5 inch chassis plus additional sensor and communication mounts, which can be divided into several parts listed below.
 

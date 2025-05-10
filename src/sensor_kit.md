@@ -1,4 +1,4 @@
-# Sensor Kit
+# Sensor Kit Configuration
 
 The sensor kit consists of the _description_ package and the _launch_ package. The _description_ package, [`autosdv_sensor_kit_description`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_description), stores the relative coordinates for each sensor on the vehicle. The _launch_ package, [`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/autosdv_sensor_kit_launch), contains a set of launch files for all kinds of sensors along with their runtime parameters.
 
