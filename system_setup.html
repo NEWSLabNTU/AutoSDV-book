@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Software Installation - AutoSDV Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AutoSDV Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="software-installation"><a class="header" href="#software-installation">Software Installation</a></h1>
+<h2 id="prepare-the-onboard-computer"><a class="header" href="#prepare-the-onboard-computer">Prepare the Onboard Computer</a></h2>
+<h3 id="recommended-nvidia-jetson-agx-orin"><a class="header" href="#recommended-nvidia-jetson-agx-orin">Recommended: NVIDIA Jetson AGX Orin</a></h3>
+<p>NVIDIA Jetson AGX Orin 64G is the major platform for the onboard computer. Flash the Jetson box using <a href="https://developer.nvidia.com/sdk-manager">SDK manager</a> with the following configuration.</p>
+<ul>
+<li>
+<p><strong>JetPack SDK</strong> with exact version <strong>6.0</strong>.</p>
+<blockquote>
+<p>Note that newer releases such as 6.1 and 6.2 are not compatible.</p>
+</blockquote>
+</li>
+<li>
+<p>Install all CUDA and TensorRT packages in the SDK manager window.</p>
+</li>
+<li>
+<p>Flash the system on the external NVMe SSD disk with size at least 256GB .</p>
+<blockquote>
+<p>It's not recommended to boot on the builtin EMMC due to limited
+capacity.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="alternative-ubuntu-2204"><a class="header" href="#alternative-ubuntu-2204">Alternative: Ubuntu 22.04</a></h3>
+<p>The fresh Ubuntu 22.04 operating system with the following dependencies is preferable.</p>
+<ul>
+<li>
+<p>Visit the <a href="https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=deb_network">CUDA Archive</a> and install <strong>CUDA 12.3</strong> with "deb (network)" installer type.</p>
+</li>
+<li>
+<p>NVIDIA driver 550 or above is recommended.</p>
+</li>
+<li>
+<p>Proceed the <a href="https://developer.nvidia.com/nvidia-tensorrt-8x-download">download page</a> and install TensorRT 8.6 GA.</p>
+</li>
+</ul>
+<h3 id="alternative-docker-environment"><a class="header" href="#alternative-docker-environment">Alternative: Docker Environment</a></h3>
+<p>If you don't have access to an NVIDIA Jetson AGX Orin or prefer a containerized approach, you can use our Docker environment. See the <a href="./docker_environment.html">Docker Environment Setup</a> page for detailed instructions.</p>
+<h2 id="prepare-the-environment-recommended-method"><a class="header" href="#prepare-the-environment-recommended-method">Prepare the Environment (Recommended Method)</a></h2>
+<h3 id="step-1-run-ansible-automated-setup-script"><a class="header" href="#step-1-run-ansible-automated-setup-script">Step 1: Run Ansible Automated Setup Script</a></h3>
+<p>The project ships an Ansible playbook that configures the environment automatically. The following tasks are done during the process.</p>
+<ul>
+<li>Install ROS Humble.</li>
+<li>Install Autoware 2025.02 binary release and its dependencies.</li>
+<li>Install Blickfeld Scanner Lib required by the Blickfeld Cube 1 LiDAR.</li>
+<li>Download artifacts for Autoware.</li>
+<li>Set default RMW library to Cyclone DDS and optimize system-wide settings.</li>
+</ul>
+<pre><code class="language-sh">make setup
+</code></pre>
+<h3 id="step-2-install-sensor-drivers"><a class="header" href="#step-2-install-sensor-drivers">Step 2: Install Sensor Drivers</a></h3>
+<p>Installation for following packages still need manual manipulation.</p>
+<ul>
+<li>
+<p>Visit the <a href="https://www.stereolabs.com/en-tw/developers/release/4.2">release archive</a> and install <strong>ZED SDK 4.2</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users install the <a href="https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons">ZED SDK for JetPack 6.0 GA</a> release.</li>
+<li>Ubuntu 22.04 PC/laptop users install the <a href="https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22">ZED SDK for Ubuntu 22 </a> release.</li>
+</ul>
+</li>
+<li>
+<p>Install the <code>innovusion</code> ROS driver for Seyond Robin-W LiDAR. You may contact the LiDAR vendor to obtain the Debian package.</p>
+</li>
+</ul>
+<h2 id="prepare-the-environment-manually-if-not-using-the-recommended-method"><a class="header" href="#prepare-the-environment-manually-if-not-using-the-recommended-method">Prepare the Environment Manually (If Not Using the Recommended Method)</a></h2>
+<h3 id="step-1-install-ros-humble"><a class="header" href="#step-1-install-ros-humble">Step 1: Install ROS Humble</a></h3>
+<p>Visit this <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html">guide</a> and install <strong>ROS Humble</strong>. Please install both <code>ros-humble-desktop</code> and <code>ros-dev-tools</code>.</p>
+<h3 id="step-2-install-sensor-drivers-and-sdks"><a class="header" href="#step-2-install-sensor-drivers-and-sdks">Step 2: Install Sensor Drivers and SDKs</a></h3>
+<ul>
+<li>
+<p><strong>Blickfeld Scanner Library 2.20.6</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users Install the <a href="https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_arm64.deb">amd64</a> release.</li>
+<li>PC/laptop users install the <a href="https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_amd64.deb">amd64</a> release.</li>
+</ul>
+</li>
+<li>
+<p>Visit the <a href="https://www.stereolabs.com/en-tw/developers/release/4.2">release archive</a> and install <strong>ZED SDK 4.2</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users install the <a href="https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons">ZED SDK for JetPack 6.0 GA</a> release.</li>
+<li>Ubuntu 22.04 PC/laptop users install the <a href="https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22">ZED SDK for Ubuntu 22 </a> release.</li>
+</ul>
+</li>
+<li>
+<p>Install the <code>innovusion</code> ROS driver for Seyond Robin-W LiDAR. You
+may contact the LiDAR vendor to obtain the Debian package.</p>
+</li>
+</ul>
+<h3 id="step-3-install-autoware"><a class="header" href="#step-3-install-autoware">Step 3: Install Autoware</a></h3>
+<p><strong>Method 1: Debian Binary Release</strong></p>
+<p>Check Autoware 2025.02 <a href="https://github.com/NEWSLabNTU/autoware/releases/tag/rosdebian%2F2025.02-1">binary release</a>. It performs automated system configuration.</p>
+<p>After the installation is complete, activate the development environment.</p>
+<pre><code class="language-sh">source /opt/autoware/autoware-env
+</code></pre>
+<p><strong>Method 2: Build from Source</strong></p>
+<p>Visit the official <a href="https://autowarefoundation.github.io/autoware-documentation/main/installation/autoware/source-installation/">tutorial</a> and build the Autoware step by step.</p>
+<p>After the installation is complete, activate the development environment.</p>
+<pre><code class="language-bash">source ~/autoware/install/setup.bash
+</code></pre>
+<h2 id="build-the-autosdv-project"><a class="header" href="#build-the-autosdv-project">Build the AutoSDV Project</a></h2>
+<p>Download the AutoSDV source repository.</p>
+<pre><code class="language-sh">git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+cd AutoSDV
+</code></pre>
+<p>Assume that Autoware development environment is activated. Build the project in the following steps.</p>
+<pre><code class="language-bash">make prepare
+make build
+</code></pre>
+<p>After the project is successfully built, activate the development environment.</p>
+<pre><code class="language-sh">source install/setup.sh
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="build_the_vehicle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="docker_environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="build_the_vehicle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="docker_environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

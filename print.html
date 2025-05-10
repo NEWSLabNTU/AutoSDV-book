@@ -1,0 +1,1027 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AutoSDV Book</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AutoSDV Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <figure style="text-align: center">
+	<img src="./figures/logo/logo_brand_gray.png" alt="The AutoSDV Project logo">
+</figure>
+<h1 id="about-the-project"><a class="header" href="#about-the-project">About the Project</a></h1>
+<p>The AutoSDV project, namely the <em>Autoware Software-Defined Vehicle</em>, features an affordable autonomous driving platform with practical vehicle equipment for educational and research institutes. This project allows you to build a self-driving platform at home and use it in real outdoor road environments. Driven by Autoware, the leading open-source software project for autonomous driving, it gives you great flexibility and extensivity on the vehicle software.</p>
+<p>AutoSDV provides a complete stack from hardware specifications to software implementation, offering an accessible entry point into real-world autonomous systems using industry-standard tools and practices.</p>
+<table align="center" border="0">
+  <tr>
+    <td align="center" valign="bottom">
+      <a href="figures/model_robin-w.webp" target="_blank">
+        <img src="figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="figures/model_velodyne_32c.webp" target="_blank">
+        <img src="figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="figures/model_cube1_moxa-5g.webp" target="_blank">
+        <img src="figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Robin-W Solid-State LiDAR Kit</b>
+    </td>
+    <td align="center">
+      <b>Velodyne 32C LiDAR Kit</b>
+    </td>
+    <td align="center">
+      <b>Cube1 LiDAR + MOXA 5G Kit</b>
+    </td>
+  </tr>
+</table>
+<h2 id="citation"><a class="header" href="#citation">Citation</a></h2>
+<p>If you use AutoSDV in your research or educational projects, please cite our work using the following BibTeX entry:</p>
+<pre><code class="language-latex">@misc{autosdv2025,
+  author = {Hsiang-Jui Lin, Chi-Sheng Shih},
+  title = {AutoSDV: A Software-Defined Vehicle Platform for Research and Education},
+  year = {2025},
+  institution = {National Taiwan University},
+  url = {https://github.com/NEWSLabNTU/AutoSDV},
+  note = {Accessed: 2025-04-28}
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>This section guides you through the process of setting up and using the AutoSDV platform. Follow these chapters sequentially to build a fully functional autonomous vehicle:</p>
+<ol>
+<li><strong>Building the Vehicle</strong> - Assembling the physical components</li>
+<li><strong>Software Installation</strong> - Setting up the driving software</li>
+<li><strong>Operating the Vehicle</strong> - Launching and controlling the system</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="building-the-vehicle"><a class="header" href="#building-the-vehicle">Building the Vehicle</a></h1>
+<p>The recommended vehicle build bases on 16×11×5 inch chassis plus additional sensor and communication mounts, which can be divided into several parts listed below.</p>
+<p>The <strong>core components</strong> includes necessary components to run the Autoware.</p>
+<ul>
+<li>Onboard computer</li>
+<li>Navigation system</li>
+<li>Power supply system</li>
+<li>Powertrain system</li>
+<li>Chassis</li>
+</ul>
+<p>The vehicle can be equipped with <strong>additional mounts</strong> depending on your choice.</p>
+<ul>
+<li>LiDAR sensors</li>
+<li>5G/LTE communication module</li>
+</ul>
+<h2 id="core-components"><a class="header" href="#core-components">Core Components</a></h2>
+<p>The vehicle has three major layers shown in the Figure 1 from top to bottom.</p>
+<ul>
+<li><span style="color: Yellow">Yellow</span>: The onboard computer, navigation sensors and additional mounts.</li>
+<li><span style="color: Red">Red</span>: Power supply system for the onboard computer and sensors in the yellow layer.</li>
+<li><span style="color: DodgerBlue">Blue</span>: Powertrain system and power supply for the powertrain.</li>
+</ul>
+<p>By using this vehicle, additional sensors and 5G mounts go to the <span style="color: Yellow">yellow</span> layer, which power supply comes from the <span style="color: Red">red</span> layer. The motors have a separate battery and power supply in the <span style="color: DodgerBlue">blue</span> layer due to distinct voltage requirements.</p>
+<figure style="width: 80%; text-align: center;">
+	<img src="./figures/vehicle_parts.jpg" alt="Vehicle parts.">
+	<figcaption>Figure 1. Vehicle components from top to bottom: onboard computer, power supply and powertrain.</figcaption>
+</figure>
+<h3 id="power-supply-system"><a class="header" href="#power-supply-system">Power Supply System</a></h3>
+<h4 id="batteries"><a class="header" href="#batteries">Batteries</a></h4>
+<p>There are two batteries for the respective two power supplies, namely the <em>upper power</em> and <em>lower power</em>. The batteries are shown in Figure 2. The upper power provides electricity to the on-board computer and sensors from a 22.2V 6S battery (1), while the lower power provides electricity to the DC motor and powertrain from a 7.4V 2S battery (2).</p>
+<p>Both batteries have a yellow XT60 power plug and a white JST-XH connector as shown in Figure 3. The JST-XH connector is plugged to a voltage monitor in Figure 4. It beeps when the voltage becomes low.</p>
+<figure style="width: 80%; text-align: center; margin: auto;">
+	<img src="./figures/lipo_batteries.webp" alt="Lithium polymer battery examples.">
+	<figcaption>Figure 2. Lithium polymer battery examples.</figcaption>
+</figure>
+<figure style="width: 50%; text-align: center; margin: auto;">
+	<img src="./figures/battery_connectors.webp" alt="Battery connectors.">
+	<figcaption>Figure 3. Battery XT60 and JST-XH connector.</figcaption>
+</figure>
+<figure style="width: 40%; text-align: center; margin: auto;">
+	<img src="./figures/voltage_monitor.webp" alt="Battery voltage monitor.">
+	<figcaption>Figure 4. Battery voltage monitor.</figcaption>
+</figure>
+<h4 id="the-upper-power-supply"><a class="header" href="#the-upper-power-supply">The Upper Power Supply</a></h4>
+<p>The upper power start up process is shown in Figure 4. First, install the battery on the battery dock. Second, connect battery to the cable. Last, switch on the power supply demonstrated in Figure 5.</p>
+<p>Please be cautious that the power switch must be turned off before installing or removing the battery. It's necessary to protect the system from voltage spikes.</p>
+<figure style="width: 80%; text-align: center; margin: auto;">
+	<img src="./figures/battery_installation_steps.jpg" alt="Upper power start up procedure.">
+	<figcaption>Figure 4. Upper power start up procedure.</figcaption>
+</figure>
+<figure style="width: 80%; text-align: center; margin: auto;">
+	<img src="./figures/upper_power_switch_with_arrow.jpg" alt="Turn on power switch">
+	<figcaption>Figure 5. Turn on upper power switch.</figcaption>
+</figure>
+<h4 id="the-lower-power-supply"><a class="header" href="#the-lower-power-supply">The Lower Power Supply</a></h4>
+<p>The lower power start up process is shown in Figure 6. The battery is installed in the dock in the bottom layer of the vehicle (1). Then, switch on the power (2).</p>
+<figure style="width: 60%; text-align: center; margin: auto;">
+	<img src="./figures/lower_power_installation.webp" alt="Lower power start up procedure">
+	<figcaption>Figure 6. Lower power start up procedure</figcaption>
+</figure>
+<h2 id="docks"><a class="header" href="#docks">Docks</a></h2>
+<p>The vehicle has three docks to mount your favorite sensors. The figure below shows two kinds of builds with three docks marked on the figure: (1) the front docker, (2) the top dock and (3) the rear dock.</p>
+<table align="center" border="0">
+  <tbody>
+    <tr>
+      <td align="center" valign="bottom">
+        <img src="figures/sensor_mounts-1.webp" alt="Sensor mounts example 1" width="80%"/>
+      </td>
+      <td align="center" valign="bottom">
+        <img src="figures/sensor_mounts-2.webp" alt="Sensor mounts example 2" width="80%"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>The details of two builds are described in the table below.</p>
+<table align="center" border="0">
+  <thead>
+    <tr>
+      <th align="center">No.</td>
+      <th align="center">Front Dock</td>
+      <th align="center">Top Dock</td>
+      <th align="center">Rear Dock</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="middle" rowspan="2">1</td>
+      <td align="center" valign="bottom">
+        <img src="figures/front_dock-1.webp" alt="Front docker example 1" width="80%"/>
+      </td>
+      <td align="center" valign="bottom">
+        <img src="figures/top_dock-1.webp" alt="Top docker example 1" width="80%"/>
+      </td>
+      <td align="center" valign="bottom">
+        <img src="figures/rear_dock-1.webp" alt="Front docker example 1" width="80%"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Seyond Robin-W LiDAR</td>
+      <td align="center">MOXA 5G Module</td>
+      <td align="center">LiDAR Ethernet Adaptor</td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle" rowspan="2">2</td>
+      <td align="center" valign="bottom">
+        <img src="figures/front_dock-2.webp" alt="Front docker example 2" width="80%"/>
+      </td>
+      <td align="center" valign="bottom">
+        <img src="figures/top_dock-2.webp" alt="Top docker example 2" width="80%"/>
+      </td>
+      <td align="center" valign="bottom">
+        <img src="figures/rear_dock-2.webp" alt="Front docker example 2" width="80%"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Velodyne LiDAR Adaptor</td>
+      <td align="center">Velodyne 32C LiDAR</td>
+      <td align="center">Navigation Sensor Kit</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="components-and-wiring"><a class="header" href="#components-and-wiring">Components and Wiring</a></h2>
+<p>The vehicle incorporates essential components such as the chassis, body, onboard computer, among others, along with additional LiDARs and a 5G communication module. For detailed information on these elements and their wiring, please refer to the comprehensive guide in <a href="hardware_and_wiring.html">Hardware and Wiring</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="software-installation"><a class="header" href="#software-installation">Software Installation</a></h1>
+<h2 id="prepare-the-onboard-computer"><a class="header" href="#prepare-the-onboard-computer">Prepare the Onboard Computer</a></h2>
+<h3 id="recommended-nvidia-jetson-agx-orin"><a class="header" href="#recommended-nvidia-jetson-agx-orin">Recommended: NVIDIA Jetson AGX Orin</a></h3>
+<p>NVIDIA Jetson AGX Orin 64G is the major platform for the onboard computer. Flash the Jetson box using <a href="https://developer.nvidia.com/sdk-manager">SDK manager</a> with the following configuration.</p>
+<ul>
+<li>
+<p><strong>JetPack SDK</strong> with exact version <strong>6.0</strong>.</p>
+<blockquote>
+<p>Note that newer releases such as 6.1 and 6.2 are not compatible.</p>
+</blockquote>
+</li>
+<li>
+<p>Install all CUDA and TensorRT packages in the SDK manager window.</p>
+</li>
+<li>
+<p>Flash the system on the external NVMe SSD disk with size at least 256GB .</p>
+<blockquote>
+<p>It's not recommended to boot on the builtin EMMC due to limited
+capacity.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="alternative-ubuntu-2204"><a class="header" href="#alternative-ubuntu-2204">Alternative: Ubuntu 22.04</a></h3>
+<p>The fresh Ubuntu 22.04 operating system with the following dependencies is preferable.</p>
+<ul>
+<li>
+<p>Visit the <a href="https://developer.nvidia.com/cuda-12-3-2-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=deb_network">CUDA Archive</a> and install <strong>CUDA 12.3</strong> with "deb (network)" installer type.</p>
+</li>
+<li>
+<p>NVIDIA driver 550 or above is recommended.</p>
+</li>
+<li>
+<p>Proceed the <a href="https://developer.nvidia.com/nvidia-tensorrt-8x-download">download page</a> and install TensorRT 8.6 GA.</p>
+</li>
+</ul>
+<h3 id="alternative-docker-environment"><a class="header" href="#alternative-docker-environment">Alternative: Docker Environment</a></h3>
+<p>If you don't have access to an NVIDIA Jetson AGX Orin or prefer a containerized approach, you can use our Docker environment. See the <a href="./docker_environment.html">Docker Environment Setup</a> page for detailed instructions.</p>
+<h2 id="prepare-the-environment-recommended-method"><a class="header" href="#prepare-the-environment-recommended-method">Prepare the Environment (Recommended Method)</a></h2>
+<h3 id="step-1-run-ansible-automated-setup-script"><a class="header" href="#step-1-run-ansible-automated-setup-script">Step 1: Run Ansible Automated Setup Script</a></h3>
+<p>The project ships an Ansible playbook that configures the environment automatically. The following tasks are done during the process.</p>
+<ul>
+<li>Install ROS Humble.</li>
+<li>Install Autoware 2025.02 binary release and its dependencies.</li>
+<li>Install Blickfeld Scanner Lib required by the Blickfeld Cube 1 LiDAR.</li>
+<li>Download artifacts for Autoware.</li>
+<li>Set default RMW library to Cyclone DDS and optimize system-wide settings.</li>
+</ul>
+<pre><code class="language-sh">make setup
+</code></pre>
+<h3 id="step-2-install-sensor-drivers"><a class="header" href="#step-2-install-sensor-drivers">Step 2: Install Sensor Drivers</a></h3>
+<p>Installation for following packages still need manual manipulation.</p>
+<ul>
+<li>
+<p>Visit the <a href="https://www.stereolabs.com/en-tw/developers/release/4.2">release archive</a> and install <strong>ZED SDK 4.2</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users install the <a href="https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons">ZED SDK for JetPack 6.0 GA</a> release.</li>
+<li>Ubuntu 22.04 PC/laptop users install the <a href="https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22">ZED SDK for Ubuntu 22 </a> release.</li>
+</ul>
+</li>
+<li>
+<p>Install the <code>innovusion</code> ROS driver for Seyond Robin-W LiDAR. You may contact the LiDAR vendor to obtain the Debian package.</p>
+</li>
+</ul>
+<h2 id="prepare-the-environment-manually-if-not-using-the-recommended-method"><a class="header" href="#prepare-the-environment-manually-if-not-using-the-recommended-method">Prepare the Environment Manually (If Not Using the Recommended Method)</a></h2>
+<h3 id="step-1-install-ros-humble"><a class="header" href="#step-1-install-ros-humble">Step 1: Install ROS Humble</a></h3>
+<p>Visit this <a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html">guide</a> and install <strong>ROS Humble</strong>. Please install both <code>ros-humble-desktop</code> and <code>ros-dev-tools</code>.</p>
+<h3 id="step-2-install-sensor-drivers-and-sdks"><a class="header" href="#step-2-install-sensor-drivers-and-sdks">Step 2: Install Sensor Drivers and SDKs</a></h3>
+<ul>
+<li>
+<p><strong>Blickfeld Scanner Library 2.20.6</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users Install the <a href="https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_arm64.deb">amd64</a> release.</li>
+<li>PC/laptop users install the <a href="https://github.com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/blickfeld-scanner-lib_2.20.6-1_amd64.deb">amd64</a> release.</li>
+</ul>
+</li>
+<li>
+<p>Visit the <a href="https://www.stereolabs.com/en-tw/developers/release/4.2">release archive</a> and install <strong>ZED SDK 4.2</strong></p>
+<ul>
+<li>NVIDIA AGX Orin users install the <a href="https://download.stereolabs.com/zedsdk/4.2/l4t36.3/jetsons">ZED SDK for JetPack 6.0 GA</a> release.</li>
+<li>Ubuntu 22.04 PC/laptop users install the <a href="https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22">ZED SDK for Ubuntu 22 </a> release.</li>
+</ul>
+</li>
+<li>
+<p>Install the <code>innovusion</code> ROS driver for Seyond Robin-W LiDAR. You
+may contact the LiDAR vendor to obtain the Debian package.</p>
+</li>
+</ul>
+<h3 id="step-3-install-autoware"><a class="header" href="#step-3-install-autoware">Step 3: Install Autoware</a></h3>
+<p><strong>Method 1: Debian Binary Release</strong></p>
+<p>Check Autoware 2025.02 <a href="https://github.com/NEWSLabNTU/autoware/releases/tag/rosdebian%2F2025.02-1">binary release</a>. It performs automated system configuration.</p>
+<p>After the installation is complete, activate the development environment.</p>
+<pre><code class="language-sh">source /opt/autoware/autoware-env
+</code></pre>
+<p><strong>Method 2: Build from Source</strong></p>
+<p>Visit the official <a href="https://autowarefoundation.github.io/autoware-documentation/main/installation/autoware/source-installation/">tutorial</a> and build the Autoware step by step.</p>
+<p>After the installation is complete, activate the development environment.</p>
+<pre><code class="language-bash">source ~/autoware/install/setup.bash
+</code></pre>
+<h2 id="build-the-autosdv-project"><a class="header" href="#build-the-autosdv-project">Build the AutoSDV Project</a></h2>
+<p>Download the AutoSDV source repository.</p>
+<pre><code class="language-sh">git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+cd AutoSDV
+</code></pre>
+<p>Assume that Autoware development environment is activated. Build the project in the following steps.</p>
+<pre><code class="language-bash">make prepare
+make build
+</code></pre>
+<p>After the project is successfully built, activate the development environment.</p>
+<pre><code class="language-sh">source install/setup.sh
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-environment-setup"><a class="header" href="#docker-environment-setup">Docker Environment Setup</a></h1>
+<p>If you don't have access to an NVIDIA Jetson AGX Orin or want to try out AutoSDV in a containerized environment first, you can use our Docker setup. This approach provides a consistent development and testing environment regardless of your host system.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>The Docker environment requires the following on your host system:</p>
+<ul>
+<li>Docker with NVIDIA container toolkit installed
+<ul>
+<li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine installation guide</a></li>
+<li><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit installation guide</a></li>
+</ul>
+</li>
+<li>QEMU for ARM64 emulation (if building on x86_64)</li>
+<li>Git for cloning the repository</li>
+</ul>
+<h2 id="getting-started-with-docker"><a class="header" href="#getting-started-with-docker">Getting Started with Docker</a></h2>
+<h3 id="step-1-clone-the-repository"><a class="header" href="#step-1-clone-the-repository">Step 1: Clone the Repository</a></h3>
+<pre><code class="language-bash">git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+cd AutoSDV/docker
+</code></pre>
+<h3 id="step-2-initial-setup"><a class="header" href="#step-2-initial-setup">Step 2: Initial Setup</a></h3>
+<p>Before building containers for the first time, run the bootstrap command to set up cross-architecture support:</p>
+<pre><code class="language-bash">make bootstrap
+</code></pre>
+<p>This installs required dependencies like QEMU and configures Docker to handle ARM64 images.</p>
+<h3 id="step-3-build-the-docker-image"><a class="header" href="#step-3-build-the-docker-image">Step 3: Build the Docker Image</a></h3>
+<p>Build the AutoSDV Docker image with:</p>
+<pre><code class="language-bash">make build
+</code></pre>
+<p>This creates a Docker image configured for ARM64 architecture, suitable for Jetson devices. The image will use the current commit of your local repository, clone the repository, and check out that same commit inside the container.</p>
+<p><strong>Note</strong>: Before building, the system checks if your current commit has been pushed to the remote repository. If not, you'll receive an error message asking you to push your changes first.</p>
+<h3 id="step-4-run-the-container"><a class="header" href="#step-4-run-the-container">Step 4: Run the Container</a></h3>
+<p>Launch an interactive shell in the container with:</p>
+<pre><code class="language-bash">make run
+</code></pre>
+<p>When you enter the container, you'll have a ready-to-use AutoSDV environment with all dependencies and artifacts installed.</p>
+<h2 id="working-inside-the-docker-container"><a class="header" href="#working-inside-the-docker-container">Working Inside the Docker Container</a></h2>
+<p>Once inside the container, you'll find the AutoSDV repository at <code>/home/developer/AutoSDV</code> with all dependencies already installed.</p>
+<p>You can run commands just as you would on a regular system:</p>
+<pre><code class="language-bash"># Inside the container
+cd /home/developer/AutoSDV
+
+# Build if needed (already done during image creation)
+# make build
+
+# Launch AutoSDV
+ros2 launch autosdv_launch autosdv.launch.yaml
+</code></pre>
+<h2 id="docker-commands-reference"><a class="header" href="#docker-commands-reference">Docker Commands Reference</a></h2>
+<p>Here are some useful Docker commands for working with the AutoSDV environment:</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>make build</code></td><td>Build the Docker image using the current commit hash</td></tr>
+<tr><td><code>make run</code></td><td>Enter the container shell</td></tr>
+<tr><td><code>make save</code></td><td>Save the Docker image as a compressed file</td></tr>
+<tr><td><code>make clean</code></td><td>Remove the Docker image</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="operating-the-vehicle"><a class="header" href="#operating-the-vehicle">Operating the Vehicle</a></h1>
+<p>Before start reading this article, please make sure you followed the <a href="installation.html">installation guide</a> and built the project. The project repository has a launch file <code>autosdv.launch.yaml</code> that defines the set of nodes to be executed and assigned parameters to start the whole driving system.</p>
+<h2 id="the-simple-way"><a class="header" href="#the-simple-way">The Simple Way</a></h2>
+<p>The Makefile has a receipt to start the whole system.</p>
+<pre><code class="language-sh">make launch
+</code></pre>
+<h2 id="customize-the-launch"><a class="header" href="#customize-the-launch">Customize the Launch</a></h2>
+<p>You can either modify the launch file directly located here:</p>
+<pre><code>AutoSDV/src/autoware/launcher/autosdv_launch/launch/autosdv.launch.yaml
+</code></pre>
+<p>or assign argument values to the launch command. For example, to set <code>launch_sensing_driver</code> to false.</p>
+<pre><code class="language-sh">source install/setup.sh
+ros2 launch autosdv_launch autosdv.launch.yaml launch_sensing_driver:=false
+</code></pre>
+<h3 id="arguments"><a class="header" href="#arguments">Arguments</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Argument</th><th>Value</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>vehicle_model</code></td><td>The name of the vehicle model.</td><td><code>autosdv_vehicle</code></td></tr>
+<tr><td><code>sensor_model</code></td><td>The name of the sensor model.</td><td><code>autosdv_sensor_kit</code></td></tr>
+<tr><td><code>map_path</code></td><td>The path to the map data directory.</td><td><code>./data/COSS-map-planning</code></td></tr>
+<tr><td><code>launch_vehicle</code></td><td>Whether to launch the vehicle interface.</td><td><code>true</code></td></tr>
+<tr><td><code>launch_system</code></td><td>Whether to launch the system compoment.</td><td><code>false</code></td></tr>
+<tr><td><code>launch_map</code></td><td>Whether to launch the map compoment.</td><td><code>false</code></td></tr>
+<tr><td><code>launch_sensing</code></td><td>Whether to launch the sensing compoment.</td><td><code>true</code></td></tr>
+<tr><td><code>launch_sensing_driver</code></td><td>Whether to launch sensor drivers.</td><td><code>true</code></td></tr>
+<tr><td><code>launch_localization</code></td><td>Whether to launch the localization compoment.</td><td><code>false</code></td></tr>
+<tr><td><code>launch_perception</code></td><td>Whether to launch the perception compoment.</td><td><code>false</code></td></tr>
+<tr><td><code>launch_planning</code></td><td>Whether to launch the planning compoment.</td><td><code>false</code></td></tr>
+<tr><td><code>launch_control</code></td><td>Whether to launch the control compoment.</td><td><code>true</code></td></tr>
+<tr><td><code>pose_source</code></td><td>The localization method.</td><td><code>eagleye</code></td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="development-guide"><a class="header" href="#development-guide">Development Guide</a></h1>
+<p>This section provides information for developers who want to extend, modify, or contribute to the AutoSDV platform. The guide covers five key areas:</p>
+<ol>
+<li><strong>Source Code Walkthrough</strong> - Repository structure and organization</li>
+<li><strong>Version Control</strong> - Working with Git superproject and submodules</li>
+<li><strong>Sensor Components and Drivers</strong> - Available sensors and their configuration</li>
+<li><strong>Sensor Kit Configuration</strong> - Sensor integration and calibration</li>
+<li><strong>Vehicle Interface</strong> - Control systems and vehicle parameters</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="source-code-walkthrough"><a class="header" href="#source-code-walkthrough">Source Code Walkthrough</a></h1>
+<p>The AutoSDV follows the <a href="https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects">superproject</a> convention. It collects hundreds of packages as Git submodules classified by their functions into directories. It is built atop Autoware plus additional packages specific to the project and constitutes a large ROS workspace.</p>
+<p>Here you can visit the GitHub repository:</p>
+<p><a href="https://github.com/NEWSLabNTU/AutoSDV">https://github.com/NEWSLabNTU/AutoSDV</a>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Directory</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>AutoSDV/</code></td><td></td></tr>
+<tr><td><code>├── book/</code></td><td>The source documents for this book.</td></tr>
+<tr><td><code>├── data/</code></td><td>It includes data files used or loaded in the runtime.</td></tr>
+<tr><td><code>├── docker/</code></td><td>The Docker container build script.</td></tr>
+<tr><td><code>├── scripts/</code></td><td>Auxiliary script files. It contains Ansible scripts to set up the environment.</td></tr>
+<tr><td><code>├── src/</code></td><td>The source code packages.</td></tr>
+<tr><td><code>├── Makefile</code></td><td>It includes commonly used recipes.</td></tr>
+<tr><td><code>└── README.md</code></td><td>The introductory document to get the first impression of the project.</td></tr>
+</tbody></table>
+</div>
+<h2 id="source-package-categories"><a class="header" href="#source-package-categories">Source Package Categories</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Directory</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>AutoSDV/src/</code></td><td>The entry to the Autoware source tree.</td></tr>
+<tr><td><code>├── core/</code></td><td>The Autoware.Core library.</td></tr>
+<tr><td><code>├── launcher/</code></td><td>Includes launch files to run the entire driving system.</td></tr>
+<tr><td><code>├── vehicle/</code></td><td>Powertrain control and kinetic parameters.</td></tr>
+<tr><td><code>├── param/</code></td><td>Parameters specific to vehicle models.</td></tr>
+<tr><td><code>├── sensor_component/</code></td><td>Sensor drivers and sensing data processors.</td></tr>
+<tr><td><code>└── sensor_kit/</code></td><td>Sensor related parameters and launch files.</td></tr>
+</tbody></table>
+</div>
+<h2 id="vehicle-interface-packages"><a class="header" href="#vehicle-interface-packages">Vehicle Interface Packages</a></h2>
+<p><code>AutoSDV/src/vehicle/autosdv_vehicle_launch/</code></p>
+<div class="table-wrapper"><table><thead><tr><th>Directory</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>.../autosdv_vehicle_launch/</code></td><td></td></tr>
+<tr><td><code>├── autosdv_vehicle_interface/</code></td><td>Powertrain control and its state measurement.</td></tr>
+<tr><td><code>├── autosdv_vehicle_description/</code></td><td>Vehicle shape parameters and mesh files.</td></tr>
+<tr><td><code>└── autosdv_vehicle_launch/</code></td><td>Launch files to start the vehicle interface.</td></tr>
+</tbody></table>
+</div>
+<h2 id="the-package-for-vehicle-specific-parameters"><a class="header" href="#the-package-for-vehicle-specific-parameters">The Package for Vehicle-Specific Parameters</a></h2>
+<p>The <code>autoware_individual_params</code> package serves parameters that are specific to different vehicle models. It is located at</p>
+<pre><code>AutoSDV/src/param/autoware_individual_params
+</code></pre>
+<p>You can find the parameter directories within this package.</p>
+<pre><code>.../autoware_individual_params/individual_params/default/
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th>Directory</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>.../default/</code></td><td></td></tr>
+<tr><td><code>├── awsim_sensor_kit</code></td><td>Parameters for the AWSIM vehicle.</td></tr>
+<tr><td><code>└── autosdv_sensor_kit</code></td><td>Parameters for the AutoSDV vehicle.</td></tr>
+<tr><td><code>    ├── imu_corrector.param.yaml</code></td><td></td></tr>
+<tr><td><code>    ├── sensor_kit_calibration.yaml</code></td><td></td></tr>
+<tr><td><code>    └── sensors_calibration.yaml</code></td><td></td></tr>
+</tbody></table>
+</div>
+<h2 id="sensor-related-packages"><a class="header" href="#sensor-related-packages">Sensor Related Packages</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Directory</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>AutoSDV/src/</code></td><td></td></tr>
+<tr><td><code>├── sensor_component/</code></td><td>Sensor drivers and preprocessors.</td></tr>
+<tr><td><code>└── sensor_kit/</code></td><td></td></tr>
+<tr><td><code>    └── autosdv_sensor_kit_launch/</code></td><td></td></tr>
+<tr><td><code>        ├── autosdv_sensor_kit_description/</code></td><td>Coordinates of each sensor.</td></tr>
+<tr><td><code>        └── autosdv_sensor_kit_launch/</code></td><td>Additional launch files for sensors.</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="version-control"><a class="header" href="#version-control">Version Control</a></h1>
+<p>The project adopts the <strong>superproject</strong> approach to manage a large number of Git repositories. The AutoSDV repository itself, the said superproject, saves the sub-projects as <em>Git submodules</em> but does not store their actual data. You can learn from the tutorial <a href="https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects">here</a> to get the impression of superproject.</p>
+<p>A Git submodule works as though it is a hyperlink within the mother repository. The mother repository stores information about submodules in the <code>.gitmodules</code> file. You can list them by:</p>
+<pre><code class="language-sh">git submodule status
+</code></pre>
+<blockquote>
+<p><strong>Notice</strong></p>
+<p>The official Autoware adopts a different version control strategy from ours. Do not confuse them.</p>
+</blockquote>
+<h2 id="download-a-repository-with-submodules"><a class="header" href="#download-a-repository-with-submodules">Download a Repository with Submodules</a></h2>
+<p>Always add the <code>--recursive</code> option when downloading a repository containing submodules.</p>
+<pre><code class="language-sh">git clone --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+</code></pre>
+<p>If you forget to add the option, the submodule directories will be empty. You can get the submodule contents afterwards.</p>
+<pre><code class="language-sh">cd AutoSDV/
+git submodule update --init --recursive
+</code></pre>
+<h2 id="inspect-a-submodule"><a class="header" href="#inspect-a-submodule">Inspect a Submodule</a></h2>
+<p>Let's check the <code>src/autoware/core/autoware.core</code> submodule for example. Open the <code>.gitmodules</code> and you can see the section below. It tells the directory location to the submodule and also the upstream URL.</p>
+<pre><code>[submodule "src/autoware/core/autoware.core"]
+        path = src/autoware/core/autoware.core
+        url = https://github.com/autowarefoundation/autoware.core.git
+
+</code></pre>
+<p>The path <code>src/autoware/core/autoware.core</code> is treated as a link file in the viewpoint of the mother repo. It stores the commit hash to the tracked Git repository. You can show the commit hash the command below. If the commit hash changes, we go through the usual git add &amp; commit to save it.</p>
+<pre><code class="language-sh">$ git submodule status src/autoware/core/autoware.core
+ 99891401473b5740e640f5a0cc0412c0984b8e0b src/autoware/core/autoware.core (v1.0~1)
+</code></pre>
+<h2 id="save-changes-within-a-submodule"><a class="header" href="#save-changes-within-a-submodule">Save Changes within a Submodule</a></h2>
+<p>To save the changes within a submodule, you must commit the changes both in the submodule repo and in the mother repo in a two-step fashion.</p>
+<p>Let's see <code>src/autoware/sensor_kit/autosdv_sensor_kit_launch</code> submodule for example.</p>
+<div class="table-wrapper"><table><thead><tr><th>Committed Changes</th><th>Pushed to Upstream Repository</th></tr></thead><tbody>
+<tr><td>Changes within the <code>autosdv_sensor_kit_launch</code> submodule.</td><td><a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch">autosdv_sensor_kit_launch</a> subproject repository</td></tr>
+<tr><td>New commit hash on the <code>autosdv_sensor_kit_launch</code> submodule</td><td><a href="https://github.com/NEWSLabNTU/AutoSDV">AutoSDV</a> mother repository</td></tr>
+</tbody></table>
+</div>
+<p>The walk through goes like this.</p>
+<pre><code class="language-sh"># Go into the submodule and check to the branch we want to work on.
+cd src/autoware/sensor_kit/autosdv_sensor_kit_launch
+git checkout main
+
+# Do some work in the submodule.
+touch a_new_file  # Create a file
+
+# Commit and push to the upstream repo.
+git add a_new_file
+git commit -m 'Add a new file'
+git push
+
+# Go back to the mother repo
+cd -
+
+# Save the new commit hash on the submodule and push it to the upstream repo.
+git add src/autoware/core/autoware.core
+git commit -m 'Update the autoware.core submodule'
+git push
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sensor-components-and-drivers"><a class="header" href="#sensor-components-and-drivers">Sensor Components and Drivers</a></h1>
+<p>The <a href="https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component"><code>sensor_component</code></a> directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.</p>
+<blockquote>
+<p><strong>Notice</strong></p>
+<p>The sensor component defines the collection of sensor drivers in Autoware. If you're looking for the composition of the sensor drivers, please refer to <a href="sensor_kit.html">Sensor Kit</a> Chapter.</p>
+</blockquote>
+<p>The AutoSDV Autoware adds the following ROS packages along with official packages.</p>
+<ul>
+<li>ZED X Mini camera</li>
+<li>Blickfeld Cube1 LiDAR</li>
+<li>MPU9250 Nine-Axis Motion Sensor</li>
+<li>KY-003 Hall Effect Sensor</li>
+</ul>
+<h2 id="zed-x-mini-camera"><a class="header" href="#zed-x-mini-camera">ZED X Mini Camera</a></h2>
+<p>The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in <a href="installation.html">Installation Guide</a>. The driver package is located at:</p>
+<pre><code>src/autoware/sensor_component/external/zed-ros2-wrapper
+</code></pre>
+<p>To run the standalone ZED camera driver,</p>
+<pre><code class="language-sh">ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedxm
+</code></pre>
+<h2 id="blickfeld-cube1-lidar"><a class="header" href="#blickfeld-cube1-lidar">Blickfeld Cube1 LiDAR</a></h2>
+<p>The IP address of Blickfeld Cube1 LiDAR and Jetson is <code>192.168.26.26</code> and <code>192.168.26.1</code>, respectively.</p>
+<p>The driver package is located at</p>
+<pre><code>src/autoware/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
+</code></pre>
+<p>To run the standalone driver,</p>
+<pre><code class="language-sh">ros2 launch blickfeld_driver live_scanner_node.launch.py
+</code></pre>
+<h2 id="mpu9250-nine-axis-accelerometer-gyroscope-sensor"><a class="header" href="#mpu9250-nine-axis-accelerometer-gyroscope-sensor">MPU9250 Nine-Axis Accelerometer Gyroscope Sensor</a></h2>
+<p>MPU9250 measures the motion state of the vehicle, including the linear acceleration, angular acceleration and angular speed. The source package is located at</p>
+<pre><code>src/autoware/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
+</code></pre>
+<p>To run the standalone driver,</p>
+<pre><code class="language-sh">ros2 run mpu9250driver mpu9250driver
+</code></pre>
+<h2 id="garmin-gps-18x-5hz"><a class="header" href="#garmin-gps-18x-5hz">Garmin GPS 18x 5Hz</a></h2>
+<p><a href="https://static.garmin.com/pumac/GPS_18x_Tech_Specs.pdf">Full specification of the sensor</a></p>
+<ol>
+<li>Localise the device at first. Execute:</li>
+</ol>
+<pre><code>sudo dmesg
+</code></pre>
+<ul>
+<li>you should find this line: <em>FTDI USB Serial Device converter now attached to <strong>ttyUSB0</strong></em></li>
+</ul>
+<ol start="2">
+<li>Once you find the device, get raw data from it by executing:</li>
+</ol>
+<pre><code>sudo cat /dev/ttyUSB0
+</code></pre>
+<p>And you should see data in NMEA format like this:</p>
+<pre><code>$GPGSA,A,1,,,,,,,,,,,,,,,*1E
+$GPGSV,3,1,10,10,76,279,22,12,34,053,23,23,51,164,46,24,10,053,27*75
+$GPGSV,3,2,10,25,65,108,26,28,42,271,25,29,04,141,25,31,15,250,18*7B
+$GPGSV,3,3,10,32,44,335,21,26,05,208,00*74
+</code></pre>
+<p>Note: If you see something else, for example binary data, make sure you use the correct baud rate - 9600.</p>
+<p>2.1 Check the current baud rate by this command:</p>
+<pre><code>stty -F /dev/ttyUSB0
+</code></pre>
+<p>Set the 9600 baud rate by this command:</p>
+<pre><code>sudo stty -F /dev/ttyUSB0 9600
+</code></pre>
+<ol start="3">
+<li>Execute the GPS Deamon (gpsd) for the right device:</li>
+</ol>
+<pre><code>sudo /usr/sbin/gpsd -n -G -b /dev/ttyUSB0
+</code></pre>
+<p>To verify the signal, you can open the CLI app:</p>
+<pre><code>cgps
+</code></pre>
+<p>or GUI app:</p>
+<pre><code>xgps
+</code></pre>
+<p>Wait till you get the proper longitude and latitude coordinates and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is being received.</p>
+<ol start="4">
+<li>Since you get the signal, you can launch Autoware and subscribe the topic:</li>
+</ol>
+<pre><code> ros2 topic echo /sensing/gnss/garmin/fix
+</code></pre>
+<h3 id="configuration-files-in-autoware"><a class="header" href="#configuration-files-in-autoware">Configuration files in Autoware</a></h3>
+<p>If you do not get data on the topic, make sure, the configuration is correct by checking these files:</p>
+<ol>
+<li>Enable the GNSS Driver at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/sensing.launch.xml
+</code></pre>
+<ol start="2">
+<li>Enable the Garmin Driver at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/gnss.launch.xml
+</code></pre>
+<ol start="3">
+<li>No mistake in the Python script at (the script composes configuration to launch the GNSS Driver):</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/launch/gpsd_client-launch.py
+</code></pre>
+<ul>
+<li>Note: the topic <em>fix</em> is remapped as <em>garmin/fix</em></li>
+</ul>
+<p>3.1 Parameters for the Python script is at:</p>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/config/gpsd_client.yaml
+</code></pre>
+<ol start="4">
+<li>GNSS Client connecting to the gpsd (GPS Deamon) is located at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/src/client.cpp
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sensor-kit-configuration"><a class="header" href="#sensor-kit-configuration">Sensor Kit Configuration</a></h1>
+<p>The sensor kit consists of the <em>description</em> package and the <em>launch</em> package. The <em>description</em> package, <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_description"><code>autosdv_sensor_kit_description</code></a>, stores the relative coordinates for each sensor on the vehicle. The <em>launch</em> package, <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/autosdv_sensor_kit_launch"><code>autosdv_sensor_kit_launch</code></a>, contains a set of launch files for all kinds of sensors along with their runtime parameters.</p>
+<blockquote>
+<p><strong>Notice</strong></p>
+<p>The sensor kit defines the composition and the data paths of sensors. If you're looking per-sensor driver configuration, please refer to <a href="sensor_component.html">Sensor Component</a> Chapter.</p>
+</blockquote>
+<h2 id="the-description-package"><a class="header" href="#the-description-package">The Description Package</a></h2>
+<p>The description package stores the coordinates of each sensor installed on the vehicle. It's done by working on these two configuration files.</p>
+<ul>
+<li><code>../autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml</code></li>
+<li><code>../autosdv_sensor_kit_description/urdf/sensor_kit.xacro</code></li>
+</ul>
+<p>For example, the coordinate for the ZED camera is named as <code>zedxm_camera_link</code>, which pose parameters are defined in <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml"><code>sensor_kit_calibration.yaml</code></a>.</p>
+<pre><code class="language-yaml">sensor_kit_base_link:
+  zedxm_camera_link: # Zed Camera
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+</code></pre>
+<p>The <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/urdf/sensor_kit.xacro"><code>sensor_kit.xacro</code></a> file has corresponding entries for the coordinate. In the xacro snipplet, it defines a <code>&lt;xacro:zed_camera&gt;</code> component and a joint from <code>sensor_kit_base_link</code> to <code>zedxm_camera_link</code>.</p>
+<pre><code class="language-xml">    &lt;xacro:zed_camera name="zedxm" model="zedxm" custom_baseline="0" enable_gnss="false"&gt;
+      &lt;origin
+        xyz="${calibration['sensor_kit_base_link']['zedxm_camera_link']['x']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['y']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['z']}"
+        rpy="${calibration['sensor_kit_base_link']['zedxm_camera_link']['roll']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['pitch']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['yaw']}"
+      /&gt;
+    &lt;/xacro:zed_camera&gt;
+
+    &lt;joint name="zedxm_camera_joint" type="fixed"&gt;
+      &lt;origin
+        xyz="${calibration['sensor_kit_base_link']['zedxm_camera_link']['x']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['y']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['z']}"
+        rpy="${calibration['sensor_kit_base_link']['zedxm_camera_link']['roll']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['pitch']}
+             ${calibration['sensor_kit_base_link']['zedxm_camera_link']['yaw']}"
+      /&gt;
+      &lt;parent link="sensor_kit_base_link"/&gt;
+      &lt;child link="zedxm_camera_link"/&gt;
+    &lt;/joint&gt;
+</code></pre>
+<h2 id="the-launch-package"><a class="header" href="#the-launch-package">The Launch Package</a></h2>
+<p>The <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch"><code>autosdv_sensor_kit_launch</code></a> package contains a collection of launch files in the <a href="https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch/launch"><code>launch</code></a> directory. The notable one is <code>sensing.launch.xml</code>. It is the mother launch file used to start the whole sensing module and all the other launch files are included.</p>
+<p>The <code>camera.launch.xml</code>, <code>gnss.launch.xml</code>, <code>imu.launch.xml</code> and <code>lidar.launch.xml</code> launch files correspond to respective sensing functions. Each of them contains sensing drive execution methods and their parameters.</p>
+<p>The <code>pointcloud_preprocessor.launch.py</code> is the special one that provides the multi-LiDAR fusion feature. It includes a point cloud processor node that subscribes to one or multiple input topics from LiDARs drivers.</p>
+<pre><code class="language-python">        parameters=[
+            {
+                "input_topics": [
+                    "/sensing/lidar/bf_lidar/points_raw",
+                ],
+                "output_frame": LaunchConfiguration("base_frame"),
+                "input_twist_topic_type": "twist",
+                "publish_synchronized_pointcloud": True,
+            }
+        ],
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vehicle-interface"><a class="header" href="#vehicle-interface">Vehicle Interface</a></h1>
+<p>The vehicle interface bridges the Autoware control and vehicle actuators. It is served by the <code>autosdv_vehicle_launch</code> repository located at <code>src/autoware/vehicle/autosdv_vehicle_launch</code>. It includes the following packages.</p>
+<ul>
+<li>
+<p><code>autosdv_vehicle_description</code></p>
+<p>It provides vehicle appearance parameters.</p>
+</li>
+<li>
+<p><code>autosdv_vehicle_launch</code></p>
+<p>It provides a launch file that runs necessary nodes to drive the vehicle.</p>
+</li>
+<li>
+<p><code>autosdv_vehicle_interface</code></p>
+<p>The package provides the node that converts the Autoware control commands to motor power and provides vehicle status reporting nodes for cruise control.</p>
+</li>
+</ul>
+<p>To launch the vehicle interface for the vehicle,</p>
+<pre><code class="language-sh">ros2 launch autosdv_vehicle_launch vehicle_interface.launch.xml
+</code></pre>
+<h2 id="the-velocity-reporting-node"><a class="header" href="#the-velocity-reporting-node">The Velocity Reporting Node</a></h2>
+<p>The node is implemented in <code>velocity_report.py</code>. It periodically reads the Hall effect sensor and counts the magnet markers embedded on the wheel in each period. In this way, the rotation speed of the wheel can be measured, and the instant speed can be calculated by multiplying the wheel radius.</p>
+<h2 id="the-actuator-node"><a class="header" href="#the-actuator-node">The Actuator Node</a></h2>
+<p>The node implemented in <code>actuator.py</code> reads a target speed and controls the motor power to reach to that speed. It uses a PID controller to compute PWM values and applies them on DC motors.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
+<p>This section provides supplementary information for advanced users and specialized applications:</p>
+<ol>
+<li><strong>Hardware Components and Wiring</strong> - Detailed component specifications and wiring diagrams</li>
+<li><strong>5G/LTE Deployment</strong> - Cellular connectivity implementation and network setup</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hardware-components-and-wiring"><a class="header" href="#hardware-components-and-wiring">Hardware Components and Wiring</a></h1>
+<h2 id="hardware-components"><a class="header" href="#hardware-components">Hardware Components</a></h2>
+<p>The vehicle is assembled using core components and optional supplementary components. The core components include the chassis and other essential parts. Supplementary components, such as the LiDAR and 5G/LTE module, are optional and can be selected based on your specific requirements.</p>
+<h3 id="core-components-1"><a class="header" href="#core-components-1">Core Components</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Items</th></tr></thead><tbody>
+<tr><td><strong># Chassis</strong></td></tr>
+<tr><td>Tekno TKR9500 Truck Kit 16×11×5 inch</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Powertrain</strong></td></tr>
+<tr><td>Brushless Motor4274 / 1500kv</td></tr>
+<tr><td>PCA9685 PWM Driver</td></tr>
+<tr><td>DC-DC Converter IN 24V OUT 12V10A</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Computer</strong></td></tr>
+<tr><td>NVIDIA Jetson AGX ORIN Dev. kit 64GB / 32GB</td></tr>
+<tr><td>Micron P3 PLUS 1000GB SSD</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Camera</strong></td></tr>
+<tr><td>ZED X Mini Stereo Camera (Lens Focal Length 2.2mm, with polarizer)</td></tr>
+<tr><td>ZED Link Capture Card</td></tr>
+<tr><td>GMSL2 Fakra Cable F-F(0.3m)</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Navigation Sensors</strong></td></tr>
+<tr><td>KY-003 Hall Effect Sensor</td></tr>
+<tr><td>MPU9250 9-axis Motion Processing Unit</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Battery and Power Supply</strong></td></tr>
+<tr><td>Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60</td></tr>
+<tr><td>Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21</td></tr>
+<tr><td>Breaker 4230-T110-K0BE-8AB8</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 1. Core Materials for the vehicle.</em></p>
+<h3 id="supplementary-lidar-sensors"><a class="header" href="#supplementary-lidar-sensors">Supplementary: LiDAR Sensors</a></h3>
+<p>When choosing a LiDAR sensor, it depends on the specific localization method and desired vision quality. If point cloud-based NDT localization is used, the Velodyne VLP-32C LiDAR is often selected for its panoramic view. In contrast, solid-state LiDARs offer higher point density, making them better suited for detailed scene and object feature extraction, as well as vision-based localization that collaborates with cameras.</p>
+<div class="table-wrapper"><table><thead><tr><th>LiDAR Sensor</th><th></th></tr></thead><tbody>
+<tr><td>(Choose one of below)</td><td></td></tr>
+<tr><td>Seyond Robin-W</td><td>Solid-State LiDAR with 120° FOV</td></tr>
+<tr><td>Blickfeld Cube 1</td><td>Solid-State LiDAR with 70° FOV. (EOL)</td></tr>
+<tr><td>Velodyne VLP-32C</td><td>Mechanical spinning LiDAR with 360° (EOL)</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 2. Recommended LiDAR sensor for the vehicle.</em></p>
+<h3 id="supplementary-5glte-communication"><a class="header" href="#supplementary-5glte-communication">Supplementary: 5G/LTE Communication</a></h3>
+<p>The Ataya 5G Harmony kit was successfully deployed on the vehicle and underwent examination by NEWSLab at National Taiwan University. The following table lists the key components of the 5G kit. For more detailed specifications and quotes, please visit <a href="https://www.ataya.io/">Ataya's website</a>. Additionally, consulting the Global Mobile Frequencies Database at <a href="https://www.spectrummonitoring.com/frequencies.php/">Spectrum Monitoring</a> to know available bands in your region.</p>
+<div class="table-wrapper"><table><thead><tr><th>5G/LTE Kit</th><th></th></tr></thead><tbody>
+<tr><td><strong># 5G/LTE</strong></td><td></td></tr>
+<tr><td>Ataya Harmony 5G Core Network Kit</td><td>Included within a 28-inch suitcase containing the core router.</td></tr>
+<tr><td>Askey 5G Sub-6 Indoor Small Cell</td><td>The base station connected to the core network.</td></tr>
+<tr><td>MOXA CCG-1500 Gateway</td><td>Installed on the vehicle as the connector to 5G.</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 3. Recommended LiDAR sensor for the vehicle.</em></p>
+<h2 id="procurement-information"><a class="header" href="#procurement-information">Procurement Information</a></h2>
+<p>The vehicle can be ordered through Hennes Co., including customizable options for additional parts. Note that batteries are excluded from assembly due to shipping constraints and should be sourced locally. You can request a quote via their <a href="https://robotkingdom.com.tw/contact/">Robot Kingdom</a> website.</p>
+<p>The optional supplementary parts such as LiDARs and 5G modules are up to your specific needs. It is advised to consult with your local agent for procurement assistance.</p>
+<h2 id="wiring-and-pinouts"><a class="header" href="#wiring-and-pinouts">Wiring and Pinouts</a></h2>
+<h3 id="nvidia-agx-orin-gpioi2c-pinout"><a class="header" href="#nvidia-agx-orin-gpioi2c-pinout">NVIDIA AGX Orin GPIO/I2C Pinout</a></h3>
+<p>The detailed pinout specification can be found on this <a href="https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/">website</a>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Label</th><th>Pin No. (Upper)</th><th>Pin No. (Lower)</th><th>Label</th><th>Device</th></tr></thead><tbody>
+<tr><td></td><td>3.3 VDC Power, 1A max</td><td>1</td><td>2</td><td>5.0 VDC Power, 1A max</td><td>KY-003</td></tr>
+<tr><td>PCA9685</td><td>I2C5_DAT General I2C5 Data I2C Bus 7</td><td>3</td><td>4</td><td>5.0 VDC Power, 1A max</td><td>PCA9685</td></tr>
+<tr><td>PCA9685</td><td>I2C5_CLK General I2C #5 Clock I2C Bus 7</td><td>5</td><td>6</td><td>GND</td><td>PCA9685</td></tr>
+<tr><td></td><td>MCLK05 Audio Master Clock</td><td>7</td><td>8</td><td>UART1_TX UART #1 Transmit</td><td></td></tr>
+<tr><td></td><td>GND</td><td>9</td><td>10</td><td>UART1_RX UART #1 Receive</td><td></td></tr>
+<tr><td></td><td>UART1_RTS UART #1 Request to Send</td><td>11</td><td>12</td><td>I2S2_CLK Audio I2S #2 Clock</td><td></td></tr>
+<tr><td></td><td>GPIO32 GPIO #32</td><td>13</td><td>14</td><td>GND</td><td>KY-003</td></tr>
+<tr><td>KY-003</td><td>GPIO27 (PWM)</td><td>15</td><td>16</td><td>GPIO8</td><td></td></tr>
+<tr><td>MPU9250</td><td>3.3 VDC Power, 1A max</td><td>17</td><td>18</td><td>GPIO35 (PWM)</td><td></td></tr>
+<tr><td></td><td>SPI1_MOSI SPI #1 Master Out/Slave In</td><td>19</td><td>20</td><td>GND</td><td>MPU9250</td></tr>
+<tr><td></td><td>SPI1_MISO SPI #1 Master In/Slave Out</td><td>21</td><td>22</td><td>GPIO17 GPIO</td><td></td></tr>
+<tr><td></td><td>SPI1_SCK SPI #1 Shift Clock</td><td>23</td><td>24</td><td>SPI1_CS0_N SPI #1 Chip Select #0</td><td></td></tr>
+<tr><td></td><td>GND</td><td>25</td><td>26</td><td>SPI1_CS1_N SPI #1 Chip Select #1</td><td></td></tr>
+<tr><td>MPU9250</td><td>I2C2_DAT General I2C #2 Data I2C Bus 1</td><td>27</td><td>28</td><td>I2C2_CLK General I2C #2 Clock I2C Bus 1</td><td>MPU9250</td></tr>
+<tr><td></td><td>CAN0_DIN CAN #0 Data In</td><td>29</td><td>30</td><td>GND</td><td></td></tr>
+<tr><td></td><td>CAN0_DOUT CAN #0 Data Out</td><td>31</td><td>32</td><td>GPIO9</td><td></td></tr>
+<tr><td></td><td>CAN1_DOUT CAN #1 Data Out</td><td>33</td><td>34</td><td>GND</td><td></td></tr>
+<tr><td></td><td>I2S_FS AUDIO I2S #2 Left/Right Clock</td><td>35</td><td>36</td><td>UART1_CTS UART #1 Clear to Send</td><td></td></tr>
+<tr><td></td><td>CAN1_DIN CAN #1 Data In</td><td>37</td><td>38</td><td>I2S_SDIN Audio I2S #2 Data In</td><td></td></tr>
+<tr><td></td><td>GND</td><td>39</td><td>40</td><td>I2S_SDOUT Audio I2S #2 Data Out</td><td></td></tr>
+</tbody></table>
+</div>
+<p><em>Table 4. Pinout for NVIDIA AGX Orin box.</em></p>
+<h3 id="i2c-device-pinout"><a class="header" href="#i2c-device-pinout">I2C Device Pinout</a></h3>
+<p>The wires to a I2C device consists of a pair of VCC/GND for power supply and a pair of SDA/SCL for data transmission. The pair of SDA/SCL associates with a I2C bus number.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Bus No.</th><th>VCC</th><th>GND</th><th>SDA</th><th>SCL</th></tr></thead><tbody>
+<tr><td>PCA9685 PWM/servo driver</td><td>7</td><td>4</td><td>6</td><td>3</td><td>5</td></tr>
+<tr><td>MPU9250 inertial measurement unit</td><td>1</td><td>17</td><td>20</td><td>27</td><td>28</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 5. I2C device ports and connected pin numbers.</em></p>
+<h3 id="gpio-device-pinout"><a class="header" href="#gpio-device-pinout">GPIO Device Pinout</a></h3>
+<p>The wires to a GPIO device consists of a pair of VCC/GND for power supply and a GPIO wire for input or output signals.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>VCC</th><th>GND</th><th>GPIO</th></tr></thead><tbody>
+<tr><td>KY-003 Hall effect sensor</td><td>2</td><td>14</td><td>15</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 6. GPIO device ports and connected pin numbers.</em></p>
+<!-- ## Wiring for Blickfeld Cube 1 LiDAR -->
+<!-- The LiDAR is connected through an Ethernet cable to Orin. A static IP -->
+<!-- is configured on the network. -->
+<!-- ## Wiring for ZED X Mini Camera -->
+<!-- The camera is connected through a GMSL2 FAKRA interface to a ZED Link -->
+<!-- on Orin. -->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="5glte-deployment"><a class="header" href="#5glte-deployment">5G/LTE Deployment</a></h1>
+<h2 id="outdoor-setup-example"><a class="header" href="#outdoor-setup-example">Outdoor Setup Example</a></h2>
+<p>Figure 1 shows an example setup of the private 5G infrastructure in the outdoor based on Ataya Harmony system. The system has several parts:</p>
+<ol>
+<li>The Ataya 5G core network box ("1" in Figure 1)</li>
+<li>Askey small cell base station ("2" in Figure 1)</li>
+<li>MOXA 5G cellular gateway installed on the vehicle top (Figure 2)</li>
+</ol>
+<figure style="width: 80%; text-align: center; margin: auto;">
+	<img src="./figures/5G_setup_example.webp" alt="5G core network and antenna setup example">
+	<figcaption>Figure 1. 5G core network and antenna setup example.</figcaption>
+</figure>
+<figure style="width: 40%; text-align: center; margin: auto;">
+	<img src="./figures/vehicle_top_mount.jpg" alt="5G cellular gateway installation">
+	<figcaption>Figure 2. 5G cellular gateway installation example.</figcaption>
+</figure>
+<p>5G signal range can extend up to 600 meters. Compared to Wi-Fi, it maintains stable latency and bandwidth within that area regardless of the distance to the base station.</p>
+<p>When setting up 5G equipment, there are several points to consider. First, the 5G receiver in a vehicle must be placed on the exterior of the body and not inside to avoid poor reception. Second, buildings near the base station can affect signal range. Base station antennas usually have directional capabilities, so ensure that the vehicle's activity range is within the antenna's coverage area.</p>
+<h2 id="network-architecture"><a class="header" href="#network-architecture">Network Architecture</a></h2>
+<figure style="width: 100%; text-align: center; margin: auto;">
+	<img src="./figures/5G_network_architecture.png" alt="5G network architecture">
+	<figcaption>Figure 3. Ataya 5G network architecture (example)</figcaption>
+</figure>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

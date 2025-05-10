@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hardware Components and Wiring - AutoSDV Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AutoSDV Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hardware-components-and-wiring"><a class="header" href="#hardware-components-and-wiring">Hardware Components and Wiring</a></h1>
+<h2 id="hardware-components"><a class="header" href="#hardware-components">Hardware Components</a></h2>
+<p>The vehicle is assembled using core components and optional supplementary components. The core components include the chassis and other essential parts. Supplementary components, such as the LiDAR and 5G/LTE module, are optional and can be selected based on your specific requirements.</p>
+<h3 id="core-components"><a class="header" href="#core-components">Core Components</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Items</th></tr></thead><tbody>
+<tr><td><strong># Chassis</strong></td></tr>
+<tr><td>Tekno TKR9500 Truck Kit 16×11×5 inch</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Powertrain</strong></td></tr>
+<tr><td>Brushless Motor4274 / 1500kv</td></tr>
+<tr><td>PCA9685 PWM Driver</td></tr>
+<tr><td>DC-DC Converter IN 24V OUT 12V10A</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Computer</strong></td></tr>
+<tr><td>NVIDIA Jetson AGX ORIN Dev. kit 64GB / 32GB</td></tr>
+<tr><td>Micron P3 PLUS 1000GB SSD</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Camera</strong></td></tr>
+<tr><td>ZED X Mini Stereo Camera (Lens Focal Length 2.2mm, with polarizer)</td></tr>
+<tr><td>ZED Link Capture Card</td></tr>
+<tr><td>GMSL2 Fakra Cable F-F(0.3m)</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Navigation Sensors</strong></td></tr>
+<tr><td>KY-003 Hall Effect Sensor</td></tr>
+<tr><td>MPU9250 9-axis Motion Processing Unit</td></tr>
+<tr><td>⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</td></tr>
+<tr><td><strong># Battery and Power Supply</strong></td></tr>
+<tr><td>Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60</td></tr>
+<tr><td>Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21</td></tr>
+<tr><td>Breaker 4230-T110-K0BE-8AB8</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 1. Core Materials for the vehicle.</em></p>
+<h3 id="supplementary-lidar-sensors"><a class="header" href="#supplementary-lidar-sensors">Supplementary: LiDAR Sensors</a></h3>
+<p>When choosing a LiDAR sensor, it depends on the specific localization method and desired vision quality. If point cloud-based NDT localization is used, the Velodyne VLP-32C LiDAR is often selected for its panoramic view. In contrast, solid-state LiDARs offer higher point density, making them better suited for detailed scene and object feature extraction, as well as vision-based localization that collaborates with cameras.</p>
+<div class="table-wrapper"><table><thead><tr><th>LiDAR Sensor</th><th></th></tr></thead><tbody>
+<tr><td>(Choose one of below)</td><td></td></tr>
+<tr><td>Seyond Robin-W</td><td>Solid-State LiDAR with 120° FOV</td></tr>
+<tr><td>Blickfeld Cube 1</td><td>Solid-State LiDAR with 70° FOV. (EOL)</td></tr>
+<tr><td>Velodyne VLP-32C</td><td>Mechanical spinning LiDAR with 360° (EOL)</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 2. Recommended LiDAR sensor for the vehicle.</em></p>
+<h3 id="supplementary-5glte-communication"><a class="header" href="#supplementary-5glte-communication">Supplementary: 5G/LTE Communication</a></h3>
+<p>The Ataya 5G Harmony kit was successfully deployed on the vehicle and underwent examination by NEWSLab at National Taiwan University. The following table lists the key components of the 5G kit. For more detailed specifications and quotes, please visit <a href="https://www.ataya.io/">Ataya's website</a>. Additionally, consulting the Global Mobile Frequencies Database at <a href="https://www.spectrummonitoring.com/frequencies.php/">Spectrum Monitoring</a> to know available bands in your region.</p>
+<div class="table-wrapper"><table><thead><tr><th>5G/LTE Kit</th><th></th></tr></thead><tbody>
+<tr><td><strong># 5G/LTE</strong></td><td></td></tr>
+<tr><td>Ataya Harmony 5G Core Network Kit</td><td>Included within a 28-inch suitcase containing the core router.</td></tr>
+<tr><td>Askey 5G Sub-6 Indoor Small Cell</td><td>The base station connected to the core network.</td></tr>
+<tr><td>MOXA CCG-1500 Gateway</td><td>Installed on the vehicle as the connector to 5G.</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 3. Recommended LiDAR sensor for the vehicle.</em></p>
+<h2 id="procurement-information"><a class="header" href="#procurement-information">Procurement Information</a></h2>
+<p>The vehicle can be ordered through Hennes Co., including customizable options for additional parts. Note that batteries are excluded from assembly due to shipping constraints and should be sourced locally. You can request a quote via their <a href="https://robotkingdom.com.tw/contact/">Robot Kingdom</a> website.</p>
+<p>The optional supplementary parts such as LiDARs and 5G modules are up to your specific needs. It is advised to consult with your local agent for procurement assistance.</p>
+<h2 id="wiring-and-pinouts"><a class="header" href="#wiring-and-pinouts">Wiring and Pinouts</a></h2>
+<h3 id="nvidia-agx-orin-gpioi2c-pinout"><a class="header" href="#nvidia-agx-orin-gpioi2c-pinout">NVIDIA AGX Orin GPIO/I2C Pinout</a></h3>
+<p>The detailed pinout specification can be found on this <a href="https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/">website</a>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Label</th><th>Pin No. (Upper)</th><th>Pin No. (Lower)</th><th>Label</th><th>Device</th></tr></thead><tbody>
+<tr><td></td><td>3.3 VDC Power, 1A max</td><td>1</td><td>2</td><td>5.0 VDC Power, 1A max</td><td>KY-003</td></tr>
+<tr><td>PCA9685</td><td>I2C5_DAT General I2C5 Data I2C Bus 7</td><td>3</td><td>4</td><td>5.0 VDC Power, 1A max</td><td>PCA9685</td></tr>
+<tr><td>PCA9685</td><td>I2C5_CLK General I2C #5 Clock I2C Bus 7</td><td>5</td><td>6</td><td>GND</td><td>PCA9685</td></tr>
+<tr><td></td><td>MCLK05 Audio Master Clock</td><td>7</td><td>8</td><td>UART1_TX UART #1 Transmit</td><td></td></tr>
+<tr><td></td><td>GND</td><td>9</td><td>10</td><td>UART1_RX UART #1 Receive</td><td></td></tr>
+<tr><td></td><td>UART1_RTS UART #1 Request to Send</td><td>11</td><td>12</td><td>I2S2_CLK Audio I2S #2 Clock</td><td></td></tr>
+<tr><td></td><td>GPIO32 GPIO #32</td><td>13</td><td>14</td><td>GND</td><td>KY-003</td></tr>
+<tr><td>KY-003</td><td>GPIO27 (PWM)</td><td>15</td><td>16</td><td>GPIO8</td><td></td></tr>
+<tr><td>MPU9250</td><td>3.3 VDC Power, 1A max</td><td>17</td><td>18</td><td>GPIO35 (PWM)</td><td></td></tr>
+<tr><td></td><td>SPI1_MOSI SPI #1 Master Out/Slave In</td><td>19</td><td>20</td><td>GND</td><td>MPU9250</td></tr>
+<tr><td></td><td>SPI1_MISO SPI #1 Master In/Slave Out</td><td>21</td><td>22</td><td>GPIO17 GPIO</td><td></td></tr>
+<tr><td></td><td>SPI1_SCK SPI #1 Shift Clock</td><td>23</td><td>24</td><td>SPI1_CS0_N SPI #1 Chip Select #0</td><td></td></tr>
+<tr><td></td><td>GND</td><td>25</td><td>26</td><td>SPI1_CS1_N SPI #1 Chip Select #1</td><td></td></tr>
+<tr><td>MPU9250</td><td>I2C2_DAT General I2C #2 Data I2C Bus 1</td><td>27</td><td>28</td><td>I2C2_CLK General I2C #2 Clock I2C Bus 1</td><td>MPU9250</td></tr>
+<tr><td></td><td>CAN0_DIN CAN #0 Data In</td><td>29</td><td>30</td><td>GND</td><td></td></tr>
+<tr><td></td><td>CAN0_DOUT CAN #0 Data Out</td><td>31</td><td>32</td><td>GPIO9</td><td></td></tr>
+<tr><td></td><td>CAN1_DOUT CAN #1 Data Out</td><td>33</td><td>34</td><td>GND</td><td></td></tr>
+<tr><td></td><td>I2S_FS AUDIO I2S #2 Left/Right Clock</td><td>35</td><td>36</td><td>UART1_CTS UART #1 Clear to Send</td><td></td></tr>
+<tr><td></td><td>CAN1_DIN CAN #1 Data In</td><td>37</td><td>38</td><td>I2S_SDIN Audio I2S #2 Data In</td><td></td></tr>
+<tr><td></td><td>GND</td><td>39</td><td>40</td><td>I2S_SDOUT Audio I2S #2 Data Out</td><td></td></tr>
+</tbody></table>
+</div>
+<p><em>Table 4. Pinout for NVIDIA AGX Orin box.</em></p>
+<h3 id="i2c-device-pinout"><a class="header" href="#i2c-device-pinout">I2C Device Pinout</a></h3>
+<p>The wires to a I2C device consists of a pair of VCC/GND for power supply and a pair of SDA/SCL for data transmission. The pair of SDA/SCL associates with a I2C bus number.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Bus No.</th><th>VCC</th><th>GND</th><th>SDA</th><th>SCL</th></tr></thead><tbody>
+<tr><td>PCA9685 PWM/servo driver</td><td>7</td><td>4</td><td>6</td><td>3</td><td>5</td></tr>
+<tr><td>MPU9250 inertial measurement unit</td><td>1</td><td>17</td><td>20</td><td>27</td><td>28</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 5. I2C device ports and connected pin numbers.</em></p>
+<h3 id="gpio-device-pinout"><a class="header" href="#gpio-device-pinout">GPIO Device Pinout</a></h3>
+<p>The wires to a GPIO device consists of a pair of VCC/GND for power supply and a GPIO wire for input or output signals.</p>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>VCC</th><th>GND</th><th>GPIO</th></tr></thead><tbody>
+<tr><td>KY-003 Hall effect sensor</td><td>2</td><td>14</td><td>15</td></tr>
+</tbody></table>
+</div>
+<p><em>Table 6. GPIO device ports and connected pin numbers.</em></p>
+<!-- ## Wiring for Blickfeld Cube 1 LiDAR -->
+<!-- The LiDAR is connected through an Ethernet cable to Orin. A static IP -->
+<!-- is configured on the network. -->
+<!-- ## Wiring for ZED X Mini Camera -->
+<!-- The camera is connected through a GMSL2 FAKRA interface to a ZED Link -->
+<!-- on Orin. -->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="appendix.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="5g_deployment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="appendix.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="5g_deployment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

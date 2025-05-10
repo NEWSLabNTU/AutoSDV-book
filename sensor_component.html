@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sensor Components and Drivers - AutoSDV Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AutoSDV Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="sensor-components-and-drivers"><a class="header" href="#sensor-components-and-drivers">Sensor Components and Drivers</a></h1>
+<p>The <a href="https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component"><code>sensor_component</code></a> directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.</p>
+<blockquote>
+<p><strong>Notice</strong></p>
+<p>The sensor component defines the collection of sensor drivers in Autoware. If you're looking for the composition of the sensor drivers, please refer to <a href="sensor_kit.html">Sensor Kit</a> Chapter.</p>
+</blockquote>
+<p>The AutoSDV Autoware adds the following ROS packages along with official packages.</p>
+<ul>
+<li>ZED X Mini camera</li>
+<li>Blickfeld Cube1 LiDAR</li>
+<li>MPU9250 Nine-Axis Motion Sensor</li>
+<li>KY-003 Hall Effect Sensor</li>
+</ul>
+<h2 id="zed-x-mini-camera"><a class="header" href="#zed-x-mini-camera">ZED X Mini Camera</a></h2>
+<p>The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in <a href="installation.html">Installation Guide</a>. The driver package is located at:</p>
+<pre><code>src/autoware/sensor_component/external/zed-ros2-wrapper
+</code></pre>
+<p>To run the standalone ZED camera driver,</p>
+<pre><code class="language-sh">ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zedxm
+</code></pre>
+<h2 id="blickfeld-cube1-lidar"><a class="header" href="#blickfeld-cube1-lidar">Blickfeld Cube1 LiDAR</a></h2>
+<p>The IP address of Blickfeld Cube1 LiDAR and Jetson is <code>192.168.26.26</code> and <code>192.168.26.1</code>, respectively.</p>
+<p>The driver package is located at</p>
+<pre><code>src/autoware/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
+</code></pre>
+<p>To run the standalone driver,</p>
+<pre><code class="language-sh">ros2 launch blickfeld_driver live_scanner_node.launch.py
+</code></pre>
+<h2 id="mpu9250-nine-axis-accelerometer-gyroscope-sensor"><a class="header" href="#mpu9250-nine-axis-accelerometer-gyroscope-sensor">MPU9250 Nine-Axis Accelerometer Gyroscope Sensor</a></h2>
+<p>MPU9250 measures the motion state of the vehicle, including the linear acceleration, angular acceleration and angular speed. The source package is located at</p>
+<pre><code>src/autoware/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
+</code></pre>
+<p>To run the standalone driver,</p>
+<pre><code class="language-sh">ros2 run mpu9250driver mpu9250driver
+</code></pre>
+<h2 id="garmin-gps-18x-5hz"><a class="header" href="#garmin-gps-18x-5hz">Garmin GPS 18x 5Hz</a></h2>
+<p><a href="https://static.garmin.com/pumac/GPS_18x_Tech_Specs.pdf">Full specification of the sensor</a></p>
+<ol>
+<li>Localise the device at first. Execute:</li>
+</ol>
+<pre><code>sudo dmesg
+</code></pre>
+<ul>
+<li>you should find this line: <em>FTDI USB Serial Device converter now attached to <strong>ttyUSB0</strong></em></li>
+</ul>
+<ol start="2">
+<li>Once you find the device, get raw data from it by executing:</li>
+</ol>
+<pre><code>sudo cat /dev/ttyUSB0
+</code></pre>
+<p>And you should see data in NMEA format like this:</p>
+<pre><code>$GPGSA,A,1,,,,,,,,,,,,,,,*1E
+$GPGSV,3,1,10,10,76,279,22,12,34,053,23,23,51,164,46,24,10,053,27*75
+$GPGSV,3,2,10,25,65,108,26,28,42,271,25,29,04,141,25,31,15,250,18*7B
+$GPGSV,3,3,10,32,44,335,21,26,05,208,00*74
+</code></pre>
+<p>Note: If you see something else, for example binary data, make sure you use the correct baud rate - 9600.</p>
+<p>2.1 Check the current baud rate by this command:</p>
+<pre><code>stty -F /dev/ttyUSB0
+</code></pre>
+<p>Set the 9600 baud rate by this command:</p>
+<pre><code>sudo stty -F /dev/ttyUSB0 9600
+</code></pre>
+<ol start="3">
+<li>Execute the GPS Deamon (gpsd) for the right device:</li>
+</ol>
+<pre><code>sudo /usr/sbin/gpsd -n -G -b /dev/ttyUSB0
+</code></pre>
+<p>To verify the signal, you can open the CLI app:</p>
+<pre><code>cgps
+</code></pre>
+<p>or GUI app:</p>
+<pre><code>xgps
+</code></pre>
+<p>Wait till you get the proper longitude and latitude coordinates and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is being received.</p>
+<ol start="4">
+<li>Since you get the signal, you can launch Autoware and subscribe the topic:</li>
+</ol>
+<pre><code> ros2 topic echo /sensing/gnss/garmin/fix
+</code></pre>
+<h3 id="configuration-files-in-autoware"><a class="header" href="#configuration-files-in-autoware">Configuration files in Autoware</a></h3>
+<p>If you do not get data on the topic, make sure, the configuration is correct by checking these files:</p>
+<ol>
+<li>Enable the GNSS Driver at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/sensing.launch.xml
+</code></pre>
+<ol start="2">
+<li>Enable the Garmin Driver at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_kit/autosdv_sensor_kit_launch/autosdv_sensor_kit_launch/launch/gnss.launch.xml
+</code></pre>
+<ol start="3">
+<li>No mistake in the Python script at (the script composes configuration to launch the GNSS Driver):</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/launch/gpsd_client-launch.py
+</code></pre>
+<ul>
+<li>Note: the topic <em>fix</em> is remapped as <em>garmin/fix</em></li>
+</ul>
+<p>3.1 Parameters for the Python script is at:</p>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/config/gpsd_client.yaml
+</code></pre>
+<ol start="4">
+<li>GNSS Client connecting to the gpsd (GPS Deamon) is located at:</li>
+</ol>
+<pre><code>AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/src/client.cpp
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="version_control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="sensor_kit.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="version_control.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="sensor_kit.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
