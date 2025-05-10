@@ -83,9 +83,9 @@ Note: If you see something else, for example binary data, make sure you use the 
 ```
 stty -F /dev/ttyUSB0
 ```
-Set the 4800 baud rate by this command:
+Set the 9600 baud rate by this command:
 ```
-sudo stty -F /dev/ttyUSB0 4800
+sudo stty -F /dev/ttyUSB0 9600
 ```
 
 3. Execute the GPS Deamon (gpsd) for the right device:
