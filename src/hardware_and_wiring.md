@@ -2,11 +2,7 @@
 
 ## Hardware Components
 
-The vehicle is assembled using core components and optional
-supplementary components. The core components include the chassis and
-other essential parts. Supplementary components, such as the LiDAR and
-5G/LTE module, are optional and can be selected based on your specific
-requirements. 
+The vehicle is assembled using core components and optional supplementary components. The core components include the chassis and other essential parts. Supplementary components, such as the LiDAR and 5G/LTE module, are optional and can be selected based on your specific requirements.
 
 ### Core Components
 
@@ -42,13 +38,7 @@ requirements.
 
 ### Supplementary: LiDAR Sensors
 
-When choosing a LiDAR sensor, it depends on the specific localization
-method and desired vision quality. If point cloud-based NDT
-localization is used, the Velodyne VLP-32C LiDAR is often selected for
-its panoramic view. In contrast, solid-state LiDARs offer higher point
-density, making them better suited for detailed scene and object
-feature extraction, as well as vision-based localization that
-collaborates with cameras.
+When choosing a LiDAR sensor, it depends on the specific localization method and desired vision quality. If point cloud-based NDT localization is used, the Velodyne VLP-32C LiDAR is often selected for its panoramic view. In contrast, solid-state LiDARs offer higher point density, making them better suited for detailed scene and object feature extraction, as well as vision-based localization that collaborates with cameras.
 
 | LiDAR Sensor          |                                           |
 |-----------------------|-------------------------------------------|
@@ -61,14 +51,7 @@ collaborates with cameras.
 
 ### Supplementary: 5G/LTE Communication
 
-The Ataya 5G Harmony kit was successfully deployed on the vehicle and
-underwent examination by NEWSLab at National Taiwan University. The
-following table lists the key components of the 5G kit. For more
-detailed specifications and quotes, please visit [Ataya's
-website](https://www.ataya.io/). Additionally, consulting the Global
-Mobile Frequencies Database at [Spectrum
-Monitoring](https://www.spectrummonitoring.com/frequencies.php/) to
-know available bands in your region.
+The Ataya 5G Harmony kit was successfully deployed on the vehicle and underwent examination by NEWSLab at National Taiwan University. The following table lists the key components of the 5G kit. For more detailed specifications and quotes, please visit [Ataya's website](https://www.ataya.io/). Additionally, consulting the Global Mobile Frequencies Database at [Spectrum Monitoring](https://www.spectrummonitoring.com/frequencies.php/) to know available bands in your region.
 
 | 5G/LTE Kit                        |                                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -82,22 +65,15 @@ know available bands in your region.
 
 ## Procurement Information
 
-The vehicle can be ordered through Hennes Co., including customizable
-options for additional parts. Note that batteries are excluded from
-assembly due to shipping constraints and should be sourced locally.
-You can request a quote via their [Robot
-Kingdom](https://robotkingdom.com.tw/contact/) website.
+The vehicle can be ordered through Hennes Co., including customizable options for additional parts. Note that batteries are excluded from assembly due to shipping constraints and should be sourced locally. You can request a quote via their [Robot Kingdom](https://robotkingdom.com.tw/contact/) website.
 
-The optional supplementary parts such as LiDARs and 5G modules are up
-to your specific needs. It is advised to consult with your local agent
-for procurement assistance.
+The optional supplementary parts such as LiDARs and 5G modules are up to your specific needs. It is advised to consult with your local agent for procurement assistance.
 
 ## Wiring and Pinouts
 
 ### NVIDIA AGX Orin GPIO/I2C Pinout
 
-The detailed pinout specification can be found on this
-[website](https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/).
+The detailed pinout specification can be found on this [website](https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/).
 
 
 | Device  | Label                                    | Pin No. (Upper) | Pin No. (Lower) | Label                                    | Device  |
@@ -128,9 +104,7 @@ The detailed pinout specification can be found on this
 
 ### I2C Device Pinout
 
-The wires to a I2C device consists of a pair of VCC/GND for power
-supply and a pair of SDA/SCL for data transmission. The pair of
-SDA/SCL associates with a I2C bus number.
+The wires to a I2C device consists of a pair of VCC/GND for power supply and a pair of SDA/SCL for data transmission. The pair of SDA/SCL associates with a I2C bus number.
 
 | Device                            | Bus No. | VCC | GND | SDA | SCL |
 |-----------------------------------|---------|-----|-----|-----|-----|
@@ -141,8 +115,7 @@ SDA/SCL associates with a I2C bus number.
 
 ### GPIO Device Pinout
 
-The wires to a GPIO device consists of a pair of VCC/GND for power
-supply and a GPIO wire for input or output signals.
+The wires to a GPIO device consists of a pair of VCC/GND for power supply and a GPIO wire for input or output signals.
 
 
 | Device                                       | VCC | GND | GPIO |

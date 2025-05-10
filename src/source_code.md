@@ -1,13 +1,9 @@
 # Source Code Walkthrough
 
-The AutoSDV follows the
-[_superproject_](https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects)
-convention. It collects hundreds of packages as Git submodules
-classified by their functions into directories. It is built atop of
-Autoware plus additional pacakges specific to the project and
-consitutes a large ROS workspace.
+The AutoSDV follows the [_superproject_](https://en.wikibooks.org/wiki/Git/Submodules_and_Superprojects) convention. It collects hundreds of packages as Git submodules classified by their functions into directories. It is built atop of Autoware plus additional pacakges specific to the project and consitutes a large ROS workspace.
 
 Here you can visit the GitHub repository:
+
 [https://github.com/NEWSLabNTU/AutoSDV](https://github.com/NEWSLabNTU/AutoSDV).
 
 
@@ -25,9 +21,7 @@ Here you can visit the GitHub repository:
 
 ## Source Package Categories
 
-The whole AutoSDV driving system have 400+ packages by the time this
-article was written. It's important to understand the way these
-packages are classified.
+The whole AutoSDV driving system have 400+ packages by the time this article was written. It's important to understand the way these packages are classified.
 
 | Directory               | Function                                                |
 |-------------------------|---------------------------------------------------------|
@@ -55,8 +49,7 @@ packages are classified.
 
 ## The Package for Vehicle-Specific Parameters
 
-The `autoware_individual_params` package serves parameters that are
-specific to different vehicle models. It is located at
+The `autoware_individual_params` package serves parameters that are specific to different vehicle models. It is located at
 
 ```
 AutoSDV/src/param/autoware_individual_params

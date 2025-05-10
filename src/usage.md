@@ -1,10 +1,6 @@
 # Drive the Vehicle
 
-Before start reading this article, please make sure you followed the
-[installation guide](installation.md) and built the project. The
-project repository has a launch file `autosdv.launch.yaml` that
-defines the set of nodes to be executed and assigned parameters to
-start the whole driving system.
+Before start reading this article, please make sure you followed the [installation guide](installation.md) and built the project. The project repository has a launch file `autosdv.launch.yaml` that defines the set of nodes to be executed and assigned parameters to start the whole driving system.
 
 ## The Simple Way
 
@@ -22,8 +18,7 @@ You can either modify the launch file directly located here:
 AutoSDV/src/autoware/launcher/autosdv_launch/launch/autosdv.launch.yaml
 ```
 
-or assign argument values to the launch command. For example, to set
- `launch_sensing_driver` to false.
+or assign argument values to the launch command. For example, to set `launch_sensing_driver` to false.
 
 
 ```sh

@@ -1,30 +1,21 @@
 # Sensor Component
 
-The
-[`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component)
-directory contains a collection of drivers data processros for sensors
-on the AutoSDV vehicle. They are mostly provided by vendors and
-existing open source projects.
+The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component) directory contains a collection of drivers data processros for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
 
 > **Notice**
 >
-> The sensor component defines the collection of sensor drivers in
-> Autoware. If you're looking for the composition of the sensor
-> drivers, please refer to [Sensor Kit](sensor_kit.md) Chapter.
+> The sensor component defines the collection of sensor drivers in Autoware. If you're looking for the composition of the sensor drivers, please refer to [Sensor Kit](sensor_kit.md) Chapter.
 
-The AutoSDV Autoware adds the following ROS packages along with
-official packages.
+The AutoSDV Autoware adds the following ROS packages along with official packages.
 
 - ZED X Mini camera
 - Blickfeld Cube1 LiDAR
 - MPU9250 Nine-Axis Motion Sensor
+- KY-003 Hall Effect Sensor
 
 ## ZED X Mini Camera
 
-The ROS2 package requires ZED SDK 4.2 to be installed on the
-system. ZED SDK is installed by the setup script described in
-[Installation Guide](installation.md). The driver package is located
-at:
+The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Installation Guide](installation.md). The driver package is located at:
 
 ```
 src/autoware/sensor_component/external/zed-ros2-wrapper
@@ -53,9 +44,7 @@ ros2 launch blickfeld_driver live_scanner_node.launch.py
 
 ## MPU9250 Nine-Axis Accelerometer Gyroscope Sensor
 
-MPU9250 measures the motion state of the vehicle, including the linear
-acceleration, angular acceleration and angular speed. The source
-package is located at
+MPU9250 measures the motion state of the vehicle, including the linear acceleration, angular acceleration and angular speed. The source package is located at
 
 ```
 src/autoware/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
@@ -113,7 +102,7 @@ or GUI app:
 xgps
 ```
 
-- Wait till you get the proper longitute and latitude coordination and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is receiving.
+Wait till you get the proper longitute and latitude coordination and the status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is receiving.
 
 4. Since you get the signal, you can launch Autoware and subscribe the topic:
 ```
@@ -121,6 +110,7 @@ xgps
 ```
 
 ### Configuration files in Autoware
+
 If you do not get data on the topic, make sure, the configuration is correct by checking these files:
 
 1. Enable the GNSS Driver at:
@@ -148,6 +138,3 @@ AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/config/gpsd_client.yam
 ```
 AutoSDV/src/sensor_component/external/gps_umd/gpsd_client/src/client.cpp
 ```
-
-
-
