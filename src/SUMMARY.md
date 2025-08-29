@@ -13,6 +13,7 @@
   - [Version Control](./version_control.md)
 - [Technical Reference](./technical_reference.md)
   - [Core Components Specification](./core_components.md)
+  - [Wiring Diagrams](./wiring_diagrams.md)
   - [Sensor Components and Drivers](./sensor_component.md)
   - [Sensor Kit Configuration](./sensor_kit.md)
   - [Vehicle Interface](./vehicle_interface.md)

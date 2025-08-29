@@ -6,6 +6,7 @@ This section provides detailed technical specifications, wiring diagrams, and co
 
 ### Core Components
 - [Core Components Specification](./core_components.md) - Detailed specifications for all base platform components
+- [Wiring Diagrams](./wiring_diagrams.md) - Electrical connections and power distribution
 
 ### Advanced Topics
 - [5G/LTE Deployment](./5g_deployment.md) - Detailed guide for cellular connectivity setup
