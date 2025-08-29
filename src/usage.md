@@ -1,6 +1,6 @@
 # Operating the Vehicle
 
-Before start reading this article, please make sure you followed the [installation guide](installation.md) and built the project. The project repository has a launch file `autosdv.launch.yaml` that defines the set of nodes to be executed and assigned parameters to start the whole driving system.
+Before reading this article, please make sure you followed the [Software Installation](./software_installation.md) and built the project. The project repository has a launch file `autosdv.launch.yaml` that defines the set of nodes to be executed and assigned parameters to start the whole driving system.
 
 ## The Simple Way
 
@@ -22,7 +22,7 @@ or assign argument values to the launch command. For example, to set `launch_sen
 
 
 ```sh
-source install/setup.sh
+source install/setup.bash
 ros2 launch autosdv_launch autosdv.launch.yaml launch_sensing_driver:=false
 ```
 
@@ -34,12 +34,12 @@ ros2 launch autosdv_launch autosdv.launch.yaml launch_sensing_driver:=false
 | `sensor_model`          | The name of the sensor model.                 | `autosdv_sensor_kit`       |
 | `map_path`              | The path to the map data directory.           | `./data/COSS-map-planning` |
 | `launch_vehicle`        | Whether to launch the vehicle interface.      | `true`                     |
-| `launch_system`         | Whether to launch the system compoment.       | `false`                    |
-| `launch_map`            | Whether to launch the map compoment.          | `false`                    |
-| `launch_sensing`        | Whether to launch the sensing compoment.      | `true`                     |
+| `launch_system`         | Whether to launch the system component.       | `false`                    |
+| `launch_map`            | Whether to launch the map component.          | `false`                    |
+| `launch_sensing`        | Whether to launch the sensing component.      | `true`                     |
 | `launch_sensing_driver` | Whether to launch sensor drivers.             | `true`                     |
-| `launch_localization`   | Whether to launch the localization compoment. | `false`                    |
-| `launch_perception`     | Whether to launch the perception compoment.   | `false`                    |
-| `launch_planning`       | Whether to launch the planning compoment.     | `false`                    |
-| `launch_control`        | Whether to launch the control compoment.      | `true`                     |
+| `launch_localization`   | Whether to launch the localization component. | `false`                    |
+| `launch_perception`     | Whether to launch the perception component.   | `false`                    |
+| `launch_planning`       | Whether to launch the planning component.     | `false`                    |
+| `launch_control`        | Whether to launch the control component.      | `true`                     |
 | `pose_source`           | The localization method.                      | `eagleye`                  |

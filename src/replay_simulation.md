@@ -5,8 +5,7 @@ This is the guide to run a replay simulation on AutoSDV replaying a pre-recorded
 Please refer to the node diagram [here](https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-architecture/node-diagram/overall-node-diagram-autoware-universe.drawio.svg) for the whole localization module workflow and datapath.
 
 ## Steps
-*Step 1 and 2 are done on the AutoSDV vehicle so you don't have to do
-it again.*
+*Steps 1 and 2 are done on the AutoSDV vehicle, so you don't have to do them again.*
 1. Clone the launch tool repo developed by Jerry [here](https://github.com/NEWSLabNTU/ros-launch-perf) into `~/AutoSDV`.
 2. Build the above tool based on the repo's README guide.
 3. Play the ros bag: `ros2 bag play "./path/to/rosbag --clock`. The ros bag we use to test the simulation is in `~/AutoSDV/scripts`.

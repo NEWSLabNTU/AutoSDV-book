@@ -60,7 +60,7 @@ The Ataya 5G Harmony kit was successfully deployed on the vehicle and underwent 
 | Askey 5G Sub-6 Indoor Small Cell  | The base station connected to the core network.                |
 | MOXA CCG-1500 Gateway             | Installed on the vehicle as the connector to 5G.               |
 
-*Table 3. Recommended LiDAR sensor for the vehicle.*
+*Table 3. Recommended 5G/LTE components for the vehicle.*
 
 
 ## Procurement Information

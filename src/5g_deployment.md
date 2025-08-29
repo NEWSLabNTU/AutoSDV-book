@@ -3,7 +3,7 @@
 ## Outdoor Setup Example
 
 
-Figure 1 shows an example setup of the private 5G infrastructure in the outdoor based on Ataya Harmony system. The system has several parts:
+Figure 1 shows an example setup of the private 5G infrastructure outdoors based on the Ataya Harmony system. The system has several parts:
 
 1. The Ataya 5G core network box ("1" in Figure 1)
 2. Askey small cell base station ("2" in Figure 1)

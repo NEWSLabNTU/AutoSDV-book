@@ -22,7 +22,7 @@ ros2 launch autosdv_vehicle_launch vehicle_interface.launch.xml
 
 ## The Velocity Reporting Node
 
-The node is implemented in `velocity_report.py`. It periodically reads the Hall effect sensor and counts the magnet markers embedded on the wheel in each period. In this way, the rotation speed of the wheel can be measured, and the instant speed can be calculated by multiplying the wheel radius.
+The node is implemented in `velocity_report.py`. It periodically reads the Hall effect sensor and counts the magnet markers embedded on the wheel in each period. In this way, the rotation speed of the wheel can be measured, and the instantaneous speed can be calculated by multiplying by the wheel radius.
 
 ## The Actuator Node
 

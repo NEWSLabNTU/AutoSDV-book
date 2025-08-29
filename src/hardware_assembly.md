@@ -1,8 +1,8 @@
 # Building the Vehicle
 
-The recommended vehicle build bases on 16×11×5 inch chassis plus additional sensor and communication mounts, which can be divided into several parts listed below.
+The recommended vehicle build is based on a 16×11×5 inch chassis plus additional sensor and communication mounts, which can be divided into several parts listed below.
 
-The **core components** includes necessary components to run the Autoware.
+The **core components** include the necessary components to run Autoware.
 
 - Onboard computer
 - Navigation system
@@ -83,7 +83,7 @@ The lower power start up process is shown in Figure 6. The battery is installed 
 
 ## Docks
 
-The vehicle has three docks to mount your favorite sensors. The figure below shows two kinds of builds with three docks marked on the figure: (1) the front docker, (2) the top dock and (3) the rear dock.
+The vehicle has three docks to mount your favorite sensors. The figure below shows two kinds of builds with three docks marked on the figure: (1) the front dock, (2) the top dock and (3) the rear dock.
 
 <table align="center" border="0">
   <tbody>
@@ -113,13 +113,13 @@ The details of two builds are described in the table below.
     <tr>
       <td align="center" valign="middle" rowspan="2">1</td>
       <td align="center" valign="bottom">
-        <img src="figures/front_dock-1.webp" alt="Front docker example 1" width="80%"/>
+        <img src="figures/front_dock-1.webp" alt="Front dock example 1" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/top_dock-1.webp" alt="Top docker example 1" width="80%"/>
+        <img src="figures/top_dock-1.webp" alt="Top dock example 1" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/rear_dock-1.webp" alt="Front docker example 1" width="80%"/>
+        <img src="figures/rear_dock-1.webp" alt="Rear dock example 1" width="80%"/>
       </td>
     </tr>
     <tr>
@@ -130,13 +130,13 @@ The details of two builds are described in the table below.
     <tr>
       <td align="center" valign="middle" rowspan="2">2</td>
       <td align="center" valign="bottom">
-        <img src="figures/front_dock-2.webp" alt="Front docker example 2" width="80%"/>
+        <img src="figures/front_dock-2.webp" alt="Front dock example 2" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/top_dock-2.webp" alt="Top docker example 2" width="80%"/>
+        <img src="figures/top_dock-2.webp" alt="Top dock example 2" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/rear_dock-2.webp" alt="Front docker example 2" width="80%"/>
+        <img src="figures/rear_dock-2.webp" alt="Rear dock example 2" width="80%"/>
       </td>
     </tr>
     <tr>
