@@ -204,12 +204,10 @@ MOXA OnCell G4302 (or similar)
 6S Battery (22.2V) - Upper Power
 ├── Cell 1-6 Balance Leads
 └── JST-XH to Battery Monitor/Alarm
-    └── Buzzer activates < 3.3V/cell
 
 2S Battery (7.4V) - Motor Power
 ├── Cell 1-2 Balance Leads
 └── JST-XH to Battery Monitor/Alarm
-    └── Buzzer activates < 3.3V/cell
 ```
 
 *Note: Each battery has its own independent monitor with built-in alarm.*
