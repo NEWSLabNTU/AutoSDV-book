@@ -7,3 +7,15 @@
 
 # mdbook
 /book/
+
+# mdbook-i18n-helpers artifacts
+/translation_workspace/
+/po/*.mo
+/po/*.pot.bak
+/po/.*.po.swp
+/po/*.po~
+/po/*.po.backup
+/tmp/
+/temp/
+messages.mo
+*.mo

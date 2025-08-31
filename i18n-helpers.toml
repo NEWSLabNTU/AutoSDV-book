@@ -1,0 +1,16 @@
+# Configuration for mdbook-i18n-helpers
+
+# Specify the languages to translate to
+[[language]]
+name = "Chinese (Traditional)"
+code = "zh-TW"
+
+# POT file generation settings
+[pot]
+# Directory where POT files will be stored
+directory = "po"
+
+# How to extract translatable strings
+[xgettext]
+# Granularity of extraction (file or paragraph)
+granularity = "paragraph"

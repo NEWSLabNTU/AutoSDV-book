@@ -1,11 +1,12 @@
 [book]
 authors = ["Hsiang-Jui Lin <jerry73204@gmail.com>"]
-language = "en"
+language = "zh-TW"
 multilingual = false
 src = "src"
-title = "AutoSDV Book"
+title = "AutoSDV 使用手冊"
 
 [preprocessor.gettext]
+po-file = "po/zh-TW.po"
 
 [output.html]
 default-theme = "light"

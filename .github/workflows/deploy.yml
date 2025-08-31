@@ -20,8 +20,51 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      - name: Build
+      - name: Install mdbook-i18n-helpers
+        run: |
+          cargo install mdbook-i18n-helpers --locked
+
+      - name: Build English version
         run: mdbook build
+
+      - name: Build Chinese version (if translations exist)
+        run: |
+          if [ -f "po/zh-TW.po" ]; then
+            echo "Building Chinese version..."
+            MDBOOK_BOOK__LANGUAGE="zh-TW" mdbook build -d book-zh-TW --dest-dir book-zh-TW
+            
+            # Combine builds
+            mkdir -p book/zh-TW
+            cp -r book-zh-TW/* book/zh-TW/
+            
+            # Add language selector page
+            cat > book/index-select.html << 'EOF'
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>AutoSDV Book</title>
+                <script>
+                    var userLang = navigator.language || navigator.userLanguage;
+                    if (userLang.startsWith('zh')) {
+                        window.location.href = './zh-TW/index.html';
+                    } else {
+                        window.location.href = './index.html';
+                    }
+                </script>
+            </head>
+            <body>
+                <p>Redirecting... | 正在重定向...</p>
+                <ul>
+                    <li><a href="./index.html">English</a></li>
+                    <li><a href="./zh-TW/index.html">繁體中文</a></li>
+                </ul>
+            </body>
+            </html>
+            EOF
+          else
+            echo "No Chinese translations found, skipping Chinese build"
+          fi
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
