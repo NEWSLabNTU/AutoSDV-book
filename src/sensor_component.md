@@ -1,6 +1,6 @@
 # Sensor Components and Drivers
 
-The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/autoware/sensor_component) directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
+The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/sensor_component) directory contains a collection of drivers and data processors for sensors on the AutoSDV vehicle. They are mostly provided by vendors and existing open source projects.
 
 > **Notice**
 >
@@ -15,10 +15,10 @@ The AutoSDV Autoware adds the following ROS packages along with official package
 
 ## ZED X Mini Camera
 
-The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Installation Guide](installation.md). The driver package is located at:
+The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Software Installation](./software_installation.md). The driver package is located at:
 
 ```
-src/autoware/sensor_component/external/zed-ros2-wrapper
+src/sensor_component/external/zed-ros2-wrapper
 ```
 
 To run the standalone ZED camera driver,
@@ -33,7 +33,7 @@ The IP address of Blickfeld Cube1 LiDAR and Jetson is `192.168.26.26` and `192.1
 The driver package is located at
 
 ```
-src/autoware/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
+src/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5
 ```
 
 To run the standalone driver,
@@ -47,7 +47,7 @@ ros2 launch blickfeld_driver live_scanner_node.launch.py
 MPU9250 measures the motion state of the vehicle, including the linear acceleration, angular acceleration and angular speed. The source package is located at
 
 ```
-src/autoware/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
+src/sensor_component/external/ros2_mpu9250_driver/include/mpu9250driver
 ```
 
 To run the standalone driver,

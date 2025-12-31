@@ -24,12 +24,14 @@ Here you can visit the GitHub repository:
 | Directory               | Function                                                |
 |-------------------------|---------------------------------------------------------|
 | `AutoSDV/src/`          | The entry to the Autoware source tree.                  |
-| `├── core/`             | The Autoware.Core library.                              |
+| `├── calibration/`      | Calibration tools and utilities.                        |
 | `├── launcher/`         | Includes launch files to run the entire driving system. |
-| `├── vehicle/`          | Powertrain control and kinetic parameters.              |
+| `├── localization/`     | Localization packages (Isaac Visual SLAM, etc.).        |
 | `├── param/`            | Parameters specific to vehicle models.                  |
 | `├── sensor_component/` | Sensor drivers and sensing data processors.             |
-| `└── sensor_kit/`       | Sensor related parameters and launch files.             |
+| `├── sensor_kit/`       | Sensor related parameters and launch files.             |
+| `├── system/`           | System runtime and monitoring components.               |
+| `└── vehicle/`          | Powertrain control and kinetic parameters.              |
 
 
 ## Vehicle Interface Packages

@@ -15,31 +15,100 @@ make launch
 You can either modify the launch file directly located here:
 
 ```
-AutoSDV/src/autoware/launcher/autosdv_launch/launch/autosdv.launch.yaml
+AutoSDV/src/launcher/autosdv_launch/launch/autosdv.launch.yaml
 ```
 
-or assign argument values to the launch command. For example, to set `launch_sensing_driver` to false.
-
+or assign argument values to the launch command. For example, to use Isaac Visual SLAM for localization:
 
 ```sh
 source install/setup.bash
-ros2 launch autosdv_launch autosdv.launch.yaml launch_sensing_driver:=false
+ros2 launch autosdv_launch autosdv.launch.yaml pose_source:=isaac
 ```
 
-### Arguments
+Or to run in simulation mode without hardware:
 
-| Argument                | Value                                         | Default                    |
-|-------------------------|-----------------------------------------------|----------------------------|
-| `vehicle_model`         | The name of the vehicle model.                | `autosdv_vehicle`          |
-| `sensor_model`          | The name of the sensor model.                 | `autosdv_sensor_kit`       |
-| `map_path`              | The path to the map data directory.           | `./data/COSS-map-planning` |
-| `launch_vehicle`        | Whether to launch the vehicle interface.      | `true`                     |
-| `launch_system`         | Whether to launch the system component.       | `false`                    |
-| `launch_map`            | Whether to launch the map component.          | `false`                    |
-| `launch_sensing`        | Whether to launch the sensing component.      | `true`                     |
-| `launch_sensing_driver` | Whether to launch sensor drivers.             | `true`                     |
-| `launch_localization`   | Whether to launch the localization component. | `false`                    |
-| `launch_perception`     | Whether to launch the perception component.   | `false`                    |
-| `launch_planning`       | Whether to launch the planning component.     | `false`                    |
-| `launch_control`        | Whether to launch the control component.      | `true`                     |
-| `pose_source`           | The localization method.                      | `eagleye`                  |
+```sh
+ros2 launch autosdv_launch autosdv.launch.yaml is_simulation:=true
+```
+
+### Common Arguments
+
+| Argument                       | Description                                                        | Default              |
+|--------------------------------|--------------------------------------------------------------------|----------------------|
+| `is_simulation`                | Enable simulation mode (disables PWM output to hardware)           | `false`              |
+| `sensor_suite`                 | Predefined sensor suite (robin_zed, vlp32c_zed_imu, etc.)          | `vlp32c_zed_imu`     |
+| `lidar_model`                  | LiDAR model (cube1, robin-w, vlp32c)                               | (from suite)         |
+| `camera_model`                 | Camera model (zedxm, usb, none)                                    | (from suite)         |
+| `imu_source`                   | IMU source (mpu9250, zed)                                          | (from suite)         |
+| `gnss_receiver`                | GNSS receiver type (ublox, septentrio, garmin)                     | (from suite)         |
+| `use_gnss`                     | Enable GNSS for outdoor operation                                  | (from suite)         |
+| `use_ntrip`                    | Enable NTRIP client for RTK corrections                            | `true`               |
+| `use_mapless_mode`             | Enable mapless mode for indoor operation                           | `false`              |
+| `pose_source`                  | Pose estimation source (ndt, isaac)                                | `ndt`                |
+| `enable_zed_object_detection`  | Enable ZED camera object detection                                 | (from suite)         |
+| `launch_perception`            | Launch perception module (object detection)                        | `true`               |
+
+For a complete list of arguments, see the [main launch file](https://github.com/NEWSLabNTU/AutoSDV/blob/main/src/launcher/autosdv_launch/launch/autosdv.launch.yaml).
+
+## Common Operations
+
+### Autonomous Driving
+
+Run autonomous driving with waypoint navigation:
+
+```sh
+make run-drive
+```
+
+This command launches the full system and executes autonomous driving based on poses defined in `scripts/testing/drive/poses.json`. The vehicle will navigate through the defined waypoints.
+
+### Visualization and Monitoring
+
+Launch RViz for 3D visualization:
+
+```sh
+make run-rviz
+```
+
+Launch PlotJuggler for real-time data plotting:
+
+```sh
+make run-plotjuggler
+```
+
+### Manual Control
+
+Launch keyboard-based manual control:
+
+```sh
+make run-controller
+```
+
+### Testing Control System
+
+Test the basic control system:
+
+```sh
+make play-basic-control
+```
+
+Run predefined trajectories:
+
+```sh
+make run-straight-10m  # Drive 10m straight
+make run-circle        # Drive in a circle
+```
+
+### Recording and Playback
+
+Record sensor data during outdoor operation:
+
+```sh
+make record-outdoor
+```
+
+Play back the most recent recording:
+
+```sh
+make play-outdoor
+```

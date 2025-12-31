@@ -1,6 +1,6 @@
 # Vehicle Interface
 
-The vehicle interface bridges the Autoware control and vehicle actuators. It is served by the `autosdv_vehicle_launch` repository located at `src/autoware/vehicle/autosdv_vehicle_launch`. It includes the following packages.
+The vehicle interface bridges the Autoware control and vehicle actuators. It is served by the `autosdv_vehicle_launch` repository located at `src/vehicle/autosdv_vehicle_launch`. It includes the following packages.
 
 - `autosdv_vehicle_description`
 

@@ -29,27 +29,27 @@ git submodule update --init --recursive
 
 ## Inspect a Submodule
 
-Let's check the `src/autoware/core/autoware.core` submodule for example. Open the `.gitmodules` and you can see the section below. It tells the directory location to the submodule and also the upstream URL.
+Let's check the `src/sensor_kit/autosdv_sensor_kit_launch` submodule for example. Open the `.gitmodules` and you can see the section below. It tells the directory location to the submodule and also the upstream URL.
 
 ```
-[submodule "src/autoware/core/autoware.core"]
-        path = src/autoware/core/autoware.core
-        url = https://github.com/autowarefoundation/autoware.core.git
+[submodule "src/sensor_kit/autosdv_sensor_kit_launch"]
+        path = src/sensor_kit/autosdv_sensor_kit_launch
+        url = https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch.git
 
 ```
 
-The path `src/autoware/core/autoware.core` is treated as a link file in the viewpoint of the mother repo. It stores the commit hash to the tracked Git repository. You can show the commit hash the command below. If the commit hash changes, we go through the usual git add & commit to save it.
+The path `src/sensor_kit/autosdv_sensor_kit_launch` is treated as a link file in the viewpoint of the mother repo. It stores the commit hash to the tracked Git repository. You can show the commit hash with the command below. If the commit hash changes, we go through the usual git add & commit to save it.
 
 ```sh
-$ git submodule status src/autoware/core/autoware.core
- 99891401473b5740e640f5a0cc0412c0984b8e0b src/autoware/core/autoware.core (v1.0~1)
+$ git submodule status src/sensor_kit/autosdv_sensor_kit_launch
+ a1b2c3d4e5f6... src/sensor_kit/autosdv_sensor_kit_launch (heads/main)
 ```
 
 ## Save Changes within a Submodule
 
 To save the changes within a submodule, you must commit the changes both in the submodule repo and in the mother repo in a two-step fashion.
 
-Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule for example.
+Let's see the `src/sensor_kit/autosdv_sensor_kit_launch` submodule for example.
 
 | Committed Changes                                            | Pushed to Upstream Repository                                                                                 |
 |--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -59,8 +59,8 @@ Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule for exam
 The walk through goes like this.
 
 ```sh
-# Go into the submodule and check to the branch we want to work on.
-cd src/autoware/sensor_kit/autosdv_sensor_kit_launch
+# Go into the submodule and checkout the branch we want to work on.
+cd src/sensor_kit/autosdv_sensor_kit_launch
 git checkout main
 
 # Do some work in the submodule.
@@ -75,7 +75,7 @@ git push
 cd -
 
 # Save the new commit hash on the submodule and push it to the upstream repo.
-git add src/autoware/core/autoware.core
-git commit -m 'Update the autoware.core submodule'
+git add src/sensor_kit/autosdv_sensor_kit_launch
+git commit -m 'Update the autosdv_sensor_kit_launch submodule'
 git push
 ```
