@@ -10,8 +10,7 @@ This section provides detailed technical specifications, wiring diagrams, and co
 
 ### Advanced Topics
 - [5G/LTE Deployment](./networking/5g-deployment.md) - Detailed guide for cellular connectivity setup
-- [Sensor Components and Drivers](./software/sensor-components.md) - Low-level sensor integration
-- [Sensor Kit Configuration](./software/sensor-kit.md) - ROS 2 sensor configuration details
+- [Sensor Integration](../guides/sensor-integration/overview.md) - Complete sensor integration guides
 - [Vehicle Interface](./software/vehicle-interface.md) - CAN bus and actuator control
 
 ## Quick Reference Tables

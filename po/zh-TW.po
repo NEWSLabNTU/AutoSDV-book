@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AutoSDV Book\n"
-"POT-Creation-Date: 2026-01-01T18:08:46+08:00\n"
+"POT-Creation-Date: 2026-01-01T21:28:33+08:00\n"
 "PO-Revision-Date: 2025-08-29T15:57:48+08:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -27,7 +27,7 @@ msgstr "平台型號"
 msgid "Getting Started"
 msgstr "開始使用"
 
-#: src/SUMMARY.md:8 src/SUMMARY.md:24 src/getting-started/overview.md:5
+#: src/SUMMARY.md:8 src/SUMMARY.md:32 src/getting-started/overview.md:5
 msgid "Overview"
 msgstr "概述"
 
@@ -71,33 +71,68 @@ msgstr "原始碼說明"
 msgid "Version Control"
 msgstr "版本控制"
 
-#: src/SUMMARY.md:22 src/reference/overview.md:1
+#: src/SUMMARY.md:21
+msgid "Sensor Integration"
+msgstr ""
+
+#: src/SUMMARY.md:22
+msgid "Integration Walkthrough"
+msgstr ""
+
+#: src/SUMMARY.md:23 src/guides/sensor-integration/lidar.md:1
+msgid "LiDAR Sensors"
+msgstr ""
+
+#: src/SUMMARY.md:24 src/guides/sensor-integration/camera.md:1
+msgid "Camera Sensors"
+msgstr ""
+
+#: src/SUMMARY.md:25 src/guides/sensor-integration/imu.md:1
+msgid "IMU Sensors"
+msgstr ""
+
+#: src/SUMMARY.md:26 src/guides/sensor-integration/gnss.md:1
+msgid "GNSS Sensors"
+msgstr ""
+
+#: src/SUMMARY.md:27
+msgid "Adding a Sensor"
+msgstr ""
+
+#: src/SUMMARY.md:28 src/getting-started/installation/overview.md:154
+#: src/getting-started/installation/zed-sdk.md:98
+#: src/getting-started/installation/docker.md:247
+#: src/guides/sensor-integration/using-sensors.md:130
+#: src/guides/sensor-integration/lidar.md:62
+#: src/guides/sensor-integration/lidar.md:117
+#: src/guides/sensor-integration/lidar.md:168
+#: src/guides/sensor-integration/camera.md:140
+#: src/guides/sensor-integration/imu.md:72
+#: src/guides/sensor-integration/imu.md:135
+#: src/guides/sensor-integration/gnss.md:98
+#: src/guides/sensor-integration/gnss.md:188
+msgid "Troubleshooting"
+msgstr "排除故障"
+
+#: src/SUMMARY.md:30 src/reference/overview.md:1
 msgid "Technical Reference"
 msgstr "技術參考"
 
-#: src/SUMMARY.md:25 src/platform-models.md:29
+#: src/SUMMARY.md:33 src/platform-models.md:29
 #: src/getting-started/hardware-assembly.md:19 src/reference/overview.md:7
 #: src/reference/hardware/core-components.md:7
 msgid "Core Components"
 msgstr "核心元件"
 
-#: src/SUMMARY.md:26 src/reference/hardware/wiring-diagrams.md:1
+#: src/SUMMARY.md:34 src/reference/hardware/wiring-diagrams.md:1
 msgid "Wiring Diagrams"
 msgstr "接線圖形"
 
-#: src/SUMMARY.md:27
-msgid "Sensor Components"
-msgstr ""
-
-#: src/SUMMARY.md:28 src/reference/software/sensor-kit.md:1
-msgid "Sensor Kit Configuration"
-msgstr "感測器套件設定"
-
-#: src/SUMMARY.md:29 src/reference/software/vehicle-interface.md:1
+#: src/SUMMARY.md:35 src/reference/software/vehicle-interface.md:1
 msgid "Vehicle Interface"
 msgstr "車輛介臉部"
 
-#: src/SUMMARY.md:30 src/reference/networking/5g-deployment.md:1
+#: src/SUMMARY.md:36 src/reference/networking/5g-deployment.md:1
 msgid "5G/LTE Deployment"
 msgstr "5G/LTE 部署"
 
@@ -165,7 +200,7 @@ msgid "**LiDAR Model**"
 msgstr "**光達型號**"
 
 #: src/platform-models.md:5 src/platform-models.md:6 src/platform-models.md:7
-#: src/reference/overview.md:45
+#: src/reference/overview.md:44
 msgid "\\-"
 msgstr "\\-"
 
@@ -173,7 +208,8 @@ msgstr "\\-"
 msgid "VLP-32C"
 msgstr "VLP-32C"
 
-#: src/platform-models.md:5
+#: src/platform-models.md:5 src/guides/sensor-integration/using-sensors.md:11
+#: src/guides/sensor-integration/lidar.md:13
 msgid "Robin-W"
 msgstr "Robin-W"
 
@@ -181,11 +217,11 @@ msgstr "Robin-W"
 msgid "**LiDAR FOV**"
 msgstr "**光達視野範圍**"
 
-#: src/platform-models.md:6
+#: src/platform-models.md:6 src/guides/sensor-integration/lidar.md:10
 msgid "360° × 40°"
 msgstr "360° × 40°"
 
-#: src/platform-models.md:6
+#: src/platform-models.md:6 src/guides/sensor-integration/lidar.md:9
 msgid "120° × 25°"
 msgstr "120° × 25°"
 
@@ -197,7 +233,7 @@ msgstr "**光達範圍**"
 msgid "100m"
 msgstr "100 公尺"
 
-#: src/platform-models.md:7
+#: src/platform-models.md:7 src/guides/sensor-integration/lidar.md:11
 msgid "150m"
 msgstr "150 公尺"
 
@@ -225,7 +261,7 @@ msgstr "**遠程操作**"
 msgid "Manual"
 msgstr "手動"
 
-#: src/platform-models.md:9
+#: src/platform-models.md:9 src/guides/sensor-integration/gnss.md:10
 msgid "No"
 msgstr "無"
 
@@ -274,7 +310,7 @@ msgstr ""
 
 #: src/platform-models.md:31 src/platform-models.md:70
 #: src/platform-models.md:96 src/platform-models.md:124
-#: src/reference/overview.md:20
+#: src/reference/overview.md:19
 msgid "Component"
 msgstr "元件"
 
@@ -448,7 +484,8 @@ msgstr "額外元件"
 msgid "**LiDAR**"
 msgstr "**光達**"
 
-#: src/platform-models.md:72 src/reference/overview.md:23
+#: src/platform-models.md:72 src/guides/sensor-integration/using-sensors.md:12
+#: src/guides/sensor-integration/lidar.md:67 src/reference/overview.md:22
 #: src/reference/hardware/core-components.md:48
 msgid "Velodyne VLP-32C"
 msgstr "Velodyne VLP-32C"
@@ -600,6 +637,9 @@ msgstr "**串連性**: 需要 5G/LTE 資料排程"
 #: src/getting-started/installation/zed-sdk.md:154
 #: src/getting-started/installation/manual-environment.md:358
 #: src/getting-started/installation/docker.md:330
+#: src/guides/sensor-integration/using-sensors.md:167
+#: src/guides/sensor-integration/integration-walkthrough.md:234
+#: src/guides/sensor-integration/adding-sensor.md:165
 #: src/reference/hardware/wiring-diagrams.md:245
 msgid "Next Steps"
 msgstr "下一步"
@@ -1250,13 +1290,8 @@ msgid ""
 "If successful, you should see the system starting without critical errors."
 msgstr ""
 
-#: src/getting-started/installation/overview.md:154
-#: src/getting-started/installation/zed-sdk.md:98
-#: src/getting-started/installation/docker.md:247
-msgid "Troubleshooting"
-msgstr "排除故障"
-
 #: src/getting-started/installation/overview.md:156
+#: src/guides/sensor-integration/troubleshooting.md:497
 msgid "Build Errors"
 msgstr ""
 
@@ -1321,6 +1356,7 @@ msgid ""
 msgstr ""
 
 #: src/getting-started/installation/overview.md:199
+#: src/guides/sensor-integration/troubleshooting.md:537
 msgid "Getting Help"
 msgstr ""
 
@@ -1374,6 +1410,7 @@ msgstr ""
 #: src/getting-started/installation/zed-sdk.md:14
 #: src/getting-started/installation/manual-environment.md:29
 #: src/getting-started/installation/docker.md:13
+#: src/guides/sensor-integration/camera.md:14
 msgid "Prerequisites"
 msgstr "前置條件"
 
@@ -1576,6 +1613,7 @@ msgid "# Should be in /home/user/.local or /usr/lib\n"
 msgstr ""
 
 #: src/getting-started/installation/zed-sdk.md:125
+#: src/guides/sensor-integration/troubleshooting.md:323
 msgid "Camera Not Detected"
 msgstr ""
 
@@ -1911,7 +1949,6 @@ msgid "\"any\""
 msgstr ""
 
 #: src/getting-started/installation/manual-environment.md:159
-#: src/reference/software/sensor-kit.md:32
 msgid "\"false\""
 msgstr ""
 
@@ -2129,6 +2166,8 @@ msgid "# Serial ports, GPS\n"
 msgstr ""
 
 #: src/getting-started/installation/manual-environment.md:313
+#: src/guides/sensor-integration/troubleshooting.md:42
+#: src/guides/sensor-integration/troubleshooting.md:626
 msgid "# USB devices\n"
 msgstr ""
 
@@ -2137,6 +2176,7 @@ msgid "# Cameras\n"
 msgstr ""
 
 #: src/getting-started/installation/manual-environment.md:315
+#: src/guides/sensor-integration/troubleshooting.md:67
 msgid "# Log out and back in for changes to take effect\n"
 msgstr ""
 
@@ -2162,6 +2202,7 @@ msgid "# Build with single thread to see errors clearly\n"
 msgstr ""
 
 #: src/getting-started/installation/manual-environment.md:334
+#: src/guides/sensor-integration/integration-walkthrough.md:191
 msgid "Verification"
 msgstr ""
 
@@ -2296,6 +2337,7 @@ msgid "**Docker Compose** (optional, for multi-container setups):"
 msgstr "**Docker Compose**（選用，用於多容器設定）："
 
 #: src/getting-started/installation/docker.md:54
+#: src/guides/sensor-integration/using-sensors.md:15
 msgid "Quick Start"
 msgstr "快速入門"
 
@@ -2501,6 +2543,7 @@ msgstr ""
 
 #: src/getting-started/installation/docker.md:174
 #: src/getting-started/installation/docker.md:187
+#: src/guides/sensor-integration/gnss.md:169
 msgid "host"
 msgstr "host"
 
@@ -3369,8 +3412,6 @@ msgstr ""
 "mother "
 
 #: src/guides/version-control.md:11
-#: src/reference/software/sensor-components.md:5
-#: src/reference/software/sensor-kit.md:5
 msgid "**Notice**"
 msgstr "**注意**"
 
@@ -3514,6 +3555,4068 @@ msgstr "# 儲存 new commit hash 在 submodule 和 push 它 到 upstream repo.\n
 msgid "'Update the autosdv_sensor_kit_launch submodule'"
 msgstr ""
 
+#: src/guides/sensor-integration/using-sensors.md:1
+msgid "Using Sensors"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:3
+msgid ""
+"This guide shows you how to launch AutoSDV with different sensor "
+"configurations."
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:5
+msgid "Sensor Suites"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:7
+msgid ""
+"AutoSDV supports predefined sensor combinations called **sensor suites**. "
+"Each suite is a tested combination of sensors that work well together."
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+msgid "Sensor Suite"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+#: src/guides/sensor-integration/troubleshooting.md:267
+msgid "LiDAR"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+msgid "Camera"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+#: src/guides/sensor-integration/troubleshooting.md:381
+msgid "IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+#: src/guides/sensor-integration/troubleshooting.md:439
+msgid "GNSS"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:9
+msgid "Use Case"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:11
+msgid "`robin_zed`"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:11
+#: src/guides/sensor-integration/using-sensors.md:12
+#: src/guides/sensor-integration/using-sensors.md:13
+#: src/guides/sensor-integration/camera.md:12 src/reference/overview.md:25
+msgid "ZED X Mini"
+msgstr "ZED X Mini"
+
+#: src/guides/sensor-integration/using-sensors.md:11
+#: src/guides/sensor-integration/using-sensors.md:12
+#: src/guides/sensor-integration/using-sensors.md:13
+msgid "ZED IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:11
+#: src/guides/sensor-integration/using-sensors.md:12
+#: src/guides/sensor-integration/using-sensors.md:13
+msgid "u-blox ZED-F9R"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:11
+msgid "**Recommended** - Complete outdoor suite"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:12
+msgid "`vlp32c_zed`"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:12
+msgid "Alternative LiDAR option"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:13
+msgid "`cube1_zed`"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:13
+#: src/guides/sensor-integration/lidar.md:126
+msgid "Blickfeld Cube1"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:13
+msgid "Solid-state LiDAR option"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:17
+msgid "Launch with Sensor Suite"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:20
+msgid "# Launch with Robin-W LiDAR + ZED camera (recommended)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:21
+msgid "\"sensor_suite:=robin_zed\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:22
+msgid "# Launch with Velodyne LiDAR + ZED camera\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:24
+msgid "\"sensor_suite:=vlp32c_zed\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:25
+msgid "# Launch with Blickfeld LiDAR + ZED camera\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:27
+msgid "\"sensor_suite:=cube1_zed\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:30
+msgid "Verify Sensors are Working"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:32
+msgid "After launching, check that sensors are publishing data:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:35
+#: src/guides/sensor-integration/troubleshooting.md:210
+msgid "# Check all sensor topics\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:37
+msgid "# Check LiDAR data rate (should be ~10 Hz)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:40
+msgid "# Check camera images (should be ~15 Hz)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:43
+msgid "# Check IMU data (should be ~400 Hz)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:46
+msgid "# Check GNSS position (should be ~5 Hz)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:51
+msgid "Visualize in RViz"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:54
+msgid "# Open RViz with AutoSDV configuration\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:58
+msgid "You should see:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:59
+msgid "Point cloud from LiDAR (white/colored points)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:60
+msgid "Camera image overlay"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:61
+msgid "Vehicle pose in the map"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:62
+msgid "TF frames showing sensor positions"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:64
+msgid "Common Scenarios"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:66
+msgid "Outdoor with RTK GPS"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:68
+msgid "For high-precision outdoor localization with RTK corrections:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:71
+msgid "# Enable NTRIP for RTK positioning\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:72
+msgid "\"sensor_suite:=robin_zed use_ntrip:=true\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:75
+msgid "This connects to the e-GNSS Taiwan VRS for ~2cm accuracy GPS."
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:77
+msgid "Indoor (No GPS)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:79
+msgid "For indoor operation without GPS signal:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:82
+msgid "# Disable GPS, use NDT localization only\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:83
+msgid "\"sensor_suite:=robin_zed use_gnss:=false\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:86
+msgid ""
+"You'll need to manually set the initial pose in RViz using \"2D Pose "
+"Estimate\" tool."
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:88
+msgid "Using Isaac Visual SLAM"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:90
+msgid "For camera-based localization instead of LiDAR NDT:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:93
+msgid "# Use Isaac Visual SLAM for pose estimation\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:94
+msgid "\"sensor_suite:=robin_zed pose_source:=isaac\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:97
+msgid "Custom Sensor Selection"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:99
+msgid "Instead of using predefined suites, you can select individual sensors:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:102
+msgid "# Custom combination\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:103
+msgid ""
+"\"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:"
+"=ublox\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:104
+msgid "# Minimal setup (LiDAR only)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:106
+msgid ""
+"\"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:"
+"=false\""
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:109
+msgid "Available Options"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:111
+msgid "**LiDAR Models:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:112
+msgid "`robin-w` - Robin-W 360° LiDAR (default)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:113
+msgid "`vlp32c` - Velodyne VLP-32C"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:114
+msgid "`cube1` - Blickfeld Cube1"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:116
+msgid "**Camera Models:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:117
+msgid "`zedxm` - ZED X Mini stereo camera (default)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:118
+msgid "`usb` - USB webcam"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:119
+msgid "`none` - No camera"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:121
+msgid "**IMU Sources:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:122
+msgid "`zed` - ZED built-in IMU (default)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:123
+msgid "`mpu9250` - External MPU9250 IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:125
+msgid "**GNSS Receivers:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:126
+msgid "`ublox` - u-blox ZED-F9R (RTK-capable, default)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:127
+msgid "`garmin` - Garmin GPS 18x (standard GPS)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:128
+msgid "`septentrio` - Septentrio receiver"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:132
+msgid "No sensor data"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:134
+msgid "**Check topics exist:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:139
+msgid ""
+"If topics are missing, the sensor driver may have failed to start. Check "
+"logs:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:141
+msgid "# View latest logs\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:145
+msgid "Sensor not detected"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:147
+msgid "**Check hardware connection:**"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:149
+msgid "# For LiDAR (check network)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:150
+#: src/guides/sensor-integration/lidar.md:209
+msgid "# Robin-W\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:151
+#: src/guides/sensor-integration/lidar.md:210
+msgid "# Velodyne\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:152
+msgid "# For camera (check ZED SDK)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:155
+msgid "# For GNSS (check USB device)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:160
+#: src/guides/sensor-integration/troubleshooting.md:97
+msgid "Transform errors in RViz"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:162
+msgid "If RViz shows \"No transform from X to Y\", rebuild the project:"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:169
+msgid ""
+"**Learn how sensors are integrated**: [Integration Walkthrough](./"
+"integration-walkthrough.md)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:170
+msgid ""
+"**Configure specific sensors**: [LiDAR](./lidar.md), [Camera](./camera.md), "
+"[IMU](./imu.md), [GNSS](./gnss.md)"
+msgstr ""
+
+#: src/guides/sensor-integration/using-sensors.md:171
+#: src/guides/sensor-integration/integration-walkthrough.md:239
+msgid "**Add a new sensor**: [Adding Sensors Guide](./adding-sensor.md)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:1
+msgid "Integration Walkthrough: Robin-W LiDAR"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:3
+msgid ""
+"This guide walks you through how a sensor is integrated into AutoSDV, using "
+"the **Seyond Robin-W LiDAR** as a concrete example. By the end, you'll "
+"understand how any sensor is integrated from hardware to software."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:5
+msgid "The Physical Sensor"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:7
+msgid "**Seyond Robin-W** is a solid-state LiDAR sensor:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:8
+msgid "Forward-facing (120° × 25° field of view)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:9
+msgid "Range: up to 200m"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:10
+msgid "Mounted on the front dock of the vehicle"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:11
+msgid "Connects via Ethernet (IP: 172.168.1.10)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:12
+msgid "Powered by 12-24V DC from vehicle power supply"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:14
+msgid ""
+"When the sensor is running, it streams 3D point cloud data over the network "
+"at ~10 Hz."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:16
+msgid "The Driver Package"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:18
+msgid "The driver converts the sensor's raw data into ROS 2 messages."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:20
+msgid "**Location**: `src/sensor_component/external/seyond_ros_driver/`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:22
+msgid "This is a git submodule (external package) that:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:23
+msgid "Connects to Robin-W over network (172.168.1.10)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:24
+msgid "Receives point cloud data"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:25
+msgid "Publishes to ROS topic: `/robin_lidar/points_raw`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:27
+msgid "The driver outputs **PointXYZIRC** format (compatible with Autoware):"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:28
+msgid "`x, y, z` - 3D position"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:29
+msgid "`intensity` - Reflection strength"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:30
+msgid "`return_type` - First/last return"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:31
+msgid "`ring` - Laser channel ID"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:33
+msgid "How It's Configured"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:35
+msgid "To integrate Robin-W into the vehicle, we need to tell AutoSDV:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:36
+msgid "Where the sensor is physically mounted"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:37
+msgid "How to start the driver"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:38
+msgid "What network settings to use"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:40
+msgid "Physical Position"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:42
+#: src/guides/sensor-integration/adding-sensor.md:50
+msgid ""
+"**File**: `src/sensor_kit/autosdv_sensor_kit_description/config/"
+"sensor_kit_calibration.yaml`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:45
+#: src/guides/sensor-integration/adding-sensor.md:53
+#: src/guides/sensor-integration/troubleshooting.md:125
+msgid "sensor_kit_base_link"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:46
+#: src/guides/sensor-integration/lidar.md:38
+#: src/guides/sensor-integration/lidar.md:184
+msgid "robin_lidar_link"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:47
+#: src/guides/sensor-integration/imu.md:155
+#: src/guides/sensor-integration/imu.md:156
+#: src/guides/sensor-integration/imu.md:157
+#: src/guides/sensor-integration/adding-sensor.md:55
+#: src/guides/sensor-integration/troubleshooting.md:127
+msgid "x"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:47
+msgid "# Position: at front center\n"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:49
+#: src/guides/sensor-integration/lidar.md:186
+#: src/guides/sensor-integration/lidar.md:192
+#: src/guides/sensor-integration/imu.md:155
+#: src/guides/sensor-integration/imu.md:156
+#: src/guides/sensor-integration/imu.md:157
+#: src/guides/sensor-integration/adding-sensor.md:57
+#: src/guides/sensor-integration/troubleshooting.md:129
+msgid "z"
+msgstr "z"
+
+#: src/guides/sensor-integration/integration-walkthrough.md:49
+msgid ""
+"# 15cm above sensor kit base\n"
+"    roll"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:50
+msgid ""
+"# 180° rotation (see explanation below)\n"
+"    pitch"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:51
+msgid ""
+"# -90° rotation\n"
+"    yaw"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:55
+msgid ""
+"This defines a **coordinate frame** called `robin_lidar_link` that "
+"represents the sensor's position and orientation on the vehicle."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:57
+msgid "Why the Strange Rotation?"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:59
+msgid "Robin-W uses different coordinate axes than ROS standard:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:61
+msgid "**Robin-W native**:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:68
+msgid "**ROS standard (REP-103)**:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:75
+msgid "To convert Robin-W coordinates → ROS standard:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:76
+msgid "**Roll 180°**: Flip the sensor upside down"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:77
+msgid "**Pitch -90°**: Rotate so forward axis aligns"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:79
+msgid ""
+"Without this transformation, the point cloud would appear upside down and "
+"rotated in RViz!"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:81
+msgid "Robot Description (URDF)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:83
+#: src/guides/sensor-integration/adding-sensor.md:65
+msgid ""
+"**File**: `src/sensor_kit/autosdv_sensor_kit_description/urdf/sensor_kit."
+"xacro`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:86
+msgid "<!-- Robin-W LiDAR -->"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:87
+#: src/guides/sensor-integration/integration-walkthrough.md:95
+msgid "\"robin_lidar_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:89
+msgid "\"robin_lidar_joint\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:89
+#: src/guides/sensor-integration/adding-sensor.md:71
+msgid "\"fixed\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:91
+msgid "\"${calibration['sensor_kit_base_link']['robin_lidar_link']['x']} ...\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:92
+msgid ""
+"\"${calibration['sensor_kit_base_link']['robin_lidar_link']['roll']} ...\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:94
+#: src/guides/sensor-integration/adding-sensor.md:76
+msgid "\"sensor_kit_base_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:99
+msgid ""
+"This creates the `robin_lidar_link` frame in the robot's TF tree using the "
+"calibration values above."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:101
+msgid "Driver Launch Configuration"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:103
+msgid ""
+"**File**: `src/sensor_kit/autosdv_sensor_kit_launch/launch/lidar.launch.xml`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:106
+msgid "\"$(eval &quot;'$(var lidar_model)' == 'robin-w'&quot;)\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:108
+msgid "<!-- Launch Robin-W driver -->"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:109
+msgid "\"$(find-pkg-share seyond_ros_driver)/launch/robin_w.launch.py\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:110
+#: src/guides/sensor-integration/adding-sensor.md:90
+msgid "\"config\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:110
+msgid "\"$(var sensor_model_param_path)/robin_lidar.param.yaml\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:113
+msgid "<!-- Remap topic to Autoware standard -->"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:114
+msgid "\"/robin_lidar/points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:115
+#: src/guides/sensor-integration/lidar.md:200
+msgid "\"/sensing/lidar/robin_lidar/points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:120
+msgid ""
+"This says: \"When user selects `lidar_model:=robin-w`, start the Robin-W "
+"driver and remap its topic to the standard Autoware namespace.\""
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:122
+msgid "Driver Parameters"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:124
+msgid ""
+"**File**: `src/param/autoware_individual_params/.../robin_lidar.param.yaml`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:127
+#: src/guides/sensor-integration/lidar.md:102
+#: src/guides/sensor-integration/imu.md:39
+#: src/guides/sensor-integration/imu.md:48
+#: src/guides/sensor-integration/gnss.md:167
+#: src/guides/sensor-integration/adding-sensor.md:104
+msgid "/**"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:128
+#: src/guides/sensor-integration/lidar.md:103
+#: src/guides/sensor-integration/imu.md:40
+#: src/guides/sensor-integration/imu.md:49
+#: src/guides/sensor-integration/gnss.md:168
+#: src/guides/sensor-integration/adding-sensor.md:105
+msgid "ros__parameters"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:129
+msgid "ip_address"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:129
+msgid ""
+"\"172.168.1.10\"    # Robin-W network address\n"
+"    port"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:130
+msgid ""
+"# UDP port\n"
+"    frame_id"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:131
+msgid ""
+"\"robin_lidar_link\"   # TF frame name\n"
+"    min_range"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:132
+msgid ""
+"# Filter points closer than 0.5m\n"
+"    max_range"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:133
+msgid "# Filter points farther than 200m\n"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:136
+msgid "These are runtime parameters passed to the driver when it starts."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:138
+msgid "How Data Flows"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:140
+msgid "When you launch AutoSDV with `lidar_model:=robin-w`:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:165
+msgid "How It Appears in the System"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:167
+msgid "Topic Namespace"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:174
+msgid "All sensor data follows the pattern: `/sensing/[type]/[name]/[data]`"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:176
+msgid "TF Tree"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:182
+msgid "This generates a PDF showing:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:189
+msgid ""
+"The transform from `sensor_kit_base_link` → `robin_lidar_link` uses the "
+"calibration values (position + rotation)."
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:193
+msgid "Check that Robin-W is working:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:196
+msgid "# Topic publishing at ~10 Hz?\n"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:198
+msgid "# Point cloud has data?\n"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:201
+msgid "# Transform exists?\n"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:206
+msgid "The Big Picture"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:208
+msgid "Every sensor integration follows this pattern:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:210
+msgid "**Physical Layer**"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:211
+msgid "Mount sensor on vehicle"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:212
+msgid "Connect power and communication (USB/Ethernet/etc.)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:214
+msgid "**Driver Layer** (`src/sensor_component/`)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:215
+msgid "ROS 2 package that talks to sensor hardware"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:216
+msgid "Publishes raw sensor data to topics"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:218
+msgid "**Sensor Kit Layer** (`src/sensor_kit/`)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:219
+msgid "Calibration: Where is the sensor? (position + rotation)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:220
+msgid "URDF: Add sensor to robot description"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:221
+msgid "Launch: When to start the driver"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:222
+msgid "Parameters: Runtime configuration"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:224
+msgid "**Data Flow**"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:225
+msgid ""
+"Driver publishes → Topics remapped → TF transforms applied → Autoware uses "
+"data"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:227
+msgid "Key Takeaways"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:229
+msgid ""
+"**Coordinate transformation matters**: Robin-W's non-standard coordinates "
+"require roll=180°, pitch=-90°"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:230
+msgid ""
+"**Everything is a coordinate frame**: `robin_lidar_link` represents the "
+"sensor in 3D space"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:231
+msgid ""
+"**Topic remapping standardizes naming**: Driver outputs → `/sensing/` "
+"namespace"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:232
+msgid ""
+"**Two-layer system**: Drivers (sensor component) + Integration (sensor kit)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:236
+msgid "Now that you understand how Robin-W is integrated:"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:238
+msgid ""
+"**Try other sensors**: [LiDAR](./lidar.md), [Camera](./camera.md), [IMU](./"
+"imu.md), [GNSS](./gnss.md)"
+msgstr ""
+
+#: src/guides/sensor-integration/integration-walkthrough.md:240
+msgid ""
+"**Troubleshoot issues**: Check network connectivity, verify TF transforms, "
+"monitor topics"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:3
+msgid "Configuration details for supported LiDAR models."
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:5
+#: src/guides/sensor-integration/camera.md:5
+msgid "Supported Models"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+#: src/guides/sensor-integration/camera.md:7
+#: src/guides/sensor-integration/imu.md:7
+#: src/guides/sensor-integration/gnss.md:7
+msgid "Model"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+#: src/guides/sensor-integration/camera.md:7
+#: src/guides/sensor-integration/imu.md:7
+#: src/guides/sensor-integration/gnss.md:7
+msgid "Type"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+msgid "FOV"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+msgid "Range"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+msgid "Network"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:7
+#: src/guides/sensor-integration/camera.md:7
+#: src/guides/sensor-integration/imu.md:7
+#: src/guides/sensor-integration/gnss.md:7
+msgid "Config"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:9
+msgid "**Seyond Robin-W**"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:9
+#: src/guides/sensor-integration/lidar.md:11
+msgid "Solid-state"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:9
+#: src/guides/sensor-integration/lidar.md:10
+msgid "200m"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:9
+msgid "172.168.1.10"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:9
+msgid "`lidar_model:=robin-w`"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:10
+msgid "**Velodyne VLP-32C**"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:10
+msgid "Spinning"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:10
+msgid "192.168.1.201"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:10
+msgid "`lidar_model:=vlp32c`"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:11
+msgid "**Blickfeld Cube1**"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:11
+msgid "70° × 30°"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:11
+msgid "192.168.26.26"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:11
+msgid "`lidar_model:=cube1`"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:15
+#: src/guides/sensor-integration/lidar.md:69
+#: src/guides/sensor-integration/lidar.md:128
+msgid "Network Setup"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:17
+msgid ""
+"**LiDAR IP**: 172.168.1.10 (fixed) **Jetson IP**: 172.168.1.100/24 "
+"(configure on same subnet)"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:21
+msgid "# Configure Jetson network interface\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:24
+#: src/guides/sensor-integration/lidar.md:77
+#: src/guides/sensor-integration/lidar.md:137
+msgid "# Test connectivity\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:29
+msgid "Coordinate Transformation"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:31
+msgid ""
+"**Important**: Robin-W requires rotation to match ROS standard coordinates."
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:33
+msgid ""
+"**Native coordinates**: X=up, Y=right, Z=forward **ROS standard**: "
+"X=forward, Y=left, Z=up"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:36
+msgid "**Required calibration**:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:39
+#: src/guides/sensor-integration/lidar.md:87
+#: src/guides/sensor-integration/lidar.md:147
+#: src/guides/sensor-integration/lidar.md:187
+#: src/guides/sensor-integration/lidar.md:193
+#: src/guides/sensor-integration/adding-sensor.md:58
+#: src/guides/sensor-integration/troubleshooting.md:130
+msgid "roll"
+msgstr "橫滾"
+
+#: src/guides/sensor-integration/lidar.md:39
+msgid ""
+"# 180° flip\n"
+"  pitch"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:40
+msgid ""
+"# -90° rotation\n"
+"  yaw"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:44
+msgid ""
+"See [Integration Walkthrough](./integration-walkthrough.md) for detailed "
+"explanation."
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:46
+#: src/guides/sensor-integration/lidar.md:92
+#: src/guides/sensor-integration/lidar.md:152
+#: src/guides/sensor-integration/camera.md:31
+#: src/guides/sensor-integration/imu.md:31
+#: src/guides/sensor-integration/gnss.md:41
+msgid "Driver Package"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:48
+msgid ""
+"**Location**: `src/sensor_component/external/seyond_ros_driver/` **Point "
+"Format**: PointXYZIRC (Autoware-compatible)"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:51
+#: src/guides/sensor-integration/lidar.md:108
+#: src/guides/sensor-integration/lidar.md:157
+#: src/guides/sensor-integration/camera.md:126
+#: src/guides/sensor-integration/camera.md:179
+#: src/guides/sensor-integration/imu.md:55
+msgid "Test Standalone"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:57
+#: src/guides/sensor-integration/lidar.md:112
+#: src/guides/sensor-integration/lidar.md:163
+#: src/guides/sensor-integration/gnss.md:36
+#: src/guides/sensor-integration/gnss.md:182
+msgid "# Verify\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:59
+msgid "# ~10 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:64
+msgid ""
+"**No data**: Check `ping 172.168.1.10` succeeds **Wrong orientation**: "
+"Verify roll=3.14159, pitch=-1.5708 in calibration"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:71
+msgid ""
+"**LiDAR IP**: 192.168.1.201 (factory default) **Jetson IP**: 192.168.1.100/24"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:75
+#: src/guides/sensor-integration/lidar.md:134
+msgid "# Configure Jetson\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:82
+#: src/guides/sensor-integration/lidar.md:142
+msgid "Coordinate System"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:84
+#: src/guides/sensor-integration/lidar.md:144
+msgid "**Standard ROS coordinates** - No rotation needed:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:86
+#: src/guides/sensor-integration/lidar.md:190
+msgid "velodyne_link"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:88
+#: src/guides/sensor-integration/lidar.md:148
+#: src/guides/sensor-integration/lidar.md:188
+#: src/guides/sensor-integration/lidar.md:194
+#: src/guides/sensor-integration/troubleshooting.md:131
+msgid "pitch"
+msgstr "俯仰"
+
+#: src/guides/sensor-integration/lidar.md:89
+#: src/guides/sensor-integration/lidar.md:149
+#: src/guides/sensor-integration/adding-sensor.md:60
+#: src/guides/sensor-integration/troubleshooting.md:132
+msgid "yaw"
+msgstr "偏航"
+
+#: src/guides/sensor-integration/lidar.md:94
+msgid ""
+"**Location**: `src/sensor_component/external/velodyne/` **Installation**: "
+"`sudo apt install ros-humble-velodyne` **Point Format**: PointXYZIR "
+"(standard Velodyne)"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:98
+msgid "Advanced: Dual Return Mode"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:100
+msgid "For better performance in rain/fog:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:104
+msgid "rpm"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:105
+msgid "return_type"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:105
+msgid "\"dual\"  # Both strongest and last returns\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:114
+msgid "# ~10-20 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:119
+msgid "**Packet loss**: Increase UDP buffer size:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:124
+msgid "**Gaps in scan**: Configure CycloneDDS buffers (see Installation Guide)"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:130
+msgid "**LiDAR IP**: 192.168.26.26 (fixed) **Jetson IP**: 192.168.26.1/24"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:146
+msgid "bf_lidar_link"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:154
+msgid ""
+"**Location**: `src/sensor_component/external/ros2_blickfeld_driver_src-"
+"v1.5.5/` **Requires**: Blickfeld Scanner Library 2.20.6-newslab1 (install "
+"via `just blickfeld`)"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:170
+msgid "**Connection failed**: Verify Scanner Library installed:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:175
+msgid "**EULA error**: Run `just blickfeld` to accept license"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:177
+msgid "Multi-LiDAR Setup"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:179
+msgid "Combine multiple LiDARs for increased coverage:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:182
+msgid ""
+"# sensor_kit_calibration.yaml\n"
+"sensor_kit_base_link"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:184
+msgid ""
+"# Front-facing\n"
+"    x"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:190
+msgid ""
+"# Top 360°\n"
+"    x"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:197
+msgid "Configure fusion in `pointcloud_preprocessor.launch.py`:"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:199
+msgid "\"input_topics\""
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:201
+msgid "\"/sensing/lidar/velodyne/points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:205
+#: src/guides/sensor-integration/camera.md:189
+#: src/guides/sensor-integration/imu.md:160
+#: src/guides/sensor-integration/gnss.md:211
+msgid "Quick Reference"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:208
+msgid "# Network tests\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:211
+msgid "# Blickfeld\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:212
+#: src/guides/sensor-integration/camera.md:196
+msgid "# Topic verification\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:216
+msgid "# TF verification\n"
+msgstr ""
+
+#: src/guides/sensor-integration/lidar.md:219
+msgid "# Network monitoring\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:3
+msgid "Configuration details for supported camera models."
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:7
+msgid "Resolution"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:7
+msgid "Frame Rate"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:7
+#: src/guides/sensor-integration/imu.md:7
+msgid "Features"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "**ZED X Mini**"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "Stereo"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "1920×1200"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "15-60 FPS"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "Depth, IMU, AI Detection"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:9
+msgid "`camera_model:=zedxm`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "**USB Camera**"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "Monocular"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "Varies"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "30 FPS"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "Basic imaging"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:10
+msgid "`camera_model:=usb`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:16
+msgid ""
+"**Hardware**: NVIDIA Jetson with ZED Link Duo capture card (GMSL connection) "
+"**Software**: ZED SDK 5.1.2 (see Installation Guide)"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:19
+msgid "Connection"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:25
+msgid "Verify detection:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:27
+msgid "# Check ZED Link card\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:28
+msgid "# Test camera with GUI\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:33
+msgid ""
+"**Location**: `src/sensor_component/external/zed-ros2-wrapper/` **Package**: "
+"`zed_components` (composable node architecture) **Plugin**: `stereolabs::"
+"ZedCamera`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:37
+msgid "Special: Namespace Workaround"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:39
+msgid ""
+"ZED Python launch file doesn't respect XML namespaces. **Solution**: Load "
+"composable node directly in XML."
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:41
+msgid "**Correct configuration**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:43
+msgid "<!-- Container with ABSOLUTE namespace -->"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:45
+msgid "\"rclcpp_components\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:46
+msgid "\"component_container_isolated\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:47
+msgid "\"zed_container\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:48
+msgid "\"/sensing/camera/zedxm\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:48
+msgid "<!-- Starts with / -->"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:50
+msgid "<!-- Load composable node -->"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:52
+msgid "\"/sensing/camera/zedxm/zed_container\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:53
+msgid "\"zed_components\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:53
+msgid "\"stereolabs::ZedCamera\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:57
+msgid "This creates topics at `/sensing/camera/zedxm/*` correctly."
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:59
+msgid "Built-in IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:61
+msgid "ZED has integrated 6-axis IMU (400 Hz, factory-calibrated)."
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:63
+msgid "**Enable in ZED config**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:65
+#: src/guides/sensor-integration/imu.md:102
+#: src/guides/sensor-integration/troubleshooting.md:427
+msgid "sensors.sensors_image_sync"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:65
+#: src/guides/sensor-integration/troubleshooting.md:428
+msgid "sensors.publish_imu_tf"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:69
+msgid "**IMU relay pattern**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:76
+msgid "Relay configuration:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:78
+#: src/guides/sensor-integration/imu.md:109
+msgid "\"topic_tools\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:78
+#: src/guides/sensor-integration/imu.md:109
+msgid "\"relay\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:78
+#: src/guides/sensor-integration/imu.md:109
+msgid "\"zed_imu_relay\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:79
+#: src/guides/sensor-integration/imu.md:110
+msgid "\"/sensing/camera/zedxm/imu/data\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:79
+#: src/guides/sensor-integration/imu.md:110
+msgid "\"/sensing/imu/zed/imu_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:83
+msgid "Object Detection"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:85
+msgid ""
+"ZED SDK includes AI-based object detection (persons, vehicles, animals)."
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:87
+msgid "**Enable**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:89
+msgid "\"object_detection.od_enabled\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:89
+msgid "\"true\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:90
+msgid "\"object_detection.model\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:90
+msgid "\"MULTI_CLASS_BOX_MEDIUM\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:91
+msgid "\"object_detection.confidence_threshold\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:91
+msgid "\"50.0\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:94
+msgid "**Output**: `/sensing/camera/zedxm/obj_det/objects` (ZED format)"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:96
+msgid "**Disable for performance**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:98
+msgid "\"enable_zed_object_detection:=false\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:101
+msgid "Configuration Options"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:103
+msgid "**Depth Mode**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:105
+msgid "depth.depth_mode"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:106
+msgid ""
+"NEURAL        # Best quality (GPU-intensive)\n"
+"  ULTRA         # High quality\n"
+"  QUALITY       # Standard\n"
+"  PERFORMANCE   # Fast\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:112
+msgid "**Frame Rate**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:114
+#: src/guides/sensor-integration/troubleshooting.md:245
+msgid "general.grab_frame_rate"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:114
+msgid "# or 30, 60\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:117
+msgid "**Resolution**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:119
+msgid "general.grab_resolution"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:120
+msgid ""
+"HD2K    # 2208×1242 (highest)\n"
+"  HD1080  # 1920×1080\n"
+"  HD720   # 1280×720\n"
+"  VGA     # 672×376 (lowest latency)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:129
+msgid "# ZED SDK test\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:131
+msgid "# ROS 2 wrapper test\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:134
+msgid "# Verify topics\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:137
+msgid "# ~15-30 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:142
+msgid "**Camera not detected**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:143
+msgid "Check `lspci | grep NVIDIA` shows ZED Link"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:144
+msgid "Check `/usr/local/zed/settings/version.txt` shows 5.1.2"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:145
+msgid "Power cycle camera and Jetson"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:147
+msgid "**Wrong namespace**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:148
+msgid "Use composable node loading (not Python launch file)"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:149
+msgid "Use ABSOLUTE namespace `/sensing/camera/zedxm`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:151
+msgid "**VNC issues**:"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:152
+msgid "Use TurboVNC + VirtualGL for hardware acceleration"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:153
+msgid "Standard VNC doesn't support GPU"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:155
+msgid "USB Cameras"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:157
+#: src/guides/sensor-integration/imu.md:86
+#: src/guides/sensor-integration/gnss.md:17
+#: src/guides/sensor-integration/gnss.md:118
+msgid "Hardware"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:159
+msgid "Standard USB webcams (UVC-compatible)"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:160
+msgid "Connected via USB to Jetson"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:161
+msgid "Detected as `/dev/video*`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:163
+msgid "Driver"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:165
+msgid ""
+"**Package**: `v4l2_camera` **Installation**: `sudo apt install ros-humble-"
+"v4l2-camera`"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:168
+#: src/guides/sensor-integration/imu.md:35
+msgid "Configuration"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:171
+msgid "\"v4l2_camera\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:171
+msgid "\"v4l2_camera_node\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:171
+msgid "\"usb_camera\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:172
+msgid "\"video_device\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:172
+msgid "\"/dev/video0\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:173
+msgid "\"image_size\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:173
+msgid "\"[640, 480]\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:174
+msgid "\"pixel_format\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:174
+msgid "\"YUYV\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:175
+msgid "\"camera_frame_id\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:175
+msgid "\"usb_camera_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:182
+msgid "# List available cameras\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:184
+msgid "# Test camera\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:192
+msgid "# ZED SDK tools\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:193
+msgid "# Live view\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:194
+msgid "# Calibration tool\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:195
+msgid "# Check SDK version\n"
+msgstr ""
+
+#: src/guides/sensor-integration/camera.md:201
+msgid "# USB camera\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:3
+msgid "Configuration details for supported IMU sources."
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:5
+msgid "Supported IMUs"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:7
+msgid "Update Rate"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:9
+msgid "**MPU9250**"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:9
+msgid "9-axis (external)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:9
+msgid "~100 Hz"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:9
+msgid "Accel, Gyro, Magnetometer"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:9
+msgid "`imu_source:=mpu9250`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:10
+msgid "**ZED Built-in**"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:10
+msgid "6-axis (integrated)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:10
+msgid "400 Hz"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:10
+msgid "Accel, Gyro, Camera-synced"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:10
+msgid "`imu_source:=zed`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:12
+msgid ""
+"**Recommendation**: Use ZED built-in IMU when using ZED camera (factory-"
+"calibrated, synchronized, more stable)."
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:14
+#: src/reference/hardware/wiring-diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:236
+msgid "MPU9250"
+msgstr "MPU9250"
+
+#: src/guides/sensor-integration/imu.md:16
+msgid "Hardware Connection"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:18
+msgid "**Interface**: I2C Bus 1 on Jetson"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:29
+msgid "**I2C Address**: 0x68 (default) or 0x69 (if AD0 pin high)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:33
+msgid "**Location**: `src/sensor_component/external/ros2_mpu9250_driver/`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:37
+msgid "**I2C settings**:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:41
+msgid "i2c_bus"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:42
+msgid "i2c_address"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:43
+#: src/guides/sensor-integration/imu.md:153
+#: src/guides/sensor-integration/gnss.md:171
+#: src/guides/sensor-integration/adding-sensor.md:106
+msgid "frame_id"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:43
+msgid "\"mpu9250_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:46
+msgid "**Calibration** (for accurate measurements):"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:50
+msgid "accel_bias"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:51
+msgid "gyro_bias"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:52
+msgid "mag_bias"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:58
+msgid "# Check I2C device detected\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:59
+msgid "# Should show 68 at address 0x68\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:61
+msgid "# Build and launch driver\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:66
+msgid "# Verify IMU data\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:68
+msgid "# ~100 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:74
+msgid "**Device not detected**:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:75
+msgid "Check wiring (SDA, SCL, VCC, GND)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:76
+msgid "Verify I2C enabled: `ls /dev/i2c-*`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:77
+msgid "Try alternate address 0x69"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:79
+msgid "**Noisy data**:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:80
+msgid "Calibrate IMU (record bias values)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:81
+msgid "Secure mounting (minimize vibration)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:82
+msgid "Add low-pass filter in software"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:84
+msgid "ZED Built-in IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:88
+msgid ""
+"**Integrated** in ZED X Mini camera **Specifications**: BMI088 (or similar), "
+"400 Hz, ±16g accelerometer, ±2000°/s gyroscope"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:91
+msgid "How It Works"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:99
+msgid "Enable in ZED Config"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:102
+msgid ""
+"# Sync with camera frames\n"
+"sensors.publish_imu_tf"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:103
+msgid "# Publish TF transform\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:106
+msgid "IMU Relay Configuration"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:114
+msgid "Advantages"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:116
+msgid "**Factory-calibrated**: No manual calibration needed"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:117
+msgid ""
+"**Synchronized**: Hardware-synced with camera frames (precise timestamps)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:118
+msgid "**Higher rate**: 400 Hz vs 100 Hz (MPU9250)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:119
+msgid "**More stable**: Professional-grade sensor, lower drift"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:121
+#: src/guides/sensor-integration/gnss.md:174
+msgid "Test"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:124
+msgid "# Launch ZED camera\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:126
+msgid "# Verify IMU topic\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:128
+msgid "# Expected: /zedxm/zed_node/imu/data\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:130
+msgid "# Check rate\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:132
+msgid "# ~400 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:137
+msgid "**No IMU data**:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:138
+msgid "Check `sensors.sensors_image_sync: true` in ZED config"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:139
+msgid "Verify ZED SDK version supports IMU (5.1.2+)"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:140
+msgid "Not all ZED models have built-in IMU"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:142
+msgid "**Relay not working**:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:143
+msgid "Check relay node running: `ros2 node list | grep relay`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:144
+msgid "Verify topic exists: `ros2 topic list | grep imu`"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:146
+msgid "IMU Data Format"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:148
+msgid "Both IMUs publish standard `sensor_msgs/Imu`:"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:151
+msgid "header"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:152
+msgid "stamp"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:152
+msgid "sec"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:152
+msgid "nanosec"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:153
+msgid "\"mpu9250_link\" or \"zed_imu_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:154
+msgid "orientation"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:155
+msgid "w"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:155
+msgid ""
+"# Quaternion\n"
+"angular_velocity"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:156
+msgid ""
+"# rad/s\n"
+"linear_acceleration"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:157
+msgid "# m/s²\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:163
+msgid "# MPU9250\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:164
+msgid "# Check I2C device\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:166
+msgid "# ZED IMU\n"
+msgstr ""
+
+#: src/guides/sensor-integration/imu.md:170
+msgid "# Verify relay\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:3
+msgid "Configuration details for supported GNSS receivers."
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:5
+msgid "Supported Receivers"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:7
+msgid "Accuracy"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:7
+msgid "RTK Support"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:7 src/reference/overview.md:29
+msgid "Interface"
+msgstr "介臉部"
+
+#: src/guides/sensor-integration/gnss.md:9
+msgid "**u-blox ZED-F9R**"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:9
+#: src/guides/sensor-integration/gnss.md:11
+msgid "Multi-band GNSS"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:9
+#: src/guides/sensor-integration/gnss.md:11
+msgid "~2cm (RTK)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:9
+#: src/guides/sensor-integration/gnss.md:11
+msgid "Yes"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:9 src/reference/overview.md:32
+msgid "USB"
+msgstr "USB"
+
+#: src/guides/sensor-integration/gnss.md:9
+msgid "`gnss_receiver:=ublox`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:10
+msgid "**Garmin GPS 18x**"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:10
+msgid "Standard GPS"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:10
+msgid "~3-5m"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:10
+msgid "USB (FTDI)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:10
+msgid "`gnss_receiver:=garmin`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:11
+msgid "**Septentrio**"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:11
+msgid "USB/Serial"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:11
+msgid "`gnss_receiver:=septentrio`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:13
+msgid ""
+"**Recommendation**: Use u-blox ZED-F9R for outdoor precision positioning "
+"with RTK."
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:15
+msgid "u-blox ZED-F9R (RTK)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:19
+msgid ""
+"**Board**: SimpleRTK2B Fusion (u-blox ZED-F9R module) **Antenna**: Must have "
+"clear sky view (mount on roof/highest point) **Connection**: USB to Jetson"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:23
+msgid "USB Device Setup"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:25
+msgid "Create udev rule for consistent device naming:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:27
+msgid "**File**: `/etc/udev/rules.d/99-ublox-gps.rules`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:29
+msgid "=\"tty\","
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:29
+msgid "=\"1546\","
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:29
+msgid "=\"01a9\","
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:29
+msgid "\"ublox-gps\","
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:29
+msgid "\"0666\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:32
+msgid "Apply rules:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:38
+msgid "# Should link to /dev/ttyACMx\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:43
+msgid ""
+"**Package**: `ublox_gps` (ROS 2 Humble) **Installation**: `sudo apt install "
+"ros-humble-ublox-gps`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:46
+msgid "RTK with NTRIP"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:48
+msgid ""
+"RTK (Real-Time Kinematic) achieves ~2cm accuracy using correction data from "
+"a base station."
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:50
+msgid "**NTRIP** streams corrections over internet:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:55
+msgid "**Default NTRIP Service**: e-GNSS Taiwan VRS"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:56
+msgid "Server: 210.241.63.193:81"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:57
+msgid "Mountpoint: Taiwan"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:58
+msgid "Coverage: Taiwan region"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:60
+msgid "**Configuration**: `ntrip.launch.xml`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:62
+msgid "\"ntrip_client\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:62
+msgid "\"ntrip_client_node\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:63
+msgid "\"host\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:63
+msgid "\"210.241.63.193\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:64
+msgid "\"port\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:64
+msgid "\"81\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:65
+msgid "\"mountpoint\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:65
+msgid "\"Taiwan\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:66
+msgid "\"username\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:66
+msgid "\"[username]\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:67
+msgid "\"password\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:67
+msgid "\"[password]\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:68
+msgid "\"/ntrip/rtcm\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:68
+msgid "\"/sensing/gnss/ntrip/rtcm\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:72
+msgid "Enable RTK"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:75
+msgid "# Launch with NTRIP corrections\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:76
+msgid "\"gnss_receiver:=ublox use_ntrip:=true\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:79
+msgid "Monitor RTK Status"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:81
+msgid "**Check RTCM corrections**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:83
+msgid "# ~1 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:86
+msgid "**Check fix quality**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:88
+msgid "# Look for status.status: 2 (RTK fix) or 1 (GNSS fix)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:92
+msgid "**Fix status values**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:93
+msgid "`-1`: No fix"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:94
+msgid "`0`: GPS fix"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:95
+msgid "`1`: DGPS fix"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:96
+msgid "`2`: RTK fix (best, ~2cm accuracy)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:100
+msgid "**No GNSS fix**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:101
+msgid "Ensure clear sky view (outdoor, no obstructions)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:102
+msgid "Wait 1-5 minutes for satellite acquisition"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:103
+msgid "Check antenna connection"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:105
+msgid "**No RTK fix**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:106
+msgid "Verify RTCM topic: `ros2 topic hz /sensing/gnss/ntrip/rtcm`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:107
+msgid "Check internet connection (NTRIP requires network)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:108
+msgid "Verify NTRIP credentials in `ntrip.launch.xml`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:109
+msgid "Wait 1-10 minutes for RTK convergence"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:111
+msgid "**Poor accuracy**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:112
+msgid "Improve antenna placement (higher, less obstruction)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:113
+msgid "Reduce multipath (avoid reflective surfaces)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:114
+msgid "Test in open area (NTU COSS courtyard recommended)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:116
+msgid "Garmin GPS 18x"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:120
+msgid ""
+"**Receiver**: Garmin GPS 18x (standard GPS, ~3-5m accuracy) **Update Rate**: "
+"5 Hz **Interface**: USB (FTDI serial converter) **Output**: NMEA 0183 "
+"sentences"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:125
+msgid "USB Detection"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:128
+msgid "# Check device detected\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:129
+msgid "# Should show: FTDI USB Serial Device converter attached to ttyUSB0\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:133
+msgid "Driver: gpsd"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:135
+msgid "**Installation**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:140
+msgid "**Start daemon**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:145
+msgid "**Verify signal**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:147
+msgid "# Terminal GPS viewer\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:149
+msgid "# Graphical GPS viewer\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:152
+msgid "# Wait for \"3D Fix\" (takes 1-5 minutes on cold start)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:156
+msgid "ROS 2 Integration"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:158
+msgid "**Configuration**: `gnss.launch.xml`"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:160
+msgid "\"$(find-pkg-share gpsd_client)/launch/gpsd_client-launch.py\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:161
+msgid "\"config_file\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:161
+msgid "\"$(find-pkg-share gpsd_client)/config/gpsd_client.yaml\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:165
+msgid "**gpsd client config**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:169
+msgid "\"localhost\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:170
+msgid "port"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:171
+msgid "\"gnss_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:177
+msgid "# Start gpsd\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:179
+msgid "# Launch ROS 2 client\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:185
+msgid "# ~5 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:190
+msgid "**No GPS signal**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:191
+msgid "Move to open area (clear sky view)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:192
+msgid "Wait 5-10 minutes for cold start"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:193
+msgid "Check antenna cable connection"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:195
+msgid "**Device not found**:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:196
+msgid "Check `/dev/ttyUSB0` exists"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:197
+msgid "Try different USB port"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:198
+msgid "Verify USB cable provides power"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:200
+msgid "Indoor Operation (No GNSS)"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:202
+msgid "For indoor environments without satellite signal:"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:205
+msgid "# Disable GNSS, use NDT localization only\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:206
+msgid "\"use_gnss:=false\""
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:209
+msgid "Use RViz \"2D Pose Estimate\" tool to manually set initial position."
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:214
+msgid "# Launch commands\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:215
+msgid "\"gnss_receiver:=ublox use_ntrip:=true\"   # u-blox RTK\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:216
+msgid "\"gnss_receiver:=garmin\"                  # Garmin\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:217
+msgid "\"use_gnss:=false\"                        # Indoor (no GNSS)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:218
+msgid "# u-blox verification\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:222
+msgid "# RTK corrections\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:223
+msgid "# Garmin verification\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:225
+msgid "# Check GPS signal\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:227
+msgid "# Check fix quality\n"
+msgstr ""
+
+#: src/guides/sensor-integration/gnss.md:229
+msgid "# status.status: -1=no fix, 0=GPS, 1=DGPS, 2=RTK\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:1
+msgid "Adding a New Sensor"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:3
+msgid "Quick checklist for integrating a new sensor into AutoSDV."
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:5
+msgid "Before You Start"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:7
+msgid ""
+"**Understand the system first**: Read [Integration Walkthrough](./"
+"integration-walkthrough.md) to see how Robin-W LiDAR is integrated. This "
+"gives you the complete picture of how sensors work in AutoSDV."
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:9
+msgid "**Prerequisites**:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:10
+msgid "Physical sensor hardware"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:11
+msgid "Sensor specs (power, interface, data format)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:12
+msgid "ROS 2 driver package (vendor-provided or custom)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:14
+msgid "Integration Checklist"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:16
+msgid "1. Get the Driver Working"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:19
+msgid "# Add driver package to src/sensor_component/external/\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:26
+msgid "# Test independently\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:35
+msgid "✅ **Checkpoint**: Driver runs and publishes data"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:37
+msgid "2. Measure Physical Position"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:39
+msgid "Measure sensor position relative to `sensor_kit_base_link`:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:40
+msgid "X: forward/backward (meters)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:41
+msgid "Y: left/right (meters)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:42
+msgid "Z: up/down (meters)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:44
+msgid "Check if sensor uses non-standard coordinates (like Robin-W):"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:45
+msgid "Calculate rotation: roll, pitch, yaw (radians)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:46
+msgid ""
+"See [Integration Walkthrough](./integration-walkthrough.md#why-the-strange-"
+"rotation) for example"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:48
+msgid "3. Add to Calibration"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:54
+#: src/guides/sensor-integration/troubleshooting.md:126
+msgid "your_sensor_link"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:55
+msgid "# Your measured values\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:58
+msgid ""
+"# Rotation if needed\n"
+"    pitch"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:63
+msgid "4. Add to URDF"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:68
+msgid "<!-- Your Sensor -->"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:69
+#: src/guides/sensor-integration/adding-sensor.md:77
+#: src/guides/sensor-integration/adding-sensor.md:106
+msgid "\"your_sensor_link\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:71
+msgid "\"your_sensor_joint\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:73
+msgid "\"${calibration['sensor_kit_base_link']['your_sensor_link']['x']} ...\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:74
+msgid ""
+"\"${calibration['sensor_kit_base_link']['your_sensor_link']['roll']} ...\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:81
+msgid "5. Add to Launch File"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:83
+msgid ""
+"**File**: `src/sensor_kit/autosdv_sensor_kit_launch/launch/<sensor_type>."
+"launch.xml`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:86
+msgid "\"$(eval &quot;'$(var sensor_model)' == 'your_sensor'&quot;)\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:88
+msgid "<!-- Launch driver -->"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:89
+msgid "\"$(find-pkg-share your_driver)/launch/your_sensor.launch.py\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:90
+msgid "\"$(var sensor_model_param_path)/your_sensor.param.yaml\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:93
+msgid "<!-- Remap to Autoware standard -->"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:94
+msgid "\"/<driver_topic>\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:94
+msgid "\"/sensing/<type>/<name>/<data>\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:99
+msgid "6. Create Parameter File"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:101
+msgid ""
+"**File**: `src/param/autoware_individual_params/.../your_sensor.param.yaml`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:107
+msgid "# Add sensor-specific parameters\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:110
+msgid "7. Add Launch Argument"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:112
+msgid "**File**: `src/launcher/autosdv_launch/launch/autosdv.launch.yaml`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:116
+msgid "'sensor_model'"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:117
+msgid "'existing'"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:117
+msgid "'models'"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:117
+msgid "'your_sensor'"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:117
+msgid "# Add your sensor\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:121
+msgid "8. Test Integration"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:124
+msgid "# Rebuild\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:126
+msgid "# Launch with your sensor\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:128
+msgid "\"sensor_model:=your_sensor\""
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:129
+msgid "# Verify topic in Autoware namespace\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:136
+msgid "# Check your_sensor_link exists\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:137
+msgid "# Check transform values\n"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:142
+msgid ""
+"✅ **Checkpoint**: Sensor works in full AutoSDV system, data flows correctly"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:144
+#: src/reference/overview.md:97
+msgid "Common Issues"
+msgstr "常見問題"
+
+#: src/guides/sensor-integration/adding-sensor.md:146
+msgid "**Wrong orientation in RViz**:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:147
+msgid "Verify calibration rotation values (roll, pitch, yaw)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:148
+msgid "Check sensor coordinate system vs ROS standard"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:149
+msgid "See Robin-W example for coordinate transformation"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:151
+msgid "**Topic not found**:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:152
+msgid "Check `<remap>` in launch file"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:153
+msgid "Verify driver topic name matches"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:154
+msgid "Use absolute paths: `/sensing/...`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:156
+msgid "**TF transform missing**:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:157
+msgid "Rebuild after URDF changes: `make build`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:158
+msgid "Check URDF syntax: `check_urdf sensor_kit.urdf`"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:160
+msgid "**No data published**:"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:161
+msgid "Test driver standalone first"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:162
+msgid "Check network/USB connection"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:163
+msgid "Verify driver parameters"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:167
+msgid ""
+"**Sensor-specific guides**: [LiDAR](./lidar.md), [Camera](./camera.md), [IMU]"
+"(./imu.md), [GNSS](./gnss.md)"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:168
+msgid ""
+"**Troubleshooting**: Check logs in `play_log/latest/`, enable debug logging"
+msgstr ""
+
+#: src/guides/sensor-integration/adding-sensor.md:169
+msgid ""
+"**Documentation**: Document your sensor configuration for future reference"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:1
+msgid "Sensor Troubleshooting"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:3
+msgid ""
+"This guide provides solutions to common sensor integration issues in AutoSDV."
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:5
+msgid "Quick Diagnostic Commands"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:7
+msgid ""
+"Before diving into specific issues, run these commands to gather information:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:10
+msgid "# List all active topics\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:12
+msgid "# Check sensor topics specifically\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:15
+msgid "# View TF tree\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:19
+msgid "# Check node status\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:22
+msgid "# View logs with debug level\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:29
+msgid "General Issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:31
+msgid "No Sensor Data"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:33
+#: src/guides/sensor-integration/troubleshooting.md:94
+#: src/guides/sensor-integration/troubleshooting.md:154
+#: src/guides/sensor-integration/troubleshooting.md:197
+msgid "**Symptoms**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:34
+msgid "Topics exist but `ros2 topic echo` shows nothing"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:35
+msgid "`ros2 topic hz` shows 0 Hz"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:36
+msgid "Driver launches but no data published"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:38
+#: src/guides/sensor-integration/troubleshooting.md:99
+#: src/guides/sensor-integration/troubleshooting.md:159
+#: src/guides/sensor-integration/troubleshooting.md:203
+msgid "**Diagnostic Steps**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:40
+msgid "**Check physical connections**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:44
+msgid "# Should list your sensor\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:46
+#: src/guides/sensor-integration/troubleshooting.md:630
+msgid "# Serial devices\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:48
+msgid "# Should show device (e.g., /dev/ttyUSB0)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:50
+msgid "# Network devices\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:52
+msgid "# Verify Ethernet interface up\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:54
+msgid "# Test network sensors\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:56
+msgid "# Should respond with <5ms latency\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:59
+msgid "**Verify device permissions**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:61
+msgid "# Add user to dialout group (for serial)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:64
+msgid "# Add user to video group (for cameras)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:70
+msgid "**Check driver logs**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:72
+msgid "# Launch with debug logging\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:75
+msgid "# Or check specific node\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:79
+msgid "**Verify power**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:80
+msgid "Check sensor LED indicators"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:81
+msgid "Measure voltage with multimeter"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:82
+msgid "Ensure power supply has sufficient current"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:84
+msgid "**Solutions by Sensor Type**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:85
+msgid "**LiDAR**: Check network settings, IP configuration"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:86
+msgid "**Camera**: Verify ZED SDK installed, GMSL connection"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:87
+msgid "**IMU**: Check I2C bus, device address"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:88
+msgid "**GNSS**: Ensure clear sky view, wait for satellite acquisition"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:92
+msgid "Wrong Coordinate Frame / Sensor in Wrong Location"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:95
+msgid "Sensor data visible in RViz but in wrong position"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:96
+msgid "Point cloud upside down or rotated incorrectly"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:101
+msgid "**Verify TF transforms**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:103
+msgid "# Generate TF tree\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:107
+msgid "# Check specific transform\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:109
+msgid "# Compare output with calibration values\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:112
+msgid "**Check calibration file**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:114
+msgid "# View current calibration\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:117
+msgid "# Look for your sensor's x, y, z, roll, pitch, yaw values\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:120
+#: src/guides/sensor-integration/troubleshooting.md:174
+#: src/guides/sensor-integration/troubleshooting.md:233
+#: src/guides/sensor-integration/troubleshooting.md:273
+#: src/guides/sensor-integration/troubleshooting.md:308
+#: src/guides/sensor-integration/troubleshooting.md:327
+#: src/guides/sensor-integration/troubleshooting.md:387
+#: src/guides/sensor-integration/troubleshooting.md:415
+#: src/guides/sensor-integration/troubleshooting.md:424
+#: src/guides/sensor-integration/troubleshooting.md:445
+#: src/guides/sensor-integration/troubleshooting.md:455
+#: src/guides/sensor-integration/troubleshooting.md:471
+#: src/guides/sensor-integration/troubleshooting.md:503
+#: src/guides/sensor-integration/troubleshooting.md:521
+msgid "**Solutions**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:122
+msgid "**Fix calibration values**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:124
+msgid "# Edit: sensor_kit_calibration.yaml\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:127
+msgid "# Forward/backward (meters)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:128
+msgid "# Left/right (meters)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:129
+msgid "# Up/down (meters)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:130
+msgid "# Rotation around X-axis (radians)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:131
+msgid "# Rotation around Y-axis (radians)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:132
+msgid "# Rotation around Z-axis (radians)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:135
+msgid "**Understand coordinate systems**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:136
+msgid "**ROS Standard (REP-103)**: X=forward, Y=left, Z=up"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:137
+msgid "**Some sensors use different conventions** (see sensor guides)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:138
+msgid "Calculate rotation needed to align sensor → ROS standard"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:140
+msgid "**Iteratively adjust in RViz**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:141
+msgid "Launch system and view in RViz"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:142
+msgid "Adjust roll/pitch/yaw in calibration file"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:143
+msgid "Rebuild and relaunch to see changes"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:144
+msgid "Repeat until correct"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:146
+msgid "**Common Rotations**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:147
+msgid "**Robin-W LiDAR**: roll=3.14159, pitch=-1.5708, yaw=0.0"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:148
+msgid "**ZED Camera**: roll=0.0, pitch=0.0, yaw=0.0 (standard)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:152
+msgid "Topic Namespace Issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:155
+msgid "Topics appear in unexpected namespaces"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:156
+msgid "Cannot find sensor topics in `/sensing/`"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:157
+msgid "Topic remapping not working"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:161
+msgid "**Check actual topic names**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:163
+msgid "'(lidar|camera|imu|gnss)'"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:164
+msgid "# Compare with expected: /sensing/[type]/[name]/[data]\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:167
+msgid "**Verify launch file remapping**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:169
+msgid "# Check sensor kit launch files\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:171
+msgid "# Look for <remap> tags\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:176
+msgid "**Add or fix topic remapping**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:178
+msgid "<!-- In sensor kit launch file -->"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:179
+msgid "\"/driver_topic_name\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:179
+msgid "\"/sensing/lidar/sensor_name/points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:182
+msgid "**Use absolute topic paths**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:184
+msgid "<!-- Bad (relative) -->"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:185
+msgid "\"points\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:185
+msgid "\"points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:187
+msgid "<!-- Good (absolute) -->"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:188
+msgid "\"/sensor/points\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:188
+msgid "\"/sensing/lidar/sensor/points_raw\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:191
+msgid ""
+"**For ZED camera namespace issues**: Use composable node loading (see "
+"[Camera Sensors Guide](./camera-sensors.md#critical-namespace-handling))"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:195
+msgid "Performance Issues / High CPU Usage"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:198
+msgid "System lag or slow response"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:199
+msgid "High CPU usage (check with `htop`)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:200
+msgid "Low frame rate from sensors"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:201
+msgid "Dropped messages"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:205
+msgid "**Check topic bandwidth**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:207
+msgid "# Monitor data rate\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:214
+msgid "**Check CPU usage**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:216
+msgid "# Real-time process monitor\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:219
+msgid "# GPU usage (NVIDIA)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:223
+msgid "**Verify CycloneDDS configuration**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:225
+msgid "# Check kernel buffers\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:230
+msgid "# Should be configured per Installation Guide\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:235
+msgid "**Configure CycloneDDS buffers** (if not done):"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:241
+msgid "**Reduce sensor data rate**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:243
+msgid "# Edit sensor parameters\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:244
+msgid "# For cameras:\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:245
+msgid "# Reduce from 30\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:247
+msgid "# For LiDAR:\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:248
+msgid "downsample_factor"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:248
+msgid "# Reduce points by half\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:251
+msgid "**Disable heavy features**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:253
+msgid "# Disable ZED object detection\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:257
+msgid "**Use lightweight sensor suite**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:259
+msgid "# VLP-32C + ZED IMU only (no camera processing)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:265
+msgid "Sensor-Specific Issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:269
+msgid "No Point Cloud"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:271
+msgid "**Symptoms**: LiDAR driver launches but no points published"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:274
+msgid "**Check network connectivity** (Ethernet LiDARs):"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:277
+msgid "# Robin-W: 172.168.1.10\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:278
+msgid "# Velodyne: 192.168.1.201\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:279
+msgid "# Blickfeld: 192.168.26.26\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:282
+msgid "**Configure Jetson IP** on same subnet:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:284
+msgid "# For Robin-W (172.168.1.x)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:288
+msgid "# For Blickfeld (192.168.26.x)\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:293
+msgid "**Check firewall**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:295
+msgid "# Disable firewall temporarily for testing\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:298
+msgid "# Or allow specific ports\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:302
+msgid "TensorRT Compilation Takes Forever"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:304
+msgid "**Symptoms**: First launch takes 10-30 minutes with TensorRT messages"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:306
+msgid ""
+"**This is NORMAL** for first launch. TensorRT compiles models for your "
+"specific GPU."
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:309
+msgid "Be patient - only happens once"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:310
+msgid "Models cached in `~/.autoware/models/`"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:311
+msgid "Subsequent launches are fast"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:313
+msgid "Point Cloud in Wrong Orientation"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:315
+msgid ""
+"**Solution**: Check coordinate frame rotation (especially Robin-W, which "
+"requires roll=180°, pitch=-90°)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:317
+msgid ""
+"See [LiDAR Sensors - Coordinate Transformation](./lidar-sensors."
+"md#coordinate-transformation)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:321
+msgid "Camera (ZED)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:325
+msgid "**Symptoms**: ZED_Explorer shows \"No camera detected\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:328
+msgid "**Check GMSL connection**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:330
+msgid "# Verify ZED Link card\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:332
+msgid "# Should show ZED Link Duo\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:335
+msgid "**Power cycle camera**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:336
+msgid "Unplug camera"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:337
+msgid "Wait 10 seconds"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:338
+msgid "Reconnect"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:339
+msgid "Reboot Jetson"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:341
+msgid "**Verify ZED SDK installation**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:344
+msgid "# Should show 5.1.2\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:347
+msgid "**Check permissions**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:350
+msgid "# Log out and back in\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:353
+msgid "VNC/Remote Access Issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:355
+msgid "**Problem**: ZED camera doesn't work over standard VNC"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:357
+msgid "**Solution**: Use TurboVNC + VirtualGL for hardware acceleration"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:360
+msgid "# Install TurboVNC\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:362
+msgid "# Start VNC with VirtualGL\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:365
+msgid "# Launch apps with vglrun\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:371
+msgid "Namespace Problems"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:373
+msgid "**Problem**: Topics in wrong namespace, can't remap"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:375
+msgid "**Solution**: Use composable node loading instead of Python launch file"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:377
+msgid ""
+"See [Camera Sensors - Namespace Handling](./camera-sensors.md#critical-"
+"namespace-handling)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:383
+msgid "MPU9250 Not Detected"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:385
+msgid "**Symptoms**: i2cdetect doesn't show device"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:388
+msgid "**Check I2C bus**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:390
+msgid "# List I2C buses\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:393
+msgid "# Scan bus 1\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:395
+msgid "# Should show device at 0x68 or 0x69\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:398
+msgid "**Verify wiring**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:399
+msgid "VCC → 3.3V (not 5V!)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:400
+msgid "GND → GND"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:401
+msgid "SDA → Pin 3 (I2C1 SDA)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:402
+msgid "SCL → Pin 5 (I2C1 SCL)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:404
+msgid "**Check I2C address**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:406
+msgid "# Try alternate address\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:408
+msgid "# Look for 0x68 or 0x69\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:411
+msgid "Noisy IMU Data"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:413
+msgid "**Symptoms**: Large fluctuations, unstable orientation"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:416
+msgid ""
+"**Calibrate IMU**: See [IMU Sensors - Calibration](./imu-sensors."
+"md#calibration)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:417
+msgid "**Secure mounting**: Minimize vibration"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:418
+msgid "**Add software filtering**: Low-pass filter in driver config"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:420
+msgid "ZED IMU Not Publishing"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:422
+msgid "**Symptoms**: ZED camera works but no IMU topic"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:425
+msgid "**Enable IMU in ZED config**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:431
+msgid "**Check IMU relay node**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:434
+msgid "# Should show IMU relay node running\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:441
+msgid "No GNSS Fix"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:443
+msgid "**Symptoms**: Fix status remains -1 (no fix)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:446
+msgid "**Ensure clear sky view**: Move to open area (no buildings/trees)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:447
+msgid "**Wait for satellite acquisition**: Cold start takes 1-10 minutes"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:448
+msgid "**Check antenna connection**: Verify cable secure"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:449
+msgid "**Monitor satellite count**: Need minimum 4 satellites for 3D fix"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:451
+msgid "No RTK Fix (u-blox)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:453
+msgid "**Symptoms**: GPS fix but no RTK (status != 2)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:456
+msgid "**Check NTRIP connection**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:459
+msgid "# Should show ~1 Hz\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:462
+msgid "**Verify internet connection**: NTRIP requires network"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:463
+msgid ""
+"**Check credentials**: Edit `ntrip.launch.xml` with correct username/password"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:464
+msgid "**Wait for convergence**: RTK can take 1-10 minutes"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:465
+msgid "**Improve antenna placement**: Higher, less obstruction"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:467
+msgid "Garmin GPS Not Working"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:469
+msgid "**Symptoms**: No data from Garmin GPS 18x"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:472
+msgid "**Start gpsd**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:477
+msgid "**Check device**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:481
+msgid "# Should see NMEA sentences\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:484
+msgid "**Set baud rate**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:489
+msgid "**Test with cgps**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:492
+msgid "# Should show GPS data\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:499
+msgid "Package Not Found"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:501
+msgid "**Symptoms**: `colcon build` fails with \"package 'X' not found\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:504
+msgid "**Update rosdep**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:510
+msgid "**Check package.xml dependencies**: Ensure all `<depend>` tags correct"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:512
+msgid "**Install missing ROS packages**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:517
+msgid "CMake Errors"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:519
+msgid "**Symptoms**: CMake configuration fails"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:522
+msgid "**Clean build**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:528
+msgid "**Check CMakeLists.txt**: Verify syntax, dependencies"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:530
+msgid "**Source ROS 2**:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:539
+msgid "If issues persist after trying these solutions:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:541
+msgid "1. Enable Debug Logging"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:547
+msgid "2. Gather Diagnostic Information"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:550
+msgid "# System info\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:553
+msgid "# ROS info\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:557
+#: src/guides/sensor-integration/troubleshooting.md:591
+msgid "# Topic info\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:561
+msgid "# TF tree\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:566
+msgid "3. Check GitHub Issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:568
+msgid ""
+"Search [AutoSDV Issues](https://github.com/NEWSLabNTU/AutoSDV/issues) for "
+"similar problems"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:570
+msgid "4. Create Issue"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:572
+msgid "When reporting issues, include:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:573
+msgid "Hardware setup (sensor models, connections)"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:574
+msgid "Launch command used"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:575
+msgid "Full error messages/logs"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:576
+msgid "Output of diagnostic commands"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:577
+msgid "Steps to reproduce"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:581
+msgid "Useful Diagnostic Tools"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:583
+msgid "ROS 2 Tools"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:586
+msgid "# List nodes\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:588
+msgid "# Node info\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:597
+msgid "# Parameter inspection\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:601
+msgid "# Service calls\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:604
+msgid "\"{args}\""
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:605
+msgid "# TF debugging\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:611
+msgid "System Tools"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:614
+msgid "# Process monitoring\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:617
+msgid "# GPU monitoring\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:621
+msgid "# Network\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:634
+msgid "# I2C devices\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:638
+msgid "# Disk usage\n"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:646
+msgid "Related Guides"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:648
+msgid "For sensor-specific troubleshooting, see:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:649
+msgid ""
+"[LiDAR Sensors](./lidar-sensors.md) - Robin-W, Velodyne, Blickfeld issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:650
+msgid "[Camera Sensors](./camera-sensors.md) - ZED camera troubleshooting"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:651
+msgid "[IMU Sensors](./imu-sensors.md) - MPU9250 and ZED IMU issues"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:652
+msgid "[GNSS Sensors](./gnss-sensors.md) - GNSS and RTK troubleshooting"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:654
+msgid "For integration help:"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:655
+msgid ""
+"[Adding a New Sensor](./adding-new-sensor.md) - Step-by-step integration "
+"guide"
+msgstr ""
+
+#: src/guides/sensor-integration/troubleshooting.md:656
+msgid "[Overview](./overview.md) - Architecture and concepts"
+msgstr ""
+
 #: src/reference/overview.md:3
 msgid ""
 "This section provides detailed technical specifications, wiring diagrams, "
@@ -3552,552 +7655,530 @@ msgstr ""
 
 #: src/reference/overview.md:13
 msgid ""
-"[Sensor Components and Drivers](./software/sensor-components.md) - Low-level "
-"sensor integration"
+"[Sensor Integration](../guides/sensor-integration/overview.md) - Complete "
+"sensor integration guides"
 msgstr ""
 
 #: src/reference/overview.md:14
-msgid ""
-"[Sensor Kit Configuration](./software/sensor-kit.md) - ROS 2 sensor "
-"configuration details"
-msgstr ""
-
-#: src/reference/overview.md:15
 msgid ""
 "[Vehicle Interface](./software/vehicle-interface.md) - CAN bus and actuator "
 "control"
 msgstr ""
 
-#: src/reference/overview.md:17
+#: src/reference/overview.md:16
 msgid "Quick Reference Tables"
 msgstr "Quick 參考 Tables"
 
-#: src/reference/overview.md:19
+#: src/reference/overview.md:18
 msgid "Power Requirements"
 msgstr "電源 Requirements"
 
-#: src/reference/overview.md:20
+#: src/reference/overview.md:19
 msgid "Voltage"
 msgstr "電壓"
 
-#: src/reference/overview.md:20
+#: src/reference/overview.md:19
 msgid "Current (Typical)"
 msgstr "電串流 (Typical)"
 
-#: src/reference/overview.md:20
+#: src/reference/overview.md:19
 msgid "Current (Peak)"
 msgstr "電串流 (Peak)"
 
-#: src/reference/overview.md:22
+#: src/reference/overview.md:21
 msgid "Jetson AGX Orin"
 msgstr "Jetson AGX Orin"
 
-#: src/reference/overview.md:22
+#: src/reference/overview.md:21
 msgid "9-20V"
 msgstr "9-20V"
 
-#: src/reference/overview.md:22
+#: src/reference/overview.md:21
 msgid "2.5A @ 12V"
 msgstr "2.5A @ 12V"
 
-#: src/reference/overview.md:22
+#: src/reference/overview.md:21
 msgid "4A @ 12V"
 msgstr "4A @ 12V"
 
-#: src/reference/overview.md:23
+#: src/reference/overview.md:22
 msgid "9-32V"
 msgstr "9-32V"
 
-#: src/reference/overview.md:23 src/reference/overview.md:24
-#: src/reference/overview.md:25
+#: src/reference/overview.md:22 src/reference/overview.md:23
+#: src/reference/overview.md:24
 msgid "1A @ 12V"
 msgstr "1A @ 12V"
 
-#: src/reference/overview.md:23
+#: src/reference/overview.md:22
 msgid "1.5A @ 12V"
 msgstr "1.5A @ 12V"
 
-#: src/reference/overview.md:24
+#: src/reference/overview.md:23
 msgid "Robin-W LiDAR"
 msgstr "Robin-W 光達"
 
-#: src/reference/overview.md:24 src/reference/overview.md:25
+#: src/reference/overview.md:23 src/reference/overview.md:24
 msgid "12-24V"
 msgstr "12-24V"
 
-#: src/reference/overview.md:24 src/reference/overview.md:25
+#: src/reference/overview.md:23 src/reference/overview.md:24
 msgid "0.7A @ 12V"
 msgstr "0.7A @ 12V"
 
-#: src/reference/overview.md:25
+#: src/reference/overview.md:24
 msgid "Cube1 LiDAR"
 msgstr "Cube1 光達"
 
-#: src/reference/overview.md:26
-msgid "ZED X Mini"
-msgstr "ZED X Mini"
-
-#: src/reference/overview.md:26 src/reference/overview.md:27
+#: src/reference/overview.md:25 src/reference/overview.md:26
 msgid "12V"
 msgstr "12V"
 
-#: src/reference/overview.md:26
+#: src/reference/overview.md:25
 msgid "0.5A"
 msgstr "0.5A"
 
-#: src/reference/overview.md:26
+#: src/reference/overview.md:25
 msgid "0.8A"
 msgstr "0.8A"
 
-#: src/reference/overview.md:27
+#: src/reference/overview.md:26
 msgid "5G Module"
 msgstr "5G 模群組"
 
-#: src/reference/overview.md:27
+#: src/reference/overview.md:26
 msgid "1.2A"
 msgstr "1.2A"
 
-#: src/reference/overview.md:27
+#: src/reference/overview.md:26
 msgid "2A"
 msgstr "2A"
 
-#: src/reference/overview.md:29
+#: src/reference/overview.md:28
 msgid "Communication Interfaces"
 msgstr "通訊 Interfaces"
 
-#: src/reference/overview.md:30
-msgid "Interface"
-msgstr "介臉部"
-
-#: src/reference/overview.md:30
+#: src/reference/overview.md:29
 msgid "Purpose"
 msgstr "用途"
 
-#: src/reference/overview.md:30
+#: src/reference/overview.md:29
 msgid "Protocol"
 msgstr "協定"
 
-#: src/reference/overview.md:30
+#: src/reference/overview.md:29
 msgid "Bandwidth"
 msgstr "頻寬"
 
-#: src/reference/overview.md:32
+#: src/reference/overview.md:31
 msgid "Ethernet (GbE)"
 msgstr "乙太網路 (GbE)"
 
-#: src/reference/overview.md:32
+#: src/reference/overview.md:31
 msgid "LiDAR data"
 msgstr "光達 資料"
 
-#: src/reference/overview.md:32
+#: src/reference/overview.md:31
 msgid "UDP"
 msgstr "UDP"
 
-#: src/reference/overview.md:32
+#: src/reference/overview.md:31
 msgid "1 Gbps"
 msgstr "1 Gbps"
 
-#: src/reference/overview.md:33
+#: src/reference/overview.md:32
 msgid "USB 3.0"
 msgstr "USB 3.0"
 
-#: src/reference/overview.md:33
+#: src/reference/overview.md:32
 msgid "Camera data"
 msgstr "相機 資料"
 
-#: src/reference/overview.md:33
-msgid "USB"
-msgstr "USB"
-
-#: src/reference/overview.md:33
+#: src/reference/overview.md:32
 msgid "5 Gbps"
 msgstr "5 Gbps"
 
-#: src/reference/overview.md:34
+#: src/reference/overview.md:33
 msgid "CAN Bus"
 msgstr "CAN Bus"
 
-#: src/reference/overview.md:34
+#: src/reference/overview.md:33
 msgid "Vehicle control"
 msgstr "車輛 控制"
 
-#: src/reference/overview.md:34
+#: src/reference/overview.md:33
 msgid "CAN 2.0B"
 msgstr "CAN 2.0B"
 
-#: src/reference/overview.md:34
+#: src/reference/overview.md:33
 msgid "1 Mbps"
 msgstr "1 Mbps"
 
-#: src/reference/overview.md:35
+#: src/reference/overview.md:34
 msgid "I2C"
 msgstr "I2C"
 
-#: src/reference/overview.md:35
+#: src/reference/overview.md:34
 msgid "Sensors"
 msgstr ""
 
-#: src/reference/overview.md:35
+#: src/reference/overview.md:34
 msgid "400 kbps"
 msgstr "400 kbps"
 
-#: src/reference/overview.md:36
+#: src/reference/overview.md:35
 msgid "UART"
 msgstr "UART"
 
-#: src/reference/overview.md:36
+#: src/reference/overview.md:35
 msgid "GPS/IMU"
 msgstr "GPS/慣性測量單位"
 
-#: src/reference/overview.md:36
+#: src/reference/overview.md:35
 msgid "Serial"
 msgstr "Serial"
 
-#: src/reference/overview.md:36
+#: src/reference/overview.md:35
 msgid "115200 baud"
 msgstr "115200 baud"
 
-#: src/reference/overview.md:38
+#: src/reference/overview.md:37
 msgid "Environmental Specifications"
 msgstr "環境 Specifications"
 
-#: src/reference/overview.md:39
+#: src/reference/overview.md:38
 msgid "Parameter"
 msgstr "參數"
 
-#: src/reference/overview.md:39
+#: src/reference/overview.md:38
 msgid "Operating Range"
 msgstr "Operating 範圍"
 
-#: src/reference/overview.md:39
+#: src/reference/overview.md:38
 msgid "Storage Range"
 msgstr "Storage 範圍"
 
-#: src/reference/overview.md:41
+#: src/reference/overview.md:40
 msgid "Temperature"
 msgstr "溫度"
 
-#: src/reference/overview.md:41
+#: src/reference/overview.md:40
 msgid "\\-10°C to +50°C"
 msgstr ""
 
-#: src/reference/overview.md:41
+#: src/reference/overview.md:40
 msgid "\\-20°C to +60°C"
 msgstr ""
 
-#: src/reference/overview.md:42
+#: src/reference/overview.md:41
 msgid "Humidity"
 msgstr "濕度"
 
-#: src/reference/overview.md:42
+#: src/reference/overview.md:41
 msgid "10% to 90% RH"
 msgstr ""
 
-#: src/reference/overview.md:42
+#: src/reference/overview.md:41
 msgid "5% to 95% RH"
 msgstr ""
 
-#: src/reference/overview.md:43
+#: src/reference/overview.md:42
 msgid "Vibration"
 msgstr "振動"
 
-#: src/reference/overview.md:43
+#: src/reference/overview.md:42
 msgid "2G RMS"
 msgstr "2G RMS"
 
-#: src/reference/overview.md:43
+#: src/reference/overview.md:42
 msgid "5G RMS"
 msgstr "5G RMS"
 
-#: src/reference/overview.md:44
+#: src/reference/overview.md:43
 msgid "Shock"
 msgstr "震動"
 
-#: src/reference/overview.md:44
+#: src/reference/overview.md:43
 msgid "15G peak"
 msgstr "15G peak"
 
-#: src/reference/overview.md:44
+#: src/reference/overview.md:43
 msgid "30G peak"
 msgstr "30G peak"
 
-#: src/reference/overview.md:45
+#: src/reference/overview.md:44
 msgid "Ingress Protection"
 msgstr "防護等級"
 
-#: src/reference/overview.md:45
+#: src/reference/overview.md:44
 msgid "IP54 (with enclosure)"
 msgstr ""
 
-#: src/reference/overview.md:47
+#: src/reference/overview.md:46
 msgid "System Architecture"
 msgstr "系統 架構"
 
-#: src/reference/overview.md:49
+#: src/reference/overview.md:48
 msgid "Data Flow"
 msgstr "資料 Flow"
 
-#: src/reference/overview.md:58
+#: src/reference/overview.md:57
 msgid "Software Stack"
 msgstr "軟體 Stack"
 
-#: src/reference/overview.md:73
+#: src/reference/overview.md:72
 msgid "Maintenance Schedule"
 msgstr "Maintenance 排程"
 
-#: src/reference/overview.md:75
+#: src/reference/overview.md:74
 msgid "Daily Checks"
 msgstr "每日檢查"
 
-#: src/reference/overview.md:76
+#: src/reference/overview.md:75
 msgid "Visual inspection of components"
 msgstr "目視檢查 的 components"
 
-#: src/reference/overview.md:77
+#: src/reference/overview.md:76
 msgid "Battery voltage check"
 msgstr "Battery 電壓 檢查"
 
-#: src/reference/overview.md:78
+#: src/reference/overview.md:77
 msgid "Sensor lens cleaning"
 msgstr "感測器 lens cleaning"
 
-#: src/reference/overview.md:80
+#: src/reference/overview.md:79
 msgid "Weekly Maintenance"
 msgstr "每週維護"
 
-#: src/reference/overview.md:81
+#: src/reference/overview.md:80
 msgid "Connector inspection"
 msgstr "串連器檢查"
 
-#: src/reference/overview.md:82
+#: src/reference/overview.md:81
 msgid "Wheel bearing check"
 msgstr "Wheel bearing 檢查"
 
-#: src/reference/overview.md:83
+#: src/reference/overview.md:82
 msgid "Software updates"
 msgstr "軟體 updates"
 
-#: src/reference/overview.md:85
+#: src/reference/overview.md:84
 msgid "Monthly Service"
 msgstr "Monthly 服務"
 
-#: src/reference/overview.md:86
+#: src/reference/overview.md:85
 msgid "Full system diagnostic"
 msgstr "Full 系統 diagnostic"
 
-#: src/reference/overview.md:87
+#: src/reference/overview.md:86
 msgid "Calibration verification"
 msgstr "校正 verification"
 
-#: src/reference/overview.md:88
+#: src/reference/overview.md:87
 msgid "Performance benchmarking"
 msgstr "效能 benchmarking"
 
-#: src/reference/overview.md:90
+#: src/reference/overview.md:89
 msgid "Annual Overhaul"
 msgstr "年度檢修"
 
-#: src/reference/overview.md:91
+#: src/reference/overview.md:90
 msgid "Complete disassembly and inspection"
 msgstr "完成 disassembly 和 inspection"
 
-#: src/reference/overview.md:92
+#: src/reference/overview.md:91
 msgid "Bearing replacement (if mechanical LiDAR)"
 msgstr "Bearing replacement (if mechanical 光達)"
 
-#: src/reference/overview.md:93
+#: src/reference/overview.md:92
 msgid "Sensor recalibration"
 msgstr "感測器 recalibration"
 
-#: src/reference/overview.md:94
+#: src/reference/overview.md:93
 msgid "Structural integrity check"
 msgstr "Structural integrity 檢查"
 
-#: src/reference/overview.md:96
+#: src/reference/overview.md:95
 msgid "Troubleshooting Quick Reference"
 msgstr "Troubleshooting Quick 參考"
 
 #: src/reference/overview.md:98
-msgid "Common Issues"
-msgstr "常見問題"
-
-#: src/reference/overview.md:99
 msgid "Symptom"
 msgstr "症狀"
 
-#: src/reference/overview.md:99
+#: src/reference/overview.md:98
 msgid "Likely Cause"
 msgstr "可能原因"
 
-#: src/reference/overview.md:99
+#: src/reference/overview.md:98
 msgid "Solution"
 msgstr "解決方案"
 
-#: src/reference/overview.md:101
+#: src/reference/overview.md:100
 msgid "No LiDAR data"
 msgstr "No 光達 資料"
 
-#: src/reference/overview.md:101
+#: src/reference/overview.md:100
 msgid "Network config"
 msgstr "網路 config"
 
-#: src/reference/overview.md:101
+#: src/reference/overview.md:100
 msgid "Check IP settings"
 msgstr "檢查 IP settings"
 
-#: src/reference/overview.md:102
+#: src/reference/overview.md:101
 msgid "Poor localization"
 msgstr "Poor 當地語系化"
 
-#: src/reference/overview.md:102
+#: src/reference/overview.md:101
 msgid "Map mismatch"
 msgstr "地圖形不比對"
 
-#: src/reference/overview.md:102
+#: src/reference/overview.md:101
 msgid "Regenerate map"
 msgstr "重新產生地圖形"
 
-#: src/reference/overview.md:103
+#: src/reference/overview.md:102
 msgid "Erratic motion"
 msgstr "不規則運動"
 
-#: src/reference/overview.md:103
+#: src/reference/overview.md:102
 msgid "IMU calibration"
 msgstr "慣性測量單位 calibration"
 
-#: src/reference/overview.md:103
+#: src/reference/overview.md:102
 msgid "Recalibrate IMU"
 msgstr "Recalibrate 慣性測量單位"
 
-#: src/reference/overview.md:104
+#: src/reference/overview.md:103
 msgid "Short battery life"
 msgstr "Short 電集區 life"
 
-#: src/reference/overview.md:104
+#: src/reference/overview.md:103
 msgid "High load"
 msgstr "High 載入"
 
-#: src/reference/overview.md:104
+#: src/reference/overview.md:103
 msgid "Check CPU usage"
 msgstr "檢查 CPU 使用方法"
 
-#: src/reference/overview.md:105
+#: src/reference/overview.md:104
 msgid "Communication loss"
 msgstr "通訊 loss"
 
-#: src/reference/overview.md:105
+#: src/reference/overview.md:104
 msgid "Interference"
 msgstr "干擾"
 
-#: src/reference/overview.md:105
+#: src/reference/overview.md:104
 msgid "Check wireless channels"
 msgstr "檢查 wireless channels"
 
-#: src/reference/overview.md:107
+#: src/reference/overview.md:106
 msgid "Safety Specifications"
 msgstr "安全性規格"
 
-#: src/reference/overview.md:109
+#: src/reference/overview.md:108
 msgid "Emergency Stop"
 msgstr "Emergency 停止"
 
-#: src/reference/overview.md:110
+#: src/reference/overview.md:109
 msgid "Hardware E-stop button"
 msgstr "硬體 E-停止 button"
 
-#: src/reference/overview.md:111
+#: src/reference/overview.md:110
 msgid "Software emergency brake"
 msgstr "軟體 emergency brake"
 
-#: src/reference/overview.md:112
+#: src/reference/overview.md:111
 msgid "Remote kill switch (5G model)"
 msgstr "Remote kill 交換器 (5G model)"
 
-#: src/reference/overview.md:113
+#: src/reference/overview.md:112
 msgid "Automatic fault detection"
 msgstr "自動故障偵測"
 
-#: src/reference/overview.md:115
+#: src/reference/overview.md:114
 msgid "Operating Limits"
 msgstr "操作限制"
 
-#: src/reference/overview.md:116
+#: src/reference/overview.md:115
 msgid "Maximum speed: 15 km/h"
 msgstr "Maximum 速度: 15 km/h"
 
-#: src/reference/overview.md:117
+#: src/reference/overview.md:116
 msgid "Maximum payload: 5 kg"
 msgstr "最大載荷: 5 kg"
 
-#: src/reference/overview.md:118
+#: src/reference/overview.md:117
 msgid "Maximum incline: 15°"
 msgstr "最大傾斜度: 15°"
 
-#: src/reference/overview.md:119
+#: src/reference/overview.md:118
 msgid "Minimum lighting: 10 lux (with lights)"
 msgstr "最小光源: 10 lux (搭配 lights)"
 
-#: src/reference/overview.md:121
+#: src/reference/overview.md:120
 msgid "Compliance & Certification"
 msgstr "合規性性 & 驗證"
 
-#: src/reference/overview.md:123
+#: src/reference/overview.md:122
 msgid "Standards"
 msgstr "標準"
 
-#: src/reference/overview.md:124
+#: src/reference/overview.md:123
 msgid "ROS 2: REP-2000 compliant"
 msgstr "ROS 2: REP-2000 compliant"
 
-#: src/reference/overview.md:125
+#: src/reference/overview.md:124
 msgid "Safety: ISO 26262 ASIL-B capable"
 msgstr "Safety: ISO 26262 ASIL-B capable"
 
-#: src/reference/overview.md:126
+#: src/reference/overview.md:125
 msgid "EMC: FCC Part 15 Class B"
 msgstr "EMC: FCC Part 15 類別別 B"
 
-#: src/reference/overview.md:127
+#: src/reference/overview.md:126
 msgid "Environmental: MIL-STD-810G tested"
 msgstr "環境: MIL-STD-810G tested"
 
-#: src/reference/overview.md:129
+#: src/reference/overview.md:128
 msgid "Documentation"
 msgstr "檔案"
 
-#: src/reference/overview.md:130
+#: src/reference/overview.md:129
 msgid "Full schematics available"
 msgstr "Full schematics 可用"
 
-#: src/reference/overview.md:131
+#: src/reference/overview.md:130
 msgid "Open-source software"
 msgstr "開啟-source 軟體"
 
-#: src/reference/overview.md:132
+#: src/reference/overview.md:131
 msgid "Hardware design files"
 msgstr "硬體 design files"
 
-#: src/reference/overview.md:133
+#: src/reference/overview.md:132
 msgid "Test reports"
 msgstr "測試 reports"
 
-#: src/reference/overview.md:135
+#: src/reference/overview.md:134
 msgid "Additional Resources"
 msgstr "額外資源"
 
-#: src/reference/overview.md:137
+#: src/reference/overview.md:136
 msgid ""
 "[Hardware Assembly Guide](../getting-started/hardware-assembly.md) - Step-by-"
 "step assembly"
 msgstr ""
 
-#: src/reference/overview.md:138
+#: src/reference/overview.md:137
 msgid ""
 "[Software Installation](../getting-started/installation/overview.md) - "
 "Software setup"
 msgstr ""
 
-#: src/reference/overview.md:139
+#: src/reference/overview.md:138
 msgid "[Development Guide](../guides/development.md) - Custom development"
 msgstr ""
 
@@ -4187,7 +8268,6 @@ msgid "**\\# Navigation Sensors**"
 msgstr "**\\\\# 瀏覽 Sensors**"
 
 #: src/reference/hardware/core-components.md:29
-#: src/reference/software/sensor-components.md:14
 msgid "KY-003 Hall Effect Sensor"
 msgstr "KY-003 Hall Effect 感測器"
 
@@ -4619,12 +8699,6 @@ msgid "GPIO8"
 msgstr "GPIO8"
 
 #: src/reference/hardware/wiring-diagrams.md:231
-#: src/reference/hardware/wiring-diagrams.md:232
-#: src/reference/hardware/wiring-diagrams.md:236
-msgid "MPU9250"
-msgstr "MPU9250"
-
-#: src/reference/hardware/wiring-diagrams.md:231
 msgid "17"
 msgstr ""
 
@@ -4800,407 +8874,6 @@ msgid ""
 "[Core Components](../hardware/core-components.md) - Component specifications"
 msgstr ""
 
-#: src/reference/software/sensor-components.md:1
-msgid "Sensor Components and Drivers"
-msgstr "感測器元件與驅動程式"
-
-#: src/reference/software/sensor-components.md:3
-msgid ""
-"The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/"
-"sensor_component) directory contains a collection of drivers and data "
-"processors for sensors on the AutoSDV vehicle. They are mostly provided by "
-"vendors and existing open source projects."
-msgstr ""
-
-#: src/reference/software/sensor-components.md:7
-msgid ""
-"The sensor component defines the collection of sensor drivers in Autoware. "
-"If you're looking for the composition of the sensor drivers, please refer to "
-"[Sensor Kit](../software/sensor-kit.md) Chapter."
-msgstr ""
-
-#: src/reference/software/sensor-components.md:9
-msgid ""
-"The AutoSDV Autoware adds the following ROS packages along with official "
-"packages."
-msgstr ""
-
-#: src/reference/software/sensor-components.md:11
-msgid "ZED X Mini camera"
-msgstr "ZED X Mini 相機"
-
-#: src/reference/software/sensor-components.md:12
-#: src/reference/software/sensor-components.md:30
-msgid "Blickfeld Cube1 LiDAR"
-msgstr "Blickfeld Cube1 光達"
-
-#: src/reference/software/sensor-components.md:13
-msgid "MPU9250 Nine-Axis Motion Sensor"
-msgstr "MPU9250 Nine-Axis Motion 感測器"
-
-#: src/reference/software/sensor-components.md:16
-msgid "ZED X Mini Camera"
-msgstr "ZED X Mini 相機"
-
-#: src/reference/software/sensor-components.md:18
-msgid ""
-"The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED "
-"SDK is installed by the setup script described in [Software Installation]"
-"(../../getting-started/installation/overview.md). The driver package is "
-"located at:"
-msgstr ""
-
-#: src/reference/software/sensor-components.md:24
-msgid "To run the standalone ZED camera driver,"
-msgstr "到 執欄 standalone ZED camera 驅動程式,"
-
-#: src/reference/software/sensor-components.md:31
-msgid ""
-"The IP address of Blickfeld Cube1 LiDAR and Jetson is `192.168.26.26` and "
-"`192.168.26.1`, respectively."
-msgstr ""
-"IP address 的 Blickfeld Cube1 光達 和 Jetson 是 `192.168.26.26` 和 "
-"`192.168.26.1`, respectively."
-
-#: src/reference/software/sensor-components.md:33
-msgid "The driver package is located at"
-msgstr "驅動程式 套件 是 located 在"
-
-#: src/reference/software/sensor-components.md:39
-#: src/reference/software/sensor-components.md:53
-msgid "To run the standalone driver,"
-msgstr "到 執欄 standalone 驅動程式,"
-
-#: src/reference/software/sensor-components.md:45
-msgid "MPU9250 Nine-Axis Accelerometer Gyroscope Sensor"
-msgstr "MPU9250 Nine-Axis Accelerometer Gyroscope 感測器"
-
-#: src/reference/software/sensor-components.md:47
-msgid ""
-"MPU9250 measures the motion state of the vehicle, including the linear "
-"acceleration, angular acceleration and angular speed. The source package is "
-"located at"
-msgstr ""
-"MPU9250 measures motion state 的 車輛, including linear acceleration, "
-"angular acceleration 和 angular speed. source 套件 是 located 在"
-
-#: src/reference/software/sensor-components.md:58
-msgid "Garmin GPS 18x 5Hz"
-msgstr "Garmin GPS 18x 5Hz"
-
-#: src/reference/software/sensor-components.md:59
-msgid ""
-"[Full specification of the sensor](https://static.garmin.com/pumac/"
-"GPS_18x_Tech_Specs.pdf)"
-msgstr ""
-"[Full specification 的 感測器](https://static.garmin.com/pumac/"
-"GPS_18x_Tech_Specs.pdf)"
-
-#: src/reference/software/sensor-components.md:61
-msgid "Localise the device at first. Execute:"
-msgstr "Localise 設備 在 first. 執欄:"
-
-#: src/reference/software/sensor-components.md:65
-msgid ""
-"you should find this line: _FTDI USB Serial Device converter now attached to "
-"**ttyUSB0**_"
-msgstr ""
-"你 should 找到 this line: _FTDI USB Serial 裝置 converter now attached 到 **"
-
-#: src/reference/software/sensor-components.md:67
-msgid "Once you find the device, get raw data from it by executing:"
-msgstr "一旦 你 找到 設備, 取得 原始 資料 從 它 由 執欄:"
-
-#: src/reference/software/sensor-components.md:72
-msgid "And you should see data in NMEA format like this:"
-msgstr "和 你 should see 資料 在 NMEA format like this:"
-
-#: src/reference/software/sensor-components.md:80
-msgid ""
-"Note: If you see something else, for example binary data, make sure you use "
-"the correct baud rate - 9600."
-msgstr ""
-"Note: If 你 see something else, 用於 範例 binary 資料, make sure 你 use "
-"correc"
-
-#: src/reference/software/sensor-components.md:82
-msgid "2.1 Check the current baud rate by this command:"
-msgstr "2.1 檢查 current baud rate 由 this command:"
-
-#: src/reference/software/sensor-components.md:86
-msgid "Set the 9600 baud rate by this command:"
-msgstr "Set 9600 baud rate 由 this 命令:"
-
-#: src/reference/software/sensor-components.md:91
-msgid "Execute the GPS Deamon (gpsd) for the right device:"
-msgstr "執欄 GPS Deamon (gpsd) 用於 right 設備:"
-
-#: src/reference/software/sensor-components.md:96
-msgid "To verify the signal, you can open the CLI app:"
-msgstr "到 驗證 訊號, 你 可以 開啟 CLI 套用程式:"
-
-#: src/reference/software/sensor-components.md:100
-msgid "or GUI app:"
-msgstr "或 GUI 套用程式:"
-
-#: src/reference/software/sensor-components.md:105
-msgid ""
-"Wait till you get the proper longitude and latitude coordinates and the "
-"status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is "
-"being received."
-msgstr ""
-"Wait till 你 取得 proper longitude 和 latitude coordinates 和 狀態 的 GPS "
-"must"
-
-#: src/reference/software/sensor-components.md:107
-msgid ""
-"Since you get the signal, you can launch Autoware and subscribe the topic:"
-msgstr "Since 你 取得 訊號, 你 可以 啟動 Autoware 和 subscribe topic:"
-
-#: src/reference/software/sensor-components.md:112
-msgid "Configuration files in Autoware"
-msgstr "設定 files 在 Autoware"
-
-#: src/reference/software/sensor-components.md:114
-msgid ""
-"If you do not get data on the topic, make sure, the configuration is correct "
-"by checking these files:"
-msgstr ""
-"If 你 do not 取得 資料 在 topic, make sure, 設定 是 correct 由 checking "
-"these fi"
-
-#: src/reference/software/sensor-components.md:116
-msgid "Enable the GNSS Driver at:"
-msgstr "啟用 GNSS 驅動程式 在:"
-
-#: src/reference/software/sensor-components.md:121
-msgid "Enable the Garmin Driver at:"
-msgstr "啟用 Garmin 驅動程式 在:"
-
-#: src/reference/software/sensor-components.md:126
-msgid ""
-"No mistake in the Python script at (the script composes configuration to "
-"launch the GNSS Driver):"
-msgstr ""
-"No mistake 在 Python script 在 ( script composes 設定 到 啟動 GNSS 驅動程式):"
-
-#: src/reference/software/sensor-components.md:130
-msgid "Note: the topic _fix_ is remapped as _garmin/fix_"
-msgstr "注意： topic _fix_ 是 remapped as _garmin/fix_"
-
-#: src/reference/software/sensor-components.md:132
-msgid "3.1 Parameters for the Python script is at:"
-msgstr ""
-
-#: src/reference/software/sensor-components.md:137
-msgid "GNSS Client connecting to the gpsd (GPS Deamon) is located at:"
-msgstr "串連到 gpsd（GPS 守護程式）的 GNSS 用戶端位於："
-
-#: src/reference/software/sensor-kit.md:3
-msgid ""
-"The sensor kit consists of the _description_ package and the _launch_ "
-"package. The _description_ package, [`autosdv_sensor_kit_description`]"
-"(https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/"
-"autosdv_sensor_kit_description), stores the relative coordinates for each "
-"sensor on the vehicle. The _launch_ package, [`autosdv_sensor_kit_launch`]"
-"(https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/"
-"tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/autosdv_sensor_kit_launch), "
-"contains a set of launch files for all kinds of sensors along with their "
-"runtime parameters."
-msgstr ""
-"感測器 kit consists 的 _description_ 套件 和 _launch_ 套件. _description_ 套"
-"件, [`autosdv_sensor_kit_description`](https://github.com/NEWSLabNTU/"
-"autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_description), stores "
-"relative coordinates 用於 each 感測器 在 車輛. _launch_ 套件, "
-"[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/"
-"autosdv_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/"
-"autosdv_sensor_kit_launch), contains set 的 啟動 files 用於 all kinds 的 "
-"sensors along 搭配 their runtime parameters."
-
-#: src/reference/software/sensor-kit.md:7
-msgid ""
-"The sensor kit defines the composition and the data paths of sensors. If "
-"you're looking per-sensor driver configuration, please refer to [Sensor "
-"Component](../software/sensor-components.md) Chapter."
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:9
-msgid "The Description Package"
-msgstr "Description 套件"
-
-#: src/reference/software/sensor-kit.md:11
-msgid ""
-"The description package stores the coordinates of each sensor installed on "
-"the vehicle. It's done by working on these two configuration files."
-msgstr ""
-"description 套件 stores coordinates 的 each 感測器 installed 在 車輛. 它's "
-"done "
-
-#: src/reference/software/sensor-kit.md:13
-msgid "`../autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml`"
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:14
-msgid "`../autosdv_sensor_kit_description/urdf/sensor_kit.xacro`"
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:16
-msgid ""
-"For example, the coordinate for the ZED camera is named as "
-"`zedxm_camera_link`, which pose parameters are defined in "
-"[`sensor_kit_calibration.yaml`](https://github.com/NEWSLabNTU/"
-"autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/config/"
-"sensor_kit_calibration.yaml)."
-msgstr ""
-"用於 範例, coordinate 用於 ZED camera 是 named as `zedxm_camera_link`, which "
-"pose parameters 是 defined 在 [`sensor_kit_calibration.yaml`](https://github."
-"com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/"
-"autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml)."
-
-#: src/reference/software/sensor-kit.md:19
-msgid "sensor_kit_base_link"
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:20
-msgid "zedxm_camera_link"
-msgstr "zedxm_camera_link"
-
-#: src/reference/software/sensor-kit.md:20
-msgid ""
-"# Zed Camera\n"
-"    x"
-msgstr "# Zed 相機 x"
-
-#: src/reference/software/sensor-kit.md:23
-msgid "z"
-msgstr "z"
-
-#: src/reference/software/sensor-kit.md:24
-msgid "roll"
-msgstr "橫滾"
-
-#: src/reference/software/sensor-kit.md:25
-msgid "pitch"
-msgstr "俯仰"
-
-#: src/reference/software/sensor-kit.md:26
-msgid "yaw"
-msgstr "偏航"
-
-#: src/reference/software/sensor-kit.md:29
-msgid ""
-"The [`sensor_kit.xacro`](https://github.com/NEWSLabNTU/"
-"autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/urdf/"
-"sensor_kit.xacro) file has corresponding entries for the coordinate. In the "
-"xacro snipplet, it defines a `<xacro:zed_camera>` component and a joint from "
-"`sensor_kit_base_link` to `zedxm_camera_link`."
-msgstr "[`sensor_kit.xacro`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_"
-
-#: src/reference/software/sensor-kit.md:32
-msgid "\"zedxm\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:32
-msgid "\"0\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:34
-#: src/reference/software/sensor-kit.md:45
-msgid ""
-"\"${calibration['sensor_kit_base_link']['zedxm_camera_link']['x']}\n"
-"             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
-"['y']}\n"
-"             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
-"['z']}\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:37
-#: src/reference/software/sensor-kit.md:48
-msgid ""
-"\"${calibration['sensor_kit_base_link']['zedxm_camera_link']['roll']}\n"
-"             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
-"['pitch']}\n"
-"             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
-"['yaw']}\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:43
-msgid "\"zedxm_camera_joint\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:43
-msgid "\"fixed\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:52
-msgid "\"sensor_kit_base_link\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:53
-msgid "\"zedxm_camera_link\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:57
-msgid "The Launch Package"
-msgstr "啟動 套件"
-
-#: src/reference/software/sensor-kit.md:59
-msgid ""
-"The [`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/"
-"autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch) package "
-"contains a collection of launch files in the [`launch`](https://github.com/"
-"NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch/"
-"launch) directory. The notable one is `sensing.launch.xml`. It is the mother "
-"launch file used to start the whole sensing module and all the other launch "
-"files are included."
-msgstr "[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_se"
-
-#: src/reference/software/sensor-kit.md:61
-msgid ""
-"The `camera.launch.xml`, `gnss.launch.xml`, `imu.launch.xml` and `lidar."
-"launch.xml` launch files correspond to respective sensing functions. Each of "
-"them contains sensing drive execution methods and their parameters."
-msgstr ""
-"`camera.啟動.xml`, `gnss.啟動.xml`, `imu.啟動.xml` 和 `lidar.啟動.xml` 啟動 "
-"files correspond 到 respective sensing functions. Each 的 them contains "
-"sensing drive execution methods 和 their parameters."
-
-#: src/reference/software/sensor-kit.md:63
-msgid ""
-"The `pointcloud_preprocessor.launch.py` is the special one that provides the "
-"multi-LiDAR fusion feature. It includes a point cloud processor node that "
-"subscribes to one or multiple input topics from LiDARs drivers."
-msgstr ""
-"`pointcloud_preprocessor.啟動.py` 是 special one that provides multi-LiDA"
-
-#: src/reference/software/sensor-kit.md:68
-msgid "\"input_topics\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:69
-msgid "\"/sensing/lidar/bf_lidar/points_raw\""
-msgstr "\"/sensing/光達/bf_lidar/points_raw\""
-
-#: src/reference/software/sensor-kit.md:71
-msgid "\"output_frame\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:71
-msgid "\"base_frame\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:72
-msgid "\"input_twist_topic_type\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:72
-msgid "\"twist\""
-msgstr ""
-
-#: src/reference/software/sensor-kit.md:73
-msgid "\"publish_synchronized_pointcloud\""
-msgstr ""
-
 #: src/reference/software/vehicle-interface.md:3
 msgid ""
 "The vehicle interface bridges the Autoware control and vehicle actuators. It "
@@ -5315,6 +8988,238 @@ msgstr ""
 msgid "Network Architecture"
 msgstr "網路 架構"
 
+#~ msgid "Network Configuration"
+#~ msgstr "網路 設定"
+
+#~ msgid "Blickfeld Scanner Library"
+#~ msgstr "Blickfeld Scanner Library"
+
+#~ msgid "ZED X Mini camera"
+#~ msgstr "ZED X Mini 相機"
+
+#~ msgid "Garmin GPS 18x 5Hz"
+#~ msgstr "Garmin GPS 18x 5Hz"
+
+#~ msgid "\"/sensing/lidar/bf_lidar/points_raw\""
+#~ msgstr "\"/sensing/光達/bf_lidar/points_raw\""
+
+#~ msgid "zedxm_camera_link"
+#~ msgstr "zedxm_camera_link"
+
+#~ msgid "Sensor Kit Configuration"
+#~ msgstr "感測器套件設定"
+
+#~ msgid "Sensor Components and Drivers"
+#~ msgstr "感測器元件與驅動程式"
+
+#~ msgid "Blickfeld Cube1 LiDAR"
+#~ msgstr "Blickfeld Cube1 光達"
+
+#~ msgid "MPU9250 Nine-Axis Motion Sensor"
+#~ msgstr "MPU9250 Nine-Axis Motion 感測器"
+
+#~ msgid "ZED X Mini Camera"
+#~ msgstr "ZED X Mini 相機"
+
+#~ msgid "To run the standalone ZED camera driver,"
+#~ msgstr "到 執欄 standalone ZED camera 驅動程式,"
+
+#~ msgid ""
+#~ "The IP address of Blickfeld Cube1 LiDAR and Jetson is `192.168.26.26` and "
+#~ "`192.168.26.1`, respectively."
+#~ msgstr ""
+#~ "IP address 的 Blickfeld Cube1 光達 和 Jetson 是 `192.168.26.26` 和 "
+#~ "`192.168.26.1`, respectively."
+
+#~ msgid "The driver package is located at"
+#~ msgstr "驅動程式 套件 是 located 在"
+
+#~ msgid "To run the standalone driver,"
+#~ msgstr "到 執欄 standalone 驅動程式,"
+
+#~ msgid "MPU9250 Nine-Axis Accelerometer Gyroscope Sensor"
+#~ msgstr "MPU9250 Nine-Axis Accelerometer Gyroscope 感測器"
+
+#~ msgid ""
+#~ "MPU9250 measures the motion state of the vehicle, including the linear "
+#~ "acceleration, angular acceleration and angular speed. The source package "
+#~ "is located at"
+#~ msgstr ""
+#~ "MPU9250 measures motion state 的 車輛, including linear acceleration, "
+#~ "angular acceleration 和 angular speed. source 套件 是 located 在"
+
+#~ msgid ""
+#~ "[Full specification of the sensor](https://static.garmin.com/pumac/"
+#~ "GPS_18x_Tech_Specs.pdf)"
+#~ msgstr ""
+#~ "[Full specification 的 感測器](https://static.garmin.com/pumac/"
+#~ "GPS_18x_Tech_Specs.pdf)"
+
+#~ msgid "Localise the device at first. Execute:"
+#~ msgstr "Localise 設備 在 first. 執欄:"
+
+#~ msgid ""
+#~ "you should find this line: _FTDI USB Serial Device converter now attached "
+#~ "to **ttyUSB0**_"
+#~ msgstr ""
+#~ "你 should 找到 this line: _FTDI USB Serial 裝置 converter now attached 到 "
+#~ "**"
+
+#~ msgid "Once you find the device, get raw data from it by executing:"
+#~ msgstr "一旦 你 找到 設備, 取得 原始 資料 從 它 由 執欄:"
+
+#~ msgid "And you should see data in NMEA format like this:"
+#~ msgstr "和 你 should see 資料 在 NMEA format like this:"
+
+#~ msgid ""
+#~ "Note: If you see something else, for example binary data, make sure you "
+#~ "use the correct baud rate - 9600."
+#~ msgstr ""
+#~ "Note: If 你 see something else, 用於 範例 binary 資料, make sure 你 use "
+#~ "correc"
+
+#~ msgid "2.1 Check the current baud rate by this command:"
+#~ msgstr "2.1 檢查 current baud rate 由 this command:"
+
+#~ msgid "Set the 9600 baud rate by this command:"
+#~ msgstr "Set 9600 baud rate 由 this 命令:"
+
+#~ msgid "Execute the GPS Deamon (gpsd) for the right device:"
+#~ msgstr "執欄 GPS Deamon (gpsd) 用於 right 設備:"
+
+#~ msgid "To verify the signal, you can open the CLI app:"
+#~ msgstr "到 驗證 訊號, 你 可以 開啟 CLI 套用程式:"
+
+#~ msgid "or GUI app:"
+#~ msgstr "或 GUI 套用程式:"
+
+#~ msgid ""
+#~ "Wait till you get the proper longitude and latitude coordinates and the "
+#~ "status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is "
+#~ "being received."
+#~ msgstr ""
+#~ "Wait till 你 取得 proper longitude 和 latitude coordinates 和 狀態 的 GPS "
+#~ "must"
+
+#~ msgid ""
+#~ "Since you get the signal, you can launch Autoware and subscribe the topic:"
+#~ msgstr "Since 你 取得 訊號, 你 可以 啟動 Autoware 和 subscribe topic:"
+
+#~ msgid "Configuration files in Autoware"
+#~ msgstr "設定 files 在 Autoware"
+
+#~ msgid ""
+#~ "If you do not get data on the topic, make sure, the configuration is "
+#~ "correct by checking these files:"
+#~ msgstr ""
+#~ "If 你 do not 取得 資料 在 topic, make sure, 設定 是 correct 由 checking "
+#~ "these fi"
+
+#~ msgid "Enable the GNSS Driver at:"
+#~ msgstr "啟用 GNSS 驅動程式 在:"
+
+#~ msgid "Enable the Garmin Driver at:"
+#~ msgstr "啟用 Garmin 驅動程式 在:"
+
+#~ msgid ""
+#~ "No mistake in the Python script at (the script composes configuration to "
+#~ "launch the GNSS Driver):"
+#~ msgstr ""
+#~ "No mistake 在 Python script 在 ( script composes 設定 到 啟動 GNSS 驅動程"
+#~ "式):"
+
+#~ msgid "Note: the topic _fix_ is remapped as _garmin/fix_"
+#~ msgstr "注意： topic _fix_ 是 remapped as _garmin/fix_"
+
+#~ msgid "GNSS Client connecting to the gpsd (GPS Deamon) is located at:"
+#~ msgstr "串連到 gpsd（GPS 守護程式）的 GNSS 用戶端位於："
+
+#~ msgid ""
+#~ "The sensor kit consists of the _description_ package and the _launch_ "
+#~ "package. The _description_ package, [`autosdv_sensor_kit_description`]"
+#~ "(https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/"
+#~ "autosdv_sensor_kit_description), stores the relative coordinates for each "
+#~ "sensor on the vehicle. The _launch_ package, [`autosdv_sensor_kit_launch`]"
+#~ "(https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/"
+#~ "tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/autosdv_sensor_kit_launch), "
+#~ "contains a set of launch files for all kinds of sensors along with their "
+#~ "runtime parameters."
+#~ msgstr ""
+#~ "感測器 kit consists 的 _description_ 套件 和 _launch_ 套件. _description_ "
+#~ "套件, [`autosdv_sensor_kit_description`](https://github.com/NEWSLabNTU/"
+#~ "autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_description), "
+#~ "stores relative coordinates 用於 each 感測器 在 車輛. _launch_ 套件, "
+#~ "[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/"
+#~ "autosdv_sensor_kit_launch/tree/5daa6018ef4814dafaad262135ca1d50154cdb2e/"
+#~ "autosdv_sensor_kit_launch), contains set 的 啟動 files 用於 all kinds 的 "
+#~ "sensors along 搭配 their runtime parameters."
+
+#~ msgid "The Description Package"
+#~ msgstr "Description 套件"
+
+#~ msgid ""
+#~ "The description package stores the coordinates of each sensor installed "
+#~ "on the vehicle. It's done by working on these two configuration files."
+#~ msgstr ""
+#~ "description 套件 stores coordinates 的 each 感測器 installed 在 車輛. "
+#~ "它's done "
+
+#~ msgid ""
+#~ "For example, the coordinate for the ZED camera is named as "
+#~ "`zedxm_camera_link`, which pose parameters are defined in "
+#~ "[`sensor_kit_calibration.yaml`](https://github.com/NEWSLabNTU/"
+#~ "autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/config/"
+#~ "sensor_kit_calibration.yaml)."
+#~ msgstr ""
+#~ "用於 範例, coordinate 用於 ZED camera 是 named as `zedxm_camera_link`, "
+#~ "which pose parameters 是 defined 在 [`sensor_kit_calibration.yaml`]"
+#~ "(https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/"
+#~ "autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml)."
+
+#~ msgid ""
+#~ "# Zed Camera\n"
+#~ "    x"
+#~ msgstr "# Zed 相機 x"
+
+#~ msgid ""
+#~ "The [`sensor_kit.xacro`](https://github.com/NEWSLabNTU/"
+#~ "autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/urdf/"
+#~ "sensor_kit.xacro) file has corresponding entries for the coordinate. In "
+#~ "the xacro snipplet, it defines a `<xacro:zed_camera>` component and a "
+#~ "joint from `sensor_kit_base_link` to `zedxm_camera_link`."
+#~ msgstr ""
+#~ "[`sensor_kit.xacro`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_"
+
+#~ msgid "The Launch Package"
+#~ msgstr "啟動 套件"
+
+#~ msgid ""
+#~ "The [`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/"
+#~ "autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch) package "
+#~ "contains a collection of launch files in the [`launch`](https://github."
+#~ "com/NEWSLabNTU/autosdv_sensor_kit_launch/tree/main/"
+#~ "autosdv_sensor_kit_launch/launch) directory. The notable one is `sensing."
+#~ "launch.xml`. It is the mother launch file used to start the whole sensing "
+#~ "module and all the other launch files are included."
+#~ msgstr ""
+#~ "[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_se"
+
+#~ msgid ""
+#~ "The `camera.launch.xml`, `gnss.launch.xml`, `imu.launch.xml` and `lidar."
+#~ "launch.xml` launch files correspond to respective sensing functions. Each "
+#~ "of them contains sensing drive execution methods and their parameters."
+#~ msgstr ""
+#~ "`camera.啟動.xml`, `gnss.啟動.xml`, `imu.啟動.xml` 和 `lidar.啟動.xml` 啟"
+#~ "動 files correspond 到 respective sensing functions. Each 的 them "
+#~ "contains sensing drive execution methods 和 their parameters."
+
+#~ msgid ""
+#~ "The `pointcloud_preprocessor.launch.py` is the special one that provides "
+#~ "the multi-LiDAR fusion feature. It includes a point cloud processor node "
+#~ "that subscribes to one or multiple input topics from LiDARs drivers."
+#~ msgstr ""
+#~ "`pointcloud_preprocessor.啟動.py` 是 special one that provides multi-LiDA"
+
 #~ msgid "ROS 2 Humble Installation"
 #~ msgstr "ROS 2 Humble 安裝"
 
@@ -5408,9 +9313,6 @@ msgstr "網路 架構"
 
 #~ msgid "# Maximum performance mode\n"
 #~ msgstr "# Maximum 效能 mode\n"
-
-#~ msgid "Network Configuration"
-#~ msgstr "網路 設定"
 
 #~ msgid "Configure Cyclone DDS"
 #~ msgstr "設定 Cyclone DDS"
@@ -5532,9 +9434,6 @@ msgstr "網路 架構"
 
 #~ msgid "# Serial communication for IMU\n"
 #~ msgstr "# Serial 通訊 用於 IMU\n"
-
-#~ msgid "Blickfeld Scanner Library"
-#~ msgstr "Blickfeld Scanner Library"
 
 #~ msgid "Velodyne LiDAR Driver"
 #~ msgstr "Velodyne LiDAR 驅動程式"

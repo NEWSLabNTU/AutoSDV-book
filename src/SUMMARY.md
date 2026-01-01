@@ -18,13 +18,19 @@
 - [Development Guide](./guides/development.md)
   - [Source Code Walkthrough](./guides/source-code.md)
   - [Version Control](./guides/version-control.md)
+- [Sensor Integration](./guides/sensor-integration/using-sensors.md)
+  - [Integration Walkthrough](./guides/sensor-integration/integration-walkthrough.md)
+  - [LiDAR Sensors](./guides/sensor-integration/lidar.md)
+  - [Camera Sensors](./guides/sensor-integration/camera.md)
+  - [IMU Sensors](./guides/sensor-integration/imu.md)
+  - [GNSS Sensors](./guides/sensor-integration/gnss.md)
+  - [Adding a Sensor](./guides/sensor-integration/adding-sensor.md)
+  - [Troubleshooting](./guides/sensor-integration/troubleshooting.md)
 
 # Technical Reference
 
 - [Overview](./reference/overview.md)
   - [Core Components](./reference/hardware/core-components.md)
   - [Wiring Diagrams](./reference/hardware/wiring-diagrams.md)
-  - [Sensor Components](./reference/software/sensor-components.md)
-  - [Sensor Kit Configuration](./reference/software/sensor-kit.md)
   - [Vehicle Interface](./reference/software/vehicle-interface.md)
   - [5G/LTE Deployment](./reference/networking/5g-deployment.md)
