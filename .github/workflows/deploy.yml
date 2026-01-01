@@ -61,7 +61,7 @@ jobs:
                 </ul>
             </body>
             </html>
-            EOF
+          EOF
           else
             echo "No Chinese translations found, skipping Chinese build"
           fi
