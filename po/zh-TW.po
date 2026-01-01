@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AutoSDV Book\n"
-"POT-Creation-Date: 2025-12-31T17:08:46+08:00\n"
+"POT-Creation-Date: 2026-01-01T18:08:46+08:00\n"
 "PO-Revision-Date: 2025-08-29T15:57:48+08:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -27,7 +27,7 @@ msgstr "平台型號"
 msgid "Getting Started"
 msgstr "開始使用"
 
-#: src/SUMMARY.md:8 src/SUMMARY.md:23 src/getting-started/overview.md:5
+#: src/SUMMARY.md:8 src/SUMMARY.md:24 src/getting-started/overview.md:5
 msgid "Overview"
 msgstr "概述"
 
@@ -35,65 +35,69 @@ msgstr "概述"
 msgid "Hardware Assembly"
 msgstr ""
 
-#: src/SUMMARY.md:10 src/getting-started/software-installation.md:1
+#: src/SUMMARY.md:10 src/getting-started/installation/overview.md:1
 msgid "Software Installation"
 msgstr "軟體安裝"
 
-#: src/SUMMARY.md:11 src/getting-started/docker-setup.md:1
+#: src/SUMMARY.md:11 src/getting-started/installation/zed-sdk.md:1
+msgid "ZED SDK Installation"
+msgstr ""
+
+#: src/SUMMARY.md:12
+msgid "Manual Environment Setup"
+msgstr "Manual 環境 設定"
+
+#: src/SUMMARY.md:13 src/getting-started/installation/docker.md:1
 msgid "Docker Setup"
 msgstr "Docker 設定"
 
-#: src/SUMMARY.md:12
-msgid "Manual Setup"
-msgstr ""
-
-#: src/SUMMARY.md:13 src/getting-started/usage.md:1
+#: src/SUMMARY.md:14 src/getting-started/usage.md:1
 msgid "Operating the Vehicle"
 msgstr "操作車輛"
 
-#: src/SUMMARY.md:15
+#: src/SUMMARY.md:16
 msgid "Guides"
 msgstr ""
 
-#: src/SUMMARY.md:17 src/guides/development.md:1
+#: src/SUMMARY.md:18 src/guides/development.md:1
 msgid "Development Guide"
 msgstr "開發指南"
 
-#: src/SUMMARY.md:18 src/guides/source-code.md:1
+#: src/SUMMARY.md:19 src/guides/source-code.md:1
 msgid "Source Code Walkthrough"
 msgstr "原始碼說明"
 
-#: src/SUMMARY.md:19 src/guides/version-control.md:1
+#: src/SUMMARY.md:20 src/guides/version-control.md:1
 msgid "Version Control"
 msgstr "版本控制"
 
-#: src/SUMMARY.md:21 src/reference/overview.md:1
+#: src/SUMMARY.md:22 src/reference/overview.md:1
 msgid "Technical Reference"
 msgstr "技術參考"
 
-#: src/SUMMARY.md:24 src/platform-models.md:29
+#: src/SUMMARY.md:25 src/platform-models.md:29
 #: src/getting-started/hardware-assembly.md:19 src/reference/overview.md:7
 #: src/reference/hardware/core-components.md:7
 msgid "Core Components"
 msgstr "核心元件"
 
-#: src/SUMMARY.md:25 src/reference/hardware/wiring-diagrams.md:1
+#: src/SUMMARY.md:26 src/reference/hardware/wiring-diagrams.md:1
 msgid "Wiring Diagrams"
 msgstr "接線圖形"
 
-#: src/SUMMARY.md:26
+#: src/SUMMARY.md:27
 msgid "Sensor Components"
 msgstr ""
 
-#: src/SUMMARY.md:27 src/reference/software/sensor-kit.md:1
+#: src/SUMMARY.md:28 src/reference/software/sensor-kit.md:1
 msgid "Sensor Kit Configuration"
 msgstr "感測器套件設定"
 
-#: src/SUMMARY.md:28 src/reference/software/vehicle-interface.md:1
+#: src/SUMMARY.md:29 src/reference/software/vehicle-interface.md:1
 msgid "Vehicle Interface"
 msgstr "車輛介臉部"
 
-#: src/SUMMARY.md:29 src/reference/networking/5g-deployment.md:1
+#: src/SUMMARY.md:30 src/reference/networking/5g-deployment.md:1
 msgid "5G/LTE Deployment"
 msgstr "5G/LTE 部署"
 
@@ -592,9 +596,10 @@ msgstr "**電集區續航強制**: 40 分鐘（上層）、2+ 小時（下層）
 msgid "**Connectivity**: Requires 5G/LTE data plan"
 msgstr "**串連性**: 需要 5G/LTE 資料排程"
 
-#: src/platform-models.md:151 src/getting-started/software-installation.md:107
-#: src/getting-started/docker-setup.md:326
-#: src/getting-started/manual-setup.md:293
+#: src/platform-models.md:151 src/getting-started/installation/overview.md:192
+#: src/getting-started/installation/zed-sdk.md:154
+#: src/getting-started/installation/manual-environment.md:358
+#: src/getting-started/installation/docker.md:330
 #: src/reference/hardware/wiring-diagrams.md:245
 msgid "Next Steps"
 msgstr "下一步"
@@ -607,7 +612,7 @@ msgstr ""
 
 #: src/platform-models.md:154
 msgid ""
-"[Software Installation](./getting-started/software-installation.md) - "
+"[Software Installation](./getting-started/installation/overview.md) - "
 "Software setup"
 msgstr ""
 
@@ -623,29 +628,40 @@ msgstr ""
 
 #: src/getting-started/overview.md:7
 msgid ""
-"**[Building the Vehicle](./build_the_vehicle.md)** - Assembling the physical "
+"**[Hardware Assembly](./hardware-assembly.md)** - Assembling the physical "
 "components and hardware"
 msgstr ""
-"**[建造車輛](./build_the_vehicle.md)** - 群組裝物理元件和硬體**[建造車輛](./"
-"build_the_vehicle.md)** - 群組裝物理元件和硬體"
 
 #: src/getting-started/overview.md:8
 msgid ""
-"**[Software Installation](./software-installation.md)** - Installing AutoSDV "
-"software using recommended methods"
+"**[Software Installation](./installation/overview.md)** - Installing AutoSDV "
+"software"
 msgstr ""
 
 #: src/getting-started/overview.md:9
 msgid ""
-"**[Docker Setup](./docker-setup.md)** - Alternative containerized "
-"installation"
+"**[ZED SDK Installation](./installation/zed-sdk.md)** - ZED camera driver "
+"setup"
 msgstr ""
 
 #: src/getting-started/overview.md:10
-msgid "**[Manual Setup](./manual-setup.md)** - Advanced customization options"
+msgid ""
+"**[Automatic Setup](./installation/overview.md)** - Automated installation "
+"(recommended)"
 msgstr ""
 
 #: src/getting-started/overview.md:11
+msgid ""
+"**[Manual Setup](./installation/manual-environment.md)** - Advanced "
+"customization"
+msgstr ""
+
+#: src/getting-started/overview.md:12
+msgid ""
+"**[Docker Setup](./installation/docker.md)** - Containerized installation"
+msgstr ""
+
+#: src/getting-started/overview.md:13
 msgid ""
 "**[Operating the Vehicle](./usage.md)** - Launching and controlling the "
 "system"
@@ -653,36 +669,36 @@ msgstr ""
 "**[操作車輛](./usage.md)** - 啟動和控制系統**[操作車輛](./usage.md)** - 啟動"
 "和控制系統"
 
-#: src/getting-started/overview.md:13
+#: src/getting-started/overview.md:15
 msgid "Quick Start Paths"
 msgstr "快速入門路徑"
 
-#: src/getting-started/overview.md:15
+#: src/getting-started/overview.md:17
 msgid "For Vehicle Deployment"
 msgstr "車輛部署用途"
 
-#: src/getting-started/overview.md:16
+#: src/getting-started/overview.md:18
 msgid "Follow the chapters in order: Build → Install → Operate"
 msgstr "按順序遵循章節：建造 → 安裝 → 操作"
 
-#: src/getting-started/overview.md:18
+#: src/getting-started/overview.md:20
 msgid "For Simulation/Development"
 msgstr "用於模擬/開發"
 
-#: src/getting-started/overview.md:19
+#: src/getting-started/overview.md:21
 msgid ""
-"Skip to [Software Installation](./software-installation.md) or use [Docker "
-"Setup](./docker-setup.md) for quick testing"
+"Skip to [Software Installation](./installation/overview.md) or use [Docker "
+"Setup](./installation/docker.md) for quick testing"
 msgstr ""
 
-#: src/getting-started/overview.md:21
+#: src/getting-started/overview.md:23
 msgid "For Customization"
 msgstr "自訂用途"
 
-#: src/getting-started/overview.md:22
+#: src/getting-started/overview.md:24
 msgid ""
-"See [Manual Setup and Customization](./manual-setup.md) for advanced "
-"configuration options"
+"See [Manual Setup and Customization](./installation/manual-environment.md) "
+"for advanced configuration options"
 msgstr ""
 
 #: src/getting-started/hardware-assembly.md:1
@@ -775,7 +791,7 @@ msgid ""
 msgstr ""
 "使用這輛車輛時，額外的感測器和 5G 支架放置在<span style=\"color: Yellow\">黃"
 "色</span>層，電源供應來自<span style=\"color: Red\">紅色</span>層。由於電壓需"
-"求不同，馬達在<spanstyle=\"color: DodgerBlue\">藍色</span>層中有獨立的電集區"
+"求不同，馬達在<span style=\"color: DodgerBlue\">藍色</span>層中有獨立的電集區"
 "和電源供應。電源供應。"
 
 #: src/getting-started/hardware-assembly.md:34
@@ -876,99 +892,159 @@ msgstr ""
 "關這些元件及其接線的詳細資訊，請參閱[硬體和接線](hardware_and_wiring.md)中的"
 "合成指南。合指南。"
 
-#: src/getting-started/software-installation.md:3
+#: src/getting-started/installation/overview.md:3
 msgid ""
-"This guide provides the recommended installation process for AutoSDV. For "
-"manual installation or customization options, see the [Manual Setup Guide](./"
-"manual-setup.md)."
+"This guide provides the complete installation workflow for AutoSDV. Follow "
+"these steps sequentially to set up a fully functional autonomous vehicle "
+"software stack."
 msgstr ""
 
-#: src/getting-started/software-installation.md:5
+#: src/getting-started/installation/overview.md:5
 msgid "System Requirements"
 msgstr "系統需求"
 
-#: src/getting-started/software-installation.md:7
-msgid "Hardware Options"
-msgstr "硬體選項"
-
-#: src/getting-started/software-installation.md:9
+#: src/getting-started/installation/overview.md:7
 msgid "Choose one of the following platforms:"
 msgstr "選取以下平台之一："
 
-#: src/getting-started/software-installation.md:11
+#: src/getting-started/installation/overview.md:9
 msgid "**NVIDIA Jetson AGX Orin 64GB** (Recommended for vehicle deployment)"
 msgstr "**NVIDIA Jetson AGX Orin 64GB**（建議用於車輛部署）"
 
-#: src/getting-started/software-installation.md:12
+#: src/getting-started/installation/overview.md:10
 msgid "**Ubuntu 22.04 PC with NVIDIA GPU** (For development and testing)"
 msgstr "**Ubuntu 22.04 PC 搭配 NVIDIA GPU**（用於開發和測試）"
 
-#: src/getting-started/software-installation.md:13
-msgid ""
-"**Docker Environment** (For simulation and development) - See [Docker Setup]"
-"(./docker-setup.md)"
+#: src/getting-started/installation/overview.md:11
+msgid "**Docker Environment** (For simulation and development)"
 msgstr ""
 
-#: src/getting-started/software-installation.md:15
+#: src/getting-started/installation/overview.md:13
 msgid "Storage Requirements"
 msgstr "儲存需求"
 
-#: src/getting-started/software-installation.md:17
+#: src/getting-started/installation/overview.md:15
 msgid "Minimum 256GB SSD (NVMe recommended for Jetson)"
 msgstr "最小 256GB SSD（Jetson 建議使用 NVMe）"
 
-#: src/getting-started/software-installation.md:18
+#: src/getting-started/installation/overview.md:16
 msgid "At least 100GB free space for software installation"
 msgstr "至少 100GB 空間用於軟體安裝"
 
-#: src/getting-started/software-installation.md:20
-msgid "Installation Steps"
-msgstr "安裝步驟"
+#: src/getting-started/installation/overview.md:18
+msgid "Installation Methods"
+msgstr ""
 
-#: src/getting-started/software-installation.md:22
-msgid "Step 1: Prepare the Operating System"
-msgstr "步驟 1：準備作業系統"
+#: src/getting-started/installation/overview.md:20
+msgid "Choose the installation method that best fits your needs:"
+msgstr ""
 
-#: src/getting-started/software-installation.md:24
+#: src/getting-started/installation/overview.md:22
+msgid "Method"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:22
+msgid "Best For"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:22
+msgid "Difficulty"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:22
+msgid "Customization"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:24
+msgid "**Automatic Setup**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:24
+msgid "Most users, production deployment"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:24
+#: src/getting-started/installation/overview.md:26
+msgid "Easy"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:24
+#: src/getting-started/installation/overview.md:26
+msgid "Limited"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:25
+msgid "**Manual Setup**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:25
+msgid "Advanced users, custom configurations"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:25
+msgid "Advanced"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:25
+msgid "Full"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:26
+msgid "**Docker Setup**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:26
+msgid "Development, testing, simulation"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:28
+msgid "Installation Workflow"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:30
+msgid "Step 1: Prepare Operating System"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:32
 msgid "For NVIDIA Jetson AGX Orin"
 msgstr "適用於 NVIDIA Jetson AGX Orin"
 
-#: src/getting-started/software-installation.md:26
+#: src/getting-started/installation/overview.md:34
 msgid ""
 "Download and install [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-"
 "manager)"
 msgstr ""
 "下載和安裝 [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)"
 
-#: src/getting-started/software-installation.md:27
+#: src/getting-started/installation/overview.md:35
 msgid "Flash the Jetson with the following configuration:"
 msgstr "使用以下設定燒錄 Jetson："
 
-#: src/getting-started/software-installation.md:28
+#: src/getting-started/installation/overview.md:36
 msgid "**JetPack SDK version: 6.0** (exactly - not 6.1 or 6.2)"
 msgstr "**JetPack SDK 版本：6.0**（嚴格要求 - 非 6.1 或 6.2）"
 
-#: src/getting-started/software-installation.md:29
+#: src/getting-started/installation/overview.md:37
 msgid "Install all CUDA and TensorRT packages"
 msgstr "安裝所有 CUDA 和 TensorRT 套件"
 
-#: src/getting-started/software-installation.md:30
+#: src/getting-started/installation/overview.md:38
 msgid "Flash to external NVMe SSD (not internal eMMC)"
 msgstr "燒錄到外部 NVMe SSD（非內部 eMMC）"
 
-#: src/getting-started/software-installation.md:32
+#: src/getting-started/installation/overview.md:40
 msgid "For Ubuntu 22.04 PC"
 msgstr "適用於 Ubuntu 22.04 PC"
 
-#: src/getting-started/software-installation.md:34
+#: src/getting-started/installation/overview.md:42
 msgid "Install Ubuntu 22.04 LTS"
 msgstr "安裝 Ubuntu 22.04 LTS"
 
-#: src/getting-started/software-installation.md:35
+#: src/getting-started/installation/overview.md:43
 msgid "Install NVIDIA drivers (version 550 or higher):"
 msgstr "安裝 NVIDIA 驅動程式（版本 550 或更高）："
 
-#: src/getting-started/software-installation.md:40
+#: src/getting-started/installation/overview.md:48
 msgid ""
 "Install [CUDA 12.3](https://developer.nvidia.com/cuda-12-3-2-download-"
 "archive) using the deb (network) installer"
@@ -976,7 +1052,7 @@ msgstr ""
 "使用 deb（網路）安裝程式安裝 [CUDA 12.3](https://developer.nvidia.com/"
 "cuda-12-3-2-download-archive)"
 
-#: src/getting-started/software-installation.md:41
+#: src/getting-started/installation/overview.md:49
 msgid ""
 "Install [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-"
 "download)"
@@ -984,194 +1060,1152 @@ msgstr ""
 "安裝 [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-"
 "download)"
 
-#: src/getting-started/software-installation.md:43
-msgid "Step 2: Clone AutoSDV Repository"
-msgstr "步驟 2：複寫 AutoSDV 儲存程式庫"
-
-#: src/getting-started/software-installation.md:51
-msgid "Step 3: Run Automated Setup"
-msgstr "步驟 3：執欄自動化設定"
-
-#: src/getting-started/software-installation.md:53
-msgid ""
-"The project includes an Ansible playbook that automatically configures your "
-"environment:"
-msgstr "該專案套件含一個 Ansible 劇本，可以自動設定你的環境："
-
-#: src/getting-started/software-installation.md:59
-msgid "This script will:"
-msgstr "此指令程式將："
-
-#: src/getting-started/software-installation.md:60
-msgid "Install ROS 2 Humble"
-msgstr "安裝 ROS 2 Humble"
-
-#: src/getting-started/software-installation.md:61
-msgid "Install Autoware 2025.02 binary release"
-msgstr "安裝 Autoware 2025.02 二進位版本"
-
-#: src/getting-started/software-installation.md:62
-msgid "Install Blickfeld Scanner Library for Cube 1 LiDAR"
-msgstr "安裝 Blickfeld Scanner Library 用於 Cube 1 光達"
-
-#: src/getting-started/software-installation.md:63
-msgid "Download required Autoware artifacts"
-msgstr "下載所需的 Autoware 工件"
-
-#: src/getting-started/software-installation.md:64
-msgid "Configure Cyclone DDS as default RMW"
-msgstr "設定 Cyclone DDS 為預設 RMW"
-
-#: src/getting-started/software-installation.md:65
-msgid "Optimize system settings for real-time performance"
-msgstr "最佳化系統設定以實作即時效能"
-
-#: src/getting-started/software-installation.md:67
-msgid "Step 4: Install Additional Sensor Drivers"
-msgstr "步驟 4：安裝額外感測器驅動程式"
-
-#: src/getting-started/software-installation.md:69
-msgid "Some sensor drivers require manual installation:"
-msgstr "某些感測器驅動程式需要手動安裝："
-
-#: src/getting-started/software-installation.md:71
-msgid "ZED Camera SDK"
-msgstr "ZED 攝影機 SDK"
-
-#: src/getting-started/software-installation.md:73
-msgid ""
-"Visit the [ZED SDK 4.2 Release Page](https://www.stereolabs.com/en-tw/"
-"developers/release/4.2)"
+#: src/getting-started/installation/overview.md:51
+msgid "For Docker"
 msgstr ""
-"造訪 [ZED SDK 4.2 發佈頁臉部](https://www.stereolabs.com/en-tw/developers/"
-"release/4.2)"
 
-#: src/getting-started/software-installation.md:74
-msgid "Download and install:"
-msgstr "下載並安裝："
-
-#: src/getting-started/software-installation.md:75
+#: src/getting-started/installation/overview.md:53
 msgid ""
-"**For Jetson AGX Orin**: [ZED SDK for JetPack 6.0 GA](https://download."
-"stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
+"See [Docker Setup](./docker.md) for containerized installation (skips Steps "
+"1-3)."
 msgstr ""
-"**用於 Jetson AGX Orin**：[ZED SDK 用於 JetPack 6.0 GA](https://download."
-"stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
 
-#: src/getting-started/software-installation.md:76
+#: src/getting-started/installation/overview.md:57
+msgid "Step 2: Install ZED SDK (if using ZED camera)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:59
+msgid "**ZED SDK must be installed manually before proceeding.**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:61
 msgid ""
-"**For Ubuntu 22.04 PC**: [ZED SDK for Ubuntu 22](https://download.stereolabs."
-"com/zedsdk/4.2/cu12/ubuntu22)"
+"The ZED SDK and ZED Link drivers are required if you're using ZED cameras. "
+"See [ZED SDK Installation Guide](./zed-sdk.md) for detailed instructions."
 msgstr ""
-"**用於 Ubuntu 22.04 PC**：[ZED SDK 用於 Ubuntu 22](https://download."
-"stereolabs.com/zedsdk/4.2/cu12/ubuntu22)"
 
-#: src/getting-started/software-installation.md:79
-msgid "# After downloading the installer\n"
-msgstr "# 下載安裝程式後\n"
+#: src/getting-started/installation/overview.md:63
+msgid ""
+"**Note:** This is a manual installation step. The automated setup script "
+"does NOT install ZED SDK."
+msgstr ""
 
-#: src/getting-started/software-installation.md:84
-msgid "Seyond Robin-W LiDAR Driver (Optional)"
-msgstr "Seyond Robin-W 光達驅動程式（選用）"
+#: src/getting-started/installation/overview.md:67
+msgid "Step 3: Install AutoSDV Software"
+msgstr ""
 
-#: src/getting-started/software-installation.md:86
-msgid "If using the Robin-W LiDAR, install the Innovusion ROS driver:"
-msgstr "如果使用 Robin-W 光達，請安裝 Innovusion ROS 驅動程式："
+#: src/getting-started/installation/overview.md:69
+msgid "Choose your installation method:"
+msgstr ""
 
-#: src/getting-started/software-installation.md:87
-msgid "Contact Seyond/Innovusion to obtain the driver package"
-msgstr "聯繫 Seyond/Innovusion 以取得驅動程式套件"
+#: src/getting-started/installation/overview.md:71
+msgid "Automatic Setup (Recommended)"
+msgstr ""
 
-#: src/getting-started/software-installation.md:88
-msgid "Install the provided `.deb` package"
-msgstr "安裝提供的 `.deb` 套件"
+#: src/getting-started/installation/overview.md:73
+msgid ""
+"The automated setup script installs all dependencies and configures your "
+"system."
+msgstr ""
 
-#: src/getting-started/software-installation.md:90
-msgid "Step 5: Build AutoSDV"
-msgstr "步驟 5：建構 AutoSDV"
+#: src/getting-started/installation/overview.md:75
+msgid "**Clone the repository:**"
+msgstr ""
 
-#: src/getting-started/software-installation.md:94
+#: src/getting-started/installation/overview.md:82
+msgid "**Run the automated setup:**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:87
+msgid "This script automatically installs:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:88
+msgid "ROS 2 Humble"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:89
+msgid "Autoware 2025.02"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:90
+msgid "Blickfeld Scanner Library (for Cube1 LiDAR, with license acceptance)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:91
+msgid "Velodyne drivers (via rosdep)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:92
+msgid "NMEA/serial drivers (via rosdep)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:93
+msgid "All other ROS dependencies"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:95
+msgid "The script will prompt you for:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:96
+msgid ""
+"**Autoware Debian packages**: Install pre-built packages or build from source"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:97
+msgid ""
+"**CycloneDDS kernel buffers**: Configure system-wide network buffers "
+"(recommended)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:98
+msgid "**Blickfeld license**: Accept license terms for Cube1 LiDAR support"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:100
+msgid ""
+"**Note:** ZED SDK is NOT installed by this script and must be installed "
+"manually beforehand."
+msgstr ""
+
+#: src/getting-started/installation/overview.md:102
+msgid "**Install and configure direnv:**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:104
+msgid "AutoSDV uses direnv for automatic environment activation:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:107
+msgid "# Install direnv\n"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:110
+msgid "# Add to your shell (bash)\n"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:111
+msgid "'eval \"$(direnv hook bash)\"'"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:114
+msgid "# Allow .envrc in AutoSDV directory\n"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:119
+msgid ""
+"After this, the ROS 2 and Autoware environments will automatically activate "
+"when you enter the AutoSDV directory."
+msgstr ""
+
+#: src/getting-started/installation/overview.md:121
+msgid "Manual Environment Setup (Advanced)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:123
+msgid "Manually install ROS 2, Autoware, and dependencies for full control:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:125
+msgid ""
+"**See [Manual Environment Setup](./manual-environment.md) for detailed "
+"instructions**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:127
+msgid "Docker Setup (Alternative)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:129
+msgid "Run AutoSDV in a containerized environment:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:131
+msgid "**See [Docker Setup](./docker.md) for detailed instructions**"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:135
+msgid "Step 4: Build and Verify"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:137
+msgid "After installing AutoSDV software, build the project:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:141
 msgid "# Install ROS dependencies\n"
 msgstr "# 安裝 ROS 相依套件\n"
 
-#: src/getting-started/software-installation.md:95
+#: src/getting-started/installation/overview.md:142
 msgid "# Build the project\n"
 msgstr "# 建構專案\n"
 
-#: src/getting-started/software-installation.md:98
-msgid "Step 6: Verify Installation"
-msgstr "步驟 6：驗證安裝"
-
-#: src/getting-started/software-installation.md:100
-msgid "Test the installation by launching the system:"
-msgstr "透過啟動系統來測試安裝："
-
-#: src/getting-started/software-installation.md:109
-msgid "[Operating the Vehicle](./usage.md) - Learn how to run AutoSDV"
-msgstr "[操作車輛](./usage.md) - 學習如何運欄 AutoSDV"
-
-#: src/getting-started/software-installation.md:110
-msgid ""
-"[Development Guide](../guides/development.md) - Start developing with AutoSDV"
+#: src/getting-started/installation/overview.md:145
+msgid "Verify the installation by launching the system:"
 msgstr ""
 
-#: src/getting-started/software-installation.md:111
+#: src/getting-started/installation/overview.md:152
 msgid ""
-"[Docker Setup](./docker-setup.md) - Alternative Docker-based installation"
+"If successful, you should see the system starting without critical errors."
 msgstr ""
 
-#: src/getting-started/software-installation.md:112
-msgid ""
-"[Manual Setup Guide](./manual-setup.md) - Manual installation and "
-"customization options"
-msgstr ""
-
-#: src/getting-started/software-installation.md:114
-#: src/getting-started/docker-setup.md:243
+#: src/getting-started/installation/overview.md:154
+#: src/getting-started/installation/zed-sdk.md:98
+#: src/getting-started/installation/docker.md:247
 msgid "Troubleshooting"
 msgstr "排除故障"
 
-#: src/getting-started/software-installation.md:116
-msgid "Build Errors with Autoware Dependencies"
-msgstr "Autoware 相依套件建構錯誤"
+#: src/getting-started/installation/overview.md:156
+msgid "Build Errors"
+msgstr ""
 
-#: src/getting-started/software-installation.md:118
-msgid "If you encounter missing Autoware package errors during build:"
-msgstr "如果在建構處理中遇到 Autoware 套件遺漏錯誤："
+#: src/getting-started/installation/overview.md:158
+msgid "If you encounter build errors:"
+msgstr ""
 
-#: src/getting-started/software-installation.md:120
-msgid "Ensure Autoware is properly installed:"
-msgstr "確保 Autoware 已正確安裝："
+#: src/getting-started/installation/overview.md:161
+msgid "# Clean and rebuild\n"
+msgstr ""
 
-#: src/getting-started/software-installation.md:125
-msgid "Use the clean build script:"
-msgstr "使用清除建構指令程式："
+#: src/getting-started/installation/overview.md:166
+msgid "Missing Dependencies"
+msgstr "Missing 相依套件"
 
-#: src/getting-started/software-installation.md:130
+#: src/getting-started/installation/overview.md:169
+#: src/getting-started/installation/manual-environment.md:285
+msgid "# Update rosdep database\n"
+msgstr "# 更新 rosdep database\n"
+
+#: src/getting-started/installation/overview.md:171
+#: src/getting-started/installation/manual-environment.md:287
+msgid "# Install missing dependencies\n"
+msgstr "# 安裝 missing 相依套件\n"
+
+#: src/getting-started/installation/overview.md:177
 msgid "CUDA/TensorRT Issues"
 msgstr "CUDA/TensorRT 問題"
 
-#: src/getting-started/software-installation.md:132
+#: src/getting-started/installation/overview.md:179
 msgid "Verify CUDA installation:"
 msgstr "驗證 CUDA 安裝："
 
-#: src/getting-started/software-installation.md:134
-msgid "# Should show 12.3\n"
-msgstr "# 應顯示 12.3\n"
+#: src/getting-started/installation/overview.md:181
+msgid "# Should show 12.3 or compatible\n"
+msgstr ""
 
-#: src/getting-started/software-installation.md:135
+#: src/getting-started/installation/overview.md:182
 msgid "# Should show driver 550+\n"
 msgstr "# 應顯示驅動程式 550+\n"
 
-#: src/getting-started/software-installation.md:138
+#: src/getting-started/installation/overview.md:185
 msgid "ROS 2 Environment Issues"
 msgstr "ROS 2 環境問題"
 
-#: src/getting-started/software-installation.md:140
+#: src/getting-started/installation/overview.md:187
 msgid "Always source ROS 2 before building:"
 msgstr "在建構前一律載入 ROS 2："
 
-#: src/getting-started/docker-setup.md:3
+#: src/getting-started/installation/overview.md:194
+msgid "After successful installation:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:196
+msgid "[Operating the Vehicle](../usage.md) - Learn how to run AutoSDV"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:197
+msgid ""
+"[Development Guide](../../guides/development.md) - Start developing with "
+"AutoSDV"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:199
+msgid "Getting Help"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:201
+msgid "If you encounter issues not covered here:"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:202
+msgid ""
+"Check the [AutoSDV GitHub Issues](https://github.com/NEWSLabNTU/AutoSDV/"
+"issues)"
+msgstr ""
+
+#: src/getting-started/installation/overview.md:203
+msgid "Review the troubleshooting sections in each installation method page"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:3
+msgid ""
+"The ZED SDK provides drivers and APIs for ZED stereo cameras and ZED Link "
+"capture cards. This is a **manual installation step** required before "
+"running the AutoSDV setup script."
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:5
+msgid "When Do You Need This?"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:7
+msgid "Install ZED SDK if you're using:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:8
+msgid "ZED X Mini camera (standard AutoSDV configuration)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:9
+msgid "ZED 2/2i cameras"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:10
+msgid "ZED Link capture cards (Mono/Dual/Quad)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:12
+msgid ""
+"Skip this step if you're using only LiDAR sensors (Velodyne, Blickfeld, "
+"Robin-W)."
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:14
+#: src/getting-started/installation/manual-environment.md:29
+#: src/getting-started/installation/docker.md:13
+msgid "Prerequisites"
+msgstr "前置條件"
+
+#: src/getting-started/installation/zed-sdk.md:16
+msgid "Ubuntu 22.04 with NVIDIA drivers (550+) installed, OR"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:17
+msgid "Jetson AGX Orin with JetPack 6.0"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:19
+msgid "Installation Steps"
+msgstr "安裝步驟"
+
+#: src/getting-started/installation/zed-sdk.md:21
+msgid "Step 1: Download ZED SDK 5.1"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:23
+msgid ""
+"Visit the [ZED SDK Downloads](https://www.stereolabs.com/developers/release) "
+"page."
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:25
+msgid "Download the appropriate installer:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:27
+msgid "**For Jetson AGX Orin (JetPack 6.0):**"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:28
+msgid ""
+"[ZED SDK 5.1 for JetPack 6.0](https://download.stereolabs.com/zedsdk/5.1/"
+"l4t36.3/jetsons)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:30
+msgid "**For Ubuntu 22.04 PC:**"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:31
+msgid ""
+"[ZED SDK 5.1 for Ubuntu 22 + CUDA 12](https://download.stereolabs.com/"
+"zedsdk/5.1/cu124/ubuntu22)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:33
+msgid "Step 2: Install ZED SDK"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:36
+msgid "# Make the installer executable\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:38
+msgid "# Run the installer\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:43
+msgid "Follow the on-screen prompts:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:44
+msgid "Accept the license agreement"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:45
+msgid "Install all components (SDK, tools, Python API, samples)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:46
+msgid "Allow AI model downloads (required for object detection)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:48
+msgid "Installation takes 10-20 minutes depending on internet speed."
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:50
+msgid "Step 3: Verify Installation"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:53
+msgid "# Run ZED diagnostic tool\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:55
+msgid "# Expected output should show:\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:57
+msgid "# - CUDA version detected\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:62
+msgid "ZED Link Driver Installation (Optional)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:64
+msgid ""
+"If you're using ZED Link capture cards for multi-camera setups, install the "
+"appropriate driver:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:66
+msgid "Identify Your ZED Link Model"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:68
+msgid "**ZED Link Mono**: Single camera input"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:69
+msgid "**ZED Link Dual**: Two camera inputs"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:70
+msgid "**ZED Link Quad**: Four camera inputs"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:72
+msgid "Download and Install"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:74
+msgid ""
+"Visit [Stereolabs Download Center](https://www.stereolabs.com/developers/"
+"release)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:75
+msgid "Download the ZED Link driver for your model and Ubuntu version"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:76
+msgid "Install the debian package:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:79
+msgid "# For ZED Link Mono\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:81
+msgid "# For ZED Link Dual\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:84
+msgid "# For ZED Link Quad\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:89
+msgid "Verify installation:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:92
+msgid "# Check if ZED Link is detected\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:94
+msgid "# Should show PCIe device for your ZED Link model\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:100
+msgid "CUDA Not Found"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:102
+msgid "If the installer cannot find CUDA:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:105
+msgid "# Verify CUDA installation\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:108
+msgid "# CUDA should be 12.3 or compatible\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:113
+msgid "Python Dependencies"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:115
+msgid "The installer may install Python packages. To avoid conflicts:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:118
+msgid "# After installation, verify numpy location\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:119
+msgid "\"import numpy; print(numpy.__file__)\""
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:120
+msgid "# Should be in /home/user/.local or /usr/lib\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:125
+msgid "Camera Not Detected"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:127
+msgid "If ZED camera is not detected after installation:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:130
+msgid "# Check USB connection\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:132
+msgid "# Add user to video group\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:135
+msgid "# Reload udev rules\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:139
+#: src/getting-started/installation/docker.md:32
+msgid "# Log out and back in for group changes to take effect\n"
+msgstr "# 登出並重新登入以使群群組變更生效\n"
+
+#: src/getting-started/installation/zed-sdk.md:143
+msgid "Permission Errors"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:146
+msgid "# Fix ZED SDK directory permissions\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:149
+msgid "# Fix calibration directory permissions\n"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:156
+msgid "After successfully installing ZED SDK:"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:158
+msgid ""
+"Return to [Software Installation Overview](./overview.md#step-3-install-"
+"autosdv-software)"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:159
+msgid "Continue with automatic or manual setup"
+msgstr ""
+
+#: src/getting-started/installation/zed-sdk.md:160
+msgid "Proceed to build and verify AutoSDV"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:1
+msgid "Manual Setup and Customization"
+msgstr "手動設定與自訂"
+
+#: src/getting-started/installation/manual-environment.md:3
+msgid ""
+"This guide covers advanced configuration options and alternatives to the "
+"automated installation. **Most users should use the [automated setup](./"
+"overview.md)** instead."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:5
+msgid "When to Use Manual Setup"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:7
+msgid "Use manual setup if you need:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:8
+msgid ""
+"**Custom Autoware**: Build Autoware from source to modify core components"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:9
+msgid ""
+"**Performance tuning**: Real-time optimization for production deployment"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:10
+msgid "**Custom DDS configuration**: Specific networking requirements"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:11
+msgid "**Development tools**: Additional debugging and profiling utilities"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:12
+msgid "**Non-standard installation paths**: Custom directory structures"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:14
+msgid "What the Automated Setup Does"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:16
+msgid "Before proceeding, understand what `./setup.sh` already installs:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:18
+msgid "ROS 2 Humble (ros-humble-desktop)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:19
+msgid "ROS 2 development tools (colcon, rosdep, vcstool)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:20
+msgid "Autoware 2025.02 Debian packages (optional, recommended)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:21
+msgid "Blickfeld Scanner Library (for Cube1 LiDAR)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:22
+msgid "Velodyne, NMEA, and serial drivers (via rosdep)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:23
+msgid ""
+"Development tools: git-lfs, golang, pre-commit, clang-format, plotjuggler"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:24
+msgid "Python dependencies: Adafruit-PCA9685, simple-pid, ros2systemd"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:25
+msgid "u-blox GPS udev rules and user group permissions"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:27
+msgid ""
+"The manual steps below provide alternatives or additions to this automated "
+"setup."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:31
+msgid ""
+"**Operating system prepared** (see [Step 1 in Overview](./overview.md#step-1-"
+"prepare-operating-system))"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:32
+msgid ""
+"**ZED SDK 5.1 installed** if using ZED camera (see [ZED SDK Installation](./"
+"zed-sdk.md))"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:34
+msgid "Building Autoware from Source"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:36
+msgid ""
+"The automated setup installs Autoware Debian packages from `/opt/autoware`. "
+"To modify Autoware core components, build from source instead:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:38
+msgid "Step 1: Clone Autoware Repository"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:46
+msgid "Step 2: Install Dependencies"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:53
+msgid "This script installs:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:54
+msgid "CUDA, cuDNN, TensorRT (if NVIDIA GPU detected)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:55
+msgid "ROS 2 Humble and development tools"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:56
+msgid "GeographicLib and other Autoware dependencies"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:58
+msgid "Step 3: Import Repositories"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:65
+msgid "Step 4: Install ROS Dependencies"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:73
+msgid "Step 5: Build Autoware"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:79
+msgid ""
+"Build time: 30-60 minutes depending on CPU cores and whether you're building "
+"perception packages."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:81
+msgid "Step 6: Source the Workspace"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:84
+msgid "\"source ~/autoware_ws/install/setup.bash\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:88
+msgid "Using Custom Autoware Path"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:90
+msgid ""
+"If you build Autoware in a custom location, AutoSDV will automatically "
+"detect it if you source the Autoware workspace before building AutoSDV."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:92
+msgid "System Optimization"
+msgstr "系統 最佳化"
+
+#: src/getting-started/installation/manual-environment.md:94
+msgid "Real-time Performance Tuning"
+msgstr "即時 效能 Tuning"
+
+#: src/getting-started/installation/manual-environment.md:96
+msgid "For production deployment, configure system for real-time performance:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:98
+msgid "**1. Configure CPU governor:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:101
+msgid "'GOVERNOR=\"performance\"'"
+msgstr "'GOVERNOR=\\\"效能\\\"'"
+
+#: src/getting-started/installation/manual-environment.md:105
+msgid "**2. Increase system limits:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:107
+msgid "Add to `/etc/security/limits.conf`:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:115
+msgid "**3. Jetson-specific optimizations:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:117
+msgid "# Lock clocks to maximum performance\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:119
+msgid "# Set performance mode (0 = MAXN)\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:124
+msgid "ROS 2 Middleware Configuration"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:126
+msgid "Cyclone DDS Configuration (Recommended)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:128
+msgid ""
+"Cyclone DDS is the recommended middleware for Autoware. Follow these steps "
+"for optimal configuration:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:130
+msgid "**1. Configure kernel network buffers:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:133
+msgid "# Apply immediately\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:137
+msgid "# Make persistent across reboots\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:139
+msgid ""
+"<< EOF\n"
+"net.core.rmem_max=2147483647\n"
+"net.ipv4.ipfrag_time=3\n"
+"net.ipv4.ipfrag_high_thresh=134217728\n"
+"EOF\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:146
+msgid "**2. Create CycloneDDS configuration file:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:148
+msgid "Save as `~/cyclonedds.xml`:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:151
+msgid "\"1.0\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:151
+msgid "\"UTF-8\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:152
+msgid "\"https://cdds.io/config\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:153
+msgid "\"http://www.w3.org/2001/XMLSchema-instance\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:154
+msgid ""
+"\"https://cdds.io/config\n"
+"  https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/"
+"cyclonedds.xsd\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:156
+msgid "\"any\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:159
+#: src/reference/software/sensor-kit.md:32
+msgid "\"false\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:159
+msgid "\"lo\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:160
+msgid "\"default\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:166
+msgid "\"10MB\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:175
+msgid ""
+"**Note:** The `name=\"lo\"` configuration uses the loopback interface for "
+"single-machine operation. For multi-machine setups, change to your network "
+"interface (e.g., `eth0`, `wlan0`, or `enp0s31f6`). Use `ip link show` to "
+"list available interfaces."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:177
+msgid "**3. Set environment variables:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:180
+msgid "'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:181
+msgid "'export CYCLONEDDS_URI=file://$HOME/cyclonedds.xml'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:185
+msgid "**4. Optional - Set ROS Domain ID:**"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:187
+msgid ""
+"For multi-vehicle setups, use different domain IDs (1-255) for each vehicle:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:190
+msgid "'export ROS_DOMAIN_ID=0'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:193
+msgid ""
+"**Important:** Do NOT set `ROS_LOCALHOST_ONLY=1` - it has known "
+"compatibility issues with Autoware."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:195
+msgid "FastDDS Configuration (Alternative)"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:197
+msgid ""
+"FastDDS is an alternative middleware. Note: Autoware documentation primarily "
+"supports CycloneDDS."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:201
+msgid "'export RMW_IMPLEMENTATION=rmw_fastrtps_cpp'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:204
+msgid "Custom Build Options"
+msgstr "自訂 建構 Options"
+
+#: src/getting-started/installation/manual-environment.md:206
+msgid "Debug Build"
+msgstr "除錯 建構"
+
+#: src/getting-started/installation/manual-environment.md:208
+msgid "Build AutoSDV with debug symbols for development:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:218
+msgid "Selective Package Building"
+msgstr "Selective 套件 Building"
+
+#: src/getting-started/installation/manual-environment.md:220
+msgid "Build only specific packages to save time:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:223
+msgid "# Build only vehicle interface packages\n"
+msgstr "# 建構 only 車輛 介臉部 packages\n"
+
+#: src/getting-started/installation/manual-environment.md:232
+msgid "Cross-compilation"
+msgstr "交叉編譯"
+
+#: src/getting-started/installation/manual-environment.md:234
+msgid "For cross-compiling to Jetson on x86_64 host:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:243
+msgid "Additional Development Tools"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:245
+msgid ""
+"The automated setup installs basic development tools. Add more for advanced "
+"development:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:248
+msgid "# Code quality tools\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:250
+msgid "# Debugging and profiling\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:253
+msgid "# Build acceleration (can reduce build time by 50%)\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:256
+msgid "'export CC=\"ccache gcc\"'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:257
+msgid "'export CXX=\"ccache g++\"'"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:258
+msgid "# Advanced visualization\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:263
+msgid "Environment Variables"
+msgstr "環境 Variables"
+
+#: src/getting-started/installation/manual-environment.md:265
+msgid "Useful environment variables for development:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:268
+msgid "# CUDA paths (if not using Debian Autoware)\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:269
+msgid "/usr/local/cuda"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:270
+msgid "$CUDA_HOME/bin:$PATH"
+msgstr "$CUDA_HOME/bin:$路徑"
+
+#: src/getting-started/installation/manual-environment.md:271
+msgid "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
+msgstr "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
+
+#: src/getting-started/installation/manual-environment.md:274
+msgid "Add these to `~/.bashrc` for persistence."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:276
+msgid ""
+"**Note:** `ROS_DOMAIN_ID` and `RMW_IMPLEMENTATION` are configured in the ROS "
+"2 Middleware Configuration section above."
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:278
+msgid "Troubleshooting Manual Installations"
+msgstr "手動安裝故障排除"
+
+#: src/getting-started/installation/manual-environment.md:280
+msgid "Missing ROS Dependencies"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:282
+msgid "If you encounter missing package errors after manual installation:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:293
+msgid "Library Path Issues"
+msgstr "Library 路徑 Issues"
+
+#: src/getting-started/installation/manual-environment.md:295
+msgid "For libraries installed to non-standard paths:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:298
+msgid "# Add custom library path\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:299
+msgid "\"/usr/local/lib\""
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:301
+msgid "# Verify library is found\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:306
+msgid "Permission Issues"
+msgstr "權限問題"
+
+#: src/getting-started/installation/manual-environment.md:308
+msgid "For device access (USB sensors, CAN bus, serial ports):"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:311
+msgid "# Add user to required groups\n"
+msgstr "# Add user 到 必需 groups\n"
+
+#: src/getting-started/installation/manual-environment.md:312
+msgid "# Serial ports, GPS\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:313
+msgid "# USB devices\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:314
+msgid "# Cameras\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:315
+msgid "# Log out and back in for changes to take effect\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:319
+#: src/getting-started/installation/docker.md:270
+msgid "Build Failures"
+msgstr "建構 Failures"
+
+#: src/getting-started/installation/manual-environment.md:321
+msgid "If colcon build fails:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:324
+msgid "# Clean build artifacts\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:326
+msgid "# Try building with verbose output\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:329
+msgid "# Build with single thread to see errors clearly\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:334
+msgid "Verification"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:336
+msgid "After manual setup, verify your installation:"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:339
+msgid "# Check ROS 2 installation\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:341
+msgid "# Check Autoware installation (Debian)\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:344
+msgid "# Check Autoware installation (source build)\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:348
+msgid "# Check sensor drivers\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:352
+msgid "# Test AutoSDV build\n"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:360
+msgid ""
+"Return to [Software Installation Overview](./overview.md) to complete the "
+"standard workflow"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:361
+msgid "See [Usage Guide](../usage.md) for launching and operating the system"
+msgstr ""
+
+#: src/getting-started/installation/manual-environment.md:362
+msgid ""
+"Check [Development Guide](../../guides/development.md) for development "
+"workflows"
+msgstr ""
+
+#: src/getting-started/installation/docker.md:3
 msgid ""
 "Docker provides a containerized environment for running AutoSDV without "
 "modifying your host system. This is ideal for development, testing, and "
@@ -1180,167 +2214,159 @@ msgstr ""
 "Docker 提供了一個容器化環境，用於運欄 AutoSDV 而不修改你的主機系統。這非常適"
 "合開發、測試和模擬情境。"
 
-#: src/getting-started/docker-setup.md:5
+#: src/getting-started/installation/docker.md:5
 msgid "Use Cases"
 msgstr "使用情境"
 
-#: src/getting-started/docker-setup.md:7
+#: src/getting-started/installation/docker.md:7
 msgid "Docker is recommended for:"
 msgstr "Docker 建議用於："
 
-#: src/getting-started/docker-setup.md:8
+#: src/getting-started/installation/docker.md:8
 msgid ""
 "**Development and Testing**: Consistent environment across different machines"
 msgstr "**開發和測試**：在不同機器上保持一致的環境"
 
-#: src/getting-started/docker-setup.md:9
+#: src/getting-started/installation/docker.md:9
 msgid "**Simulation**: Running AutoSDV without physical hardware"
 msgstr "**模擬**：在沒有物理硬體的情況下運欄 AutoSDV"
 
-#: src/getting-started/docker-setup.md:10
+#: src/getting-started/installation/docker.md:10
 msgid "**CI/CD**: Automated testing and deployment"
 msgstr "**CI/CD**：自動化測試和部署"
 
-#: src/getting-started/docker-setup.md:11
+#: src/getting-started/installation/docker.md:11
 msgid "**Quick Evaluation**: Try AutoSDV without full installation"
 msgstr "**快速評估**：無需完整安裝即可嘗試 AutoSDV"
 
-#: src/getting-started/docker-setup.md:13
-msgid "Prerequisites"
-msgstr "前置條件"
-
-#: src/getting-started/docker-setup.md:15
+#: src/getting-started/installation/docker.md:15
 msgid "Host System Requirements"
 msgstr "主機系統需求"
 
-#: src/getting-started/docker-setup.md:17
+#: src/getting-started/installation/docker.md:17
 msgid "Ubuntu 20.04 or 22.04 (other Linux distributions may work)"
 msgstr "Ubuntu 20.04 或 22.04（其他 Linux 發欄版可能也可欄）"
 
-#: src/getting-started/docker-setup.md:18
+#: src/getting-started/installation/docker.md:18
 msgid "NVIDIA GPU with driver 470+ (for GPU acceleration)"
 msgstr "NVIDIA GPU 搭配驅動程式 470+（用於 GPU 加速）"
 
-#: src/getting-started/docker-setup.md:19
+#: src/getting-started/installation/docker.md:19
 msgid "At least 50GB free disk space"
 msgstr "至少 50GB 可用磁碟空間"
 
-#: src/getting-started/docker-setup.md:20
+#: src/getting-started/installation/docker.md:20
 msgid "16GB+ RAM recommended"
 msgstr "建議 16GB+ 記憶體"
 
-#: src/getting-started/docker-setup.md:22
+#: src/getting-started/installation/docker.md:22
 msgid "Software Requirements"
 msgstr "軟體需求"
 
-#: src/getting-started/docker-setup.md:24
+#: src/getting-started/installation/docker.md:24
 msgid "**Docker Engine** (20.10 or newer):"
 msgstr "**Docker Engine**（20.10 或更新版本）："
 
-#: src/getting-started/docker-setup.md:26
+#: src/getting-started/installation/docker.md:26
 msgid "# Install Docker\n"
 msgstr "# 安裝 Docker\n"
 
-#: src/getting-started/docker-setup.md:30
+#: src/getting-started/installation/docker.md:30
 msgid "# Add user to docker group\n"
 msgstr "# 將使用者加入 docker 群群組\n"
 
-#: src/getting-started/docker-setup.md:32
-msgid "# Log out and back in for group changes to take effect\n"
-msgstr "# 登出並重新登入以使群群組變更生效\n"
-
-#: src/getting-started/docker-setup.md:35
+#: src/getting-started/installation/docker.md:35
 msgid "**NVIDIA Container Toolkit** (for GPU support):"
 msgstr "**NVIDIA Container Toolkit**（用於 GPU 支援）："
 
-#: src/getting-started/docker-setup.md:37
+#: src/getting-started/installation/docker.md:37
 msgid "# Add NVIDIA repository\n"
 msgstr "# 新增 NVIDIA 儲存程式庫\n"
 
-#: src/getting-started/docker-setup.md:38
+#: src/getting-started/installation/docker.md:38
 msgid "$(. /etc/os-release;echo $ID$VERSION_ID)"
 msgstr "$(. /etc/os-release;echo $ID$VERSION_ID)"
 
-#: src/getting-started/docker-setup.md:43
+#: src/getting-started/installation/docker.md:43
 msgid "# Install nvidia-container-toolkit\n"
 msgstr "# 安裝 nvidia-container-toolkit\n"
 
-#: src/getting-started/docker-setup.md:49
+#: src/getting-started/installation/docker.md:49
 msgid "**Docker Compose** (optional, for multi-container setups):"
 msgstr "**Docker Compose**（選用，用於多容器設定）："
 
-#: src/getting-started/docker-setup.md:54
+#: src/getting-started/installation/docker.md:54
 msgid "Quick Start"
 msgstr "快速入門"
 
-#: src/getting-started/docker-setup.md:56
+#: src/getting-started/installation/docker.md:56
 msgid "Step 1: Clone AutoSDV Repository"
 msgstr "步驟 1：複寫 AutoSDV 儲存程式庫"
 
-#: src/getting-started/docker-setup.md:63
+#: src/getting-started/installation/docker.md:63
 msgid "Step 2: Bootstrap Docker Environment"
 msgstr "步驟 2：啟動 Docker 環境"
 
-#: src/getting-started/docker-setup.md:65
+#: src/getting-started/installation/docker.md:65
 msgid ""
 "Set up cross-architecture support (required for ARM64 emulation on x86_64):"
 msgstr "設定跨架構支援（在 x86_64 上模擬 ARM64 所需）："
 
-#: src/getting-started/docker-setup.md:71
+#: src/getting-started/installation/docker.md:71
 msgid "Step 3: Build Docker Image"
 msgstr "步驟 3：建構 Docker 鏡像檔"
 
-#: src/getting-started/docker-setup.md:73
+#: src/getting-started/installation/docker.md:73
 msgid "Build the AutoSDV Docker image:"
 msgstr "建構 AutoSDV Docker 鏡像檔："
 
-#: src/getting-started/docker-setup.md:79
+#: src/getting-started/installation/docker.md:79
 msgid "This creates an image with:"
 msgstr "這將建立一個套件含以下內容的鏡像檔："
 
-#: src/getting-started/docker-setup.md:80
+#: src/getting-started/installation/docker.md:80
 msgid "Ubuntu 22.04 base with ROS 2 Humble"
 msgstr "Ubuntu 22.04 基礎系統搭配 ROS 2 Humble"
 
-#: src/getting-started/docker-setup.md:81
+#: src/getting-started/installation/docker.md:81
 msgid "Autoware 2025.02 pre-installed"
 msgstr "Autoware 2025.02 預先安裝"
 
-#: src/getting-started/docker-setup.md:82
+#: src/getting-started/installation/docker.md:82
 msgid "All AutoSDV dependencies"
 msgstr "所有 AutoSDV 相依套件"
 
-#: src/getting-started/docker-setup.md:83
+#: src/getting-started/installation/docker.md:83
 msgid "CUDA and TensorRT support"
 msgstr "CUDA 和 TensorRT 支援"
 
-#: src/getting-started/docker-setup.md:84
+#: src/getting-started/installation/docker.md:84
 msgid "Sensor driver libraries (except proprietary ones)"
 msgstr "感測器驅動程式程式程式庫（除了專有的）"
 
-#: src/getting-started/docker-setup.md:86
+#: src/getting-started/installation/docker.md:86
 msgid "Step 4: Run Container"
 msgstr "步驟 4：執欄容器"
 
-#: src/getting-started/docker-setup.md:88
+#: src/getting-started/installation/docker.md:88
 msgid "Start an interactive container session:"
 msgstr "啟動互動式容器工作階區段："
 
-#: src/getting-started/docker-setup.md:94
+#: src/getting-started/installation/docker.md:94
 msgid ""
 "You'll enter a shell with AutoSDV ready to use at `/home/developer/AutoSDV`."
 msgstr ""
 "你將進入一個命令欄環境，AutoSDV 在 `/home/developer/AutoSDV` 中已準備好使用。"
 
-#: src/getting-started/docker-setup.md:96
+#: src/getting-started/installation/docker.md:96
 msgid "Docker Image Details"
 msgstr "Docker 鏡像檔詳細資訊"
 
-#: src/getting-started/docker-setup.md:98
+#: src/getting-started/installation/docker.md:98
 msgid "Image Architecture"
 msgstr "鏡像檔架構"
 
-#: src/getting-started/docker-setup.md:100
+#: src/getting-started/installation/docker.md:100
 msgid ""
 "The AutoSDV Docker image is built for **ARM64 architecture** to match the "
 "Jetson platform. On x86_64 hosts, QEMU provides transparent emulation."
@@ -1348,845 +2374,425 @@ msgstr ""
 "AutoSDV Docker 鏡像檔針對 **ARM64 架構**建構，以符合 Jetson 平台。在 x86_64 "
 "主機上，QEMU 提供透明的模擬。"
 
-#: src/getting-started/docker-setup.md:102
+#: src/getting-started/installation/docker.md:102
 msgid "Pre-installed Software"
 msgstr "預安裝軟體"
 
-#: src/getting-started/docker-setup.md:104
+#: src/getting-started/installation/docker.md:104
 msgid "**ROS 2 Humble** with desktop tools"
 msgstr "**ROS 2 Humble** 搭配桌臉部工具"
 
-#: src/getting-started/docker-setup.md:105
+#: src/getting-started/installation/docker.md:105
 msgid "**Autoware 2025.02** binary release"
 msgstr "**Autoware 2025.02** 二進位發佈"
 
-#: src/getting-started/docker-setup.md:106
+#: src/getting-started/installation/docker.md:106
 msgid "**CUDA 12.3** and **TensorRT 8.6**"
 msgstr "**CUDA 12.3** 和 **TensorRT 8.6**"
 
-#: src/getting-started/docker-setup.md:107
+#: src/getting-started/installation/docker.md:107
 msgid "**Cyclone DDS** configured as default"
 msgstr "**Cyclone DDS** 設定為預設"
 
-#: src/getting-started/docker-setup.md:108
+#: src/getting-started/installation/docker.md:108
 msgid "**Development tools**: git, vim, tmux, htop"
 msgstr "**開發工具**：git、vim、tmux、htop"
 
-#: src/getting-started/docker-setup.md:110
+#: src/getting-started/installation/docker.md:110
 msgid "Volume Mounts"
 msgstr "磁區掛載"
 
-#: src/getting-started/docker-setup.md:112
+#: src/getting-started/installation/docker.md:112
 msgid "The `make run` command automatically mounts:"
 msgstr "`make 執欄` 命令自動掛載："
 
-#: src/getting-started/docker-setup.md:113
+#: src/getting-started/installation/docker.md:113
 msgid "`/tmp/.X11-unix` for GUI applications"
 msgstr "`/tmp/.X11-unix` 用於 GUI 套用程式"
 
-#: src/getting-started/docker-setup.md:114
+#: src/getting-started/installation/docker.md:114
 msgid "NVIDIA GPU devices for CUDA access"
 msgstr "NVIDIA GPU 裝置用於 CUDA 存取"
 
-#: src/getting-started/docker-setup.md:116
+#: src/getting-started/installation/docker.md:116
 msgid "Advanced Usage"
 msgstr "進階使用"
 
-#: src/getting-started/docker-setup.md:118
+#: src/getting-started/installation/docker.md:118
 msgid "Custom Run Options"
 msgstr "自訂執欄選項"
 
-#: src/getting-started/docker-setup.md:120
+#: src/getting-started/installation/docker.md:120
 msgid "Run with additional volumes or ports:"
 msgstr "使用額外磁區或串連埠執欄："
 
-#: src/getting-started/docker-setup.md:132
+#: src/getting-started/installation/docker.md:132
 msgid "Development Workflow"
 msgstr "開發串流程"
 
-#: src/getting-started/docker-setup.md:134
+#: src/getting-started/installation/docker.md:134
 msgid "For active development, mount your local code:"
 msgstr "在積極開發時，掛載你的本地程式碼："
 
-#: src/getting-started/docker-setup.md:144
+#: src/getting-started/installation/docker.md:144
 msgid "GUI Applications"
 msgstr "GUI 套用程式"
 
-#: src/getting-started/docker-setup.md:146
+#: src/getting-started/installation/docker.md:146
 msgid "Enable X11 forwarding for visualization tools:"
 msgstr "啟用 X11 轉發以使用視覺化工具："
 
-#: src/getting-started/docker-setup.md:157
+#: src/getting-started/installation/docker.md:157
 msgid "Then run GUI applications like RViz:"
 msgstr "Then 執欄 GUI applications like RViz:"
 
-#: src/getting-started/docker-setup.md:159
+#: src/getting-started/installation/docker.md:159
 msgid "# Inside container\n"
 msgstr "# Inside 容器\n"
 
-#: src/getting-started/docker-setup.md:163
+#: src/getting-started/installation/docker.md:163
 msgid "Multi-Container Setup"
 msgstr "Multi-容器 設定"
 
-#: src/getting-started/docker-setup.md:165
+#: src/getting-started/installation/docker.md:165
 msgid "Create a `docker-compose.yml` for complex deployments:"
 msgstr "為複雜部署建立 `docker-compose.yml`："
 
-#: src/getting-started/docker-setup.md:168
+#: src/getting-started/installation/docker.md:168
 msgid "version"
 msgstr "版本"
 
-#: src/getting-started/docker-setup.md:168
+#: src/getting-started/installation/docker.md:168
 msgid "'3.8'"
 msgstr "'3.8'"
 
-#: src/getting-started/docker-setup.md:169
+#: src/getting-started/installation/docker.md:169
 msgid "services"
 msgstr "服務"
 
-#: src/getting-started/docker-setup.md:171
+#: src/getting-started/installation/docker.md:171
 msgid "autosdv"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:172
-#: src/getting-started/docker-setup.md:185
+#: src/getting-started/installation/docker.md:172
+#: src/getting-started/installation/docker.md:185
 msgid "image"
 msgstr "映像檔"
 
-#: src/getting-started/docker-setup.md:172
-#: src/getting-started/docker-setup.md:185
+#: src/getting-started/installation/docker.md:172
+#: src/getting-started/installation/docker.md:185
 msgid "autosdv:latest"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:173
-#: src/getting-started/docker-setup.md:186
+#: src/getting-started/installation/docker.md:173
+#: src/getting-started/installation/docker.md:186
 msgid "runtime"
 msgstr "執欄時間"
 
-#: src/getting-started/docker-setup.md:173
-#: src/getting-started/docker-setup.md:186
+#: src/getting-started/installation/docker.md:173
+#: src/getting-started/installation/docker.md:186
 msgid "nvidia"
 msgstr "nvidia"
 
-#: src/getting-started/docker-setup.md:174
-#: src/getting-started/docker-setup.md:187
+#: src/getting-started/installation/docker.md:174
+#: src/getting-started/installation/docker.md:187
 msgid "network_mode"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:174
-#: src/getting-started/docker-setup.md:187
+#: src/getting-started/installation/docker.md:174
+#: src/getting-started/installation/docker.md:187
 msgid "host"
 msgstr "host"
 
-#: src/getting-started/docker-setup.md:175
+#: src/getting-started/installation/docker.md:175
 msgid "privileged"
 msgstr "特權"
 
-#: src/getting-started/docker-setup.md:176
+#: src/getting-started/installation/docker.md:176
 msgid "volumes"
 msgstr "卷"
 
-#: src/getting-started/docker-setup.md:177
+#: src/getting-started/installation/docker.md:177
 msgid "/dev:/dev"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:178
+#: src/getting-started/installation/docker.md:178
 msgid "./data:/data"
 msgstr "./資料:/資料"
 
-#: src/getting-started/docker-setup.md:179
-#: src/getting-started/docker-setup.md:188
+#: src/getting-started/installation/docker.md:179
+#: src/getting-started/installation/docker.md:188
 msgid "environment"
 msgstr "環境"
 
-#: src/getting-started/docker-setup.md:180
-#: src/getting-started/docker-setup.md:189
+#: src/getting-started/installation/docker.md:180
+#: src/getting-started/installation/docker.md:189
 msgid "ROS_DOMAIN_ID=0"
 msgstr "ROS_DOMAIN_ID=0"
 
-#: src/getting-started/docker-setup.md:181
+#: src/getting-started/installation/docker.md:181
 msgid "DISPLAY=${DISPLAY}"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:182
-#: src/getting-started/docker-setup.md:190
+#: src/getting-started/installation/docker.md:182
+#: src/getting-started/installation/docker.md:190
 msgid "command"
 msgstr "命令"
 
-#: src/getting-started/docker-setup.md:182
+#: src/getting-started/installation/docker.md:182
 msgid "ros2 launch autosdv_launch autosdv.launch.yaml"
 msgstr "ros2 啟動 autosdv_launch autosdv.啟動.yaml"
 
-#: src/getting-started/docker-setup.md:184
+#: src/getting-started/installation/docker.md:184
 msgid "monitoring"
 msgstr "監視"
 
-#: src/getting-started/docker-setup.md:190
+#: src/getting-started/installation/docker.md:190
 msgid ""
 "python3 /home/developer/AutoSDV/src/launcher/autosdv_launch/autosdv_launch/"
 "autosdv_monitor.py"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:193
+#: src/getting-started/installation/docker.md:193
 msgid "Run with:"
 msgstr "執欄："
 
-#: src/getting-started/docker-setup.md:198
+#: src/getting-started/installation/docker.md:198
 msgid "Container Management"
 msgstr "容器 Management"
 
-#: src/getting-started/docker-setup.md:200
+#: src/getting-started/installation/docker.md:200
 msgid "Save and Load Images"
 msgstr "儲存和載入映像檔"
 
-#: src/getting-started/docker-setup.md:202
+#: src/getting-started/installation/docker.md:202
 msgid "Export image for deployment:"
 msgstr "匯出映像檔以進欄部署："
 
-#: src/getting-started/docker-setup.md:205
+#: src/getting-started/installation/docker.md:205
 msgid "# Creates autosdv_docker.tar.gz\n"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:208
+#: src/getting-started/installation/docker.md:208
 msgid "Load on another machine:"
 msgstr "在另一台機器上載入："
 
-#: src/getting-started/docker-setup.md:214
+#: src/getting-started/installation/docker.md:214
 msgid "Clean Up"
 msgstr "清除 Up"
 
-#: src/getting-started/docker-setup.md:216
+#: src/getting-started/installation/docker.md:216
 msgid "Remove container and image:"
 msgstr "移除容器和映像檔："
 
-#: src/getting-started/docker-setup.md:222
+#: src/getting-started/installation/docker.md:222
 msgid "Limitations"
 msgstr "限制"
 
-#: src/getting-started/docker-setup.md:224
+#: src/getting-started/installation/docker.md:224
 msgid "Hardware Access"
 msgstr "硬體 存取"
 
-#: src/getting-started/docker-setup.md:226
+#: src/getting-started/installation/docker.md:226
 msgid "Docker containers have limited hardware access:"
 msgstr "Docker containers have limited 硬體 存取:"
 
-#: src/getting-started/docker-setup.md:227
+#: src/getting-started/installation/docker.md:227
 msgid ""
 "**No direct LiDAR access** (USB/Ethernet sensors need special configuration)"
 msgstr "**No direct LiDAR 存取** (USB/Ethernet sensors need special 設定)"
 
-#: src/getting-started/docker-setup.md:228
+#: src/getting-started/installation/docker.md:228
 msgid "**No CAN bus** without `--privileged` flag"
 msgstr "**No 可以 bus** without `--特權` flag"
 
-#: src/getting-started/docker-setup.md:229
+#: src/getting-started/installation/docker.md:229
 msgid "**Camera access** requires device mounting"
 msgstr "**相機 存取** requires 設備 mounting"
 
-#: src/getting-started/docker-setup.md:231
+#: src/getting-started/installation/docker.md:231
 msgid "Performance"
 msgstr "效能"
 
-#: src/getting-started/docker-setup.md:233
+#: src/getting-started/installation/docker.md:233
 msgid "ARM64 emulation on x86_64 reduces performance"
 msgstr "在 x86_64 上進欄 ARM64 模擬會降低效能"
 
-#: src/getting-started/docker-setup.md:234
+#: src/getting-started/installation/docker.md:234
 msgid "GPU passthrough adds overhead"
 msgstr "圖形形處理常式 passthrough adds overhead"
 
-#: src/getting-started/docker-setup.md:235
+#: src/getting-started/installation/docker.md:235
 msgid "Network performance may vary with Docker networking modes"
 msgstr "網路效能可能因 Docker 網路模式而異"
 
-#: src/getting-started/docker-setup.md:237
+#: src/getting-started/installation/docker.md:237
 msgid "Sensor Drivers"
 msgstr "感測器 Drivers"
 
-#: src/getting-started/docker-setup.md:239
-msgid "Some proprietary sensor drivers cannot be included:"
-msgstr "Some proprietary 感測器 drivers cannot be included:"
+#: src/getting-started/installation/docker.md:239
+msgid "The Docker image includes most drivers via rosdep, but:"
+msgstr ""
 
-#: src/getting-started/docker-setup.md:240
-msgid "ZED SDK (requires manual installation)"
-msgstr "ZED SDK (requires manual 安裝)"
+#: src/getting-started/installation/docker.md:241
+msgid ""
+"**ZED SDK**: Cannot be fully used in Docker due to hardware requirements. "
+"Physical deployment requires native installation."
+msgstr ""
 
-#: src/getting-started/docker-setup.md:241
-msgid "Seyond Robin-W driver (vendor-specific)"
-msgstr "Seyond Robin-W 驅動程式 (vendor-specific)"
+#: src/getting-started/installation/docker.md:242
+msgid "**Blickfeld**: Installed via rosdep in container"
+msgstr ""
 
-#: src/getting-started/docker-setup.md:245
+#: src/getting-started/installation/docker.md:243
+msgid "**Velodyne**: Installed via rosdep in container"
+msgstr ""
+
+#: src/getting-started/installation/docker.md:245
+msgid ""
+"For full ZED camera support, use native installation with [ZED SDK "
+"Installation Guide](./zed-sdk.md)."
+msgstr ""
+
+#: src/getting-started/installation/docker.md:249
 msgid "GPU Not Accessible"
 msgstr "圖形形處理常式 Not Accessible"
 
-#: src/getting-started/docker-setup.md:247
+#: src/getting-started/installation/docker.md:251
 msgid "Verify NVIDIA runtime:"
 msgstr "驗證 NVIDIA runtime:"
 
-#: src/getting-started/docker-setup.md:252
+#: src/getting-started/installation/docker.md:256
 msgid "Network Issues"
 msgstr "網路 Issues"
 
-#: src/getting-started/docker-setup.md:254
+#: src/getting-started/installation/docker.md:258
 msgid "Use host networking for ROS 2 communication:"
 msgstr "使用主機網路進欄 ROS 2 通訊："
 
-#: src/getting-started/docker-setup.md:259
+#: src/getting-started/installation/docker.md:263
 msgid "Permission Denied"
 msgstr "權限被拒"
 
-#: src/getting-started/docker-setup.md:261
+#: src/getting-started/installation/docker.md:265
 msgid "For device access, run with privileges:"
 msgstr "用於 設備 存取, 執欄 搭配 權限:"
 
-#: src/getting-started/docker-setup.md:266
-msgid "Build Failures"
-msgstr "建構 Failures"
-
-#: src/getting-started/docker-setup.md:268
+#: src/getting-started/installation/docker.md:272
 msgid "Clear Docker cache and rebuild:"
 msgstr "清除 Docker 快取並重建:"
 
-#: src/getting-started/docker-setup.md:275
+#: src/getting-started/installation/docker.md:279
 msgid "Integration with CI/CD"
 msgstr "整合 搭配 CI/CD"
 
-#: src/getting-started/docker-setup.md:277
+#: src/getting-started/installation/docker.md:281
 msgid "GitHub Actions Example"
 msgstr "GitHub Actions 範例"
 
-#: src/getting-started/docker-setup.md:280
-#: src/getting-started/docker-setup.md:290
-#: src/getting-started/docker-setup.md:293
+#: src/getting-started/installation/docker.md:284
+#: src/getting-started/installation/docker.md:294
+#: src/getting-started/installation/docker.md:297
 msgid "name"
 msgstr "名稱"
 
-#: src/getting-started/docker-setup.md:280
+#: src/getting-started/installation/docker.md:284
 msgid "AutoSDV Tests"
 msgstr "AutoSDV 測試"
 
-#: src/getting-started/docker-setup.md:282
+#: src/getting-started/installation/docker.md:286
 msgid "push"
 msgstr "推播"
 
-#: src/getting-started/docker-setup.md:282
+#: src/getting-started/installation/docker.md:286
 msgid "pull_request"
 msgstr "提取要求"
 
-#: src/getting-started/docker-setup.md:283
+#: src/getting-started/installation/docker.md:287
 msgid "jobs"
 msgstr "工作"
 
-#: src/getting-started/docker-setup.md:285
+#: src/getting-started/installation/docker.md:289
 msgid "test"
 msgstr "測試"
 
-#: src/getting-started/docker-setup.md:286
+#: src/getting-started/installation/docker.md:290
 msgid "runs-on"
 msgstr "執欄於"
 
-#: src/getting-started/docker-setup.md:286
+#: src/getting-started/installation/docker.md:290
 msgid "ubuntu-latest"
 msgstr "ubuntu-latest"
 
-#: src/getting-started/docker-setup.md:287
+#: src/getting-started/installation/docker.md:291
 msgid "steps"
 msgstr "步驟"
 
-#: src/getting-started/docker-setup.md:288
-#: src/getting-started/docker-setup.md:291
+#: src/getting-started/installation/docker.md:292
+#: src/getting-started/installation/docker.md:295
 msgid "uses"
 msgstr "使用"
 
-#: src/getting-started/docker-setup.md:288
+#: src/getting-started/installation/docker.md:292
 msgid "actions/checkout@v2"
 msgstr "actions/checkout@v2"
 
-#: src/getting-started/docker-setup.md:290
+#: src/getting-started/installation/docker.md:294
 msgid "Set up Docker"
 msgstr "設定 Docker"
 
-#: src/getting-started/docker-setup.md:291
+#: src/getting-started/installation/docker.md:295
 msgid "docker/setup-buildx-action@v1"
 msgstr "docker/設定-buildx-action@v1"
 
-#: src/getting-started/docker-setup.md:293
+#: src/getting-started/installation/docker.md:297
 msgid "Build Docker image"
 msgstr "建構 Docker 映像檔"
 
-#: src/getting-started/docker-setup.md:294
+#: src/getting-started/installation/docker.md:298
 msgid "run"
 msgstr "執欄"
 
-#: src/getting-started/docker-setup.md:304
+#: src/getting-started/installation/docker.md:308
 msgid "Jenkins Pipeline Example"
 msgstr "Jenkins Pipeline 範例"
 
-#: src/getting-started/docker-setup.md:311
+#: src/getting-started/installation/docker.md:315
 msgid "'Build'"
 msgstr "'建構'"
 
-#: src/getting-started/docker-setup.md:313
+#: src/getting-started/installation/docker.md:317
 msgid "'cd docker && make build'"
 msgstr "'cd docker && make 建構'"
 
-#: src/getting-started/docker-setup.md:317
+#: src/getting-started/installation/docker.md:321
 msgid "'Test'"
 msgstr "'測試'"
 
-#: src/getting-started/docker-setup.md:319
+#: src/getting-started/installation/docker.md:323
 msgid "'docker run --rm autosdv:latest make test'"
 msgstr "'docker 執欄 --rm autosdv:latest make 測試'"
 
-#: src/getting-started/docker-setup.md:328
-msgid ""
-"[Software Installation](./software-installation.md) - Native installation "
-"guide"
+#: src/getting-started/installation/docker.md:332
+msgid "[Software Installation](./overview.md) - Native installation guide"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:329
+#: src/getting-started/installation/docker.md:333
 msgid "[Usage Guide](./usage.md) - Operating AutoSDV"
 msgstr "[使用指南](./使用方法.md) - Operating AutoSDV"
 
-#: src/getting-started/docker-setup.md:330
+#: src/getting-started/installation/docker.md:334
 msgid "[Development Guide](../guides/development.md) - Development workflows"
 msgstr ""
 
-#: src/getting-started/docker-setup.md:331
-msgid "[Manual Setup](./manual-setup.md) - Customization options"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:1
-msgid "Manual Setup and Customization"
-msgstr "手動設定與自訂"
-
-#: src/getting-started/manual-setup.md:3
-msgid ""
-"This guide provides detailed manual installation steps and customization "
-"options for advanced users. For the recommended automated installation, see "
-"the [Software Installation](./software-installation.md) guide."
-msgstr ""
-
-#: src/getting-started/manual-setup.md:5
-msgid "Manual Environment Setup"
-msgstr "Manual 環境 設定"
-
-#: src/getting-started/manual-setup.md:7
-msgid "ROS 2 Humble Installation"
-msgstr "ROS 2 Humble 安裝"
-
-#: src/getting-started/manual-setup.md:9
-msgid ""
-"If you prefer to install ROS 2 manually instead of using the Ansible script:"
-msgstr "If 你 prefer 到 安裝 ROS 2 manually instead 的 using Ansible script:"
-
-#: src/getting-started/manual-setup.md:11
-msgid "**Add ROS 2 apt repository:**"
-msgstr "**Add ROS 2 apt 儲存程式庫:**"
-
-#: src/getting-started/manual-setup.md:15
-msgid ""
-"\"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-"
-"archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release "
-"&& echo $UBUNTU_CODENAME) main\""
-msgstr ""
-"\\\"deb [arch=$(dpkg --print-架構) signed-由=/usr/share/keyrings/ros-archive-"
-"keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo "
-"$UBUNTU_CODENAME) main\\\""
-
-#: src/getting-started/manual-setup.md:18
-msgid "**Install ROS 2 Humble:**"
-msgstr "**安裝 ROS 2 Humble:**"
-
-#: src/getting-started/manual-setup.md:24
-msgid "**Configure environment:**"
-msgstr "**設定 環境:**"
-
-#: src/getting-started/manual-setup.md:26
-msgid "\"source /opt/ros/humble/setup.bash\""
-msgstr "\\\"source /opt/ros/humble/設定.bash\\\""
-
-#: src/getting-started/manual-setup.md:30
-msgid "Autoware Installation Options"
-msgstr "Autoware 安裝 Options"
-
-#: src/getting-started/manual-setup.md:32
-msgid "Option 1: Build Autoware from Source"
-msgstr "Option 1: 建構 Autoware 從 Source"
-
-#: src/getting-started/manual-setup.md:34
-msgid "For developers who want to modify Autoware components:"
-msgstr "用於 developers who want 到 修改 Autoware components:"
-
-#: src/getting-started/manual-setup.md:36
-msgid "**Clone Autoware repository:**"
-msgstr "**Clone Autoware 儲存程式庫:**"
-
-#: src/getting-started/manual-setup.md:43
-msgid "**Install dependencies:**"
-msgstr "**安裝 相依套件:**"
-
-#: src/getting-started/manual-setup.md:50
-msgid "**Import repositories and build:**"
-msgstr "**匯入 repositories 和 建構:**"
-
-#: src/getting-started/manual-setup.md:58
-msgid "**Source the workspace:**"
-msgstr "**來源 工作空間:**"
-
-#: src/getting-started/manual-setup.md:60
-msgid "\"source ~/autoware_ws/autoware/install/setup.bash\""
-msgstr "\\\"source ~/autoware_ws/autoware/安裝/設定.bash\\\""
-
-#: src/getting-started/manual-setup.md:63
-msgid "Option 2: Custom Autoware Configuration"
-msgstr "Option 2: 自訂 Autoware 設定"
-
-#: src/getting-started/manual-setup.md:65
-msgid "To use a custom Autoware installation path:"
-msgstr "到 use 自訂 Autoware 安裝 路徑:"
-
-#: src/getting-started/manual-setup.md:67
-msgid "**Modify the build script:**"
-msgstr "**Modify 建構 script:**"
-
-#: src/getting-started/manual-setup.md:69
-msgid "/your/custom/autoware/path"
-msgstr "/your/自訂/autoware/路徑"
-
-#: src/getting-started/manual-setup.md:72
-msgid ""
-"**Update AutoSDV's build configuration:** Edit `~/AutoSDV/clean_build.sh` "
-"and change the Autoware path:"
-msgstr ""
-"**更新 AutoSDV's 建構 設定:** Edit `~/AutoSDV/clean_build.sh` 和 "
-"changeAutoware 路徑:"
-
-#: src/getting-started/manual-setup.md:75
-msgid "\"/your/custom/autoware/path\""
-msgstr "\\\"/your/自訂/autoware/路徑\\\""
-
-#: src/getting-started/manual-setup.md:78
-msgid "Manual Sensor Driver Installation"
-msgstr "Manual 感測器 驅動程式 安裝"
-
-#: src/getting-started/manual-setup.md:80
-msgid "Blickfeld Scanner Library"
-msgstr "Blickfeld Scanner Library"
-
-#: src/getting-started/manual-setup.md:82
-msgid "Manual installation for different architectures:"
-msgstr "Manual 安裝 用於 different architectures:"
-
-#: src/getting-started/manual-setup.md:84
-msgid "**Download the appropriate package:**"
-msgstr "**下載 appropriate 套件:**"
-
-#: src/getting-started/manual-setup.md:85
-msgid ""
-"ARM64 (Jetson): [blickfeld-scanner-lib_2.20.6-1_arm64.deb](https://github."
-"com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
-"blickfeld-scanner-lib_2.20.6-1_arm64.deb)"
-msgstr ""
-"ARM64 (Jetson): [blickfeld-scanner-lib_2.20.6-1_arm64.deb](https://github."
-"com/NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/"
-"blickfeld-scanner-lib_2.20.6-1_arm64.deb)"
-
-#: src/getting-started/manual-setup.md:86
-msgid ""
-"AMD64 (PC): [blickfeld-scanner-lib_2.20.6-1_amd64.deb](https://github.com/"
-"NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
-"blickfeld-scanner-lib_2.20.6-1_amd64.deb)"
-msgstr ""
-"AMD64 (PC): [blickfeld-scanner-lib_2.20.6-1_amd64.deb](https://github.com/"
-"NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/blickfeld-"
-"scanner-lib_2.20.6-1_amd64.deb)"
-
-#: src/getting-started/manual-setup.md:88
-msgid "**Install the package:**"
-msgstr "**安裝 套件:**"
-
-#: src/getting-started/manual-setup.md:91
-msgid "# Fix any dependency issues\n"
-msgstr "# Fix any dependency issues\n"
-
-#: src/getting-started/manual-setup.md:94
-msgid "Velodyne LiDAR Driver"
-msgstr "Velodyne LiDAR 驅動程式"
-
-#: src/getting-started/manual-setup.md:96
-msgid "For Velodyne VLP-32C support:"
-msgstr "Velodyne VLP-32C 支援："
-
-#: src/getting-started/manual-setup.md:102
-msgid "GNSS/IMU Drivers"
-msgstr "GNSS/慣性測量單位 Drivers"
-
-#: src/getting-started/manual-setup.md:104
-msgid "Install additional GNSS and IMU support:"
-msgstr "安裝 additional GNSS 和 IMU support:"
-
-#: src/getting-started/manual-setup.md:107
-msgid "# NMEA GPS support\n"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:109
-msgid "# Serial communication for IMU\n"
-msgstr "# Serial 通訊 用於 IMU\n"
-
-#: src/getting-started/manual-setup.md:115
-msgid "System Optimization"
-msgstr "系統 最佳化"
-
-#: src/getting-started/manual-setup.md:117
-msgid "Real-time Performance Tuning"
-msgstr "即時 效能 Tuning"
-
-#: src/getting-started/manual-setup.md:119
-msgid "**Configure CPU governor:**"
-msgstr "**設定 CPU governor:**"
-
-#: src/getting-started/manual-setup.md:122
-msgid "'GOVERNOR=\"performance\"'"
-msgstr "'GOVERNOR=\\\"效能\\\"'"
-
-#: src/getting-started/manual-setup.md:126
-msgid "**Increase system limits:** Add to `/etc/security/limits.conf`:"
-msgstr "**Increase 系統 limits:** Add 到 `/etc/security/limits.conf`:"
-
-#: src/getting-started/manual-setup.md:135
-msgid "**Disable CPU frequency scaling (Jetson):**"
-msgstr "**停用 CPU frequency scaling (Jetson):**"
-
-#: src/getting-started/manual-setup.md:138
-msgid "# Maximum performance mode\n"
-msgstr "# Maximum 效能 mode\n"
-
-#: src/getting-started/manual-setup.md:141
-msgid "Network Configuration"
-msgstr "網路 設定"
-
-#: src/getting-started/manual-setup.md:143
-msgid "Configure Cyclone DDS"
-msgstr "設定 Cyclone DDS"
-
-#: src/getting-started/manual-setup.md:145
-msgid "**Create configuration file:**"
-msgstr "**建立 設定 檔案:**"
-
-#: src/getting-started/manual-setup.md:148
-msgid "<< EOF\n"
-msgstr "<< EOF\n"
-
-#: src/getting-started/manual-setup.md:165
-msgid "**Set as default RMW:**"
-msgstr "**Set as 預設 RMW:**"
-
-#: src/getting-started/manual-setup.md:167
-msgid "\"export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\""
-msgstr "\\\"匯出 RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\\\""
-
-#: src/getting-started/manual-setup.md:168
-msgid "\"export CYCLONEDDS_URI=file://$HOME/.ros/cyclone_dds.xml\""
-msgstr "\\\"匯出 CYCLONEDDS_URI=檔案://$HOME/.ros/cyclone_dds.xml\\\""
-
-#: src/getting-started/manual-setup.md:171
-msgid "Configure FastDDS (Alternative)"
-msgstr "設定 FastDDS (Alternative)"
-
-#: src/getting-started/manual-setup.md:173
-msgid "If you prefer FastDDS over Cyclone DDS:"
-msgstr "If you prefer FastDDS over Cyclone DDS:"
-
-#: src/getting-started/manual-setup.md:177
-msgid "rmw_fastrtps_cpp"
-msgstr "rmw_fastrtps_cpp"
-
-#: src/getting-started/manual-setup.md:180
-msgid "Custom Build Options"
-msgstr "自訂 建構 Options"
-
-#: src/getting-started/manual-setup.md:182
-msgid "Debug Build"
-msgstr "除錯 建構"
-
-#: src/getting-started/manual-setup.md:184
-msgid "For development with debug symbols:"
-msgstr "用於 development 搭配 除錯 symbols:"
-
-#: src/getting-started/manual-setup.md:194
-msgid "Selective Package Building"
-msgstr "Selective 套件 Building"
-
-#: src/getting-started/manual-setup.md:196
-msgid "Build only specific packages:"
-msgstr "建構 only specific packages:"
-
-#: src/getting-started/manual-setup.md:199
-msgid "# Build only vehicle interface packages\n"
-msgstr "# 建構 only 車輛 介臉部 packages\n"
-
-#: src/getting-started/manual-setup.md:208
-msgid "Cross-compilation"
-msgstr "交叉編譯"
-
-#: src/getting-started/manual-setup.md:210
-msgid "For cross-compiling to different architectures:"
-msgstr "用於交叉編譯到不同架構:"
-
-#: src/getting-started/manual-setup.md:213
-msgid "# Example for ARM64 on x86_64 host\n"
-msgstr "# 範例 用於 ARM64 在 x86_64 主機\n"
-
-#: src/getting-started/manual-setup.md:220
-msgid "Environment Variables"
-msgstr "環境 Variables"
-
-#: src/getting-started/manual-setup.md:222
-msgid "Essential Variables"
-msgstr "必要變數"
-
-#: src/getting-started/manual-setup.md:224
-msgid "Add to `~/.bashrc` for persistent configuration:"
-msgstr "Add 到 `~/.bashrc` 用於 persistent 設定:"
-
-#: src/getting-started/manual-setup.md:227
-msgid "# ROS 2 Configuration\n"
-msgstr "# ROS 2 設定\n"
-
-#: src/getting-started/manual-setup.md:228
-msgid "0  # Change for multi-robot setups\n"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:229
-msgid "0  # Set to 1 for local-only communication\n"
-msgstr "0 # Set 到 1 用於 local-only 通訊\n"
-
-#: src/getting-started/manual-setup.md:230
-msgid "# GPU Configuration (if applicable)\n"
-msgstr "# GPU 設定 (if applicable)\n"
-
-#: src/getting-started/manual-setup.md:232
-msgid "/usr/local/cuda"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:233
-msgid "$CUDA_HOME/bin:$PATH"
-msgstr "$CUDA_HOME/bin:$路徑"
-
-#: src/getting-started/manual-setup.md:234
-msgid "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
-msgstr "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
-
-#: src/getting-started/manual-setup.md:235
-msgid "# Autoware Configuration\n"
-msgstr "# Autoware 設定\n"
-
-#: src/getting-started/manual-setup.md:237
-msgid "/opt/autoware  # Or your custom path\n"
-msgstr "/opt/autoware # 或 your 自訂 路徑\n"
-
-#: src/getting-started/manual-setup.md:240
-msgid "Development Tools"
-msgstr "開發工具"
-
-#: src/getting-started/manual-setup.md:242
-msgid "Install additional development utilities:"
-msgstr "安裝 additional development utilities:"
-
-#: src/getting-started/manual-setup.md:245
-msgid "# Code formatting and linting\n"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:247
-msgid "# Debugging tools\n"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:250
-msgid "# Build acceleration\n"
-msgstr "# 建構 acceleration\n"
-
-#: src/getting-started/manual-setup.md:253
-msgid "\"ccache gcc\""
-msgstr ""
-
-#: src/getting-started/manual-setup.md:254
-msgid "\"ccache g++\""
-msgstr ""
-
-#: src/getting-started/manual-setup.md:257
-msgid "Troubleshooting Manual Installations"
-msgstr "手動安裝故障排除"
-
-#: src/getting-started/manual-setup.md:259
-msgid "Missing Dependencies"
-msgstr "Missing 相依套件"
-
-#: src/getting-started/manual-setup.md:261
-msgid "If encountering missing package errors:"
-msgstr "If encountering missing 套件 errors:"
-
-#: src/getting-started/manual-setup.md:264
-msgid "# Update rosdep database\n"
-msgstr "# 更新 rosdep database\n"
-
-#: src/getting-started/manual-setup.md:266
-msgid "# Install missing dependencies\n"
-msgstr "# 安裝 missing 相依套件\n"
-
-#: src/getting-started/manual-setup.md:272
-msgid "Library Path Issues"
-msgstr "Library 路徑 Issues"
-
-#: src/getting-started/manual-setup.md:274
-msgid "For custom library installations:"
-msgstr "用於 自訂 library installations:"
-
-#: src/getting-started/manual-setup.md:277
-msgid "# Add custom library paths\n"
-msgstr "# Add 自訂 library paths\n"
-
-#: src/getting-started/manual-setup.md:278
-msgid "\"/usr/local/lib\""
-msgstr ""
-
-#: src/getting-started/manual-setup.md:282
-msgid "Permission Issues"
-msgstr "權限問題"
-
-#: src/getting-started/manual-setup.md:284
-msgid "For device access (sensors, CAN bus):"
-msgstr "用於 裝置 存取 (sensors, 可以 bus):"
-
-#: src/getting-started/manual-setup.md:287
-msgid "# Add user to required groups\n"
-msgstr "# Add user 到 必需 groups\n"
-
-#: src/getting-started/manual-setup.md:289
-msgid "# Logout and login for changes to take effect\n"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:295
-msgid ""
-"Return to [Software Installation](./software-installation.md) for the "
-"standard setup"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:296
-msgid "See [Docker Setup](./docker-setup.md) for containerized deployment"
-msgstr ""
-
-#: src/getting-started/manual-setup.md:297
-msgid ""
-"Continue to [Development Guide](../guides/development.md) for development "
-"workflows"
+#: src/getting-started/installation/docker.md:335
+msgid "[Manual Setup](./manual-environment.md) - Customization options"
 msgstr ""
 
 #: src/getting-started/usage.md:3
 msgid ""
 "Before reading this article, please make sure you followed the [Software "
-"Installation](./software-installation.md) and built the project. The project "
+"Installation](./installation/overview.md) and built the project. The project "
 "repository has a launch file `autosdv.launch.yaml` that defines the set of "
 "nodes to be executed and assigned parameters to start the whole driving "
 "system."
@@ -3487,7 +4093,7 @@ msgstr ""
 
 #: src/reference/overview.md:138
 msgid ""
-"[Software Installation](../getting-started/software-installation.md) - "
+"[Software Installation](../getting-started/installation/overview.md) - "
 "Software setup"
 msgstr ""
 
@@ -4185,7 +4791,7 @@ msgstr ""
 
 #: src/reference/hardware/wiring-diagrams.md:248
 msgid ""
-"[Software Installation](../../getting-started/software-installation.md) - "
+"[Software Installation](../../getting-started/installation/overview.md) - "
 "Software setup"
 msgstr ""
 
@@ -4240,7 +4846,7 @@ msgstr "ZED X Mini 相機"
 msgid ""
 "The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED "
 "SDK is installed by the setup script described in [Software Installation]"
-"(../../getting-started/software-installation.md). The driver package is "
+"(../../getting-started/installation/overview.md). The driver package is "
 "located at:"
 msgstr ""
 
@@ -4498,10 +5104,6 @@ msgstr ""
 msgid "\"0\""
 msgstr ""
 
-#: src/reference/software/sensor-kit.md:32
-msgid "\"false\""
-msgstr ""
-
 #: src/reference/software/sensor-kit.md:34
 #: src/reference/software/sensor-kit.md:45
 msgid ""
@@ -4712,6 +5314,358 @@ msgstr ""
 #: src/reference/networking/5g-deployment.md:26
 msgid "Network Architecture"
 msgstr "網路 架構"
+
+#~ msgid "ROS 2 Humble Installation"
+#~ msgstr "ROS 2 Humble 安裝"
+
+#~ msgid ""
+#~ "If you prefer to install ROS 2 manually instead of using the Ansible "
+#~ "script:"
+#~ msgstr ""
+#~ "If 你 prefer 到 安裝 ROS 2 manually instead 的 using Ansible script:"
+
+#~ msgid "**Add ROS 2 apt repository:**"
+#~ msgstr "**Add ROS 2 apt 儲存程式庫:**"
+
+#~ msgid ""
+#~ "\"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/"
+#~ "ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-"
+#~ "release && echo $UBUNTU_CODENAME) main\""
+#~ msgstr ""
+#~ "\\\"deb [arch=$(dpkg --print-架構) signed-由=/usr/share/keyrings/ros-"
+#~ "archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-"
+#~ "release && echo $UBUNTU_CODENAME) main\\\""
+
+#~ msgid "**Install ROS 2 Humble:**"
+#~ msgstr "**安裝 ROS 2 Humble:**"
+
+#~ msgid "**Configure environment:**"
+#~ msgstr "**設定 環境:**"
+
+#~ msgid "\"source /opt/ros/humble/setup.bash\""
+#~ msgstr "\\\"source /opt/ros/humble/設定.bash\\\""
+
+#~ msgid "Autoware Installation Options"
+#~ msgstr "Autoware 安裝 Options"
+
+#~ msgid "Option 1: Build Autoware from Source"
+#~ msgstr "Option 1: 建構 Autoware 從 Source"
+
+#~ msgid "For developers who want to modify Autoware components:"
+#~ msgstr "用於 developers who want 到 修改 Autoware components:"
+
+#~ msgid "**Clone Autoware repository:**"
+#~ msgstr "**Clone Autoware 儲存程式庫:**"
+
+#~ msgid "**Install dependencies:**"
+#~ msgstr "**安裝 相依套件:**"
+
+#~ msgid "**Import repositories and build:**"
+#~ msgstr "**匯入 repositories 和 建構:**"
+
+#~ msgid "**Source the workspace:**"
+#~ msgstr "**來源 工作空間:**"
+
+#~ msgid "\"source ~/autoware_ws/autoware/install/setup.bash\""
+#~ msgstr "\\\"source ~/autoware_ws/autoware/安裝/設定.bash\\\""
+
+#~ msgid "Option 2: Custom Autoware Configuration"
+#~ msgstr "Option 2: 自訂 Autoware 設定"
+
+#~ msgid "To use a custom Autoware installation path:"
+#~ msgstr "到 use 自訂 Autoware 安裝 路徑:"
+
+#~ msgid "**Modify the build script:**"
+#~ msgstr "**Modify 建構 script:**"
+
+#~ msgid "/your/custom/autoware/path"
+#~ msgstr "/your/自訂/autoware/路徑"
+
+#~ msgid ""
+#~ "**Update AutoSDV's build configuration:** Edit `~/AutoSDV/clean_build.sh` "
+#~ "and change the Autoware path:"
+#~ msgstr ""
+#~ "**更新 AutoSDV's 建構 設定:** Edit `~/AutoSDV/clean_build.sh` 和 "
+#~ "changeAutoware 路徑:"
+
+#~ msgid "\"/your/custom/autoware/path\""
+#~ msgstr "\\\"/your/自訂/autoware/路徑\\\""
+
+#~ msgid "Manual Sensor Driver Installation"
+#~ msgstr "Manual 感測器 驅動程式 安裝"
+
+#~ msgid "GNSS/IMU Drivers"
+#~ msgstr "GNSS/慣性測量單位 Drivers"
+
+#~ msgid "**Configure CPU governor:**"
+#~ msgstr "**設定 CPU governor:**"
+
+#~ msgid "**Increase system limits:** Add to `/etc/security/limits.conf`:"
+#~ msgstr "**Increase 系統 limits:** Add 到 `/etc/security/limits.conf`:"
+
+#~ msgid "**Disable CPU frequency scaling (Jetson):**"
+#~ msgstr "**停用 CPU frequency scaling (Jetson):**"
+
+#~ msgid "# Maximum performance mode\n"
+#~ msgstr "# Maximum 效能 mode\n"
+
+#~ msgid "Network Configuration"
+#~ msgstr "網路 設定"
+
+#~ msgid "Configure Cyclone DDS"
+#~ msgstr "設定 Cyclone DDS"
+
+#~ msgid "**Create configuration file:**"
+#~ msgstr "**建立 設定 檔案:**"
+
+#~ msgid "<< EOF\n"
+#~ msgstr "<< EOF\n"
+
+#~ msgid "**Set as default RMW:**"
+#~ msgstr "**Set as 預設 RMW:**"
+
+#~ msgid "\"export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\""
+#~ msgstr "\\\"匯出 RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\\\""
+
+#~ msgid "\"export CYCLONEDDS_URI=file://$HOME/.ros/cyclone_dds.xml\""
+#~ msgstr "\\\"匯出 CYCLONEDDS_URI=檔案://$HOME/.ros/cyclone_dds.xml\\\""
+
+#~ msgid "Configure FastDDS (Alternative)"
+#~ msgstr "設定 FastDDS (Alternative)"
+
+#~ msgid "If you prefer FastDDS over Cyclone DDS:"
+#~ msgstr "If you prefer FastDDS over Cyclone DDS:"
+
+#~ msgid "rmw_fastrtps_cpp"
+#~ msgstr "rmw_fastrtps_cpp"
+
+#~ msgid "For development with debug symbols:"
+#~ msgstr "用於 development 搭配 除錯 symbols:"
+
+#~ msgid "Build only specific packages:"
+#~ msgstr "建構 only specific packages:"
+
+#~ msgid "For cross-compiling to different architectures:"
+#~ msgstr "用於交叉編譯到不同架構:"
+
+#~ msgid "# Example for ARM64 on x86_64 host\n"
+#~ msgstr "# 範例 用於 ARM64 在 x86_64 主機\n"
+
+#~ msgid "Essential Variables"
+#~ msgstr "必要變數"
+
+#~ msgid "Add to `~/.bashrc` for persistent configuration:"
+#~ msgstr "Add 到 `~/.bashrc` 用於 persistent 設定:"
+
+#~ msgid "# ROS 2 Configuration\n"
+#~ msgstr "# ROS 2 設定\n"
+
+#~ msgid "0  # Set to 1 for local-only communication\n"
+#~ msgstr "0 # Set 到 1 用於 local-only 通訊\n"
+
+#~ msgid "# GPU Configuration (if applicable)\n"
+#~ msgstr "# GPU 設定 (if applicable)\n"
+
+#~ msgid "# Autoware Configuration\n"
+#~ msgstr "# Autoware 設定\n"
+
+#~ msgid "/opt/autoware  # Or your custom path\n"
+#~ msgstr "/opt/autoware # 或 your 自訂 路徑\n"
+
+#~ msgid "Development Tools"
+#~ msgstr "開發工具"
+
+#~ msgid "Install additional development utilities:"
+#~ msgstr "安裝 additional development utilities:"
+
+#~ msgid "# Build acceleration\n"
+#~ msgstr "# 建構 acceleration\n"
+
+#~ msgid "If encountering missing package errors:"
+#~ msgstr "If encountering missing 套件 errors:"
+
+#~ msgid "For custom library installations:"
+#~ msgstr "用於 自訂 library installations:"
+
+#~ msgid "# Add custom library paths\n"
+#~ msgstr "# Add 自訂 library paths\n"
+
+#~ msgid "For device access (sensors, CAN bus):"
+#~ msgstr "用於 裝置 存取 (sensors, 可以 bus):"
+
+#~ msgid "This script will:"
+#~ msgstr "此指令程式將："
+
+#~ msgid "Install ROS 2 Humble"
+#~ msgstr "安裝 ROS 2 Humble"
+
+#~ msgid "Install Autoware 2025.02 binary release"
+#~ msgstr "安裝 Autoware 2025.02 二進位版本"
+
+#~ msgid "Download required Autoware artifacts"
+#~ msgstr "下載所需的 Autoware 工件"
+
+#~ msgid "Configure Cyclone DDS as default RMW"
+#~ msgstr "設定 Cyclone DDS 為預設 RMW"
+
+#~ msgid "Optimize system settings for real-time performance"
+#~ msgstr "最佳化系統設定以實作即時效能"
+
+#~ msgid ""
+#~ "Visit the [ZED SDK 4.2 Release Page](https://www.stereolabs.com/en-tw/"
+#~ "developers/release/4.2)"
+#~ msgstr ""
+#~ "造訪 [ZED SDK 4.2 發佈頁臉部](https://www.stereolabs.com/en-tw/developers/"
+#~ "release/4.2)"
+
+#~ msgid "**Download the appropriate package:**"
+#~ msgstr "**下載 appropriate 套件:**"
+
+#~ msgid "**Install the package:**"
+#~ msgstr "**安裝 套件:**"
+
+#~ msgid "# Fix any dependency issues\n"
+#~ msgstr "# Fix any dependency issues\n"
+
+#~ msgid "Install additional GNSS and IMU support:"
+#~ msgstr "安裝 additional GNSS 和 IMU support:"
+
+#~ msgid "# Serial communication for IMU\n"
+#~ msgstr "# Serial 通訊 用於 IMU\n"
+
+#~ msgid "Blickfeld Scanner Library"
+#~ msgstr "Blickfeld Scanner Library"
+
+#~ msgid "Velodyne LiDAR Driver"
+#~ msgstr "Velodyne LiDAR 驅動程式"
+
+#~ msgid "Some proprietary sensor drivers cannot be included:"
+#~ msgstr "Some proprietary 感測器 drivers cannot be included:"
+
+#~ msgid "ZED SDK (requires manual installation)"
+#~ msgstr "ZED SDK (requires manual 安裝)"
+
+#~ msgid "Seyond Robin-W driver (vendor-specific)"
+#~ msgstr "Seyond Robin-W 驅動程式 (vendor-specific)"
+
+#~ msgid "Hardware Options"
+#~ msgstr "硬體選項"
+
+#~ msgid "Step 1: Prepare the Operating System"
+#~ msgstr "步驟 1：準備作業系統"
+
+#~ msgid "Step 2: Clone AutoSDV Repository"
+#~ msgstr "步驟 2：複寫 AutoSDV 儲存程式庫"
+
+#~ msgid "Step 3: Run Automated Setup"
+#~ msgstr "步驟 3：執欄自動化設定"
+
+#~ msgid ""
+#~ "The project includes an Ansible playbook that automatically configures "
+#~ "your environment:"
+#~ msgstr "該專案套件含一個 Ansible 劇本，可以自動設定你的環境："
+
+#~ msgid "Install Blickfeld Scanner Library for Cube 1 LiDAR"
+#~ msgstr "安裝 Blickfeld Scanner Library 用於 Cube 1 光達"
+
+#~ msgid "Step 4: Install Additional Sensor Drivers"
+#~ msgstr "步驟 4：安裝額外感測器驅動程式"
+
+#~ msgid "Some sensor drivers require manual installation:"
+#~ msgstr "某些感測器驅動程式需要手動安裝："
+
+#~ msgid "ZED Camera SDK"
+#~ msgstr "ZED 攝影機 SDK"
+
+#~ msgid "Download and install:"
+#~ msgstr "下載並安裝："
+
+#~ msgid ""
+#~ "**For Jetson AGX Orin**: [ZED SDK for JetPack 6.0 GA](https://download."
+#~ "stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
+#~ msgstr ""
+#~ "**用於 Jetson AGX Orin**：[ZED SDK 用於 JetPack 6.0 GA](https://download."
+#~ "stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
+
+#~ msgid ""
+#~ "**For Ubuntu 22.04 PC**: [ZED SDK for Ubuntu 22](https://download."
+#~ "stereolabs.com/zedsdk/4.2/cu12/ubuntu22)"
+#~ msgstr ""
+#~ "**用於 Ubuntu 22.04 PC**：[ZED SDK 用於 Ubuntu 22](https://download."
+#~ "stereolabs.com/zedsdk/4.2/cu12/ubuntu22)"
+
+#~ msgid "# After downloading the installer\n"
+#~ msgstr "# 下載安裝程式後\n"
+
+#~ msgid "Seyond Robin-W LiDAR Driver (Optional)"
+#~ msgstr "Seyond Robin-W 光達驅動程式（選用）"
+
+#~ msgid "If using the Robin-W LiDAR, install the Innovusion ROS driver:"
+#~ msgstr "如果使用 Robin-W 光達，請安裝 Innovusion ROS 驅動程式："
+
+#~ msgid "Contact Seyond/Innovusion to obtain the driver package"
+#~ msgstr "聯繫 Seyond/Innovusion 以取得驅動程式套件"
+
+#~ msgid "Install the provided `.deb` package"
+#~ msgstr "安裝提供的 `.deb` 套件"
+
+#~ msgid "Step 5: Build AutoSDV"
+#~ msgstr "步驟 5：建構 AutoSDV"
+
+#~ msgid "Step 6: Verify Installation"
+#~ msgstr "步驟 6：驗證安裝"
+
+#~ msgid "Test the installation by launching the system:"
+#~ msgstr "透過啟動系統來測試安裝："
+
+#~ msgid "[Operating the Vehicle](./usage.md) - Learn how to run AutoSDV"
+#~ msgstr "[操作車輛](./usage.md) - 學習如何運欄 AutoSDV"
+
+#~ msgid "Build Errors with Autoware Dependencies"
+#~ msgstr "Autoware 相依套件建構錯誤"
+
+#~ msgid "If you encounter missing Autoware package errors during build:"
+#~ msgstr "如果在建構處理中遇到 Autoware 套件遺漏錯誤："
+
+#~ msgid "Ensure Autoware is properly installed:"
+#~ msgstr "確保 Autoware 已正確安裝："
+
+#~ msgid "Use the clean build script:"
+#~ msgstr "使用清除建構指令程式："
+
+#~ msgid "# Should show 12.3\n"
+#~ msgstr "# 應顯示 12.3\n"
+
+#~ msgid "Manual installation for different architectures:"
+#~ msgstr "Manual 安裝 用於 different architectures:"
+
+#~ msgid ""
+#~ "ARM64 (Jetson): [blickfeld-scanner-lib_2.20.6-1_arm64.deb](https://github."
+#~ "com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
+#~ "blickfeld-scanner-lib_2.20.6-1_arm64.deb)"
+#~ msgstr ""
+#~ "ARM64 (Jetson): [blickfeld-scanner-lib_2.20.6-1_arm64.deb](https://github."
+#~ "com/NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/"
+#~ "blickfeld-scanner-lib_2.20.6-1_arm64.deb)"
+
+#~ msgid ""
+#~ "AMD64 (PC): [blickfeld-scanner-lib_2.20.6-1_amd64.deb](https://github.com/"
+#~ "NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
+#~ "blickfeld-scanner-lib_2.20.6-1_amd64.deb)"
+#~ msgstr ""
+#~ "AMD64 (PC): [blickfeld-scanner-lib_2.20.6-1_amd64.deb](https://github.com/"
+#~ "NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/blickfeld-"
+#~ "scanner-lib_2.20.6-1_amd64.deb)"
+
+#~ msgid "For Velodyne VLP-32C support:"
+#~ msgstr "Velodyne VLP-32C 支援："
+
+#~ msgid ""
+#~ "**[Building the Vehicle](./build_the_vehicle.md)** - Assembling the "
+#~ "physical components and hardware"
+#~ msgstr ""
+#~ "**[建造車輛](./build_the_vehicle.md)** - 群組裝物理元件和硬體**[建造車輛]"
+#~ "(./build_the_vehicle.md)** - 群組裝物理元件和硬體"
 
 #~ msgid "Hardware Assembly Guide"
 #~ msgstr "硬體群組裝指南"
