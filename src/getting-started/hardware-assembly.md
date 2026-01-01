@@ -103,10 +103,10 @@ The details of two builds are described in the table below.
 <table align="center" border="0">
   <thead>
     <tr>
-      <th align="center">No.</td>
-      <th align="center">Front Dock</td>
-      <th align="center">Top Dock</td>
-      <th align="center">Rear Dock</td>
+      <th align="center">No.</th>
+      <th align="center">Front Dock</th>
+      <th align="center">Top Dock</th>
+      <th align="center">Rear Dock</th>
     </tr>
   </thead>
   <tbody>
