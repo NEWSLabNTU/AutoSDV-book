@@ -1,6 +1,6 @@
 # Operating the Vehicle
 
-Before reading this article, please make sure you followed the [Software Installation](./software-installation.md) and built the project. The project repository has a launch file `autosdv.launch.yaml` that defines the set of nodes to be executed and assigned parameters to start the whole driving system.
+Before reading this article, please make sure you followed the [Software Installation](./installation/overview.md) and built the project. The project repository has a launch file `autosdv.launch.yaml` that defines the set of nodes to be executed and assigned parameters to start the whole driving system.
 
 ## The Simple Way
 

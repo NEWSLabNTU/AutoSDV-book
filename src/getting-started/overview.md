@@ -4,10 +4,12 @@ This section guides you through the process of setting up and using the AutoSDV 
 
 ## Overview
 
-1. **[Building the Vehicle](./build_the_vehicle.md)** - Assembling the physical components and hardware
-2. **[Software Installation](./software-installation.md)** - Installing AutoSDV software using recommended methods
-   - **[Docker Setup](./docker-setup.md)** - Alternative containerized installation
-   - **[Manual Setup](./manual-setup.md)** - Advanced customization options
+1. **[Hardware Assembly](./hardware-assembly.md)** - Assembling the physical components and hardware
+2. **[Software Installation](./installation/overview.md)** - Installing AutoSDV software
+   - **[ZED SDK Installation](./installation/zed-sdk.md)** - ZED camera driver setup
+   - **[Automatic Setup](./installation/overview.md)** - Automated installation (recommended)
+   - **[Manual Setup](./installation/manual-environment.md)** - Advanced customization
+   - **[Docker Setup](./installation/docker.md)** - Containerized installation
 3. **[Operating the Vehicle](./usage.md)** - Launching and controlling the system
 
 ## Quick Start Paths
@@ -16,7 +18,7 @@ This section guides you through the process of setting up and using the AutoSDV 
 Follow the chapters in order: Build → Install → Operate
 
 ### For Simulation/Development
-Skip to [Software Installation](./software-installation.md) or use [Docker Setup](./docker-setup.md) for quick testing
+Skip to [Software Installation](./installation/overview.md) or use [Docker Setup](./installation/docker.md) for quick testing
 
 ### For Customization
-See [Manual Setup and Customization](./manual-setup.md) for advanced configuration options
+See [Manual Setup and Customization](./installation/manual-environment.md) for advanced configuration options

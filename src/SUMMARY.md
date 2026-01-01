@@ -7,9 +7,10 @@
 
 - [Overview](./getting-started/overview.md)
   - [Hardware Assembly](./getting-started/hardware-assembly.md)
-  - [Software Installation](./getting-started/software-installation.md)
-    - [Docker Setup](./getting-started/docker-setup.md)
-    - [Manual Setup](./getting-started/manual-setup.md)
+  - [Software Installation](./getting-started/installation/overview.md)
+    - [ZED SDK Installation](./getting-started/installation/zed-sdk.md)
+    - [Manual Environment Setup](./getting-started/installation/manual-environment.md)
+    - [Docker Setup](./getting-started/installation/docker.md)
   - [Operating the Vehicle](./getting-started/usage.md)
 
 # Guides

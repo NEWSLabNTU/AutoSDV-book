@@ -236,9 +236,13 @@ Docker containers have limited hardware access:
 
 ### Sensor Drivers
 
-Some proprietary sensor drivers cannot be included:
-- ZED SDK (requires manual installation)
-- Seyond Robin-W driver (vendor-specific)
+The Docker image includes most drivers via rosdep, but:
+
+- **ZED SDK**: Cannot be fully used in Docker due to hardware requirements. Physical deployment requires native installation.
+- **Blickfeld**: Installed via rosdep in container
+- **Velodyne**: Installed via rosdep in container
+
+For full ZED camera support, use native installation with [ZED SDK Installation Guide](./zed-sdk.md).
 
 ## Troubleshooting
 
@@ -325,7 +329,7 @@ pipeline {
 
 ## Next Steps
 
-- [Software Installation](./software-installation.md) - Native installation guide
+- [Software Installation](./overview.md) - Native installation guide
 - [Usage Guide](./usage.md) - Operating AutoSDV
 - [Development Guide](../guides/development.md) - Development workflows
-- [Manual Setup](./manual-setup.md) - Customization options
+- [Manual Setup](./manual-environment.md) - Customization options

@@ -135,5 +135,5 @@ Hardware Layer:       Jetson AGX Orin
 ## Additional Resources
 
 - [Hardware Assembly Guide](../getting-started/hardware-assembly.md) - Step-by-step assembly
-- [Software Installation](../getting-started/software-installation.md) - Software setup
+- [Software Installation](../getting-started/installation/overview.md) - Software setup
 - [Development Guide](../guides/development.md) - Custom development

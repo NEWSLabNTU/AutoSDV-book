@@ -15,7 +15,7 @@ The AutoSDV Autoware adds the following ROS packages along with official package
 
 ## ZED X Mini Camera
 
-The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Software Installation](../../getting-started/software-installation.md). The driver package is located at:
+The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Software Installation](../../getting-started/installation/overview.md). The driver package is located at:
 
 ```
 src/sensor_component/external/zed-ros2-wrapper
