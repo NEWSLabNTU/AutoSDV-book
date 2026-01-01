@@ -325,7 +325,7 @@ pipeline {
 
 ## Next Steps
 
-- [Software Installation](./software_installation.md) - Native installation guide
+- [Software Installation](./software-installation.md) - Native installation guide
 - [Usage Guide](./usage.md) - Operating AutoSDV
-- [Development Guide](./development_guide.md) - Development workflows
-- [Manual Setup](./manual_setup.md) - Customization options
+- [Development Guide](../guides/development.md) - Development workflows
+- [Manual Setup](./manual-setup.md) - Customization options

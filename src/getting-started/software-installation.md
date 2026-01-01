@@ -1,6 +1,6 @@
 # Software Installation
 
-This guide provides the recommended installation process for AutoSDV. For manual installation or customization options, see the [Manual Setup Guide](./manual_setup.md).
+This guide provides the recommended installation process for AutoSDV. For manual installation or customization options, see the [Manual Setup Guide](./manual-setup.md).
 
 ## System Requirements
 
@@ -10,7 +10,7 @@ Choose one of the following platforms:
 
 1. **NVIDIA Jetson AGX Orin 64GB** (Recommended for vehicle deployment)
 2. **Ubuntu 22.04 PC with NVIDIA GPU** (For development and testing)
-3. **Docker Environment** (For simulation and development) - See [Docker Setup](./docker_setup.md)
+3. **Docker Environment** (For simulation and development) - See [Docker Setup](./docker-setup.md)
 
 ### Storage Requirements
 
@@ -107,9 +107,9 @@ ros2 launch autosdv_launch autosdv.launch.yaml
 ## Next Steps
 
 - [Operating the Vehicle](./usage.md) - Learn how to run AutoSDV
-- [Development Guide](./development_guide.md) - Start developing with AutoSDV
-- [Docker Setup](./docker_setup.md) - Alternative Docker-based installation
-- [Manual Setup Guide](./manual_setup.md) - Manual installation and customization options
+- [Development Guide](../guides/development.md) - Start developing with AutoSDV
+- [Docker Setup](./docker-setup.md) - Alternative Docker-based installation
+- [Manual Setup Guide](./manual-setup.md) - Manual installation and customization options
 
 ## Troubleshooting
 

@@ -244,6 +244,6 @@ The detailed pinout specification can be found on [JetsonHacks](https://jetsonha
 
 ## Next Steps
 
-- [Hardware Assembly Guide](./hardware_assembly.md) - Physical assembly
-- [Software Installation](./software_installation.md) - Software setup
-- [Core Components](./core_components.md) - Component specifications
+- [Hardware Assembly Guide](../../getting-started/hardware-assembly.md) - Physical assembly
+- [Software Installation](../../getting-started/software-installation.md) - Software setup
+- [Core Components](../hardware/core-components.md) - Component specifications

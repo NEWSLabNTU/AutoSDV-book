@@ -5,14 +5,14 @@ This section provides detailed technical specifications, wiring diagrams, and co
 ## Contents
 
 ### Core Components
-- [Core Components Specification](./core_components.md) - Detailed specifications for all base platform components
-- [Wiring Diagrams](./wiring_diagrams.md) - Electrical connections and power distribution
+- [Core Components Specification](./hardware/core-components.md) - Detailed specifications for all base platform components
+- [Wiring Diagrams](./hardware/wiring-diagrams.md) - Electrical connections and power distribution
 
 ### Advanced Topics
-- [5G/LTE Deployment](./5g_deployment.md) - Detailed guide for cellular connectivity setup
-- [Sensor Components and Drivers](./sensor_component.md) - Low-level sensor integration
-- [Sensor Kit Configuration](./sensor_kit.md) - ROS 2 sensor configuration details
-- [Vehicle Interface](./vehicle_interface.md) - CAN bus and actuator control
+- [5G/LTE Deployment](./networking/5g-deployment.md) - Detailed guide for cellular connectivity setup
+- [Sensor Components and Drivers](./software/sensor-components.md) - Low-level sensor integration
+- [Sensor Kit Configuration](./software/sensor-kit.md) - ROS 2 sensor configuration details
+- [Vehicle Interface](./software/vehicle-interface.md) - CAN bus and actuator control
 
 ## Quick Reference Tables
 
@@ -134,6 +134,6 @@ Hardware Layer:       Jetson AGX Orin
 
 ## Additional Resources
 
-- [Hardware Assembly Guide](./hardware_assembly.md) - Step-by-step assembly
-- [Software Installation](./software_installation.md) - Software setup
-- [Development Guide](./development_guide.md) - Custom development
+- [Hardware Assembly Guide](../getting-started/hardware-assembly.md) - Step-by-step assembly
+- [Software Installation](../getting-started/software-installation.md) - Software setup
+- [Development Guide](../guides/development.md) - Custom development

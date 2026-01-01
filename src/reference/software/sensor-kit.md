@@ -4,7 +4,7 @@ The sensor kit consists of the _description_ package and the _launch_ package. T
 
 > **Notice**
 >
-> The sensor kit defines the composition and the data paths of sensors. If you're looking per-sensor driver configuration, please refer to [Sensor Component](sensor_component.md) Chapter.
+> The sensor kit defines the composition and the data paths of sensors. If you're looking per-sensor driver configuration, please refer to [Sensor Component](../software/sensor-components.md) Chapter.
 
 ## The Description Package
 

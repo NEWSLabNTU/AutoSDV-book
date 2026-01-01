@@ -4,7 +4,7 @@ The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/sen
 
 > **Notice**
 >
-> The sensor component defines the collection of sensor drivers in Autoware. If you're looking for the composition of the sensor drivers, please refer to [Sensor Kit](sensor_kit.md) Chapter.
+> The sensor component defines the collection of sensor drivers in Autoware. If you're looking for the composition of the sensor drivers, please refer to [Sensor Kit](../software/sensor-kit.md) Chapter.
 
 The AutoSDV Autoware adds the following ROS packages along with official packages.
 
@@ -15,7 +15,7 @@ The AutoSDV Autoware adds the following ROS packages along with official package
 
 ## ZED X Mini Camera
 
-The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Software Installation](./software_installation.md). The driver package is located at:
+The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED SDK is installed by the setup script described in [Software Installation](../../getting-started/software-installation.md). The driver package is located at:
 
 ```
 src/sensor_component/external/zed-ros2-wrapper

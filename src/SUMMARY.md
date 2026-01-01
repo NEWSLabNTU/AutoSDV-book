@@ -1,21 +1,29 @@
 # Summary
 
 - [About the Project](./introduction.md)
-- [Platform Models](./platform_models.md)
-- [Getting Started](./get_started.md)
-  - [Hardware Assembly Guide](./hardware_assembly.md)
-  - [Software Installation](./software_installation.md)
-    - [Docker Setup](./docker_setup.md)
-    - [Manual Setup and Customization](./manual_setup.md)
-  - [Operating the Vehicle](usage.md)
-- [Development Guide](./development_guide.md)
-  - [Source Code Walkthrough](./source_code.md)
-  - [Version Control](./version_control.md)
-- [Technical Reference](./technical_reference.md)
-  - [Core Components Specification](./core_components.md)
-  - [Wiring Diagrams](./wiring_diagrams.md)
-  - [Sensor Components and Drivers](./sensor_component.md)
-  - [Sensor Kit Configuration](./sensor_kit.md)
-  - [Vehicle Interface](./vehicle_interface.md)
-  - [5G/LTE Deployment](./5g_deployment.md)
-<!-- - [Replay Simulation](./replay_simulation.md) -->
+- [Platform Models](./platform-models.md)
+
+# Getting Started
+
+- [Overview](./getting-started/overview.md)
+  - [Hardware Assembly](./getting-started/hardware-assembly.md)
+  - [Software Installation](./getting-started/software-installation.md)
+    - [Docker Setup](./getting-started/docker-setup.md)
+    - [Manual Setup](./getting-started/manual-setup.md)
+  - [Operating the Vehicle](./getting-started/usage.md)
+
+# Guides
+
+- [Development Guide](./guides/development.md)
+  - [Source Code Walkthrough](./guides/source-code.md)
+  - [Version Control](./guides/version-control.md)
+
+# Technical Reference
+
+- [Overview](./reference/overview.md)
+  - [Core Components](./reference/hardware/core-components.md)
+  - [Wiring Diagrams](./reference/hardware/wiring-diagrams.md)
+  - [Sensor Components](./reference/software/sensor-components.md)
+  - [Sensor Kit Configuration](./reference/software/sensor-kit.md)
+  - [Vehicle Interface](./reference/software/vehicle-interface.md)
+  - [5G/LTE Deployment](./reference/networking/5g-deployment.md)

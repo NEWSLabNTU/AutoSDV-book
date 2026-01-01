@@ -150,5 +150,5 @@ Connected platform enabling remote operation and fleet management. Note: 5G modu
 
 ## Next Steps
 
-- [Hardware Assembly Guide](./hardware_assembly.md) - Build instructions
-- [Software Installation](./software_installation.md) - Software setup
+- [Hardware Assembly Guide](./getting-started/hardware-assembly.md) - Build instructions
+- [Software Installation](./getting-started/software-installation.md) - Software setup

@@ -1,6 +1,6 @@
 # Manual Setup and Customization
 
-This guide provides detailed manual installation steps and customization options for advanced users. For the recommended automated installation, see the [Software Installation](./software_installation.md) guide.
+This guide provides detailed manual installation steps and customization options for advanced users. For the recommended automated installation, see the [Software Installation](./software-installation.md) guide.
 
 ## Manual Environment Setup
 
@@ -292,6 +292,6 @@ sudo usermod -a -G plugdev $USER
 
 ## Next Steps
 
-- Return to [Software Installation](./software_installation.md) for the standard setup
-- See [Docker Setup](./docker_setup.md) for containerized deployment
-- Continue to [Development Guide](./development_guide.md) for development workflows
+- Return to [Software Installation](./software-installation.md) for the standard setup
+- See [Docker Setup](./docker-setup.md) for containerized deployment
+- Continue to [Development Guide](../guides/development.md) for development workflows
