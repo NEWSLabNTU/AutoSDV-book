@@ -1,7 +1,6 @@
 [book]
 authors = ["Hsiang-Jui Lin <jerry73204@gmail.com>"]
 language = "en"
-multilingual = false
 src = "src"
 title = "AutoSDV Book"
 

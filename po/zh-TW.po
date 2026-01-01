@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AutoSDV Book\n"
-"POT-Creation-Date: 2025-08-31T17:51:17+08:00\n"
+"POT-Creation-Date: 2025-12-31T17:08:46+08:00\n"
 "PO-Revision-Date: 2025-08-29T15:57:48+08:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -19,71 +19,81 @@ msgstr "摘要"
 msgid "About the Project"
 msgstr "關於專案"
 
-#: src/SUMMARY.md:4 src/platform_models.md:1
+#: src/SUMMARY.md:4 src/platform-models.md:1
 msgid "Platform Models"
 msgstr "平台型號"
 
-#: src/SUMMARY.md:5 src/get_started.md:1
+#: src/SUMMARY.md:6 src/getting-started/overview.md:1
 msgid "Getting Started"
 msgstr "開始使用"
 
-#: src/SUMMARY.md:6
-msgid "Hardware Assembly Guide"
-msgstr "硬體群組裝指南"
+#: src/SUMMARY.md:8 src/SUMMARY.md:23 src/getting-started/overview.md:5
+msgid "Overview"
+msgstr "概述"
 
-#: src/SUMMARY.md:7 src/software_installation.md:1
+#: src/SUMMARY.md:9
+msgid "Hardware Assembly"
+msgstr ""
+
+#: src/SUMMARY.md:10 src/getting-started/software-installation.md:1
 msgid "Software Installation"
 msgstr "軟體安裝"
 
-#: src/SUMMARY.md:8 src/docker_setup.md:1
+#: src/SUMMARY.md:11 src/getting-started/docker-setup.md:1
 msgid "Docker Setup"
 msgstr "Docker 設定"
 
-#: src/SUMMARY.md:9 src/manual_setup.md:1
-msgid "Manual Setup and Customization"
-msgstr "手動設定與自訂"
+#: src/SUMMARY.md:12
+msgid "Manual Setup"
+msgstr ""
 
-#: src/SUMMARY.md:10 src/usage.md:1
+#: src/SUMMARY.md:13 src/getting-started/usage.md:1
 msgid "Operating the Vehicle"
 msgstr "操作車輛"
 
-#: src/SUMMARY.md:11 src/development_guide.md:1
+#: src/SUMMARY.md:15
+msgid "Guides"
+msgstr ""
+
+#: src/SUMMARY.md:17 src/guides/development.md:1
 msgid "Development Guide"
 msgstr "開發指南"
 
-#: src/SUMMARY.md:12 src/source_code.md:1
+#: src/SUMMARY.md:18 src/guides/source-code.md:1
 msgid "Source Code Walkthrough"
 msgstr "原始碼說明"
 
-#: src/SUMMARY.md:13 src/version_control.md:1
+#: src/SUMMARY.md:19 src/guides/version-control.md:1
 msgid "Version Control"
 msgstr "版本控制"
 
-#: src/SUMMARY.md:14 src/technical_reference.md:1
+#: src/SUMMARY.md:21 src/reference/overview.md:1
 msgid "Technical Reference"
 msgstr "技術參考"
 
-#: src/SUMMARY.md:15
-msgid "Core Components Specification"
-msgstr "核心元件規格"
+#: src/SUMMARY.md:24 src/platform-models.md:29
+#: src/getting-started/hardware-assembly.md:19 src/reference/overview.md:7
+#: src/reference/hardware/core-components.md:7
+msgid "Core Components"
+msgstr "核心元件"
 
-#: src/SUMMARY.md:16 src/wiring_diagrams.md:1
+#: src/SUMMARY.md:25 src/reference/hardware/wiring-diagrams.md:1
 msgid "Wiring Diagrams"
 msgstr "接線圖形"
 
-#: src/SUMMARY.md:17 src/sensor_component.md:1
-msgid "Sensor Components and Drivers"
-msgstr "感測器元件與驅動程式"
+#: src/SUMMARY.md:26
+msgid "Sensor Components"
+msgstr ""
 
-#: src/SUMMARY.md:18 src/sensor_kit.md:1
+#: src/SUMMARY.md:27 src/reference/software/sensor-kit.md:1
 msgid "Sensor Kit Configuration"
 msgstr "感測器套件設定"
 
-#: src/SUMMARY.md:19 src/vehicle_interface.md:1
+#: src/SUMMARY.md:28 src/reference/software/vehicle-interface.md:1
 msgid "Vehicle Interface"
 msgstr "車輛介臉部"
 
-#: src/SUMMARY.md:20 src/5g_deployment.md:1
+#: src/SUMMARY.md:29 src/reference/networking/5g-deployment.md:1
 msgid "5G/LTE Deployment"
 msgstr "5G/LTE 部署"
 
@@ -126,131 +136,131 @@ msgstr ""
 "如果你在研究或教育專案中使用 AutoSDV，請參考我們的工作：如果你在研究或教育專"
 "案中使用 AutoSDV，請使用以下 BibTeX條目參考我們的工作："
 
-#: src/platform_models.md:3
+#: src/platform-models.md:3
 msgid "Feature"
 msgstr "功能"
 
-#: src/platform_models.md:3
+#: src/platform-models.md:3
 msgid "Base"
 msgstr "基本型"
 
-#: src/platform_models.md:3
+#: src/platform-models.md:3
 msgid "360° LiDAR"
 msgstr "環景光達"
 
-#: src/platform_models.md:3
+#: src/platform-models.md:3
 msgid "Solid-State"
 msgstr "固態光達"
 
-#: src/platform_models.md:3
+#: src/platform-models.md:3
 msgid "Connected"
 msgstr "連網型"
 
-#: src/platform_models.md:5
+#: src/platform-models.md:5
 msgid "**LiDAR Model**"
 msgstr "**光達型號**"
 
-#: src/platform_models.md:5 src/platform_models.md:6 src/platform_models.md:7
-#: src/technical_reference.md:45
+#: src/platform-models.md:5 src/platform-models.md:6 src/platform-models.md:7
+#: src/reference/overview.md:45
 msgid "\\-"
 msgstr "\\-"
 
-#: src/platform_models.md:5
+#: src/platform-models.md:5
 msgid "VLP-32C"
 msgstr "VLP-32C"
 
-#: src/platform_models.md:5
+#: src/platform-models.md:5
 msgid "Robin-W"
 msgstr "Robin-W"
 
-#: src/platform_models.md:6
+#: src/platform-models.md:6
 msgid "**LiDAR FOV**"
 msgstr "**光達視野範圍**"
 
-#: src/platform_models.md:6
+#: src/platform-models.md:6
 msgid "360° × 40°"
 msgstr "360° × 40°"
 
-#: src/platform_models.md:6
+#: src/platform-models.md:6
 msgid "120° × 25°"
 msgstr "120° × 25°"
 
-#: src/platform_models.md:7
+#: src/platform-models.md:7
 msgid "**LiDAR Range**"
 msgstr "**光達範圍**"
 
-#: src/platform_models.md:7
+#: src/platform-models.md:7
 msgid "100m"
 msgstr "100 公尺"
 
-#: src/platform_models.md:7
+#: src/platform-models.md:7
 msgid "150m"
 msgstr "150 公尺"
 
-#: src/platform_models.md:8
+#: src/platform-models.md:8
 msgid "**Localization**"
 msgstr "**當地語系化**"
 
-#: src/platform_models.md:8
+#: src/platform-models.md:8
 msgid "Vision only"
 msgstr "僅視覺"
 
-#: src/platform_models.md:8
+#: src/platform-models.md:8
 msgid "NDT ready"
 msgstr "NDT 就緒"
 
-#: src/platform_models.md:8
+#: src/platform-models.md:8
 msgid "Development needed"
 msgstr "需要開發"
 
-#: src/platform_models.md:9
+#: src/platform-models.md:9
 msgid "**Remote Operation**"
 msgstr "**遠程操作**"
 
-#: src/platform_models.md:9
+#: src/platform-models.md:9
 msgid "Manual"
 msgstr "手動"
 
-#: src/platform_models.md:9
+#: src/platform-models.md:9
 msgid "No"
 msgstr "無"
 
-#: src/platform_models.md:9
+#: src/platform-models.md:9
 msgid "Yes (5G)"
 msgstr "是 (5G)"
 
-#: src/platform_models.md:10
+#: src/platform-models.md:10
 msgid "**Battery Life**"
 msgstr "**電集區續航強制**"
 
-#: src/platform_models.md:10
+#: src/platform-models.md:10
 msgid "40 min"
 msgstr "40 分鐘"
 
-#: src/platform_models.md:13
+#: src/platform-models.md:13
 msgid "[Base Model](#base-model) - Core platform for customization"
 msgstr "[基本型](#base-model) - 用於自訂的核心平台"
 
-#: src/platform_models.md:14
+#: src/platform-models.md:14
 msgid ""
 "[360° LiDAR Model](#360-lidar-model) - Production-ready with Velodyne VLP-32C"
 msgstr "[環景光達型](#360-lidar-model) - 生產就緒，使用 Velodyne VLP-32C"
 
-#: src/platform_models.md:15
+#: src/platform-models.md:15
 msgid ""
 "[Solid-State Model](#solid-state-model) - Modern LiDAR with Seyond Robin-W"
 msgstr "[固態光達型](#solid-state-model) - 現代化光達，使用 Seyond Robin-W"
 
-#: src/platform_models.md:16
+#: src/platform-models.md:16
 msgid ""
 "[Connected Model](#connected-model) - 5G-enabled with a solid-state LiDAR"
 msgstr "[連網型](#connected-model) - 5G 功能，搭配固態光達"
 
-#: src/platform_models.md:20
+#: src/platform-models.md:20
 msgid "Base Model"
 msgstr "基本型"
 
-#: src/platform_models.md:27
+#: src/platform-models.md:27
 msgid ""
 "The core AutoSDV platform with compute, vision, and control capabilities. "
 "Ideal for vendors integrating their own sensors."
@@ -258,232 +268,227 @@ msgstr ""
 "核心 AutoSDV 平台具備運算、視覺和控制功能。非常適合想要自訂感測器設定或開發自"
 "己的自動駕駛演演算法的開發者。這個模型為所有其他設定提供了基礎。"
 
-#: src/platform_models.md:29 src/hardware_assembly.md:19
-#: src/technical_reference.md:7 src/core_components.md:7
-msgid "Core Components"
-msgstr "核心元件"
-
-#: src/platform_models.md:31 src/platform_models.md:70
-#: src/platform_models.md:96 src/platform_models.md:124
-#: src/technical_reference.md:20
+#: src/platform-models.md:31 src/platform-models.md:70
+#: src/platform-models.md:96 src/platform-models.md:124
+#: src/reference/overview.md:20
 msgid "Component"
 msgstr "元件"
 
-#: src/platform_models.md:31 src/platform_models.md:70
-#: src/platform_models.md:96 src/platform_models.md:124
+#: src/platform-models.md:31 src/platform-models.md:70
+#: src/platform-models.md:96 src/platform-models.md:124
 msgid "Specification"
 msgstr "規格"
 
-#: src/platform_models.md:33
+#: src/platform-models.md:33
 msgid "**Chassis**"
 msgstr "**底盤**"
 
-#: src/platform_models.md:33
+#: src/platform-models.md:33
 msgid "Tekno TKR9500 16×11×5\" truck"
 msgstr "Tekno TKR9500 16×11×5 吋卡車"
 
-#: src/platform_models.md:34
+#: src/platform-models.md:34
 msgid "**Computer**"
 msgstr "**電腦**"
 
-#: src/platform_models.md:34
+#: src/platform-models.md:34
 msgid "NVIDIA Jetson AGX Orin 64GB"
 msgstr "NVIDIA Jetson AGX Orin 64GB"
 
-#: src/platform_models.md:35
+#: src/platform-models.md:35
 msgid "**Storage**"
 msgstr "**儲存裝置**"
 
-#: src/platform_models.md:35
+#: src/platform-models.md:35
 msgid "1TB NVMe SSD"
 msgstr "1TB NVMe SSD"
 
-#: src/platform_models.md:36
+#: src/platform-models.md:36
 msgid "**Camera**"
 msgstr "**攝影機**"
 
-#: src/platform_models.md:36
+#: src/platform-models.md:36
 msgid "ZED X Mini Stereo"
 msgstr "ZED X Mini 立體攝影機"
 
-#: src/platform_models.md:37
+#: src/platform-models.md:37
 msgid "**ZED Link**"
 msgstr "**ZED Link**"
 
-#: src/platform_models.md:37
+#: src/platform-models.md:37
 msgid "Capture Card for ZED"
 msgstr "ZED 擷取卡"
 
-#: src/platform_models.md:38
+#: src/platform-models.md:38
 msgid "**IMU**"
 msgstr "**慣性測量單位**"
 
-#: src/platform_models.md:38
+#: src/platform-models.md:38
 msgid "MPU9250 9-axis"
 msgstr "MPU9250 9 軸式"
 
-#: src/platform_models.md:39
+#: src/platform-models.md:39
 msgid "**Hall Sensor**"
 msgstr "**霍爾感測器**"
 
-#: src/platform_models.md:39
+#: src/platform-models.md:39
 msgid "KY-003 wheel encoder"
 msgstr "KY-003 輪子編碼器"
 
-#: src/platform_models.md:40
+#: src/platform-models.md:40
 msgid "**Upper Battery**"
 msgstr "**上層電集區**"
 
-#: src/platform_models.md:40
+#: src/platform-models.md:40
 msgid "22.2V 6S 5000mAh LiPo"
 msgstr "22.2V 6S 5000mAh 鋰彙總物電集區"
 
-#: src/platform_models.md:41
+#: src/platform-models.md:41
 msgid "**Lower Battery**"
 msgstr "**下層電集區**"
 
-#: src/platform_models.md:41
+#: src/platform-models.md:41
 msgid "7.4V 2S 7200mAh LiPo"
 msgstr "7.4V 2S 7200mAh 鋰彙總物電集區"
 
-#: src/platform_models.md:42
+#: src/platform-models.md:42
 msgid "**Motor**"
 msgstr "**馬達**"
 
-#: src/platform_models.md:42
+#: src/platform-models.md:42
 msgid "Brushless 4274/1500kv"
 msgstr "4274/1500kv 無刷馬達"
 
-#: src/platform_models.md:43
+#: src/platform-models.md:43
 msgid "**ESC**"
 msgstr "**電子調速器**"
 
-#: src/platform_models.md:43
+#: src/platform-models.md:43
 msgid "60A Brushless controller"
 msgstr "60A 無刷控制器"
 
-#: src/platform_models.md:44
+#: src/platform-models.md:44
 msgid "**Servo**"
 msgstr "**伺服馬達**"
 
-#: src/platform_models.md:44
+#: src/platform-models.md:44
 msgid "High-torque digital"
 msgstr "高強制矩數位式"
 
-#: src/platform_models.md:45
+#: src/platform-models.md:45
 msgid "**PWM Driver**"
 msgstr "**PWM 驅動器**"
 
-#: src/platform_models.md:45
+#: src/platform-models.md:45
 msgid "PCA9685 16-channel"
 msgstr "PCA9685 16 通道"
 
-#: src/platform_models.md:46
+#: src/platform-models.md:46
 msgid "**DC-DC Converter**"
 msgstr "**DC-DC 轉換器**"
 
-#: src/platform_models.md:46
+#: src/platform-models.md:46
 msgid "24V→12V 10A"
 msgstr "24V→12V 10A"
 
-#: src/platform_models.md:47
+#: src/platform-models.md:47
 msgid "**Circuit Breaker**"
 msgstr "**斷路器**"
 
-#: src/platform_models.md:47
+#: src/platform-models.md:47
 msgid "30A safety switch"
 msgstr "30A 安全性開關"
 
-#: src/platform_models.md:49
+#: src/platform-models.md:49
 msgid "Available Interfaces"
 msgstr "可用介臉部"
 
-#: src/platform_models.md:51
+#: src/platform-models.md:51
 msgid "**Ethernet**: 10GbE port for high-speed LiDAR connection"
 msgstr "**以太網路**：10GbE 串連埠用於高速光達串連"
 
-#: src/platform_models.md:52
+#: src/platform-models.md:52
 msgid "**USB**: 4x USB 3.2 Type-A, 2x USB Type-C with USB 3.2"
 msgstr "**USB**：4x USB 3.2 Type-、2x USB Type-C 搭配 USB 3.2"
 
-#: src/platform_models.md:53
+#: src/platform-models.md:53
 msgid "**GPIO**: 40-pin header with I2C, SPI, UART, PWM"
 msgstr "**GPIO**：40 針腳接頭，具備 I2C、SPI、UART、PWM"
 
-#: src/platform_models.md:54
+#: src/platform-models.md:54
 msgid "**PCIe**: M.2 Key M and Key E slots for expansion"
 msgstr "**PCIe**：M.2 Key M 和 Key E 插槽用於擴充"
 
-#: src/platform_models.md:55
+#: src/platform-models.md:55
 msgid "**Display**: DisplayPort"
 msgstr "**顯示**：DisplayPort"
 
-#: src/platform_models.md:59
+#: src/platform-models.md:59
 msgid "360° LiDAR Model"
 msgstr "環景光達型"
 
-#: src/platform_models.md:66
+#: src/platform-models.md:66
 msgid ""
 "Production-ready configuration with proven Autoware integration. Features "
 "full NDT localization support."
 msgstr ""
 "生產就緒設定，具備經過驗證的 Autoware 整合。具備完整的 NDT 當地語系化支援。"
 
-#: src/platform_models.md:68 src/platform_models.md:94
-#: src/platform_models.md:122
+#: src/platform-models.md:68 src/platform-models.md:94
+#: src/platform-models.md:122
 msgid "Additional Components"
 msgstr "額外元件"
 
-#: src/platform_models.md:72 src/platform_models.md:98
-#: src/platform_models.md:126
+#: src/platform-models.md:72 src/platform-models.md:98
+#: src/platform-models.md:126
 msgid "**LiDAR**"
 msgstr "**光達**"
 
-#: src/platform_models.md:72 src/technical_reference.md:23
-#: src/core_components.md:48
+#: src/platform-models.md:72 src/reference/overview.md:23
+#: src/reference/hardware/core-components.md:48
 msgid "Velodyne VLP-32C"
 msgstr "Velodyne VLP-32C"
 
-#: src/platform_models.md:73 src/platform_models.md:99
-#: src/platform_models.md:128
+#: src/platform-models.md:73 src/platform-models.md:99
+#: src/platform-models.md:128
 msgid "**LiDAR Mount**"
 msgstr "**光達支架**"
 
-#: src/platform_models.md:73 src/platform_models.md:129
+#: src/platform-models.md:73 src/platform-models.md:129
 msgid "Top center bracket"
 msgstr "頂部中心支架"
 
-#: src/platform_models.md:75 src/platform_models.md:102
-#: src/platform_models.md:131
+#: src/platform-models.md:75 src/platform-models.md:102
+#: src/platform-models.md:131
 msgid "LiDAR Specifications"
 msgstr "光達規格"
 
-#: src/platform_models.md:76
+#: src/platform-models.md:76
 msgid "**Field of View**: 360° × 40°"
 msgstr "**視野範圍**: 360° × 40°"
 
-#: src/platform_models.md:77
+#: src/platform-models.md:77
 msgid "**Range**: 100m"
 msgstr "**範圍**: 100公尺"
 
-#: src/platform_models.md:78
+#: src/platform-models.md:78
 msgid "**Points/Second**: 600,000"
 msgstr "**點數/秒**: 600,000"
 
-#: src/platform_models.md:79
+#: src/platform-models.md:79
 msgid "**Channels**: 32"
 msgstr "**通道數**: 32"
 
-#: src/platform_models.md:80 src/platform_models.md:108
-#: src/platform_models.md:136
+#: src/platform-models.md:80 src/platform-models.md:108
+#: src/platform-models.md:136
 msgid "**Connection**: Ethernet"
 msgstr "**串連**: 以太網"
 
-#: src/platform_models.md:85
+#: src/platform-models.md:85
 msgid "Solid-State Model"
 msgstr "固態光達型號"
 
-#: src/platform_models.md:92
+#: src/platform-models.md:92
 msgid ""
 "Modern solid-state LiDAR platform with high point density. Localization "
 "features require development."
@@ -491,36 +496,36 @@ msgstr ""
 "具備高點密度的現代化固態光達平台。當地語系化功能需要開發。具備高點密度的現代"
 "化固態光達平台。當地語系化功能需要開發。"
 
-#: src/platform_models.md:98 src/platform_models.md:126
-#: src/core_components.md:46
+#: src/platform-models.md:98 src/platform-models.md:126
+#: src/reference/hardware/core-components.md:46
 msgid "Seyond Robin-W"
 msgstr "Seyond Robin-W"
 
-#: src/platform_models.md:99
+#: src/platform-models.md:99
 msgid "Front-facing bracket"
 msgstr "前向支架"
 
-#: src/platform_models.md:104 src/platform_models.md:132
+#: src/platform-models.md:104 src/platform-models.md:132
 msgid "**Field of View**: 120° × 25°"
 msgstr "**視野範圍**: 120° × 25°"
 
-#: src/platform_models.md:105 src/platform_models.md:133
+#: src/platform-models.md:105 src/platform-models.md:133
 msgid "**Range**: 150m"
 msgstr "**範圍**: 150公尺"
 
-#: src/platform_models.md:106 src/platform_models.md:134
+#: src/platform-models.md:106 src/platform-models.md:134
 msgid "**Points/Second**: 750,000"
 msgstr "**點數/秒**: 750,000"
 
-#: src/platform_models.md:107 src/platform_models.md:135
+#: src/platform-models.md:107 src/platform-models.md:135
 msgid "**Technology**: Solid-state (no moving parts)"
 msgstr "**技術**: 固態光達（無可動部件）"
 
-#: src/platform_models.md:113
+#: src/platform-models.md:113
 msgid "Connected Model"
 msgstr "連網型號"
 
-#: src/platform_models.md:120
+#: src/platform-models.md:120
 msgid ""
 "Connected platform enabling remote operation and fleet management. Note: 5G "
 "module occupies top mount position."
@@ -528,27 +533,27 @@ msgstr ""
 "連網平台，支援遠程操作和車隊管理。注意：5G 模群組占用頂部支架位置。連網平台，"
 "支援遠程操作和車隊管理。注意：5G 模群組占用頂部支架位置。"
 
-#: src/platform_models.md:127
+#: src/platform-models.md:127
 msgid "**5G Module**"
 msgstr "**5G 模群組**"
 
-#: src/platform_models.md:127
+#: src/platform-models.md:127
 msgid "MOXA OnCell G4302"
 msgstr "MOXA OnCell G4302"
 
-#: src/platform_models.md:128
+#: src/platform-models.md:128
 msgid "Front bracket"
 msgstr "前置支架"
 
-#: src/platform_models.md:129
+#: src/platform-models.md:129
 msgid "**5G Mount**"
 msgstr "**5G 支架**"
 
-#: src/platform_models.md:138
+#: src/platform-models.md:138
 msgid "5G Specifications"
 msgstr "5G 規格"
 
-#: src/platform_models.md:140
+#: src/platform-models.md:140
 msgid ""
 "_Note: The MOXA OnCell G4302 is shown as an example 5G gateway. The actual "
 "5G module selection is vendor-specific and can be customized based on "
@@ -559,49 +564,54 @@ msgstr ""
 "實際 5G 模群組的選取取決於供應商，可以根據部署需求進欄自訂。_5G 模組的選擇取"
 "決於供應商，可以根據部署需求進行自訂。_"
 
-#: src/platform_models.md:142
+#: src/platform-models.md:142
 msgid "**Network**: 5G/LTE with fallback"
 msgstr "**網路**: 5G/LTE 具備後援功能"
 
-#: src/platform_models.md:143
+#: src/platform-models.md:143
 msgid "**SIM Slots**: Dual SIM for carrier redundancy"
 msgstr "**SIM 卡槽**: 雙 SIM 卡提供電信業者冗餘"
 
-#: src/platform_models.md:144
+#: src/platform-models.md:144
 msgid "**Features**: Remote operation, telemetry streaming, OTA updates"
 msgstr "**特色**: 遠程操作、遙測串串流、OTA 更新"
 
-#: src/platform_models.md:146
+#: src/platform-models.md:146
 msgid "System Specifications"
 msgstr "系統規格"
 
-#: src/platform_models.md:147
+#: src/platform-models.md:147
 msgid "**Weight**: 11.3 kg (33% heavier due to 5G kit)"
 msgstr "**重量**: 11.3 公斤（由於 5G 套件增重 33%）"
 
-#: src/platform_models.md:148
+#: src/platform-models.md:148
 msgid "**Battery Life**: 40 minutes (upper), 2+ hours (lower)"
 msgstr "**電集區續航強制**: 40 分鐘（上層）、2+ 小時（下層）"
 
-#: src/platform_models.md:149
+#: src/platform-models.md:149
 msgid "**Connectivity**: Requires 5G/LTE data plan"
 msgstr "**串連性**: 需要 5G/LTE 資料排程"
 
-#: src/platform_models.md:151 src/software_installation.md:107
-#: src/docker_setup.md:326 src/manual_setup.md:293 src/wiring_diagrams.md:245
+#: src/platform-models.md:151 src/getting-started/software-installation.md:107
+#: src/getting-started/docker-setup.md:326
+#: src/getting-started/manual-setup.md:293
+#: src/reference/hardware/wiring-diagrams.md:245
 msgid "Next Steps"
 msgstr "下一步"
 
-#: src/platform_models.md:153
-msgid "[Hardware Assembly Guide](./hardware_assembly.md) - Build instructions"
-msgstr "[硬體群組裝指南](./hardware_assembly.md) - 建造說明"
+#: src/platform-models.md:153
+msgid ""
+"[Hardware Assembly Guide](./getting-started/hardware-assembly.md) - Build "
+"instructions"
+msgstr ""
 
-#: src/platform_models.md:154 src/technical_reference.md:138
-#: src/wiring_diagrams.md:248
-msgid "[Software Installation](./software_installation.md) - Software setup"
-msgstr "[軟體安裝](./software_installation.md) - 軟體設定"
+#: src/platform-models.md:154
+msgid ""
+"[Software Installation](./getting-started/software-installation.md) - "
+"Software setup"
+msgstr ""
 
-#: src/get_started.md:3
+#: src/getting-started/overview.md:3
 msgid ""
 "This section guides you through the process of setting up and using the "
 "AutoSDV platform. Follow these chapters sequentially to build a fully "
@@ -611,11 +621,7 @@ msgstr ""
 "能齊全的自動車輛：本章節將指導你進欄 AutoSDV平台的設定和使用。請按順序遵循這"
 "些章節，建立一個功能齊全的自動車輛：些章節，建立一個功能齊全的自動車輛："
 
-#: src/get_started.md:5
-msgid "Overview"
-msgstr "概述"
-
-#: src/get_started.md:7
+#: src/getting-started/overview.md:7
 msgid ""
 "**[Building the Vehicle](./build_the_vehicle.md)** - Assembling the physical "
 "components and hardware"
@@ -623,27 +629,23 @@ msgstr ""
 "**[建造車輛](./build_the_vehicle.md)** - 群組裝物理元件和硬體**[建造車輛](./"
 "build_the_vehicle.md)** - 群組裝物理元件和硬體"
 
-#: src/get_started.md:8
+#: src/getting-started/overview.md:8
 msgid ""
-"**[Software Installation](./software_installation.md)** - Installing AutoSDV "
+"**[Software Installation](./software-installation.md)** - Installing AutoSDV "
 "software using recommended methods"
 msgstr ""
-"**[軟體安裝](./software_installation.md)** - 使用建議方法安裝 AutoSDV 軟體"
-"**[軟體安裝](./software_installation.md)** - 使用建議方法安裝 AutoSDV 軟體"
 
-#: src/get_started.md:9
+#: src/getting-started/overview.md:9
 msgid ""
-"**[Docker Setup](./docker_setup.md)** - Alternative containerized "
+"**[Docker Setup](./docker-setup.md)** - Alternative containerized "
 "installation"
 msgstr ""
-"**[Docker 設定](./docker_setup.md)** - 替代的容器化安裝方式**[Docker 設定](./"
-"docker_setup.md)** - 替代的容器化安裝方式"
 
-#: src/get_started.md:10
-msgid "**[Manual Setup](./manual_setup.md)** - Advanced customization options"
-msgstr "**[手動設定](./manual_setup.md)** - 進階自訂選項"
+#: src/getting-started/overview.md:10
+msgid "**[Manual Setup](./manual-setup.md)** - Advanced customization options"
+msgstr ""
 
-#: src/get_started.md:11
+#: src/getting-started/overview.md:11
 msgid ""
 "**[Operating the Vehicle](./usage.md)** - Launching and controlling the "
 "system"
@@ -651,48 +653,43 @@ msgstr ""
 "**[操作車輛](./usage.md)** - 啟動和控制系統**[操作車輛](./usage.md)** - 啟動"
 "和控制系統"
 
-#: src/get_started.md:13
+#: src/getting-started/overview.md:13
 msgid "Quick Start Paths"
 msgstr "快速入門路徑"
 
-#: src/get_started.md:15
+#: src/getting-started/overview.md:15
 msgid "For Vehicle Deployment"
 msgstr "車輛部署用途"
 
-#: src/get_started.md:16
+#: src/getting-started/overview.md:16
 msgid "Follow the chapters in order: Build → Install → Operate"
 msgstr "按順序遵循章節：建造 → 安裝 → 操作"
 
-#: src/get_started.md:18
+#: src/getting-started/overview.md:18
 msgid "For Simulation/Development"
 msgstr "用於模擬/開發"
 
-#: src/get_started.md:19
+#: src/getting-started/overview.md:19
 msgid ""
-"Skip to [Software Installation](./software_installation.md) or use [Docker "
-"Setup](./docker_setup.md) for quick testing"
+"Skip to [Software Installation](./software-installation.md) or use [Docker "
+"Setup](./docker-setup.md) for quick testing"
 msgstr ""
-"跳到[軟體安裝](./software_installation.md)或使用[Docker 設定](./docker_setup."
-"md)進欄快速測試跳到[軟體安裝](./software_installation.md)或使用[Docker設定]"
-"(./docker_setup.md)進欄快速測試"
 
-#: src/get_started.md:21
+#: src/getting-started/overview.md:21
 msgid "For Customization"
 msgstr "自訂用途"
 
-#: src/get_started.md:22
+#: src/getting-started/overview.md:22
 msgid ""
-"See [Manual Setup and Customization](./manual_setup.md) for advanced "
+"See [Manual Setup and Customization](./manual-setup.md) for advanced "
 "configuration options"
 msgstr ""
-"查看[手動設定和自訂](./manual_setup.md)以獲得進階設定選項查看[手動設定和自訂]"
-"(./manual_setup.md)以得進階設定選項"
 
-#: src/hardware_assembly.md:1
+#: src/getting-started/hardware-assembly.md:1
 msgid "Building the Vehicle"
 msgstr "建造車輛"
 
-#: src/hardware_assembly.md:3
+#: src/getting-started/hardware-assembly.md:3
 msgid ""
 "The recommended vehicle build is based on a 16×11×5 inch chassis plus "
 "additional sensor and communication mounts, which can be divided into "
@@ -701,58 +698,58 @@ msgstr ""
 "建議的車輛建造基於 16×11×5 英寸底盤加上額外的感測器和通訊支架，可以分為以下幾"
 "個部分。"
 
-#: src/hardware_assembly.md:5
+#: src/getting-started/hardware-assembly.md:5
 msgid ""
 "The **core components** include the necessary components to run Autoware."
 msgstr "**核心元件**套件括運欄 Autoware 所需的必要元件。"
 
-#: src/hardware_assembly.md:7
+#: src/getting-started/hardware-assembly.md:7
 msgid "Onboard computer"
 msgstr "車載電腦"
 
-#: src/hardware_assembly.md:8
+#: src/getting-started/hardware-assembly.md:8
 msgid "Navigation system"
 msgstr "瀏覽系統"
 
-#: src/hardware_assembly.md:9
+#: src/getting-started/hardware-assembly.md:9
 msgid "Power supply system"
 msgstr "電源供應系統"
 
-#: src/hardware_assembly.md:10
+#: src/getting-started/hardware-assembly.md:10
 msgid "Powertrain system"
 msgstr "動強制系統"
 
-#: src/hardware_assembly.md:11
+#: src/getting-started/hardware-assembly.md:11
 msgid "Chassis"
 msgstr "底盤"
 
-#: src/hardware_assembly.md:13
+#: src/getting-started/hardware-assembly.md:13
 msgid ""
 "The vehicle can be equipped with **additional mounts** depending on your "
 "choice."
 msgstr "車輛可以根據你的選取配備**額外的支架**。"
 
-#: src/hardware_assembly.md:15
+#: src/getting-started/hardware-assembly.md:15
 msgid "LiDAR sensors"
 msgstr "光達感測器"
 
-#: src/hardware_assembly.md:16
+#: src/getting-started/hardware-assembly.md:16
 msgid "5G/LTE communication module"
 msgstr "5G/LTE 通訊模群組"
 
-#: src/hardware_assembly.md:21
+#: src/getting-started/hardware-assembly.md:21
 msgid ""
 "The vehicle has three major layers shown in the Figure 1 from top to bottom."
 msgstr "車輛具有三個主要層次，如圖形 1 所示，從上到下。"
 
-#: src/hardware_assembly.md:23
+#: src/getting-started/hardware-assembly.md:23
 msgid ""
 "<span style=\"color: Yellow\">Yellow</span>: The onboard computer, "
 "navigation sensors and additional mounts."
 msgstr ""
 "<span style=\"color: Yellow\">黃色</span>：車載電腦、瀏覽感測器和額外支架。"
 
-#: src/hardware_assembly.md:24
+#: src/getting-started/hardware-assembly.md:24
 msgid ""
 "<span style=\"color: Red\">Red</span>: Power supply system for the onboard "
 "computer and sensors in the yellow layer."
@@ -760,7 +757,7 @@ msgstr ""
 "<span style=\"color: Red\">紅色</span>：黃色層中車載電腦和感測器的電源供應系"
 "統。"
 
-#: src/hardware_assembly.md:25
+#: src/getting-started/hardware-assembly.md:25
 msgid ""
 "<span style=\"color: DodgerBlue\">Blue</span>: Powertrain system and power "
 "supply for the powertrain."
@@ -768,7 +765,7 @@ msgstr ""
 "<span style=\"color: DodgerBlue\">藍色</span>：動強制系統和動強制系統的電源供"
 "應。"
 
-#: src/hardware_assembly.md:27
+#: src/getting-started/hardware-assembly.md:27
 msgid ""
 "By using this vehicle, additional sensors and 5G mounts go to the <span "
 "style=\"color: Yellow\">yellow</span> layer, which power supply comes from "
@@ -781,15 +778,15 @@ msgstr ""
 "求不同，馬達在<spanstyle=\"color: DodgerBlue\">藍色</span>層中有獨立的電集區"
 "和電源供應。電源供應。"
 
-#: src/hardware_assembly.md:34
+#: src/getting-started/hardware-assembly.md:34
 msgid "Power Supply System"
 msgstr "電源供應系統"
 
-#: src/hardware_assembly.md:36
+#: src/getting-started/hardware-assembly.md:36
 msgid "Batteries"
 msgstr "電集區"
 
-#: src/hardware_assembly.md:38
+#: src/getting-started/hardware-assembly.md:38
 msgid ""
 "There are two batteries for the respective two power supplies, namely the "
 "_upper power_ and _lower power_. The batteries are shown in Figure 2. The "
@@ -802,7 +799,7 @@ msgstr ""
 "從 7.4V 2S 電集區 (2) 為 DC 馬達和動強制系統提供電強制。電池 (2) 為 DC 馬達和"
 "動力系統提供電力。"
 
-#: src/hardware_assembly.md:40
+#: src/getting-started/hardware-assembly.md:40
 msgid ""
 "Both batteries have a yellow XT60 power plug and a white JST-XH connector as "
 "shown in Figure 3. The JST-XH connector is plugged to a voltage monitor in "
@@ -811,11 +808,11 @@ msgstr ""
 "兩區塊電集區都有一個黃色的 XT60 電源插頭和一個白色的 JST-XH 串連器，如圖形 3 "
 "所示。JST-XH 串連器插入圖形 4中的電壓監測器。當電壓變低時會發出警告聲。"
 
-#: src/hardware_assembly.md:57
+#: src/getting-started/hardware-assembly.md:57
 msgid "The Upper Power Supply"
 msgstr "上層電源供應"
 
-#: src/hardware_assembly.md:59
+#: src/getting-started/hardware-assembly.md:59
 msgid ""
 "The upper power start up process is shown in Figure 4. First, install the "
 "battery on the battery dock. Second, connect battery to the cable. Last, "
@@ -824,7 +821,7 @@ msgstr ""
 "上層電源啟動處理如圖形 4 所示。首先，將電集區安裝在電集區底座上。其次，將電集"
 "區串連到電纜。最後，開啟圖形 5 所示的電源供應。"
 
-#: src/hardware_assembly.md:61
+#: src/getting-started/hardware-assembly.md:61
 msgid ""
 "Please be cautious that the power switch must be turned off before "
 "installing or removing the battery. It's necessary to protect the system "
@@ -833,11 +830,11 @@ msgstr ""
 "請注意，在安裝或拆卸電集區之前，必須關閉電源開關。這對於保護系統免受電壓突波"
 "影響是必要的。"
 
-#: src/hardware_assembly.md:74
+#: src/getting-started/hardware-assembly.md:74
 msgid "The Lower Power Supply"
 msgstr "下層電源供應"
 
-#: src/hardware_assembly.md:76
+#: src/getting-started/hardware-assembly.md:76
 msgid ""
 "The lower power start up process is shown in Figure 6. The battery is "
 "installed in the dock in the bottom layer of the vehicle (1). Then, switch "
@@ -846,11 +843,11 @@ msgstr ""
 "下層電源啟動處理如圖形 6 所示。電集區安裝在車輛底層的底座中 (1)。然後，開啟電"
 "源 (2)。"
 
-#: src/hardware_assembly.md:84
+#: src/getting-started/hardware-assembly.md:84
 msgid "Docks"
 msgstr "支架底座"
 
-#: src/hardware_assembly.md:86
+#: src/getting-started/hardware-assembly.md:86
 msgid ""
 "The vehicle has three docks to mount your favorite sensors. The figure below "
 "shows two kinds of builds with three docks marked on the figure: (1) the "
@@ -859,15 +856,15 @@ msgstr ""
 "車輛有三個支架底座可以安裝你喜愛的感測器。下圖形顯示了兩種建造方式，圖形中標"
 "記了三個支架底座：(1) 前置支架、(2) 頂部支架和 (3)後置支架。"
 
-#: src/hardware_assembly.md:101
+#: src/getting-started/hardware-assembly.md:101
 msgid "The details of two builds are described in the table below."
 msgstr "以下表格格中描述了兩種群組建的詳細資訊。"
 
-#: src/hardware_assembly.md:150
+#: src/getting-started/hardware-assembly.md:150
 msgid "Components and Wiring"
 msgstr "元件和接線"
 
-#: src/hardware_assembly.md:152
+#: src/getting-started/hardware-assembly.md:152
 msgid ""
 "The vehicle incorporates essential components such as the chassis, body, "
 "onboard computer, among others, along with additional LiDARs and a 5G "
@@ -879,102 +876,99 @@ msgstr ""
 "關這些元件及其接線的詳細資訊，請參閱[硬體和接線](hardware_and_wiring.md)中的"
 "合成指南。合指南。"
 
-#: src/software_installation.md:3
+#: src/getting-started/software-installation.md:3
 msgid ""
 "This guide provides the recommended installation process for AutoSDV. For "
 "manual installation or customization options, see the [Manual Setup Guide](./"
-"manual_setup.md)."
+"manual-setup.md)."
 msgstr ""
-"本指南提供 AutoSDV 的建議安裝處理。有關手動安裝或自訂選項，請參閱[手動設定指"
-"南](./manual_setup.md)。"
 
-#: src/software_installation.md:5
+#: src/getting-started/software-installation.md:5
 msgid "System Requirements"
 msgstr "系統需求"
 
-#: src/software_installation.md:7
+#: src/getting-started/software-installation.md:7
 msgid "Hardware Options"
 msgstr "硬體選項"
 
-#: src/software_installation.md:9
+#: src/getting-started/software-installation.md:9
 msgid "Choose one of the following platforms:"
 msgstr "選取以下平台之一："
 
-#: src/software_installation.md:11
+#: src/getting-started/software-installation.md:11
 msgid "**NVIDIA Jetson AGX Orin 64GB** (Recommended for vehicle deployment)"
 msgstr "**NVIDIA Jetson AGX Orin 64GB**（建議用於車輛部署）"
 
-#: src/software_installation.md:12
+#: src/getting-started/software-installation.md:12
 msgid "**Ubuntu 22.04 PC with NVIDIA GPU** (For development and testing)"
 msgstr "**Ubuntu 22.04 PC 搭配 NVIDIA GPU**（用於開發和測試）"
 
-#: src/software_installation.md:13
+#: src/getting-started/software-installation.md:13
 msgid ""
 "**Docker Environment** (For simulation and development) - See [Docker Setup]"
-"(./docker_setup.md)"
+"(./docker-setup.md)"
 msgstr ""
-"**Docker 環境**（用於模擬和開發） - 參閱 [Docker 設定](./docker_setup.md)"
 
-#: src/software_installation.md:15
+#: src/getting-started/software-installation.md:15
 msgid "Storage Requirements"
 msgstr "儲存需求"
 
-#: src/software_installation.md:17
+#: src/getting-started/software-installation.md:17
 msgid "Minimum 256GB SSD (NVMe recommended for Jetson)"
 msgstr "最小 256GB SSD（Jetson 建議使用 NVMe）"
 
-#: src/software_installation.md:18
+#: src/getting-started/software-installation.md:18
 msgid "At least 100GB free space for software installation"
 msgstr "至少 100GB 空間用於軟體安裝"
 
-#: src/software_installation.md:20
+#: src/getting-started/software-installation.md:20
 msgid "Installation Steps"
 msgstr "安裝步驟"
 
-#: src/software_installation.md:22
+#: src/getting-started/software-installation.md:22
 msgid "Step 1: Prepare the Operating System"
 msgstr "步驟 1：準備作業系統"
 
-#: src/software_installation.md:24
+#: src/getting-started/software-installation.md:24
 msgid "For NVIDIA Jetson AGX Orin"
 msgstr "適用於 NVIDIA Jetson AGX Orin"
 
-#: src/software_installation.md:26
+#: src/getting-started/software-installation.md:26
 msgid ""
 "Download and install [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-"
 "manager)"
 msgstr ""
 "下載和安裝 [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)"
 
-#: src/software_installation.md:27
+#: src/getting-started/software-installation.md:27
 msgid "Flash the Jetson with the following configuration:"
 msgstr "使用以下設定燒錄 Jetson："
 
-#: src/software_installation.md:28
+#: src/getting-started/software-installation.md:28
 msgid "**JetPack SDK version: 6.0** (exactly - not 6.1 or 6.2)"
 msgstr "**JetPack SDK 版本：6.0**（嚴格要求 - 非 6.1 或 6.2）"
 
-#: src/software_installation.md:29
+#: src/getting-started/software-installation.md:29
 msgid "Install all CUDA and TensorRT packages"
 msgstr "安裝所有 CUDA 和 TensorRT 套件"
 
-#: src/software_installation.md:30
+#: src/getting-started/software-installation.md:30
 msgid "Flash to external NVMe SSD (not internal eMMC)"
 msgstr "燒錄到外部 NVMe SSD（非內部 eMMC）"
 
-#: src/software_installation.md:32
+#: src/getting-started/software-installation.md:32
 msgid "For Ubuntu 22.04 PC"
 msgstr "適用於 Ubuntu 22.04 PC"
 
-#: src/software_installation.md:34
+#: src/getting-started/software-installation.md:34
 msgid "Install Ubuntu 22.04 LTS"
 msgstr "安裝 Ubuntu 22.04 LTS"
 
-#: src/software_installation.md:35
+#: src/getting-started/software-installation.md:35
 msgid "Install NVIDIA drivers (version 550 or higher):"
 msgstr "安裝 NVIDIA 驅動程式（版本 550 或更高）："
 
-#: src/software_installation.md:40
+#: src/getting-started/software-installation.md:40
 msgid ""
 "Install [CUDA 12.3](https://developer.nvidia.com/cuda-12-3-2-download-"
 "archive) using the deb (network) installer"
@@ -982,7 +976,7 @@ msgstr ""
 "使用 deb（網路）安裝程式安裝 [CUDA 12.3](https://developer.nvidia.com/"
 "cuda-12-3-2-download-archive)"
 
-#: src/software_installation.md:41
+#: src/getting-started/software-installation.md:41
 msgid ""
 "Install [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-"
 "download)"
@@ -990,61 +984,61 @@ msgstr ""
 "安裝 [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-"
 "download)"
 
-#: src/software_installation.md:43
+#: src/getting-started/software-installation.md:43
 msgid "Step 2: Clone AutoSDV Repository"
 msgstr "步驟 2：複寫 AutoSDV 儲存程式庫"
 
-#: src/software_installation.md:51
+#: src/getting-started/software-installation.md:51
 msgid "Step 3: Run Automated Setup"
 msgstr "步驟 3：執欄自動化設定"
 
-#: src/software_installation.md:53
+#: src/getting-started/software-installation.md:53
 msgid ""
 "The project includes an Ansible playbook that automatically configures your "
 "environment:"
 msgstr "該專案套件含一個 Ansible 劇本，可以自動設定你的環境："
 
-#: src/software_installation.md:59
+#: src/getting-started/software-installation.md:59
 msgid "This script will:"
 msgstr "此指令程式將："
 
-#: src/software_installation.md:60
+#: src/getting-started/software-installation.md:60
 msgid "Install ROS 2 Humble"
 msgstr "安裝 ROS 2 Humble"
 
-#: src/software_installation.md:61
+#: src/getting-started/software-installation.md:61
 msgid "Install Autoware 2025.02 binary release"
 msgstr "安裝 Autoware 2025.02 二進位版本"
 
-#: src/software_installation.md:62
+#: src/getting-started/software-installation.md:62
 msgid "Install Blickfeld Scanner Library for Cube 1 LiDAR"
 msgstr "安裝 Blickfeld Scanner Library 用於 Cube 1 光達"
 
-#: src/software_installation.md:63
+#: src/getting-started/software-installation.md:63
 msgid "Download required Autoware artifacts"
 msgstr "下載所需的 Autoware 工件"
 
-#: src/software_installation.md:64
+#: src/getting-started/software-installation.md:64
 msgid "Configure Cyclone DDS as default RMW"
 msgstr "設定 Cyclone DDS 為預設 RMW"
 
-#: src/software_installation.md:65
+#: src/getting-started/software-installation.md:65
 msgid "Optimize system settings for real-time performance"
 msgstr "最佳化系統設定以實作即時效能"
 
-#: src/software_installation.md:67
+#: src/getting-started/software-installation.md:67
 msgid "Step 4: Install Additional Sensor Drivers"
 msgstr "步驟 4：安裝額外感測器驅動程式"
 
-#: src/software_installation.md:69
+#: src/getting-started/software-installation.md:69
 msgid "Some sensor drivers require manual installation:"
 msgstr "某些感測器驅動程式需要手動安裝："
 
-#: src/software_installation.md:71
+#: src/getting-started/software-installation.md:71
 msgid "ZED Camera SDK"
 msgstr "ZED 攝影機 SDK"
 
-#: src/software_installation.md:73
+#: src/getting-started/software-installation.md:73
 msgid ""
 "Visit the [ZED SDK 4.2 Release Page](https://www.stereolabs.com/en-tw/"
 "developers/release/4.2)"
@@ -1052,11 +1046,11 @@ msgstr ""
 "造訪 [ZED SDK 4.2 發佈頁臉部](https://www.stereolabs.com/en-tw/developers/"
 "release/4.2)"
 
-#: src/software_installation.md:74
+#: src/getting-started/software-installation.md:74
 msgid "Download and install:"
 msgstr "下載並安裝："
 
-#: src/software_installation.md:75
+#: src/getting-started/software-installation.md:75
 msgid ""
 "**For Jetson AGX Orin**: [ZED SDK for JetPack 6.0 GA](https://download."
 "stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
@@ -1064,7 +1058,7 @@ msgstr ""
 "**用於 Jetson AGX Orin**：[ZED SDK 用於 JetPack 6.0 GA](https://download."
 "stereolabs.com/zedsdk/4.2/l4t36.3/jetsons)"
 
-#: src/software_installation.md:76
+#: src/getting-started/software-installation.md:76
 msgid ""
 "**For Ubuntu 22.04 PC**: [ZED SDK for Ubuntu 22](https://download.stereolabs."
 "com/zedsdk/4.2/cu12/ubuntu22)"
@@ -1072,111 +1066,112 @@ msgstr ""
 "**用於 Ubuntu 22.04 PC**：[ZED SDK 用於 Ubuntu 22](https://download."
 "stereolabs.com/zedsdk/4.2/cu12/ubuntu22)"
 
-#: src/software_installation.md:79
+#: src/getting-started/software-installation.md:79
 msgid "# After downloading the installer\n"
 msgstr "# 下載安裝程式後\n"
 
-#: src/software_installation.md:84
+#: src/getting-started/software-installation.md:84
 msgid "Seyond Robin-W LiDAR Driver (Optional)"
 msgstr "Seyond Robin-W 光達驅動程式（選用）"
 
-#: src/software_installation.md:86
+#: src/getting-started/software-installation.md:86
 msgid "If using the Robin-W LiDAR, install the Innovusion ROS driver:"
 msgstr "如果使用 Robin-W 光達，請安裝 Innovusion ROS 驅動程式："
 
-#: src/software_installation.md:87
+#: src/getting-started/software-installation.md:87
 msgid "Contact Seyond/Innovusion to obtain the driver package"
 msgstr "聯繫 Seyond/Innovusion 以取得驅動程式套件"
 
-#: src/software_installation.md:88
+#: src/getting-started/software-installation.md:88
 msgid "Install the provided `.deb` package"
 msgstr "安裝提供的 `.deb` 套件"
 
-#: src/software_installation.md:90
+#: src/getting-started/software-installation.md:90
 msgid "Step 5: Build AutoSDV"
 msgstr "步驟 5：建構 AutoSDV"
 
-#: src/software_installation.md:94
+#: src/getting-started/software-installation.md:94
 msgid "# Install ROS dependencies\n"
 msgstr "# 安裝 ROS 相依套件\n"
 
-#: src/software_installation.md:95
+#: src/getting-started/software-installation.md:95
 msgid "# Build the project\n"
 msgstr "# 建構專案\n"
 
-#: src/software_installation.md:98
+#: src/getting-started/software-installation.md:98
 msgid "Step 6: Verify Installation"
 msgstr "步驟 6：驗證安裝"
 
-#: src/software_installation.md:100
+#: src/getting-started/software-installation.md:100
 msgid "Test the installation by launching the system:"
 msgstr "透過啟動系統來測試安裝："
 
-#: src/software_installation.md:109
+#: src/getting-started/software-installation.md:109
 msgid "[Operating the Vehicle](./usage.md) - Learn how to run AutoSDV"
 msgstr "[操作車輛](./usage.md) - 學習如何運欄 AutoSDV"
 
-#: src/software_installation.md:110
+#: src/getting-started/software-installation.md:110
 msgid ""
-"[Development Guide](./development_guide.md) - Start developing with AutoSDV"
-msgstr "[開發指南](./development_guide.md) - 開始使用 AutoSDV 進欄開發"
+"[Development Guide](../guides/development.md) - Start developing with AutoSDV"
+msgstr ""
 
-#: src/software_installation.md:111
+#: src/getting-started/software-installation.md:111
 msgid ""
-"[Docker Setup](./docker_setup.md) - Alternative Docker-based installation"
-msgstr "[Docker 設定](./docker_setup.md) - 替代的基於 Docker 的安裝方式"
+"[Docker Setup](./docker-setup.md) - Alternative Docker-based installation"
+msgstr ""
 
-#: src/software_installation.md:112
+#: src/getting-started/software-installation.md:112
 msgid ""
-"[Manual Setup Guide](./manual_setup.md) - Manual installation and "
+"[Manual Setup Guide](./manual-setup.md) - Manual installation and "
 "customization options"
-msgstr "[手動設定指南](./manual_setup.md) - 手動安裝和自訂選項"
+msgstr ""
 
-#: src/software_installation.md:114 src/docker_setup.md:243
+#: src/getting-started/software-installation.md:114
+#: src/getting-started/docker-setup.md:243
 msgid "Troubleshooting"
 msgstr "排除故障"
 
-#: src/software_installation.md:116
+#: src/getting-started/software-installation.md:116
 msgid "Build Errors with Autoware Dependencies"
 msgstr "Autoware 相依套件建構錯誤"
 
-#: src/software_installation.md:118
+#: src/getting-started/software-installation.md:118
 msgid "If you encounter missing Autoware package errors during build:"
 msgstr "如果在建構處理中遇到 Autoware 套件遺漏錯誤："
 
-#: src/software_installation.md:120
+#: src/getting-started/software-installation.md:120
 msgid "Ensure Autoware is properly installed:"
 msgstr "確保 Autoware 已正確安裝："
 
-#: src/software_installation.md:125
+#: src/getting-started/software-installation.md:125
 msgid "Use the clean build script:"
 msgstr "使用清除建構指令程式："
 
-#: src/software_installation.md:130
+#: src/getting-started/software-installation.md:130
 msgid "CUDA/TensorRT Issues"
 msgstr "CUDA/TensorRT 問題"
 
-#: src/software_installation.md:132
+#: src/getting-started/software-installation.md:132
 msgid "Verify CUDA installation:"
 msgstr "驗證 CUDA 安裝："
 
-#: src/software_installation.md:134
+#: src/getting-started/software-installation.md:134
 msgid "# Should show 12.3\n"
 msgstr "# 應顯示 12.3\n"
 
-#: src/software_installation.md:135
+#: src/getting-started/software-installation.md:135
 msgid "# Should show driver 550+\n"
 msgstr "# 應顯示驅動程式 550+\n"
 
-#: src/software_installation.md:138
+#: src/getting-started/software-installation.md:138
 msgid "ROS 2 Environment Issues"
 msgstr "ROS 2 環境問題"
 
-#: src/software_installation.md:140
+#: src/getting-started/software-installation.md:140
 msgid "Always source ROS 2 before building:"
 msgstr "在建構前一律載入 ROS 2："
 
-#: src/docker_setup.md:3
+#: src/getting-started/docker-setup.md:3
 msgid ""
 "Docker provides a containerized environment for running AutoSDV without "
 "modifying your host system. This is ideal for development, testing, and "
@@ -1185,167 +1180,167 @@ msgstr ""
 "Docker 提供了一個容器化環境，用於運欄 AutoSDV 而不修改你的主機系統。這非常適"
 "合開發、測試和模擬情境。"
 
-#: src/docker_setup.md:5
+#: src/getting-started/docker-setup.md:5
 msgid "Use Cases"
 msgstr "使用情境"
 
-#: src/docker_setup.md:7
+#: src/getting-started/docker-setup.md:7
 msgid "Docker is recommended for:"
 msgstr "Docker 建議用於："
 
-#: src/docker_setup.md:8
+#: src/getting-started/docker-setup.md:8
 msgid ""
 "**Development and Testing**: Consistent environment across different machines"
 msgstr "**開發和測試**：在不同機器上保持一致的環境"
 
-#: src/docker_setup.md:9
+#: src/getting-started/docker-setup.md:9
 msgid "**Simulation**: Running AutoSDV without physical hardware"
 msgstr "**模擬**：在沒有物理硬體的情況下運欄 AutoSDV"
 
-#: src/docker_setup.md:10
+#: src/getting-started/docker-setup.md:10
 msgid "**CI/CD**: Automated testing and deployment"
 msgstr "**CI/CD**：自動化測試和部署"
 
-#: src/docker_setup.md:11
+#: src/getting-started/docker-setup.md:11
 msgid "**Quick Evaluation**: Try AutoSDV without full installation"
 msgstr "**快速評估**：無需完整安裝即可嘗試 AutoSDV"
 
-#: src/docker_setup.md:13
+#: src/getting-started/docker-setup.md:13
 msgid "Prerequisites"
 msgstr "前置條件"
 
-#: src/docker_setup.md:15
+#: src/getting-started/docker-setup.md:15
 msgid "Host System Requirements"
 msgstr "主機系統需求"
 
-#: src/docker_setup.md:17
+#: src/getting-started/docker-setup.md:17
 msgid "Ubuntu 20.04 or 22.04 (other Linux distributions may work)"
 msgstr "Ubuntu 20.04 或 22.04（其他 Linux 發欄版可能也可欄）"
 
-#: src/docker_setup.md:18
+#: src/getting-started/docker-setup.md:18
 msgid "NVIDIA GPU with driver 470+ (for GPU acceleration)"
 msgstr "NVIDIA GPU 搭配驅動程式 470+（用於 GPU 加速）"
 
-#: src/docker_setup.md:19
+#: src/getting-started/docker-setup.md:19
 msgid "At least 50GB free disk space"
 msgstr "至少 50GB 可用磁碟空間"
 
-#: src/docker_setup.md:20
+#: src/getting-started/docker-setup.md:20
 msgid "16GB+ RAM recommended"
 msgstr "建議 16GB+ 記憶體"
 
-#: src/docker_setup.md:22
+#: src/getting-started/docker-setup.md:22
 msgid "Software Requirements"
 msgstr "軟體需求"
 
-#: src/docker_setup.md:24
+#: src/getting-started/docker-setup.md:24
 msgid "**Docker Engine** (20.10 or newer):"
 msgstr "**Docker Engine**（20.10 或更新版本）："
 
-#: src/docker_setup.md:26
+#: src/getting-started/docker-setup.md:26
 msgid "# Install Docker\n"
 msgstr "# 安裝 Docker\n"
 
-#: src/docker_setup.md:30
+#: src/getting-started/docker-setup.md:30
 msgid "# Add user to docker group\n"
 msgstr "# 將使用者加入 docker 群群組\n"
 
-#: src/docker_setup.md:32
+#: src/getting-started/docker-setup.md:32
 msgid "# Log out and back in for group changes to take effect\n"
 msgstr "# 登出並重新登入以使群群組變更生效\n"
 
-#: src/docker_setup.md:35
+#: src/getting-started/docker-setup.md:35
 msgid "**NVIDIA Container Toolkit** (for GPU support):"
 msgstr "**NVIDIA Container Toolkit**（用於 GPU 支援）："
 
-#: src/docker_setup.md:37
+#: src/getting-started/docker-setup.md:37
 msgid "# Add NVIDIA repository\n"
 msgstr "# 新增 NVIDIA 儲存程式庫\n"
 
-#: src/docker_setup.md:38
+#: src/getting-started/docker-setup.md:38
 msgid "$(. /etc/os-release;echo $ID$VERSION_ID)"
 msgstr "$(. /etc/os-release;echo $ID$VERSION_ID)"
 
-#: src/docker_setup.md:43
+#: src/getting-started/docker-setup.md:43
 msgid "# Install nvidia-container-toolkit\n"
 msgstr "# 安裝 nvidia-container-toolkit\n"
 
-#: src/docker_setup.md:49
+#: src/getting-started/docker-setup.md:49
 msgid "**Docker Compose** (optional, for multi-container setups):"
 msgstr "**Docker Compose**（選用，用於多容器設定）："
 
-#: src/docker_setup.md:54
+#: src/getting-started/docker-setup.md:54
 msgid "Quick Start"
 msgstr "快速入門"
 
-#: src/docker_setup.md:56
+#: src/getting-started/docker-setup.md:56
 msgid "Step 1: Clone AutoSDV Repository"
 msgstr "步驟 1：複寫 AutoSDV 儲存程式庫"
 
-#: src/docker_setup.md:63
+#: src/getting-started/docker-setup.md:63
 msgid "Step 2: Bootstrap Docker Environment"
 msgstr "步驟 2：啟動 Docker 環境"
 
-#: src/docker_setup.md:65
+#: src/getting-started/docker-setup.md:65
 msgid ""
 "Set up cross-architecture support (required for ARM64 emulation on x86_64):"
 msgstr "設定跨架構支援（在 x86_64 上模擬 ARM64 所需）："
 
-#: src/docker_setup.md:71
+#: src/getting-started/docker-setup.md:71
 msgid "Step 3: Build Docker Image"
 msgstr "步驟 3：建構 Docker 鏡像檔"
 
-#: src/docker_setup.md:73
+#: src/getting-started/docker-setup.md:73
 msgid "Build the AutoSDV Docker image:"
 msgstr "建構 AutoSDV Docker 鏡像檔："
 
-#: src/docker_setup.md:79
+#: src/getting-started/docker-setup.md:79
 msgid "This creates an image with:"
 msgstr "這將建立一個套件含以下內容的鏡像檔："
 
-#: src/docker_setup.md:80
+#: src/getting-started/docker-setup.md:80
 msgid "Ubuntu 22.04 base with ROS 2 Humble"
 msgstr "Ubuntu 22.04 基礎系統搭配 ROS 2 Humble"
 
-#: src/docker_setup.md:81
+#: src/getting-started/docker-setup.md:81
 msgid "Autoware 2025.02 pre-installed"
 msgstr "Autoware 2025.02 預先安裝"
 
-#: src/docker_setup.md:82
+#: src/getting-started/docker-setup.md:82
 msgid "All AutoSDV dependencies"
 msgstr "所有 AutoSDV 相依套件"
 
-#: src/docker_setup.md:83
+#: src/getting-started/docker-setup.md:83
 msgid "CUDA and TensorRT support"
 msgstr "CUDA 和 TensorRT 支援"
 
-#: src/docker_setup.md:84
+#: src/getting-started/docker-setup.md:84
 msgid "Sensor driver libraries (except proprietary ones)"
 msgstr "感測器驅動程式程式程式庫（除了專有的）"
 
-#: src/docker_setup.md:86
+#: src/getting-started/docker-setup.md:86
 msgid "Step 4: Run Container"
 msgstr "步驟 4：執欄容器"
 
-#: src/docker_setup.md:88
+#: src/getting-started/docker-setup.md:88
 msgid "Start an interactive container session:"
 msgstr "啟動互動式容器工作階區段："
 
-#: src/docker_setup.md:94
+#: src/getting-started/docker-setup.md:94
 msgid ""
 "You'll enter a shell with AutoSDV ready to use at `/home/developer/AutoSDV`."
 msgstr ""
 "你將進入一個命令欄環境，AutoSDV 在 `/home/developer/AutoSDV` 中已準備好使用。"
 
-#: src/docker_setup.md:96
+#: src/getting-started/docker-setup.md:96
 msgid "Docker Image Details"
 msgstr "Docker 鏡像檔詳細資訊"
 
-#: src/docker_setup.md:98
+#: src/getting-started/docker-setup.md:98
 msgid "Image Architecture"
 msgstr "鏡像檔架構"
 
-#: src/docker_setup.md:100
+#: src/getting-started/docker-setup.md:100
 msgid ""
 "The AutoSDV Docker image is built for **ARM64 architecture** to match the "
 "Jetson platform. On x86_64 hosts, QEMU provides transparent emulation."
@@ -1353,449 +1348,444 @@ msgstr ""
 "AutoSDV Docker 鏡像檔針對 **ARM64 架構**建構，以符合 Jetson 平台。在 x86_64 "
 "主機上，QEMU 提供透明的模擬。"
 
-#: src/docker_setup.md:102
+#: src/getting-started/docker-setup.md:102
 msgid "Pre-installed Software"
 msgstr "預安裝軟體"
 
-#: src/docker_setup.md:104
+#: src/getting-started/docker-setup.md:104
 msgid "**ROS 2 Humble** with desktop tools"
 msgstr "**ROS 2 Humble** 搭配桌臉部工具"
 
-#: src/docker_setup.md:105
+#: src/getting-started/docker-setup.md:105
 msgid "**Autoware 2025.02** binary release"
 msgstr "**Autoware 2025.02** 二進位發佈"
 
-#: src/docker_setup.md:106
+#: src/getting-started/docker-setup.md:106
 msgid "**CUDA 12.3** and **TensorRT 8.6**"
 msgstr "**CUDA 12.3** 和 **TensorRT 8.6**"
 
-#: src/docker_setup.md:107
+#: src/getting-started/docker-setup.md:107
 msgid "**Cyclone DDS** configured as default"
 msgstr "**Cyclone DDS** 設定為預設"
 
-#: src/docker_setup.md:108
+#: src/getting-started/docker-setup.md:108
 msgid "**Development tools**: git, vim, tmux, htop"
 msgstr "**開發工具**：git、vim、tmux、htop"
 
-#: src/docker_setup.md:110
+#: src/getting-started/docker-setup.md:110
 msgid "Volume Mounts"
 msgstr "磁區掛載"
 
-#: src/docker_setup.md:112
+#: src/getting-started/docker-setup.md:112
 msgid "The `make run` command automatically mounts:"
 msgstr "`make 執欄` 命令自動掛載："
 
-#: src/docker_setup.md:113
+#: src/getting-started/docker-setup.md:113
 msgid "`/tmp/.X11-unix` for GUI applications"
 msgstr "`/tmp/.X11-unix` 用於 GUI 套用程式"
 
-#: src/docker_setup.md:114
+#: src/getting-started/docker-setup.md:114
 msgid "NVIDIA GPU devices for CUDA access"
 msgstr "NVIDIA GPU 裝置用於 CUDA 存取"
 
-#: src/docker_setup.md:116
+#: src/getting-started/docker-setup.md:116
 msgid "Advanced Usage"
 msgstr "進階使用"
 
-#: src/docker_setup.md:118
+#: src/getting-started/docker-setup.md:118
 msgid "Custom Run Options"
 msgstr "自訂執欄選項"
 
-#: src/docker_setup.md:120
+#: src/getting-started/docker-setup.md:120
 msgid "Run with additional volumes or ports:"
 msgstr "使用額外磁區或串連埠執欄："
 
-#: src/docker_setup.md:132
+#: src/getting-started/docker-setup.md:132
 msgid "Development Workflow"
 msgstr "開發串流程"
 
-#: src/docker_setup.md:134
+#: src/getting-started/docker-setup.md:134
 msgid "For active development, mount your local code:"
 msgstr "在積極開發時，掛載你的本地程式碼："
 
-#: src/docker_setup.md:144
+#: src/getting-started/docker-setup.md:144
 msgid "GUI Applications"
 msgstr "GUI 套用程式"
 
-#: src/docker_setup.md:146
+#: src/getting-started/docker-setup.md:146
 msgid "Enable X11 forwarding for visualization tools:"
 msgstr "啟用 X11 轉發以使用視覺化工具："
 
-#: src/docker_setup.md:157
+#: src/getting-started/docker-setup.md:157
 msgid "Then run GUI applications like RViz:"
 msgstr "Then 執欄 GUI applications like RViz:"
 
-#: src/docker_setup.md:159
+#: src/getting-started/docker-setup.md:159
 msgid "# Inside container\n"
 msgstr "# Inside 容器\n"
 
-#: src/docker_setup.md:163
+#: src/getting-started/docker-setup.md:163
 msgid "Multi-Container Setup"
 msgstr "Multi-容器 設定"
 
-#: src/docker_setup.md:165
+#: src/getting-started/docker-setup.md:165
 msgid "Create a `docker-compose.yml` for complex deployments:"
 msgstr "為複雜部署建立 `docker-compose.yml`："
 
-#: src/docker_setup.md:168
+#: src/getting-started/docker-setup.md:168
 msgid "version"
 msgstr "版本"
 
-#: src/docker_setup.md:168
+#: src/getting-started/docker-setup.md:168
 msgid "'3.8'"
 msgstr "'3.8'"
 
-#: src/docker_setup.md:169
+#: src/getting-started/docker-setup.md:169
 msgid "services"
 msgstr "服務"
 
-#: src/docker_setup.md:171
+#: src/getting-started/docker-setup.md:171
 msgid "autosdv"
 msgstr ""
 
-#: src/docker_setup.md:172 src/docker_setup.md:185
+#: src/getting-started/docker-setup.md:172
+#: src/getting-started/docker-setup.md:185
 msgid "image"
 msgstr "映像檔"
 
-#: src/docker_setup.md:172 src/docker_setup.md:185
+#: src/getting-started/docker-setup.md:172
+#: src/getting-started/docker-setup.md:185
 msgid "autosdv:latest"
 msgstr ""
 
-#: src/docker_setup.md:173 src/docker_setup.md:186
+#: src/getting-started/docker-setup.md:173
+#: src/getting-started/docker-setup.md:186
 msgid "runtime"
 msgstr "執欄時間"
 
-#: src/docker_setup.md:173 src/docker_setup.md:186
+#: src/getting-started/docker-setup.md:173
+#: src/getting-started/docker-setup.md:186
 msgid "nvidia"
 msgstr "nvidia"
 
-#: src/docker_setup.md:174 src/docker_setup.md:187
+#: src/getting-started/docker-setup.md:174
+#: src/getting-started/docker-setup.md:187
 msgid "network_mode"
 msgstr ""
 
-#: src/docker_setup.md:174 src/docker_setup.md:187
+#: src/getting-started/docker-setup.md:174
+#: src/getting-started/docker-setup.md:187
 msgid "host"
 msgstr "host"
 
-#: src/docker_setup.md:175
+#: src/getting-started/docker-setup.md:175
 msgid "privileged"
 msgstr "特權"
 
-#: src/docker_setup.md:176
+#: src/getting-started/docker-setup.md:176
 msgid "volumes"
 msgstr "卷"
 
-#: src/docker_setup.md:177
+#: src/getting-started/docker-setup.md:177
 msgid "/dev:/dev"
 msgstr ""
 
-#: src/docker_setup.md:178
+#: src/getting-started/docker-setup.md:178
 msgid "./data:/data"
 msgstr "./資料:/資料"
 
-#: src/docker_setup.md:179 src/docker_setup.md:188
+#: src/getting-started/docker-setup.md:179
+#: src/getting-started/docker-setup.md:188
 msgid "environment"
 msgstr "環境"
 
-#: src/docker_setup.md:180 src/docker_setup.md:189
+#: src/getting-started/docker-setup.md:180
+#: src/getting-started/docker-setup.md:189
 msgid "ROS_DOMAIN_ID=0"
 msgstr "ROS_DOMAIN_ID=0"
 
-#: src/docker_setup.md:181
+#: src/getting-started/docker-setup.md:181
 msgid "DISPLAY=${DISPLAY}"
 msgstr ""
 
-#: src/docker_setup.md:182 src/docker_setup.md:190
+#: src/getting-started/docker-setup.md:182
+#: src/getting-started/docker-setup.md:190
 msgid "command"
 msgstr "命令"
 
-#: src/docker_setup.md:182
+#: src/getting-started/docker-setup.md:182
 msgid "ros2 launch autosdv_launch autosdv.launch.yaml"
 msgstr "ros2 啟動 autosdv_launch autosdv.啟動.yaml"
 
-#: src/docker_setup.md:184
+#: src/getting-started/docker-setup.md:184
 msgid "monitoring"
 msgstr "監視"
 
-#: src/docker_setup.md:190
+#: src/getting-started/docker-setup.md:190
 msgid ""
 "python3 /home/developer/AutoSDV/src/launcher/autosdv_launch/autosdv_launch/"
 "autosdv_monitor.py"
 msgstr ""
 
-#: src/docker_setup.md:193
+#: src/getting-started/docker-setup.md:193
 msgid "Run with:"
 msgstr "執欄："
 
-#: src/docker_setup.md:198
+#: src/getting-started/docker-setup.md:198
 msgid "Container Management"
 msgstr "容器 Management"
 
-#: src/docker_setup.md:200
+#: src/getting-started/docker-setup.md:200
 msgid "Save and Load Images"
 msgstr "儲存和載入映像檔"
 
-#: src/docker_setup.md:202
+#: src/getting-started/docker-setup.md:202
 msgid "Export image for deployment:"
 msgstr "匯出映像檔以進欄部署："
 
-#: src/docker_setup.md:205
+#: src/getting-started/docker-setup.md:205
 msgid "# Creates autosdv_docker.tar.gz\n"
 msgstr ""
 
-#: src/docker_setup.md:208
+#: src/getting-started/docker-setup.md:208
 msgid "Load on another machine:"
 msgstr "在另一台機器上載入："
 
-#: src/docker_setup.md:214
+#: src/getting-started/docker-setup.md:214
 msgid "Clean Up"
 msgstr "清除 Up"
 
-#: src/docker_setup.md:216
+#: src/getting-started/docker-setup.md:216
 msgid "Remove container and image:"
 msgstr "移除容器和映像檔："
 
-#: src/docker_setup.md:222
+#: src/getting-started/docker-setup.md:222
 msgid "Limitations"
 msgstr "限制"
 
-#: src/docker_setup.md:224
+#: src/getting-started/docker-setup.md:224
 msgid "Hardware Access"
 msgstr "硬體 存取"
 
-#: src/docker_setup.md:226
+#: src/getting-started/docker-setup.md:226
 msgid "Docker containers have limited hardware access:"
 msgstr "Docker containers have limited 硬體 存取:"
 
-#: src/docker_setup.md:227
+#: src/getting-started/docker-setup.md:227
 msgid ""
 "**No direct LiDAR access** (USB/Ethernet sensors need special configuration)"
 msgstr "**No direct LiDAR 存取** (USB/Ethernet sensors need special 設定)"
 
-#: src/docker_setup.md:228
+#: src/getting-started/docker-setup.md:228
 msgid "**No CAN bus** without `--privileged` flag"
 msgstr "**No 可以 bus** without `--特權` flag"
 
-#: src/docker_setup.md:229
+#: src/getting-started/docker-setup.md:229
 msgid "**Camera access** requires device mounting"
 msgstr "**相機 存取** requires 設備 mounting"
 
-#: src/docker_setup.md:231
+#: src/getting-started/docker-setup.md:231
 msgid "Performance"
 msgstr "效能"
 
-#: src/docker_setup.md:233
+#: src/getting-started/docker-setup.md:233
 msgid "ARM64 emulation on x86_64 reduces performance"
 msgstr "在 x86_64 上進欄 ARM64 模擬會降低效能"
 
-#: src/docker_setup.md:234
+#: src/getting-started/docker-setup.md:234
 msgid "GPU passthrough adds overhead"
 msgstr "圖形形處理常式 passthrough adds overhead"
 
-#: src/docker_setup.md:235
+#: src/getting-started/docker-setup.md:235
 msgid "Network performance may vary with Docker networking modes"
 msgstr "網路效能可能因 Docker 網路模式而異"
 
-#: src/docker_setup.md:237
+#: src/getting-started/docker-setup.md:237
 msgid "Sensor Drivers"
 msgstr "感測器 Drivers"
 
-#: src/docker_setup.md:239
+#: src/getting-started/docker-setup.md:239
 msgid "Some proprietary sensor drivers cannot be included:"
 msgstr "Some proprietary 感測器 drivers cannot be included:"
 
-#: src/docker_setup.md:240
+#: src/getting-started/docker-setup.md:240
 msgid "ZED SDK (requires manual installation)"
 msgstr "ZED SDK (requires manual 安裝)"
 
-#: src/docker_setup.md:241
+#: src/getting-started/docker-setup.md:241
 msgid "Seyond Robin-W driver (vendor-specific)"
 msgstr "Seyond Robin-W 驅動程式 (vendor-specific)"
 
-#: src/docker_setup.md:245
+#: src/getting-started/docker-setup.md:245
 msgid "GPU Not Accessible"
 msgstr "圖形形處理常式 Not Accessible"
 
-#: src/docker_setup.md:247
+#: src/getting-started/docker-setup.md:247
 msgid "Verify NVIDIA runtime:"
 msgstr "驗證 NVIDIA runtime:"
 
-#: src/docker_setup.md:252
+#: src/getting-started/docker-setup.md:252
 msgid "Network Issues"
 msgstr "網路 Issues"
 
-#: src/docker_setup.md:254
+#: src/getting-started/docker-setup.md:254
 msgid "Use host networking for ROS 2 communication:"
 msgstr "使用主機網路進欄 ROS 2 通訊："
 
-#: src/docker_setup.md:259
+#: src/getting-started/docker-setup.md:259
 msgid "Permission Denied"
 msgstr "權限被拒"
 
-#: src/docker_setup.md:261
+#: src/getting-started/docker-setup.md:261
 msgid "For device access, run with privileges:"
 msgstr "用於 設備 存取, 執欄 搭配 權限:"
 
-#: src/docker_setup.md:266
+#: src/getting-started/docker-setup.md:266
 msgid "Build Failures"
 msgstr "建構 Failures"
 
-#: src/docker_setup.md:268
+#: src/getting-started/docker-setup.md:268
 msgid "Clear Docker cache and rebuild:"
 msgstr "清除 Docker 快取並重建:"
 
-#: src/docker_setup.md:275
+#: src/getting-started/docker-setup.md:275
 msgid "Integration with CI/CD"
 msgstr "整合 搭配 CI/CD"
 
-#: src/docker_setup.md:277
+#: src/getting-started/docker-setup.md:277
 msgid "GitHub Actions Example"
 msgstr "GitHub Actions 範例"
 
-#: src/docker_setup.md:280 src/docker_setup.md:290 src/docker_setup.md:293
-#: src/docker_setup.md:298
+#: src/getting-started/docker-setup.md:280
+#: src/getting-started/docker-setup.md:290
+#: src/getting-started/docker-setup.md:293
 msgid "name"
 msgstr "名稱"
 
-#: src/docker_setup.md:280
+#: src/getting-started/docker-setup.md:280
 msgid "AutoSDV Tests"
 msgstr "AutoSDV 測試"
 
-#: src/docker_setup.md:282
+#: src/getting-started/docker-setup.md:282
 msgid "push"
 msgstr "推播"
 
-#: src/docker_setup.md:282
+#: src/getting-started/docker-setup.md:282
 msgid "pull_request"
 msgstr "提取要求"
 
-#: src/docker_setup.md:283
+#: src/getting-started/docker-setup.md:283
 msgid "jobs"
 msgstr "工作"
 
-#: src/docker_setup.md:285
+#: src/getting-started/docker-setup.md:285
 msgid "test"
 msgstr "測試"
 
-#: src/docker_setup.md:286
+#: src/getting-started/docker-setup.md:286
 msgid "runs-on"
 msgstr "執欄於"
 
-#: src/docker_setup.md:286
+#: src/getting-started/docker-setup.md:286
 msgid "ubuntu-latest"
 msgstr "ubuntu-latest"
 
-#: src/docker_setup.md:287
+#: src/getting-started/docker-setup.md:287
 msgid "steps"
 msgstr "步驟"
 
-#: src/docker_setup.md:288 src/docker_setup.md:291
+#: src/getting-started/docker-setup.md:288
+#: src/getting-started/docker-setup.md:291
 msgid "uses"
 msgstr "使用"
 
-#: src/docker_setup.md:288
+#: src/getting-started/docker-setup.md:288
 msgid "actions/checkout@v2"
 msgstr "actions/checkout@v2"
 
-#: src/docker_setup.md:290
+#: src/getting-started/docker-setup.md:290
 msgid "Set up Docker"
 msgstr "設定 Docker"
 
-#: src/docker_setup.md:291
+#: src/getting-started/docker-setup.md:291
 msgid "docker/setup-buildx-action@v1"
 msgstr "docker/設定-buildx-action@v1"
 
-#: src/docker_setup.md:293
+#: src/getting-started/docker-setup.md:293
 msgid "Build Docker image"
 msgstr "建構 Docker 映像檔"
 
-#: src/docker_setup.md:294 src/docker_setup.md:299
+#: src/getting-started/docker-setup.md:294
 msgid "run"
 msgstr "執欄"
 
-#: src/docker_setup.md:294
-msgid ""
-"          cd docker\n"
-"          make build\n"
-"      \n"
-msgstr "cd docker make 建構 \n"
-
-#: src/docker_setup.md:298
-msgid "Run tests"
-msgstr "執欄 tests"
-
-#: src/docker_setup.md:299
-msgid ""
-"          docker run --rm autosdv:latest \\\n"
-"            bash -c \"cd /home/developer/AutoSDV && colcon test\"\n"
-msgstr ""
-
-#: src/docker_setup.md:304
+#: src/getting-started/docker-setup.md:304
 msgid "Jenkins Pipeline Example"
 msgstr "Jenkins Pipeline 範例"
 
-#: src/docker_setup.md:311
+#: src/getting-started/docker-setup.md:311
 msgid "'Build'"
 msgstr "'建構'"
 
-#: src/docker_setup.md:313
+#: src/getting-started/docker-setup.md:313
 msgid "'cd docker && make build'"
 msgstr "'cd docker && make 建構'"
 
-#: src/docker_setup.md:317
+#: src/getting-started/docker-setup.md:317
 msgid "'Test'"
 msgstr "'測試'"
 
-#: src/docker_setup.md:319
+#: src/getting-started/docker-setup.md:319
 msgid "'docker run --rm autosdv:latest make test'"
 msgstr "'docker 執欄 --rm autosdv:latest make 測試'"
 
-#: src/docker_setup.md:328
+#: src/getting-started/docker-setup.md:328
 msgid ""
-"[Software Installation](./software_installation.md) - Native installation "
+"[Software Installation](./software-installation.md) - Native installation "
 "guide"
-msgstr "[軟體安裝](./software_installation.md) - Native 安裝 指南"
+msgstr ""
 
-#: src/docker_setup.md:329
+#: src/getting-started/docker-setup.md:329
 msgid "[Usage Guide](./usage.md) - Operating AutoSDV"
 msgstr "[使用指南](./使用方法.md) - Operating AutoSDV"
 
-#: src/docker_setup.md:330
-msgid "[Development Guide](./development_guide.md) - Development workflows"
-msgstr "[開發指南](./development_guide.md) - Development workflows"
+#: src/getting-started/docker-setup.md:330
+msgid "[Development Guide](../guides/development.md) - Development workflows"
+msgstr ""
 
-#: src/docker_setup.md:331
-msgid "[Manual Setup](./manual_setup.md) - Customization options"
-msgstr "[手動設定](./manual_setup.md) - Customization options"
+#: src/getting-started/docker-setup.md:331
+msgid "[Manual Setup](./manual-setup.md) - Customization options"
+msgstr ""
 
-#: src/manual_setup.md:3
+#: src/getting-started/manual-setup.md:1
+msgid "Manual Setup and Customization"
+msgstr "手動設定與自訂"
+
+#: src/getting-started/manual-setup.md:3
 msgid ""
 "This guide provides detailed manual installation steps and customization "
 "options for advanced users. For the recommended automated installation, see "
-"the [Software Installation](./software_installation.md) guide."
+"the [Software Installation](./software-installation.md) guide."
 msgstr ""
-"This 指南 provides detailed manual 安裝 steps 和 customization options 用於 "
-"進階 users. 用於 recommended automated 安裝, see [軟體安裝](./"
-"software_installation.md) 指南."
 
-#: src/manual_setup.md:5
+#: src/getting-started/manual-setup.md:5
 msgid "Manual Environment Setup"
 msgstr "Manual 環境 設定"
 
-#: src/manual_setup.md:7
+#: src/getting-started/manual-setup.md:7
 msgid "ROS 2 Humble Installation"
 msgstr "ROS 2 Humble 安裝"
 
-#: src/manual_setup.md:9
+#: src/getting-started/manual-setup.md:9
 msgid ""
 "If you prefer to install ROS 2 manually instead of using the Ansible script:"
 msgstr "If 你 prefer 到 安裝 ROS 2 manually instead 的 using Ansible script:"
 
-#: src/manual_setup.md:11
+#: src/getting-started/manual-setup.md:11
 msgid "**Add ROS 2 apt repository:**"
 msgstr "**Add ROS 2 apt 儲存程式庫:**"
 
-#: src/manual_setup.md:15
+#: src/getting-started/manual-setup.md:15
 msgid ""
 "\"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-"
 "archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release "
@@ -1805,67 +1795,67 @@ msgstr ""
 "keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo "
 "$UBUNTU_CODENAME) main\\\""
 
-#: src/manual_setup.md:18
+#: src/getting-started/manual-setup.md:18
 msgid "**Install ROS 2 Humble:**"
 msgstr "**安裝 ROS 2 Humble:**"
 
-#: src/manual_setup.md:24
+#: src/getting-started/manual-setup.md:24
 msgid "**Configure environment:**"
 msgstr "**設定 環境:**"
 
-#: src/manual_setup.md:26
+#: src/getting-started/manual-setup.md:26
 msgid "\"source /opt/ros/humble/setup.bash\""
 msgstr "\\\"source /opt/ros/humble/設定.bash\\\""
 
-#: src/manual_setup.md:30
+#: src/getting-started/manual-setup.md:30
 msgid "Autoware Installation Options"
 msgstr "Autoware 安裝 Options"
 
-#: src/manual_setup.md:32
+#: src/getting-started/manual-setup.md:32
 msgid "Option 1: Build Autoware from Source"
 msgstr "Option 1: 建構 Autoware 從 Source"
 
-#: src/manual_setup.md:34
+#: src/getting-started/manual-setup.md:34
 msgid "For developers who want to modify Autoware components:"
 msgstr "用於 developers who want 到 修改 Autoware components:"
 
-#: src/manual_setup.md:36
+#: src/getting-started/manual-setup.md:36
 msgid "**Clone Autoware repository:**"
 msgstr "**Clone Autoware 儲存程式庫:**"
 
-#: src/manual_setup.md:43
+#: src/getting-started/manual-setup.md:43
 msgid "**Install dependencies:**"
 msgstr "**安裝 相依套件:**"
 
-#: src/manual_setup.md:50
+#: src/getting-started/manual-setup.md:50
 msgid "**Import repositories and build:**"
 msgstr "**匯入 repositories 和 建構:**"
 
-#: src/manual_setup.md:58
+#: src/getting-started/manual-setup.md:58
 msgid "**Source the workspace:**"
 msgstr "**來源 工作空間:**"
 
-#: src/manual_setup.md:60
+#: src/getting-started/manual-setup.md:60
 msgid "\"source ~/autoware_ws/autoware/install/setup.bash\""
 msgstr "\\\"source ~/autoware_ws/autoware/安裝/設定.bash\\\""
 
-#: src/manual_setup.md:63
+#: src/getting-started/manual-setup.md:63
 msgid "Option 2: Custom Autoware Configuration"
 msgstr "Option 2: 自訂 Autoware 設定"
 
-#: src/manual_setup.md:65
+#: src/getting-started/manual-setup.md:65
 msgid "To use a custom Autoware installation path:"
 msgstr "到 use 自訂 Autoware 安裝 路徑:"
 
-#: src/manual_setup.md:67
+#: src/getting-started/manual-setup.md:67
 msgid "**Modify the build script:**"
 msgstr "**Modify 建構 script:**"
 
-#: src/manual_setup.md:69
+#: src/getting-started/manual-setup.md:69
 msgid "/your/custom/autoware/path"
 msgstr "/your/自訂/autoware/路徑"
 
-#: src/manual_setup.md:72
+#: src/getting-started/manual-setup.md:72
 msgid ""
 "**Update AutoSDV's build configuration:** Edit `~/AutoSDV/clean_build.sh` "
 "and change the Autoware path:"
@@ -1873,27 +1863,27 @@ msgstr ""
 "**更新 AutoSDV's 建構 設定:** Edit `~/AutoSDV/clean_build.sh` 和 "
 "changeAutoware 路徑:"
 
-#: src/manual_setup.md:75
+#: src/getting-started/manual-setup.md:75
 msgid "\"/your/custom/autoware/path\""
 msgstr "\\\"/your/自訂/autoware/路徑\\\""
 
-#: src/manual_setup.md:78
+#: src/getting-started/manual-setup.md:78
 msgid "Manual Sensor Driver Installation"
 msgstr "Manual 感測器 驅動程式 安裝"
 
-#: src/manual_setup.md:80
+#: src/getting-started/manual-setup.md:80
 msgid "Blickfeld Scanner Library"
 msgstr "Blickfeld Scanner Library"
 
-#: src/manual_setup.md:82
+#: src/getting-started/manual-setup.md:82
 msgid "Manual installation for different architectures:"
 msgstr "Manual 安裝 用於 different architectures:"
 
-#: src/manual_setup.md:84
+#: src/getting-started/manual-setup.md:84
 msgid "**Download the appropriate package:**"
 msgstr "**下載 appropriate 套件:**"
 
-#: src/manual_setup.md:85
+#: src/getting-started/manual-setup.md:85
 msgid ""
 "ARM64 (Jetson): [blickfeld-scanner-lib_2.20.6-1_arm64.deb](https://github."
 "com/NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
@@ -1903,7 +1893,7 @@ msgstr ""
 "com/NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/"
 "blickfeld-scanner-lib_2.20.6-1_arm64.deb)"
 
-#: src/manual_setup.md:86
+#: src/getting-started/manual-setup.md:86
 msgid ""
 "AMD64 (PC): [blickfeld-scanner-lib_2.20.6-1_amd64.deb](https://github.com/"
 "NEWSLabNTU/blickfeld-scanner-lib/releases/download/v2.20.6-newslab1/"
@@ -1913,472 +1903,534 @@ msgstr ""
 "NEWSLabNTU/blickfeld-scanner-lib/releases/下載/v2.20.6-newslab1/blickfeld-"
 "scanner-lib_2.20.6-1_amd64.deb)"
 
-#: src/manual_setup.md:88
+#: src/getting-started/manual-setup.md:88
 msgid "**Install the package:**"
 msgstr "**安裝 套件:**"
 
-#: src/manual_setup.md:91
+#: src/getting-started/manual-setup.md:91
 msgid "# Fix any dependency issues\n"
 msgstr "# Fix any dependency issues\n"
 
-#: src/manual_setup.md:94
+#: src/getting-started/manual-setup.md:94
 msgid "Velodyne LiDAR Driver"
 msgstr "Velodyne LiDAR 驅動程式"
 
-#: src/manual_setup.md:96
+#: src/getting-started/manual-setup.md:96
 msgid "For Velodyne VLP-32C support:"
 msgstr "Velodyne VLP-32C 支援："
 
-#: src/manual_setup.md:102
+#: src/getting-started/manual-setup.md:102
 msgid "GNSS/IMU Drivers"
 msgstr "GNSS/慣性測量單位 Drivers"
 
-#: src/manual_setup.md:104
+#: src/getting-started/manual-setup.md:104
 msgid "Install additional GNSS and IMU support:"
 msgstr "安裝 additional GNSS 和 IMU support:"
 
-#: src/manual_setup.md:107
+#: src/getting-started/manual-setup.md:107
 msgid "# NMEA GPS support\n"
 msgstr ""
 
-#: src/manual_setup.md:109
+#: src/getting-started/manual-setup.md:109
 msgid "# Serial communication for IMU\n"
 msgstr "# Serial 通訊 用於 IMU\n"
 
-#: src/manual_setup.md:115
+#: src/getting-started/manual-setup.md:115
 msgid "System Optimization"
 msgstr "系統 最佳化"
 
-#: src/manual_setup.md:117
+#: src/getting-started/manual-setup.md:117
 msgid "Real-time Performance Tuning"
 msgstr "即時 效能 Tuning"
 
-#: src/manual_setup.md:119
+#: src/getting-started/manual-setup.md:119
 msgid "**Configure CPU governor:**"
 msgstr "**設定 CPU governor:**"
 
-#: src/manual_setup.md:122
+#: src/getting-started/manual-setup.md:122
 msgid "'GOVERNOR=\"performance\"'"
 msgstr "'GOVERNOR=\\\"效能\\\"'"
 
-#: src/manual_setup.md:126
+#: src/getting-started/manual-setup.md:126
 msgid "**Increase system limits:** Add to `/etc/security/limits.conf`:"
 msgstr "**Increase 系統 limits:** Add 到 `/etc/security/limits.conf`:"
 
-#: src/manual_setup.md:135
+#: src/getting-started/manual-setup.md:135
 msgid "**Disable CPU frequency scaling (Jetson):**"
 msgstr "**停用 CPU frequency scaling (Jetson):**"
 
-#: src/manual_setup.md:138
+#: src/getting-started/manual-setup.md:138
 msgid "# Maximum performance mode\n"
 msgstr "# Maximum 效能 mode\n"
 
-#: src/manual_setup.md:141
+#: src/getting-started/manual-setup.md:141
 msgid "Network Configuration"
 msgstr "網路 設定"
 
-#: src/manual_setup.md:143
+#: src/getting-started/manual-setup.md:143
 msgid "Configure Cyclone DDS"
 msgstr "設定 Cyclone DDS"
 
-#: src/manual_setup.md:145
+#: src/getting-started/manual-setup.md:145
 msgid "**Create configuration file:**"
 msgstr "**建立 設定 檔案:**"
 
-#: src/manual_setup.md:148
+#: src/getting-started/manual-setup.md:148
 msgid "<< EOF\n"
 msgstr "<< EOF\n"
 
-#: src/manual_setup.md:165
+#: src/getting-started/manual-setup.md:165
 msgid "**Set as default RMW:**"
 msgstr "**Set as 預設 RMW:**"
 
-#: src/manual_setup.md:167
+#: src/getting-started/manual-setup.md:167
 msgid "\"export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\""
 msgstr "\\\"匯出 RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\\\""
 
-#: src/manual_setup.md:168
+#: src/getting-started/manual-setup.md:168
 msgid "\"export CYCLONEDDS_URI=file://$HOME/.ros/cyclone_dds.xml\""
 msgstr "\\\"匯出 CYCLONEDDS_URI=檔案://$HOME/.ros/cyclone_dds.xml\\\""
 
-#: src/manual_setup.md:171
+#: src/getting-started/manual-setup.md:171
 msgid "Configure FastDDS (Alternative)"
 msgstr "設定 FastDDS (Alternative)"
 
-#: src/manual_setup.md:173
+#: src/getting-started/manual-setup.md:173
 msgid "If you prefer FastDDS over Cyclone DDS:"
 msgstr "If you prefer FastDDS over Cyclone DDS:"
 
-#: src/manual_setup.md:177
+#: src/getting-started/manual-setup.md:177
 msgid "rmw_fastrtps_cpp"
 msgstr "rmw_fastrtps_cpp"
 
-#: src/manual_setup.md:180
+#: src/getting-started/manual-setup.md:180
 msgid "Custom Build Options"
 msgstr "自訂 建構 Options"
 
-#: src/manual_setup.md:182
+#: src/getting-started/manual-setup.md:182
 msgid "Debug Build"
 msgstr "除錯 建構"
 
-#: src/manual_setup.md:184
+#: src/getting-started/manual-setup.md:184
 msgid "For development with debug symbols:"
 msgstr "用於 development 搭配 除錯 symbols:"
 
-#: src/manual_setup.md:194
+#: src/getting-started/manual-setup.md:194
 msgid "Selective Package Building"
 msgstr "Selective 套件 Building"
 
-#: src/manual_setup.md:196
+#: src/getting-started/manual-setup.md:196
 msgid "Build only specific packages:"
 msgstr "建構 only specific packages:"
 
-#: src/manual_setup.md:199
+#: src/getting-started/manual-setup.md:199
 msgid "# Build only vehicle interface packages\n"
 msgstr "# 建構 only 車輛 介臉部 packages\n"
 
-#: src/manual_setup.md:203
-msgid "# Build with dependencies\n"
-msgstr "# 建構 搭配 相依套件\n"
-
-#: src/manual_setup.md:208
+#: src/getting-started/manual-setup.md:208
 msgid "Cross-compilation"
 msgstr "交叉編譯"
 
-#: src/manual_setup.md:210
+#: src/getting-started/manual-setup.md:210
 msgid "For cross-compiling to different architectures:"
 msgstr "用於交叉編譯到不同架構:"
 
-#: src/manual_setup.md:213
+#: src/getting-started/manual-setup.md:213
 msgid "# Example for ARM64 on x86_64 host\n"
 msgstr "# 範例 用於 ARM64 在 x86_64 主機\n"
 
-#: src/manual_setup.md:220
+#: src/getting-started/manual-setup.md:220
 msgid "Environment Variables"
 msgstr "環境 Variables"
 
-#: src/manual_setup.md:222
+#: src/getting-started/manual-setup.md:222
 msgid "Essential Variables"
 msgstr "必要變數"
 
-#: src/manual_setup.md:224
+#: src/getting-started/manual-setup.md:224
 msgid "Add to `~/.bashrc` for persistent configuration:"
 msgstr "Add 到 `~/.bashrc` 用於 persistent 設定:"
 
-#: src/manual_setup.md:227
+#: src/getting-started/manual-setup.md:227
 msgid "# ROS 2 Configuration\n"
 msgstr "# ROS 2 設定\n"
 
-#: src/manual_setup.md:228
+#: src/getting-started/manual-setup.md:228
 msgid "0  # Change for multi-robot setups\n"
 msgstr ""
 
-#: src/manual_setup.md:229
+#: src/getting-started/manual-setup.md:229
 msgid "0  # Set to 1 for local-only communication\n"
 msgstr "0 # Set 到 1 用於 local-only 通訊\n"
 
-#: src/manual_setup.md:230
+#: src/getting-started/manual-setup.md:230
 msgid "# GPU Configuration (if applicable)\n"
 msgstr "# GPU 設定 (if applicable)\n"
 
-#: src/manual_setup.md:232
+#: src/getting-started/manual-setup.md:232
 msgid "/usr/local/cuda"
 msgstr ""
 
-#: src/manual_setup.md:233
+#: src/getting-started/manual-setup.md:233
 msgid "$CUDA_HOME/bin:$PATH"
 msgstr "$CUDA_HOME/bin:$路徑"
 
-#: src/manual_setup.md:234
+#: src/getting-started/manual-setup.md:234
 msgid "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
 msgstr "$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
 
-#: src/manual_setup.md:235
+#: src/getting-started/manual-setup.md:235
 msgid "# Autoware Configuration\n"
 msgstr "# Autoware 設定\n"
 
-#: src/manual_setup.md:237
+#: src/getting-started/manual-setup.md:237
 msgid "/opt/autoware  # Or your custom path\n"
 msgstr "/opt/autoware # 或 your 自訂 路徑\n"
 
-#: src/manual_setup.md:240
+#: src/getting-started/manual-setup.md:240
 msgid "Development Tools"
 msgstr "開發工具"
 
-#: src/manual_setup.md:242
+#: src/getting-started/manual-setup.md:242
 msgid "Install additional development utilities:"
 msgstr "安裝 additional development utilities:"
 
-#: src/manual_setup.md:245
+#: src/getting-started/manual-setup.md:245
 msgid "# Code formatting and linting\n"
 msgstr ""
 
-#: src/manual_setup.md:247
+#: src/getting-started/manual-setup.md:247
 msgid "# Debugging tools\n"
 msgstr ""
 
-#: src/manual_setup.md:250
+#: src/getting-started/manual-setup.md:250
 msgid "# Build acceleration\n"
 msgstr "# 建構 acceleration\n"
 
-#: src/manual_setup.md:253
+#: src/getting-started/manual-setup.md:253
 msgid "\"ccache gcc\""
 msgstr ""
 
-#: src/manual_setup.md:254
+#: src/getting-started/manual-setup.md:254
 msgid "\"ccache g++\""
 msgstr ""
 
-#: src/manual_setup.md:257
+#: src/getting-started/manual-setup.md:257
 msgid "Troubleshooting Manual Installations"
 msgstr "手動安裝故障排除"
 
-#: src/manual_setup.md:259
+#: src/getting-started/manual-setup.md:259
 msgid "Missing Dependencies"
 msgstr "Missing 相依套件"
 
-#: src/manual_setup.md:261
+#: src/getting-started/manual-setup.md:261
 msgid "If encountering missing package errors:"
 msgstr "If encountering missing 套件 errors:"
 
-#: src/manual_setup.md:264
+#: src/getting-started/manual-setup.md:264
 msgid "# Update rosdep database\n"
 msgstr "# 更新 rosdep database\n"
 
-#: src/manual_setup.md:266
+#: src/getting-started/manual-setup.md:266
 msgid "# Install missing dependencies\n"
 msgstr "# 安裝 missing 相依套件\n"
 
-#: src/manual_setup.md:272
+#: src/getting-started/manual-setup.md:272
 msgid "Library Path Issues"
 msgstr "Library 路徑 Issues"
 
-#: src/manual_setup.md:274
+#: src/getting-started/manual-setup.md:274
 msgid "For custom library installations:"
 msgstr "用於 自訂 library installations:"
 
-#: src/manual_setup.md:277
+#: src/getting-started/manual-setup.md:277
 msgid "# Add custom library paths\n"
 msgstr "# Add 自訂 library paths\n"
 
-#: src/manual_setup.md:278
+#: src/getting-started/manual-setup.md:278
 msgid "\"/usr/local/lib\""
 msgstr ""
 
-#: src/manual_setup.md:282
+#: src/getting-started/manual-setup.md:282
 msgid "Permission Issues"
 msgstr "權限問題"
 
-#: src/manual_setup.md:284
+#: src/getting-started/manual-setup.md:284
 msgid "For device access (sensors, CAN bus):"
 msgstr "用於 裝置 存取 (sensors, 可以 bus):"
 
-#: src/manual_setup.md:287
+#: src/getting-started/manual-setup.md:287
 msgid "# Add user to required groups\n"
 msgstr "# Add user 到 必需 groups\n"
 
-#: src/manual_setup.md:289
+#: src/getting-started/manual-setup.md:289
 msgid "# Logout and login for changes to take effect\n"
 msgstr ""
 
-#: src/manual_setup.md:295
+#: src/getting-started/manual-setup.md:295
 msgid ""
-"Return to [Software Installation](./software_installation.md) for the "
+"Return to [Software Installation](./software-installation.md) for the "
 "standard setup"
-msgstr "Return 到 [軟體安裝](./software_installation.md) 用於 標準 設定"
+msgstr ""
 
-#: src/manual_setup.md:296
-msgid "See [Docker Setup](./docker_setup.md) for containerized deployment"
-msgstr "See [Docker 設定](./docker_setup.md) 用於 containerized 部署"
+#: src/getting-started/manual-setup.md:296
+msgid "See [Docker Setup](./docker-setup.md) for containerized deployment"
+msgstr ""
 
-#: src/manual_setup.md:297
+#: src/getting-started/manual-setup.md:297
 msgid ""
-"Continue to [Development Guide](./development_guide.md) for development "
+"Continue to [Development Guide](../guides/development.md) for development "
 "workflows"
 msgstr ""
-"Continue 到 [開發指南](./development_guide.md) 用於 development workflows"
 
-#: src/usage.md:3
+#: src/getting-started/usage.md:3
 msgid ""
 "Before reading this article, please make sure you followed the [Software "
-"Installation](./software_installation.md) and built the project. The project "
+"Installation](./software-installation.md) and built the project. The project "
 "repository has a launch file `autosdv.launch.yaml` that defines the set of "
 "nodes to be executed and assigned parameters to start the whole driving "
 "system."
 msgstr ""
-"在閱讀本文之前，請確保你已遵循[軟體安裝](./software_installation.md)並建構了"
-"專案。專案儲存程式庫有一個啟動檔案`autosdv.啟動.yaml`，定義了要執欄的節點集合"
-"和指定參數，以啟動整個駕駛系統。指定參數，以啟動整個駕駛系統。"
 
-#: src/usage.md:5
+#: src/getting-started/usage.md:5
 msgid "The Simple Way"
 msgstr "簡單方式"
 
-#: src/usage.md:7
+#: src/getting-started/usage.md:7
 msgid "The Makefile has a receipt to start the whole system."
 msgstr "Makefile 有一個用於啟動整個系統的指令。"
 
-#: src/usage.md:13
+#: src/getting-started/usage.md:13
 msgid "Customize the Launch"
 msgstr "自訂啟動"
 
-#: src/usage.md:15
+#: src/getting-started/usage.md:15
 msgid "You can either modify the launch file directly located here:"
 msgstr "你可以直接修改位於此處的啟動檔案："
 
-#: src/usage.md:21
+#: src/getting-started/usage.md:21
 msgid ""
-"or assign argument values to the launch command. For example, to set "
-"`launch_sensing_driver` to false."
+"or assign argument values to the launch command. For example, to use Isaac "
+"Visual SLAM for localization:"
 msgstr ""
-"或將參數值指定給啟動命令。例如，將 `launch_sensing_driver` 設定為 false。"
 
-#: src/usage.md:29
-msgid "Arguments"
-msgstr "參數"
+#: src/getting-started/usage.md:28
+msgid "Or to run in simulation mode without hardware:"
+msgstr ""
 
-#: src/usage.md:31
+#: src/getting-started/usage.md:34
+msgid "Common Arguments"
+msgstr ""
+
+#: src/getting-started/usage.md:36
 msgid "Argument"
 msgstr "參數"
 
-#: src/usage.md:31
-msgid "Value"
-msgstr "值"
+#: src/getting-started/usage.md:36
+msgid "Description"
+msgstr ""
 
-#: src/usage.md:31
+#: src/getting-started/usage.md:36
 msgid "Default"
 msgstr "預設"
 
-#: src/usage.md:33
-msgid "`vehicle_model`"
-msgstr "`vehicle_model`"
+#: src/getting-started/usage.md:38
+msgid "`is_simulation`"
+msgstr ""
 
-#: src/usage.md:33
-msgid "The name of the vehicle model."
-msgstr "name 的 車輛 model."
+#: src/getting-started/usage.md:38
+msgid "Enable simulation mode (disables PWM output to hardware)"
+msgstr ""
 
-#: src/usage.md:33
-msgid "`autosdv_vehicle`"
-msgstr "`autosdv_vehicle`"
-
-#: src/usage.md:34
-msgid "`sensor_model`"
-msgstr "`sensor_model`"
-
-#: src/usage.md:34
-msgid "The name of the sensor model."
-msgstr "name 的 感測器 model."
-
-#: src/usage.md:34
-msgid "`autosdv_sensor_kit`"
-msgstr "`autosdv_sensor_kit`"
-
-#: src/usage.md:35
-msgid "`map_path`"
-msgstr "`map_path`"
-
-#: src/usage.md:35
-msgid "The path to the map data directory."
-msgstr "路徑 到 map 資料 目錄."
-
-#: src/usage.md:35
-msgid "`./data/COSS-map-planning`"
-msgstr "`./資料/COSS-map-規劃`"
-
-#: src/usage.md:36
-msgid "`launch_vehicle`"
-msgstr "`launch_vehicle`"
-
-#: src/usage.md:36
-msgid "Whether to launch the vehicle interface."
-msgstr "是否 到 啟動 車輛 介臉部."
-
-#: src/usage.md:36 src/usage.md:39 src/usage.md:40 src/usage.md:44
-msgid "`true`"
-msgstr "`true`"
-
-#: src/usage.md:37
-msgid "`launch_system`"
-msgstr "`啟動_系統`"
-
-#: src/usage.md:37
-msgid "Whether to launch the system component."
-msgstr "是否 到 啟動 系統 元件."
-
-#: src/usage.md:37 src/usage.md:38 src/usage.md:41 src/usage.md:42
-#: src/usage.md:43
+#: src/getting-started/usage.md:38 src/getting-started/usage.md:46
 msgid "`false`"
 msgstr "`false`"
 
-#: src/usage.md:38
-msgid "`launch_map`"
-msgstr "`啟動_地圖形`"
+#: src/getting-started/usage.md:39
+msgid "`sensor_suite`"
+msgstr ""
 
-#: src/usage.md:38
-msgid "Whether to launch the map component."
-msgstr "是否 到 啟動 map 元件."
+#: src/getting-started/usage.md:39
+msgid "Predefined sensor suite (robin_zed, vlp32c_zed_imu, etc.)"
+msgstr ""
 
-#: src/usage.md:39
-msgid "`launch_sensing`"
-msgstr "`啟動_感測`"
+#: src/getting-started/usage.md:39
+msgid "`vlp32c_zed_imu`"
+msgstr ""
 
-#: src/usage.md:39
-msgid "Whether to launch the sensing component."
-msgstr "是否 到 啟動 sensing 元件."
+#: src/getting-started/usage.md:40
+msgid "`lidar_model`"
+msgstr ""
 
-#: src/usage.md:40
-msgid "`launch_sensing_driver`"
-msgstr "`啟動_感測_驅動程式`"
+#: src/getting-started/usage.md:40
+msgid "LiDAR model (cube1, robin-w, vlp32c)"
+msgstr ""
 
-#: src/usage.md:40
-msgid "Whether to launch sensor drivers."
-msgstr "是否 到 啟動 感測器 drivers."
+#: src/getting-started/usage.md:40 src/getting-started/usage.md:41
+#: src/getting-started/usage.md:42 src/getting-started/usage.md:43
+#: src/getting-started/usage.md:44 src/getting-started/usage.md:48
+msgid "(from suite)"
+msgstr ""
 
-#: src/usage.md:41
-msgid "`launch_localization`"
-msgstr "`launch_localization`"
+#: src/getting-started/usage.md:41
+msgid "`camera_model`"
+msgstr ""
 
-#: src/usage.md:41
-msgid "Whether to launch the localization component."
-msgstr "是否 到 啟動 localization 元件."
+#: src/getting-started/usage.md:41
+msgid "Camera model (zedxm, usb, none)"
+msgstr ""
 
-#: src/usage.md:42
-msgid "`launch_perception`"
-msgstr "`launch_perception`"
+#: src/getting-started/usage.md:42
+msgid "`imu_source`"
+msgstr ""
 
-#: src/usage.md:42
-msgid "Whether to launch the perception component."
-msgstr "是否 到 啟動 perception 元件."
+#: src/getting-started/usage.md:42
+msgid "IMU source (mpu9250, zed)"
+msgstr ""
 
-#: src/usage.md:43
-msgid "`launch_planning`"
-msgstr "`launch_planning`"
+#: src/getting-started/usage.md:43
+msgid "`gnss_receiver`"
+msgstr ""
 
-#: src/usage.md:43
-msgid "Whether to launch the planning component."
-msgstr "是否 到 啟動 planning 元件."
+#: src/getting-started/usage.md:43
+msgid "GNSS receiver type (ublox, septentrio, garmin)"
+msgstr ""
 
-#: src/usage.md:44
-msgid "`launch_control`"
-msgstr "`launch_control`"
+#: src/getting-started/usage.md:44
+msgid "`use_gnss`"
+msgstr ""
 
-#: src/usage.md:44
-msgid "Whether to launch the control component."
-msgstr "是否 到 啟動 控制 元件."
+#: src/getting-started/usage.md:44
+msgid "Enable GNSS for outdoor operation"
+msgstr ""
 
-#: src/usage.md:45
+#: src/getting-started/usage.md:45
+msgid "`use_ntrip`"
+msgstr ""
+
+#: src/getting-started/usage.md:45
+msgid "Enable NTRIP client for RTK corrections"
+msgstr ""
+
+#: src/getting-started/usage.md:45 src/getting-started/usage.md:49
+msgid "`true`"
+msgstr "`true`"
+
+#: src/getting-started/usage.md:46
+msgid "`use_mapless_mode`"
+msgstr ""
+
+#: src/getting-started/usage.md:46
+msgid "Enable mapless mode for indoor operation"
+msgstr ""
+
+#: src/getting-started/usage.md:47
 msgid "`pose_source`"
 msgstr "`姿態_來源`"
 
-#: src/usage.md:45
-msgid "The localization method."
-msgstr "當地語系化 method."
+#: src/getting-started/usage.md:47
+msgid "Pose estimation source (ndt, isaac)"
+msgstr ""
 
-#: src/usage.md:45
-msgid "`eagleye`"
-msgstr "`eagleye`"
+#: src/getting-started/usage.md:47
+msgid "`ndt`"
+msgstr ""
 
-#: src/development_guide.md:3
+#: src/getting-started/usage.md:48
+msgid "`enable_zed_object_detection`"
+msgstr ""
+
+#: src/getting-started/usage.md:48
+msgid "Enable ZED camera object detection"
+msgstr ""
+
+#: src/getting-started/usage.md:49
+msgid "`launch_perception`"
+msgstr "`launch_perception`"
+
+#: src/getting-started/usage.md:49
+msgid "Launch perception module (object detection)"
+msgstr ""
+
+#: src/getting-started/usage.md:51
+msgid ""
+"For a complete list of arguments, see the [main launch file](https://github."
+"com/NEWSLabNTU/AutoSDV/blob/main/src/launcher/autosdv_launch/launch/autosdv."
+"launch.yaml)."
+msgstr ""
+
+#: src/getting-started/usage.md:53
+msgid "Common Operations"
+msgstr ""
+
+#: src/getting-started/usage.md:55
+msgid "Autonomous Driving"
+msgstr ""
+
+#: src/getting-started/usage.md:57
+msgid "Run autonomous driving with waypoint navigation:"
+msgstr ""
+
+#: src/getting-started/usage.md:63
+msgid ""
+"This command launches the full system and executes autonomous driving based "
+"on poses defined in `scripts/testing/drive/poses.json`. The vehicle will "
+"navigate through the defined waypoints."
+msgstr ""
+
+#: src/getting-started/usage.md:65
+msgid "Visualization and Monitoring"
+msgstr ""
+
+#: src/getting-started/usage.md:67
+msgid "Launch RViz for 3D visualization:"
+msgstr ""
+
+#: src/getting-started/usage.md:73
+msgid "Launch PlotJuggler for real-time data plotting:"
+msgstr ""
+
+#: src/getting-started/usage.md:79
+msgid "Manual Control"
+msgstr ""
+
+#: src/getting-started/usage.md:81
+msgid "Launch keyboard-based manual control:"
+msgstr ""
+
+#: src/getting-started/usage.md:87
+msgid "Testing Control System"
+msgstr ""
+
+#: src/getting-started/usage.md:89
+msgid "Test the basic control system:"
+msgstr ""
+
+#: src/getting-started/usage.md:95
+msgid "Run predefined trajectories:"
+msgstr ""
+
+#: src/getting-started/usage.md:98
+msgid "# Drive 10m straight\n"
+msgstr ""
+
+#: src/getting-started/usage.md:99
+msgid "# Drive in a circle\n"
+msgstr ""
+
+#: src/getting-started/usage.md:102
+msgid "Recording and Playback"
+msgstr ""
+
+#: src/getting-started/usage.md:104
+msgid "Record sensor data during outdoor operation:"
+msgstr ""
+
+#: src/getting-started/usage.md:110
+msgid "Play back the most recent recording:"
+msgstr ""
+
+#: src/guides/development.md:3
 msgid ""
 "This section provides information for developers who want to extend, modify, "
 "or contribute to the AutoSDV platform. The guide covers five key areas:"
@@ -2386,28 +2438,28 @@ msgstr ""
 "本章節提供給想要延伸、修改或貢獻 AutoSDV 平台的開發者的資訊。指南涵蓋五個關鍵"
 "領域："
 
-#: src/development_guide.md:5
+#: src/guides/development.md:5
 msgid "**Source Code Walkthrough** - Repository structure and organization"
 msgstr "**原始碼演示** - 儲存程式庫結構和群組織"
 
-#: src/development_guide.md:6
+#: src/guides/development.md:6
 msgid "**Version Control** - Working with Git superproject and submodules"
 msgstr "**版本控制** - 使用 Git 超級專案和子模群組"
 
-#: src/development_guide.md:7
+#: src/guides/development.md:7
 msgid ""
 "**Sensor Components and Drivers** - Available sensors and their configuration"
 msgstr "**感測器 Components 和 Drivers** - 可用 sensors 和 their 設定"
 
-#: src/development_guide.md:8
+#: src/guides/development.md:8
 msgid "**Sensor Kit Configuration** - Sensor integration and calibration"
 msgstr "**感測器套件設定** - 感測器整合和校正"
 
-#: src/development_guide.md:9
+#: src/guides/development.md:9
 msgid "**Vehicle Interface** - Control systems and vehicle parameters"
 msgstr "**車輛介臉部** - 控制系統和車輛參數"
 
-#: src/source_code.md:3
+#: src/guides/source-code.md:3
 msgid ""
 "The AutoSDV follows the [superproject](https://en.wikibooks.org/wiki/Git/"
 "Submodules_and_Superprojects) convention. It collects hundreds of packages "
@@ -2416,260 +2468,282 @@ msgid ""
 "constitutes a large ROS workspace."
 msgstr "AutoSDV follows [superproject](https://en.wikibooks.org/wiki/Git/Submo"
 
-#: src/source_code.md:5
+#: src/guides/source-code.md:5
 msgid "Here you can visit the GitHub repository:"
 msgstr "Here 你 可以 visit GitHub 儲存程式庫:"
 
-#: src/source_code.md:7
+#: src/guides/source-code.md:7
 msgid ""
 "[https://github.com/NEWSLabNTU/AutoSDV](https://github.com/NEWSLabNTU/"
 "AutoSDV)."
 msgstr ""
 
-#: src/source_code.md:10 src/source_code.md:24 src/source_code.md:39
-#: src/source_code.md:61 src/source_code.md:73
+#: src/guides/source-code.md:10 src/guides/source-code.md:24
+#: src/guides/source-code.md:41 src/guides/source-code.md:63
+#: src/guides/source-code.md:75
 msgid "Directory"
 msgstr "目錄"
 
-#: src/source_code.md:10 src/source_code.md:24 src/source_code.md:39
-#: src/source_code.md:61 src/source_code.md:73
+#: src/guides/source-code.md:10 src/guides/source-code.md:24
+#: src/guides/source-code.md:41 src/guides/source-code.md:63
+#: src/guides/source-code.md:75
 msgid "Function"
 msgstr "函式"
 
-#: src/source_code.md:12
+#: src/guides/source-code.md:12
 msgid "`AutoSDV/`"
 msgstr ""
 
-#: src/source_code.md:13
+#: src/guides/source-code.md:13
 msgid "`├── book/`"
 msgstr "`├── book/`"
 
-#: src/source_code.md:13
+#: src/guides/source-code.md:13
 msgid "The source documents for this book."
 msgstr "來源 documents 用於 this book."
 
-#: src/source_code.md:14
+#: src/guides/source-code.md:14
 msgid "`├── data/`"
 msgstr "`├── 資料/`"
 
-#: src/source_code.md:14
+#: src/guides/source-code.md:14
 msgid "It includes data files used or loaded in the runtime."
 msgstr "它 includes 資料 files used 或 loaded 在 runtime."
 
-#: src/source_code.md:15
+#: src/guides/source-code.md:15
 msgid "`├── docker/`"
 msgstr "`├── docker/`"
 
-#: src/source_code.md:15
+#: src/guides/source-code.md:15
 msgid "The Docker container build script."
 msgstr "Docker 容器 建構 script."
 
-#: src/source_code.md:16
+#: src/guides/source-code.md:16
 msgid "`├── scripts/`"
 msgstr "`├── scripts/`"
 
-#: src/source_code.md:16
+#: src/guides/source-code.md:16
 msgid ""
 "Auxiliary script files. It contains Ansible scripts to set up the "
 "environment."
 msgstr "Auxiliary script files. 它 contains Ansible scripts 到 set up 環境."
 
-#: src/source_code.md:17
+#: src/guides/source-code.md:17
 msgid "`├── src/`"
 msgstr "`├── src/`"
 
-#: src/source_code.md:17
+#: src/guides/source-code.md:17
 msgid "The source code packages."
 msgstr "來源 code packages."
 
-#: src/source_code.md:18
+#: src/guides/source-code.md:18
 msgid "`├── Makefile`"
 msgstr "`├── Makefile`"
 
-#: src/source_code.md:18
+#: src/guides/source-code.md:18
 msgid "It includes commonly used recipes."
 msgstr "它套件含常用的配方."
 
-#: src/source_code.md:19
+#: src/guides/source-code.md:19
 msgid "`└── README.md`"
 msgstr "`└── README.md`"
 
-#: src/source_code.md:19
+#: src/guides/source-code.md:19
 msgid "The introductory document to get the first impression of the project."
 msgstr "用於獲得專案第一印象的介紹檔案。"
 
-#: src/source_code.md:22
+#: src/guides/source-code.md:22
 msgid "Source Package Categories"
 msgstr "Source 套件 Categories"
 
-#: src/source_code.md:26 src/source_code.md:75
+#: src/guides/source-code.md:26 src/guides/source-code.md:77
 msgid "`AutoSDV/src/`"
 msgstr ""
 
-#: src/source_code.md:26
+#: src/guides/source-code.md:26
 msgid "The entry to the Autoware source tree."
 msgstr "entry 到 Autoware 來源 tree."
 
-#: src/source_code.md:27
-msgid "`├── core/`"
+#: src/guides/source-code.md:27
+msgid "`├── calibration/`"
 msgstr ""
 
-#: src/source_code.md:27
-msgid "The Autoware.Core library."
+#: src/guides/source-code.md:27
+msgid "Calibration tools and utilities."
 msgstr ""
 
-#: src/source_code.md:28
+#: src/guides/source-code.md:28
 msgid "`├── launcher/`"
 msgstr "`├── launcher/`"
 
-#: src/source_code.md:28
+#: src/guides/source-code.md:28
 msgid "Includes launch files to run the entire driving system."
 msgstr "Includes 啟動 files 到 執欄 entire driving 系統."
 
-#: src/source_code.md:29
-msgid "`├── vehicle/`"
-msgstr "`├── 車輛/`"
+#: src/guides/source-code.md:29
+msgid "`├── localization/`"
+msgstr ""
 
-#: src/source_code.md:29
-msgid "Powertrain control and kinetic parameters."
-msgstr "動強制系統 控制 和 kinetic parameters."
+#: src/guides/source-code.md:29
+msgid "Localization packages (Isaac Visual SLAM, etc.)."
+msgstr ""
 
-#: src/source_code.md:30
+#: src/guides/source-code.md:30
 msgid "`├── param/`"
 msgstr "`├── param/`"
 
-#: src/source_code.md:30
+#: src/guides/source-code.md:30
 msgid "Parameters specific to vehicle models."
 msgstr "Parameters specific 到 車輛 models."
 
-#: src/source_code.md:31 src/source_code.md:76
+#: src/guides/source-code.md:31 src/guides/source-code.md:78
 msgid "`├── sensor_component/`"
 msgstr ""
 
-#: src/source_code.md:31
+#: src/guides/source-code.md:31
 msgid "Sensor drivers and sensing data processors."
 msgstr "感測器 drivers 和 sensing 資料 processors."
 
-#: src/source_code.md:32 src/source_code.md:77
-msgid "`└── sensor_kit/`"
+#: src/guides/source-code.md:32
+msgid "`├── sensor_kit/`"
 msgstr ""
 
-#: src/source_code.md:32
+#: src/guides/source-code.md:32
 msgid "Sensor related parameters and launch files."
 msgstr "感測器 related parameters 和 啟動 files."
 
-#: src/source_code.md:35
+#: src/guides/source-code.md:33
+msgid "`├── system/`"
+msgstr ""
+
+#: src/guides/source-code.md:33
+msgid "System runtime and monitoring components."
+msgstr ""
+
+#: src/guides/source-code.md:34
+msgid "`└── vehicle/`"
+msgstr ""
+
+#: src/guides/source-code.md:34
+msgid "Powertrain control and kinetic parameters."
+msgstr "動強制系統 控制 和 kinetic parameters."
+
+#: src/guides/source-code.md:37
 msgid "Vehicle Interface Packages"
 msgstr "車輛 介臉部 Packages"
 
-#: src/source_code.md:37
+#: src/guides/source-code.md:39
 msgid "`AutoSDV/src/vehicle/autosdv_vehicle_launch/`"
 msgstr "`AutoSDV/src/vehicle/autosdv_vehicle_launch/`"
 
-#: src/source_code.md:41
+#: src/guides/source-code.md:43
 msgid "`.../autosdv_vehicle_launch/`"
 msgstr ""
 
-#: src/source_code.md:42
+#: src/guides/source-code.md:44
 msgid "`├── autosdv_vehicle_interface/`"
 msgstr ""
 
-#: src/source_code.md:42
+#: src/guides/source-code.md:44
 msgid "Powertrain control and its state measurement."
 msgstr "動強制系統 控制 和 its state measurement."
 
-#: src/source_code.md:43
+#: src/guides/source-code.md:45
 msgid "`├── autosdv_vehicle_description/`"
 msgstr ""
 
-#: src/source_code.md:43
+#: src/guides/source-code.md:45
 msgid "Vehicle shape parameters and mesh files."
 msgstr "車輛 shape parameters 和 mesh files."
 
-#: src/source_code.md:44
+#: src/guides/source-code.md:46
 msgid "`└── autosdv_vehicle_launch/`"
 msgstr ""
 
-#: src/source_code.md:44
+#: src/guides/source-code.md:46
 msgid "Launch files to start the vehicle interface."
 msgstr "啟動 files 到 啟動 車輛 介臉部."
 
-#: src/source_code.md:47
+#: src/guides/source-code.md:49
 msgid "The Package for Vehicle-Specific Parameters"
 msgstr "套件 用於 車輛-Specific Parameters"
 
-#: src/source_code.md:49
+#: src/guides/source-code.md:51
 msgid ""
 "The `autoware_individual_params` package serves parameters that are specific "
 "to different vehicle models. It is located at"
 msgstr ""
 "`autoware_individual_params` 套件 serves parameters that 是 specific 到 di"
 
-#: src/source_code.md:55
+#: src/guides/source-code.md:57
 msgid "You can find the parameter directories within this package."
 msgstr "你 可以 找到 parameter directories within this 套件."
 
-#: src/source_code.md:63
+#: src/guides/source-code.md:65
 msgid "`.../default/`"
 msgstr "`.../預設/`"
 
-#: src/source_code.md:64
+#: src/guides/source-code.md:66
 msgid "`├── awsim_sensor_kit`"
 msgstr ""
 
-#: src/source_code.md:64
+#: src/guides/source-code.md:66
 msgid "Parameters for the AWSIM vehicle."
 msgstr "Parameters 用於 AWSIM 車輛."
 
-#: src/source_code.md:65
+#: src/guides/source-code.md:67
 msgid "`└── autosdv_sensor_kit`"
 msgstr ""
 
-#: src/source_code.md:65
+#: src/guides/source-code.md:67
 msgid "Parameters for the AutoSDV vehicle."
 msgstr "Parameters 用於 AutoSDV 車輛."
 
-#: src/source_code.md:66
+#: src/guides/source-code.md:68
 msgid "`    ├── imu_corrector.param.yaml`"
 msgstr ""
 
-#: src/source_code.md:67
+#: src/guides/source-code.md:69
 msgid "`    ├── sensor_kit_calibration.yaml`"
 msgstr ""
 
-#: src/source_code.md:68
+#: src/guides/source-code.md:70
 msgid "`    └── sensors_calibration.yaml`"
 msgstr ""
 
-#: src/source_code.md:71
+#: src/guides/source-code.md:73
 msgid "Sensor Related Packages"
 msgstr "感測器 Related Packages"
 
-#: src/source_code.md:76
+#: src/guides/source-code.md:78
 msgid "Sensor drivers and preprocessors."
 msgstr "感測器 drivers 和 preprocessors."
 
-#: src/source_code.md:78
+#: src/guides/source-code.md:79
+msgid "`└── sensor_kit/`"
+msgstr ""
+
+#: src/guides/source-code.md:80
 msgid "`    └── autosdv_sensor_kit_launch/`"
 msgstr ""
 
-#: src/source_code.md:79
+#: src/guides/source-code.md:81
 msgid "`        ├── autosdv_sensor_kit_description/`"
 msgstr ""
 
-#: src/source_code.md:79
+#: src/guides/source-code.md:81
 msgid "Coordinates of each sensor."
 msgstr "Coordinates 的 each 感測器."
 
-#: src/source_code.md:80
+#: src/guides/source-code.md:82
 msgid "`        └── autosdv_sensor_kit_launch/`"
 msgstr ""
 
-#: src/source_code.md:80
+#: src/guides/source-code.md:82
 msgid "Additional launch files for sensors."
 msgstr "Additional 啟動 files 用於 sensors."
 
-#: src/version_control.md:3
+#: src/guides/version-control.md:3
 msgid ""
 "The project adopts the **superproject** approach to manage a large number of "
 "Git repositories. The AutoSDV repository itself, the said superproject, "
@@ -2679,7 +2753,7 @@ msgid ""
 msgstr ""
 "project adopts **superproject** approach 到 manage large number 的 Git r"
 
-#: src/version_control.md:5
+#: src/guides/version-control.md:5
 msgid ""
 "A Git submodule works as though it is a hyperlink within the mother "
 "repository. The mother repository stores information about submodules in the "
@@ -2688,22 +2762,24 @@ msgstr ""
 "Git submodule works as though 它 是 hyperlink within mother 儲存程式庫."
 "mother "
 
-#: src/version_control.md:11 src/sensor_component.md:5 src/sensor_kit.md:5
+#: src/guides/version-control.md:11
+#: src/reference/software/sensor-components.md:5
+#: src/reference/software/sensor-kit.md:5
 msgid "**Notice**"
 msgstr "**注意**"
 
-#: src/version_control.md:13
+#: src/guides/version-control.md:13
 msgid ""
 "The official Autoware adopts a different version control strategy from ours. "
 "Do not confuse them."
 msgstr ""
 "official Autoware adopts different 版本 控制 strategy 從 ours. Do not confu"
 
-#: src/version_control.md:15
+#: src/guides/version-control.md:15
 msgid "Download a Repository with Submodules"
 msgstr "下載 儲存程式庫 搭配 Submodules"
 
-#: src/version_control.md:17
+#: src/guides/version-control.md:17
 msgid ""
 "Always add the `--recursive` option when downloading a repository containing "
 "submodules."
@@ -2711,7 +2787,7 @@ msgstr ""
 "Always add `--recursive` option when downloading 儲存程式庫 "
 "containingsubmodules."
 
-#: src/version_control.md:23
+#: src/guides/version-control.md:23
 msgid ""
 "If you forget to add the option, the submodule directories will be empty. "
 "You can get the submodule contents afterwards."
@@ -2719,70 +2795,66 @@ msgstr ""
 "If 你 forget 到 新增 option, submodule directories will be empty. 你 可以 取"
 "得 "
 
-#: src/version_control.md:30
+#: src/guides/version-control.md:30
 msgid "Inspect a Submodule"
 msgstr "檢查子模群組"
 
-#: src/version_control.md:32
+#: src/guides/version-control.md:32
 msgid ""
-"Let's check the `src/autoware/core/autoware.core` submodule for example. "
-"Open the `.gitmodules` and you can see the section below. It tells the "
-"directory location to the submodule and also the upstream URL."
+"Let's check the `src/sensor_kit/autosdv_sensor_kit_launch` submodule for "
+"example. Open the `.gitmodules` and you can see the section below. It tells "
+"the directory location to the submodule and also the upstream URL."
 msgstr ""
-"Let's 檢查 `src/autoware/core/autoware.core` submodule 用於 範例. 開啟 `."
-"gitmo"
 
-#: src/version_control.md:34
+#: src/guides/version-control.md:34
 msgid ""
 "```\n"
-"[submodule \"src/autoware/core/autoware.core\"]\n"
-"        path = src/autoware/core/autoware.core\n"
-"        url = https://github.com/autowarefoundation/autoware.core.git\n"
+"[submodule \"src/sensor_kit/autosdv_sensor_kit_launch\"]\n"
+"        path = src/sensor_kit/autosdv_sensor_kit_launch\n"
+"        url = https://github.com/NEWSLabNTU/autosdv_sensor_kit_launch.git\n"
 "\n"
 "```"
 msgstr ""
 
-#: src/version_control.md:41
+#: src/guides/version-control.md:41
 msgid ""
-"The path `src/autoware/core/autoware.core` is treated as a link file in the "
-"viewpoint of the mother repo. It stores the commit hash to the tracked Git "
-"repository. You can show the commit hash the command below. If the commit "
-"hash changes, we go through the usual git add & commit to save it."
+"The path `src/sensor_kit/autosdv_sensor_kit_launch` is treated as a link "
+"file in the viewpoint of the mother repo. It stores the commit hash to the "
+"tracked Git repository. You can show the commit hash with the command below. "
+"If the commit hash changes, we go through the usual git add & commit to save "
+"it."
 msgstr ""
-"路徑 `src/autoware/core/autoware.core` 是 treated as link 檔案 在 viewpoint "
 
-#: src/version_control.md:48
+#: src/guides/version-control.md:48
 msgid "Save Changes within a Submodule"
 msgstr "儲存 Changes within Submodule"
 
-#: src/version_control.md:50
+#: src/guides/version-control.md:50
 msgid ""
 "To save the changes within a submodule, you must commit the changes both in "
 "the submodule repo and in the mother repo in a two-step fashion."
 msgstr ""
 "到 儲存 changes within submodule, 你 must commit changes both 在 submodule "
 
-#: src/version_control.md:52
+#: src/guides/version-control.md:52
 msgid ""
-"Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule for "
+"Let's see the `src/sensor_kit/autosdv_sensor_kit_launch` submodule for "
 "example."
 msgstr ""
-"Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule 用於 "
-"範例."
 
-#: src/version_control.md:54
+#: src/guides/version-control.md:54
 msgid "Committed Changes"
 msgstr "已認可變更"
 
-#: src/version_control.md:54
+#: src/guides/version-control.md:54
 msgid "Pushed to Upstream Repository"
 msgstr "Pushed 到 Upstream 儲存程式庫"
 
-#: src/version_control.md:56
+#: src/guides/version-control.md:56
 msgid "Changes within the `autosdv_sensor_kit_launch` submodule."
 msgstr "變更在 `autosdv_sensor_kit_launch` 子模群組."
 
-#: src/version_control.md:56
+#: src/guides/version-control.md:56
 msgid ""
 "[autosdv\\_sensor\\_kit\\_launch](https://github.com/NEWSLabNTU/"
 "autosdv_sensor_kit_launch) subproject repository"
@@ -2790,53 +2862,53 @@ msgstr ""
 "[autosdv\\\\_sensor\\\\_kit\\\\_launch](https://github.com/NEWSLabNTU/"
 "autosdv_sensor_kit_launch) subproject 儲存程式庫"
 
-#: src/version_control.md:57
+#: src/guides/version-control.md:57
 msgid "New commit hash on the `autosdv_sensor_kit_launch` submodule"
 msgstr "New 認可 hash 在 `autosdv_sensor_kit_launch` submodule"
 
-#: src/version_control.md:57
+#: src/guides/version-control.md:57
 msgid "[AutoSDV](https://github.com/NEWSLabNTU/AutoSDV) mother repository"
 msgstr "[AutoSDV](https://github.com/NEWSLabNTU/AutoSDV) mother 儲存程式庫"
 
-#: src/version_control.md:59
+#: src/guides/version-control.md:59
 msgid "The walk through goes like this."
 msgstr "操作串流程如下."
 
-#: src/version_control.md:62
-msgid "# Go into the submodule and check to the branch we want to work on.\n"
-msgstr "# Go into submodule 和 檢查 到 branch we want 到 work 在.\n"
+#: src/guides/version-control.md:62
+msgid "# Go into the submodule and checkout the branch we want to work on.\n"
+msgstr ""
 
-#: src/version_control.md:65
+#: src/guides/version-control.md:65
 msgid "# Do some work in the submodule.\n"
 msgstr "# Do some work 在 子模群組.\n"
 
-#: src/version_control.md:67
+#: src/guides/version-control.md:67
 msgid "# Create a file\n"
 msgstr ""
 
-#: src/version_control.md:68
+#: src/guides/version-control.md:68
 msgid "# Commit and push to the upstream repo.\n"
 msgstr "# 認可並推播到上游儲存程式庫。\n"
 
-#: src/version_control.md:71
+#: src/guides/version-control.md:71
 msgid "'Add a new file'"
 msgstr "'Add new 檔案'"
 
-#: src/version_control.md:73
+#: src/guides/version-control.md:73
 msgid "# Go back to the mother repo\n"
 msgstr "# 返回主儲存程式庫\n"
 
-#: src/version_control.md:76
+#: src/guides/version-control.md:76
 msgid ""
 "# Save the new commit hash on the submodule and push it to the upstream "
 "repo.\n"
 msgstr "# 儲存 new commit hash 在 submodule 和 push 它 到 upstream repo.\n"
 
-#: src/version_control.md:79
-msgid "'Update the autoware.core submodule'"
-msgstr "'更新 autoware.core submodule'"
+#: src/guides/version-control.md:79
+msgid "'Update the autosdv_sensor_kit_launch submodule'"
+msgstr ""
 
-#: src/technical_reference.md:3
+#: src/reference/overview.md:3
 msgid ""
 "This section provides detailed technical specifications, wiring diagrams, "
 "and component details for the AutoSDV platform. This information supplements "
@@ -2846,589 +2918,592 @@ msgstr ""
 "元件 details 用於 AutoSDV 平台. This information supplementsmodel-specific "
 "guides 搭配 在-depth technical 檔案."
 
-#: src/technical_reference.md:5
+#: src/reference/overview.md:5
 msgid "Contents"
 msgstr "內容"
 
-#: src/technical_reference.md:8
+#: src/reference/overview.md:8
 msgid ""
-"[Core Components Specification](./core_components.md) - Detailed "
+"[Core Components Specification](./hardware/core-components.md) - Detailed "
 "specifications for all base platform components"
 msgstr ""
-"[Core Components Specification](./core_components.md) - Detailed "
-"specifications 用於 all base 平台 components"
 
-#: src/technical_reference.md:9
+#: src/reference/overview.md:9
 msgid ""
-"[Wiring Diagrams](./wiring_diagrams.md) - Electrical connections and power "
-"distribution"
-msgstr "[接線圖形](./wiring_diagrams.md) - 電線串連和電源分配"
+"[Wiring Diagrams](./hardware/wiring-diagrams.md) - Electrical connections "
+"and power distribution"
+msgstr ""
 
-#: src/technical_reference.md:11
+#: src/reference/overview.md:11
 msgid "Advanced Topics"
 msgstr "進階 Topics"
 
-#: src/technical_reference.md:12
+#: src/reference/overview.md:12
 msgid ""
-"[5G/LTE Deployment](./5g_deployment.md) - Detailed guide for cellular "
-"connectivity setup"
+"[5G/LTE Deployment](./networking/5g-deployment.md) - Detailed guide for "
+"cellular connectivity setup"
 msgstr ""
-"[5G/LTE 部署](./5g_deployment.md) - Detailed 指南 用於 cellular connectivity "
-"設定"
 
-#: src/technical_reference.md:13
+#: src/reference/overview.md:13
 msgid ""
-"[Sensor Components and Drivers](./sensor_component.md) - Low-level sensor "
-"integration"
+"[Sensor Components and Drivers](./software/sensor-components.md) - Low-level "
+"sensor integration"
 msgstr ""
-"[感測器 Components 和 Drivers](./sensor_component.md) - Low-level 感測器 整合"
 
-#: src/technical_reference.md:14
+#: src/reference/overview.md:14
 msgid ""
-"[Sensor Kit Configuration](./sensor_kit.md) - ROS 2 sensor configuration "
-"details"
-msgstr "[感測器 Kit 設定](./sensor_kit.md) - ROS 2 感測器 設定 details"
+"[Sensor Kit Configuration](./software/sensor-kit.md) - ROS 2 sensor "
+"configuration details"
+msgstr ""
 
-#: src/technical_reference.md:15
+#: src/reference/overview.md:15
 msgid ""
-"[Vehicle Interface](./vehicle_interface.md) - CAN bus and actuator control"
-msgstr "[車輛 介臉部](./vehicle_interface.md) - 可以 bus 和 actuator 控制"
+"[Vehicle Interface](./software/vehicle-interface.md) - CAN bus and actuator "
+"control"
+msgstr ""
 
-#: src/technical_reference.md:17
+#: src/reference/overview.md:17
 msgid "Quick Reference Tables"
 msgstr "Quick 參考 Tables"
 
-#: src/technical_reference.md:19
+#: src/reference/overview.md:19
 msgid "Power Requirements"
 msgstr "電源 Requirements"
 
-#: src/technical_reference.md:20
+#: src/reference/overview.md:20
 msgid "Voltage"
 msgstr "電壓"
 
-#: src/technical_reference.md:20
+#: src/reference/overview.md:20
 msgid "Current (Typical)"
 msgstr "電串流 (Typical)"
 
-#: src/technical_reference.md:20
+#: src/reference/overview.md:20
 msgid "Current (Peak)"
 msgstr "電串流 (Peak)"
 
-#: src/technical_reference.md:22
+#: src/reference/overview.md:22
 msgid "Jetson AGX Orin"
 msgstr "Jetson AGX Orin"
 
-#: src/technical_reference.md:22
+#: src/reference/overview.md:22
 msgid "9-20V"
 msgstr "9-20V"
 
-#: src/technical_reference.md:22
+#: src/reference/overview.md:22
 msgid "2.5A @ 12V"
 msgstr "2.5A @ 12V"
 
-#: src/technical_reference.md:22
+#: src/reference/overview.md:22
 msgid "4A @ 12V"
 msgstr "4A @ 12V"
 
-#: src/technical_reference.md:23
+#: src/reference/overview.md:23
 msgid "9-32V"
 msgstr "9-32V"
 
-#: src/technical_reference.md:23 src/technical_reference.md:24
-#: src/technical_reference.md:25
+#: src/reference/overview.md:23 src/reference/overview.md:24
+#: src/reference/overview.md:25
 msgid "1A @ 12V"
 msgstr "1A @ 12V"
 
-#: src/technical_reference.md:23
+#: src/reference/overview.md:23
 msgid "1.5A @ 12V"
 msgstr "1.5A @ 12V"
 
-#: src/technical_reference.md:24
+#: src/reference/overview.md:24
 msgid "Robin-W LiDAR"
 msgstr "Robin-W 光達"
 
-#: src/technical_reference.md:24 src/technical_reference.md:25
+#: src/reference/overview.md:24 src/reference/overview.md:25
 msgid "12-24V"
 msgstr "12-24V"
 
-#: src/technical_reference.md:24 src/technical_reference.md:25
+#: src/reference/overview.md:24 src/reference/overview.md:25
 msgid "0.7A @ 12V"
 msgstr "0.7A @ 12V"
 
-#: src/technical_reference.md:25
+#: src/reference/overview.md:25
 msgid "Cube1 LiDAR"
 msgstr "Cube1 光達"
 
-#: src/technical_reference.md:26
+#: src/reference/overview.md:26
 msgid "ZED X Mini"
 msgstr "ZED X Mini"
 
-#: src/technical_reference.md:26 src/technical_reference.md:27
+#: src/reference/overview.md:26 src/reference/overview.md:27
 msgid "12V"
 msgstr "12V"
 
-#: src/technical_reference.md:26
+#: src/reference/overview.md:26
 msgid "0.5A"
 msgstr "0.5A"
 
-#: src/technical_reference.md:26
+#: src/reference/overview.md:26
 msgid "0.8A"
 msgstr "0.8A"
 
-#: src/technical_reference.md:27
+#: src/reference/overview.md:27
 msgid "5G Module"
 msgstr "5G 模群組"
 
-#: src/technical_reference.md:27
+#: src/reference/overview.md:27
 msgid "1.2A"
 msgstr "1.2A"
 
-#: src/technical_reference.md:27
+#: src/reference/overview.md:27
 msgid "2A"
 msgstr "2A"
 
-#: src/technical_reference.md:29
+#: src/reference/overview.md:29
 msgid "Communication Interfaces"
 msgstr "通訊 Interfaces"
 
-#: src/technical_reference.md:30
+#: src/reference/overview.md:30
 msgid "Interface"
 msgstr "介臉部"
 
-#: src/technical_reference.md:30
+#: src/reference/overview.md:30
 msgid "Purpose"
 msgstr "用途"
 
-#: src/technical_reference.md:30
+#: src/reference/overview.md:30
 msgid "Protocol"
 msgstr "協定"
 
-#: src/technical_reference.md:30
+#: src/reference/overview.md:30
 msgid "Bandwidth"
 msgstr "頻寬"
 
-#: src/technical_reference.md:32
+#: src/reference/overview.md:32
 msgid "Ethernet (GbE)"
 msgstr "乙太網路 (GbE)"
 
-#: src/technical_reference.md:32
+#: src/reference/overview.md:32
 msgid "LiDAR data"
 msgstr "光達 資料"
 
-#: src/technical_reference.md:32
+#: src/reference/overview.md:32
 msgid "UDP"
 msgstr "UDP"
 
-#: src/technical_reference.md:32
+#: src/reference/overview.md:32
 msgid "1 Gbps"
 msgstr "1 Gbps"
 
-#: src/technical_reference.md:33
+#: src/reference/overview.md:33
 msgid "USB 3.0"
 msgstr "USB 3.0"
 
-#: src/technical_reference.md:33
+#: src/reference/overview.md:33
 msgid "Camera data"
 msgstr "相機 資料"
 
-#: src/technical_reference.md:33
+#: src/reference/overview.md:33
 msgid "USB"
 msgstr "USB"
 
-#: src/technical_reference.md:33
+#: src/reference/overview.md:33
 msgid "5 Gbps"
 msgstr "5 Gbps"
 
-#: src/technical_reference.md:34
+#: src/reference/overview.md:34
 msgid "CAN Bus"
 msgstr "CAN Bus"
 
-#: src/technical_reference.md:34
+#: src/reference/overview.md:34
 msgid "Vehicle control"
 msgstr "車輛 控制"
 
-#: src/technical_reference.md:34
+#: src/reference/overview.md:34
 msgid "CAN 2.0B"
 msgstr "CAN 2.0B"
 
-#: src/technical_reference.md:34
+#: src/reference/overview.md:34
 msgid "1 Mbps"
 msgstr "1 Mbps"
 
-#: src/technical_reference.md:35
+#: src/reference/overview.md:35
 msgid "I2C"
 msgstr "I2C"
 
-#: src/technical_reference.md:35
+#: src/reference/overview.md:35
 msgid "Sensors"
 msgstr ""
 
-#: src/technical_reference.md:35
+#: src/reference/overview.md:35
 msgid "400 kbps"
 msgstr "400 kbps"
 
-#: src/technical_reference.md:36
+#: src/reference/overview.md:36
 msgid "UART"
 msgstr "UART"
 
-#: src/technical_reference.md:36
+#: src/reference/overview.md:36
 msgid "GPS/IMU"
 msgstr "GPS/慣性測量單位"
 
-#: src/technical_reference.md:36
+#: src/reference/overview.md:36
 msgid "Serial"
 msgstr "Serial"
 
-#: src/technical_reference.md:36
+#: src/reference/overview.md:36
 msgid "115200 baud"
 msgstr "115200 baud"
 
-#: src/technical_reference.md:38
+#: src/reference/overview.md:38
 msgid "Environmental Specifications"
 msgstr "環境 Specifications"
 
-#: src/technical_reference.md:39
+#: src/reference/overview.md:39
 msgid "Parameter"
 msgstr "參數"
 
-#: src/technical_reference.md:39
+#: src/reference/overview.md:39
 msgid "Operating Range"
 msgstr "Operating 範圍"
 
-#: src/technical_reference.md:39
+#: src/reference/overview.md:39
 msgid "Storage Range"
 msgstr "Storage 範圍"
 
-#: src/technical_reference.md:41
+#: src/reference/overview.md:41
 msgid "Temperature"
 msgstr "溫度"
 
-#: src/technical_reference.md:41
+#: src/reference/overview.md:41
 msgid "\\-10°C to +50°C"
 msgstr ""
 
-#: src/technical_reference.md:41
+#: src/reference/overview.md:41
 msgid "\\-20°C to +60°C"
 msgstr ""
 
-#: src/technical_reference.md:42
+#: src/reference/overview.md:42
 msgid "Humidity"
 msgstr "濕度"
 
-#: src/technical_reference.md:42
+#: src/reference/overview.md:42
 msgid "10% to 90% RH"
 msgstr ""
 
-#: src/technical_reference.md:42
+#: src/reference/overview.md:42
 msgid "5% to 95% RH"
 msgstr ""
 
-#: src/technical_reference.md:43
+#: src/reference/overview.md:43
 msgid "Vibration"
 msgstr "振動"
 
-#: src/technical_reference.md:43
+#: src/reference/overview.md:43
 msgid "2G RMS"
 msgstr "2G RMS"
 
-#: src/technical_reference.md:43
+#: src/reference/overview.md:43
 msgid "5G RMS"
 msgstr "5G RMS"
 
-#: src/technical_reference.md:44
+#: src/reference/overview.md:44
 msgid "Shock"
 msgstr "震動"
 
-#: src/technical_reference.md:44
+#: src/reference/overview.md:44
 msgid "15G peak"
 msgstr "15G peak"
 
-#: src/technical_reference.md:44
+#: src/reference/overview.md:44
 msgid "30G peak"
 msgstr "30G peak"
 
-#: src/technical_reference.md:45
+#: src/reference/overview.md:45
 msgid "Ingress Protection"
 msgstr "防護等級"
 
-#: src/technical_reference.md:45
+#: src/reference/overview.md:45
 msgid "IP54 (with enclosure)"
 msgstr ""
 
-#: src/technical_reference.md:47
+#: src/reference/overview.md:47
 msgid "System Architecture"
 msgstr "系統 架構"
 
-#: src/technical_reference.md:49
+#: src/reference/overview.md:49
 msgid "Data Flow"
 msgstr "資料 Flow"
 
-#: src/technical_reference.md:58
+#: src/reference/overview.md:58
 msgid "Software Stack"
 msgstr "軟體 Stack"
 
-#: src/technical_reference.md:73
+#: src/reference/overview.md:73
 msgid "Maintenance Schedule"
 msgstr "Maintenance 排程"
 
-#: src/technical_reference.md:75
+#: src/reference/overview.md:75
 msgid "Daily Checks"
 msgstr "每日檢查"
 
-#: src/technical_reference.md:76
+#: src/reference/overview.md:76
 msgid "Visual inspection of components"
 msgstr "目視檢查 的 components"
 
-#: src/technical_reference.md:77
+#: src/reference/overview.md:77
 msgid "Battery voltage check"
 msgstr "Battery 電壓 檢查"
 
-#: src/technical_reference.md:78
+#: src/reference/overview.md:78
 msgid "Sensor lens cleaning"
 msgstr "感測器 lens cleaning"
 
-#: src/technical_reference.md:80
+#: src/reference/overview.md:80
 msgid "Weekly Maintenance"
 msgstr "每週維護"
 
-#: src/technical_reference.md:81
+#: src/reference/overview.md:81
 msgid "Connector inspection"
 msgstr "串連器檢查"
 
-#: src/technical_reference.md:82
+#: src/reference/overview.md:82
 msgid "Wheel bearing check"
 msgstr "Wheel bearing 檢查"
 
-#: src/technical_reference.md:83
+#: src/reference/overview.md:83
 msgid "Software updates"
 msgstr "軟體 updates"
 
-#: src/technical_reference.md:85
+#: src/reference/overview.md:85
 msgid "Monthly Service"
 msgstr "Monthly 服務"
 
-#: src/technical_reference.md:86
+#: src/reference/overview.md:86
 msgid "Full system diagnostic"
 msgstr "Full 系統 diagnostic"
 
-#: src/technical_reference.md:87
+#: src/reference/overview.md:87
 msgid "Calibration verification"
 msgstr "校正 verification"
 
-#: src/technical_reference.md:88
+#: src/reference/overview.md:88
 msgid "Performance benchmarking"
 msgstr "效能 benchmarking"
 
-#: src/technical_reference.md:90
+#: src/reference/overview.md:90
 msgid "Annual Overhaul"
 msgstr "年度檢修"
 
-#: src/technical_reference.md:91
+#: src/reference/overview.md:91
 msgid "Complete disassembly and inspection"
 msgstr "完成 disassembly 和 inspection"
 
-#: src/technical_reference.md:92
+#: src/reference/overview.md:92
 msgid "Bearing replacement (if mechanical LiDAR)"
 msgstr "Bearing replacement (if mechanical 光達)"
 
-#: src/technical_reference.md:93
+#: src/reference/overview.md:93
 msgid "Sensor recalibration"
 msgstr "感測器 recalibration"
 
-#: src/technical_reference.md:94
+#: src/reference/overview.md:94
 msgid "Structural integrity check"
 msgstr "Structural integrity 檢查"
 
-#: src/technical_reference.md:96
+#: src/reference/overview.md:96
 msgid "Troubleshooting Quick Reference"
 msgstr "Troubleshooting Quick 參考"
 
-#: src/technical_reference.md:98
+#: src/reference/overview.md:98
 msgid "Common Issues"
 msgstr "常見問題"
 
-#: src/technical_reference.md:99
+#: src/reference/overview.md:99
 msgid "Symptom"
 msgstr "症狀"
 
-#: src/technical_reference.md:99
+#: src/reference/overview.md:99
 msgid "Likely Cause"
 msgstr "可能原因"
 
-#: src/technical_reference.md:99
+#: src/reference/overview.md:99
 msgid "Solution"
 msgstr "解決方案"
 
-#: src/technical_reference.md:101
+#: src/reference/overview.md:101
 msgid "No LiDAR data"
 msgstr "No 光達 資料"
 
-#: src/technical_reference.md:101
+#: src/reference/overview.md:101
 msgid "Network config"
 msgstr "網路 config"
 
-#: src/technical_reference.md:101
+#: src/reference/overview.md:101
 msgid "Check IP settings"
 msgstr "檢查 IP settings"
 
-#: src/technical_reference.md:102
+#: src/reference/overview.md:102
 msgid "Poor localization"
 msgstr "Poor 當地語系化"
 
-#: src/technical_reference.md:102
+#: src/reference/overview.md:102
 msgid "Map mismatch"
 msgstr "地圖形不比對"
 
-#: src/technical_reference.md:102
+#: src/reference/overview.md:102
 msgid "Regenerate map"
 msgstr "重新產生地圖形"
 
-#: src/technical_reference.md:103
+#: src/reference/overview.md:103
 msgid "Erratic motion"
 msgstr "不規則運動"
 
-#: src/technical_reference.md:103
+#: src/reference/overview.md:103
 msgid "IMU calibration"
 msgstr "慣性測量單位 calibration"
 
-#: src/technical_reference.md:103
+#: src/reference/overview.md:103
 msgid "Recalibrate IMU"
 msgstr "Recalibrate 慣性測量單位"
 
-#: src/technical_reference.md:104
+#: src/reference/overview.md:104
 msgid "Short battery life"
 msgstr "Short 電集區 life"
 
-#: src/technical_reference.md:104
+#: src/reference/overview.md:104
 msgid "High load"
 msgstr "High 載入"
 
-#: src/technical_reference.md:104
+#: src/reference/overview.md:104
 msgid "Check CPU usage"
 msgstr "檢查 CPU 使用方法"
 
-#: src/technical_reference.md:105
+#: src/reference/overview.md:105
 msgid "Communication loss"
 msgstr "通訊 loss"
 
-#: src/technical_reference.md:105
+#: src/reference/overview.md:105
 msgid "Interference"
 msgstr "干擾"
 
-#: src/technical_reference.md:105
+#: src/reference/overview.md:105
 msgid "Check wireless channels"
 msgstr "檢查 wireless channels"
 
-#: src/technical_reference.md:107
+#: src/reference/overview.md:107
 msgid "Safety Specifications"
 msgstr "安全性規格"
 
-#: src/technical_reference.md:109
+#: src/reference/overview.md:109
 msgid "Emergency Stop"
 msgstr "Emergency 停止"
 
-#: src/technical_reference.md:110
+#: src/reference/overview.md:110
 msgid "Hardware E-stop button"
 msgstr "硬體 E-停止 button"
 
-#: src/technical_reference.md:111
+#: src/reference/overview.md:111
 msgid "Software emergency brake"
 msgstr "軟體 emergency brake"
 
-#: src/technical_reference.md:112
+#: src/reference/overview.md:112
 msgid "Remote kill switch (5G model)"
 msgstr "Remote kill 交換器 (5G model)"
 
-#: src/technical_reference.md:113
+#: src/reference/overview.md:113
 msgid "Automatic fault detection"
 msgstr "自動故障偵測"
 
-#: src/technical_reference.md:115
+#: src/reference/overview.md:115
 msgid "Operating Limits"
 msgstr "操作限制"
 
-#: src/technical_reference.md:116
+#: src/reference/overview.md:116
 msgid "Maximum speed: 15 km/h"
 msgstr "Maximum 速度: 15 km/h"
 
-#: src/technical_reference.md:117
+#: src/reference/overview.md:117
 msgid "Maximum payload: 5 kg"
 msgstr "最大載荷: 5 kg"
 
-#: src/technical_reference.md:118
+#: src/reference/overview.md:118
 msgid "Maximum incline: 15°"
 msgstr "最大傾斜度: 15°"
 
-#: src/technical_reference.md:119
+#: src/reference/overview.md:119
 msgid "Minimum lighting: 10 lux (with lights)"
 msgstr "最小光源: 10 lux (搭配 lights)"
 
-#: src/technical_reference.md:121
+#: src/reference/overview.md:121
 msgid "Compliance & Certification"
 msgstr "合規性性 & 驗證"
 
-#: src/technical_reference.md:123
+#: src/reference/overview.md:123
 msgid "Standards"
 msgstr "標準"
 
-#: src/technical_reference.md:124
+#: src/reference/overview.md:124
 msgid "ROS 2: REP-2000 compliant"
 msgstr "ROS 2: REP-2000 compliant"
 
-#: src/technical_reference.md:125
+#: src/reference/overview.md:125
 msgid "Safety: ISO 26262 ASIL-B capable"
 msgstr "Safety: ISO 26262 ASIL-B capable"
 
-#: src/technical_reference.md:126
+#: src/reference/overview.md:126
 msgid "EMC: FCC Part 15 Class B"
 msgstr "EMC: FCC Part 15 類別別 B"
 
-#: src/technical_reference.md:127
+#: src/reference/overview.md:127
 msgid "Environmental: MIL-STD-810G tested"
 msgstr "環境: MIL-STD-810G tested"
 
-#: src/technical_reference.md:129
+#: src/reference/overview.md:129
 msgid "Documentation"
 msgstr "檔案"
 
-#: src/technical_reference.md:130
+#: src/reference/overview.md:130
 msgid "Full schematics available"
 msgstr "Full schematics 可用"
 
-#: src/technical_reference.md:131
+#: src/reference/overview.md:131
 msgid "Open-source software"
 msgstr "開啟-source 軟體"
 
-#: src/technical_reference.md:132
+#: src/reference/overview.md:132
 msgid "Hardware design files"
 msgstr "硬體 design files"
 
-#: src/technical_reference.md:133
+#: src/reference/overview.md:133
 msgid "Test reports"
 msgstr "測試 reports"
 
-#: src/technical_reference.md:135
+#: src/reference/overview.md:135
 msgid "Additional Resources"
 msgstr "額外資源"
 
-#: src/technical_reference.md:137
+#: src/reference/overview.md:137
 msgid ""
-"[Hardware Assembly Guide](./hardware_assembly.md) - Step-by-step assembly"
-msgstr "[硬體群組裝 指南](./hardware_assembly.md) - Step-由-step assembly"
+"[Hardware Assembly Guide](../getting-started/hardware-assembly.md) - Step-by-"
+"step assembly"
+msgstr ""
 
-#: src/technical_reference.md:139
-msgid "[Development Guide](./development_guide.md) - Custom development"
-msgstr "[開發指南](./development_guide.md) - 自訂 development"
+#: src/reference/overview.md:138
+msgid ""
+"[Software Installation](../getting-started/software-installation.md) - "
+"Software setup"
+msgstr ""
 
-#: src/core_components.md:1
+#: src/reference/overview.md:139
+msgid "[Development Guide](../guides/development.md) - Custom development"
+msgstr ""
+
+#: src/reference/hardware/core-components.md:1
 msgid "Hardware Components and Wiring"
 msgstr "硬體 Components 和 Wiring"
 
-#: src/core_components.md:3
+#: src/reference/hardware/core-components.md:3
 msgid "Hardware Components"
 msgstr "硬體 Components"
 
-#: src/core_components.md:5
+#: src/reference/hardware/core-components.md:5
 msgid ""
 "The vehicle is assembled using core components and optional supplementary "
 "components. The core components include the chassis and other essential "
@@ -3437,105 +3512,108 @@ msgid ""
 msgstr ""
 "車輛 是 assembled using core components 和 選用 supplementary components. co"
 
-#: src/core_components.md:9
+#: src/reference/hardware/core-components.md:9
 msgid "Items"
 msgstr "項目"
 
-#: src/core_components.md:11
+#: src/reference/hardware/core-components.md:11
 msgid "**\\# Chassis**"
 msgstr "**\\# 底盤**"
 
-#: src/core_components.md:12
+#: src/reference/hardware/core-components.md:12
 msgid "Tekno TKR9500 Truck Kit 16×11×5 inch"
 msgstr "Tekno TKR9500 16×11×5 吋卡車"
 
-#: src/core_components.md:13 src/core_components.md:18
-#: src/core_components.md:22 src/core_components.md:27
-#: src/core_components.md:31
+#: src/reference/hardware/core-components.md:13
+#: src/reference/hardware/core-components.md:18
+#: src/reference/hardware/core-components.md:22
+#: src/reference/hardware/core-components.md:27
+#: src/reference/hardware/core-components.md:31
 msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 
-#: src/core_components.md:14
+#: src/reference/hardware/core-components.md:14
 msgid "**\\# Powertrain**"
 msgstr "**\\# 動強制系統**"
 
-#: src/core_components.md:15
+#: src/reference/hardware/core-components.md:15
 msgid "Brushless Motor4274 / 1500kv"
 msgstr "無刷馬達 4274 / 1500kv"
 
-#: src/core_components.md:16
+#: src/reference/hardware/core-components.md:16
 msgid "PCA9685 PWM Driver"
 msgstr "PCA9685 PWM 驅動程式"
 
-#: src/core_components.md:17
+#: src/reference/hardware/core-components.md:17
 msgid "DC-DC Converter IN 24V OUT 12V10A"
 msgstr "DC-DC Converter IN 24V OUT 12V10A"
 
-#: src/core_components.md:19
+#: src/reference/hardware/core-components.md:19
 msgid "**\\# Computer**"
 msgstr "**\\# 電腦**"
 
-#: src/core_components.md:20
+#: src/reference/hardware/core-components.md:20
 msgid "NVIDIA Jetson AGX ORIN Dev. kit 64GB / 32GB"
 msgstr "NVIDIA Jetson AGX ORIN 開發套件 64GB / 32GB"
 
-#: src/core_components.md:21
+#: src/reference/hardware/core-components.md:21
 msgid "Micron P3 PLUS 1000GB SSD"
 msgstr "Micron P3 PLUS 1000GB SSD"
 
-#: src/core_components.md:23
+#: src/reference/hardware/core-components.md:23
 msgid "**\\# Camera**"
 msgstr "**\\\\# 相機**"
 
-#: src/core_components.md:24
+#: src/reference/hardware/core-components.md:24
 msgid "ZED X Mini Stereo Camera (Lens Focal Length 2.2mm, with polarizer)"
 msgstr "ZED X Mini Stereo 相機 (Lens Focal Length 2.2mm, 搭配 polarizer)"
 
-#: src/core_components.md:25
+#: src/reference/hardware/core-components.md:25
 msgid "ZED Link Capture Card"
 msgstr "ZED Link Capture Card"
 
-#: src/core_components.md:26
+#: src/reference/hardware/core-components.md:26
 msgid "GMSL2 Fakra Cable F-F(0.3m)"
 msgstr "GMSL2 Fakra Cable F-F(0.3m)"
 
-#: src/core_components.md:28
+#: src/reference/hardware/core-components.md:28
 msgid "**\\# Navigation Sensors**"
 msgstr "**\\\\# 瀏覽 Sensors**"
 
-#: src/core_components.md:29 src/sensor_component.md:14
+#: src/reference/hardware/core-components.md:29
+#: src/reference/software/sensor-components.md:14
 msgid "KY-003 Hall Effect Sensor"
 msgstr "KY-003 Hall Effect 感測器"
 
-#: src/core_components.md:30
+#: src/reference/hardware/core-components.md:30
 msgid "MPU9250 9-axis Motion Processing Unit"
 msgstr "MPU9250 9-axis Motion Processing Unit"
 
-#: src/core_components.md:32
+#: src/reference/hardware/core-components.md:32
 msgid "**\\# Battery and Power Supply**"
 msgstr "**\\# 電集區和電源供應**"
 
-#: src/core_components.md:33
+#: src/reference/hardware/core-components.md:33
 msgid "Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60"
 msgstr "電集區 Gens ACE-5000mAh-45C-22.2V-6S1P-XT60"
 
-#: src/core_components.md:34
+#: src/reference/hardware/core-components.md:34
 msgid "Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21"
 msgstr "電集區 Gens ACE-7200mAh-50C-7.4V-2S1P-21"
 
-#: src/core_components.md:35
+#: src/reference/hardware/core-components.md:35
 msgid "Breaker 4230-T110-K0BE-8AB8"
 msgstr "Breaker 4230-T110-K0BE-8AB8"
 
-#: src/core_components.md:37
+#: src/reference/hardware/core-components.md:37
 msgid "_Table 1. Core Materials for the vehicle._"
 msgstr "_Table 1. Core Materials 用於 車輛._"
 
-#: src/core_components.md:39
+#: src/reference/hardware/core-components.md:39
 msgid "Supplementary: LiDAR Sensors"
 msgstr "Supplementary: 光達 Sensors"
 
-#: src/core_components.md:41
+#: src/reference/hardware/core-components.md:41
 msgid ""
 "When choosing a LiDAR sensor, it depends on the specific localization method "
 "and desired vision quality. If point cloud-based NDT localization is used, "
@@ -3546,39 +3624,39 @@ msgid ""
 msgstr ""
 "When choosing LiDAR 感測器, 它 depends 在 specific localization method 和 de"
 
-#: src/core_components.md:43
+#: src/reference/hardware/core-components.md:43
 msgid "LiDAR Sensor"
 msgstr "LiDAR 感測器"
 
-#: src/core_components.md:45
+#: src/reference/hardware/core-components.md:45
 msgid "(Choose one of below)"
 msgstr "(從下欄選取一個)"
 
-#: src/core_components.md:46
+#: src/reference/hardware/core-components.md:46
 msgid "Solid-State LiDAR with 120° FOV"
 msgstr "Solid-State 光達 搭配 120° FOV"
 
-#: src/core_components.md:47
+#: src/reference/hardware/core-components.md:47
 msgid "Blickfeld Cube 1"
 msgstr "Blickfeld Cube 1"
 
-#: src/core_components.md:47
+#: src/reference/hardware/core-components.md:47
 msgid "Solid-State LiDAR with 70° FOV. (EOL)"
 msgstr "Solid-State 光達 搭配 70° FOV. (EOL)"
 
-#: src/core_components.md:48
+#: src/reference/hardware/core-components.md:48
 msgid "Mechanical spinning LiDAR with 360° (EOL)"
 msgstr "Mechanical spinning 光達 搭配 360° (EOL)"
 
-#: src/core_components.md:50
+#: src/reference/hardware/core-components.md:50
 msgid "_Table 2. Recommended LiDAR sensor for the vehicle._"
 msgstr "_Table 2. Recommended LiDAR 感測器 用於 車輛._"
 
-#: src/core_components.md:52
+#: src/reference/hardware/core-components.md:52
 msgid "Supplementary: 5G/LTE Communication"
 msgstr "Supplementary: 5G/LTE 通訊"
 
-#: src/core_components.md:54
+#: src/reference/hardware/core-components.md:54
 msgid ""
 "The Ataya 5G Harmony kit was successfully deployed on the vehicle and "
 "underwent examination by NEWSLab at National Taiwan University. The "
@@ -3596,47 +3674,47 @@ msgstr ""
 "(https://www.spectrummonitoring.com/frequencies.php/) 到 know 可用 bands 在 "
 "your region."
 
-#: src/core_components.md:56
+#: src/reference/hardware/core-components.md:56
 msgid "5G/LTE Kit"
 msgstr "5G/LTE Kit"
 
-#: src/core_components.md:58
+#: src/reference/hardware/core-components.md:58
 msgid "**\\# 5G/LTE**"
 msgstr "**\\# 5G/LTE**"
 
-#: src/core_components.md:59
+#: src/reference/hardware/core-components.md:59
 msgid "Ataya Harmony 5G Core Network Kit"
 msgstr "Ataya Harmony 5G Core 網路 Kit"
 
-#: src/core_components.md:59
+#: src/reference/hardware/core-components.md:59
 msgid "Included within a 28-inch suitcase containing the core router."
 msgstr "Included within 28-inch suitcase containing core 路由器."
 
-#: src/core_components.md:60
+#: src/reference/hardware/core-components.md:60
 msgid "Askey 5G Sub-6 Indoor Small Cell"
 msgstr "Askey 5G Sub-6 室內小型基地台"
 
-#: src/core_components.md:60
+#: src/reference/hardware/core-components.md:60
 msgid "The base station connected to the core network."
 msgstr "base station connected 到 core 網路."
 
-#: src/core_components.md:61
+#: src/reference/hardware/core-components.md:61
 msgid "MOXA CCG-1500 Gateway"
 msgstr "MOXA CCG-1500 閘道"
 
-#: src/core_components.md:61
+#: src/reference/hardware/core-components.md:61
 msgid "Installed on the vehicle as the connector to 5G."
 msgstr "Installed 在 車輛 as connector 到 5G."
 
-#: src/core_components.md:63
+#: src/reference/hardware/core-components.md:63
 msgid "_Table 3. Recommended 5G/LTE components for the vehicle._"
 msgstr "_Table 3. Recommended 5G/LTE components 用於 車輛._"
 
-#: src/core_components.md:66
+#: src/reference/hardware/core-components.md:66
 msgid "Procurement Information"
 msgstr "Procurement 資訊"
 
-#: src/core_components.md:68
+#: src/reference/hardware/core-components.md:68
 msgid ""
 "The vehicle can be ordered through Hennes Co., including customizable "
 "options for additional parts. Note that batteries are excluded from assembly "
@@ -3646,7 +3724,7 @@ msgid ""
 msgstr ""
 "車輛 可以 be ordered through Hennes Co., including customizable options 用於"
 
-#: src/core_components.md:70
+#: src/reference/hardware/core-components.md:70
 msgid ""
 "The optional supplementary parts such as LiDARs and 5G modules are up to "
 "your specific needs. It is advised to consult with your local agent for "
@@ -3654,65 +3732,65 @@ msgid ""
 msgstr ""
 "選用 supplementary parts such as LiDARs 和 5G modules 是 up 到 your specifi"
 
-#: src/wiring_diagrams.md:3
+#: src/reference/hardware/wiring-diagrams.md:3
 msgid ""
 "Detailed electrical connections and power distribution for the AutoSDV "
 "platform."
 msgstr "AutoSDV 平台的詳細電線串連和電源分配。"
 
-#: src/wiring_diagrams.md:5
+#: src/reference/hardware/wiring-diagrams.md:5
 msgid "⚠️ **WARNING**: Always disconnect batteries before wiring changes"
 msgstr "⚠️ **警告**：在進欄接線變更之前，請一律中斷連線電集區串連"
 
-#: src/wiring_diagrams.md:7
+#: src/reference/hardware/wiring-diagrams.md:7
 msgid "Power Distribution Overview"
 msgstr "電源分配概述"
 
-#: src/wiring_diagrams.md:9
+#: src/reference/hardware/wiring-diagrams.md:9
 msgid "Upper Power System (22.2V Battery)"
 msgstr "上層電源系統（22.2V 電集區）"
 
-#: src/wiring_diagrams.md:23
+#: src/reference/hardware/wiring-diagrams.md:23
 msgid "Motor Power System (7.4V Battery)"
 msgstr "馬達電源系統（7.4V 電集區）"
 
-#: src/wiring_diagrams.md:29
+#: src/reference/hardware/wiring-diagrams.md:29
 msgid "NVIDIA Jetson AGX Orin Connections"
 msgstr "NVIDIA Jetson AGX Orin 串連"
 
-#: src/wiring_diagrams.md:31
+#: src/reference/hardware/wiring-diagrams.md:31
 msgid "Main Interfaces"
 msgstr "主要介臉部"
 
-#: src/wiring_diagrams.md:53
+#: src/reference/hardware/wiring-diagrams.md:53
 msgid "GPIO Header Connections"
 msgstr "GPIO 接頭串連"
 
-#: src/wiring_diagrams.md:74
+#: src/reference/hardware/wiring-diagrams.md:74
 msgid "Sensor Connections"
 msgstr "感測器串連"
 
-#: src/wiring_diagrams.md:76
+#: src/reference/hardware/wiring-diagrams.md:76
 msgid "LiDAR Connections (Model Specific)"
 msgstr "光達串連（型號特定）"
 
-#: src/wiring_diagrams.md:78
+#: src/reference/hardware/wiring-diagrams.md:78
 msgid "**Velodyne VLP-32C:**"
 msgstr "**Velodyne VLP-32C：**"
 
-#: src/wiring_diagrams.md:88
+#: src/reference/hardware/wiring-diagrams.md:88
 msgid "**Seyond Robin-W:**"
 msgstr "**Seyond Robin-W：**"
 
-#: src/wiring_diagrams.md:98
+#: src/reference/hardware/wiring-diagrams.md:98
 msgid "**Blickfeld Cube1:**"
 msgstr "**Blickfeld Cube1：**"
 
-#: src/wiring_diagrams.md:108
+#: src/reference/hardware/wiring-diagrams.md:108
 msgid "Camera System (ZED X Mini)"
 msgstr "攝影機系統（ZED X Mini）"
 
-#: src/wiring_diagrams.md:115
+#: src/reference/hardware/wiring-diagrams.md:115
 msgid ""
 "_Note: Camera receives power through GMSL2 connection from ZED Link. The ZED "
 "Link is attached to the bottom of the Jetson AGX Orin via SAMTEC CSI port._"
@@ -3720,60 +3798,60 @@ msgstr ""
 "_Note: Camera receives power through GMSL2 串連 從 ZED Link. ZED Link 是"
 "attached 到 bottom 的 Jetson AGX Orin via SAMTEC CSI port._"
 
-#: src/wiring_diagrams.md:117
+#: src/reference/hardware/wiring-diagrams.md:117
 msgid "IMU (MPU9250)"
 msgstr "慣性測量單位 (MPU9250)"
 
-#: src/wiring_diagrams.md:127
+#: src/reference/hardware/wiring-diagrams.md:127
 msgid "Hall Sensor (KY-003)"
 msgstr "Hall 感測器 (KY-003)"
 
-#: src/wiring_diagrams.md:136
+#: src/reference/hardware/wiring-diagrams.md:136
 msgid "GPS Module (Optional)"
 msgstr "GPS 模群組 (選用)"
 
-#: src/wiring_diagrams.md:147
+#: src/reference/hardware/wiring-diagrams.md:147
 msgid "Motor Control System"
 msgstr "Motor 控制 系統"
 
-#: src/wiring_diagrams.md:149
+#: src/reference/hardware/wiring-diagrams.md:149
 msgid "PWM Driver (PCA9685)"
 msgstr "PWM 驅動程式 (PCA9685)"
 
-#: src/wiring_diagrams.md:169
+#: src/reference/hardware/wiring-diagrams.md:169
 msgid "Motor and ESC"
 msgstr "馬達 和 ESC"
 
-#: src/wiring_diagrams.md:183
+#: src/reference/hardware/wiring-diagrams.md:183
 msgid "5G Module (Optional)"
 msgstr "5G 模群組 (選用)"
 
-#: src/wiring_diagrams.md:199
+#: src/reference/hardware/wiring-diagrams.md:199
 msgid "Battery Management"
 msgstr "電集區 Management"
 
-#: src/wiring_diagrams.md:201
+#: src/reference/hardware/wiring-diagrams.md:201
 msgid "Battery Monitoring"
 msgstr "電集區 Monitoring"
 
-#: src/wiring_diagrams.md:213
+#: src/reference/hardware/wiring-diagrams.md:213
 msgid ""
 "_Note: Each battery has its own independent monitor with built-in alarm._"
 msgstr ""
 "_注意： Each battery has its own independent monitor 搭配 built-在 alarm._"
 
-#: src/wiring_diagrams.md:215
+#: src/reference/hardware/wiring-diagrams.md:215
 msgid "GPIO 40-Pin Header Reference"
 msgstr "GPIO 40-Pin Header 參考"
 
-#: src/wiring_diagrams.md:217
+#: src/reference/hardware/wiring-diagrams.md:217
 msgid ""
 "The detailed pinout specification can be found on [JetsonHacks](https://"
 "jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/)."
 msgstr ""
 "detailed pinout 規格 可以 be found 在 [JetsonHacks](https://jetsonhacks.com"
 
-#: src/wiring_diagrams.md:219
+#: src/reference/hardware/wiring-diagrams.md:219
 msgid ""
 "**Physical Layout Note:** Pin 1-2 are physically on the rightmost side of "
 "the header when viewing the Jetson from above. Pin 39-40 are on the leftmost "
@@ -3782,374 +3860,395 @@ msgstr ""
 "**Physical Layout 注意：** Pin 1-2 是 physically 在 rightmost side 的 header "
 "when viewing Jetson 從 above. Pin 39-40 是 在 leftmost side."
 
-#: src/wiring_diagrams.md:221
+#: src/reference/hardware/wiring-diagrams.md:221
 msgid "Device"
 msgstr "裝置"
 
-#: src/wiring_diagrams.md:221
+#: src/reference/hardware/wiring-diagrams.md:221
 msgid "Label"
 msgstr "標記"
 
-#: src/wiring_diagrams.md:221
+#: src/reference/hardware/wiring-diagrams.md:221
 msgid "Pin No. (Upper)"
 msgstr "針腳編號 (上)"
 
-#: src/wiring_diagrams.md:221
+#: src/reference/hardware/wiring-diagrams.md:221
 msgid "Pin No. (Lower)"
 msgstr "針腳編號 (下)"
 
-#: src/wiring_diagrams.md:223 src/wiring_diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:223
+#: src/reference/hardware/wiring-diagrams.md:231
 msgid "3.3 VDC Power, 1A max"
 msgstr "3.3 VDC 電源, 1A max"
 
-#: src/wiring_diagrams.md:223
+#: src/reference/hardware/wiring-diagrams.md:223
 msgid "1"
 msgstr ""
 
-#: src/wiring_diagrams.md:223
+#: src/reference/hardware/wiring-diagrams.md:223
 msgid "2"
 msgstr ""
 
-#: src/wiring_diagrams.md:223 src/wiring_diagrams.md:224
+#: src/reference/hardware/wiring-diagrams.md:223
+#: src/reference/hardware/wiring-diagrams.md:224
 msgid "5.0 VDC Power, 1A max"
 msgstr "5.0 VDC 電源, 1A max"
 
-#: src/wiring_diagrams.md:223 src/wiring_diagrams.md:229
-#: src/wiring_diagrams.md:230
+#: src/reference/hardware/wiring-diagrams.md:223
+#: src/reference/hardware/wiring-diagrams.md:229
+#: src/reference/hardware/wiring-diagrams.md:230
 msgid "KY-003"
 msgstr "KY-003"
 
-#: src/wiring_diagrams.md:224 src/wiring_diagrams.md:225
+#: src/reference/hardware/wiring-diagrams.md:224
+#: src/reference/hardware/wiring-diagrams.md:225
 msgid "PCA9685"
 msgstr "PCA9685"
 
-#: src/wiring_diagrams.md:224
+#: src/reference/hardware/wiring-diagrams.md:224
 msgid "I2C5_DAT General I2C5 Data I2C Bus 7"
 msgstr "I2C5_DAT General I2C5 資料 I2C Bus 7"
 
-#: src/wiring_diagrams.md:224
+#: src/reference/hardware/wiring-diagrams.md:224
 msgid "3"
 msgstr ""
 
-#: src/wiring_diagrams.md:224
+#: src/reference/hardware/wiring-diagrams.md:224
 msgid "4"
 msgstr ""
 
-#: src/wiring_diagrams.md:225
+#: src/reference/hardware/wiring-diagrams.md:225
 msgid "I2C5_CLK General I2C #5 Clock I2C Bus 7"
 msgstr "I2C5_CLK General I2C #5 Clock I2C Bus 7"
 
-#: src/wiring_diagrams.md:225
+#: src/reference/hardware/wiring-diagrams.md:225
 msgid "5"
 msgstr ""
 
-#: src/wiring_diagrams.md:225
+#: src/reference/hardware/wiring-diagrams.md:225
 msgid "6"
 msgstr ""
 
-#: src/wiring_diagrams.md:225 src/wiring_diagrams.md:227
-#: src/wiring_diagrams.md:229 src/wiring_diagrams.md:232
-#: src/wiring_diagrams.md:235 src/wiring_diagrams.md:237
-#: src/wiring_diagrams.md:239 src/wiring_diagrams.md:242
+#: src/reference/hardware/wiring-diagrams.md:225
+#: src/reference/hardware/wiring-diagrams.md:227
+#: src/reference/hardware/wiring-diagrams.md:229
+#: src/reference/hardware/wiring-diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:235
+#: src/reference/hardware/wiring-diagrams.md:237
+#: src/reference/hardware/wiring-diagrams.md:239
+#: src/reference/hardware/wiring-diagrams.md:242
 msgid "GND"
 msgstr "GND"
 
-#: src/wiring_diagrams.md:226
+#: src/reference/hardware/wiring-diagrams.md:226
 msgid "MCLK05 Audio Master Clock"
 msgstr "MCLK05 Audio Master Clock"
 
-#: src/wiring_diagrams.md:226
+#: src/reference/hardware/wiring-diagrams.md:226
 msgid "7"
 msgstr ""
 
-#: src/wiring_diagrams.md:226
+#: src/reference/hardware/wiring-diagrams.md:226
 msgid "8"
 msgstr ""
 
-#: src/wiring_diagrams.md:226
+#: src/reference/hardware/wiring-diagrams.md:226
 msgid "UART1_TX UART #1 Transmit"
 msgstr "UART1_TX UART #1 Transmit"
 
-#: src/wiring_diagrams.md:227
+#: src/reference/hardware/wiring-diagrams.md:227
 msgid "9"
 msgstr ""
 
-#: src/wiring_diagrams.md:227
+#: src/reference/hardware/wiring-diagrams.md:227
 msgid "10"
 msgstr ""
 
-#: src/wiring_diagrams.md:227
+#: src/reference/hardware/wiring-diagrams.md:227
 msgid "UART1_RX UART #1 Receive"
 msgstr "UART1_RX UART #1 Receive"
 
-#: src/wiring_diagrams.md:228
+#: src/reference/hardware/wiring-diagrams.md:228
 msgid "UART1_RTS UART #1 Request to Send"
 msgstr "UART1_RTS UART #1 要求 到 Send"
 
-#: src/wiring_diagrams.md:228
+#: src/reference/hardware/wiring-diagrams.md:228
 msgid "11"
 msgstr ""
 
-#: src/wiring_diagrams.md:228
+#: src/reference/hardware/wiring-diagrams.md:228
 msgid "12"
 msgstr ""
 
-#: src/wiring_diagrams.md:228
+#: src/reference/hardware/wiring-diagrams.md:228
 msgid "I2S2_CLK Audio I2S #2 Clock"
 msgstr "I2S2_CLK Audio I2S #2 Clock"
 
-#: src/wiring_diagrams.md:229
+#: src/reference/hardware/wiring-diagrams.md:229
 msgid "GPIO32 GPIO #32"
 msgstr "GPIO32 GPIO #32"
 
-#: src/wiring_diagrams.md:229
+#: src/reference/hardware/wiring-diagrams.md:229
 msgid "13"
 msgstr ""
 
-#: src/wiring_diagrams.md:229
+#: src/reference/hardware/wiring-diagrams.md:229
 msgid "14"
 msgstr ""
 
-#: src/wiring_diagrams.md:230
+#: src/reference/hardware/wiring-diagrams.md:230
 msgid "GPIO27 (PWM)"
 msgstr "GPIO27 (PWM)"
 
-#: src/wiring_diagrams.md:230
+#: src/reference/hardware/wiring-diagrams.md:230
 msgid "15"
 msgstr ""
 
-#: src/wiring_diagrams.md:230
+#: src/reference/hardware/wiring-diagrams.md:230
 msgid "16"
 msgstr ""
 
-#: src/wiring_diagrams.md:230
+#: src/reference/hardware/wiring-diagrams.md:230
 msgid "GPIO8"
 msgstr "GPIO8"
 
-#: src/wiring_diagrams.md:231 src/wiring_diagrams.md:232
-#: src/wiring_diagrams.md:236
+#: src/reference/hardware/wiring-diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:236
 msgid "MPU9250"
 msgstr "MPU9250"
 
-#: src/wiring_diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:231
 msgid "17"
 msgstr ""
 
-#: src/wiring_diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:231
 msgid "18"
 msgstr ""
 
-#: src/wiring_diagrams.md:231
+#: src/reference/hardware/wiring-diagrams.md:231
 msgid "GPIO35 (PWM)"
 msgstr "GPIO35 (PWM)"
 
-#: src/wiring_diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:232
 msgid "SPI1_MOSI SPI #1 Master Out/Slave In"
 msgstr "SPI1_MOSI SPI #1 Master Out/Slave In"
 
-#: src/wiring_diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:232
 msgid "19"
 msgstr ""
 
-#: src/wiring_diagrams.md:232
+#: src/reference/hardware/wiring-diagrams.md:232
 msgid "20"
 msgstr ""
 
-#: src/wiring_diagrams.md:233
+#: src/reference/hardware/wiring-diagrams.md:233
 msgid "SPI1_MISO SPI #1 Master In/Slave Out"
 msgstr "SPI1_MISO SPI #1 Master In/Slave Out"
 
-#: src/wiring_diagrams.md:233
+#: src/reference/hardware/wiring-diagrams.md:233
 msgid "21"
 msgstr ""
 
-#: src/wiring_diagrams.md:233
+#: src/reference/hardware/wiring-diagrams.md:233
 msgid "22"
 msgstr ""
 
-#: src/wiring_diagrams.md:233
+#: src/reference/hardware/wiring-diagrams.md:233
 msgid "GPIO17 GPIO"
 msgstr "GPIO17 GPIO"
 
-#: src/wiring_diagrams.md:234
+#: src/reference/hardware/wiring-diagrams.md:234
 msgid "SPI1_SCK SPI #1 Shift Clock"
 msgstr "SPI1_SCK SPI #1 Shift Clock"
 
-#: src/wiring_diagrams.md:234
+#: src/reference/hardware/wiring-diagrams.md:234
 msgid "23"
 msgstr ""
 
-#: src/wiring_diagrams.md:234
+#: src/reference/hardware/wiring-diagrams.md:234
 msgid "24"
 msgstr ""
 
-#: src/wiring_diagrams.md:234
+#: src/reference/hardware/wiring-diagrams.md:234
 msgid "SPI1_CS0_N SPI #1 Chip Select #0"
 msgstr "SPI1_CS0_N SPI #1 Chip Select #0"
 
-#: src/wiring_diagrams.md:235
+#: src/reference/hardware/wiring-diagrams.md:235
 msgid "25"
 msgstr ""
 
-#: src/wiring_diagrams.md:235
+#: src/reference/hardware/wiring-diagrams.md:235
 msgid "26"
 msgstr ""
 
-#: src/wiring_diagrams.md:235
+#: src/reference/hardware/wiring-diagrams.md:235
 msgid "SPI1_CS1_N SPI #1 Chip Select #1"
 msgstr "SPI1_CS1_N SPI #1 Chip Select #1"
 
-#: src/wiring_diagrams.md:236
+#: src/reference/hardware/wiring-diagrams.md:236
 msgid "I2C2_DAT General I2C #2 Data I2C Bus 1"
 msgstr "I2C2_DAT General I2C #2 資料 I2C Bus 1"
 
-#: src/wiring_diagrams.md:236
+#: src/reference/hardware/wiring-diagrams.md:236
 msgid "27"
 msgstr ""
 
-#: src/wiring_diagrams.md:236
+#: src/reference/hardware/wiring-diagrams.md:236
 msgid "28"
 msgstr ""
 
-#: src/wiring_diagrams.md:236
+#: src/reference/hardware/wiring-diagrams.md:236
 msgid "I2C2_CLK General I2C #2 Clock I2C Bus 1"
 msgstr "I2C2_CLK General I2C #2 Clock I2C Bus 1"
 
-#: src/wiring_diagrams.md:237 src/wiring_diagrams.md:238
-#: src/wiring_diagrams.md:239 src/wiring_diagrams.md:241
+#: src/reference/hardware/wiring-diagrams.md:237
+#: src/reference/hardware/wiring-diagrams.md:238
+#: src/reference/hardware/wiring-diagrams.md:239
+#: src/reference/hardware/wiring-diagrams.md:241
 msgid "Reserved"
 msgstr "保留"
 
-#: src/wiring_diagrams.md:237
+#: src/reference/hardware/wiring-diagrams.md:237
 msgid "29"
 msgstr ""
 
-#: src/wiring_diagrams.md:237
+#: src/reference/hardware/wiring-diagrams.md:237
 msgid "30"
 msgstr ""
 
-#: src/wiring_diagrams.md:238
+#: src/reference/hardware/wiring-diagrams.md:238
 msgid "31"
 msgstr ""
 
-#: src/wiring_diagrams.md:238
+#: src/reference/hardware/wiring-diagrams.md:238
 msgid "32"
 msgstr ""
 
-#: src/wiring_diagrams.md:238
+#: src/reference/hardware/wiring-diagrams.md:238
 msgid "GPIO9"
 msgstr "GPIO9"
 
-#: src/wiring_diagrams.md:239
+#: src/reference/hardware/wiring-diagrams.md:239
 msgid "33"
 msgstr ""
 
-#: src/wiring_diagrams.md:239
+#: src/reference/hardware/wiring-diagrams.md:239
 msgid "34"
 msgstr ""
 
-#: src/wiring_diagrams.md:240
+#: src/reference/hardware/wiring-diagrams.md:240
 msgid "I2S_FS AUDIO I2S #2 Left/Right Clock"
 msgstr "I2S_FS AUDIO I2S #2 Left/Right Clock"
 
-#: src/wiring_diagrams.md:240
+#: src/reference/hardware/wiring-diagrams.md:240
 msgid "35"
 msgstr ""
 
-#: src/wiring_diagrams.md:240
+#: src/reference/hardware/wiring-diagrams.md:240
 msgid "36"
 msgstr ""
 
-#: src/wiring_diagrams.md:240
+#: src/reference/hardware/wiring-diagrams.md:240
 msgid "UART1_CTS UART #1 Clear to Send"
 msgstr ""
 
-#: src/wiring_diagrams.md:241
+#: src/reference/hardware/wiring-diagrams.md:241
 msgid "37"
 msgstr ""
 
-#: src/wiring_diagrams.md:241
+#: src/reference/hardware/wiring-diagrams.md:241
 msgid "38"
 msgstr ""
 
-#: src/wiring_diagrams.md:241
+#: src/reference/hardware/wiring-diagrams.md:241
 msgid "I2S_SDIN Audio I2S #2 Data In"
 msgstr "I2S_SDIN Audio I2S #2 資料 在"
 
-#: src/wiring_diagrams.md:242
+#: src/reference/hardware/wiring-diagrams.md:242
 msgid "39"
 msgstr ""
 
-#: src/wiring_diagrams.md:242
+#: src/reference/hardware/wiring-diagrams.md:242
 msgid "40"
 msgstr ""
 
-#: src/wiring_diagrams.md:242
+#: src/reference/hardware/wiring-diagrams.md:242
 msgid "I2S_SDOUT Audio I2S #2 Data Out"
 msgstr "I2S_SDOUT Audio I2S #2 資料 Out"
 
-#: src/wiring_diagrams.md:247
-msgid "[Hardware Assembly Guide](./hardware_assembly.md) - Physical assembly"
-msgstr "[硬體群組裝 指南](./hardware_assembly.md) - Physical assembly"
+#: src/reference/hardware/wiring-diagrams.md:247
+msgid ""
+"[Hardware Assembly Guide](../../getting-started/hardware-assembly.md) - "
+"Physical assembly"
+msgstr ""
 
-#: src/wiring_diagrams.md:249
-msgid "[Core Components](./core_components.md) - Component specifications"
-msgstr "[Core Components](./core_components.md) - 元件 specifications"
+#: src/reference/hardware/wiring-diagrams.md:248
+msgid ""
+"[Software Installation](../../getting-started/software-installation.md) - "
+"Software setup"
+msgstr ""
 
-#: src/sensor_component.md:3
+#: src/reference/hardware/wiring-diagrams.md:249
+msgid ""
+"[Core Components](../hardware/core-components.md) - Component specifications"
+msgstr ""
+
+#: src/reference/software/sensor-components.md:1
+msgid "Sensor Components and Drivers"
+msgstr "感測器元件與驅動程式"
+
+#: src/reference/software/sensor-components.md:3
 msgid ""
 "The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/src/"
-"autoware/sensor_component) directory contains a collection of drivers and "
-"data processors for sensors on the AutoSDV vehicle. They are mostly provided "
-"by vendors and existing open source projects."
-msgstr "[`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/s"
+"sensor_component) directory contains a collection of drivers and data "
+"processors for sensors on the AutoSDV vehicle. They are mostly provided by "
+"vendors and existing open source projects."
+msgstr ""
 
-#: src/sensor_component.md:7
+#: src/reference/software/sensor-components.md:7
 msgid ""
 "The sensor component defines the collection of sensor drivers in Autoware. "
 "If you're looking for the composition of the sensor drivers, please refer to "
-"[Sensor Kit](sensor_kit.md) Chapter."
+"[Sensor Kit](../software/sensor-kit.md) Chapter."
 msgstr ""
-"感測器 元件 defines collection 的 感測器 drivers 在 Autoware. If 你're "
-"looking 用於"
 
-#: src/sensor_component.md:9
+#: src/reference/software/sensor-components.md:9
 msgid ""
 "The AutoSDV Autoware adds the following ROS packages along with official "
 "packages."
 msgstr ""
 
-#: src/sensor_component.md:11
+#: src/reference/software/sensor-components.md:11
 msgid "ZED X Mini camera"
 msgstr "ZED X Mini 相機"
 
-#: src/sensor_component.md:12 src/sensor_component.md:30
+#: src/reference/software/sensor-components.md:12
+#: src/reference/software/sensor-components.md:30
 msgid "Blickfeld Cube1 LiDAR"
 msgstr "Blickfeld Cube1 光達"
 
-#: src/sensor_component.md:13
+#: src/reference/software/sensor-components.md:13
 msgid "MPU9250 Nine-Axis Motion Sensor"
 msgstr "MPU9250 Nine-Axis Motion 感測器"
 
-#: src/sensor_component.md:16
+#: src/reference/software/sensor-components.md:16
 msgid "ZED X Mini Camera"
 msgstr "ZED X Mini 相機"
 
-#: src/sensor_component.md:18
+#: src/reference/software/sensor-components.md:18
 msgid ""
 "The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED "
-"SDK is installed by the setup script described in [Installation Guide]"
-"(installation.md). The driver package is located at:"
+"SDK is installed by the setup script described in [Software Installation]"
+"(../../getting-started/software-installation.md). The driver package is "
+"located at:"
 msgstr ""
-"ROS 2 套件 requires ZED SDK 4.2 到 be installed 在 系統. ZED SDK 是 "
-"installed 由 設定 script described 在 [安裝 指南](安裝.md). 驅動程式 套件 是 "
-"located 在:"
 
-#: src/sensor_component.md:24
+#: src/reference/software/sensor-components.md:24
 msgid "To run the standalone ZED camera driver,"
 msgstr "到 執欄 standalone ZED camera 驅動程式,"
 
-#: src/sensor_component.md:31
+#: src/reference/software/sensor-components.md:31
 msgid ""
 "The IP address of Blickfeld Cube1 LiDAR and Jetson is `192.168.26.26` and "
 "`192.168.26.1`, respectively."
@@ -4157,19 +4256,20 @@ msgstr ""
 "IP address 的 Blickfeld Cube1 光達 和 Jetson 是 `192.168.26.26` 和 "
 "`192.168.26.1`, respectively."
 
-#: src/sensor_component.md:33
+#: src/reference/software/sensor-components.md:33
 msgid "The driver package is located at"
 msgstr "驅動程式 套件 是 located 在"
 
-#: src/sensor_component.md:39 src/sensor_component.md:53
+#: src/reference/software/sensor-components.md:39
+#: src/reference/software/sensor-components.md:53
 msgid "To run the standalone driver,"
 msgstr "到 執欄 standalone 驅動程式,"
 
-#: src/sensor_component.md:45
+#: src/reference/software/sensor-components.md:45
 msgid "MPU9250 Nine-Axis Accelerometer Gyroscope Sensor"
 msgstr "MPU9250 Nine-Axis Accelerometer Gyroscope 感測器"
 
-#: src/sensor_component.md:47
+#: src/reference/software/sensor-components.md:47
 msgid ""
 "MPU9250 measures the motion state of the vehicle, including the linear "
 "acceleration, angular acceleration and angular speed. The source package is "
@@ -4178,11 +4278,11 @@ msgstr ""
 "MPU9250 measures motion state 的 車輛, including linear acceleration, "
 "angular acceleration 和 angular speed. source 套件 是 located 在"
 
-#: src/sensor_component.md:58
+#: src/reference/software/sensor-components.md:58
 msgid "Garmin GPS 18x 5Hz"
 msgstr "Garmin GPS 18x 5Hz"
 
-#: src/sensor_component.md:59
+#: src/reference/software/sensor-components.md:59
 msgid ""
 "[Full specification of the sensor](https://static.garmin.com/pumac/"
 "GPS_18x_Tech_Specs.pdf)"
@@ -4190,26 +4290,26 @@ msgstr ""
 "[Full specification 的 感測器](https://static.garmin.com/pumac/"
 "GPS_18x_Tech_Specs.pdf)"
 
-#: src/sensor_component.md:61
+#: src/reference/software/sensor-components.md:61
 msgid "Localise the device at first. Execute:"
 msgstr "Localise 設備 在 first. 執欄:"
 
-#: src/sensor_component.md:65
+#: src/reference/software/sensor-components.md:65
 msgid ""
 "you should find this line: _FTDI USB Serial Device converter now attached to "
 "**ttyUSB0**_"
 msgstr ""
 "你 should 找到 this line: _FTDI USB Serial 裝置 converter now attached 到 **"
 
-#: src/sensor_component.md:67
+#: src/reference/software/sensor-components.md:67
 msgid "Once you find the device, get raw data from it by executing:"
 msgstr "一旦 你 找到 設備, 取得 原始 資料 從 它 由 執欄:"
 
-#: src/sensor_component.md:72
+#: src/reference/software/sensor-components.md:72
 msgid "And you should see data in NMEA format like this:"
 msgstr "和 你 should see 資料 在 NMEA format like this:"
 
-#: src/sensor_component.md:80
+#: src/reference/software/sensor-components.md:80
 msgid ""
 "Note: If you see something else, for example binary data, make sure you use "
 "the correct baud rate - 9600."
@@ -4217,27 +4317,27 @@ msgstr ""
 "Note: If 你 see something else, 用於 範例 binary 資料, make sure 你 use "
 "correc"
 
-#: src/sensor_component.md:82
+#: src/reference/software/sensor-components.md:82
 msgid "2.1 Check the current baud rate by this command:"
 msgstr "2.1 檢查 current baud rate 由 this command:"
 
-#: src/sensor_component.md:86
+#: src/reference/software/sensor-components.md:86
 msgid "Set the 9600 baud rate by this command:"
 msgstr "Set 9600 baud rate 由 this 命令:"
 
-#: src/sensor_component.md:91
+#: src/reference/software/sensor-components.md:91
 msgid "Execute the GPS Deamon (gpsd) for the right device:"
 msgstr "執欄 GPS Deamon (gpsd) 用於 right 設備:"
 
-#: src/sensor_component.md:96
+#: src/reference/software/sensor-components.md:96
 msgid "To verify the signal, you can open the CLI app:"
 msgstr "到 驗證 訊號, 你 可以 開啟 CLI 套用程式:"
 
-#: src/sensor_component.md:100
+#: src/reference/software/sensor-components.md:100
 msgid "or GUI app:"
 msgstr "或 GUI 套用程式:"
 
-#: src/sensor_component.md:105
+#: src/reference/software/sensor-components.md:105
 msgid ""
 "Wait till you get the proper longitude and latitude coordinates and the "
 "status of the GPS must be 3D Fix. If there is 'No Fix', no good signal is "
@@ -4246,16 +4346,16 @@ msgstr ""
 "Wait till 你 取得 proper longitude 和 latitude coordinates 和 狀態 的 GPS "
 "must"
 
-#: src/sensor_component.md:107
+#: src/reference/software/sensor-components.md:107
 msgid ""
 "Since you get the signal, you can launch Autoware and subscribe the topic:"
 msgstr "Since 你 取得 訊號, 你 可以 啟動 Autoware 和 subscribe topic:"
 
-#: src/sensor_component.md:112
+#: src/reference/software/sensor-components.md:112
 msgid "Configuration files in Autoware"
 msgstr "設定 files 在 Autoware"
 
-#: src/sensor_component.md:114
+#: src/reference/software/sensor-components.md:114
 msgid ""
 "If you do not get data on the topic, make sure, the configuration is correct "
 "by checking these files:"
@@ -4263,34 +4363,34 @@ msgstr ""
 "If 你 do not 取得 資料 在 topic, make sure, 設定 是 correct 由 checking "
 "these fi"
 
-#: src/sensor_component.md:116
+#: src/reference/software/sensor-components.md:116
 msgid "Enable the GNSS Driver at:"
 msgstr "啟用 GNSS 驅動程式 在:"
 
-#: src/sensor_component.md:121
+#: src/reference/software/sensor-components.md:121
 msgid "Enable the Garmin Driver at:"
 msgstr "啟用 Garmin 驅動程式 在:"
 
-#: src/sensor_component.md:126
+#: src/reference/software/sensor-components.md:126
 msgid ""
 "No mistake in the Python script at (the script composes configuration to "
 "launch the GNSS Driver):"
 msgstr ""
 "No mistake 在 Python script 在 ( script composes 設定 到 啟動 GNSS 驅動程式):"
 
-#: src/sensor_component.md:130
+#: src/reference/software/sensor-components.md:130
 msgid "Note: the topic _fix_ is remapped as _garmin/fix_"
 msgstr "注意： topic _fix_ 是 remapped as _garmin/fix_"
 
-#: src/sensor_component.md:132
+#: src/reference/software/sensor-components.md:132
 msgid "3.1 Parameters for the Python script is at:"
 msgstr ""
 
-#: src/sensor_component.md:137
+#: src/reference/software/sensor-components.md:137
 msgid "GNSS Client connecting to the gpsd (GPS Deamon) is located at:"
 msgstr "串連到 gpsd（GPS 守護程式）的 GNSS 用戶端位於："
 
-#: src/sensor_kit.md:3
+#: src/reference/software/sensor-kit.md:3
 msgid ""
 "The sensor kit consists of the _description_ package and the _launch_ "
 "package. The _description_ package, [`autosdv_sensor_kit_description`]"
@@ -4311,20 +4411,18 @@ msgstr ""
 "autosdv_sensor_kit_launch), contains set 的 啟動 files 用於 all kinds 的 "
 "sensors along 搭配 their runtime parameters."
 
-#: src/sensor_kit.md:7
+#: src/reference/software/sensor-kit.md:7
 msgid ""
 "The sensor kit defines the composition and the data paths of sensors. If "
 "you're looking per-sensor driver configuration, please refer to [Sensor "
-"Component](sensor_component.md) Chapter."
+"Component](../software/sensor-components.md) Chapter."
 msgstr ""
-"感測器 kit defines composition 和 資料 paths 的 sensors. If 你're looking "
-"per-"
 
-#: src/sensor_kit.md:9
+#: src/reference/software/sensor-kit.md:9
 msgid "The Description Package"
 msgstr "Description 套件"
 
-#: src/sensor_kit.md:11
+#: src/reference/software/sensor-kit.md:11
 msgid ""
 "The description package stores the coordinates of each sensor installed on "
 "the vehicle. It's done by working on these two configuration files."
@@ -4332,15 +4430,15 @@ msgstr ""
 "description 套件 stores coordinates 的 each 感測器 installed 在 車輛. 它's "
 "done "
 
-#: src/sensor_kit.md:13
+#: src/reference/software/sensor-kit.md:13
 msgid "`../autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml`"
 msgstr ""
 
-#: src/sensor_kit.md:14
+#: src/reference/software/sensor-kit.md:14
 msgid "`../autosdv_sensor_kit_description/urdf/sensor_kit.xacro`"
 msgstr ""
 
-#: src/sensor_kit.md:16
+#: src/reference/software/sensor-kit.md:16
 msgid ""
 "For example, the coordinate for the ZED camera is named as "
 "`zedxm_camera_link`, which pose parameters are defined in "
@@ -4353,37 +4451,37 @@ msgstr ""
 "com/NEWSLabNTU/autosdv_sensor_kit_launch/blob/main/"
 "autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml)."
 
-#: src/sensor_kit.md:19
+#: src/reference/software/sensor-kit.md:19
 msgid "sensor_kit_base_link"
 msgstr ""
 
-#: src/sensor_kit.md:20
+#: src/reference/software/sensor-kit.md:20
 msgid "zedxm_camera_link"
 msgstr "zedxm_camera_link"
 
-#: src/sensor_kit.md:20
+#: src/reference/software/sensor-kit.md:20
 msgid ""
 "# Zed Camera\n"
 "    x"
 msgstr "# Zed 相機 x"
 
-#: src/sensor_kit.md:23
+#: src/reference/software/sensor-kit.md:23
 msgid "z"
 msgstr "z"
 
-#: src/sensor_kit.md:24
+#: src/reference/software/sensor-kit.md:24
 msgid "roll"
 msgstr "橫滾"
 
-#: src/sensor_kit.md:25
+#: src/reference/software/sensor-kit.md:25
 msgid "pitch"
 msgstr "俯仰"
 
-#: src/sensor_kit.md:26
+#: src/reference/software/sensor-kit.md:26
 msgid "yaw"
 msgstr "偏航"
 
-#: src/sensor_kit.md:29
+#: src/reference/software/sensor-kit.md:29
 msgid ""
 "The [`sensor_kit.xacro`](https://github.com/NEWSLabNTU/"
 "autosdv_sensor_kit_launch/blob/main/autosdv_sensor_kit_description/urdf/"
@@ -4392,19 +4490,20 @@ msgid ""
 "`sensor_kit_base_link` to `zedxm_camera_link`."
 msgstr "[`sensor_kit.xacro`](https://github.com/NEWSLabNTU/autosdv_sensor_kit_"
 
-#: src/sensor_kit.md:32
+#: src/reference/software/sensor-kit.md:32
 msgid "\"zedxm\""
 msgstr ""
 
-#: src/sensor_kit.md:32
+#: src/reference/software/sensor-kit.md:32
 msgid "\"0\""
 msgstr ""
 
-#: src/sensor_kit.md:32
+#: src/reference/software/sensor-kit.md:32
 msgid "\"false\""
 msgstr ""
 
-#: src/sensor_kit.md:34 src/sensor_kit.md:45
+#: src/reference/software/sensor-kit.md:34
+#: src/reference/software/sensor-kit.md:45
 msgid ""
 "\"${calibration['sensor_kit_base_link']['zedxm_camera_link']['x']}\n"
 "             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
@@ -4413,7 +4512,8 @@ msgid ""
 "['z']}\""
 msgstr ""
 
-#: src/sensor_kit.md:37 src/sensor_kit.md:48
+#: src/reference/software/sensor-kit.md:37
+#: src/reference/software/sensor-kit.md:48
 msgid ""
 "\"${calibration['sensor_kit_base_link']['zedxm_camera_link']['roll']}\n"
 "             ${calibration['sensor_kit_base_link']['zedxm_camera_link']"
@@ -4422,27 +4522,27 @@ msgid ""
 "['yaw']}\""
 msgstr ""
 
-#: src/sensor_kit.md:43
+#: src/reference/software/sensor-kit.md:43
 msgid "\"zedxm_camera_joint\""
 msgstr ""
 
-#: src/sensor_kit.md:43
+#: src/reference/software/sensor-kit.md:43
 msgid "\"fixed\""
 msgstr ""
 
-#: src/sensor_kit.md:52
+#: src/reference/software/sensor-kit.md:52
 msgid "\"sensor_kit_base_link\""
 msgstr ""
 
-#: src/sensor_kit.md:53
+#: src/reference/software/sensor-kit.md:53
 msgid "\"zedxm_camera_link\""
 msgstr ""
 
-#: src/sensor_kit.md:57
+#: src/reference/software/sensor-kit.md:57
 msgid "The Launch Package"
 msgstr "啟動 套件"
 
-#: src/sensor_kit.md:59
+#: src/reference/software/sensor-kit.md:59
 msgid ""
 "The [`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/"
 "autosdv_sensor_kit_launch/tree/main/autosdv_sensor_kit_launch) package "
@@ -4453,7 +4553,7 @@ msgid ""
 "files are included."
 msgstr "[`autosdv_sensor_kit_launch`](https://github.com/NEWSLabNTU/autosdv_se"
 
-#: src/sensor_kit.md:61
+#: src/reference/software/sensor-kit.md:61
 msgid ""
 "The `camera.launch.xml`, `gnss.launch.xml`, `imu.launch.xml` and `lidar."
 "launch.xml` launch files correspond to respective sensing functions. Each of "
@@ -4463,7 +4563,7 @@ msgstr ""
 "files correspond 到 respective sensing functions. Each 的 them contains "
 "sensing drive execution methods 和 their parameters."
 
-#: src/sensor_kit.md:63
+#: src/reference/software/sensor-kit.md:63
 msgid ""
 "The `pointcloud_preprocessor.launch.py` is the special one that provides the "
 "multi-LiDAR fusion feature. It includes a point cloud processor node that "
@@ -4471,80 +4571,78 @@ msgid ""
 msgstr ""
 "`pointcloud_preprocessor.啟動.py` 是 special one that provides multi-LiDA"
 
-#: src/sensor_kit.md:68
+#: src/reference/software/sensor-kit.md:68
 msgid "\"input_topics\""
 msgstr ""
 
-#: src/sensor_kit.md:69
+#: src/reference/software/sensor-kit.md:69
 msgid "\"/sensing/lidar/bf_lidar/points_raw\""
 msgstr "\"/sensing/光達/bf_lidar/points_raw\""
 
-#: src/sensor_kit.md:71
+#: src/reference/software/sensor-kit.md:71
 msgid "\"output_frame\""
 msgstr ""
 
-#: src/sensor_kit.md:71
+#: src/reference/software/sensor-kit.md:71
 msgid "\"base_frame\""
 msgstr ""
 
-#: src/sensor_kit.md:72
+#: src/reference/software/sensor-kit.md:72
 msgid "\"input_twist_topic_type\""
 msgstr ""
 
-#: src/sensor_kit.md:72
+#: src/reference/software/sensor-kit.md:72
 msgid "\"twist\""
 msgstr ""
 
-#: src/sensor_kit.md:73
+#: src/reference/software/sensor-kit.md:73
 msgid "\"publish_synchronized_pointcloud\""
 msgstr ""
 
-#: src/vehicle_interface.md:3
+#: src/reference/software/vehicle-interface.md:3
 msgid ""
 "The vehicle interface bridges the Autoware control and vehicle actuators. It "
-"is served by the `autosdv_vehicle_launch` repository located at `src/"
-"autoware/vehicle/autosdv_vehicle_launch`. It includes the following packages."
+"is served by the `autosdv_vehicle_launch` repository located at `src/vehicle/"
+"autosdv_vehicle_launch`. It includes the following packages."
 msgstr ""
-"vehicle 介臉部 bridges Autoware 控制 和 vehicle actuators. 它 是 served 由"
-"`autosdv_vehicl"
 
-#: src/vehicle_interface.md:5
+#: src/reference/software/vehicle-interface.md:5
 msgid "`autosdv_vehicle_description`"
 msgstr "`autosdv_vehicle_description`"
 
-#: src/vehicle_interface.md:7
+#: src/reference/software/vehicle-interface.md:7
 msgid "It provides vehicle appearance parameters."
 msgstr "它 provides 車輛 appearance parameters."
 
-#: src/vehicle_interface.md:9
+#: src/reference/software/vehicle-interface.md:9
 msgid "`autosdv_vehicle_launch`"
 msgstr "`autosdv_vehicle_launch`"
 
-#: src/vehicle_interface.md:11
+#: src/reference/software/vehicle-interface.md:11
 msgid ""
 "It provides a launch file that runs necessary nodes to drive the vehicle."
 msgstr "它 provides 啟動 檔案 that runs necessary nodes 到 drive 車輛."
 
-#: src/vehicle_interface.md:13
+#: src/reference/software/vehicle-interface.md:13
 msgid "`autosdv_vehicle_interface`"
 msgstr "`autosdv_vehicle_interface`"
 
-#: src/vehicle_interface.md:15
+#: src/reference/software/vehicle-interface.md:15
 msgid ""
 "The package provides the node that converts the Autoware control commands to "
 "motor power and provides vehicle status reporting nodes for cruise control."
 msgstr ""
 "套件 provides node that converts Autoware 控制 commands 到 motor power 和 pr"
 
-#: src/vehicle_interface.md:17
+#: src/reference/software/vehicle-interface.md:17
 msgid "To launch the vehicle interface for the vehicle,"
 msgstr "到 啟動 車輛 介臉部 用於 車輛,"
 
-#: src/vehicle_interface.md:23
+#: src/reference/software/vehicle-interface.md:23
 msgid "The Velocity Reporting Node"
 msgstr "速度 Reporting 節點"
 
-#: src/vehicle_interface.md:25
+#: src/reference/software/vehicle-interface.md:25
 msgid ""
 "The node is implemented in `velocity_report.py`. It periodically reads the "
 "Hall effect sensor and counts the magnet markers embedded on the wheel in "
@@ -4554,11 +4652,11 @@ msgid ""
 msgstr ""
 "node 是 implemented 在 `velocity_report.py`. 它 periodically reads Hall e"
 
-#: src/vehicle_interface.md:27
+#: src/reference/software/vehicle-interface.md:27
 msgid "The Actuator Node"
 msgstr "致動器 節點"
 
-#: src/vehicle_interface.md:29
+#: src/reference/software/vehicle-interface.md:29
 msgid ""
 "The node implemented in `actuator.py` reads a target speed and controls the "
 "motor power to reach to that speed. It uses a PID controller to compute PWM "
@@ -4567,11 +4665,11 @@ msgstr ""
 "節點 implemented 在 `致動器.py` reads target 速度 和 controls 馬達 電源 到 "
 "reach 到 t"
 
-#: src/5g_deployment.md:3
+#: src/reference/networking/5g-deployment.md:3
 msgid "Outdoor Setup Example"
 msgstr "Outdoor 設定 範例"
 
-#: src/5g_deployment.md:6
+#: src/reference/networking/5g-deployment.md:6
 msgid ""
 "Figure 1 shows an example setup of the private 5G infrastructure outdoors "
 "based on the Ataya Harmony system. The system has several parts:"
@@ -4579,19 +4677,19 @@ msgstr ""
 "Figure 1 shows 範例 設定 的 private 5G infrastructure outdoors based 在 "
 "Ataya Harmony 系統. 系統 has several parts:"
 
-#: src/5g_deployment.md:8
+#: src/reference/networking/5g-deployment.md:8
 msgid "The Ataya 5G core network box (\"1\" in Figure 1)"
 msgstr "Ataya 5G core 網路 box (\\\"1\\\" 在 Figure 1)"
 
-#: src/5g_deployment.md:9
+#: src/reference/networking/5g-deployment.md:9
 msgid "Askey small cell base station (\"2\" in Figure 1)"
 msgstr "Askey 小型基地台 (\"2\" 在 Figure 1)"
 
-#: src/5g_deployment.md:10
+#: src/reference/networking/5g-deployment.md:10
 msgid "MOXA 5G cellular gateway installed on the vehicle top (Figure 2)"
 msgstr "MOXA 5G cellular gateway installed 在 車輛 top (Figure 2)"
 
-#: src/5g_deployment.md:22
+#: src/reference/networking/5g-deployment.md:22
 msgid ""
 "5G signal range can extend up to 600 meters. Compared to Wi-Fi, it maintains "
 "stable latency and bandwidth within that area regardless of the distance to "
@@ -4600,7 +4698,7 @@ msgstr ""
 "5G 訊號 範圍 可以 extend up 到 600 meters. Compared 到 Wi-Fi, 它 maintains "
 "stab"
 
-#: src/5g_deployment.md:24
+#: src/reference/networking/5g-deployment.md:24
 msgid ""
 "When setting up 5G equipment, there are several points to consider. First, "
 "the 5G receiver in a vehicle must be placed on the exterior of the body and "
@@ -4611,6 +4709,359 @@ msgid ""
 msgstr ""
 "When setting up 5G equipment, there 是 several points 到 consider. First"
 
-#: src/5g_deployment.md:26
+#: src/reference/networking/5g-deployment.md:26
 msgid "Network Architecture"
 msgstr "網路 架構"
+
+#~ msgid "Hardware Assembly Guide"
+#~ msgstr "硬體群組裝指南"
+
+#~ msgid "Core Components Specification"
+#~ msgstr "核心元件規格"
+
+#~ msgid ""
+#~ "[Hardware Assembly Guide](./hardware_assembly.md) - Build instructions"
+#~ msgstr "[硬體群組裝指南](./hardware_assembly.md) - 建造說明"
+
+#~ msgid "[Software Installation](./software_installation.md) - Software setup"
+#~ msgstr "[軟體安裝](./software_installation.md) - 軟體設定"
+
+#~ msgid ""
+#~ "**[Software Installation](./software_installation.md)** - Installing "
+#~ "AutoSDV software using recommended methods"
+#~ msgstr ""
+#~ "**[軟體安裝](./software_installation.md)** - 使用建議方法安裝 AutoSDV 軟體"
+#~ "**[軟體安裝](./software_installation.md)** - 使用建議方法安裝 AutoSDV 軟體"
+
+#~ msgid ""
+#~ "**[Docker Setup](./docker_setup.md)** - Alternative containerized "
+#~ "installation"
+#~ msgstr ""
+#~ "**[Docker 設定](./docker_setup.md)** - 替代的容器化安裝方式**[Docker 設定]"
+#~ "(./docker_setup.md)** - 替代的容器化安裝方式"
+
+#~ msgid ""
+#~ "**[Manual Setup](./manual_setup.md)** - Advanced customization options"
+#~ msgstr "**[手動設定](./manual_setup.md)** - 進階自訂選項"
+
+#~ msgid ""
+#~ "Skip to [Software Installation](./software_installation.md) or use "
+#~ "[Docker Setup](./docker_setup.md) for quick testing"
+#~ msgstr ""
+#~ "跳到[軟體安裝](./software_installation.md)或使用[Docker 設定](./"
+#~ "docker_setup.md)進欄快速測試跳到[軟體安裝](./software_installation.md)或使"
+#~ "用[Docker設定](./docker_setup.md)進欄快速測試"
+
+#~ msgid ""
+#~ "See [Manual Setup and Customization](./manual_setup.md) for advanced "
+#~ "configuration options"
+#~ msgstr ""
+#~ "查看[手動設定和自訂](./manual_setup.md)以獲得進階設定選項查看[手動設定和自"
+#~ "訂](./manual_setup.md)以得進階設定選項"
+
+#~ msgid ""
+#~ "This guide provides the recommended installation process for AutoSDV. For "
+#~ "manual installation or customization options, see the [Manual Setup Guide]"
+#~ "(./manual_setup.md)."
+#~ msgstr ""
+#~ "本指南提供 AutoSDV 的建議安裝處理。有關手動安裝或自訂選項，請參閱[手動設定"
+#~ "指南](./manual_setup.md)。"
+
+#~ msgid ""
+#~ "**Docker Environment** (For simulation and development) - See [Docker "
+#~ "Setup](./docker_setup.md)"
+#~ msgstr ""
+#~ "**Docker 環境**（用於模擬和開發） - 參閱 [Docker 設定](./docker_setup.md)"
+
+#~ msgid ""
+#~ "[Development Guide](./development_guide.md) - Start developing with "
+#~ "AutoSDV"
+#~ msgstr "[開發指南](./development_guide.md) - 開始使用 AutoSDV 進欄開發"
+
+#~ msgid ""
+#~ "[Docker Setup](./docker_setup.md) - Alternative Docker-based installation"
+#~ msgstr "[Docker 設定](./docker_setup.md) - 替代的基於 Docker 的安裝方式"
+
+#~ msgid ""
+#~ "[Manual Setup Guide](./manual_setup.md) - Manual installation and "
+#~ "customization options"
+#~ msgstr "[手動設定指南](./manual_setup.md) - 手動安裝和自訂選項"
+
+#~ msgid ""
+#~ "          cd docker\n"
+#~ "          make build\n"
+#~ "      \n"
+#~ msgstr "cd docker make 建構 \n"
+
+#~ msgid "Run tests"
+#~ msgstr "執欄 tests"
+
+#~ msgid ""
+#~ "[Software Installation](./software_installation.md) - Native installation "
+#~ "guide"
+#~ msgstr "[軟體安裝](./software_installation.md) - Native 安裝 指南"
+
+#~ msgid "[Development Guide](./development_guide.md) - Development workflows"
+#~ msgstr "[開發指南](./development_guide.md) - Development workflows"
+
+#~ msgid "[Manual Setup](./manual_setup.md) - Customization options"
+#~ msgstr "[手動設定](./manual_setup.md) - Customization options"
+
+#~ msgid ""
+#~ "This guide provides detailed manual installation steps and customization "
+#~ "options for advanced users. For the recommended automated installation, "
+#~ "see the [Software Installation](./software_installation.md) guide."
+#~ msgstr ""
+#~ "This 指南 provides detailed manual 安裝 steps 和 customization options 用"
+#~ "於 進階 users. 用於 recommended automated 安裝, see [軟體安裝](./"
+#~ "software_installation.md) 指南."
+
+#~ msgid "# Build with dependencies\n"
+#~ msgstr "# 建構 搭配 相依套件\n"
+
+#~ msgid ""
+#~ "Return to [Software Installation](./software_installation.md) for the "
+#~ "standard setup"
+#~ msgstr "Return 到 [軟體安裝](./software_installation.md) 用於 標準 設定"
+
+#~ msgid "See [Docker Setup](./docker_setup.md) for containerized deployment"
+#~ msgstr "See [Docker 設定](./docker_setup.md) 用於 containerized 部署"
+
+#~ msgid ""
+#~ "Continue to [Development Guide](./development_guide.md) for development "
+#~ "workflows"
+#~ msgstr ""
+#~ "Continue 到 [開發指南](./development_guide.md) 用於 development workflows"
+
+#~ msgid ""
+#~ "Before reading this article, please make sure you followed the [Software "
+#~ "Installation](./software_installation.md) and built the project. The "
+#~ "project repository has a launch file `autosdv.launch.yaml` that defines "
+#~ "the set of nodes to be executed and assigned parameters to start the "
+#~ "whole driving system."
+#~ msgstr ""
+#~ "在閱讀本文之前，請確保你已遵循[軟體安裝](./software_installation.md)並建構"
+#~ "了專案。專案儲存程式庫有一個啟動檔案`autosdv.啟動.yaml`，定義了要執欄的節"
+#~ "點集合和指定參數，以啟動整個駕駛系統。指定參數，以啟動整個駕駛系統。"
+
+#~ msgid ""
+#~ "or assign argument values to the launch command. For example, to set "
+#~ "`launch_sensing_driver` to false."
+#~ msgstr ""
+#~ "或將參數值指定給啟動命令。例如，將 `launch_sensing_driver` 設定為 false。"
+
+#~ msgid "Arguments"
+#~ msgstr "參數"
+
+#~ msgid "Value"
+#~ msgstr "值"
+
+#~ msgid "`vehicle_model`"
+#~ msgstr "`vehicle_model`"
+
+#~ msgid "The name of the vehicle model."
+#~ msgstr "name 的 車輛 model."
+
+#~ msgid "`autosdv_vehicle`"
+#~ msgstr "`autosdv_vehicle`"
+
+#~ msgid "`sensor_model`"
+#~ msgstr "`sensor_model`"
+
+#~ msgid "The name of the sensor model."
+#~ msgstr "name 的 感測器 model."
+
+#~ msgid "`autosdv_sensor_kit`"
+#~ msgstr "`autosdv_sensor_kit`"
+
+#~ msgid "`map_path`"
+#~ msgstr "`map_path`"
+
+#~ msgid "The path to the map data directory."
+#~ msgstr "路徑 到 map 資料 目錄."
+
+#~ msgid "`./data/COSS-map-planning`"
+#~ msgstr "`./資料/COSS-map-規劃`"
+
+#~ msgid "`launch_vehicle`"
+#~ msgstr "`launch_vehicle`"
+
+#~ msgid "Whether to launch the vehicle interface."
+#~ msgstr "是否 到 啟動 車輛 介臉部."
+
+#~ msgid "`launch_system`"
+#~ msgstr "`啟動_系統`"
+
+#~ msgid "Whether to launch the system component."
+#~ msgstr "是否 到 啟動 系統 元件."
+
+#~ msgid "`launch_map`"
+#~ msgstr "`啟動_地圖形`"
+
+#~ msgid "Whether to launch the map component."
+#~ msgstr "是否 到 啟動 map 元件."
+
+#~ msgid "`launch_sensing`"
+#~ msgstr "`啟動_感測`"
+
+#~ msgid "Whether to launch the sensing component."
+#~ msgstr "是否 到 啟動 sensing 元件."
+
+#~ msgid "`launch_sensing_driver`"
+#~ msgstr "`啟動_感測_驅動程式`"
+
+#~ msgid "Whether to launch sensor drivers."
+#~ msgstr "是否 到 啟動 感測器 drivers."
+
+#~ msgid "`launch_localization`"
+#~ msgstr "`launch_localization`"
+
+#~ msgid "Whether to launch the localization component."
+#~ msgstr "是否 到 啟動 localization 元件."
+
+#~ msgid "Whether to launch the perception component."
+#~ msgstr "是否 到 啟動 perception 元件."
+
+#~ msgid "`launch_planning`"
+#~ msgstr "`launch_planning`"
+
+#~ msgid "Whether to launch the planning component."
+#~ msgstr "是否 到 啟動 planning 元件."
+
+#~ msgid "`launch_control`"
+#~ msgstr "`launch_control`"
+
+#~ msgid "Whether to launch the control component."
+#~ msgstr "是否 到 啟動 控制 元件."
+
+#~ msgid "The localization method."
+#~ msgstr "當地語系化 method."
+
+#~ msgid "`eagleye`"
+#~ msgstr "`eagleye`"
+
+#~ msgid "`├── vehicle/`"
+#~ msgstr "`├── 車輛/`"
+
+#~ msgid ""
+#~ "Let's check the `src/autoware/core/autoware.core` submodule for example. "
+#~ "Open the `.gitmodules` and you can see the section below. It tells the "
+#~ "directory location to the submodule and also the upstream URL."
+#~ msgstr ""
+#~ "Let's 檢查 `src/autoware/core/autoware.core` submodule 用於 範例. 開啟 `."
+#~ "gitmo"
+
+#~ msgid ""
+#~ "The path `src/autoware/core/autoware.core` is treated as a link file in "
+#~ "the viewpoint of the mother repo. It stores the commit hash to the "
+#~ "tracked Git repository. You can show the commit hash the command below. "
+#~ "If the commit hash changes, we go through the usual git add & commit to "
+#~ "save it."
+#~ msgstr ""
+#~ "路徑 `src/autoware/core/autoware.core` 是 treated as link 檔案 在 "
+#~ "viewpoint "
+
+#~ msgid ""
+#~ "Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule "
+#~ "for example."
+#~ msgstr ""
+#~ "Let's see `src/autoware/sensor_kit/autosdv_sensor_kit_launch` submodule 用"
+#~ "於 範例."
+
+#~ msgid ""
+#~ "# Go into the submodule and check to the branch we want to work on.\n"
+#~ msgstr "# Go into submodule 和 檢查 到 branch we want 到 work 在.\n"
+
+#~ msgid "'Update the autoware.core submodule'"
+#~ msgstr "'更新 autoware.core submodule'"
+
+#~ msgid ""
+#~ "[Core Components Specification](./core_components.md) - Detailed "
+#~ "specifications for all base platform components"
+#~ msgstr ""
+#~ "[Core Components Specification](./core_components.md) - Detailed "
+#~ "specifications 用於 all base 平台 components"
+
+#~ msgid ""
+#~ "[Wiring Diagrams](./wiring_diagrams.md) - Electrical connections and "
+#~ "power distribution"
+#~ msgstr "[接線圖形](./wiring_diagrams.md) - 電線串連和電源分配"
+
+#~ msgid ""
+#~ "[5G/LTE Deployment](./5g_deployment.md) - Detailed guide for cellular "
+#~ "connectivity setup"
+#~ msgstr ""
+#~ "[5G/LTE 部署](./5g_deployment.md) - Detailed 指南 用於 cellular "
+#~ "connectivity 設定"
+
+#~ msgid ""
+#~ "[Sensor Components and Drivers](./sensor_component.md) - Low-level sensor "
+#~ "integration"
+#~ msgstr ""
+#~ "[感測器 Components 和 Drivers](./sensor_component.md) - Low-level 感測器 "
+#~ "整合"
+
+#~ msgid ""
+#~ "[Sensor Kit Configuration](./sensor_kit.md) - ROS 2 sensor configuration "
+#~ "details"
+#~ msgstr "[感測器 Kit 設定](./sensor_kit.md) - ROS 2 感測器 設定 details"
+
+#~ msgid ""
+#~ "[Vehicle Interface](./vehicle_interface.md) - CAN bus and actuator control"
+#~ msgstr "[車輛 介臉部](./vehicle_interface.md) - 可以 bus 和 actuator 控制"
+
+#~ msgid ""
+#~ "[Hardware Assembly Guide](./hardware_assembly.md) - Step-by-step assembly"
+#~ msgstr "[硬體群組裝 指南](./hardware_assembly.md) - Step-由-step assembly"
+
+#~ msgid "[Development Guide](./development_guide.md) - Custom development"
+#~ msgstr "[開發指南](./development_guide.md) - 自訂 development"
+
+#~ msgid ""
+#~ "[Hardware Assembly Guide](./hardware_assembly.md) - Physical assembly"
+#~ msgstr "[硬體群組裝 指南](./hardware_assembly.md) - Physical assembly"
+
+#~ msgid "[Core Components](./core_components.md) - Component specifications"
+#~ msgstr "[Core Components](./core_components.md) - 元件 specifications"
+
+#~ msgid ""
+#~ "The [`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/"
+#~ "src/autoware/sensor_component) directory contains a collection of drivers "
+#~ "and data processors for sensors on the AutoSDV vehicle. They are mostly "
+#~ "provided by vendors and existing open source projects."
+#~ msgstr ""
+#~ "[`sensor_component`](https://github.com/NEWSLabNTU/AutoSDV/tree/main/s"
+
+#~ msgid ""
+#~ "The sensor component defines the collection of sensor drivers in "
+#~ "Autoware. If you're looking for the composition of the sensor drivers, "
+#~ "please refer to [Sensor Kit](sensor_kit.md) Chapter."
+#~ msgstr ""
+#~ "感測器 元件 defines collection 的 感測器 drivers 在 Autoware. If 你're "
+#~ "looking 用於"
+
+#~ msgid ""
+#~ "The ROS 2 package requires ZED SDK 4.2 to be installed on the system. ZED "
+#~ "SDK is installed by the setup script described in [Installation Guide]"
+#~ "(installation.md). The driver package is located at:"
+#~ msgstr ""
+#~ "ROS 2 套件 requires ZED SDK 4.2 到 be installed 在 系統. ZED SDK 是 "
+#~ "installed 由 設定 script described 在 [安裝 指南](安裝.md). 驅動程式 套件 "
+#~ "是 located 在:"
+
+#~ msgid ""
+#~ "The sensor kit defines the composition and the data paths of sensors. If "
+#~ "you're looking per-sensor driver configuration, please refer to [Sensor "
+#~ "Component](sensor_component.md) Chapter."
+#~ msgstr ""
+#~ "感測器 kit defines composition 和 資料 paths 的 sensors. If 你're looking "
+#~ "per-"
+
+#~ msgid ""
+#~ "The vehicle interface bridges the Autoware control and vehicle actuators. "
+#~ "It is served by the `autosdv_vehicle_launch` repository located at `src/"
+#~ "autoware/vehicle/autosdv_vehicle_launch`. It includes the following "
+#~ "packages."
+#~ msgstr ""
+#~ "vehicle 介臉部 bridges Autoware 控制 和 vehicle actuators. 它 是 served 由"
+#~ "`autosdv_vehicl"
