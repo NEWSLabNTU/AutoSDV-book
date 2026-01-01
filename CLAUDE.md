@@ -8,6 +8,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Clean: `make clean` - Removes the compiled HTML document
 - Extract Messages: `make extract-messages` - Extracts translatable messages to PO file
 
+## Development Practices
+
+### Temporary Files
+- **ALWAYS** create temporary files in the project's `tmp/` directory
+- **NEVER** use system `/tmp/` or shell heredoc (`cat << EOF`)
+- Use Write/Edit tools instead of bash commands for file operations
+- Example: `/home/aeon/repos/AutoSDV/2025.02/tmp/script_name.sh`
+
 ## GitHub Actions
 - The repository uses GitHub Actions to automatically deploy the book to GitHub Pages
 - Deployments are triggered on pushes to `main` or `2025.02` branches
@@ -27,9 +35,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Ensure all images are properly sized and optimized for web viewing
 
 ## Project Structure
-- Content files should be placed in the `src/` directory
-- Images should be placed in the `src/figures/` directory
+
+The documentation is organized into logical categories:
+
+```
+src/
+├── introduction.md                          # Main project introduction
+├── platform-models.md                       # Platform variants overview
+│
+├── getting-started/                         # For new users - setup and first run
+│   ├── overview.md                          # Getting Started overview
+│   ├── hardware-assembly.md                 # Physical vehicle assembly
+│   ├── software-installation.md             # Recommended installation path
+│   ├── docker-setup.md                      # Docker-based installation
+│   ├── manual-setup.md                      # Advanced/custom installation
+│   └── usage.md                             # Operating and launching the system
+│
+├── guides/                                  # Developer and contributor guides
+│   ├── development.md                       # Development guide overview
+│   ├── source-code.md                       # Repository structure walkthrough
+│   └── version-control.md                   # Git submodules workflow
+│
+├── reference/                               # Technical specifications and details
+│   ├── overview.md                          # Technical reference overview
+│   ├── hardware/                            # Hardware specifications
+│   │   ├── core-components.md               # Component specifications
+│   │   └── wiring-diagrams.md               # Electrical wiring diagrams
+│   ├── software/                            # Software architecture
+│   │   ├── sensor-components.md             # Sensor drivers
+│   │   ├── sensor-kit.md                    # Sensor kit configuration
+│   │   └── vehicle-interface.md             # Vehicle control interface
+│   └── networking/                          # Network and connectivity
+│       └── 5g-deployment.md                 # 5G/LTE deployment guide
+│
+└── figures/                                 # Images and diagrams
+```
+
+### File Organization Guidelines
+- Use kebab-case (lowercase with hyphens) for file and directory names
 - Update `src/SUMMARY.md` when adding new content files
+- Use relative paths for internal links (adjust based on file location depth)
 - Translation files are in `po/` directory (zh-TW.po for Traditional Chinese)
 - Translation scripts are in `scripts/` directory
 - Language-specific config: `book-zh-TW.toml` for Chinese version
