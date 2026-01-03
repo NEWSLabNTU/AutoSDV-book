@@ -3,10 +3,26 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
-- Build: `make build` - Compiles the HTML document using mdbook (both English and Chinese versions)
-- Serve: `make serve` - Starts a web server at http://127.0.0.1:3000 with the compiled book
-- Clean: `make clean` - Removes the compiled HTML document
-- Extract Messages: `make extract-messages` - Extracts translatable messages to PO file
+- Setup: `make setup` - Installs MkDocs and all dependencies
+- Build: `make build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
+- Serve: `make serve` - Starts development server at http://localhost:8000 with live reload
+- Clean: `make clean` - Removes all build outputs (site/ directory)
+- Check: `make check` - Verifies all dependencies are installed
+- Deploy: `make deploy` - Deploys to GitHub Pages
+
+## Framework: MkDocs with Material Theme
+
+This project uses **MkDocs** with the **Material for MkDocs** theme, following Autoware documentation conventions.
+
+**Key Features**:
+- ✅ Material Design theme
+- ✅ Multi-language support (English + 繁體中文)
+- ✅ Mermaid diagram support (built-in)
+- ✅ Math rendering (MathJax)
+- ✅ Code syntax highlighting
+- ✅ Search functionality
+- ✅ Mobile responsive
+- ✅ Dark/light mode
 
 ## Development Practices
 
@@ -57,23 +73,26 @@ src/
 │   ├── development.md                       # Development guide overview
 │   ├── source-code.md                       # Repository structure walkthrough
 │   ├── version-control.md                   # Git submodules workflow
-│   └── sensor-integration/                  # Sensor integration tutorials
-│       ├── overview.md                      # Sensor architecture concepts
-│       ├── quick-start.md                   # Using sensor suites
-│       ├── lidar-sensors.md                 # LiDAR integration tutorial
-│       ├── camera-sensors.md                # Camera integration tutorial
-│       ├── imu-sensors.md                   # IMU integration tutorial
-│       ├── gnss-sensors.md                  # GNSS integration tutorial
-│       ├── adding-new-sensor.md             # Step-by-step sensor integration guide
-│       └── troubleshooting.md               # Common sensor issues and solutions
+│   ├── sensor-integration/                  # Sensor integration tutorials
+│   │   ├── using-sensors.md                 # Simple usage guide (sensor suites, launch commands)
+│   │   ├── integration-walkthrough.md       # Learn by example (Robin-W LiDAR walkthrough)
+│   │   ├── lidar.md                         # LiDAR-specific configuration details
+│   │   ├── camera.md                        # Camera-specific configuration details
+│   │   ├── imu.md                           # IMU-specific configuration details
+│   │   ├── gnss.md                          # GNSS-specific configuration details
+│   │   ├── adding-sensor.md                 # Quick checklist for adding new sensors
+│   │   └── troubleshooting.md               # Common sensor issues and solutions
+│   └── vehicle-control/                     # Vehicle control chapter
+│       ├── overview.md                      # Architecture & dataflow
+│       ├── hardware.md                      # Hardware specifications & wiring
+│       ├── control-details.md               # Control algorithms & implementation
+│       └── tuning-and-testing.md            # Testing, tuning, calibration
 │
 ├── reference/                               # Technical specifications and details
 │   ├── overview.md                          # Technical reference overview
 │   ├── hardware/                            # Hardware specifications
 │   │   ├── core-components.md               # Component specifications
 │   │   └── wiring-diagrams.md               # Electrical wiring diagrams
-│   ├── software/                            # Software architecture
-│   │   └── vehicle-interface.md             # Vehicle control interface
 │   └── networking/                          # Network and connectivity
 │       └── 5g-deployment.md                 # 5G/LTE deployment guide
 │
@@ -88,121 +107,261 @@ src/
 - Translation scripts are in `scripts/` directory
 - Language-specific config: `book-zh-TW.toml` for Chinese version
 
-## Sensor Documentation Guidelines
+## Vehicle Control Documentation Guidelines
 
-The sensor integration guides follow a **tutorial-first philosophy**: teach users how to work with sensors through practical, step-by-step workflows rather than abstract specifications.
+The vehicle control guides follow a **logical organization**: overview → hardware → algorithms → practice.
 
 ### Documentation Philosophy
 
-**What vs. How:**
-- ❌ Old approach: "Here's what exists" (specifications, lists of components)
-- ✅ New approach: "Here's how to do it" (tutorials, workflows, examples)
+**Learning Path:**
+1. **Overview** - Understand system architecture and integration
+2. **Hardware** - Know the physical components and wiring
+3. **Control Details** - Learn how algorithms work
+4. **Tuning & Testing** - Apply knowledge in practice
 
-**Architecture Understanding:**
-All sensor guides should help users understand the **two-layer system**:
-1. **Sensor Component Layer** (`src/sensor_component/`) - Individual drivers
-2. **Sensor Kit Layer** (`src/sensor_kit/`) - Composition and integration
+**Key Principles:**
+- ✅ Safety first - Emphasize controller GUI over manual commands
+- ✅ Practical over theoretical - Show working procedures
+- ✅ Accurate implementation details - Based on actual README.md from source code
+- ✅ No duplication - Each concept appears in exactly one place
+- ❌ No dangerous examples - Never show `ros2 topic pub` for control commands
 
-### Content Structure for Each Sensor Type
+### Content Structure
 
-Every sensor guide (LiDAR, camera, IMU, GNSS) should follow this structure:
+The vehicle control documentation consists of four files:
+
+#### 1. overview.md (Architecture & Dataflow)
+- System architecture diagram
+- Software components (Actuator Node, Velocity Report Node)
+- Autoware integration (topics, control modes)
+- Safety features (watchdog, emergency stop)
+- Hardware summary table
+- **NO**: Hardware details, algorithm details, testing procedures
+
+**Purpose**: Understand the big picture and how components interact.
+
+#### 2. hardware.md (Hardware Details)
+- PCA9685 PWM driver (I2C, wiring, device detection)
+- Motor ESC (PWM mapping, power requirements)
+- Steering servo (PWM mapping, power requirements)
+- Hall effect sensor (KY-003, GPIO, magnet setup)
+- IMU sensor (role in steering feedback)
+- Complete wiring diagram and connection tables
+- **NO**: Control algorithms, testing procedures
+
+**Purpose**: Physical specifications and electrical connections.
+
+#### 3. control-details.md (Control Algorithms)
+- Multi-mode longitudinal controller (4 modes with detailed algorithms)
+- Dual-mode lateral controller (2 modes with detailed algorithms)
+- Velocity calculation from hall effect sensor
+- I2C communication protocol
+- Parameter descriptions
+- **Source**: Based on `autosdv_vehicle_interface/README.md`
+- **NO**: Testing procedures, tuning guidelines
+
+**Purpose**: Technical reference for understanding how control works.
+
+#### 4. tuning-and-testing.md (Practical Testing)
+- Quick test procedures with PlotJuggler
+- Manual control using controller GUI (safe)
+- Automated test scenarios using `control_test` package
+- PID tuning guidelines and effects
+- Calibration procedures (PWM, steering, hall effect sensor)
+- Plot interpretation
+- Troubleshooting
+- **Safety**: Always use controller GUI, never manual topic publishing
+- **NO**: Algorithm details, hardware wiring
+
+**Purpose**: Practical guide for testing, tuning, and calibrating.
+
+### Key Technical Details to Include
+
+**Longitudinal Control - Multi-Mode Controller**:
+- Emergency Brake Mode (target ≈ 0, measured > threshold)
+- Full Stop Mode (both ≈ 0)
+- Deadband Hold Mode (error < deadband)
+- Active Control Mode (PID with filtering, anti-windup, direction mapping)
+
+**Lateral Control - Dual-Mode Controller**:
+- Fallback Mode (v < 0.3 m/s): Open-loop feedforward
+- Normal Mode (v ≥ 0.3 m/s): Yaw rate feedback with Ackermann + PID
+
+**Hardware Details**:
+- PCA9685: I2C address 0x40, bus 1, 60 Hz PWM
+- Motor PWM: 280-460 (init 370, brake 340)
+- Steering PWM: 350-450 (init 400, max angle 0.349 rad)
+- Hall effect sensor: KY-003 on GPIO
+
+### Writing Style
+
+**Be Safe**:
+- Always warn against manual `ros2 topic pub` commands
+- Emphasize controller GUI (`make run-controller`)
+- Use `control_test` package for automated tests
+- Include safety warnings where appropriate
+
+**Be Accurate**:
+- Base technical details on actual README.md files
+- Don't guess at algorithm implementation
+- Include actual parameter values from config files
+- Reference specific file paths
+
+**Test Everything**:
+- Every procedure should be tested and working
+- Provide verification commands
+- Show expected output
+
+### Maintenance Guidelines
+
+When updating vehicle control documentation:
+
+1. **Check source code first**: Always verify implementation details in `autosdv_vehicle_interface/README.md`
+2. **Update appropriate file**:
+   - Architecture changes → `overview.md`
+   - Hardware changes (wiring, specs) → `hardware.md`
+   - Algorithm changes → `control-details.md`
+   - Testing/tuning changes → `tuning-and-testing.md`
+3. **Maintain safety warnings**: Never remove warnings about manual control (especially in tuning-and-testing.md)
+4. **Keep parameters current**: Check actual `.yaml` files for parameter values
+5. **No duplication**: Each concept should appear in exactly one file
+6. **Update cross-references**: If you move content, update links in other files
+
+## Sensor Documentation Guidelines
+
+The sensor integration guides follow a **simple-to-complex philosophy**: start with usage, learn through concrete examples, then explore sensor-specific details.
+
+### Documentation Philosophy
+
+**Learning Path:**
+1. **Start Simple** - Show users how to use sensors without technical details
+2. **Learn by Example** - Deep dive into one real sensor (Robin-W) to build understanding
+3. **Sensor Specifics** - Concise guides focusing on what's unique about each sensor
+
+**Before**: Abstract system → Generic integration → Sensor details
+**After**: Simple usage → Concrete example → Sensor specifics
+
+**Key Principles:**
+- ✅ Concise over comprehensive - Remove unnecessary detail
+- ✅ Practical over theoretical - Show working examples, not abstractions
+- ✅ Specific over generic - Focus on what's unique to each sensor
+- ❌ No repeated configuration patterns - Reference the walkthrough instead
+
+### Content Structure
+
+The sensor integration documentation consists of:
+
+#### 1. using-sensors.md (Start Simple)
+- Sensor suites table with launch commands
+- Quick verification steps (check topics, rates)
+- Common scenarios (outdoor RTK, indoor no-GPS, Isaac SLAM)
+- **NO**: File paths, configuration details, URDF/YAML examples
+
+**Purpose**: Get users running quickly without overwhelming detail.
+
+#### 2. integration-walkthrough.md (Learn by Example)
+- Complete walkthrough using Robin-W LiDAR as concrete example
+- Covers: hardware → driver → configuration → data flow
+- Explains coordinate transformation (why roll=180°, pitch=-90°)
+- Shows complete picture of sensor integration
+- **NO**: Generic templates or "add your own sensor" instructions
+
+**Purpose**: Build deep understanding through one real example.
+
+#### 3. Sensor-Specific Guides (lidar.md, camera.md, imu.md, gnss.md)
+Each guide should be **concise** and focus **only** on sensor-specific details:
 
 ```markdown
 # [Sensor Type] Sensors
 
-## Overview
-- What this sensor type does
-- Supported models (table with specs)
+## Supported Models
+[Table with key specs and config values]
 
-## [Specific Model Name]
+## [Model 1]
+### Network/Hardware Setup
+[IP addresses, connections, udev rules - sensor-specific only]
 
-### Hardware Setup
-- Physical mounting and connections
-- Power requirements
-- Network/communication configuration
+### Coordinate System
+[Transformation if non-standard, otherwise just note "standard ROS"]
 
 ### Driver Package
-- Location in repository
-- Key features and data format
-- Special considerations
+[Location, point format, special features]
 
-### Sensor Kit Integration
+### Test Standalone
+[Minimal verification commands]
 
-#### 1. Add to Description Package
-- Calibration YAML example
-- URDF/xacro entry
-- Coordinate frame explanation
+### [Special Configuration]
+[Only if sensor has unique features - e.g., ZED namespace workaround, RTK/NTRIP]
 
-#### 2. Add to Launch Configuration
-- Launch file location and example
-- Topic remapping
-- Parameters
+## [Model 2]
+[Repeat concisely]
 
-### Standalone Testing
-- How to test driver independently
-- Verification commands
-- RViz visualization
-
-### Advanced Configuration
-- Model-specific features
-- Performance tuning
-- Integration with other systems
-
-### Troubleshooting
-- Common issues for this specific sensor
-- Model-specific problems
-
-## [Next Model]
-[Repeat structure]
+## Quick Reference
+[Network tests, topic verification commands]
 ```
 
-### Tutorial Workflow Pattern
+**What to INCLUDE**:
+- Network addresses (e.g., Robin-W: 172.168.1.10)
+- Coordinate transformations if non-standard (e.g., Robin-W roll/pitch)
+- Driver-specific features (e.g., ZED composable node workaround, ZED IMU relay, u-blox RTK/NTRIP)
+- Hardware-specific setup (e.g., I2C for MPU9250, udev rules for u-blox)
 
-The **"Adding a New Sensor"** guide is the centerpiece. It demonstrates the complete workflow:
+**What to REMOVE**:
+- Generic URDF/launch/calibration templates (covered in walkthrough)
+- Repeated explanations of sensor kit integration
+- File path references to every configuration file
+- Long explanations of concepts (keep it concise)
 
-1. **Obtain driver** (vendor package, wrapper, or custom)
-2. **Standalone test** (verify driver works in isolation)
-3. **Add to description** (sensor_kit_calibration.yaml + sensor_kit.xacro)
-4. **Add to launch** (sensor kit launch files)
-5. **Configure parameters** (individual_params)
-6. **Integration test** (verify in full system)
-7. **Document** (update guides)
+#### 4. adding-sensor.md (Quick Checklist)
+- Simplified checklist with minimal examples
+- References integration-walkthrough.md for detailed understanding
+- Common issues section
+- **NO**: Full step-by-step tutorial (that's in the walkthrough)
 
-All sensor-specific guides should reference this workflow pattern.
+**Purpose**: Quick reference for experienced users.
 
 ### Writing Style
 
-**Be Specific:**
-- ❌ "Configure the sensor"
-- ✅ "Edit `sensor_kit_calibration.yaml` and add coordinates for `robin_lidar_link`"
+**Be Concise:**
+- Remove unnecessary detail - users can dive deeper if needed
+- ❌ "The sensor_kit_calibration.yaml file, located in the src/sensor_kit/autosdv_sensor_kit_description/config directory, contains..."
+- ✅ "Configuration: `sensor_kit_calibration.yaml`"
 
-**Show, Don't Tell:**
-- Include complete code snippets, not fragments
-- Provide exact file paths: `src/sensor_kit/autosdv_sensor_kit_launch/launch/lidar.launch.xml`
-- Use line numbers when referencing existing code: `lidar-sensors.md:342`
+**Be Specific When It Matters:**
+- ❌ "Configure the network"
+- ✅ "Robin-W IP: 172.168.1.10, Jetson IP: 172.168.1.100/24"
 
-**Explain Why:**
-- Don't just list steps - explain the purpose
-- Example: "The coordinate transformation (roll=180°, pitch=-90°) is needed because Robin-W uses non-standard coordinates (X=Up, Y=Right, Z=Forward) instead of ROS REP-103 (X=Forward, Y=Left, Z=Up)"
+**Show Working Examples:**
+- Include minimal working code snippets
+- Focus on sensor-specific values
+- Avoid boilerplate that applies to all sensors
+
+**Explain Why (For Unique Cases):**
+- Explain unusual configurations (e.g., Robin-W coordinate transform)
+- Skip explanations for standard patterns
+- Example: "Robin-W requires roll=180°, pitch=-90° because it uses X=up, Y=right, Z=forward instead of ROS standard"
 
 **Test Everything:**
 - Every code snippet should be tested and working
-- Include verification steps after each configuration change
-- Provide expected output examples
+- Provide verification commands
+- Show expected output
 
 ### Cross-References
 
-Create clear navigation between related topics:
+Create clear navigation between guides:
 
 ```markdown
-<!-- In quick-start.md -->
-For detailed ZED camera configuration, see [Camera Sensors](./camera-sensors.md#zed-x-mini-stereo-camera).
+<!-- In using-sensors.md -->
+Learn how sensors work: [Integration Walkthrough](./integration-walkthrough.md)
 
-<!-- In camera-sensors.md -->
-For a complete walkthrough of integrating a new camera, see [Adding a New Sensor](./adding-new-sensor.md).
+<!-- In integration-walkthrough.md -->
+For other sensors: [LiDAR](./lidar.md), [Camera](./camera.md), [IMU](./imu.md), [GNSS](./gnss.md)
 
-<!-- In troubleshooting.md -->
-If you're experiencing namespace issues with ZED camera, see the [Camera Sensors - Troubleshooting](./camera-sensors.md#troubleshooting) section.
+<!-- In lidar.md -->
+See [Integration Walkthrough](./integration-walkthrough.md) for complete integration example
+
+<!-- In adding-sensor.md -->
+Understand the system first: [Integration Walkthrough](./integration-walkthrough.md)
 ```
 
 ### Sensor-Specific Conventions
@@ -244,26 +403,27 @@ rviz2  # Add visualization config
 
 When updating sensor documentation:
 
-1. **Keep it DRY**: Don't duplicate content between sensor guides
-   - Common concepts → `overview.md`
-   - Sensor-specific details → individual sensor guides
+1. **Keep it DRY**: Don't duplicate content between guides
+   - Integration concepts → `integration-walkthrough.md` (Robin-W example)
+   - Sensor-specific details → individual sensor guides (`lidar.md`, `camera.md`, etc.)
+   - Usage patterns → `using-sensors.md`
    - General troubleshooting → `troubleshooting.md`
-   - Sensor-specific issues → sensor guide troubleshooting section
+   - **Never repeat**: URDF templates, launch patterns, calibration file structure
 
-2. **Update all related sections**:
-   - Sensor guide itself
-   - Quick-start guide (if adding new model to table)
-   - Adding-new-sensor guide (if pattern changes)
-   - Troubleshooting guide (if new common issue)
+2. **Update all related sections when adding a sensor**:
+   - Add to supported models table in `using-sensors.md`
+   - Create entry in relevant sensor guide (`lidar.md`, `camera.md`, etc.)
+   - Update `troubleshooting.md` if new common issues
+   - **Consider**: Using new sensor as walkthrough example if it's particularly interesting
 
 3. **Test before documenting**:
    - Verify all commands work on target hardware
-   - Confirm file paths are correct
-   - Check that code snippets compile/run
+   - Test verification commands show expected output
+   - Keep examples minimal but complete
 
 4. **Version awareness**:
-   - Note driver versions (e.g., "ZED SDK 5.1.2")
-   - Document compatibility requirements
+   - Note critical versions (e.g., "ZED SDK 5.1.2 required")
+   - Document compatibility requirements only when relevant
    - Update when dependencies change
 
 ### Images and Diagrams
@@ -312,33 +472,42 @@ Explain what each parameter does:
 
 ## Translation Workflow
 
-The book supports Traditional Chinese (zh-TW) translation using a **manual AI-based workflow** with context-aware translation.
+The documentation supports Traditional Chinese (zh-TW) translation using MkDocs i18n plugin.
 
-### Translation Commands
-```bash
-# Start new translation session (reset and split)
-./scripts/translate_workflow.sh start
+### Translation System
 
-# Check translation progress
-./scripts/translate_workflow.sh status
-
-# Merge translated chunks back
-./scripts/translate_workflow.sh merge
-
-# Build the book with translations
-./scripts/translate_workflow.sh build
-
-# Clean up translation workspace
-./scripts/translate_workflow.sh clean
+MkDocs uses **suffix-based i18n** where Chinese translations are stored in markdown files with `.zh-TW.md` suffix:
+```
+src/
+├── index.md              # English version
+├── index.zh-TW.md        # Chinese version
+├── introduction.md       # English
+├── introduction.zh-TW.md # Chinese
+└── ...
 ```
 
-### Translation Process
-1. **Split**: PO file is split into 20-entry chunks in `/tmp/po_chunks/`
-2. **Manual Translation**: AI translates each chunk with context awareness
-3. **Merge**: Translated chunks are merged back into `po/zh-TW.po`
-4. **Build**: Book is built with both English and Chinese versions
+### Creating Translations
+
+**Option 1: Manual Translation**
+1. Copy English file with `.zh-TW.md` suffix:
+   ```bash
+   cp src/introduction.md src/introduction.zh-TW.md
+   ```
+2. Translate content in the `.zh-TW.md` file
+3. Rebuild: `make build`
+
+**Option 2: Automated (Recommended)**
+Use the existing translation scripts (adapted for MkDocs):
+```bash
+# Convert existing PO translations to MkDocs format
+python3 scripts/po_to_mkdocs.py
+
+# Build with translations
+make build
+```
 
 ### Translation Guidelines
+
 **DO Translate:**
 - UI text, navigation elements, descriptions
 - Error messages and warnings
@@ -354,88 +523,24 @@ The book supports Traditional Chinese (zh-TW) translation using a **manual AI-ba
 - Use Taiwanese Traditional Chinese (繁體中文)
 - Keep technical terms in English unless well-established Chinese term exists
 - Maintain consistent terminology throughout
-- Examples of consistent terms:
-  - 感測器 (sensors)
-  - 驅動程式 (drivers)
-  - 車輛介面 (vehicle interface)
-  - 映像檔 (image file)
-  - 套件 (package)
-  - 環景光達 (360° LiDAR)
-  - 固態光達 (solid-state LiDAR)
-  - 原始碼說明 (source code walkthrough)
-  - 配線 (wiring)
-  - 最佳化 (optimization)
 
-**Taiwan-Specific Guidelines:**
-- Use 固態光達型 instead of just 固態式 for clarity
-- Use 環景光達 for 360° LiDAR instead of 360° 光達
-- Translate Figure N. as 圖 N.
-- Never use simplified Chinese characters (e.g., use 燒錄 not 烧錄)
-- Keep parameter names in English (e.g., vehicle_model, not 車輛_模型)
-- Don't translate file paths (e.g., keep AutoSDV/src/vehicle/ as is)
-- Use Taiwan terminology (e.g., 程式 not 程序, 檔案 not 文件 for files)
+**Common Terms:**
+- 感測器 (sensors), 驅動程式 (drivers), 車輛介面 (vehicle interface)
+- 套件 (package), 環景光達 (360° LiDAR), 固態光達 (solid-state LiDAR)
+- 原始碼說明 (source code walkthrough), 配線 (wiring)
 
-**Sensor-Specific Translation Terms:**
-- Sensor component/driver: 感測器驅動程式
-- Sensor kit: 感測器套件
-- Calibration: 校準
-- Coordinate frame: 座標系
-- Point cloud: 點雲
-- Topic remapping: 主題重新映射
-- Launch file: 啟動檔案
-- ROS package: ROS 套件
-- TF (transform): 座標轉換
-- URDF (keep acronym): URDF
-- IMU: 慣性測量單元 or IMU (both acceptable)
-- GNSS: 全球導航衛星系統 or GNSS (both acceptable)
-- LiDAR (keep term): LiDAR
-- Stereo camera: 立體相機
-- RTK: 即時動態定位 or RTK (both acceptable)
+### Nav Translations
 
-### Translation Scripts
-- `translate_workflow.sh` - Main workflow orchestrator
-- `split_for_manual_translation.py` - Splits PO file into chunks
-- `merge_manual_translations.py` - Merges translated chunks
-- `fix_po_formatting.py` - Fixes PO file formatting issues
-- `fix_newline_mismatches.py` - Fixes newline mismatches between msgid and msgstr
-- `comprehensive_retranslate.py` - Fixes common translation issues and typos
-- `fix_partial_translations.py` - Fixes search-and-replace style partial translations
-- `comprehensive_fix.py` - Applies comprehensive fixes to translations
-- `taiwan_localization_fix.py` - Applies Taiwan-specific localization fixes
+Navigation titles are translated in `mkdocs.yml` under the `i18n.languages.zh-TW.nav_translations` section. Update this section when adding new pages.
 
 ### Configuration
-- Main book config: `book.toml` (English)
-- Chinese book config: `book-zh-TW.toml`
-  - Sets `language = "zh-TW"`
-  - Sets `title = "AutoSDV 使用手冊"`
-  - References `po-file = "po/zh-TW.po"`
+
+- Main config: `mkdocs.yml`
+- Language settings: `plugins.i18n.languages` section
+- Navigation translations: `plugins.i18n.languages.zh-TW.nav_translations`
 
 ### Important Notes
-- Chunks are temporary and stored in `/tmp/po_chunks/`
-- Always validate PO file after merging: `msgfmt --check po/zh-TW.po`
-- The workflow uses context-aware translation, NOT search-and-replace
-- Each chunk should be translated manually with understanding of context
 
-### Common Translation Issues and Fixes
-When reviewing translations, check for:
-1. **Partial translations**: Mixed English/Chinese in sentences
-2. **Typos**: e.g., 產產 should be 生產
-3. **Simplified Chinese**: Should be Traditional Chinese only
-4. **Path translations**: File paths should remain in English
-5. **Parameter translations**: Launch parameters should stay in English
-6. **Newline mismatches**: msgid and msgstr should have matching newlines
-
-To fix issues comprehensively:
-```bash
-# Fix Taiwan-specific localization issues
-python3 scripts/taiwan_localization_fix.py
-
-# Fix newline mismatches if validation fails
-python3 scripts/fix_newline_mismatches.py po/zh-TW.po
-
-# Validate the PO file
-msgfmt --check po/zh-TW.po
-
-# Rebuild the book
-./scripts/translate_workflow.sh build
-```
+- Chinese files must have `.zh-TW.md` suffix
+- Both language versions are built into `site/` directory
+- Access via `http://localhost:8000/en/` (English) or `http://localhost:8000/zh-TW/` (Chinese)
