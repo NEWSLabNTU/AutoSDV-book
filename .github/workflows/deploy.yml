@@ -1,91 +1,71 @@
-name: Deploy mdBook to GitHub Pages and Update Website
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-      - 2025.02
-  pull_request:
-    branches:
-      - main
+    tags:
+      - 'book-v*'        # Book versions: book-v1.0.0, book-v1.1.0, book-v2.0.0
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          mdbook-version: 'latest'
+          python-version: '3.10'
+          cache: 'pip'
 
-      - name: Install mdbook-i18n-helpers
+      - name: Install dependencies
         run: |
-          cargo install mdbook-i18n-helpers --locked
+          pip install -r requirements.txt
 
-      - name: Build English version
-        run: mdbook build
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
 
-      # - name: Build Chinese version (if translations exist)
-      #   run: |
-      #     if [ -f "po/zh-TW.po" ]; then
-      #       echo "Building Chinese version..."
-      #       MDBOOK_BOOK__LANGUAGE="zh-TW" mdbook build -d book-zh-TW --dest-dir book-zh-TW
-      #
-      #       # Combine builds
-      #       mkdir -p book/zh-TW
-      #       cp -r book-zh-TW/* book/zh-TW/
-      #
-      #       # Add language selector page
-      #       cat > book/index-select.html << 'EOF'
-      #       <!DOCTYPE html>
-      #       <html>
-      #       <head>
-      #           <meta charset="UTF-8">
-      #           <title>AutoSDV Book</title>
-      #           <script>
-      #               var userLang = navigator.language || navigator.userLanguage;
-      #               if (userLang.startsWith('zh')) {
-      #                   window.location.href = './zh-TW/index.html';
-      #               } else {
-      #                   window.location.href = './index.html';
-      #               }
-      #           </script>
-      #       </head>
-      #       <body>
-      #           <p>Redirecting... | 正在重定向...</p>
-      #           <ul>
-      #               <li><a href="./index.html">English</a></li>
-      #               <li><a href="./zh-TW/index.html">繁體中文</a></li>
-      #           </ul>
-      #       </body>
-      #       </html>
-      #     EOF
-      #     else
-      #       echo "No Chinese translations found, skipping Chinese build"
-      #     fi
+      - name: Build documentation
+        run: |
+          mkdocs build --strict
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/2025.02'
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
-          force_orphan: true  # Use a single-commit history for the gh-pages branch
+          publish_dir: ./site
+          force_orphan: true
+          enable_jekyll: false
+          cname: false
+
+      - name: Create deployment summary
+        run: |
+          echo "### Documentation Deployed ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Published to**: GitHub Pages" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: https://newslabNTU.github.io/AutoSDV-book/" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Both English and Chinese (繁體中文) versions have been built and deployed." >> $GITHUB_STEP_SUMMARY
 
   update-website:
     needs: deploy
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/2025.02'
+
     steps:
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.7.0
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.AUTOSDV_BOOK_DEPLOY_KEY }}
 
       - name: Checkout website repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: NEWSLabNTU/NEWSLabNTU.github.io
           ssh-key: ${{ secrets.AUTOSDV_BOOK_DEPLOY_KEY }}
@@ -106,5 +86,12 @@ jobs:
 
           # Commit and push the submodule update
           git add autosdv-book
-          git commit -m "Update autosdv-book submodule to latest version"
+          git commit -m "Update autosdv-book submodule to ${{ github.ref_name }}" || echo "No changes to commit"
           git push
+
+      - name: Update summary
+        run: |
+          echo "### Website Updated ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Main website submodule updated to**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Website**: https://NEWSLabNTU.github.io/" >> $GITHUB_STEP_SUMMARY

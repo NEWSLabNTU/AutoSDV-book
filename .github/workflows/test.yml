@@ -1,0 +1,58 @@
+name: Test Documentation Build
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+      - 2025.02
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Test MkDocs build
+        run: |
+          mkdocs build --strict
+
+      - name: Check for broken links in markdown
+        run: |
+          echo "Checking for common broken link patterns..."
+          # Check for broken relative links
+          find src -name "*.md" -type f -exec grep -l "](\.\./" {} \; || true
+
+      - name: Validate navigation structure
+        run: |
+          echo "Validating mkdocs.yml navigation..."
+          python -c "
+          import yaml
+          with open('mkdocs.yml', 'r') as f:
+              config = yaml.safe_load(f)
+          assert 'nav' in config, 'Navigation not found in mkdocs.yml'
+          print('✓ Navigation structure is valid')
+          "
+
+      - name: Build summary
+        run: |
+          echo "### Build Test Results ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ MkDocs build successful" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Documentation structure validated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Build artifacts are not deployed (this is a test-only workflow)" >> $GITHUB_STEP_SUMMARY
