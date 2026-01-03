@@ -26,11 +26,14 @@
   - [GNSS Sensors](./guides/sensor-integration/gnss.md)
   - [Adding a Sensor](./guides/sensor-integration/adding-sensor.md)
   - [Troubleshooting](./guides/sensor-integration/troubleshooting.md)
+- [Vehicle Control](./guides/vehicle-control/overview.md)
+  - [Hardware](./guides/vehicle-control/hardware.md)
+  - [Control Details](./guides/vehicle-control/control-details.md)
+  - [Tuning & Testing](./guides/vehicle-control/tuning-and-testing.md)
 
 # Technical Reference
 
 - [Overview](./reference/overview.md)
   - [Core Components](./reference/hardware/core-components.md)
   - [Wiring Diagrams](./reference/hardware/wiring-diagrams.md)
-  - [Vehicle Interface](./reference/software/vehicle-interface.md)
   - [5G/LTE Deployment](./reference/networking/5g-deployment.md)
