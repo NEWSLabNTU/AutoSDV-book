@@ -330,6 +330,6 @@ pipeline {
 ## Next Steps
 
 - [Software Installation](./overview.md) - Native installation guide
-- [Usage Guide](./usage.md) - Operating AutoSDV
-- [Development Guide](../guides/development.md) - Development workflows
+- [Usage Guide](../usage.md) - Operating AutoSDV
+- [Development Guide](../../guides/development.md) - Development workflows
 - [Manual Setup](./manual-environment.md) - Customization options

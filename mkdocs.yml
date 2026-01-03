@@ -1,0 +1,219 @@
+site_name: AutoSDV Documentation
+site_url: https://NEWSLabNTU.github.io/AutoSDV-book/
+repo_url: https://github.com/NEWSLabNTU/AutoSDV-book
+repo_name: NEWSLabNTU/AutoSDV-book
+edit_uri: edit/main/src/
+docs_dir: src
+site_dir: site
+copyright: Copyright &copy; 2024-2026 AutoSDV Project
+
+theme:
+  name: material
+  language: en
+  favicon: assets/images/autosdv-logo.png
+  icon:
+    logo: fontawesome/solid/car
+    repo: fontawesome/brands/github
+  palette:
+    # Light mode
+    - scheme: default
+      primary: white
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: grey
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
+    - toc.follow
+
+extra:
+  font:
+    text: Roboto
+    code: Roboto Mono
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/NEWSLabNTU/AutoSDV-book
+  generator: false
+
+extra_css:
+  - assets/css/extra.css
+  - https://use.fontawesome.com/releases/v7.1.0/css/all.css
+
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - awesome-pages
+  - exclude:
+      regex:
+        - ^(?!(.*/)?assets/).*\.(?!(.*\.)?md|(.*\.)?svg|(.*\.)?png|(.*\.)?gif|(.*\.)?jpg|(.*\.)?webp).*$
+        - ^(.*/)?[^.]*$
+  - macros
+  - mkdocs-video
+  - same-dir
+  - search:
+      separator: '[\s\-_,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh-TW
+          name: 繁體中文
+          build: true
+          nav_translations:
+            Get Started: 快速入門
+            Vehicle Build Variants: 車輛組裝變體
+            Hardware Setup: 硬體設定
+            Software Installation: 軟體安裝
+            Recommended Installation: 推薦安裝方式
+            Manual Environment Setup (Optional): 手動環境設定（選配）
+            Docker Setup (Optional): Docker 設定（選配）
+            ZED SDK Installation: ZED SDK 安裝
+            Operating the Vehicle: 操作車輛
+            Guides: 指南
+            Development Guide: 開發指南
+            Source Code Walkthrough: 原始碼說明
+            Version Control: 版本控制
+            Sensor Integration: 感測器整合
+            Integration Walkthrough: 整合範例
+            LiDAR Sensors: LiDAR 感測器
+            Camera Sensors: 相機感測器
+            IMU Sensors: IMU 感測器
+            GNSS Sensors: GNSS 感測器
+            Adding a Sensor: 新增感測器
+            Troubleshooting: 疑難排解
+            Vehicle Control: 車輛控制
+            Hardware: 硬體
+            Control Details: 控制細節
+            Tuning & Testing: 調校與測試
+            Technical Reference: 技術參考
+            Core Components: 核心組件
+            Wiring Diagrams: 配線圖
+            5G/LTE Deployment: 5G/LTE 部署
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+
+  # Code highlighting
+  - codehilite:
+      guess_lang: false
+
+  # Math
+  - mdx_math
+
+  # Lists
+  - mdx_truly_sane_lists:
+      nested_indent: 2
+
+  # PlantUML
+  - plantuml_markdown:
+      server: http://www.plantuml.com/plantuml
+      format: svg
+
+  # PyMdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Get Started:
+    - index.md
+    - Vehicle Build Variants: platform-models.md
+    - Hardware Setup: getting-started/hardware-assembly.md
+    - Software Installation:
+      - Recommended Installation: getting-started/installation/overview.md
+      - Manual Environment Setup (Optional): getting-started/installation/manual-environment.md
+      - Docker Setup (Optional): getting-started/installation/docker.md
+      - ZED SDK Installation: getting-started/installation/zed-sdk.md
+    - Operating the Vehicle: getting-started/usage.md
+  - Guides:
+    - Development Guide: guides/development.md
+    - Source Code Walkthrough: guides/source-code.md
+    - Version Control: guides/version-control.md
+    - Sensor Integration:
+      - Using Sensors: guides/sensor-integration/using-sensors.md
+      - Integration Walkthrough: guides/sensor-integration/integration-walkthrough.md
+      - LiDAR Sensors: guides/sensor-integration/lidar.md
+      - Camera Sensors: guides/sensor-integration/camera.md
+      - IMU Sensors: guides/sensor-integration/imu.md
+      - GNSS Sensors: guides/sensor-integration/gnss.md
+      - Adding a Sensor: guides/sensor-integration/adding-sensor.md
+      - Troubleshooting: guides/sensor-integration/troubleshooting.md
+    - Vehicle Control:
+      - Overview: guides/vehicle-control/overview.md
+      - Hardware: guides/vehicle-control/hardware.md
+      - Control Details: guides/vehicle-control/control-details.md
+      - Tuning & Testing: guides/vehicle-control/tuning-and-testing.md
+  - Technical Reference:
+    - Overview: reference/overview.md
+    - Hardware:
+      - Core Components: reference/hardware/core-components.md
+      - Wiring Diagrams: reference/hardware/wiring-diagrams.md
+    - Networking:
+      - 5G/LTE Deployment: reference/networking/5g-deployment.md

@@ -27,7 +27,7 @@ The vehicle has three major layers shown in the Figure 1 from top to bottom.
 By using this vehicle, additional sensors and 5G mounts go to the <span style="color: Yellow">yellow</span> layer, which power supply comes from the <span style="color: Red">red</span> layer. The motors have a separate battery and power supply in the <span style="color: DodgerBlue">blue</span> layer due to distinct voltage requirements.
 
 <figure style="width: 80%; text-align: center;">
-	<img src="./figures/vehicle_parts.jpg" alt="Vehicle parts.">
+	<img src="../../figures/vehicle_parts.jpg" alt="Vehicle parts.">
 	<figcaption>Figure 1. Vehicle components from top to bottom: onboard computer, power supply and powertrain.</figcaption>
 </figure>
 
@@ -40,17 +40,17 @@ There are two batteries for the respective two power supplies, namely the *upper
 Both batteries have a yellow XT60 power plug and a white JST-XH connector as shown in Figure 3. The JST-XH connector is plugged to a voltage monitor in Figure 4. It beeps when the voltage becomes low.
 
 <figure style="width: 80%; text-align: center; margin: auto;">
-	<img src="./figures/lipo_batteries.webp" alt="Lithium polymer battery examples.">
+	<img src="../../figures/lipo_batteries.webp" alt="Lithium polymer battery examples.">
 	<figcaption>Figure 2. Lithium polymer battery examples.</figcaption>
 </figure>
 
 <figure style="width: 50%; text-align: center; margin: auto;">
-	<img src="./figures/battery_connectors.webp" alt="Battery connectors.">
+	<img src="../../figures/battery_connectors.webp" alt="Battery connectors.">
 	<figcaption>Figure 3. Battery XT60 and JST-XH connector.</figcaption>
 </figure>
 
 <figure style="width: 40%; text-align: center; margin: auto;">
-	<img src="./figures/voltage_monitor.webp" alt="Battery voltage monitor.">
+	<img src="../../figures/voltage_monitor.webp" alt="Battery voltage monitor.">
 	<figcaption>Figure 4. Battery voltage monitor.</figcaption>
 </figure>
 
@@ -61,13 +61,13 @@ The upper power start up process is shown in Figure 4. First, install the batter
 Please be cautious that the power switch must be turned off before installing or removing the battery. It's necessary to protect the system from voltage spikes.
 
 <figure style="width: 80%; text-align: center; margin: auto;">
-	<img src="./figures/battery_installation_steps.jpg" alt="Upper power start up procedure.">
+	<img src="../../figures/battery_installation_steps.jpg" alt="Upper power start up procedure.">
 	<figcaption>Figure 4. Upper power start up procedure.</figcaption>
 </figure>
 
 
 <figure style="width: 80%; text-align: center; margin: auto;">
-	<img src="./figures/upper_power_switch_with_arrow.jpg" alt="Turn on power switch">
+	<img src="../../figures/upper_power_switch_with_arrow.jpg" alt="Turn on power switch">
 	<figcaption>Figure 5. Turn on upper power switch.</figcaption>
 </figure>
 
@@ -76,7 +76,7 @@ Please be cautious that the power switch must be turned off before installing or
 The lower power start up process is shown in Figure 6. The battery is installed in the dock in the bottom layer of the vehicle (1). Then, switch on the power (2).
 
 <figure style="width: 60%; text-align: center; margin: auto;">
-	<img src="./figures/lower_power_installation.webp" alt="Lower power start up procedure">
+	<img src="../../figures/lower_power_installation.webp" alt="Lower power start up procedure">
 	<figcaption>Figure 6. Lower power start up procedure</figcaption>
 </figure>
 
@@ -89,10 +89,10 @@ The vehicle has three docks to mount your favorite sensors. The figure below sho
   <tbody>
     <tr>
       <td align="center" valign="bottom">
-        <img src="figures/sensor_mounts-1.webp" alt="Sensor mounts example 1" width="80%"/>
+        <img src="../../figures/sensor_mounts-1.webp" alt="Sensor mounts example 1" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/sensor_mounts-2.webp" alt="Sensor mounts example 2" width="80%"/>
+        <img src="../../figures/sensor_mounts-2.webp" alt="Sensor mounts example 2" width="80%"/>
       </td>
     </tr>
   </tbody>
@@ -113,13 +113,13 @@ The details of two builds are described in the table below.
     <tr>
       <td align="center" valign="middle" rowspan="2">1</td>
       <td align="center" valign="bottom">
-        <img src="figures/front_dock-1.webp" alt="Front dock example 1" width="80%"/>
+        <img src="../../figures/front_dock-1.webp" alt="Front dock example 1" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/top_dock-1.webp" alt="Top dock example 1" width="80%"/>
+        <img src="../../figures/top_dock-1.webp" alt="Top dock example 1" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/rear_dock-1.webp" alt="Rear dock example 1" width="80%"/>
+        <img src="../../figures/rear_dock-1.webp" alt="Rear dock example 1" width="80%"/>
       </td>
     </tr>
     <tr>
@@ -130,13 +130,13 @@ The details of two builds are described in the table below.
     <tr>
       <td align="center" valign="middle" rowspan="2">2</td>
       <td align="center" valign="bottom">
-        <img src="figures/front_dock-2.webp" alt="Front dock example 2" width="80%"/>
+        <img src="../../figures/front_dock-2.webp" alt="Front dock example 2" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/top_dock-2.webp" alt="Top dock example 2" width="80%"/>
+        <img src="../../figures/top_dock-2.webp" alt="Top dock example 2" width="80%"/>
       </td>
       <td align="center" valign="bottom">
-        <img src="figures/rear_dock-2.webp" alt="Rear dock example 2" width="80%"/>
+        <img src="../../figures/rear_dock-2.webp" alt="Rear dock example 2" width="80%"/>
       </td>
     </tr>
     <tr>
@@ -149,4 +149,4 @@ The details of two builds are described in the table below.
 
 ## Components and Wiring
 
-The vehicle incorporates essential components such as the chassis, body, onboard computer, among others, along with additional LiDARs and a 5G communication module. For detailed information on these elements and their wiring, please refer to the comprehensive guide in [Hardware and Wiring](hardware_and_wiring.md).
+The vehicle incorporates essential components such as the chassis, body, onboard computer, among others, along with additional LiDARs and a 5G communication module. For detailed information on these elements and their wiring, please refer to the comprehensive guide in [Wiring Diagrams](../reference/hardware/wiring-diagrams.md).

@@ -20,7 +20,7 @@
 ## Base Model
 
 <figure style="width: 50%; text-align: center; margin: auto;">
-	<img src="./figures/vehicle_side_1.png" alt="Base Model">
+	<img src="../figures/vehicle_side_1.png" alt="Base Model">
 	<figcaption>AutoSDV base platform ready for customization</figcaption>
 </figure>
 
@@ -59,7 +59,7 @@ The core AutoSDV platform with compute, vision, and control capabilities. Ideal 
 ## 360° LiDAR Model
 
 <figure style="width: 50%; text-align: center; margin: auto;">
-	<img src="./figures/model_velodyne_32c.webp" alt="360° LiDAR Model">
+	<img src="../figures/model_velodyne_32c.webp" alt="360° LiDAR Model">
 	<figcaption>AutoSDV with Velodyne VLP-32C 360° LiDAR</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ Production-ready configuration with proven Autoware integration. Features full N
 ## Solid-State Model
 
 <figure style="width: 50%; text-align: center; margin: auto;">
-	<img src="./figures/model_robin-w.webp" alt="Solid-State Model">
+	<img src="../figures/model_robin-w.webp" alt="Solid-State Model">
 	<figcaption>AutoSDV with Seyond Robin-W solid-state LiDAR</figcaption>
 </figure>
 
@@ -113,7 +113,7 @@ Modern solid-state LiDAR platform with high point density. Localization features
 ## Connected Model
 
 <figure style="width: 50%; text-align: center; margin: auto;">
-	<img src="./figures/model_cube1_moxa-5g.webp" alt="Connected Model">
+	<img src="../figures/model_cube1_moxa-5g.webp" alt="Connected Model">
 	<figcaption>AutoSDV with a solid-state LiDAR and a 5G gateway</figcaption>
 </figure>
 

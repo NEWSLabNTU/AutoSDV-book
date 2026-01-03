@@ -5,17 +5,10 @@
 *.swo
 \#*#
 
-# mdbook
-/book/
+# mkdocs build artifacts
+/site/
+/.cache/
 
-# mdbook-i18n-helpers artifacts
-/translation_workspace/
-/po/*.mo
-/po/*.pot.bak
-/po/.*.po.swp
-/po/*.po~
-/po/*.po.backup
+# temporary files
 /tmp/
 /temp/
-messages.mo
-*.mo

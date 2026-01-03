@@ -10,7 +10,7 @@ This section provides detailed technical specifications, wiring diagrams, and co
 
 ### Advanced Topics
 - [5G/LTE Deployment](./networking/5g-deployment.md) - Detailed guide for cellular connectivity setup
-- [Sensor Integration](../guides/sensor-integration/overview.md) - Complete sensor integration guides
+- [Sensor Integration](../guides/sensor-integration/using-sensors.md) - Complete sensor integration guides
 - [Vehicle Interface](./software/vehicle-interface.md) - CAN bus and actuator control
 
 ## Quick Reference Tables

@@ -188,7 +188,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
    <remap from="/sensor/points" to="/sensing/lidar/sensor/points_raw"/>
    ```
 
-3. **For ZED camera namespace issues**: Use composable node loading (see [Camera Sensors Guide](./camera-sensors.md#critical-namespace-handling))
+3. **For ZED camera namespace issues**: Use composable node loading (see [Camera Sensors Guide](./camera.md#critical-namespace-handling))
 
 ---
 
@@ -314,7 +314,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 
 **Solution**: Check coordinate frame rotation (especially Robin-W, which requires roll=180°, pitch=-90°)
 
-See [LiDAR Sensors - Coordinate Transformation](./lidar-sensors.md#coordinate-transformation)
+See [LiDAR Sensors - Coordinate Transformation](./lidar.md#coordinate-transformation)
 
 ---
 
@@ -374,7 +374,7 @@ vglrun rviz2
 
 **Solution**: Use composable node loading instead of Python launch file
 
-See [Camera Sensors - Namespace Handling](./camera-sensors.md#critical-namespace-handling)
+See [Camera Sensors - Namespace Handling](./camera.md#critical-namespace-handling)
 
 ---
 
@@ -413,7 +413,7 @@ See [Camera Sensors - Namespace Handling](./camera-sensors.md#critical-namespace
 **Symptoms**: Large fluctuations, unstable orientation
 
 **Solutions**:
-1. **Calibrate IMU**: See [IMU Sensors - Calibration](./imu-sensors.md#calibration)
+1. **Calibrate IMU**: See [IMU Sensors - Calibration](./imu.md#calibration)
 2. **Secure mounting**: Minimize vibration
 3. **Add software filtering**: Low-pass filter in driver config
 
@@ -646,11 +646,11 @@ du -sh *
 ## Related Guides
 
 For sensor-specific troubleshooting, see:
-- [LiDAR Sensors](./lidar-sensors.md) - Robin-W, Velodyne, Blickfeld issues
-- [Camera Sensors](./camera-sensors.md) - ZED camera troubleshooting
-- [IMU Sensors](./imu-sensors.md) - MPU9250 and ZED IMU issues
-- [GNSS Sensors](./gnss-sensors.md) - GNSS and RTK troubleshooting
+- [LiDAR Sensors](./lidar.md) - Robin-W, Velodyne, Blickfeld issues
+- [Camera Sensors](./camera.md) - ZED camera troubleshooting
+- [IMU Sensors](./imu.md) - MPU9250 and ZED IMU issues
+- [GNSS Sensors](./gnss.md) - GNSS and RTK troubleshooting
 
 For integration help:
-- [Adding a New Sensor](./adding-new-sensor.md) - Step-by-step integration guide
-- [Overview](./overview.md) - Architecture and concepts
+- [Adding a New Sensor](./adding-sensor.md) - Step-by-step integration guide
+- [Using Sensors](./using-sensors.md) - Getting started with sensors

@@ -10,12 +10,12 @@ Figure 1 shows an example setup of the private 5G infrastructure outdoors based 
 3. MOXA 5G cellular gateway installed on the vehicle top (Figure 2)
 
 <figure style="width: 80%; text-align: center; margin: auto;">
-	<img src="./figures/5G_setup_example.webp" alt="5G core network and antenna setup example">
+	<img src="../../../figures/5G_setup_example.webp" alt="5G core network and antenna setup example">
 	<figcaption>Figure 1. 5G core network and antenna setup example.</figcaption>
 </figure>
 
 <figure style="width: 40%; text-align: center; margin: auto;">
-	<img src="./figures/vehicle_top_mount.jpg" alt="5G cellular gateway installation">
+	<img src="../../../figures/vehicle_top_mount.jpg" alt="5G cellular gateway installation">
 	<figcaption>Figure 2. 5G cellular gateway installation example.</figcaption>
 </figure>
 
@@ -26,6 +26,6 @@ When setting up 5G equipment, there are several points to consider. First, the 5
 ## Network Architecture
 
 <figure style="width: 100%; text-align: center; margin: auto;">
-	<img src="./figures/5G_network_architecture.png" alt="5G network architecture">
+	<img src="../../../figures/5G_network_architecture.png" alt="5G network architecture">
 	<figcaption>Figure 3. Ataya 5G network architecture (example)</figcaption>
 </figure>
