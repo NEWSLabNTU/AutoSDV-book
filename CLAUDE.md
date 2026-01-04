@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 - Setup: `make setup` - Installs MkDocs and all dependencies
 - Build: `make build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
-- Serve: `make serve` - Starts development server at http://localhost:8000 with live reload
+- Serve: `make serve` - Starts development server at http://0.0.0.0:3000 with live reload
 - Clean: `make clean` - Removes all build outputs (site/ directory)
 - Check: `make check` - Verifies all dependencies are installed
-- Deploy: `make deploy` - Deploys to GitHub Pages
+- Deploy: `make deploy` - Deploys to GitHub Pages (manual deployment)
 
 ## Framework: MkDocs with Material Theme
 
@@ -33,21 +33,48 @@ This project uses **MkDocs** with the **Material for MkDocs** theme, following A
 - Example: `/home/aeon/repos/AutoSDV/2025.02/tmp/script_name.sh`
 
 ## GitHub Actions
-- The repository uses GitHub Actions to automatically deploy the book to GitHub Pages
-- Deployments are triggered on pushes to `main` or `2025.02` branches
-- The deploy workflow also updates the NEWSLabNTU.github.io website repository's submodule
-- The workflow is defined in `.github/workflows/deploy.yml`
-- A deploy key named `AUTOSDV_BOOK_DEPLOY_KEY` must be added to repository secrets
-- No manual deployment is needed - just push changes to the repository
+
+The repository uses two GitHub Actions workflows:
+
+### 1. Test Workflow (`.github/workflows/test.yml`)
+- **Triggers**: On every commit to any branch and on pull requests
+- **Purpose**: Continuous Integration - audits and tests documentation builds
+- **Actions**:
+  - Builds documentation with `mkdocs build --strict`
+  - Checks for broken links
+  - Validates navigation structure
+  - Does NOT deploy (test-only)
+
+### 2. Deploy Workflow (`.github/workflows/deploy.yml`)
+- **Triggers**: Only when tags matching `book-v*` are pushed (e.g., `book-v1.0.0`)
+- **Purpose**: Production deployment to GitHub Pages
+- **Actions**:
+  - Builds documentation
+  - Deploys to `gh-pages` branch
+  - Updates NEWSLabNTU.github.io website repository's submodule
+- **Required Secret**: `AUTOSDV_BOOK_DEPLOY_KEY` (SSH deploy key)
+
+### Creating a Release
+To deploy documentation:
+```bash
+# Create and push a tag
+git tag -a book-v1.0.0 -m "Documentation v1.0.0"
+git push origin book-v1.0.0
+```
+
+**Tag Format**: Use `book-v<semver>` (e.g., `book-v1.0.0`, `book-v1.1.0`, `book-v2.0.0`)
+- MAJOR: Breaking changes, navigation overhaul
+- MINOR: New content sections, significant updates
+- PATCH: Bug fixes, typo corrections
 
 ## Style Guidelines
 - Use consistent Markdown formatting in `.md` files
 - Include alt text for all images in the `src/figures` directory
-- Organize new content in appropriate sections in the `SUMMARY.md` file
+- Add new pages to the `nav:` section in `mkdocs.yml`
 - Use relative links for internal references between pages
 - Maintain a clear, instructional tone consistent with existing documentation
 - For code examples, use proper syntax highlighting with triple backticks and language identifier
-- Keep file and directory names lowercase with underscores for spaces
+- Keep file and directory names lowercase with hyphens (kebab-case)
 - Ensure all images are properly sized and optimized for web viewing
 
 ## Project Structure
@@ -56,17 +83,16 @@ The documentation is organized into logical categories:
 
 ```
 src/
-├── introduction.md                          # Main project introduction
-├── platform-models.md                       # Platform variants overview
+├── index.md                                 # Home page (includes Getting Started overview)
+├── platform-models.md                       # Vehicle build variants
 │
 ├── getting-started/                         # For new users - setup and first run
-│   ├── overview.md                          # Getting Started overview
-│   ├── hardware-assembly.md                 # Physical vehicle assembly
+│   ├── hardware-assembly.md                 # Hardware setup and usage
 │   ├── installation/                        # Software installation guides
-│   │   ├── overview.md                      # Installation overview
+│   │   ├── overview.md                      # Recommended installation method
 │   │   ├── zed-sdk.md                       # ZED SDK installation
-│   │   ├── manual-environment.md            # Manual environment setup
-│   │   └── docker.md                        # Docker setup
+│   │   ├── manual-environment.md            # Manual environment setup (optional)
+│   │   └── docker.md                        # Docker setup (optional)
 │   └── usage.md                             # Operating and launching the system
 │
 ├── guides/                                  # Tutorial-style guides for operators and developers
@@ -101,11 +127,11 @@ src/
 
 ### File Organization Guidelines
 - Use kebab-case (lowercase with hyphens) for file and directory names
-- Update `src/SUMMARY.md` when adding new content files
+- Add new pages to `nav:` section in `mkdocs.yml` (English names)
+- Add translations to `nav_translations:` section in `mkdocs.yml` (Chinese names)
 - Use relative paths for internal links (adjust based on file location depth)
-- Translation files are in `po/` directory (zh-TW.po for Traditional Chinese)
-- Translation scripts are in `scripts/` directory
-- Language-specific config: `book-zh-TW.toml` for Chinese version
+- MkDocs automatically builds both English and Chinese versions from the same source
+- Chinese translations use `.zh-TW.md` suffix (e.g., `index.zh-TW.md`)
 
 ## Vehicle Control Documentation Guidelines
 
@@ -479,30 +505,30 @@ The documentation supports Traditional Chinese (zh-TW) translation using MkDocs 
 MkDocs uses **suffix-based i18n** where Chinese translations are stored in markdown files with `.zh-TW.md` suffix:
 ```
 src/
-├── index.md              # English version
-├── index.zh-TW.md        # Chinese version
-├── introduction.md       # English
-├── introduction.zh-TW.md # Chinese
+├── index.md                    # English version
+├── index.zh-TW.md              # Chinese version
+├── platform-models.md          # English
+├── platform-models.zh-TW.md    # Chinese
 └── ...
 ```
 
 ### Creating Translations
 
-**Option 1: Manual Translation**
+**Manual Translation Workflow**:
 1. Copy English file with `.zh-TW.md` suffix:
    ```bash
-   cp src/introduction.md src/introduction.zh-TW.md
+   cp src/index.md src/index.zh-TW.md
    ```
-2. Translate content in the `.zh-TW.md` file
-3. Rebuild: `make build`
+2. Translate content in the `.zh-TW.md` file (translate text, keep code/commands untranslated)
+3. Add navigation translation to `mkdocs.yml` under `nav_translations:` section
+4. Rebuild: `make build`
 
-**Option 2: Automated (Recommended)**
-Use the existing translation scripts (adapted for MkDocs):
+**Example**:
 ```bash
-# Convert existing PO translations to MkDocs format
-python3 scripts/po_to_mkdocs.py
-
-# Build with translations
+# Create Chinese translation
+cp src/guides/development.md src/guides/development.zh-TW.md
+# Edit the .zh-TW.md file with Chinese translations
+# Add to mkdocs.yml: "Development Guide: 開發指南"
 make build
 ```
 
@@ -543,4 +569,33 @@ Navigation titles are translated in `mkdocs.yml` under the `i18n.languages.zh-TW
 
 - Chinese files must have `.zh-TW.md` suffix
 - Both language versions are built into `site/` directory
-- Access via `http://localhost:8000/en/` (English) or `http://localhost:8000/zh-TW/` (Chinese)
+- Access via `http://0.0.0.0:3000/AutoSDV-book/en/` (English) or `http://0.0.0.0:3000/AutoSDV-book/zh-TW/` (Chinese)
+
+## Image Path Guidelines
+
+MkDocs creates directory-style URLs with trailing slashes. Image paths must account for the file's depth:
+
+**Root-level files** (`src/index.md`, `src/platform-models.md`):
+- Served as: `/AutoSDV-book/index/`, `/AutoSDV-book/platform-models/`
+- Image path: `../figures/image.png` (one level up)
+
+**One-level subdirectory** (`src/getting-started/hardware-assembly.md`):
+- Served as: `/AutoSDV-book/getting-started/hardware-assembly/`
+- Image path: `../../figures/image.png` (two levels up)
+
+**Two-level subdirectory** (`src/reference/networking/5g-deployment.md`):
+- Served as: `/AutoSDV-book/reference/networking/5g-deployment/`
+- Image path: `../../../figures/image.png` (three levels up)
+
+**Example**:
+```markdown
+<!-- In src/index.md -->
+![Logo](figures/logo.png)           ❌ Wrong
+![Logo](../figures/logo.png)        ✓ Correct
+
+<!-- In src/getting-started/hardware-assembly.md -->
+![Vehicle](../figures/vehicle.jpg)   ❌ Wrong
+![Vehicle](../../figures/vehicle.jpg) ✓ Correct
+```
+
+All images should be stored in `src/figures/` and use `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, or `.webp` formats.
