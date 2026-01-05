@@ -188,7 +188,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
    <remap from="/sensor/points" to="/sensing/lidar/sensor/points_raw"/>
    ```
 
-3. **For ZED camera namespace issues**: Use composable node loading (see [Camera Sensors Guide](./camera.md#critical-namespace-handling))
+3. **For ZED camera namespace issues**: Use composable node loading (see [Camera Sensors Guide](./camera.md#special-namespace-workaround))
 
 ---
 
@@ -374,7 +374,7 @@ vglrun rviz2
 
 **Solution**: Use composable node loading instead of Python launch file
 
-See [Camera Sensors - Namespace Handling](./camera.md#critical-namespace-handling)
+See [Camera Sensors - Namespace Workaround](./camera.md#special-namespace-workaround)
 
 ---
 
@@ -413,7 +413,7 @@ See [Camera Sensors - Namespace Handling](./camera.md#critical-namespace-handlin
 **Symptoms**: Large fluctuations, unstable orientation
 
 **Solutions**:
-1. **Calibrate IMU**: See [IMU Sensors - Calibration](./imu.md#calibration)
+1. **Check IMU configuration**: See [IMU Sensors - Configuration](./imu.md#configuration)
 2. **Secure mounting**: Minimize vibration
 3. **Add software filtering**: Low-pass filter in driver config
 
