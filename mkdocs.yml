@@ -29,9 +29,10 @@ theme:
         name: Switch to light mode
   features:
     - navigation.indexes
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    # Disabled: incompatible with mkdocs_static_i18n language switcher
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
     - navigation.path
     - navigation.sections
     - navigation.tabs
