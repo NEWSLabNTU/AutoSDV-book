@@ -18,3 +18,6 @@ plantuml-markdown>=3.10
 mdx-truly-sane-lists>=1.3
 # Note: fontawesome_markdown excluded due to markdown 3.x compatibility issues
 # FontAwesome icons work via pymdownx.emoji and extra_css instead
+
+# Chinese search support (jieba for text segmentation)
+jieba>=0.42

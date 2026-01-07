@@ -77,7 +77,10 @@ plugins:
   - mkdocs-video
   - same-dir
   - search:
-      separator: '[\s\-_,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      separator: '[\s\u200b\-_,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang:
+        - en
+        - zh
   - i18n:
       docs_structure: suffix
       fallback_to_default: true
@@ -90,7 +93,7 @@ plugins:
           build: true
         - locale: zh-TW
           name: 繁體中文
-          build: true
+          build: false  # Disabled until content translations (.zh-TW.md files) are added
           nav_translations:
             Get Started: 快速入門
             Vehicle Build Variants: 車輛組裝變體
