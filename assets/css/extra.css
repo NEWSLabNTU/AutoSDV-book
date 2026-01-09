@@ -1,0 +1,8 @@
+/* AutoSDV Documentation - Extra CSS
+ * Following Autoware documentation conventions
+ */
+
+/* Set maximum width for content (following Autoware) */
+.md-grid {
+  max-width: 1920px;
+}
