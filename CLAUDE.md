@@ -3,12 +3,14 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
-- Setup: `make setup` - Installs MkDocs and all dependencies
-- Build: `make build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
-- Serve: `make serve` - Starts development server at http://0.0.0.0:3000 with live reload
-- Clean: `make clean` - Removes all build outputs (site/ directory)
-- Check: `make check` - Verifies all dependencies are installed
-- Deploy: `make deploy` - Deploys to GitHub Pages (manual deployment)
+- Setup: `just setup` - Installs MkDocs and all dependencies
+- Build: `just build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
+- Serve: `just serve` - Starts development server at http://0.0.0.0:3000 with live reload
+- Lint: `just lint` - Validates documentation format (MkDocs strict build) and checks translation sync
+- **Audit Translations**: `just audit-translations` - AI-based semantic translation audit using Claude CLI (with intelligent caching, 18-50x faster on subsequent runs)
+- Clean: `just clean` - Removes all build outputs (site/ directory)
+- Check: `just check` - Verifies all dependencies are installed
+- Deploy: `just deploy` - Deploys to GitHub Pages (manual deployment)
 
 ## Framework: MkDocs with Material Theme
 
@@ -27,10 +29,11 @@ This project uses **MkDocs** with the **Material for MkDocs** theme, following A
 ## Development Practices
 
 ### Temporary Files
-- **ALWAYS** create temporary files in the project's `tmp/` directory
+- **ALWAYS** create temporary files in the project's `tmp/` directory (e.g., `book/tmp/`)
 - **NEVER** use system `/tmp/` or shell heredoc (`cat << EOF`)
-- Use Write/Edit tools instead of bash commands for file operations
-- Example: `/home/aeon/repos/AutoSDV/2025.02/tmp/script_name.sh`
+- **ALWAYS** use Write/Edit tools instead of bash commands for creating/modifying files
+- Avoid bash `cat > file << 'EOF'` - use Write tool instead
+- Example path: `/home/aeon/repos/AutoSDV/book/tmp/script_name.py`
 
 ## GitHub Actions
 
@@ -135,402 +138,60 @@ src/
 
 ## Vehicle Control Documentation Guidelines
 
-The vehicle control guides follow a **logical organization**: overview → hardware → algorithms → practice.
+**Organization**: overview → hardware → algorithms → practice
 
-### Documentation Philosophy
+**Four files**:
+1. `overview.md` - Architecture, components, Autoware integration
+2. `hardware.md` - PCA9685, motors, sensors, wiring
+3. `control-details.md` - Algorithms (source: `autosdv_vehicle_interface/README.md`)
+4. `tuning-and-testing.md` - Testing, tuning, calibration
 
-**Learning Path:**
-1. **Overview** - Understand system architecture and integration
-2. **Hardware** - Know the physical components and wiring
-3. **Control Details** - Learn how algorithms work
-4. **Tuning & Testing** - Apply knowledge in practice
-
-**Key Principles:**
-- ✅ Safety first - Emphasize controller GUI over manual commands
-- ✅ Practical over theoretical - Show working procedures
-- ✅ Accurate implementation details - Based on actual README.md from source code
-- ✅ No duplication - Each concept appears in exactly one place
-- ❌ No dangerous examples - Never show `ros2 topic pub` for control commands
-
-### Content Structure
-
-The vehicle control documentation consists of four files:
-
-#### 1. overview.md (Architecture & Dataflow)
-- System architecture diagram
-- Software components (Actuator Node, Velocity Report Node)
-- Autoware integration (topics, control modes)
-- Safety features (watchdog, emergency stop)
-- Hardware summary table
-- **NO**: Hardware details, algorithm details, testing procedures
-
-**Purpose**: Understand the big picture and how components interact.
-
-#### 2. hardware.md (Hardware Details)
-- PCA9685 PWM driver (I2C, wiring, device detection)
-- Motor ESC (PWM mapping, power requirements)
-- Steering servo (PWM mapping, power requirements)
-- Hall effect sensor (KY-003, GPIO, magnet setup)
-- IMU sensor (role in steering feedback)
-- Complete wiring diagram and connection tables
-- **NO**: Control algorithms, testing procedures
-
-**Purpose**: Physical specifications and electrical connections.
-
-#### 3. control-details.md (Control Algorithms)
-- Multi-mode longitudinal controller (4 modes with detailed algorithms)
-- Dual-mode lateral controller (2 modes with detailed algorithms)
-- Velocity calculation from hall effect sensor
-- I2C communication protocol
-- Parameter descriptions
-- **Source**: Based on `autosdv_vehicle_interface/README.md`
-- **NO**: Testing procedures, tuning guidelines
-
-**Purpose**: Technical reference for understanding how control works.
-
-#### 4. tuning-and-testing.md (Practical Testing)
-- Quick test procedures with PlotJuggler
-- Manual control using controller GUI (safe)
-- Automated test scenarios using `control_test` package
-- PID tuning guidelines and effects
-- Calibration procedures (PWM, steering, hall effect sensor)
-- Plot interpretation
-- Troubleshooting
-- **Safety**: Always use controller GUI, never manual topic publishing
-- **NO**: Algorithm details, hardware wiring
-
-**Purpose**: Practical guide for testing, tuning, and calibrating.
-
-### Key Technical Details to Include
-
-**Longitudinal Control - Multi-Mode Controller**:
-- Emergency Brake Mode (target ≈ 0, measured > threshold)
-- Full Stop Mode (both ≈ 0)
-- Deadband Hold Mode (error < deadband)
-- Active Control Mode (PID with filtering, anti-windup, direction mapping)
-
-**Lateral Control - Dual-Mode Controller**:
-- Fallback Mode (v < 0.3 m/s): Open-loop feedforward
-- Normal Mode (v ≥ 0.3 m/s): Yaw rate feedback with Ackermann + PID
-
-**Hardware Details**:
-- PCA9685: I2C address 0x40, bus 1, 60 Hz PWM
-- Motor PWM: 280-460 (init 370, brake 340)
-- Steering PWM: 350-450 (init 400, max angle 0.349 rad)
-- Hall effect sensor: KY-003 on GPIO
-
-### Writing Style
-
-**Be Safe**:
-- Always warn against manual `ros2 topic pub` commands
-- Emphasize controller GUI (`make run-controller`)
-- Use `control_test` package for automated tests
-- Include safety warnings where appropriate
-
-**Be Accurate**:
-- Base technical details on actual README.md files
-- Don't guess at algorithm implementation
-- Include actual parameter values from config files
-- Reference specific file paths
-
-**Test Everything**:
-- Every procedure should be tested and working
-- Provide verification commands
-- Show expected output
-
-### Maintenance Guidelines
-
-When updating vehicle control documentation:
-
-1. **Check source code first**: Always verify implementation details in `autosdv_vehicle_interface/README.md`
-2. **Update appropriate file**:
-   - Architecture changes → `overview.md`
-   - Hardware changes (wiring, specs) → `hardware.md`
-   - Algorithm changes → `control-details.md`
-   - Testing/tuning changes → `tuning-and-testing.md`
-3. **Maintain safety warnings**: Never remove warnings about manual control (especially in tuning-and-testing.md)
-4. **Keep parameters current**: Check actual `.yaml` files for parameter values
-5. **No duplication**: Each concept should appear in exactly one file
-6. **Update cross-references**: If you move content, update links in other files
+**Key rules**:
+- Safety first: Always use controller GUI, never show manual `ros2 topic pub`
+- No duplication: Each concept in exactly one file
+- Test everything: Verify all commands work
+- Base on source code: Check actual README.md and .yaml files
 
 ## Sensor Documentation Guidelines
 
-The sensor integration guides follow a **simple-to-complex philosophy**: start with usage, learn through concrete examples, then explore sensor-specific details.
+**Philosophy**: Simple usage → Concrete example (Robin-W) → Sensor-specific details
 
-### Documentation Philosophy
+**Four files**:
+1. `using-sensors.md` - Sensor suites table, launch commands, quick verification
+2. `integration-walkthrough.md` - Complete Robin-W walkthrough (hardware → driver → config → data flow)
+3. Sensor-specific guides (`lidar.md`, `camera.md`, `imu.md`, `gnss.md`) - Only sensor-unique details
+4. `adding-sensor.md` - Quick checklist
 
-**Learning Path:**
-1. **Start Simple** - Show users how to use sensors without technical details
-2. **Learn by Example** - Deep dive into one real sensor (Robin-W) to build understanding
-3. **Sensor Specifics** - Concise guides focusing on what's unique about each sensor
-
-**Before**: Abstract system → Generic integration → Sensor details
-**After**: Simple usage → Concrete example → Sensor specifics
-
-**Key Principles:**
-- ✅ Concise over comprehensive - Remove unnecessary detail
-- ✅ Practical over theoretical - Show working examples, not abstractions
-- ✅ Specific over generic - Focus on what's unique to each sensor
-- ❌ No repeated configuration patterns - Reference the walkthrough instead
-
-### Content Structure
-
-The sensor integration documentation consists of:
-
-#### 1. using-sensors.md (Start Simple)
-- Sensor suites table with launch commands
-- Quick verification steps (check topics, rates)
-- Common scenarios (outdoor RTK, indoor no-GPS, Isaac SLAM)
-- **NO**: File paths, configuration details, URDF/YAML examples
-
-**Purpose**: Get users running quickly without overwhelming detail.
-
-#### 2. integration-walkthrough.md (Learn by Example)
-- Complete walkthrough using Robin-W LiDAR as concrete example
-- Covers: hardware → driver → configuration → data flow
-- Explains coordinate transformation (why roll=180°, pitch=-90°)
-- Shows complete picture of sensor integration
-- **NO**: Generic templates or "add your own sensor" instructions
-
-**Purpose**: Build deep understanding through one real example.
-
-#### 3. Sensor-Specific Guides (lidar.md, camera.md, imu.md, gnss.md)
-Each guide should be **concise** and focus **only** on sensor-specific details:
-
-```markdown
-# [Sensor Type] Sensors
-
-## Supported Models
-[Table with key specs and config values]
-
-## [Model 1]
-### Network/Hardware Setup
-[IP addresses, connections, udev rules - sensor-specific only]
-
-### Coordinate System
-[Transformation if non-standard, otherwise just note "standard ROS"]
-
-### Driver Package
-[Location, point format, special features]
-
-### Test Standalone
-[Minimal verification commands]
-
-### [Special Configuration]
-[Only if sensor has unique features - e.g., ZED namespace workaround, RTK/NTRIP]
-
-## [Model 2]
-[Repeat concisely]
-
-## Quick Reference
-[Network tests, topic verification commands]
-```
-
-**What to INCLUDE**:
-- Network addresses (e.g., Robin-W: 172.168.1.10)
-- Coordinate transformations if non-standard (e.g., Robin-W roll/pitch)
-- Driver-specific features (e.g., ZED composable node workaround, ZED IMU relay, u-blox RTK/NTRIP)
-- Hardware-specific setup (e.g., I2C for MPU9250, udev rules for u-blox)
-
-**What to REMOVE**:
-- Generic URDF/launch/calibration templates (covered in walkthrough)
-- Repeated explanations of sensor kit integration
-- File path references to every configuration file
-- Long explanations of concepts (keep it concise)
-
-#### 4. adding-sensor.md (Quick Checklist)
-- Simplified checklist with minimal examples
-- References integration-walkthrough.md for detailed understanding
-- Common issues section
-- **NO**: Full step-by-step tutorial (that's in the walkthrough)
-
-**Purpose**: Quick reference for experienced users.
-
-### Writing Style
-
-**Be Concise:**
-- Remove unnecessary detail - users can dive deeper if needed
-- ❌ "The sensor_kit_calibration.yaml file, located in the src/sensor_kit/autosdv_sensor_kit_description/config directory, contains..."
-- ✅ "Configuration: `sensor_kit_calibration.yaml`"
-
-**Be Specific When It Matters:**
-- ❌ "Configure the network"
-- ✅ "Robin-W IP: 172.168.1.10, Jetson IP: 172.168.1.100/24"
-
-**Show Working Examples:**
-- Include minimal working code snippets
-- Focus on sensor-specific values
-- Avoid boilerplate that applies to all sensors
-
-**Explain Why (For Unique Cases):**
-- Explain unusual configurations (e.g., Robin-W coordinate transform)
-- Skip explanations for standard patterns
-- Example: "Robin-W requires roll=180°, pitch=-90° because it uses X=up, Y=right, Z=forward instead of ROS standard"
-
-**Test Everything:**
-- Every code snippet should be tested and working
-- Provide verification commands
-- Show expected output
-
-### Cross-References
-
-Create clear navigation between guides:
-
-```markdown
-<!-- In using-sensors.md -->
-Learn how sensors work: [Integration Walkthrough](./integration-walkthrough.md)
-
-<!-- In integration-walkthrough.md -->
-For other sensors: [LiDAR](./lidar.md), [Camera](./camera.md), [IMU](./imu.md), [GNSS](./gnss.md)
-
-<!-- In lidar.md -->
-See [Integration Walkthrough](./integration-walkthrough.md) for complete integration example
-
-<!-- In adding-sensor.md -->
-Understand the system first: [Integration Walkthrough](./integration-walkthrough.md)
-```
-
-### Sensor-Specific Conventions
-
-**Coordinate Frames:**
-- Always explain coordinate transformations
-- Reference ROS REP-103 for standard conventions
-- Include diagrams when possible
-
-**Network Configuration:**
-- Specify exact IP addresses and ports
-- Show how to verify network connectivity
-- Document firewall/udev requirements
-
-**Topic Naming:**
-- Use Autoware standard naming: `/sensing/[sensor_type]/[sensor_name]/[data_type]`
-- Explain topic remapping when drivers don't follow conventions
-- Show topic verification commands
-
-**Testing Commands:**
-Always provide complete testing workflows:
-```bash
-# Build
-colcon build --packages-select [package_name]
-
-# Source
-source install/setup.bash
-
-# Launch
-ros2 launch [package] [launch_file] [args]
-
-# Verify
-ros2 topic list | grep [sensor]
-ros2 topic echo [topic_name]
-rviz2  # Add visualization config
-```
-
-### Maintenance Guidelines
-
-When updating sensor documentation:
-
-1. **Keep it DRY**: Don't duplicate content between guides
-   - Integration concepts → `integration-walkthrough.md` (Robin-W example)
-   - Sensor-specific details → individual sensor guides (`lidar.md`, `camera.md`, etc.)
-   - Usage patterns → `using-sensors.md`
-   - General troubleshooting → `troubleshooting.md`
-   - **Never repeat**: URDF templates, launch patterns, calibration file structure
-
-2. **Update all related sections when adding a sensor**:
-   - Add to supported models table in `using-sensors.md`
-   - Create entry in relevant sensor guide (`lidar.md`, `camera.md`, etc.)
-   - Update `troubleshooting.md` if new common issues
-   - **Consider**: Using new sensor as walkthrough example if it's particularly interesting
-
-3. **Test before documenting**:
-   - Verify all commands work on target hardware
-   - Test verification commands show expected output
-   - Keep examples minimal but complete
-
-4. **Version awareness**:
-   - Note critical versions (e.g., "ZED SDK 5.1.2 required")
-   - Document compatibility requirements only when relevant
-   - Update when dependencies change
-
-### Images and Diagrams
-
-**When to Include:**
-- Hardware mounting and connections (photos)
-- Coordinate frame transformations (diagrams)
-- Architecture overview (system diagrams)
-- Data flow (flowcharts)
-- RViz visualization examples (screenshots)
-
-**Image Guidelines:**
-- Store in `src/figures/sensor-integration/`
-- Use descriptive names: `robin-lidar-mounting.jpg`, `sensor-kit-architecture.svg`
-- Optimize for web: compress photos, use SVG for diagrams
-- Always include alt text: `![Robin-W LiDAR mounted on front dock](./figures/sensor-integration/robin-lidar-mounting.jpg)`
-
-### Code Examples
-
-**Complete, Not Snippets:**
-Provide enough context to understand where code belongs:
-
-```xml
-<!-- File: src/sensor_kit/autosdv_sensor_kit_launch/launch/lidar.launch.xml -->
-<launch>
-  <!-- Robin-W LiDAR Configuration -->
-  <group if="$(eval &quot;'$(var lidar_model)' == 'robin-w'&quot;)">
-    <include file="...">
-      <!-- Full working example -->
-    </include>
-  </group>
-</launch>
-```
-
-**Parameter Documentation:**
-Explain what each parameter does:
-
-```yaml
-# File: individual_params/config/default/autosdv_sensor_kit/robin_lidar.param.yaml
-/**:
-  ros__parameters:
-    ip_address: "172.168.1.10"  # Robin-W default static IP
-    scan_phase: 0.0              # Start angle offset (radians)
-    frame_id: "robin_lidar_link" # TF frame name (matches URDF)
-```
+**Key rules**:
+- Concise over comprehensive
+- No duplication: Integration concepts in walkthrough, sensor specifics in individual guides
+- Be specific: Show exact IPs (e.g., "Robin-W: 172.168.1.10"), not generic instructions
+- Test everything: Verify all commands work
+- Images in `src/figures/sensor-integration/` with descriptive names
 
 ## Translation Workflow
 
-The documentation supports Traditional Chinese (zh-TW) translation using MkDocs i18n plugin.
+**System**: Suffix-based i18n using `.zh-TW.md` files (e.g., `index.md` + `index.zh-TW.md`)
 
-### Translation System
+**Status**: Chinese version enabled with 33 nav translations, partial content translations
 
-MkDocs uses **suffix-based i18n** where Chinese translations are stored in markdown files with `.zh-TW.md` suffix:
-```
-src/
-├── index.md                    # English version
-├── index.zh-TW.md              # Chinese version
-├── platform-models.md          # English
-├── platform-models.zh-TW.md    # Chinese
-└── ...
-```
+### Common Issues
+
+**Images missing on Chinese site** (404 errors):
+- **Cause**: Chinese pages served under `/zh-TW/`, need one extra `../` in paths
+- **Fix**: Add one extra `../` to image paths (EN: `../figures/x.png` → ZH: `../../figures/x.png`)
+
+**Navigation in English on Chinese site**:
+- **Cause**: Missing entries in `mkdocs.yml` under `nav_translations`
+- **Fix**: Add `English Title: 中文標題` for each nav item
 
 ### Creating Translations
 
-**Manual Translation Workflow**:
-1. Copy English file with `.zh-TW.md` suffix:
-   ```bash
-   cp src/index.md src/index.zh-TW.md
-   ```
-2. Translate content in the `.zh-TW.md` file (translate text, keep code/commands untranslated)
-3. Add navigation translation to `mkdocs.yml` under `nav_translations:` section
-4. Rebuild: `make build`
-
-**Example**:
-```bash
-# Create Chinese translation
-cp src/guides/development.md src/guides/development.zh-TW.md
-# Edit the .zh-TW.md file with Chinese translations
-# Add to mkdocs.yml: "Development Guide: 開發指南"
-make build
-```
+1. Copy: `cp src/file.md src/file.zh-TW.md`
+2. Translate text (keep code/commands/filenames untranslated)
+3. Fix image paths (add one extra `../`)
+4. Add nav translations to `mkdocs.yml` if new page
+5. Build: `just build`
 
 ### Translation Guidelines
 
@@ -555,28 +216,113 @@ make build
 - 套件 (package), 環景光達 (360° LiDAR), 固態光達 (solid-state LiDAR)
 - 原始碼說明 (source code walkthrough), 配線 (wiring)
 
+**Image Paths in Chinese Translations:**
+
+Chinese files are served with an extra `/zh-TW/` directory level, requiring one additional `../` in image paths:
+
+```markdown
+<!-- English file (src/index.md) - special case: site root -->
+![Image](figures/image.png)
+
+<!-- Chinese file (src/index.zh-TW.md) needs extra ../ -->
+![Image](../figures/image.png)
+
+<!-- English file (src/platform-models.md) at root level -->
+![Image](../figures/image.png)
+
+<!-- Chinese file (src/platform-models.zh-TW.md) needs extra ../ -->
+![Image](../../figures/image.png)
+```
+
+**Pattern by file depth:**
+- **Site index** (`src/index.md`): EN uses `figures/`, ZH uses `../figures/`
+- **Root level** (`src/*.md`): EN uses `../figures/`, ZH uses `../../figures/`
+- **One level** (`src/guides/*.md`): EN uses `../../figures/`, ZH uses `../../../figures/`
+- **Two levels** (`src/guides/sensor/*.md`): EN uses `../../../figures/`, ZH uses `../../../../figures/`
+
+**Rule:** Add one extra `../` to the English path for the Chinese version.
+
+### Maintaining Translation Sync
+
+**Two-tier approach**: Structural checking (daily) + AI semantic analysis (pre-release)
+
+
+**Tier 1: Structural Checking** (fast, daily)
+- Command: `just lint`
+- Detects: Missing/outdated files, structural differences, git diff
+- Best for: PR reviews, weekly maintenance
+
+**Tier 2: AI Semantic Analysis** (comprehensive, pre-release)
+- Command: `just audit-translations` (requires Claude CLI)
+- Detects: Missing content, semantic drift, outdated info  
+- Features: Smart caching (18-50x faster on re-runs)
+- Best for: Pre-release validation
+
+See `scripts/README.md` for detailed usage.
+
 ### Nav Translations
 
-Navigation titles are translated in `mkdocs.yml` under the `i18n.languages.zh-TW.nav_translations` section. Update this section when adding new pages.
+Navigation titles are translated in `mkdocs.yml` under the `i18n.languages.zh-TW.nav_translations` section.
+
+**Important:** All navigation items must have translations, otherwise they will appear in English on the Chinese site. When adding new pages:
+1. Add the page to the `nav:` section with its English title
+2. Add a translation entry to `nav_translations:` with format `English Title: 中文標題`
+
+**Example:**
+```yaml
+nav:
+  - Guides:
+    - Using Sensors: guides/sensor-integration/using-sensors.md
+
+# In the i18n.languages.zh-TW section:
+nav_translations:
+  Using Sensors: 使用感測器
+```
 
 ### Configuration
 
 - Main config: `mkdocs.yml`
 - Language settings: `plugins.i18n.languages` section
 - Navigation translations: `plugins.i18n.languages.zh-TW.nav_translations`
+- Chinese search: Requires `jieba>=0.42` in `requirements.txt`
 
-### Important Notes
+### Search Configuration
 
+**Chinese search is now built-in** (Material for MkDocs v8.0+):
+- Uses **jieba** for Chinese text segmentation (not lunr.js)
+- Automatic detection when jieba is installed
+- Zero-width whitespace (\u200b) included in search separator
+- Language-specific search: `lang: [en, zh]` in search plugin config
+
+**No configuration needed** - just install jieba:
+```bash
+pip install -r requirements.txt  # Includes jieba>=0.42
+```
+
+### Important Notes & Limitations
+
+**File naming:**
 - Chinese files must have `.zh-TW.md` suffix
 - Both language versions are built into `site/` directory
-- Access via `http://0.0.0.0:3000/AutoSDV-book/en/` (English) or `http://0.0.0.0:3000/AutoSDV-book/zh-TW/` (Chinese)
+- Access via `http://0.0.0.0:3000/AutoSDV-book/` (English) or `http://0.0.0.0:3000/AutoSDV-book/zh-TW/` (Chinese)
+
+**Known limitation - navigation.instant incompatibility:**
+- ❌ `navigation.instant` is **fundamentally incompatible** with mkdocs-static-i18n's multi-language switcher
+- This is a known architectural limitation, not a bug
+- **Must choose**: Multi-language switcher OR instant navigation (cannot have both)
+- **Current choice**: Multi-language switcher (better for international users)
+- Source: [mkdocs-static-i18n Material setup guide](https://ultrabug.github.io/mkdocs-static-i18n/setup/setting-up-material/)
 
 ## Image Path Guidelines
 
 MkDocs creates directory-style URLs with trailing slashes. Image paths must account for the file's depth:
 
-**Root-level files** (`src/index.md`, `src/platform-models.md`):
-- Served as: `/AutoSDV-book/index/`, `/AutoSDV-book/platform-models/`
+**Site index** (`src/index.md`):
+- Served as: `/AutoSDV-book/` (site root)
+- Image path: `figures/image.png` (relative from root)
+
+**Root-level files** (`src/platform-models.md`, etc.):
+- Served as: `/AutoSDV-book/platform-models/`
 - Image path: `../figures/image.png` (one level up)
 
 **One-level subdirectory** (`src/getting-started/hardware-assembly.md`):
@@ -589,13 +335,46 @@ MkDocs creates directory-style URLs with trailing slashes. Image paths must acco
 
 **Example**:
 ```markdown
-<!-- In src/index.md -->
-![Logo](figures/logo.png)           ❌ Wrong
-![Logo](../figures/logo.png)        ✓ Correct
+<!-- In src/index.md (site root - special case) -->
+![Logo](../figures/logo.png)        ❌ Wrong
+![Logo](figures/logo.png)            ✓ Correct
+
+<!-- In src/platform-models.md (root level) -->
+![Logo](figures/logo.png)            ❌ Wrong
+![Logo](../figures/logo.png)         ✓ Correct
 
 <!-- In src/getting-started/hardware-assembly.md -->
 ![Vehicle](../figures/vehicle.jpg)   ❌ Wrong
 ![Vehicle](../../figures/vehicle.jpg) ✓ Correct
 ```
 
+**Chinese Translations:**
+Chinese files need one extra `../` in image paths due to the `/zh-TW/` subdirectory. See the "Image Paths in Chinese Translations" section in the Translation Workflow for details.
+
 All images should be stored in `src/figures/` and use `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, or `.webp` formats.
+
+## Anchor Links for Chinese Headings
+
+**Problem**: MkDocs doesn't generate reliable anchor IDs from Chinese characters, and the `{#custom-id}` attr_list syntax conflicts with the mkdocs-macros plugin (which interprets `{#...}` as Jinja2 comment syntax).
+
+**Solution**: Use HTML `<span id="...">` tags for explicit anchor IDs in Chinese translations.
+
+**Example**:
+```markdown
+<!-- ❌ Don't use attr_list syntax (conflicts with macros plugin) -->
+## 基礎型號 {#base-model}
+
+<!-- ✓ Use HTML span tags instead -->
+<span id="base-model"></span>
+## 基礎型號
+```
+
+**When to use**:
+- When Chinese headings need explicit anchor IDs for cross-references
+- When linking from one Chinese page to another Chinese page's section
+- To maintain consistency with English anchor IDs (e.g., `#base-model` in both EN and ZH versions)
+
+**Notes**:
+- Place the `<span>` tag immediately before the heading
+- Use English slugs for anchor IDs (matches English version)
+- The macros plugin has been reconfigured to use `[[...]]` delimiters instead of `{...}` to reduce conflicts, but HTML spans are still the recommended approach for anchor IDs
