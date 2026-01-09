@@ -73,7 +73,11 @@ plugins:
       regex:
         - ^(?!(.*/)?assets/).*\.(?!(.*\.)?md|(.*\.)?svg|(.*\.)?png|(.*\.)?gif|(.*\.)?jpg|(.*\.)?webp).*$
         - ^(.*/)?[^.]*$
-  - macros
+  - macros:
+      j2_block_start_string: '[[%'
+      j2_block_end_string: '%]]'
+      j2_variable_start_string: '[['
+      j2_variable_end_string: ']]'
   - mkdocs-video
   - same-dir
   - search:
@@ -93,7 +97,7 @@ plugins:
           build: true
         - locale: zh-TW
           name: 繁體中文
-          build: false  # Disabled until content translations (.zh-TW.md files) are added
+          build: true
           nav_translations:
             Get Started: 快速入門
             Vehicle Build Variants: 車輛組裝變體
@@ -109,6 +113,7 @@ plugins:
             Source Code Walkthrough: 原始碼說明
             Version Control: 版本控制
             Sensor Integration: 感測器整合
+            Using Sensors: 使用感測器
             Integration Walkthrough: 整合範例
             LiDAR Sensors: LiDAR 感測器
             Camera Sensors: 相機感測器
@@ -117,10 +122,12 @@ plugins:
             Adding a Sensor: 新增感測器
             Troubleshooting: 疑難排解
             Vehicle Control: 車輛控制
+            Overview: 總覽
             Hardware: 硬體
             Control Details: 控制細節
             Tuning & Testing: 調校與測試
             Technical Reference: 技術參考
+            Networking: 網路
             Core Components: 核心組件
             Wiring Diagrams: 配線圖
             5G/LTE Deployment: 5G/LTE 部署
