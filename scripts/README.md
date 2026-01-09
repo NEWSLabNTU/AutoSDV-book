@@ -26,8 +26,8 @@ python3 scripts/check-translations.py --verbose
 # Show git diff
 python3 scripts/check-translations.py --show-diff
 
-# Via make (includes MkDocs validation)
-make lint
+# Via just (includes MkDocs validation)
+just lint
 ```
 
 ### Detects
@@ -82,7 +82,7 @@ python3 scripts/audit-translations-ai.py --section-analysis
 
 ### Daily
 ```bash
-make lint
+just lint
 ```
 
 ### After updating English docs
