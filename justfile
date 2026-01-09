@@ -93,3 +93,25 @@ lint:
 	@echo "   - Check specific file: python3 scripts/check-translations.py --file src/index.md"
 	@echo "   - Show git diff: python3 scripts/check-translations.py --show-diff"
 	@echo "   - AI semantic audit: python3 scripts/audit-translations-ai.py"
+
+# AI-based semantic translation audit using Claude CLI
+audit-translations:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	echo "========================================================================"
+	echo "AI-Based Semantic Translation Audit (Claude)"
+	echo "========================================================================"
+	echo ""
+	echo "Running AI semantic analysis with Claude..."
+	echo "Note: Uses your configured Claude subscription"
+	echo ""
+	python3 scripts/audit-translations-ai.py
+	echo ""
+	echo "========================================================================"
+	echo "[OK] Audit complete!"
+	echo "========================================================================"
+	echo ""
+	echo "Tips:"
+	echo "   - Use different model: python3 scripts/audit-translations-ai.py --model opus"
+	echo "   - Check specific file: python3 scripts/audit-translations-ai.py --file src/index.md"
+	echo "   - Enable verbose mode: python3 scripts/audit-translations-ai.py --verbose"
