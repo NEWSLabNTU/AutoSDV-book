@@ -1,0 +1,29 @@
+[project]
+name = "autosdv-book"
+version = "0.1.0"
+description = "AutoSDV documentation built with MkDocs and Material theme"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # MkDocs and Material Theme
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.5.0",
+    # Plugins
+    "mkdocs-awesome-pages-plugin>=2.9.0",
+    "mkdocs-static-i18n>=1.2.0",
+    "mkdocs-macros-plugin>=1.0.0",
+    "mkdocs-exclude>=1.0.2",
+    "mkdocs-video>=1.5.0",
+    "mkdocs-same-dir>=0.1.3",
+    # Markdown Extensions
+    "pymdown-extensions>=10.0",
+    "python-markdown-math>=0.8",
+    "markdown>=3.3",
+    "plantuml-markdown>=3.10",
+    "mdx-truly-sane-lists>=1.3",
+    # Chinese search support
+    "jieba>=0.42",
+]
+
+[dependency-groups]
+dev = []
