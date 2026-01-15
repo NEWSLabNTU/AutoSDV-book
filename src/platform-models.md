@@ -9,6 +9,36 @@
 | **Remote Operation** | Manual      | No         | No                 | Yes (5G)           |
 | **Battery Life**     | 40 min      | 40 min     | 40 min             | 40 min             |
 
+<table align="center" border="0" style="margin: 2em 0;">
+  <tr>
+    <td align="center" valign="bottom">
+      <a href="../figures/model_robin-w.webp" target="_blank">
+        <img src="../figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="../figures/model_velodyne_32c.webp" target="_blank">
+        <img src="../figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="../figures/model_cube1_moxa-5g.webp" target="_blank">
+        <img src="../figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Robin-W Solid-State LiDAR Kit</b>
+    </td>
+    <td align="center">
+      <b>Velodyne 32C LiDAR Kit</b>
+    </td>
+    <td align="center">
+      <b>Cube1 LiDAR + MOXA 5G Kit</b>
+    </td>
+  </tr>
+</table>
 
 - [Base Model](#base-model) - Core platform for customization
 - [360° LiDAR Model](#360-lidar-model) - Production-ready with Velodyne VLP-32C

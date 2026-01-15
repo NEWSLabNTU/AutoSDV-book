@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: index.md
-- Last synced: 2026-01-09
+- Last synced: 2026-01-15
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -18,44 +18,31 @@ AutoSDV 專案，即 *Autoware 軟體定義車輛*，提供了一個經濟實惠
 
 AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準工具和實踐，為真實世界的自動駕駛系統提供易於接觸的切入點。
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 640px;">
+  <video autoplay loop muted playsinline style="width: 100%; border-radius: 8px;">
+    <source src="../figures/coss_outdoor_run_video/coss_outdoor_run.webm" type="video/webm">
+  </video>
+  <figcaption>自動導航</figcaption>
+</figure>
+
 <table align="center" border="0">
   <tr>
-    <td align="center" valign="bottom">
-      <a href="../figures/model_robin-w.webp" target="_blank">
-        <img src="../figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+    <td align="center" valign="middle" width="50%">
+      <a href="../figures/coss_park_outdoor_daytime.png" target="_blank">
+        <img src="../figures/coss_park_outdoor_daytime.png" alt="AutoSDV 日間自動駕駛運行" style="width: 100%; border-radius: 4px;"/>
       </a>
     </td>
-    <td align="center" valign="bottom">
-      <a href="../figures/model_velodyne_32c.webp" target="_blank">
-        <img src="../figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
-      </a>
-    </td>
-    <td align="center" valign="bottom">
-      <a href="../figures/model_cube1_moxa-5g.webp" target="_blank">
-        <img src="../figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+    <td align="center" valign="middle" width="50%">
+      <a href="../figures/coss_park_outdoor_night.png" target="_blank">
+        <img src="../figures/coss_park_outdoor_night.png" alt="AutoSDV 夜間自動駕駛運行" style="width: 100%; border-radius: 4px;"/>
       </a>
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <b>Robin-W 固態光達套件</b>
-    </td>
-    <td align="center">
-      <b>Velodyne 32C 光達套件</b>
-    </td>
-    <td align="center">
-      <b>Cube1 光達 + MOXA 5G 套件</b>
-    </td>
+    <td align="center">日間運行</td>
+    <td align="center">夜間運行</td>
   </tr>
 </table>
-
-## 主要特性
-
-- **ROS 2 Humble** - 基於最新的長期支援 ROS 2 發行版
-- **Autoware 整合** - 完整的自動駕駛軟體堆疊
-- **彈性的感測器支援** - 支援多種光達、相機、IMU 和 GNSS 配置
-- **多模式控制** - 具備 PID 和回饋機制的精密車輛控制
-- **生產就緒** - 已在實際硬體平台上測試
 
 ## 開始使用
 

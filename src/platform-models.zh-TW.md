@@ -17,6 +17,36 @@ Translation Metadata:
 | **遠端操作**         | 手動      | 否         | 否                 | 是（5G）           |
 | **電池續航力**       | 40 分鐘   | 40 分鐘    | 40 分鐘            | 40 分鐘            |
 
+<table align="center" border="0" style="margin: 2em 0;">
+  <tr>
+    <td align="center" valign="bottom">
+      <a href="../../figures/model_robin-w.webp" target="_blank">
+        <img src="../../figures/model_robin-w.webp" alt="Robin-W 固態光達套件" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="../../figures/model_velodyne_32c.webp" target="_blank">
+        <img src="../../figures/model_velodyne_32c.webp" alt="Velodyne 32C 光達套件" width="80%"/>
+      </a>
+    </td>
+    <td align="center" valign="bottom">
+      <a href="../../figures/model_cube1_moxa-5g.webp" target="_blank">
+        <img src="../../figures/model_cube1_moxa-5g.webp" alt="Cube1 光達 + MOXA 5G 套件" width="80%"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Robin-W 固態光達套件</b>
+    </td>
+    <td align="center">
+      <b>Velodyne 32C 光達套件</b>
+    </td>
+    <td align="center">
+      <b>Cube1 光達 + MOXA 5G 套件</b>
+    </td>
+  </tr>
+</table>
 
 - [基礎型號](#base-model) - 可客製化的核心平台
 - [360° 光達型號](#360-lidar-model) - 配備 Velodyne VLP-32C 的生產就緒型號

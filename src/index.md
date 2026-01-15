@@ -10,44 +10,31 @@ The AutoSDV project, namely the *Autoware Software-Defined Vehicle*, features an
 
 AutoSDV provides a complete stack from hardware specifications to software implementation, offering an accessible entry point into real-world autonomous systems using industry-standard tools and practices.
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 640px;">
+  <video autoplay loop muted playsinline style="width: 100%; border-radius: 8px;">
+    <source src="figures/coss_outdoor_run_video/coss_outdoor_run.webm" type="video/webm">
+  </video>
+  <figcaption>Autonomous Navigation</figcaption>
+</figure>
+
 <table align="center" border="0">
   <tr>
-    <td align="center" valign="bottom">
-      <a href="figures/model_robin-w.webp" target="_blank">
-        <img src="figures/model_robin-w.webp" alt="Robin-W Solid-State LiDAR Kit" width="80%"/>
+    <td align="center" valign="middle" width="50%">
+      <a href="figures/coss_park_outdoor_daytime.png" target="_blank">
+        <img src="figures/coss_park_outdoor_daytime.png" alt="AutoSDV autonomous operation during daytime" style="width: 100%; border-radius: 4px;"/>
       </a>
     </td>
-    <td align="center" valign="bottom">
-      <a href="figures/model_velodyne_32c.webp" target="_blank">
-        <img src="figures/model_velodyne_32c.webp" alt="Velodyne 32C LiDAR Kit" width="80%"/>
-      </a>
-    </td>
-    <td align="center" valign="bottom">
-      <a href="figures/model_cube1_moxa-5g.webp" target="_blank">
-        <img src="figures/model_cube1_moxa-5g.webp" alt="Blickfeld Cube1 + MOXA 5G Kit" width="80%"/>
+    <td align="center" valign="middle" width="50%">
+      <a href="figures/coss_park_outdoor_night.png" target="_blank">
+        <img src="figures/coss_park_outdoor_night.png" alt="AutoSDV autonomous operation at night" style="width: 100%; border-radius: 4px;"/>
       </a>
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <b>Robin-W Solid-State LiDAR Kit</b>
-    </td>
-    <td align="center">
-      <b>Velodyne 32C LiDAR Kit</b>
-    </td>
-    <td align="center">
-      <b>Cube1 LiDAR + MOXA 5G Kit</b>
-    </td>
+    <td align="center">Daytime Operation</td>
+    <td align="center">Night Operation</td>
   </tr>
 </table>
-
-## Key Features
-
-- **ROS 2 Humble** - Built on the latest long-term support ROS 2 distribution
-- **Autoware Integration** - Full autonomous driving stack
-- **Flexible Sensor Support** - Multiple LiDAR, camera, IMU, and GNSS configurations
-- **Multi-Mode Control** - Sophisticated vehicle control with PID and feedback
-- **Production Ready** - Tested on real hardware platforms
 
 ## Getting Started
 
