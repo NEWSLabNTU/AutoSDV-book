@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
-- Setup: `just setup` - Installs MkDocs and all dependencies
+- Setup: `just setup` - Installs MkDocs and all dependencies using `uv sync`
 - Build: `just build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
 - Serve: `just serve` - Starts development server at http://0.0.0.0:3000 with live reload
 - Lint: `just lint` - Validates documentation format (MkDocs strict build) and checks translation sync
@@ -11,6 +11,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Clean: `just clean` - Removes all build outputs (site/ directory)
 - Check: `just check` - Verifies all dependencies are installed
 - Deploy: `just deploy` - Deploys to GitHub Pages (manual deployment)
+
+## Package Management
+
+This project uses **uv** for Python package management instead of pip.
+
+- Dependencies defined in `pyproject.toml`
+- Lock file: `uv.lock`
+- Virtual environment: `.venv/`
+
+```bash
+# Install dependencies
+uv sync
+
+# Run commands through uv
+uv run mkdocs serve
+uv run python scripts/check-translations.py
+```
 
 ## Framework: MkDocs with Material Theme
 
@@ -125,7 +142,11 @@ src/
 │   └── networking/                          # Network and connectivity
 │       └── 5g-deployment.md                 # 5G/LTE deployment guide
 │
-└── figures/                                 # Images and diagrams
+└── figures/                                 # Images, diagrams, and videos
+    └── coss_outdoor_run_video/              # Video assets with processing script
+        ├── coss_outdoor_run.mp4             # Source video (not deployed)
+        ├── coss_outdoor_run.webm            # Processed WebM for web
+        └── process-outdoor-video.sh         # Video processing script
 ```
 
 ### File Organization Guidelines
@@ -284,7 +305,7 @@ nav_translations:
 - Main config: `mkdocs.yml`
 - Language settings: `plugins.i18n.languages` section
 - Navigation translations: `plugins.i18n.languages.zh-TW.nav_translations`
-- Chinese search: Requires `jieba>=0.42` in `requirements.txt`
+- Chinese search: Requires `jieba>=0.42` (included in `pyproject.toml`)
 
 ### Search Configuration
 
@@ -294,9 +315,9 @@ nav_translations:
 - Zero-width whitespace (\u200b) included in search separator
 - Language-specific search: `lang: [en, zh]` in search plugin config
 
-**No configuration needed** - just install jieba:
+**No configuration needed** - jieba is included in dependencies:
 ```bash
-pip install -r requirements.txt  # Includes jieba>=0.42
+uv sync  # Installs all dependencies including jieba>=0.42
 ```
 
 ### Important Notes & Limitations
@@ -351,7 +372,37 @@ MkDocs creates directory-style URLs with trailing slashes. Image paths must acco
 **Chinese Translations:**
 Chinese files need one extra `../` in image paths due to the `/zh-TW/` subdirectory. See the "Image Paths in Chinese Translations" section in the Translation Workflow for details.
 
-All images should be stored in `src/figures/` and use `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, or `.webp` formats.
+All images and videos should be stored in `src/figures/` and use `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, `.webp`, or `.webm` formats.
+
+## Video Processing
+
+Videos for the documentation are processed using ffmpeg with the script at `src/figures/coss_outdoor_run_video/process-outdoor-video.sh`.
+
+**Processing steps:**
+1. Extract segment from source video
+2. Apply video stabilization (two-pass vidstab)
+3. Crop portrait to horizontal (16:9)
+4. Encode as VP9 WebM for web embedding
+
+**Usage:**
+```bash
+cd src/figures/coss_outdoor_run_video
+./process-outdoor-video.sh
+```
+
+**Requirements:**
+- ffmpeg with libvidstab and libvpx support
+- NVIDIA GPU (optional, for CUDA-accelerated decoding)
+
+**Embedding videos in documentation:**
+```html
+<figure style="text-align: center; margin: 1.5em auto; max-width: 640px;">
+  <video autoplay loop muted playsinline style="width: 100%; border-radius: 8px;">
+    <source src="figures/coss_outdoor_run_video/coss_outdoor_run.webm" type="video/webm">
+  </video>
+  <figcaption>Caption text</figcaption>
+</figure>
+```
 
 ## Anchor Links for Chinese Headings
 
