@@ -138,15 +138,13 @@ After installing AutoSDV software, build the project:
 
 ```bash
 cd ~/AutoSDV
-make prepare  # Install ROS dependencies
-make build    # Build the project
+just build    # Build the project
 ```
 
 Verify the installation by launching the system:
 
 ```bash
-source install/setup.bash
-ros2 launch autosdv_launch autosdv.launch.yaml
+just launch   # Launch AutoSDV system
 ```
 
 If successful, you should see the system starting without critical errors.
@@ -159,8 +157,8 @@ If you encounter build errors:
 
 ```bash
 # Clean and rebuild
-./clean_build.sh clean
-make build
+just clean
+just build
 ```
 
 ### Missing Dependencies

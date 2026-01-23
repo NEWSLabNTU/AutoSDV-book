@@ -18,13 +18,13 @@ AutoSDV supports predefined sensor combinations called **sensor suites**. Each s
 
 ```bash
 # Launch with Robin-W LiDAR + ZED camera (recommended)
-make launch ARGS="sensor_suite:=robin_zed"
+just launch ARGS="sensor_suite:=robin_zed"
 
 # Launch with Velodyne LiDAR + ZED camera
-make launch ARGS="sensor_suite:=vlp32c_zed"
+just launch ARGS="sensor_suite:=vlp32c_zed"
 
 # Launch with Blickfeld LiDAR + ZED camera
-make launch ARGS="sensor_suite:=cube1_zed"
+just launch ARGS="sensor_suite:=cube1_zed"
 ```
 
 ### Verify Sensors are Working
@@ -52,7 +52,7 @@ ros2 topic hz /sensing/gnss/ublox/nav_sat_fix
 
 ```bash
 # Open RViz with AutoSDV configuration
-make run-rviz
+just tool-rviz
 ```
 
 You should see:
@@ -69,7 +69,7 @@ For high-precision outdoor localization with RTK corrections:
 
 ```bash
 # Enable NTRIP for RTK positioning
-make launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
+just launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
 ```
 
 This connects to the e-GNSS Taiwan VRS for ~2cm accuracy GPS.
@@ -80,7 +80,7 @@ For indoor operation without GPS signal:
 
 ```bash
 # Disable GPS, use NDT localization only
-make launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
+just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 ```
 
 You'll need to manually set the initial pose in RViz using "2D Pose Estimate" tool.
@@ -91,7 +91,7 @@ For camera-based localization instead of LiDAR NDT:
 
 ```bash
 # Use Isaac Visual SLAM for pose estimation
-make launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
+just launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
 ```
 
 ## Custom Sensor Selection
@@ -100,10 +100,10 @@ Instead of using predefined suites, you can select individual sensors:
 
 ```bash
 # Custom combination
-make launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
+just launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-make launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
 ```
 
 ### Available Options
@@ -161,7 +161,7 @@ ls -l /dev/ublox-gps
 
 If RViz shows "No transform from X to Y", rebuild the project:
 ```bash
-make build
+just build
 ```
 
 ## Next Steps

@@ -73,7 +73,7 @@ Internet → NTRIP Client → RTCM Corrections → u-blox Driver → Receiver
 
 ```bash
 # Launch with NTRIP corrections
-make launch ARGS="gnss_receiver:=ublox use_ntrip:=true"
+just launch ARGS="gnss_receiver:=ublox use_ntrip:=true"
 ```
 
 ### Monitor RTK Status
@@ -203,7 +203,7 @@ For indoor environments without satellite signal:
 
 ```bash
 # Disable GNSS, use NDT localization only
-make launch ARGS="use_gnss:=false"
+just launch ARGS="use_gnss:=false"
 ```
 
 Use RViz "2D Pose Estimate" tool to manually set initial position.
@@ -212,9 +212,9 @@ Use RViz "2D Pose Estimate" tool to manually set initial position.
 
 ```bash
 # Launch commands
-make launch ARGS="gnss_receiver:=ublox use_ntrip:=true"   # u-blox RTK
-make launch ARGS="gnss_receiver:=garmin"                  # Garmin
-make launch ARGS="use_gnss:=false"                        # Indoor (no GNSS)
+just launch ARGS="gnss_receiver:=ublox use_ntrip:=true"   # u-blox RTK
+just launch ARGS="gnss_receiver:=garmin"                  # Garmin
+just launch ARGS="use_gnss:=false"                        # Indoor (no GNSS)
 
 # u-blox verification
 ls -l /dev/ublox-gps

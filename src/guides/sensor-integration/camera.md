@@ -95,7 +95,7 @@ ZED SDK includes AI-based object detection (persons, vehicles, animals).
 
 **Disable for performance**:
 ```bash
-make launch ARGS="enable_zed_object_detection:=false"
+just launch ARGS="enable_zed_object_detection:=false"
 ```
 
 ### Configuration Options

@@ -12,10 +12,10 @@ Translation Metadata:
 
 ## 簡單的方式
 
-Makefile 提供了啟動整個系統的指令。
+專案使用 [Just](https://just.systems) 執行指令。執行 `just` 可查看所有可用指令。
 
 ```sh
-make launch
+just launch
 ```
 
 ## 客製化啟動
@@ -60,28 +60,24 @@ ros2 launch autosdv_launch autosdv.launch.yaml is_simulation:=true
 
 ## 常用操作
 
-### 自動駕駛
+### 視覺化和監控
 
-執行具有航點導航的自動駕駛：
+啟動駕駛監控 TUI（顯示姿態、速度、元件狀態）：
 
 ```sh
-make run-drive
+just tool-tui
 ```
-
-此指令啟動完整系統，並根據 `scripts/testing/drive/poses.json` 中定義的姿態執行自動駕駛。車輛將沿定義的航點導航。
-
-### 視覺化和監控
 
 啟動 RViz 以進行 3D 視覺化：
 
 ```sh
-make run-rviz
+just tool-rviz
 ```
 
 啟動 PlotJuggler 以進行即時資料繪圖：
 
 ```sh
-make run-plotjuggler
+just tool-plotjuggler
 ```
 
 ### 手動控制
@@ -89,7 +85,7 @@ make run-plotjuggler
 啟動基於鍵盤的手動控制：
 
 ```sh
-make run-controller
+just tool-controller
 ```
 
 ### 測試控制系統
@@ -97,14 +93,14 @@ make run-controller
 測試基本控制系統：
 
 ```sh
-make play-basic-control
+just control-basic
 ```
 
 執行預定義軌跡：
 
 ```sh
-make run-straight-10m  # Drive 10m straight
-make run-circle        # Drive in a circle
+just control-straight  # 直線行駛 10 公尺
+just control-circle    # 繞圓行駛
 ```
 
 ### 錄製和回放
@@ -112,11 +108,11 @@ make run-circle        # Drive in a circle
 在戶外操作期間錄製感測器資料：
 
 ```sh
-make record-outdoor
+just bag-record
 ```
 
 回放最近的錄製內容：
 
 ```sh
-make play-outdoor
+just bag-play
 ```

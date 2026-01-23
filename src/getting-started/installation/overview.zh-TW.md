@@ -148,15 +148,13 @@ Translation Metadata:
 
 ```bash
 cd ~/AutoSDV
-make prepare  # Install ROS dependencies
-make build    # Build the project
+just build    # 建置專案
 ```
 
 啟動系統以驗證安裝：
 
 ```bash
-source install/setup.bash
-ros2 launch autosdv_launch autosdv.launch.yaml
+just launch   # 啟動 AutoSDV 系統
 ```
 
 如果成功，您應該會看到系統啟動且沒有嚴重錯誤。
@@ -168,9 +166,9 @@ ros2 launch autosdv_launch autosdv.launch.yaml
 如果遇到建置錯誤：
 
 ```bash
-# Clean and rebuild
-./clean_build.sh clean
-make build
+# 清除並重新建置
+just clean
+just build
 ```
 
 ### 缺少相依套件

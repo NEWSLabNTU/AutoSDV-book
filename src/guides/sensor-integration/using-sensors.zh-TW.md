@@ -26,13 +26,13 @@ AutoSDV 支援稱為**感測器套件**的預定義感測器組合。每個套�
 
 ```bash
 # Launch with Robin-W LiDAR + ZED camera (recommended)
-make launch ARGS="sensor_suite:=robin_zed"
+just launch ARGS="sensor_suite:=robin_zed"
 
 # Launch with Velodyne LiDAR + ZED camera
-make launch ARGS="sensor_suite:=vlp32c_zed"
+just launch ARGS="sensor_suite:=vlp32c_zed"
 
 # Launch with Blickfeld LiDAR + ZED camera
-make launch ARGS="sensor_suite:=cube1_zed"
+just launch ARGS="sensor_suite:=cube1_zed"
 ```
 
 ### 驗證感測器運作
@@ -60,7 +60,7 @@ ros2 topic hz /sensing/gnss/ublox/nav_sat_fix
 
 ```bash
 # Open RViz with AutoSDV configuration
-make run-rviz
+just tool-rviz
 ```
 
 您應該會看到：
@@ -77,7 +77,7 @@ make run-rviz
 
 ```bash
 # Enable NTRIP for RTK positioning
-make launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
+just launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
 ```
 
 這會連接到 e-GNSS Taiwan VRS 以獲得約 2 公分精度的 GPS。
@@ -88,7 +88,7 @@ make launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
 
 ```bash
 # Disable GPS, use NDT localization only
-make launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
+just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 ```
 
 您需要在 RViz 中使用「2D Pose Estimate」工具手動設定初始姿態。
@@ -99,7 +99,7 @@ make launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 
 ```bash
 # Use Isaac Visual SLAM for pose estimation
-make launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
+just launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
 ```
 
 ## 自訂感測器選擇
@@ -108,10 +108,10 @@ make launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
 
 ```bash
 # Custom combination
-make launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
+just launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-make launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
 ```
 
 ### 可用選項
@@ -169,7 +169,7 @@ ls -l /dev/ublox-gps
 
 如果 RViz 顯示「No transform from X to Y」，請重新建置專案：
 ```bash
-make build
+just build
 ```
 
 ## 下一步

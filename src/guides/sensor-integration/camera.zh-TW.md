@@ -104,7 +104,7 @@ ZED SDK 包含基於 AI 的物件偵測（人員、車輛、動物）。
 
 **停用以提升效能**：
 ```bash
-make launch ARGS="enable_zed_object_detection:=false"
+just launch ARGS="enable_zed_object_detection:=false"
 ```
 
 ### 配置選項

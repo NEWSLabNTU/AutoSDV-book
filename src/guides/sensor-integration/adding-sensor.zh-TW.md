@@ -130,10 +130,10 @@ sensor_model_param = DeclareLaunchArgument(
 
 ```bash
 # Rebuild
-make build
+just build
 
 # Launch with your sensor
-make launch ARGS="sensor_model:=your_sensor"
+just launch ARGS="sensor_model:=your_sensor"
 
 # Verify topic in Autoware namespace
 ros2 topic list | grep /sensing
@@ -162,7 +162,7 @@ ros2 run tf2_ros tf2_echo sensor_kit_base_link your_sensor_link
 - 使用絕對路徑：`/sensing/...`
 
 **TF 轉換遺失**：
-- URDF 變更後重新建置：`make build`
+- URDF 變更後重新建置：`just build`
 - 檢查 URDF 語法：`check_urdf sensor_kit.urdf`
 
 **無資料發布**：

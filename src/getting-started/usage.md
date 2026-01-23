@@ -4,10 +4,10 @@ Before reading this article, please make sure you followed the [Software Install
 
 ## The Simple Way
 
-The Makefile has a receipt to start the whole system.
+The project uses [Just](https://just.systems) for command running. Run `just` to see all available commands.
 
 ```sh
-make launch
+just launch
 ```
 
 ## Customize the Launch
@@ -52,28 +52,24 @@ For a complete list of arguments, see the [main launch file](https://github.com/
 
 ## Common Operations
 
-### Autonomous Driving
+### Visualization and Monitoring
 
-Run autonomous driving with waypoint navigation:
+Launch drive monitor TUI (shows pose, speed, component states):
 
 ```sh
-make run-drive
+just tool-tui
 ```
-
-This command launches the full system and executes autonomous driving based on poses defined in `scripts/testing/drive/poses.json`. The vehicle will navigate through the defined waypoints.
-
-### Visualization and Monitoring
 
 Launch RViz for 3D visualization:
 
 ```sh
-make run-rviz
+just tool-rviz
 ```
 
 Launch PlotJuggler for real-time data plotting:
 
 ```sh
-make run-plotjuggler
+just tool-plotjuggler
 ```
 
 ### Manual Control
@@ -81,7 +77,7 @@ make run-plotjuggler
 Launch keyboard-based manual control:
 
 ```sh
-make run-controller
+just tool-controller
 ```
 
 ### Testing Control System
@@ -89,14 +85,14 @@ make run-controller
 Test the basic control system:
 
 ```sh
-make play-basic-control
+just control-basic
 ```
 
 Run predefined trajectories:
 
 ```sh
-make run-straight-10m  # Drive 10m straight
-make run-circle        # Drive in a circle
+just control-straight  # Drive 10m straight
+just control-circle    # Drive in a circle
 ```
 
 ### Recording and Playback
@@ -104,11 +100,11 @@ make run-circle        # Drive in a circle
 Record sensor data during outdoor operation:
 
 ```sh
-make record-outdoor
+just bag-record
 ```
 
 Play back the most recent recording:
 
 ```sh
-make play-outdoor
+just bag-play
 ```
