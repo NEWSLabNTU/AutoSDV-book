@@ -43,14 +43,14 @@ book/
 
 1. Edit markdown files in `src/`
 2. Build and preview: `just serve`
-3. Validate: `just lint`
+3. Validate: `just check`
 4. Submit PR
 
 ### Translating to Chinese
 
 2. Create `.zh-TW.md` file alongside English version
 3. Translate content (see [CLAUDE.md](CLAUDE.md#translation-workflow))
-4. Validate: `just lint`
+4. Validate: `just check`
 5. Submit PR
 
 ## Commands
@@ -60,7 +60,7 @@ just              # List all commands
 just setup        # Install dependencies
 just build        # Build documentation
 just serve        # Serve with live reload
-just lint         # Validate format and translations
+just check        # Check deps, validate docs, check translations
 just clean        # Remove build outputs
 ```
 

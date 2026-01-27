@@ -65,34 +65,34 @@ deploy:
 	@uv run mkdocs gh-deploy --force
 	@echo "[OK] Deployment complete!"
 
-# Check if dependencies are installed
+# Check dependencies, validate docs, and check translations
 check:
-	@echo "Checking MkDocs installation..."
-	@uv run python -c "import mkdocs; print('[OK] mkdocs found')" 2>/dev/null || echo "[X] mkdocs not found (run 'just setup')"
-	@uv run python -c "import mkdocs_material; print('[OK] mkdocs-material found')" 2>/dev/null || echo "[X] mkdocs-material not found (run 'just setup')"
-	@uv run python -c "import mkdocs_awesome_pages_plugin; print('[OK] mkdocs-awesome-pages-plugin found')" 2>/dev/null || echo "[X] mkdocs-awesome-pages-plugin not found (run 'just setup')"
-	@uv run python -c "import mkdocs_static_i18n; print('[OK] mkdocs-static-i18n found')" 2>/dev/null || echo "[X] mkdocs-static-i18n not found (run 'just setup')"
-
-# Lint: Validate documentation format and check translations
-lint:
-	@echo "========================================================================"
-	@echo "Documentation Linting"
-	@echo "========================================================================"
-	@echo ""
-	@echo "[1/2] Checking MkDocs configuration..."
-	@uv run mkdocs build --strict --quiet && echo "   [OK] MkDocs build successful (strict mode)" || (echo "   [X] MkDocs build failed" && exit 1)
-	@echo ""
-	@echo "[2/2] Checking translation status..."
-	@uv run python scripts/check-translations.py || (echo "" && echo "   [!] Translation issues found (see above)" && echo "   Run with --verbose for details: uv run python scripts/check-translations.py --verbose")
-	@echo ""
-	@echo "========================================================================"
-	@echo "[OK] Lint complete!"
-	@echo "========================================================================"
-	@echo ""
-	@echo "Tips:"
-	@echo "   - Check specific file: uv run python scripts/check-translations.py --file src/index.md"
-	@echo "   - Show git diff: uv run python scripts/check-translations.py --show-diff"
-	@echo "   - AI semantic audit: uv run python scripts/audit-translations-ai.py"
+	#!/usr/bin/env bash
+	set -e
+	echo "========================================================================"
+	echo "Documentation Check"
+	echo "========================================================================"
+	echo ""
+	echo "[1/3] Checking dependencies..."
+	uv run python -c "import mkdocs; print('      [OK] mkdocs')" 2>/dev/null || { echo "      [X] mkdocs not found (run 'just setup')"; exit 1; }
+	uv run python -c "import material; print('      [OK] mkdocs-material')" 2>/dev/null || { echo "      [X] mkdocs-material not found (run 'just setup')"; exit 1; }
+	uv run python -c "import mkdocs_awesome_pages_plugin; print('      [OK] mkdocs-awesome-pages-plugin')" 2>/dev/null || { echo "      [X] mkdocs-awesome-pages-plugin not found (run 'just setup')"; exit 1; }
+	uv run python -c "import mkdocs_static_i18n; print('      [OK] mkdocs-static-i18n')" 2>/dev/null || { echo "      [X] mkdocs-static-i18n not found (run 'just setup')"; exit 1; }
+	echo ""
+	echo "[2/3] Validating MkDocs configuration..."
+	uv run mkdocs build --strict --quiet && echo "      [OK] MkDocs build successful (strict mode)" || { echo "      [X] MkDocs build failed"; exit 1; }
+	echo ""
+	echo "[3/3] Checking translation status..."
+	uv run python scripts/check-translations.py || { echo ""; echo "      [!] Translation issues found (see above)"; echo "      Run with --verbose for details: uv run python scripts/check-translations.py --verbose"; }
+	echo ""
+	echo "========================================================================"
+	echo "[OK] Check complete!"
+	echo "========================================================================"
+	echo ""
+	echo "Tips:"
+	echo "   - Check specific file: uv run python scripts/check-translations.py --file src/index.md"
+	echo "   - Show git diff: uv run python scripts/check-translations.py --show-diff"
+	echo "   - AI semantic audit: just audit-translations"
 
 # AI-based semantic translation audit using Claude CLI
 audit-translations:

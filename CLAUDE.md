@@ -6,10 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Setup: `just setup` - Installs MkDocs and all dependencies using `uv sync`
 - Build: `just build` - Compiles the HTML documentation using MkDocs (both English and Chinese versions)
 - Serve: `just serve` - Starts development server at http://0.0.0.0:3000 with live reload
-- Lint: `just lint` - Validates documentation format (MkDocs strict build) and checks translation sync
+- Check: `just check` - Verifies dependencies, validates documentation (MkDocs strict build), and checks translation sync
 - **Audit Translations**: `just audit-translations` - AI-based semantic translation audit using Claude CLI (with intelligent caching, 18-50x faster on subsequent runs)
 - Clean: `just clean` - Removes all build outputs (site/ directory)
-- Check: `just check` - Verifies all dependencies are installed
 - Deploy: `just deploy` - Deploys to GitHub Pages (manual deployment)
 
 ## Package Management
@@ -269,7 +268,7 @@ Chinese files are served with an extra `/zh-TW/` directory level, requiring one 
 
 
 **Tier 1: Structural Checking** (fast, daily)
-- Command: `just lint`
+- Command: `just check`
 - Detects: Missing/outdated files, structural differences, git diff
 - Best for: PR reviews, weekly maintenance
 
