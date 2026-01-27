@@ -161,7 +161,7 @@ bf_lidar_link:
 ### 驅動程式套件
 
 **位置**：`src/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5/`
-**需要**：Blickfeld Scanner Library 2.20.6-newslab1（透過 `just blickfeld` 安裝）
+**需要**：Blickfeld Scanner Library 2.20.6-newslab1（透過 `./setup.sh blickfeld` 安裝）
 
 ### 獨立測試
 
@@ -181,7 +181,7 @@ ros2 topic hz /bf_lidar/points_raw
 dpkg -l | grep blickfeld
 ```
 
-**EULA 錯誤**：執行 `just blickfeld` 以接受授權
+**EULA 錯誤**：執行 `./setup.sh blickfeld` 以接受授權
 
 ## 多光達設定
 

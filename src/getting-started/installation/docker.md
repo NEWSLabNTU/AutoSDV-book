@@ -202,7 +202,7 @@ docker-compose up
 Export image for deployment:
 
 ```bash
-make save  # Creates autosdv_docker.tar.gz
+make save  # Creates autosdv_docker.tar.zstd
 ```
 
 Load on another machine:
@@ -320,7 +320,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'docker run --rm autosdv:latest make test'
+                sh 'docker run --rm autosdv:latest just test'
             }
         }
     }

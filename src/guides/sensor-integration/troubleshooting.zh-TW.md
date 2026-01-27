@@ -242,8 +242,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 
 1. **配置 CycloneDDS 緩衝區**（如果尚未完成）：
    ```bash
-   cd setup
-   just cyclonedds-sysctl
+   ./setup.sh cyclonedds-sysctl
    ```
 
 2. **降低感測器資料速率**：

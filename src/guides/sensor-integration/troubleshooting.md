@@ -234,8 +234,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 
 1. **Configure CycloneDDS buffers** (if not done):
    ```bash
-   cd setup
-   just cyclonedds-sysctl
+   ./setup.sh cyclonedds-sysctl
    ```
 
 2. **Reduce sensor data rate**:

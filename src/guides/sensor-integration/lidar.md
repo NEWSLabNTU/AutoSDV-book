@@ -152,7 +152,7 @@ bf_lidar_link:
 ### Driver Package
 
 **Location**: `src/sensor_component/external/ros2_blickfeld_driver_src-v1.5.5/`
-**Requires**: Blickfeld Scanner Library 2.20.6-newslab1 (install via `just blickfeld`)
+**Requires**: Blickfeld Scanner Library 2.20.6-newslab1 (install via `./setup.sh blickfeld`)
 
 ### Test Standalone
 
@@ -172,7 +172,7 @@ ros2 topic hz /bf_lidar/points_raw
 dpkg -l | grep blickfeld
 ```
 
-**EULA error**: Run `just blickfeld` to accept license
+**EULA error**: Run `./setup.sh blickfeld` to accept license
 
 ## Multi-LiDAR Setup
 

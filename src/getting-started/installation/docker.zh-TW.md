@@ -210,7 +210,7 @@ docker-compose up
 匯出映像以供部署：
 
 ```bash
-make save  # Creates autosdv_docker.tar.gz
+make save  # Creates autosdv_docker.tar.zstd
 ```
 
 在另一台機器上載入：
@@ -328,7 +328,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'docker run --rm autosdv:latest make test'
+                sh 'docker run --rm autosdv:latest just test'
             }
         }
     }
