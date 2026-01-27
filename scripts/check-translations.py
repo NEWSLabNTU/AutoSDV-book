@@ -146,8 +146,34 @@ def compare_structure(en_headings, zh_headings):
     return issues
 
 
+def strip_comments(code_block):
+    """Strip comment lines from code block for comparison.
+
+    Comments in code blocks are expected to be translated,
+    so we only compare non-comment lines.
+    """
+    lines = []
+    for line in code_block.split('\n'):
+        stripped = line.strip()
+        # Skip lines that are only comments (bash/python style)
+        if stripped.startswith('#') and not stripped.startswith('#!'):
+            continue
+        # Strip inline comments for comparison
+        if '#' in line and not line.strip().startswith('#'):
+            # Keep the code part, remove comment
+            code_part = line.split('#')[0].rstrip()
+            lines.append(code_part)
+        else:
+            lines.append(line.rstrip())
+    return '\n'.join(lines)
+
+
 def compare_code_blocks(en_code, zh_code):
-    """Compare code blocks to ensure technical content matches."""
+    """Compare code blocks to ensure technical content matches.
+
+    Note: Comments in code blocks are expected to be translated,
+    so we only compare non-comment content.
+    """
     issues = []
 
     if len(en_code) != len(zh_code):
@@ -158,14 +184,15 @@ def compare_code_blocks(en_code, zh_code):
         })
 
     for i, (en_block, zh_block) in enumerate(zip(en_code, zh_code)):
-        en_normalized = '\n'.join(line.rstrip() for line in en_block.split('\n'))
-        zh_normalized = '\n'.join(line.rstrip() for line in zh_block.split('\n'))
+        # Compare without comments (comments are expected to be translated)
+        en_normalized = strip_comments(en_block)
+        zh_normalized = strip_comments(zh_block)
 
         if en_normalized != zh_normalized:
             issues.append({
                 'type': 'code_block_diff',
                 'severity': 'high',
-                'message': f'Code block {i+1} differs between EN and ZH',
+                'message': f'Code block {i+1} differs between EN and ZH (excluding comments)',
                 'block_num': i + 1
             })
 
