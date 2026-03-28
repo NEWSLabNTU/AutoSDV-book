@@ -2271,7 +2271,7 @@
 <ol>
 <li>Download and install <a href="https://developer.nvidia.com/sdk-manager">NVIDIA SDK Manager</a></li>
 <li>Flash the Jetson with the following configuration:<ul>
-<li><strong>JetPack SDK version: 6.0</strong> (exactly - not 6.1 or 6.2)</li>
+<li><strong>JetPack SDK version: 6.2.1</strong></li>
 <li>Install all CUDA and TensorRT packages</li>
 <li>Flash to external NVMe SSD (not internal eMMC)</li>
 </ul>
@@ -2323,13 +2323,17 @@
 - Velodyne drivers (via rosdep)
 - NMEA/serial drivers (via rosdep)
 - All other ROS dependencies</p>
-<p>The script first asks whether to install all optional components. If you decline, it prompts individually for:
-- <strong>Autoware Debian packages</strong>: Install pre-built packages (~2-3 GB)
-- <strong>Isaac ROS Visual Localization</strong>: Camera-only localization (requires NVIDIA GPU)
-- <strong>Blickfeld Scanner Library</strong>: Accept license terms for Cube1 LiDAR support</p>
-<p>After setup completes, it recommends optional post-setup steps:
-- <strong>CycloneDDS kernel buffers</strong>: <code>./setup.sh cyclonedds-sysctl</code>
-- <strong>TurboVNC + VirtualGL</strong>: <code>./setup.sh turbovnc-virtualgl</code></p>
+<p>The script first asks whether to install all optional components. If you decline, it prompts individually for:</p>
+<ul>
+<li><strong>Autoware Debian packages</strong>: Install pre-built packages (~2-3 GB)</li>
+<li><strong>Isaac ROS Visual Localization</strong>: Camera-only localization (requires NVIDIA GPU)</li>
+<li><strong>Blickfeld Scanner Library</strong>: Accept license terms for Cube1 LiDAR support</li>
+</ul>
+<p>After setup completes, it recommends optional post-setup steps:</p>
+<ul>
+<li><strong>CycloneDDS kernel buffers</strong>: <code>./setup.sh cyclonedds-sysctl</code></li>
+<li><strong>TurboVNC + VirtualGL</strong>: <code>./setup.sh turbovnc-virtualgl</code></li>
+</ul>
 <p><strong>Note:</strong> ZED SDK is NOT installed by this script and must be installed manually beforehand.</p>
 <ol>
 <li>

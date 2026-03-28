@@ -2272,7 +2272,7 @@
 <ol>
 <li>下載並安裝 <a href="https://developer.nvidia.com/sdk-manager">NVIDIA SDK Manager</a></li>
 <li>使用以下配置燒錄 Jetson：<ul>
-<li><strong>JetPack SDK 版本：6.0</strong>（必須是 6.0，不是 6.1 或 6.2）</li>
+<li><strong>JetPack SDK 版本：6.2.1</strong></li>
 <li>安裝所有 CUDA 和 TensorRT 套件</li>
 <li>燒錄至外接 NVMe SSD（不要使用內建 eMMC）</li>
 </ul>
@@ -2325,15 +2325,17 @@
 - Velodyne 驅動程式（透過 rosdep）
 - NMEA/串列驅動程式（透過 rosdep）
 - 所有其他 ROS 相依套件</p>
-<p>腳本會先詢問是否安裝所有可選元件。若您選擇不安裝，會個別提示：
-- <strong>Autoware Debian 套件</strong>：安裝預先建置的套件（約 2-3 GB）
-- <strong>Isaac ROS Visual Localization</strong>：純相機定位（需要 NVIDIA GPU）
-- <strong>Blickfeld Scanner Library</strong>：接受 Cube1 光達的授權條款</p>
-<p>設定完成後，會建議可選的後續步驟：
-- <strong>CycloneDDS 核心緩衝區</strong>：<code>./setup.sh cyclonedds-sysctl</code>
-- <strong>TurboVNC + VirtualGL</strong>：<code>./setup.sh turbovnc-virtualgl</code>
-- <strong>CycloneDDS 核心緩衝區</strong>：配置系統級網路緩衝區（建議）
-- <strong>Blickfeld 授權</strong>：接受 Cube1 光達支援的授權條款</p>
+<p>腳本會先詢問是否安裝所有可選元件。若您選擇不安裝，會個別提示：</p>
+<ul>
+<li><strong>Autoware Debian 套件</strong>：安裝預先建置的套件（約 2-3 GB）</li>
+<li><strong>Isaac ROS Visual Localization</strong>：純相機定位（需要 NVIDIA GPU）</li>
+<li><strong>Blickfeld Scanner Library</strong>：接受 Cube1 光達的授權條款</li>
+</ul>
+<p>設定完成後，會建議可選的後續步驟：</p>
+<ul>
+<li><strong>CycloneDDS 核心緩衝區</strong>：<code>./setup.sh cyclonedds-sysctl</code></li>
+<li><strong>TurboVNC + VirtualGL</strong>：<code>./setup.sh turbovnc-virtualgl</code></li>
+</ul>
 <p><strong>注意</strong>：此腳本不會安裝 ZED SDK，必須事先手動安裝。</p>
 <ol>
 <li>
