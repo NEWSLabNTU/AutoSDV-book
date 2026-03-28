@@ -80,8 +80,8 @@ If you use AutoSDV in your research or educational projects, please cite our wor
 ## Getting Help
 
 - **Documentation**: You're reading it!
-- **Issues**: [GitHub Issues](https://github.com/NEWSLabNTU/AutoSDV-book/issues)
-- **Source Code**: [GitHub Repository](https://github.com/NEWSLabNTU/AutoSDV-book)
+- **Issues**: [GitHub Issues](https://github.com/NEWSLabNTU/AutoSDV/issues)
+- **Source Code**: [GitHub Repository](https://github.com/NEWSLabNTU/AutoSDV)
 
 ---
 

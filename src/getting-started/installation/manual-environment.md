@@ -17,12 +17,14 @@ Before proceeding, understand what `./setup.sh` already installs:
 
 - ROS 2 Humble (ros-humble-desktop)
 - ROS 2 development tools (colcon, rosdep, vcstool)
-- Autoware 1.5.0 Debian packages (optional, recommended)
-- Blickfeld Scanner Library (for Cube1 LiDAR)
-- Velodyne, NMEA, and serial drivers (via rosdep)
+- Autoware 1.5.0 Debian packages (optional)
+- Isaac ROS Visual Localization (optional, requires NVIDIA GPU)
+- Blickfeld Scanner Library (optional, for Cube1 LiDAR)
+- GeographicLib datasets
 - Development tools: git-lfs, golang, pre-commit, clang-format, plotjuggler
-- Python dependencies: Adafruit-PCA9685, simple-pid, ros2systemd
+- Python dependencies: Adafruit-PCA9685, simple-pid, play_launch
 - u-blox GPS udev rules and user group permissions
+- All ROS dependencies via rosdep
 
 The manual steps below provide alternatives or additions to this automated setup.
 
