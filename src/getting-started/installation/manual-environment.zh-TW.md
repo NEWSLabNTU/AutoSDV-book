@@ -25,9 +25,9 @@ Translation Metadata:
 
 - ROS 2 Humble (ros-humble-desktop)
 - ROS 2 開發工具 (colcon, rosdep, vcstool)
-- Autoware 2025.02 Debian 套件（選配，建議）
-- Blickfeld Scanner Library（用於 Cube1 LiDAR）
-- Velodyne、NMEA 與 serial 驅動程式（透過 rosdep）
+- Autoware 2025.02 Debian 套件（選配）
+- Blickfeld Scanner Library（選配，用於 Cube1 LiDAR）
+- GeographicLib 資料集
 - 開發工具：git-lfs、golang、pre-commit、clang-format、plotjuggler
 - Python 相依套件：Adafruit-PCA9685、simple-pid、ros2systemd
 - u-blox GPS udev 規則與使用者群組權限

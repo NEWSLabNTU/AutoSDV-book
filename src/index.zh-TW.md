@@ -88,8 +88,8 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
 ## 取得協助
 
 - **文件**：您正在閱讀！
-- **問題回報**：[GitHub Issues](https://github.com/NEWSLabNTU/AutoSDV-book/issues)
-- **原始碼**：[GitHub Repository](https://github.com/NEWSLabNTU/AutoSDV-book)
+- **問題回報**：[GitHub Issues](https://github.com/NEWSLabNTU/AutoSDV/issues)
+- **原始碼**：[GitHub Repository](https://github.com/NEWSLabNTU/AutoSDV)
 
 ---
 

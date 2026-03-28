@@ -33,7 +33,7 @@ Choose the installation method that best fits your needs:
 
 1. Download and install [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
 2. Flash the Jetson with the following configuration:
-   - **JetPack SDK version: 6.0** (exactly - not 6.1 or 6.2)
+   - **JetPack SDK version: 6.2.1**
    - Install all CUDA and TensorRT packages
    - Flash to external NVMe SSD (not internal eMMC)
 
@@ -93,9 +93,12 @@ This script automatically installs:
 - All other ROS dependencies
 
 The script will prompt you for:
+
 - **Autoware Debian packages**: Install pre-built packages or build from source
 - **CycloneDDS kernel buffers**: Configure system-wide network buffers (recommended)
-- **Blickfeld license**: Accept license terms for Cube1 LiDAR support
+- **Blickfeld Scanner Library**: Accept license terms for Cube1 LiDAR support
+- **ML model artifacts**: Download YOLOX, CenterPoint models (~2-5 GB)
+- **TurboVNC + VirtualGL**: For hardware-accelerated VNC sessions
 
 **Note:** ZED SDK is NOT installed by this script and must be installed manually beforehand.
 

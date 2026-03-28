@@ -42,7 +42,7 @@ Translation Metadata:
 
 1. 下載並安裝 [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
 2. 使用以下配置燒錄 Jetson：
-   - **JetPack SDK 版本：6.0**（必須是 6.0，不是 6.1 或 6.2）
+   - **JetPack SDK 版本：6.2.1**
    - 安裝所有 CUDA 和 TensorRT 套件
    - 燒錄至外接 NVMe SSD（不要使用內建 eMMC）
 
@@ -103,9 +103,12 @@ Translation Metadata:
 - 所有其他 ROS 相依套件
 
 腳本會提示您：
+
 - **Autoware Debian 套件**：安裝預先建置的套件或從原始碼建置
 - **CycloneDDS 核心緩衝區**：配置系統級網路緩衝區（建議）
-- **Blickfeld 授權**：接受 Cube1 光達支援的授權條款
+- **Blickfeld Scanner Library**：接受 Cube1 光達支援的授權條款
+- **ML 模型檔案**：下載 YOLOX、CenterPoint 模型（約 2-5 GB）
+- **TurboVNC + VirtualGL**：用於硬體加速的 VNC 連線
 
 **注意**：此腳本不會安裝 ZED SDK，必須事先手動安裝。
 

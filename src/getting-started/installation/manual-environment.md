@@ -17,9 +17,9 @@ Before proceeding, understand what `./setup.sh` already installs:
 
 - ROS 2 Humble (ros-humble-desktop)
 - ROS 2 development tools (colcon, rosdep, vcstool)
-- Autoware 2025.02 Debian packages (optional, recommended)
-- Blickfeld Scanner Library (for Cube1 LiDAR)
-- Velodyne, NMEA, and serial drivers (via rosdep)
+- Autoware 2025.02 Debian packages (optional)
+- Blickfeld Scanner Library (optional, for Cube1 LiDAR)
+- GeographicLib datasets
 - Development tools: git-lfs, golang, pre-commit, clang-format, plotjuggler
 - Python dependencies: Adafruit-PCA9685, simple-pid, ros2systemd
 - u-blox GPS udev rules and user group permissions
