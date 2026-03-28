@@ -2748,7 +2748,7 @@
 </ol>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">#</a></h2>
 <h3 id="step-1-clone-autosdv-repository">Step 1: Clone AutoSDV Repository<a class="headerlink" href="#step-1-clone-autosdv-repository" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="m">2025</span>.02<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/NEWSLabNTU/AutoSDV.git
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>develop<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/NEWSLabNTU/AutoSDV.git
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>AutoSDV/docker
 </span></code></pre></div>
 <h3 id="step-2-bootstrap-docker-environment">Step 2: Bootstrap Docker Environment<a class="headerlink" href="#step-2-bootstrap-docker-environment" title="Permanent link">#</a></h3>
@@ -2761,7 +2761,7 @@
 </span></code></pre></div>
 <p>This creates an image with:
 - Ubuntu 22.04 base with ROS 2 Humble
-- Autoware 2025.02 pre-installed
+- Autoware 1.5.0 pre-installed
 - All AutoSDV dependencies
 - CUDA and TensorRT support
 - Sensor driver libraries (except proprietary ones)</p>
@@ -2776,7 +2776,7 @@
 <h3 id="pre-installed-software">Pre-installed Software<a class="headerlink" href="#pre-installed-software" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>ROS 2 Humble</strong> with desktop tools</li>
-<li><strong>Autoware 2025.02</strong> binary release</li>
+<li><strong>Autoware 1.5.0</strong> binary release</li>
 <li><strong>CUDA 12.3</strong> and <strong>TensorRT 8.6</strong></li>
 <li><strong>Cyclone DDS</strong> configured as default</li>
 <li><strong>Development tools</strong>: git, vim, tmux, htop</li>

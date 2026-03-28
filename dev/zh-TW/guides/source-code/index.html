@@ -1941,12 +1941,8 @@
 <td></td>
 </tr>
 <tr>
-<td><code>├── book/</code></td>
-<td>本文件的原始文件。</td>
-</tr>
-<tr>
 <td><code>├── data/</code></td>
-<td>包含執行時使用或載入的資料檔案。</td>
+<td>執行時使用或載入的資料檔案。</td>
 </tr>
 <tr>
 <td><code>├── docker/</code></td>
@@ -1954,15 +1950,23 @@
 </tr>
 <tr>
 <td><code>├── scripts/</code></td>
-<td>輔助腳本檔案。包含設定環境的 Ansible 腳本。</td>
+<td>輔助腳本，用於設定、rosbag 管理與公用程式。</td>
+</tr>
+<tr>
+<td><code>├── setup/</code></td>
+<td>設定系統（justfile 指令與安裝腳本）。</td>
 </tr>
 <tr>
 <td><code>├── src/</code></td>
 <td>原始碼套件。</td>
 </tr>
 <tr>
-<td><code>├── Makefile</code></td>
-<td>包含常用的指令。</td>
+<td><code>├── justfile</code></td>
+<td>任務執行器指令，用於建置、啟動、測試等常用操作。</td>
+</tr>
+<tr>
+<td><code>├── setup.sh</code></td>
+<td>互動式設定腳本（自動安裝相依套件）。</td>
 </tr>
 <tr>
 <td><code>└── README.md</code></td>

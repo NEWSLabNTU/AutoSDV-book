@@ -1941,28 +1941,32 @@
 <td></td>
 </tr>
 <tr>
-<td><code>├── book/</code></td>
-<td>The source documents for this book.</td>
-</tr>
-<tr>
 <td><code>├── data/</code></td>
-<td>It includes data files used or loaded in the runtime.</td>
+<td>Data files used or loaded at runtime.</td>
 </tr>
 <tr>
 <td><code>├── docker/</code></td>
-<td>The Docker container build script.</td>
+<td>Docker container build scripts.</td>
 </tr>
 <tr>
 <td><code>├── scripts/</code></td>
-<td>Auxiliary script files. It contains Ansible scripts to set up the environment.</td>
+<td>Auxiliary scripts for setup, rosbag management, and utilities.</td>
+</tr>
+<tr>
+<td><code>├── setup/</code></td>
+<td>Setup system (justfile recipes and installation scripts).</td>
 </tr>
 <tr>
 <td><code>├── src/</code></td>
 <td>The source code packages.</td>
 </tr>
 <tr>
-<td><code>├── Makefile</code></td>
-<td>It includes commonly used recipes.</td>
+<td><code>├── justfile</code></td>
+<td>Task runner recipes for build, launch, test, and other common commands.</td>
+</tr>
+<tr>
+<td><code>├── setup.sh</code></td>
+<td>Interactive setup script (auto-installs dependencies).</td>
 </tr>
 <tr>
 <td><code>└── README.md</code></td>
