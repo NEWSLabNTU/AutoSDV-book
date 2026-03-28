@@ -2,13 +2,21 @@ default:
 	@just --list
 
 setup:
-	@echo "Installing MkDocs and dependencies..."
-	@command -v uv >/dev/null 2>&1 || (echo "Error: uv not found. Please install uv: https://docs.astral.sh/uv/getting-started/installation/" && exit 1)
-	@uv sync
-	@echo ""
-	@echo "[OK] Setup complete!"
-	@echo "  Run 'just build' to build the documentation"
-	@echo "  Run 'just serve' to serve the documentation"
+	#!/usr/bin/env bash
+	set -e
+	echo "Installing MkDocs and dependencies..."
+	# Auto-install uv if not found
+	if ! command -v uv &>/dev/null; then
+		echo "→ uv not found. Installing..."
+		curl -LsSf https://astral.sh/uv/install.sh | sh
+		export PATH="$HOME/.local/bin:$PATH"
+		echo "✓ uv $(uv --version) installed"
+	fi
+	uv sync
+	echo ""
+	echo "[OK] Setup complete! (mkdocs, mike, and all plugins installed)"
+	echo "  Run 'just build' to build the documentation"
+	echo "  Run 'just serve' to serve the documentation"
 
 build:
 	@echo "Building all language versions..."
@@ -60,10 +68,44 @@ watch:
 	@echo "Watching for changes and rebuilding..."
 	@uv run mkdocs serve --watch src
 
-deploy:
-	@echo "Deploying to GitHub Pages..."
-	@uv run mkdocs gh-deploy --force
-	@echo "[OK] Deployment complete!"
+# Versioned deployment using mike
+#
+# Version scheme: X.Y-N (X.Y = AutoSDV version, N = book revision)
+# Branches: main (dev), 0.1 (AutoSDV 0.1.x docs), 0.2 (AutoSDV 0.2.x docs)
+# Tags: 0.1-1, 0.1-2, 0.2-1, etc.
+#
+# Usage:
+#   just deploy-release 0.1 0.1-1    Deploy version 0.1 as latest
+#   just deploy-dev                   Deploy dev from main branch
+#   just deploy-list                  List all deployed versions
+
+# Deploy a release version (run from a version branch)
+deploy-release version tag:
+	@echo "Deploying {{version}} ({{tag}}) as latest..."
+	@uv run mike deploy --push --update-aliases "{{version}}" latest --title "{{version}} ({{tag}})"
+	@uv run mike set-default --push latest
+	@echo "[OK] Deployed {{version}} as latest"
+
+# Deploy development version (run from main branch)
+deploy-dev:
+	@echo "Deploying dev version..."
+	@uv run mike deploy --push --update-aliases dev --title "dev (unreleased)"
+	@echo "[OK] Deployed dev version"
+
+# Set which version / is redirected to
+deploy-set-default alias="latest":
+	@echo "Setting default to {{alias}}..."
+	@uv run mike set-default --push "{{alias}}"
+	@echo "[OK] Default set to {{alias}}"
+
+# List all deployed versions
+deploy-list:
+	@uv run mike list
+
+# Serve all deployed versions locally (reads from gh-pages branch)
+serve-versions:
+	@echo "Serving all deployed versions at http://localhost:8000"
+	@uv run mike serve
 
 # Check dependencies, validate docs, and check translations
 check:

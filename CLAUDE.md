@@ -51,9 +51,46 @@ This project uses **MkDocs** with the **Material for MkDocs** theme, following A
 - Avoid bash `cat > file << 'EOF'` - use Write tool instead
 - Example path: `/home/aeon/repos/AutoSDV/book/tmp/script_name.py`
 
+## Versioning
+
+Book versions are aligned with AutoSDV versions using the format `X.Y-N`:
+
+- **X.Y** = AutoSDV version (e.g., `0.1` for AutoSDV 0.1.x)
+- **N** = book revision (content fixes, translation updates)
+
+This avoids confusion with AutoSDV patch versions (e.g., `0.1.3` is AutoSDV, `0.1-3` is the book).
+
+### Branches
+
+| Branch | Purpose | Deployed as |
+|--------|---------|-------------|
+| `main` | Development (next version) | `/dev/` |
+| `0.1` | Docs for AutoSDV 0.1.x | `/0.1/` |
+| `0.2` | Docs for AutoSDV 0.2.x | `/0.2/` |
+
+### Releasing
+
+```bash
+# On a version branch (e.g., 0.1):
+git tag 0.1-1
+git push origin 0.1-1
+# CI deploys to /0.1/ and sets it as latest
+
+# Book revision (content fix on 0.1 branch):
+git tag 0.1-2
+git push origin 0.1-2
+# CI updates /0.1/ in place
+```
+
+### Version Selector
+
+The Material theme version selector (powered by `mike`) lets users switch between:
+- **0.1 (latest)** — current stable release docs
+- **dev (unreleased)** — development docs from `main`
+
 ## GitHub Actions
 
-The repository uses two GitHub Actions workflows:
+The repository uses three GitHub Actions workflows:
 
 ### 1. Test Workflow (`.github/workflows/test.yml`)
 - **Triggers**: On every commit to any branch and on pull requests
@@ -64,27 +101,32 @@ The repository uses two GitHub Actions workflows:
   - Validates navigation structure
   - Does NOT deploy (test-only)
 
-### 2. Deploy Workflow (`.github/workflows/deploy.yml`)
-- **Triggers**: Only when tags matching `book-v*` are pushed (e.g., `book-v1.0.0`)
-- **Purpose**: Production deployment to GitHub Pages
+### 2. Deploy Release Workflow (`.github/workflows/deploy.yml`)
+- **Triggers**: Tags matching `X.Y-N` (e.g., `0.1-1`, `0.2-3`)
+- **Purpose**: Deploy versioned docs via `mike`
 - **Actions**:
-  - Builds documentation
-  - Deploys to `gh-pages` branch
-  - Updates NEWSLabNTU.github.io website repository's submodule
+  - Deploys to `/X.Y/` on `gh-pages` with alias `latest`
+  - Updates NEWSLabNTU.github.io website submodule
 - **Required Secret**: `AUTOSDV_BOOK_DEPLOY_KEY` (SSH deploy key)
 
+### 3. Deploy Dev Workflow (`.github/workflows/deploy-dev.yml`)
+- **Triggers**: Push to `main` branch
+- **Purpose**: Deploy development docs via `mike`
+- **Actions**:
+  - Deploys to `/dev/` on `gh-pages`
+
 ### Creating a Release
-To deploy documentation:
 ```bash
-# Create and push a tag
-git tag -a book-v1.0.0 -m "Documentation v1.0.0"
-git push origin book-v1.0.0
+# On a version branch (e.g., 0.1):
+git tag 0.1-1 -m "Docs for AutoSDV 0.1 — initial release"
+git push origin 0.1-1
+
+# Book revision on the same branch:
+git tag 0.1-2 -m "Docs for AutoSDV 0.1 — fix sensor guide"
+git push origin 0.1-2
 ```
 
-**Tag Format**: Use `book-v<semver>` (e.g., `book-v1.0.0`, `book-v1.1.0`, `book-v2.0.0`)
-- MAJOR: Breaking changes, navigation overhaul
-- MINOR: New content sections, significant updates
-- PATCH: Bug fixes, typo corrections
+**Tag Format**: `X.Y-N` where X.Y matches AutoSDV version, N is book revision
 
 ## Style Guidelines
 - Use consistent Markdown formatting in `.md` files

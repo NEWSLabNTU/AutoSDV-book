@@ -50,6 +50,11 @@ theme:
     - toc.follow
 
 extra:
+  version:
+    provider: mike
+    default:
+      - latest
+    alias: true
   font:
     text: Roboto
     code: Roboto Mono

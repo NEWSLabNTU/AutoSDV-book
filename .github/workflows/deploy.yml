@@ -1,9 +1,12 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy Release Docs
 
+# Triggered by version tags: X.Y-N
+# X.Y = AutoSDV version, N = book revision
+# e.g. 0.1-1, 0.1-2, 0.2-1
 on:
   push:
     tags:
-      - 'book-v*'        # Book versions: book-v1.0.0, book-v1.1.0, book-v2.0.0
+      - '[0-9]+.[0-9]+-[0-9]+'
 
 permissions:
   contents: write
@@ -15,44 +18,49 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Configure git
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-      - name: Build documentation
+      - name: Extract version from tag
+        id: version
         run: |
-          mkdocs build --strict
+          TAG="${GITHUB_REF#refs/tags/}"
+          # 0.1-2 → 0.1
+          AUTOSDV_VERSION="${TAG%-*}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$AUTOSDV_VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          force_orphan: true
-          enable_jekyll: false
-          cname: false
+      - name: Deploy versioned docs
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          TAG="${{ steps.version.outputs.tag }}"
+          mike deploy --push --update-aliases \
+            "$VERSION" latest \
+            --title "$VERSION ($TAG)"
+          mike set-default --push latest
 
       - name: Create deployment summary
         run: |
           echo "### Documentation Deployed ✓" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Tag**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Published to**: GitHub Pages" >> $GITHUB_STEP_SUMMARY
-          echo "- **URL**: https://newslabNTU.github.io/AutoSDV-book/" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Both English and Chinese (繁體中文) versions have been built and deployed." >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag**: ${{ steps.version.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **AutoSDV version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Alias**: latest" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: https://NEWSLabNTU.github.io/AutoSDV-book/${{ steps.version.outputs.version }}/" >> $GITHUB_STEP_SUMMARY
 
   update-website:
     needs: deploy
@@ -77,21 +85,17 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-          # Update submodule to point to the latest gh-pages
           git submodule update --init --recursive -- autosdv-book
           cd autosdv-book
           git fetch origin gh-pages
           git checkout gh-pages
           cd ..
 
-          # Commit and push the submodule update
           git add autosdv-book
-          git commit -m "Update autosdv-book submodule to ${{ github.ref_name }}" || echo "No changes to commit"
+          git commit -m "Update autosdv-book to ${{ github.ref_name }}" || echo "No changes to commit"
           git push
 
       - name: Update summary
         run: |
           echo "### Website Updated ✓" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Main website submodule updated to**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Website**: https://NEWSLabNTU.github.io/" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,47 @@
+name: Deploy Dev Docs
+
+# Deploy development docs on push to main branch.
+# Version branches (0.1, 0.2, ...) are deployed via tags instead.
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+      - name: Deploy dev docs
+        run: |
+          mike deploy --push --update-aliases dev --title "dev (unreleased)"
+
+      - name: Create deployment summary
+        run: |
+          echo "### Dev Documentation Deployed ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: main" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: dev (unreleased)" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: https://NEWSLabNTU.github.io/AutoSDV-book/dev/" >> $GITHUB_STEP_SUMMARY
