@@ -17,7 +17,7 @@ Before proceeding, understand what `./setup.sh` already installs:
 
 - ROS 2 Humble (ros-humble-desktop)
 - ROS 2 development tools (colcon, rosdep, vcstool)
-- Autoware 2025.02 Debian packages (optional, recommended)
+- Autoware 1.5.0 Debian packages (optional, recommended)
 - Blickfeld Scanner Library (for Cube1 LiDAR)
 - Velodyne, NMEA, and serial drivers (via rosdep)
 - Development tools: git-lfs, golang, pre-commit, clang-format, plotjuggler
@@ -40,7 +40,7 @@ The automated setup installs Autoware Debian packages from `/opt/autoware`. To m
 ```bash
 mkdir -p ~/autoware_ws/src
 cd ~/autoware_ws
-git clone https://github.com/autowarefoundation/autoware.git -b release/2025.02
+git clone https://github.com/autowarefoundation/autoware.git -b release/1.5.0
 ```
 
 ### Step 2: Install Dependencies

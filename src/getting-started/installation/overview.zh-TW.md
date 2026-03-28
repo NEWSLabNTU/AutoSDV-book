@@ -96,14 +96,21 @@ Translation Metadata:
 
 此腳本會自動安裝：
 - ROS 2 Humble
-- Autoware 2025.02
+- Autoware 1.5.0 Debian 套件
+- Isaac ROS Visual Localization（若偵測到 NVIDIA GPU）
 - Blickfeld Scanner Library（用於 Cube1 光達，需接受授權條款）
 - Velodyne 驅動程式（透過 rosdep）
 - NMEA/串列驅動程式（透過 rosdep）
 - 所有其他 ROS 相依套件
 
-腳本會提示您：
-- **Autoware Debian 套件**：安裝預先建置的套件或從原始碼建置
+腳本會先詢問是否安裝所有可選元件。若您選擇不安裝，會個別提示：
+- **Autoware Debian 套件**：安裝預先建置的套件（約 2-3 GB）
+- **Isaac ROS Visual Localization**：純相機定位（需要 NVIDIA GPU）
+- **Blickfeld Scanner Library**：接受 Cube1 光達的授權條款
+
+設定完成後，會建議可選的後續步驟：
+- **CycloneDDS 核心緩衝區**：`./setup.sh cyclonedds-sysctl`
+- **TurboVNC + VirtualGL**：`./setup.sh turbovnc-virtualgl`
 - **CycloneDDS 核心緩衝區**：配置系統級網路緩衝區（建議）
 - **Blickfeld 授權**：接受 Cube1 光達支援的授權條款
 

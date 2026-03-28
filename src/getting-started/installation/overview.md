@@ -86,16 +86,21 @@ The automated setup script installs all dependencies and configures your system.
 
 This script automatically installs:
 - ROS 2 Humble
-- Autoware 2025.02
+- Autoware 1.5.0 Debian packages
+- Isaac ROS Visual Localization (if NVIDIA GPU detected)
 - Blickfeld Scanner Library (for Cube1 LiDAR, with license acceptance)
 - Velodyne drivers (via rosdep)
 - NMEA/serial drivers (via rosdep)
 - All other ROS dependencies
 
-The script will prompt you for:
-- **Autoware Debian packages**: Install pre-built packages or build from source
-- **CycloneDDS kernel buffers**: Configure system-wide network buffers (recommended)
-- **Blickfeld license**: Accept license terms for Cube1 LiDAR support
+The script first asks whether to install all optional components. If you decline, it prompts individually for:
+- **Autoware Debian packages**: Install pre-built packages (~2-3 GB)
+- **Isaac ROS Visual Localization**: Camera-only localization (requires NVIDIA GPU)
+- **Blickfeld Scanner Library**: Accept license terms for Cube1 LiDAR support
+
+After setup completes, it recommends optional post-setup steps:
+- **CycloneDDS kernel buffers**: `./setup.sh cyclonedds-sysctl`
+- **TurboVNC + VirtualGL**: `./setup.sh turbovnc-virtualgl`
 
 **Note:** ZED SDK is NOT installed by this script and must be installed manually beforehand.
 

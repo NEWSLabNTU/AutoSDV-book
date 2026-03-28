@@ -25,7 +25,7 @@ Translation Metadata:
 
 - ROS 2 Humble (ros-humble-desktop)
 - ROS 2 開發工具 (colcon, rosdep, vcstool)
-- Autoware 2025.02 Debian 套件（選配，建議）
+- Autoware 1.5.0 Debian 套件（選配，建議）
 - Blickfeld Scanner Library（用於 Cube1 LiDAR）
 - Velodyne、NMEA 與 serial 驅動程式（透過 rosdep）
 - 開發工具：git-lfs、golang、pre-commit、clang-format、plotjuggler
@@ -48,7 +48,7 @@ Translation Metadata:
 ```bash
 mkdir -p ~/autoware_ws/src
 cd ~/autoware_ws
-git clone https://github.com/autowarefoundation/autoware.git -b release/2025.02
+git clone https://github.com/autowarefoundation/autoware.git -b release/1.5.0
 ```
 
 ### 步驟 2：安裝相依套件

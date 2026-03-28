@@ -56,7 +56,7 @@ Docker is recommended for:
 ### Step 1: Clone AutoSDV Repository
 
 ```bash
-git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+git clone -b develop --recursive https://github.com/NEWSLabNTU/AutoSDV.git
 cd AutoSDV/docker
 ```
 
@@ -78,7 +78,7 @@ make build
 
 This creates an image with:
 - Ubuntu 22.04 base with ROS 2 Humble
-- Autoware 2025.02 pre-installed
+- Autoware 1.5.0 pre-installed
 - All AutoSDV dependencies
 - CUDA and TensorRT support
 - Sensor driver libraries (except proprietary ones)
@@ -102,7 +102,7 @@ The AutoSDV Docker image is built for **ARM64 architecture** to match the Jetson
 ### Pre-installed Software
 
 - **ROS 2 Humble** with desktop tools
-- **Autoware 2025.02** binary release
+- **Autoware 1.5.0** binary release
 - **CUDA 12.3** and **TensorRT 8.6**
 - **Cyclone DDS** configured as default
 - **Development tools**: git, vim, tmux, htop

@@ -10,12 +10,13 @@ Here you can visit the GitHub repository:
 | Directory       | Function                                                                       |
 |-----------------|--------------------------------------------------------------------------------|
 | `AutoSDV/`      |                                                                                |
-| `├── book/`     | The source documents for this book.                                            |
-| `├── data/`     | It includes data files used or loaded in the runtime.                          |
-| `├── docker/`   | The Docker container build script.                                             |
-| `├── scripts/`  | Auxiliary script files. It contains Ansible scripts to set up the environment. |
+| `├── data/`     | Data files used or loaded at runtime.                                          |
+| `├── docker/`   | Docker container build scripts.                                                |
+| `├── scripts/`  | Auxiliary scripts for setup, rosbag management, and utilities.                 |
+| `├── setup/`    | Setup system (justfile recipes and installation scripts).                      |
 | `├── src/`      | The source code packages.                                                      |
-| `├── Makefile`  | It includes commonly used recipes.                                             |
+| `├── justfile`  | Task runner recipes for build, launch, test, and other common commands.        |
+| `├── setup.sh`  | Interactive setup script (auto-installs dependencies).                         |
 | `└── README.md` | The introductory document to get the first impression of the project.          |
 
 

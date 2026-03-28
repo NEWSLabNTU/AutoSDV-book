@@ -64,7 +64,7 @@ Docker 建議用於：
 ### 步驟 1：複製 AutoSDV 儲存庫
 
 ```bash
-git clone -b 2025.02 --recursive https://github.com/NEWSLabNTU/AutoSDV.git
+git clone -b develop --recursive https://github.com/NEWSLabNTU/AutoSDV.git
 cd AutoSDV/docker
 ```
 
@@ -86,7 +86,7 @@ make build
 
 這會建立一個包含以下內容的映像：
 - Ubuntu 22.04 基底配備 ROS 2 Humble
-- 預先安裝的 Autoware 2025.02
+- 預先安裝的 Autoware 1.5.0
 - 所有 AutoSDV 相依套件
 - CUDA 與 TensorRT 支援
 - 感測器驅動程式函式庫（專有的除外）
@@ -110,7 +110,7 @@ AutoSDV Docker 映像是為 **ARM64 架構**建置的，以匹配 Jetson 平台�
 ### 預先安裝的軟體
 
 - **ROS 2 Humble** 配備桌面工具
-- **Autoware 2025.02** 二進位發行版
+- **Autoware 1.5.0** 二進位發行版
 - **CUDA 12.3** 與 **TensorRT 8.6**
 - **Cyclone DDS** 配置為預設值
 - **開發工具**：git、vim、tmux、htop
