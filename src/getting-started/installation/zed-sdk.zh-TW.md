@@ -163,6 +163,6 @@ sudo chmod 777 /usr/local/zed/settings
 
 成功安裝 ZED SDK 後：
 
-- 返回[軟體安裝總覽](./overview.md#step-3-install-autosdv-software)
+- 繼續進行[推薦安裝方式](./recommended.md)
 - 繼續進行自動或手動安裝
 - 繼續建置並驗證 AutoSDV

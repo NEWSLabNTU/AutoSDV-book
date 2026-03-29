@@ -38,7 +38,7 @@ Translation Metadata:
 
 ## 先決條件
 
-1. **作業系統已準備好**（參閱[總覽中的步驟 1](./overview.md#step-1-prepare-operating-system)）
+1. **作業系統已準備好**（參閱[準備作業系統](./overview.md#prepare-operating-system)）
 2. **已安裝 ZED SDK 5.1**（如果使用 ZED 相機，參閱 [ZED SDK 安裝](./zed-sdk.md)）
 
 ## 從原始碼建置 Autoware

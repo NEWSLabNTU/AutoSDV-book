@@ -19,7 +19,7 @@ Translation Metadata:
 ### 進階主題
 - [5G/LTE 部署](./networking/5g-deployment.md) - 行動網路連線設定的詳細指南
 - [感測器整合](../guides/sensor-integration/using-sensors.md) - 完整的感測器整合指南
-- [車輛介面](./software/vehicle-interface.md) - CAN 匯流排與致動器控制
+- 車輛介面 - CAN 匯流排與致動器控制（即將推出）
 
 ## 快速參考表
 

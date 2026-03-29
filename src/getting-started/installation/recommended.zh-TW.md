@@ -8,7 +8,7 @@ Translation Metadata:
 
 # 推薦安裝方式
 
-本指南說明如何使用自動安裝腳本安裝 AutoSDV。請先確認已[準備好作業系統](./overview.md#準備作業系統)。
+本指南說明如何使用自動安裝腳本安裝 AutoSDV。請先確認已[準備好作業系統](./overview.md#prepare-operating-system)。
 
 ## 複製儲存庫
 

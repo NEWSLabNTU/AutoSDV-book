@@ -32,9 +32,9 @@ just sim-coss-park
 
 ## 測試內容
 
-與手動啟動和播放的[記錄模擬](./logging-simulation.md)不同，此場景自動化整個管線並擷取定位輸出供分析。適用於：
+與手動啟動和播放的[記錄模擬](./logging-simulation.md)不同，此場景自動化整個流程並擷取定位輸出供分析。適用於：
 
-- 驗證定位堆疊的端到端運作
+- 驗證定位堆疊的端對端運作
 - 比較不同程式碼變更的定位效能
 - 修改啟動檔案或參數後的回歸測試
 
@@ -46,7 +46,7 @@ just sim-coss-park
 ros2 bag info rosbags/localization_test_*/
 ```
 
-視覺化錄製的位姿軌跡：
+視覺化錄製的位置姿態軌跡：
 
 ```bash
 just tool-plotjuggler

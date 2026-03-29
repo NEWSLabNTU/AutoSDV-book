@@ -60,7 +60,7 @@ rosbag 提供原始感測器資料，如同車輛正在行駛。Autoware 堆疊�
 
 ```bash
 just tool-plotjuggler   # 繪製任何 ROS 主題的時間序列
-just tool-tui           # 終端機儀表板，顯示位姿、速度與元件狀態
+just tool-tui           # 終端機儀表板，顯示位置姿態、速度與元件狀態
 just tool-rviz          # 額外的 RViz 實例
 ```
 
@@ -89,7 +89,7 @@ ros2 bag play data/rosbags/outdoor_20251226_153115/ --clock -l
 
 **LiDAR 點出現但定位未初始化**
 
-NDT 需要初始位姿估計。若自動初始化未觸發，請在 RViz 中使用 **2D Pose Estimate** 手動設定位姿。
+NDT 需要初始位置姿態估計。若自動初始化未觸發，請在 RViz 中使用 **2D Pose Estimate** 手動設定。
 
 **RViz 中沒有點雲**
 
@@ -98,7 +98,7 @@ NDT 需要初始位姿估計。若自動初始化未觸發，請在 RViz 中使�
 
 **感知節點載入失敗（CUDA 記憶體不足）**
 
-CenterPoint 和佔用格點節點需要 GPU 記憶體。若載入失敗，感知將無法運作，但定位和規劃不受影響。
+CenterPoint 和 occupancy grid 節點需要 GPU 記憶體。若載入失敗，感知將無法運作，但定位和規劃不受影響。
 
 ## 下一步
 

@@ -33,6 +33,7 @@ Translation Metadata:
 | **[手動環境安裝](./manual-environment.md)**            | 進階使用者、客製化配置          | 進階   | 完整      |
 | **[Docker 安裝](./docker.md)**                        | 開發、測試、模擬                | 簡單   | 有限      |
 
+<span id="prepare-operating-system"></span>
 ## 準備作業系統
 
 安裝 AutoSDV 之前，請先準備您的目標平台。

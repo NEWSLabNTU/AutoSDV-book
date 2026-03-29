@@ -55,10 +55,10 @@ just download-data
 
 這會執行 `scripts/rosbag/download-test-rosbag.sh`，其功能為：
 
-1. 檢查 rosbag 是否已存在且校驗碼正確
+1. 檢查 rosbag 是否已存在且檢查碼正確
 2. 若未安裝 `synology-dl`，透過 `cargo install` 安裝
 3. 從 Synology Drive 下載
-4. 解壓縮並驗證 SHA256 校驗碼
+4. 解壓縮並驗證 SHA256 檢查碼
 
 ## 錄製您自己的資料
 

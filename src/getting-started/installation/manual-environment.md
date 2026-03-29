@@ -30,7 +30,7 @@ The manual steps below provide alternatives or additions to this automated setup
 
 ## Prerequisites
 
-1. **Operating system prepared** (see [Step 1 in Overview](./overview.md#step-1-prepare-operating-system))
+1. **Operating system prepared** (see [Prepare Operating System](./overview.md#prepare-operating-system))
 2. **ZED SDK 5.1 installed** if using ZED camera (see [ZED SDK Installation](./zed-sdk.md))
 
 ## Building Autoware from Source
