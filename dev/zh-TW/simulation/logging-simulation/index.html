@@ -2272,7 +2272,7 @@
 <h2 id="_5">監控工具<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
 <p>開啟額外的終端機監控系統：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>just<span class="w"> </span>tool-plotjuggler<span class="w">   </span><span class="c1"># 繪製任何 ROS 主題的時間序列</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>just<span class="w"> </span>tool-tui<span class="w">           </span><span class="c1"># 終端機儀表板，顯示位姿、速度與元件狀態</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>just<span class="w"> </span>tool-tui<span class="w">           </span><span class="c1"># 終端機儀表板，顯示位置姿態、速度與元件狀態</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>just<span class="w"> </span>tool-rviz<span class="w">          </span><span class="c1"># 額外的 RViz 實例</span>
 </span></code></pre></div>
 <h2 id="_6">定位模式<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
@@ -2290,14 +2290,14 @@
 </span></code></pre></div>
 <h2 id="_8">疑難排解<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
 <p><strong>LiDAR 點出現但定位未初始化</strong></p>
-<p>NDT 需要初始位姿估計。若自動初始化未觸發，請在 RViz 中使用 <strong>2D Pose Estimate</strong> 手動設定位姿。</p>
+<p>NDT 需要初始位置姿態估計。若自動初始化未觸發，請在 RViz 中使用 <strong>2D Pose Estimate</strong> 手動設定。</p>
 <p><strong>RViz 中沒有點雲</strong></p>
 <ul>
 <li>確認 rosbag 正在播放：檢查 <code>ros2 bag play</code> 終端機的輸出。</li>
 <li>確認 rosbag 存在：<code>ls data/rosbags/outdoor_20251226_153115/</code></li>
 </ul>
 <p><strong>感知節點載入失敗（CUDA 記憶體不足）</strong></p>
-<p>CenterPoint 和佔用格點節點需要 GPU 記憶體。若載入失敗，感知將無法運作，但定位和規劃不受影響。</p>
+<p>CenterPoint 和 occupancy grid 節點需要 GPU 記憶體。若載入失敗，感知將無法運作，但定位和規劃不受影響。</p>
 <h2 id="_9">下一步<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="../coss-park-scenario/">COSS 公園場景</a> — 含錄製的完整自動化場景</li>

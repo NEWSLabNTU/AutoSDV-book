@@ -2214,9 +2214,9 @@
 </ol>
 <p>延遲確保 Autoware 堆疊在資料開始流入前完全啟動。</p>
 <h2 id="_2">測試內容<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
-<p>與手動啟動和播放的<a href="../logging-simulation/">記錄模擬</a>不同，此場景自動化整個管線並擷取定位輸出供分析。適用於：</p>
+<p>與手動啟動和播放的<a href="../logging-simulation/">記錄模擬</a>不同，此場景自動化整個流程並擷取定位輸出供分析。適用於：</p>
 <ul>
-<li>驗證定位堆疊的端到端運作</li>
+<li>驗證定位堆疊的端對端運作</li>
 <li>比較不同程式碼變更的定位效能</li>
 <li>修改啟動檔案或參數後的回歸測試</li>
 </ul>
@@ -2224,7 +2224,7 @@
 <p>定位錄製儲存在 <code>rosbags/localization_test_&lt;timestamp&gt;/</code>。使用以下指令檢查：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>bag<span class="w"> </span>info<span class="w"> </span>rosbags/localization_test_*/
 </span></code></pre></div>
-<p>視覺化錄製的位姿軌跡：</p>
+<p>視覺化錄製的位置姿態軌跡：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>tool-plotjuggler
 </span></code></pre></div>
 <p>在 PlotJuggler 中載入錄製的 bag，繪製 <code>/localization/pose_estimator/pose_with_covariance</code> 以查看估計軌跡。</p>
