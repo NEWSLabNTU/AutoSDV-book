@@ -203,7 +203,8 @@ nav:
     - Vehicle Build Variants: platform-models.md
     - Hardware Setup: getting-started/hardware-assembly.md
     - Software Installation:
-      - Recommended Installation: getting-started/installation/overview.md
+      - Overview: getting-started/installation/overview.md
+      - Recommended Installation: getting-started/installation/recommended.md
       - Manual Environment Setup (Optional): getting-started/installation/manual-environment.md
       - Docker Setup (Optional): getting-started/installation/docker.md
       - ZED SDK Installation: getting-started/installation/zed-sdk.md
