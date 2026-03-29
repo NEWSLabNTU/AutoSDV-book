@@ -113,6 +113,11 @@ plugins:
             Docker Setup (Optional): Docker 設定（選配）
             ZED SDK Installation: ZED SDK 安裝
             Operating the Vehicle: 操作車輛
+            Simulation: 模擬
+            Planning Simulation: 規劃模擬
+            Logging Simulation: 記錄模擬
+            COSS Park Scenario: COSS 公園場景
+            Datasets and Rosbags: 資料集與 Rosbag
             Guides: 指南
             Development Guide: 開發指南
             Source Code Walkthrough: 原始碼說明
@@ -209,6 +214,11 @@ nav:
       - Docker Setup (Optional): getting-started/installation/docker.md
       - ZED SDK Installation: getting-started/installation/zed-sdk.md
     - Operating the Vehicle: getting-started/usage.md
+  - Simulation:
+    - Planning Simulation: simulation/planning-simulation.md
+    - Logging Simulation: simulation/logging-simulation.md
+    - COSS Park Scenario: simulation/coss-park-scenario.md
+    - Datasets and Rosbags: simulation/datasets.md
   - Guides:
     - Development Guide: guides/development.md
     - Source Code Walkthrough: guides/source-code.md

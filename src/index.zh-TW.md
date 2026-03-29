@@ -46,29 +46,18 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
 
 ## 開始使用
 
-本指南將引導您設定和使用 AutoSDV 平台。請依序遵循以下步驟來建置功能完整的自動駕駛車輛：
+- **[軟體安裝](getting-started/installation/overview.md)** — 在 Ubuntu 或 Jetson 上設定開發環境
+- **[硬體設定](getting-started/hardware-assembly.md)** — 組裝車輛平台
+- **[操作車輛](getting-started/usage.md)** — 啟動系統、監控與錄製資料
 
-1. **[硬體設定](getting-started/hardware-assembly.md)** - 設定和使用車輛硬體
-2. **[軟體安裝](getting-started/installation/overview.md)** - 安裝 AutoSDV 軟體
-   - **[ZED SDK 安裝](getting-started/installation/zed-sdk.md)** - ZED 相機驅動程式設定
-   - **[自動安裝](getting-started/installation/overview.md)** - 自動化安裝（建議）
-   - **[手動安裝](getting-started/installation/manual-environment.md)** - 進階客製化
-   - **[Docker 安裝](getting-started/installation/docker.md)** - 容器化安裝
-3. **[操作車輛](getting-started/usage.md)** - 啟動和控制系統
+不需要實體車輛即可開始。AutoSDV 包含規劃模擬器和 rosbag 重播工具，可完全在軟體中執行。請參閱[軟體安裝](getting-started/installation/overview.md)指南開始。
 
-### 快速入門路徑
+## 探索更多
 
-**車輛部署**：依序遵循步驟：硬體設定 → 安裝 → 操作
-
-**模擬/開發**：跳至[軟體安裝](getting-started/installation/overview.md)或使用 [Docker 安裝](getting-started/installation/docker.md)進行快速測試
-
-**客製化**：參閱[手動安裝](getting-started/installation/manual-environment.md)取得進階配置選項
-
-## 快速連結
-
-- [**平台型號**](platform-models.md) - 探索不同的硬體配置
-- [**指南**](guides/development.md) - 開發者和操作者教學
-- [**技術參考**](reference/overview.md) - 詳細技術規格
+- [**平台型號**](platform-models.md) — 硬體配置與組裝變體
+- [**感測器整合**](guides/sensor-integration/using-sensors.md) — 配置 LiDAR、相機、IMU、GNSS
+- [**車輛控制**](guides/vehicle-control/overview.md) — 馬達、轉向與 PID 調校
+- [**技術參考**](reference/overview.md) — 規格與配線圖
 
 ## 引用
 

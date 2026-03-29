@@ -38,29 +38,18 @@ AutoSDV provides a complete stack from hardware specifications to software imple
 
 ## Getting Started
 
-This guide walks you through setting up and using the AutoSDV platform. Follow these steps sequentially to build a fully functional autonomous vehicle:
+- **[Software Installation](getting-started/installation/overview.md)** — Set up the development environment on Ubuntu or Jetson
+- **[Hardware Setup](getting-started/hardware-assembly.md)** — Assemble the vehicle platform
+- **[Operating the Vehicle](getting-started/usage.md)** — Launch the system, monitor, and record data
 
-1. **[Hardware Setup](getting-started/hardware-assembly.md)** - Setting up and using the vehicle hardware
-2. **[Software Installation](getting-started/installation/overview.md)** - Installing AutoSDV software
-   - **[ZED SDK Installation](getting-started/installation/zed-sdk.md)** - ZED camera driver setup
-   - **[Automatic Setup](getting-started/installation/overview.md)** - Automated installation (recommended)
-   - **[Manual Setup](getting-started/installation/manual-environment.md)** - Advanced customization
-   - **[Docker Setup](getting-started/installation/docker.md)** - Containerized installation
-3. **[Operating the Vehicle](getting-started/usage.md)** - Launching and controlling the system
+You do not need a physical vehicle to get started. AutoSDV includes a planning simulator and rosbag replay tools that run entirely in software. See the [Software Installation](getting-started/installation/overview.md) guide to begin.
 
-### Quick Start Paths
+## Explore
 
-**For Vehicle Deployment**: Follow the steps in order: Hardware Setup → Install → Operate
-
-**For Simulation/Development**: Skip to [Software Installation](getting-started/installation/overview.md) or use [Docker Setup](getting-started/installation/docker.md) for quick testing
-
-**For Customization**: See [Manual Setup](getting-started/installation/manual-environment.md) for advanced configuration options
-
-## Quick Links
-
-- [**Platform Models**](platform-models.md) - Explore different hardware configurations
-- [**Guides**](guides/development.md) - Tutorials for developers and operators
-- [**Technical Reference**](reference/overview.md) - Detailed technical specifications
+- [**Platform Models**](platform-models.md) — Hardware configurations and build variants
+- [**Sensor Integration**](guides/sensor-integration/using-sensors.md) — Configure LiDAR, camera, IMU, GNSS
+- [**Vehicle Control**](guides/vehicle-control/overview.md) — Motor, steering, and PID tuning
+- [**Technical Reference**](reference/overview.md) — Specifications and wiring diagrams
 
 ## Citation
 
