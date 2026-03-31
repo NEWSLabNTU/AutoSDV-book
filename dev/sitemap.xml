@@ -2,448 +2,448 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/platform-models/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/platform-models/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/platform-models/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/hardware-assembly/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/hardware-assembly/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/hardware-assembly/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/usage/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/usage/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/usage/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/docker/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/docker/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/installation/docker/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/manual-environment/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/manual-environment/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/installation/manual-environment/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/overview/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/installation/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/recommended/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/recommended/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/installation/recommended/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/zed-sdk/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/installation/zed-sdk/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/installation/zed-sdk/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/development/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/development/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/development/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/source-code/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/source-code/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/source-code/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/version-control/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/version-control/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/version-control/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/adding-sensor/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/adding-sensor/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/adding-sensor/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/camera/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/camera/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/camera/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/gnss/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/gnss/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/gnss/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/imu/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/imu/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/imu/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/integration-walkthrough/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/integration-walkthrough/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/integration-walkthrough/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/lidar/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/lidar/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/lidar/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/troubleshooting/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/troubleshooting/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/troubleshooting/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/using-sensors/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/sensor-integration/using-sensors/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/sensor-integration/using-sensors/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/control-details/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/control-details/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/vehicle-control/control-details/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/hardware/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/hardware/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/vehicle-control/hardware/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/overview/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/vehicle-control/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/tuning-and-testing/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/vehicle-control/tuning-and-testing/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/vehicle-control/tuning-and-testing/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/overview/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/core-components/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/core-components/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/hardware/core-components/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/wiring-diagrams/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/wiring-diagrams/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/hardware/wiring-diagrams/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/networking/5g-deployment/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/networking/5g-deployment/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/networking/5g-deployment/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/coss-park-scenario/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/coss-park-scenario/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/simulation/coss-park-scenario/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/datasets/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/datasets/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/simulation/datasets/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/logging-simulation/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/logging-simulation/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/simulation/logging-simulation/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/planning-simulation/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/simulation/planning-simulation/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/simulation/planning-simulation/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/platform-models/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/platform-models/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devplatform-models/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/hardware-assembly/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/hardware-assembly/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/hardware-assembly/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/usage/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/usage/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/usage/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/docker/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/docker/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/installation/docker/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/manual-environment/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/manual-environment/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/installation/manual-environment/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/installation/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/recommended/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/recommended/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/installation/recommended/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/zed-sdk/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/zed-sdk/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/installation/zed-sdk/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/development/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/development/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/development/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/source-code/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/source-code/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/source-code/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/version-control/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/version-control/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/version-control/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/adding-sensor/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/adding-sensor/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/adding-sensor/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/camera/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/camera/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/camera/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/gnss/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/gnss/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/gnss/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/imu/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/imu/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/imu/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/integration-walkthrough/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/integration-walkthrough/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/integration-walkthrough/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/lidar/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/lidar/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/lidar/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/troubleshooting/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/troubleshooting/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/troubleshooting/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/using-sensors/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/sensor-integration/using-sensors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/sensor-integration/using-sensors/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/control-details/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/control-details/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/vehicle-control/control-details/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/hardware/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/hardware/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/vehicle-control/hardware/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/vehicle-control/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/tuning-and-testing/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/vehicle-control/tuning-and-testing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/vehicle-control/tuning-and-testing/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/overview/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/overview/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/core-components/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/core-components/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/hardware/core-components/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/wiring-diagrams/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/wiring-diagrams/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/hardware/wiring-diagrams/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/networking/5g-deployment/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/networking/5g-deployment/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/networking/5g-deployment/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/coss-park-scenario/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/coss-park-scenario/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devsimulation/coss-park-scenario/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/datasets/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/datasets/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devsimulation/datasets/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/logging-simulation/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/logging-simulation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devsimulation/logging-simulation/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/planning-simulation/</loc>
-        <lastmod>2026-03-29</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/simulation/planning-simulation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devsimulation/planning-simulation/"/>
