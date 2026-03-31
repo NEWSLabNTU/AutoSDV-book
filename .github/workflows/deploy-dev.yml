@@ -45,3 +45,36 @@ jobs:
           echo "- **Branch**: main" >> $GITHUB_STEP_SUMMARY
           echo "- **Version**: dev (unreleased)" >> $GITHUB_STEP_SUMMARY
           echo "- **URL**: https://NEWSLabNTU.github.io/AutoSDV-book/dev/" >> $GITHUB_STEP_SUMMARY
+
+  update-website:
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.AUTOSDV_BOOK_DEPLOY_KEY }}
+
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+        with:
+          repository: NEWSLabNTU/NEWSLabNTU.github.io
+          ssh-key: ${{ secrets.AUTOSDV_BOOK_DEPLOY_KEY }}
+          path: website
+
+      - name: Update submodule
+        working-directory: ./website
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          git submodule update --init --recursive -- autosdv-book
+          cd autosdv-book
+          git fetch origin gh-pages
+          git checkout gh-pages
+          cd ..
+
+          git add autosdv-book
+          git commit -m "Update autosdv-book submodule (dev docs)" || echo "No changes to commit"
+          git push
