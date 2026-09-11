@@ -61,13 +61,39 @@ Before installing AutoSDV, prepare your target platform.
 ### For Ubuntu 22.04 PC
 
 1. Install Ubuntu 22.04 LTS
-2. Install NVIDIA drivers (version 550 or higher):
+2. Install the NVIDIA driver (version 550 or higher):
    ```bash
    sudo apt update
    sudo apt install nvidia-driver-550
    ```
-3. Install [CUDA 12.3](https://developer.nvidia.com/cuda-12-3-2-download-archive) using the deb (network) installer
-4. Install [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-download)
+3. Install **CUDA 12.x** using the deb (network) installer
+4. Install **TensorRT 10.x**
+
+!!! warning "TensorRT must be 10.x, not 8.x"
+
+    Autoware 1.5.0's own libraries are linked against `libnvinfer.so.10`.
+    TensorRT 8.6 provides `libnvinfer.so.8`, so perception will fail to load
+    with an unresolved-symbol or missing-library error that names a shared
+    object rather than the real cause. Earlier versions of this page said
+    "TensorRT 8.6 GA"; that applied to an older Autoware base.
+
+    You can verify what your installation actually requires:
+
+    ```bash
+    ldd /opt/autoware/1.5.0/lib/libtensorrt_ops.so | grep nvinfer
+    # libnvinfer.so.10 => ...
+    ```
+
+    The same check gives the CUDA major version:
+
+    ```bash
+    ldd /opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so \
+      | grep -E 'cublas|cudart'
+    # libcublas.so.12 => ...
+    ```
+
+    These sonames are the real requirement. Any CUDA 12.x and TensorRT 10.x
+    that satisfy them will work; the exact patch versions do not matter.
 
 ### For Docker
 

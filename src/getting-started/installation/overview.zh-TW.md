@@ -74,8 +74,33 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
    sudo apt update
    sudo apt install nvidia-driver-550
    ```
-3. 使用 deb（網路）安裝程式安裝 [CUDA 12.3](https://developer.nvidia.com/cuda-12-3-2-download-archive)
-4. 安裝 [TensorRT 8.6 GA](https://developer.nvidia.com/nvidia-tensorrt-8x-download)
+3. 使用 deb（網路）安裝程式安裝 **CUDA 12.x**
+4. 安裝 **TensorRT 10.x**
+
+!!! warning "TensorRT 必須是 10.x，不是 8.x"
+
+    Autoware 1.5.0 自己的函式庫是對 `libnvinfer.so.10` 連結的。TensorRT 8.6
+    提供的是 `libnvinfer.so.8`，因此感知模組會載入失敗，而錯誤訊息指向某個共享
+    物件而非真正的原因。本頁較早的版本寫「TensorRT 8.6 GA」；那適用於較舊的
+    Autoware 基底。
+
+    你可以驗證你的安裝實際需要什麼：
+
+    ```bash
+    ldd /opt/autoware/1.5.0/lib/libtensorrt_ops.so | grep nvinfer
+    # libnvinfer.so.10 => ...
+    ```
+
+    同樣的檢查可得出 CUDA 主版本：
+
+    ```bash
+    ldd /opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so \
+      | grep -E 'cublas|cudart'
+    # libcublas.so.12 => ...
+    ```
+
+    這些 soname 才是真正的需求。任何滿足它們的 CUDA 12.x 與 TensorRT 10.x 都
+    可以；確切的修訂版本並不重要。
 
 ### Docker
 
