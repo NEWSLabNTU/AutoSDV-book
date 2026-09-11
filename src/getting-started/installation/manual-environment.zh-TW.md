@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: manual-environment.md
-- Last synced: 2026-01-09
+- Last synced: 2026-09-12
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -21,36 +21,64 @@ Translation Metadata:
 
 ## 自動設定所做的事情
 
-在繼續之前，請了解 `./setup.sh` 已安裝的內容：
+在繼續之前，請了解 `./setup.sh` 已安裝的內容。權威的清單是步驟註冊表本身
+——`setup/autosdv_setup/registry.py`——而[安裝頁面](./overview.md#the-steps)
+完整重現了它，並說明每個步驟存在的理由。摘要如下：
 
-- ROS 2 Humble (ros-humble-desktop)
-- ROS 2 開發工具 (colcon, rosdep, vcstool)
-- Autoware 1.5.0 Debian 套件（選配）
-- Isaac ROS Visual Localization（選配，需要 NVIDIA GPU）
-- Blickfeld Scanner Library（選配，用於 Cube1 LiDAR）
-- GeographicLib 資料集
-- 開發工具：git-lfs、golang、pre-commit、clang-format、plotjuggler
-- Python 相依套件：Adafruit-PCA9685、simple-pid、play_launch
-- u-blox GPS udev 規則與使用者群組權限
-- 所有 ROS 相依套件（透過 rosdep）
+- ROS 2 Humble (`ros-humble-desktop`) 與開發工具 (colcon、rosdep、vcstool)
+- **Autoware 1.5.0** Debian 套件，來自 `autoware-localrepo` 發布
+- Rust 工具鏈與 `colcon-cargo-ros2`，缺少它們時 Rust 套件會被靜默略過
+- `play_launch`，啟動協調器
+- 透過 rosdep 解析工作空間的 ROS 相依套件——這也是為什麼這裡沒有個別驅動程式的
+  apt 步驟：Velodyne、NMEA 與 serial 驅動程式全都從 `src/` 下的套件清單解析而來
+- 開發工具：git-lfs、pre-commit、clang-format、PlotJuggler
+- Python 相依套件：Adafruit-PCA9685、simple-pid
+- GeographicLib 與 egm2008-1 大地水準面資料
+- CycloneDDS 所需的核心 socket 緩衝區，以及持續生效的 loopback 多播設定
+- u-blox GNSS udev 規則（僅 vehicle 設定檔）
+
+選用而不被任何設定檔選取的步驟：ZED SDK、Blickfeld Scanner Library、Isaac ROS、
+TensorRT 引擎預先編譯，以及 TurboVNC/VirtualGL。
 
 以下的手動步驟提供此自動設定的替代方案或補充。
 
 ## 先決條件
 
-1. **作業系統已準備好**（參閱[準備作業系統](./overview.md#prepare-operating-system)）
-2. **已安裝 ZED SDK 5.1**（如果使用 ZED 相機，參閱 [ZED SDK 安裝](./zed-sdk.md)）
+1. **作業系統已準備好**（參閱[系統需求](./overview.md#system-requirements)）
+2. **已安裝 ZED SDK**（如果使用 ZED 相機，參閱 [ZED SDK 安裝](./zed-sdk.md)）
 
 ## 從原始碼建置 Autoware
 
-自動設定會從 `/opt/autoware` 安裝 Autoware Debian 套件。若要修改 Autoware 核心組件，請改為從原始碼建置：
+自動設定會安裝 Autoware Debian 套件，安裝位置為 `/opt/autoware/1.5.0`。
+若要修改 Autoware 核心組件，請改為從原始碼建置。
+
+!!! warning "1.5.0 是 `autoware_core` 的版本，不是 Autoware 的發布版本"
+
+    AutoSDV 的版本鎖定記錄在儲存庫根目錄的 `versions.yaml`：
+
+    ```bash
+    ./scripts/version/get-version.sh autoware.version   # 1.5.0
+    ```
+
+    這個數字是 **`autoware_core`** 的版本，它並不對應
+    `autowarefoundation/autoware` 工作空間儲存庫的任何標籤——後者的發布版本以
+    日期命名，例如 `2025.02`。複製 `autowarefoundation/autoware` 後尋找 `1.5.0`
+    標籤是找不到的。
+
+    鎖定 core 1.5.0 的工作空間是
+    [`NEWSLabNTU/autoware`](https://github.com/NEWSLabNTU/autoware) 的
+    `1.5.0-ws` 分支。其 `autoware.repos` 正是 `core/autoware_core` 被固定在
+    `version: 1.5.0` 之處。自動設定安裝的 Debian 套件即由該工作空間建置而來。
+
+    在不同 core 版本上從原始碼建置可以編譯成功，但會在執行時因訊息定義與啟動
+    參數的變更而失敗。
 
 ### 步驟 1：複製 Autoware 儲存庫
 
 ```bash
 mkdir -p ~/autoware_ws/src
 cd ~/autoware_ws
-git clone https://github.com/autowarefoundation/autoware.git -b release/1.5.0
+git clone https://github.com/NEWSLabNTU/autoware.git -b 1.5.0-ws
 ```
 
 ### 步驟 2：安裝相依套件

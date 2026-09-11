@@ -60,7 +60,7 @@ ros2 topic hz /sensing/gnss/ublox/nav_sat_fix
 
 ```bash
 # Open RViz with AutoSDV configuration
-just tool-rviz
+just tool rviz
 ```
 
 您應該會看到：

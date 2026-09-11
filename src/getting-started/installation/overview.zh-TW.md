@@ -10,6 +10,24 @@ Translation Metadata:
 
 本指南提供 AutoSDV 的完整安裝流程。請依序執行以下步驟，以設定功能完整的自動駕駛車輛軟體堆疊。
 
+## 這套安裝方式與 Autoware 官方的差異
+
+如果你讀過 Autoware 的官方文件，你預期的會是：複製一個工作空間、對數十個儲存庫
+執行 `vcs import`，再花上一小時以上的 `colcon build`。
+
+**AutoSDV 不是這樣做的。** Autoware 以 **Debian 套件**的形式安裝到
+`/opt/autoware/1.5.0`。你的磁碟上沒有 Autoware 的原始碼樹，機器上也不會編譯任何
+Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，那不該由學生或車輛整合
+人員來付出。代價是你接受別人替你建好的版本，它鎖定在 `versions.yaml`。
+
+**但 AutoSDV 本身仍然要編譯。** `src/` 底下的一切都是一個 colcon 工作空間，
+由 `just build` 建置。
+
+因此你始終處於一種混合狀態：底層是二進位的 Autoware，上層是原始碼工作空間。
+這個結構正是[環境與相依套件](../../concepts/environment.md)中那兩行 `source`
+的意義所在，也是套件相依性被解析的地方——而不是在建置時。之後若出現
+「package not found」，請先讀那一頁。
+
 ## 系統需求
 
 請選擇以下其中一個平台：

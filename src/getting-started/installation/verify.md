@@ -92,7 +92,7 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml
 and in a second terminal:
 
 ```bash
-ros2 bag play <the downloaded bag> --clock
+ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 ```
 
 This exercises localization and perception, which the planning simulation does

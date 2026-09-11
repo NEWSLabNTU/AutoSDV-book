@@ -46,18 +46,37 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
 
 ## 開始使用
 
-- **[軟體安裝](getting-started/installation/overview.md)** — 在 Ubuntu 或 Jetson 上設定開發環境
-- **[硬體設定](getting-started/hardware-assembly.md)** — 組裝車輛平台
-- **[操作車輛](getting-started/usage.md)** — 啟動系統、監控與錄製資料
+### 先在模擬中試玩 —— 不需要車輛
 
-不需要實體車輛即可開始。AutoSDV 包含規劃模擬器和 rosbag 重播工具，可完全在軟體中執行。請參閱[軟體安裝](getting-started/installation/overview.md)指南開始。
+你只需要一台跑 Ubuntu 22.04 的機器，其餘什麼都不用。路徑規劃模擬不需要感測器、
+不需要 GPU，也不需要 rosbag。
+
+1. **[軟體安裝](getting-started/installation/overview.md)** —— 在 Ubuntu 或
+   Jetson 上建立開發環境
+2. **[驗證安裝](getting-started/installation/verify.md)** —— 四項檢查，依它們
+   能證明多少事情排序
+3. **[開始教學](tutorial/00-what-you-will-build.md)** —— 在模擬中駕駛兩次，
+   並理解每一種各自教你什麼
+
+### 組裝並駕駛一台車
+
+1. **[硬體設定](getting-started/hardware-assembly.md)** —— 組裝車輛平台
+2. **[軟體安裝](getting-started/installation/overview.md)** —— 使用 `vehicle`
+   設定檔
+3. **[ZED SDK 安裝](getting-started/installation/zed-sdk.md)** —— 如果你有
+   ZED 相機
+4. **[操作車輛](getting-started/usage.md)** —— 啟動系統、監看與錄製資料
 
 ## 探索更多
 
-- [**平台型號**](platform-models.md) — 硬體配置與組裝變體
-- [**感測器整合**](guides/sensor-integration/using-sensors.md) — 配置 LiDAR、相機、IMU、GNSS
-- [**車輛控制**](guides/vehicle-control/overview.md) — 馬達、轉向與 PID 調校
-- [**技術參考**](reference/overview.md) — 規格與配線圖
+- [**基本概念**](concepts/environment.md) —— 環境、啟動檔，以及本專案與原生
+  Autoware 安裝的差異
+- [**平台型號**](platform-models.md) —— 硬體配置與組裝變體
+- [**定位方法**](guides/localization-methods.md) —— `pose_source` 在選擇什麼
+- [**感測器整合**](guides/sensor-integration/using-sensors.md) —— 設定 LiDAR、
+  相機、IMU、GNSS
+- [**車輛控制**](guides/vehicle-control/overview.md) —— 馬達、轉向與 PID 調校
+- [**技術參考**](reference/overview.md) —— 規格與配線圖
 
 ## 引用
 

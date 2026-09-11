@@ -22,7 +22,7 @@ Translation Metadata:
 
 ```bash
 # Launch minimal control system (no planning, no localization)
-just control-basic
+just control basic
 ```
 
 這會啟動：
@@ -42,7 +42,7 @@ just control-basic
 在新終端機中：
 ```bash
 # Launch PlotJuggler for real-time visualization
-just tool-plotjuggler
+just tool plotjuggler
 ```
 
 **要監控的主題**：
@@ -84,7 +84,7 @@ ros2 node list | grep vehicle_interface
 
 ```bash
 # Launch controller GUI
-just tool-controller
+just tool controller
 
 # Controls:
 # W - Forward
@@ -118,10 +118,10 @@ just tool-controller
 
 ```bash
 # Terminal 1: Launch basic control
-just control-basic
+just control basic
 
 # Terminal 2: Launch PlotJuggler
-just tool-plotjuggler
+just tool plotjuggler
 
 # Terminal 3: Run velocity tracking test
 ros2 launch control_test velocity_tracking.launch.py
@@ -157,7 +157,7 @@ ros2 launch control_test steering_response.launch.py
 
 ```bash
 # Use controller GUI for this test
-just tool-controller
+just tool controller
 
 # Steps:
 # 1. Press W to accelerate to ~1 m/s
@@ -174,8 +174,8 @@ just tool-controller
 ### 縱向控制器（速度控制）
 
 **測試程序**：
-1. 啟動基本控制：`just control-basic`
-2. 啟動 PlotJuggler：`just tool-plotjuggler`
+1. 啟動基本控制：`just control basic`
+2. 啟動 PlotJuggler：`just tool plotjuggler`
 3. 執行階躍回應測試：`ros2 launch control_test step_response.launch.py`
 4. 在 PlotJuggler 中觀察速度回應
 
@@ -238,7 +238,7 @@ vi src/vehicle/autosdv_vehicle_launch/autosdv_vehicle_interface/params/actuator.
 just build
 
 # Test
-just control-basic
+just control basic
 ```
 
 ## 校正程序
@@ -272,7 +272,7 @@ ros2 run autosdv_vehicle_interface vehicle_interface_node
 ros2 topic echo /vehicle/status/velocity_status
 
 # Terminal 3: Use controller GUI
-just tool-controller
+just tool controller
 # Gradually increase throttle, record velocity at each level
 ```
 
@@ -296,7 +296,7 @@ brake_pwm: 340         # Emergency brake PWM
 ros2 run autosdv_vehicle_interface vehicle_interface_node
 
 # Terminal 2: Launch controller GUI
-just tool-controller
+just tool controller
 
 # Terminal 3: Monitor steering commands
 ros2 topic echo /vehicle/command/actuation_cmd
@@ -325,7 +325,7 @@ ros2 run autosdv_vehicle_interface velocity_report_node
 ros2 topic echo /vehicle/status/velocity_status
 
 # Terminal 3: Controller GUI
-just tool-controller
+just tool controller
 ```
 
 **程序**：
@@ -479,9 +479,9 @@ ros2 node list | grep velocity_report
 
 ### 啟動指令
 ```bash
-just control-basic        # Launch control system
-just tool-plotjuggler                 # Launch PlotJuggler
-just tool-controller            # Controller GUI (safe manual control)
+just control basic        # Launch control system
+just tool plotjuggler                 # Launch PlotJuggler
+just tool controller            # Controller GUI (safe manual control)
 ```
 
 ### 監控主題
