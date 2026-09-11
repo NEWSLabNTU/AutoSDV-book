@@ -14,7 +14,7 @@ Practical guide to test, tune, and calibrate the vehicle control system.
 
 ```bash
 # Launch minimal control system (no planning, no localization)
-just control-basic
+just control basic
 ```
 
 This starts:
@@ -34,7 +34,7 @@ This starts:
 In a new terminal:
 ```bash
 # Launch PlotJuggler for real-time visualization
-just tool-plotjuggler
+just tool plotjuggler
 ```
 
 **Topics to monitor**:
@@ -76,7 +76,7 @@ Test manual control with controller GUI (safe method).
 
 ```bash
 # Launch controller GUI
-just tool-controller
+just tool controller
 
 # Controls:
 # W - Forward
@@ -110,10 +110,10 @@ The `control_test` package provides automated test scenarios that safely verify 
 
 ```bash
 # Terminal 1: Launch basic control
-just control-basic
+just control basic
 
 # Terminal 2: Launch PlotJuggler
-just tool-plotjuggler
+just tool plotjuggler
 
 # Terminal 3: Run velocity tracking test
 ros2 launch control_test velocity_tracking.launch.py
@@ -149,7 +149,7 @@ This test cycles through:
 
 ```bash
 # Use controller GUI for this test
-just tool-controller
+just tool controller
 
 # Steps:
 # 1. Press W to accelerate to ~1 m/s
@@ -166,8 +166,8 @@ just tool-controller
 ### Longitudinal Controller (Speed Control)
 
 **Test procedure**:
-1. Launch basic control: `just control-basic`
-2. Launch PlotJuggler: `just tool-plotjuggler`
+1. Launch basic control: `just control basic`
+2. Launch PlotJuggler: `just tool plotjuggler`
 3. Run step response test: `ros2 launch control_test step_response.launch.py`
 4. Observe velocity response in PlotJuggler
 
@@ -230,7 +230,7 @@ vi src/vehicle/autosdv_vehicle_launch/autosdv_vehicle_interface/params/actuator.
 just build
 
 # Test
-just control-basic
+just control basic
 ```
 
 ## Calibration Procedures
@@ -264,7 +264,7 @@ ros2 run autosdv_vehicle_interface vehicle_interface_node
 ros2 topic echo /vehicle/status/velocity_status
 
 # Terminal 3: Use controller GUI
-just tool-controller
+just tool controller
 # Gradually increase throttle, record velocity at each level
 ```
 
@@ -288,7 +288,7 @@ Measure steering angle vs PWM using controller GUI:
 ros2 run autosdv_vehicle_interface vehicle_interface_node
 
 # Terminal 2: Launch controller GUI
-just tool-controller
+just tool controller
 
 # Terminal 3: Monitor steering commands
 ros2 topic echo /vehicle/command/actuation_cmd
@@ -317,7 +317,7 @@ ros2 run autosdv_vehicle_interface velocity_report_node
 ros2 topic echo /vehicle/status/velocity_status
 
 # Terminal 3: Controller GUI
-just tool-controller
+just tool controller
 ```
 
 **Procedure**:
@@ -471,9 +471,9 @@ ros2 node list | grep velocity_report
 
 ### Launch commands
 ```bash
-just control-basic        # Launch control system
-just tool-plotjuggler                 # Launch PlotJuggler
-just tool-controller            # Controller GUI (safe manual control)
+just control basic        # Launch control system
+just tool plotjuggler                 # Launch PlotJuggler
+just tool controller            # Controller GUI (safe manual control)
 ```
 
 ### Monitor topics

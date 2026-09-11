@@ -13,36 +13,73 @@ Use manual setup if you need:
 
 ## What the Automated Setup Does
 
-Before proceeding, understand what `./setup.sh` already installs:
+Before proceeding, understand what `./setup.sh` already installs. The
+authoritative list is the step registry itself — `setup/autosdv_setup/registry.py`
+— and [the installation page](./overview.md#the-steps) reproduces it in full with
+the reason for each step. In summary:
 
-- ROS 2 Humble (ros-humble-desktop)
-- ROS 2 development tools (colcon, rosdep, vcstool)
-- Autoware 1.5.0 Debian packages (optional)
-- Isaac ROS Visual Localization (optional, requires NVIDIA GPU)
-- Blickfeld Scanner Library (optional, for Cube1 LiDAR)
-- GeographicLib datasets
-- Development tools: git-lfs, golang, pre-commit, clang-format, plotjuggler
-- Python dependencies: Adafruit-PCA9685, simple-pid, play_launch
-- u-blox GPS udev rules and user group permissions
-- All ROS dependencies via rosdep
+- ROS 2 Humble (`ros-humble-desktop`) and the development tools (colcon, rosdep,
+  vcstool)
+- **Autoware 1.5.0** Debian packages, from the `autoware-localrepo` release
+- The Rust toolchain and `colcon-cargo-ros2`, without which the Rust packages
+  are skipped silently
+- `play_launch`, the launch orchestrator
+- Workspace ROS dependencies via rosdep — which is why there are no per-driver
+  apt steps: the Velodyne, NMEA and serial drivers all resolve from the package
+  manifests under `src/`
+- Development tools: git-lfs, pre-commit, clang-format, PlotJuggler
+- Python dependencies: Adafruit-PCA9685, simple-pid
+- GeographicLib and the egm2008-1 geoid
+- Kernel socket buffers for CycloneDDS, and persistent multicast on loopback
+- u-blox GNSS udev rules (vehicle profile only)
+
+Opt-in, selected by no profile: the ZED SDK, the Blickfeld Scanner Library,
+Isaac ROS, TensorRT engine pre-compilation, and TurboVNC/VirtualGL.
 
 The manual steps below provide alternatives or additions to this automated setup.
 
 ## Prerequisites
 
-1. **Operating system prepared** (see [Prepare Operating System](./overview.md#prepare-operating-system))
-2. **ZED SDK 5.1 installed** if using ZED camera (see [ZED SDK Installation](./zed-sdk.md))
+1. **Operating system prepared** (see [System requirements](./overview.md#system-requirements))
+2. **ZED SDK installed** if using a ZED camera (see [ZED SDK Installation](./zed-sdk.md))
 
 ## Building Autoware from Source
 
-The automated setup installs Autoware Debian packages from `/opt/autoware`. To modify Autoware core components, build from source instead:
+The automated setup installs Autoware Debian packages, which land under
+`/opt/autoware/1.5.0`. To modify Autoware core components, build from source
+instead.
+
+!!! warning "Match the pinned version exactly"
+
+    AutoSDV's pin is recorded in `versions.yaml` at the repository root:
+
+    ```bash
+    ./scripts/version/get-version.sh autoware.version   # 1.5.0
+    ```
+
+    `1.5.0` is a **tag** on `autowarefoundation/autoware`, not a `release/`
+    branch — the dated `release/*` branches (`release/2025.02` and earlier)
+    are the older naming, and `-b release/1.5.0` will not resolve.
+
+    The number is also the version of `autoware_core`, which that tag's
+    `autoware.repos` pins. The Debian packages the automated setup installs
+    are built from
+    [`NEWSLabNTU/autoware`](https://github.com/NEWSLabNTU/autoware) branch
+    `1.5.0-ws`, which is that tag plus the submodule wiring; use it if you want
+    to reproduce the packaged build rather than a plain source build.
+
+    A source build at a different version will compile and then fail at run
+    time on changed message definitions and launch arguments.
+
+    A source build at a different core version will compile and then fail at
+    run time on changed message definitions and launch arguments.
 
 ### Step 1: Clone Autoware Repository
 
 ```bash
 mkdir -p ~/autoware_ws/src
 cd ~/autoware_ws
-git clone https://github.com/autowarefoundation/autoware.git -b release/1.5.0
+git clone https://github.com/autowarefoundation/autoware.git -b 1.5.0
 ```
 
 ### Step 2: Install Dependencies

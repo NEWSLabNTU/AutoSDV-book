@@ -1,95 +1,130 @@
-# Datasets and Rosbags
+# Datasets & Rosbags
 
-AutoSDV provides recorded sensor data for testing and development without a physical vehicle.
+What to replay, how to get it, and how to record your own.
 
-## Available Datasets
+## The COSS Park test bag
 
-### COSS Park Outdoor Recording
+The recording every simulation page uses.
 
-| Field | Value |
-|-------|-------|
-| Name | `outdoor_20251226_153115` |
-| Location | `data/rosbags/outdoor_20251226_153115/` |
-| Size | 2.8 GB |
-| Duration | 157 seconds |
-| Date | 2025-12-26 |
-| Map | `data/COSS-map-planning/` |
+```bash
+just bag download
+```
 
-Recorded at NTU COSS Park with the following sensors:
+About 2.8 GB, into `data/rosbags/outdoor_20251226_153115`. 157 seconds: parked
+for the first 115.7 s, then a 41 s drive at up to 1.58 m/s, with the matching
+map already in `data/COSS-map-planning`.
 
-| Topic | Type | Rate |
-|-------|------|------|
-| `/sensing/lidar/velodyne_points` | PointCloud2 | 10 Hz |
-| `/sensing/lidar/velodyne_packets` | VelodyneScan | 10 Hz |
-| `/sensing/camera/zedxm/imu/data` | Imu | 100 Hz |
-| `/sensing/gnss/ublox/nav_sat_fix` | NavSatFix | 4 Hz |
-| `/sensing/gnss/ublox/fix_velocity` | TwistWithCovarianceStamped | 4 Hz |
-| `/vehicle/status/velocity_status` | VelocityReport | 20 Hz |
-| `/vehicle/status/steering_status` | SteeringReport | 30 Hz |
+`just demo run` fetches it automatically if it is missing, so you rarely need to
+call this directly.
 
-### Leo Drive Bus-ODD Dataset
+## The Leo Drive Bus-ODD dataset
 
-The [Leo Drive Bus-ODD dataset](https://autowarefoundation.github.io/autoware-documentation/main/datasets/) is an Autoware-compatible dataset with camera streams, useful for testing visual localization. Tools for downloading and converting this dataset are in the `scripts/leodrive-bus-launch` submodule.
+An Autoware Foundation dataset with camera streams, useful for testing visual
+localization. Tools live in the `scripts/leodrive-bus-launch` submodule.
+
+| Sensor | Model | Count |
+|--------|-------|-------|
+| LiDAR | Velodyne VLP16 | 1 (front) |
+| LiDAR | Velodyne VLP32C | 2 (left, right) |
+| Camera | Lucid Vision Triton 5.4 MP | 3 |
+| GNSS/INS | Applanix POS LV 120 | 1 |
 
 ```bash
 cd scripts/leodrive-bus-launch
-just setup       # Download (~10.9 GB) and migrate to Autoware 1.5.0 format
+just setup          # download ~10.9 GB and migrate to Autoware 1.5.0
 just play data/all-sensors-bag1_migrated
 ```
 
-## Downloading Data
+The migration step is not optional: the dataset was recorded against
+`autoware_auto_*` message types, which Autoware 1.5.0 no longer defines. `just
+migrate-all` rewrites the bags to `autoware_*`.
 
-Download the COSS Park recording:
+## ROS 2 bags, in general
 
-```bash
-just download-data
-```
+A bag is a recording of topic traffic. Four uses, all of them relevant here:
 
-This runs `scripts/rosbag/download-test-rosbag.sh`, which:
+- **Record** sensor data during a drive, for analysis afterwards
+- **Replay** it to test and tune algorithms against unchanging input
+- **Share** a recording, so a colleague debugs the same data you saw
+- **Diagnose** a fault that only happened once
 
-1. Checks if the rosbag already exists with the correct checksum
-2. Installs `synology-dl` via `cargo install` if not found
-3. Downloads from Synology Drive
-4. Extracts and verifies the SHA256 checksum
-
-## Recording Your Own Data
-
-Record outdoor sensor topics from a live vehicle:
+### Recording
 
 ```bash
-just bag-record
+ros2 bag record <topic> <topic> ...   # named topics
+ros2 bag record -a                    # everything
+ros2 bag record -a -o <directory>     # choose the output directory
 ```
 
-This saves a timestamped rosbag to the `rosbags/` directory with all sensor and vehicle status topics listed in `scripts/rosbag/outdoor_topics.txt`.
-
-Play back the most recent recording:
+AutoSDV's own recorder selects the outdoor sensor topic set for you:
 
 ```bash
-just bag-play
+just bag record
 ```
 
-## Rosbag Format
+Recording `-a` on a running stack captures a great deal — several GB per minute
+with a 3-D LiDAR. Recording a named subset is usually what you want, except when
+you intend to visualise the result in RViz later, which needs the transforms and
+metadata topics too.
 
-AutoSDV uses ROS 2 bag format (SQLite3 storage). Each rosbag directory contains:
-
-- `<name>_0.db3` — the message database
-- `metadata.yaml` — topic list, message counts, duration, and storage format
-
-Inspect a rosbag:
+### Inspecting
 
 ```bash
-ros2 bag info data/rosbags/outdoor_20251226_153115/
+ros2 bag info <bag>
 ```
 
-## Using External Datasets
+Topics, message counts, duration and the message types — check this first when
+a replay does nothing, because a bag recorded against different message
+definitions will play without error and satisfy no subscriber.
 
-To use an Autoware-compatible rosbag with AutoSDV:
-
-1. Ensure the rosbag contains at least LiDAR point cloud and vehicle status topics
-2. Check that topic names match the AutoSDV sensor kit configuration (see `src/sensor_kit/`)
-3. Provide a matching point cloud map and Lanelet2 map
-4. Launch the logging simulation with the appropriate sensor suite:
+### Playing
 
 ```bash
-just launch-sim-logging sensor_suite:=custom lidar_model:=vlp32c
+ros2 bag play <bag>
+ros2 bag play <bag> --clock              # publish /clock — required for use_sim_time
+ros2 bag play <bag> -r 2.0               # double speed
+ros2 bag play <bag> --loop               # or -l
+ros2 bag play <bag> --topics /a /b       # only these topics
+ros2 bag play <bag> --start-offset 30    # skip the first 30 s
 ```
+
+`--clock` is the one to remember. The logging simulation runs with
+`use_sim_time:=true`, so without it the stack's clock never advances and nothing
+happens at all.
+
+`just bag play` plays the most recent recording in `rosbags/` with `--clock`
+already set.
+
+## Recording your own
+
+For a recording that will drive a logging simulation, you need at minimum:
+
+- the LiDAR point cloud
+- the IMU
+- the vehicle velocity report
+- `/tf` and `/tf_static`
+- GNSS, if you intend to initialise from it
+
+`just bag record` selects this set. If you record by hand, `/tf_static` is the
+one most often forgotten, and its absence produces a replay where every frame
+transform is missing and nothing localizes.
+
+To replay your own recording, point the launch at your own map:
+
+```bash
+play_launch launch autosdv_launch logging_simulation.launch.yaml \
+  map_path:=/path/to/your/map
+```
+
+and validate the map first:
+
+```bash
+just map check /path/to/your/map cuda_ndt
+```
+
+See [Maps](../guides/maps.md).
+
+## Next steps
+
+- [Logging Simulation](./logging-simulation.md)
+- [COSS Park Scenario](./coss-park-scenario.md)

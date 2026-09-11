@@ -36,20 +36,45 @@ AutoSDV provides a complete stack from hardware specifications to software imple
   </tr>
 </table>
 
-## Getting Started
+## Two ways in
 
-- **[Software Installation](getting-started/installation/overview.md)** — Set up the development environment on Ubuntu or Jetson
-- **[Hardware Setup](getting-started/hardware-assembly.md)** — Assemble the vehicle platform
-- **[Operating the Vehicle](getting-started/usage.md)** — Launch the system, monitor, and record data
+### Try it in simulation — no vehicle needed
 
-You do not need a physical vehicle to get started. AutoSDV includes a planning simulator and rosbag replay tools that run entirely in software. See the [Software Installation](getting-started/installation/overview.md) guide to begin.
+You need a machine running Ubuntu 22.04 and nothing else. The planning
+simulation runs without sensors, without a GPU and without a rosbag.
+
+1. **[Software Installation](getting-started/installation/overview.md)** — set up
+   the environment on Ubuntu or Jetson
+2. **[Verify it](getting-started/installation/verify.md)** — four checks, in
+   order of what they prove
+3. **[Start the tutorial](tutorial/00-what-you-will-build.md)** — drive in
+   simulation twice, and understand what each one teaches
+
+### Build and drive a vehicle
+
+1. **[Hardware Setup](getting-started/hardware-assembly.md)** — assemble the
+   vehicle platform
+2. **[Software Installation](getting-started/installation/overview.md)** — with
+   the `vehicle` profile
+3. **[ZED SDK Installation](getting-started/installation/zed-sdk.md)** — if you
+   have a ZED camera
+4. **[Operating the Vehicle](getting-started/usage.md)** — launch the system,
+   monitor, and record data
 
 ## Explore
 
-- [**Platform Models**](platform-models.md) — Hardware configurations and build variants
-- [**Sensor Integration**](guides/sensor-integration/using-sensors.md) — Configure LiDAR, camera, IMU, GNSS
-- [**Vehicle Control**](guides/vehicle-control/overview.md) — Motor, steering, and PID tuning
-- [**Technical Reference**](reference/overview.md) — Specifications and wiring diagrams
+- [**Concepts**](concepts/environment.md) — the environment, launch files, and
+  what makes this project different from a stock Autoware install
+- [**Platform Models**](platform-models.md) — hardware configurations and build
+  variants
+- [**Localization Methods**](guides/localization-methods.md) — what
+  `pose_source` selects between
+- [**Sensor Integration**](guides/sensor-integration/using-sensors.md) —
+  configure LiDAR, camera, IMU, GNSS
+- [**Vehicle Control**](guides/vehicle-control/overview.md) — motor, steering,
+  and PID tuning
+- [**Technical Reference**](reference/overview.md) — specifications and wiring
+  diagrams
 
 ## Citation
 

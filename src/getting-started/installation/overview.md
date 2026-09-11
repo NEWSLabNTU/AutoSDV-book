@@ -2,6 +2,27 @@
 
 This guide provides the complete installation workflow for AutoSDV. Follow these steps sequentially to set up a fully functional autonomous vehicle software stack.
 
+## How this differs from installing Autoware
+
+If you have read the Autoware documentation, you arrived expecting to clone a
+workspace, run `vcs import` over dozens of repositories, and spend an hour or
+more in `colcon build`.
+
+**AutoSDV does not do that.** Autoware arrives as **Debian packages**, installed
+into `/opt/autoware/1.5.0`. There is no Autoware source tree on your disk and
+nothing of Autoware is compiled on your machine — a source build on an Orin
+costs hours that a student or a vehicle integrator should not pay. In exchange
+you take the version that was built for you, pinned in `versions.yaml`.
+
+**AutoSDV itself is still compiled.** Everything under `src/` is a colcon
+workspace and `just build` builds it.
+
+So you end up in a hybrid: a binary Autoware underneath, a source workspace on
+top. That shape is what the two `source` lines in
+[The Environment](../../concepts/environment.md) are about, and it is where
+package dependencies are resolved — not by the build. Read that page if
+anything later says "package not found".
+
 ## System Requirements
 
 Choose one of the following platforms:

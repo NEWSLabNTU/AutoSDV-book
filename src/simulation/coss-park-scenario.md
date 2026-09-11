@@ -1,94 +1,117 @@
 # COSS Park Scenario
 
-The COSS Park scenario runs a full-stack simulation using recorded sensor data from NTU COSS Park. It launches the Autoware stack, plays the rosbag, and records the localization output — all in a single command.
+The full localization stack, replayed against a real recording, from one
+command — including fetching the data. This is the closest thing AutoSDV has to
+a regression test you can watch.
 
-**Prerequisites**:
+## The recording
 
-- Complete the [Recommended Installation](../getting-started/installation/recommended.md)
-- Download the test rosbag: `just download-data`
-- Install GNU parallel: `sudo apt install parallel`
+`data/rosbags/outdoor_20251226_153115`, about 2.8 GB, 157 seconds at COSS Park:
+parked for the first 115.7 s, then a 41 s drive at up to 1.58 m/s. Nothing about
+the vehicle is required — the whole scenario runs from the recording.
 
-## Launch
-
-```bash
-just sim-coss-park
-```
-
-This runs three processes in parallel:
-
-1. **Logging simulation** — launches the full Autoware stack (`just launch-sim-logging`)
-2. **Rosbag playback** — plays the COSS Park recording in a loop at 1x speed (starts after 40 seconds)
-3. **Localization recording** — records `/localization/pose_estimator/*` topics for 60 seconds (starts after 45 seconds)
-
-The delays ensure the Autoware stack is fully started before data begins flowing.
-
-## What This Tests
-
-Unlike the [logging simulation](./logging-simulation.md) where you launch and play manually, this scenario automates the entire pipeline and captures localization output for analysis. It is useful for:
-
-- Verifying the localization stack works end-to-end
-- Comparing localization performance across code changes
-- Regression testing after modifying launch files or parameters
-
-## Inspecting Results
-
-The localization recording is saved to `rosbags/localization_test_<timestamp>/`. Inspect it with:
+## Run it
 
 ```bash
-ros2 bag info rosbags/localization_test_*/
+just demo check        # are the prerequisites in place?
+just demo run          # everything
 ```
 
-Visualize the recorded pose traces:
+`just demo run` does the following, in order:
+
+1. fetches the rosbag if it is missing (~2.8 GB) and checks the map is present
+2. stops any stack left over from a previous run — two would fight for the same
+   topics
+3. launches `logging_simulation.launch.yaml` with `pose_source:=cuda_ndt`,
+   `use_gnss:=false`, and RViz when `$DISPLAY` is set
+4. waits for `ndt_scan_matcher`, then gives the 4.9 M-point map 25 s to load
+5. starts the wheel-speed scaler and remaps the bag's raw velocity topic through
+   it
+6. records every localization diagnostic to `tmp/demo-runs/<label>_<stamp>/bag`
+7. replays the bag, seeding the initial pose 8 s in
+8. prints the metrics and **leaves the stack running** so you can inspect the
+   result
+
+Stop it when you are done:
 
 ```bash
-just tool-plotjuggler
+just demo stop
 ```
 
-In PlotJuggler, load the recorded bag and plot `/localization/pose_estimator/pose_with_covariance` to see the estimated trajectory.
+That kills the whole process group. This matters more than it sounds: killing
+the launcher by PID orphans the component containers, and `play_launch`'s own
+wrapper regularly survives a group signal, which is why the recipe exists rather
+than a `kill` in the documentation.
 
-## Scope Inspection
-
-Use `play_launch dump` to inspect the launch graph without running any nodes:
+## Variants
 
 ```bash
-play_launch dump -o tmp/scope.json \
-    launch autosdv_launch logging_simulation.launch.yaml \
-    pose_source:=ndt
-
-play_launch context tmp/scope.json --tree
+just demo run-headless      # no RViz, and does not leave the stack up
+just demo run-manual-init   # no pose seed — set it yourself in RViz
+just demo run-raw-speed     # raw (uncorrected) wheel speed, to see the lurching it causes
 ```
 
-This shows the full include tree and node hierarchy, useful for verifying that launch file changes produce the expected structure.
+`run-manual-init` is the honest version: the seeded pose in `demo run` is what
+makes the run reproducible, and removing it shows you how much of the result
+depended on a good initial guess.
 
-## Troubleshooting
+`run-raw-speed` exists to demonstrate a real defect rather than to hide it —
+the recorded wheel speed needs scaling, and without it the pose lurches.
 
-**`parallel: command not found`**
-
-Install GNU parallel:
+## Reading the result
 
 ```bash
-sudo apt install parallel
+just demo report              # metrics for the most recent run
+just demo report run_dir=...  # a specific run
+just demo list-runs
+just demo compare a=<dir> b=<dir>
 ```
 
-**Rosbag not found**
+`compare` is the regression workflow: record a run before a change, another
+after, and put them side by side. Because the input is a fixed recording, a
+difference in the output is a difference in the code.
 
-Download the test data first:
+Two more specialised reports:
 
 ```bash
-just download-data
+just demo map-quality    # does the map cover the scan, and where it does, does it agree?
+just demo yaw-bias       # heading-vs-course yaw bias for a run
 ```
 
-**Localization recording is empty (0 messages)**
+Runs are several GB each. `just demo clean` deletes them.
 
-This can happen if NDT does not initialize during the recording window. Check the NDT logs:
+## Benchmarking the matchers
 
 ```bash
-cat play_log/latest/node/ndt_scan_matcher/err
+just demo bench                 # cuda_ndt on GPU, the same code on CPU, and Autoware's
+just demo bench-offline         # offline GPU-vs-CPU on identical recorded input
+just demo bench-nvtl-probe      # NVTL scoring parity between the arms, at identical poses
+just demo bench-report <tsv>    # rebuild a report from runs already recorded
 ```
 
-If NDT reports "No InputSource", the pointcloud preprocessing nodes may have failed to load. Try restarting the scenario.
+`bench-offline` is described in the repository as "the fair one" — it feeds both
+arms identical recorded input rather than letting them each run live, which is
+the only way the comparison means anything.
 
-## Next Steps
+## The lower-level version
 
-- [Datasets and Rosbags](./datasets.md) — available recordings and how to create your own
-- [Operating the Vehicle](../getting-started/usage.md) — launch parameters for live driving
+`just sim coss-park` runs the same scenario more crudely — the logging
+simulation, the bag, and a localization recorder, started together under GNU
+`parallel` with fixed sleeps:
+
+```bash
+parallel --line-buffer ::: \
+    "just sim logging" \
+    "sleep 40 && ros2 bag play data/rosbags/outdoor_20251226_153115/ --clock -l -r 1.0" \
+    "sleep 45 && ./scripts/rosbag/record_localization.sh"
+```
+
+It requires GNU `parallel`, hardcodes that bag path, and waits by clock rather
+than by readiness — so on a slower machine the bag can start before the map has
+loaded. `just demo run` waits for the scan matcher instead, which is why it is
+the one to use.
+
+## Next steps
+
+- [Datasets & Rosbags](./datasets.md)
+- [Localization Methods](../guides/localization-methods.md)

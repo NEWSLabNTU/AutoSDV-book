@@ -1,335 +1,68 @@
-# Docker Setup
+# Docker Setup (unmaintained)
 
-Docker provides a containerized environment for running AutoSDV without modifying your host system. This is ideal for development, testing, and simulation scenarios.
+!!! danger "This image does not build. Do not start here."
 
-## Use Cases
+    The Dockerfile in `docker/` cannot be built against the current
+    repository. Use [the standard installation](./overview.md) instead.
 
-Docker is recommended for:
-- **Development and Testing**: Consistent environment across different machines
-- **Simulation**: Running AutoSDV without physical hardware
-- **CI/CD**: Automated testing and deployment
-- **Quick Evaluation**: Try AutoSDV without full installation
+    Two independent reasons:
 
-## Prerequisites
+    1. **Its build step no longer exists.** The Dockerfile's final step runs
+       `./scripts/setup-dev-env/setup-dev-env.sh -y`. That script was removed
+       when the setup program was rewritten around a step registry; there is no
+       `scripts/setup-dev-env/` directory in the repository any more, so the
+       build fails at that line.
+    2. **Its base image is the wrong platform generation.** It builds
+       `FROM nvcr.io/nvidia/l4t-tensorrt:r8.6.2-devel`, a JetPack 5 era image.
+       Autoware 1.5.0 for arm64 targets JetPack 6.2 and the TensorRT that comes
+       with it.
 
-### Host System Requirements
+    Fixing it is a real piece of work — a new base image, and a Dockerfile that
+    drives `./setup.sh --run --profile ci --yes` rather than a deleted script.
+    Until someone does that, this page stays as a record of what was here.
 
-- Ubuntu 20.04 or 22.04 (other Linux distributions may work)
-- NVIDIA GPU with driver 470+ (for GPU acceleration)
-- At least 50GB free disk space
-- 16GB+ RAM recommended
+## What it was for
 
-### Software Requirements
+The image built an NVIDIA L4T environment, cloned AutoSDV at the exact commit of
+your local checkout, and ran the setup script inside it — so a container matched
+the code state on your machine rather than a branch tip.
 
-1. **Docker Engine** (20.10 or newer):
-   ```bash
-   # Install Docker
-   curl -fsSL https://get.docker.com -o get-docker.sh
-   sudo sh get-docker.sh
-   
-   # Add user to docker group
-   sudo usermod -aG docker $USER
-   # Log out and back in for group changes to take effect
-   ```
+The files are still in the repository under `docker/`:
 
-2. **NVIDIA Container Toolkit** (for GPU support):
-   ```bash
-   # Add NVIDIA repository
-   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-   curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-   curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
-     sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   
-   # Install nvidia-container-toolkit
-   sudo apt update
-   sudo apt install nvidia-container-toolkit
-   sudo systemctl restart docker
-   ```
+| File | Purpose |
+|------|---------|
+| `Dockerfile` | the image definition described above |
+| `Makefile` | `build`, `run`, `run-rocker`, `save` targets; passes the local commit hash as a build arg |
+| `nvidia-l4t-apt-source.list` | the L4T apt source used inside the image |
+| `README.md` | the original instructions |
 
-3. **Docker Compose** (optional, for multi-container setups):
-   ```bash
-   sudo apt install docker-compose
-   ```
+## What to do instead
 
-## Quick Start
-
-### Step 1: Clone AutoSDV Repository
+Install on the host. [Software Installation](./overview.md) is the supported
+path on both Jetson and amd64, and the setup program's `ci` profile exists
+precisely for unattended, non-interactive environments:
 
 ```bash
-git clone -b develop --recursive https://github.com/NEWSLabNTU/AutoSDV.git
-cd AutoSDV/docker
+./setup.sh --run --profile ci --yes
 ```
 
-### Step 2: Bootstrap Docker Environment
-
-Set up cross-architecture support (required for ARM64 emulation on x86_64):
-
-```bash
-make bootstrap
-```
-
-### Step 3: Build Docker Image
-
-Build the AutoSDV Docker image:
-
-```bash
-make build
-```
-
-This creates an image with:
-- Ubuntu 22.04 base with ROS 2 Humble
-- Autoware 1.5.0 pre-installed
-- All AutoSDV dependencies
-- CUDA and TensorRT support
-- Sensor driver libraries (except proprietary ones)
-
-### Step 4: Run Container
-
-Start an interactive container session:
-
-```bash
-make run
-```
-
-You'll enter a shell with AutoSDV ready to use at `/home/developer/AutoSDV`.
-
-## Docker Image Details
-
-### Image Architecture
-
-The AutoSDV Docker image is built for **ARM64 architecture** to match the Jetson platform. On x86_64 hosts, QEMU provides transparent emulation.
-
-### Pre-installed Software
-
-- **ROS 2 Humble** with desktop tools
-- **Autoware 1.5.0** binary release
-- **CUDA 12.3** and **TensorRT 8.6**
-- **Cyclone DDS** configured as default
-- **Development tools**: git, vim, tmux, htop
-
-### Volume Mounts
-
-The `make run` command automatically mounts:
-- `/tmp/.X11-unix` for GUI applications
-- NVIDIA GPU devices for CUDA access
-
-## Advanced Usage
-
-### Custom Run Options
-
-Run with additional volumes or ports:
-
-```bash
-docker run -it --rm \
-  --gpus all \
-  --network host \
-  -v /path/to/data:/data \
-  -v /dev:/dev \
-  --privileged \
-  autosdv:latest
-```
-
-### Development Workflow
-
-For active development, mount your local code:
-
-```bash
-docker run -it --rm \
-  --gpus all \
-  -v $(pwd):/workspace/AutoSDV \
-  -w /workspace/AutoSDV \
-  autosdv:latest
-```
-
-### GUI Applications
-
-Enable X11 forwarding for visualization tools:
-
-```bash
-xhost +local:docker
-docker run -it --rm \
-  --gpus all \
-  -e DISPLAY=$DISPLAY \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
-  autosdv:latest
-```
-
-Then run GUI applications like RViz:
-```bash
-# Inside container
-rviz2
-```
-
-### Multi-Container Setup
-
-Create a `docker-compose.yml` for complex deployments:
-
-```yaml
-version: '3.8'
-
-services:
-  autosdv:
-    image: autosdv:latest
-    runtime: nvidia
-    network_mode: host
-    privileged: true
-    volumes:
-      - /dev:/dev
-      - ./data:/data
-    environment:
-      - ROS_DOMAIN_ID=0
-      - DISPLAY=${DISPLAY}
-    command: ros2 launch autosdv_launch autosdv.launch.yaml
-
-  monitoring:
-    image: autosdv:latest
-    runtime: nvidia
-    network_mode: host
-    environment:
-      - ROS_DOMAIN_ID=0
-    command: python3 /home/developer/AutoSDV/src/launcher/autosdv_launch/autosdv_launch/autosdv_monitor.py
-```
-
-Run with:
-```bash
-docker-compose up
-```
-
-## Container Management
-
-### Save and Load Images
-
-Export image for deployment:
-
-```bash
-make save  # Creates autosdv_docker.tar.zstd
-```
-
-Load on another machine:
-
-```bash
-docker load < autosdv_docker.tar.gz
-```
-
-### Clean Up
-
-Remove container and image:
-
-```bash
-make clean
-```
-
-## Limitations
-
-### Hardware Access
-
-Docker containers have limited hardware access:
-- **No direct LiDAR access** (USB/Ethernet sensors need special configuration)
-- **No CAN bus** without `--privileged` flag
-- **Camera access** requires device mounting
-
-### Performance
-
-- ARM64 emulation on x86_64 reduces performance
-- GPU passthrough adds overhead
-- Network performance may vary with Docker networking modes
-
-### Sensor Drivers
-
-The Docker image includes most drivers via rosdep, but:
-
-- **ZED SDK**: Cannot be fully used in Docker due to hardware requirements. Physical deployment requires native installation.
-- **Blickfeld**: Installed via rosdep in container
-- **Velodyne**: Installed via rosdep in container
-
-For full ZED camera support, use native installation with [ZED SDK Installation Guide](./zed-sdk.md).
-
-## Troubleshooting
-
-### GPU Not Accessible
-
-Verify NVIDIA runtime:
-```bash
-docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
-```
-
-### Network Issues
-
-Use host networking for ROS 2 communication:
-```bash
-docker run --network host ...
-```
-
-### Permission Denied
-
-For device access, run with privileges:
-```bash
-docker run --privileged -v /dev:/dev ...
-```
-
-### Build Failures
-
-Clear Docker cache and rebuild:
-```bash
-docker system prune -a
-make bootstrap
-make build
-```
-
-## Integration with CI/CD
-
-### GitHub Actions Example
-
-```yaml
-name: AutoSDV Tests
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v1
-      
-      - name: Build Docker image
-        run: |
-          cd docker
-          make build
-      
-      - name: Run tests
-        run: |
-          docker run --rm autosdv:latest \
-            bash -c "cd /home/developer/AutoSDV && colcon test"
-```
-
-### Jenkins Pipeline Example
-
-```groovy
-pipeline {
-    agent any
-    
-    stages {
-        stage('Build') {
-            steps {
-                sh 'cd docker && make build'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                sh 'docker run --rm autosdv:latest just test'
-            }
-        }
-    }
-}
-```
-
-## Next Steps
-
-- [Software Installation](./overview.md) - Native installation guide
-- [Usage Guide](../usage.md) - Operating AutoSDV
-- [Development Guide](../../guides/development.md) - Development workflows
-- [Manual Setup](./manual-environment.md) - Customization options
+Be aware that `ci` deliberately omits Autoware itself, so it produces a machine
+that can fetch and lint but not build the workspace. A container that needs to
+build would want `--profile dev`.
+
+## If you want to revive it
+
+The shape of the fix is known:
+
+1. Choose a JetPack 6.2 base image with a matching TensorRT.
+2. Replace the deleted `setup-dev-env.sh` call with
+   `./setup.sh --run --profile dev --yes`.
+3. Decide what to do about the Autoware Debian download (2–3 GB) — baking it
+   into a layer makes the image very large, fetching it at run time makes the
+   container useless offline.
+4. TensorRT engines cannot be baked in at all: they are tied to the TensorRT
+   version **and** the specific GPU, so they must be built on the target board
+   after the container starts.
+
+Point 4 is the one that makes a truly self-contained AutoSDV image impossible
+rather than merely large.
