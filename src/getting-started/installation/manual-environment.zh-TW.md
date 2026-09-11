@@ -52,7 +52,7 @@ TensorRT 引擎預先編譯，以及 TurboVNC/VirtualGL。
 自動設定會安裝 Autoware Debian 套件，安裝位置為 `/opt/autoware/1.5.0`。
 若要修改 Autoware 核心組件，請改為從原始碼建置。
 
-!!! warning "1.5.0 是 `autoware_core` 的版本，不是 Autoware 的發布版本"
+!!! warning "請完全對上被鎖定的版本"
 
     AutoSDV 的版本鎖定記錄在儲存庫根目錄的 `versions.yaml`：
 
@@ -60,25 +60,25 @@ TensorRT 引擎預先編譯，以及 TurboVNC/VirtualGL。
     ./scripts/version/get-version.sh autoware.version   # 1.5.0
     ```
 
-    這個數字是 **`autoware_core`** 的版本，它並不對應
-    `autowarefoundation/autoware` 工作空間儲存庫的任何標籤——後者的發布版本以
-    日期命名，例如 `2025.02`。複製 `autowarefoundation/autoware` 後尋找 `1.5.0`
-    標籤是找不到的。
+    `1.5.0` 是 `autowarefoundation/autoware` 上的一個**標籤**，不是 `release/`
+    分支——帶日期的 `release/*` 分支（`release/2025.02` 及更早）是舊的命名方式，
+    而 `-b release/1.5.0` 無法解析。
 
-    鎖定 core 1.5.0 的工作空間是
+    這個數字同時也是 `autoware_core` 的版本，由該標籤的 `autoware.repos` 鎖定。
+    自動設定所安裝的 Debian 套件是由
     [`NEWSLabNTU/autoware`](https://github.com/NEWSLabNTU/autoware) 的
-    `1.5.0-ws` 分支。其 `autoware.repos` 正是 `core/autoware_core` 被固定在
-    `version: 1.5.0` 之處。自動設定安裝的 Debian 套件即由該工作空間建置而來。
+    `1.5.0-ws` 分支建置而來，那是該標籤加上子模組的接線；如果你想重現打包時的
+    建置而非單純的原始碼建置，請用它。
 
-    在不同 core 版本上從原始碼建置可以編譯成功，但會在執行時因訊息定義與啟動
-    參數的變更而失敗。
+    在不同版本上從原始碼建置可以編譯成功，但會在執行時因訊息定義與啟動參數的
+    變更而失敗。
 
 ### 步驟 1：複製 Autoware 儲存庫
 
 ```bash
 mkdir -p ~/autoware_ws/src
 cd ~/autoware_ws
-git clone https://github.com/NEWSLabNTU/autoware.git -b 1.5.0-ws
+git clone https://github.com/autowarefoundation/autoware.git -b 1.5.0
 ```
 
 ### 步驟 2：安裝相依套件

@@ -280,29 +280,21 @@ src/
 
 **Image Paths in Chinese Translations:**
 
-Chinese files are served with an extra `/zh-TW/` directory level, requiring one additional `../` in image paths:
+Use **exactly the same relative path as the English page**. The suffix-based
+i18n plugin rewrites it for the `/zh-TW/` output directory itself:
 
 ```markdown
-<!-- English file (src/index.md) - special case: site root -->
-![Image](figures/image.png)
+<!-- English: src/tutorial/02-planning-simulation.md -->
+![alt](../figures/simulation/shot.png)
 
-<!-- Chinese file (src/index.zh-TW.md) needs extra ../ -->
-![Image](../figures/image.png)
-
-<!-- English file (src/platform-models.md) at root level -->
-![Image](../figures/image.png)
-
-<!-- Chinese file (src/platform-models.zh-TW.md) needs extra ../ -->
-![Image](../../figures/image.png)
+<!-- Chinese: src/tutorial/02-planning-simulation.zh-TW.md -- IDENTICAL -->
+![alt](../figures/simulation/shot.png)
 ```
 
-**Pattern by file depth:**
-- **Site index** (`src/index.md`): EN uses `figures/`, ZH uses `../figures/`
-- **Root level** (`src/*.md`): EN uses `../figures/`, ZH uses `../../figures/`
-- **One level** (`src/guides/*.md`): EN uses `../../figures/`, ZH uses `../../../figures/`
-- **Two levels** (`src/guides/sensor/*.md`): EN uses `../../../figures/`, ZH uses `../../../../figures/`
-
-**Rule:** Add one extra `../` to the English path for the Chinese version.
+**Rule:** do not adjust image paths for translations. An earlier version of this
+file said to add one extra `../`; that fails `mkdocs build --strict`, which
+resolves the link against the source tree, where the Chinese file sits in the
+same directory as the English one.
 
 ### Maintaining Translation Sync
 
