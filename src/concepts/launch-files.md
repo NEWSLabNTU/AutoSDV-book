@@ -30,7 +30,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml
 
     Same three positions, same arguments. It is our own launch runner and it is
     worth knowing why, and when not to — see
-    [play_launch](../getting-started/usage.md#why-play_launch-and-not-ros2-launch). Everything on this page is
+    [play_launch](../tutorial/06-play-launch.md). Everything on this page is
     true of both.
 
 ## Three file formats, one meaning

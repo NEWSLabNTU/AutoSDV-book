@@ -50,7 +50,7 @@ launcher by PID rather than by process group leaves these running as orphans.
 
 **`play_launch`** — AutoSDV's launch runner, a drop-in for `ros2 launch` that
 adds process-group shutdown, a web UI and monitoring. Our own software; see
-[play_launch](../getting-started/usage.md#why-play_launch-and-not-ros2-launch) for when to fall back.
+[play_launch](../tutorial/06-play-launch.md) for when to fall back.
 
 ## Messaging
 
