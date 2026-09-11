@@ -184,7 +184,7 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
 - **只有 2D 光達，或有旋轉式 3D 光達但只有平面圖**：`mcl`。
 - **完全沒有光達**：能建視覺地圖就用 `visual`；若相對追蹤已足夠則用 `isaac`。
 
-[記錄回放模擬](../simulation/logging-simulation.md)是比較它們的正確場合，因為
+[記錄回放模擬](../tutorial/03-logging-simulation.md)是比較它們的正確場合，因為
 每次執行的錄製輸入都完全相同。
 
 ## 相關頁面

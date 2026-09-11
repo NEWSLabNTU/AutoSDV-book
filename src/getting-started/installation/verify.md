@@ -76,7 +76,7 @@ vehicle plans a route and drives it. If that works, your ROS 2 installation,
 your Autoware installation, your build and the AutoSDV vehicle model are all
 sound.
 
-Full walkthrough: [Planning Simulation](../../simulation/planning-simulation.md).
+Full walkthrough: [Planning Simulation](../../tutorial/02-planning-simulation.md).
 
 ### The logging simulation — the full pipeline, on recorded sensor data
 
@@ -97,7 +97,7 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 
 This exercises localization and perception, which the planning simulation does
 not. It is also the first check that needs a GPU under the default settings —
-see [Logging Simulation](../../simulation/logging-simulation.md) for the CPU-only
+see [Logging Simulation](../../tutorial/03-logging-simulation.md) for the CPU-only
 arguments.
 
 ## A checklist

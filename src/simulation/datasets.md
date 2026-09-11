@@ -126,5 +126,5 @@ See [Maps](../guides/maps.md).
 
 ## Next steps
 
-- [Logging Simulation](./logging-simulation.md)
+- [Logging Simulation](../tutorial/03-logging-simulation.md)
 - [COSS Park Scenario](./coss-park-scenario.md)

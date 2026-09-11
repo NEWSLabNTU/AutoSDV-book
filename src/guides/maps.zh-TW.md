@@ -109,7 +109,7 @@ just map grid-from-bag <bag> <map_dir>
 ## 預設地圖
 
 `data/COSS-map-planning`，即 COSS Park 地圖，是 `map_path` 的預設值，也是
-[模擬指南](../simulation/planning-simulation.md)所使用的地圖。
+[模擬指南](../tutorial/02-planning-simulation.md)所使用的地圖。
 
 ## 相關頁面
 

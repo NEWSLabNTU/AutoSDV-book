@@ -325,7 +325,7 @@ just sim logging        # rosbag replay
 just sim coss-park      # the full COSS Park scenario
 ```
 
-See the [Simulation Guide](../simulation/planning-simulation.md).
+See the [Simulation Guide](../tutorial/02-planning-simulation.md).
 
 ### Maps
 
@@ -352,7 +352,7 @@ Logs are written to `play_log/latest/`.
 
 ## Next steps
 
-- [Planning Simulation](../simulation/planning-simulation.md) — the first thing
+- [Planning Simulation](../tutorial/02-planning-simulation.md) — the first thing
   to run, and it needs no sensors
 - [Localization Methods](../guides/localization-methods.md) — what `pose_source`
   selects between

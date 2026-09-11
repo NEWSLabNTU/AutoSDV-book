@@ -127,5 +127,5 @@ just map check /path/to/your/map cuda_ndt
 
 ## 後續步驟
 
-- [記錄回放模擬](./logging-simulation.md)
+- [記錄回放模擬](../tutorial/03-logging-simulation.md)
 - [COSS Park 情境](./coss-park-scenario.md)

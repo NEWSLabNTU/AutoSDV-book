@@ -194,7 +194,7 @@ Mapless mode implies no point cloud map.
 - **With no LiDAR at all**: `visual`, if you can build a visual map; `isaac` if
   relative tracking is enough.
 
-The [logging simulation](../simulation/logging-simulation.md) is the right place
+The [logging simulation](../tutorial/03-logging-simulation.md) is the right place
 to compare them, because the recorded input is identical every run.
 
 ## Related

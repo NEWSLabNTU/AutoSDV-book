@@ -110,7 +110,7 @@ with `visual_map_dir:=` rather than `map_path:=`.
 ## The default map
 
 `data/COSS-map-planning`, the COSS Park map, is the default for `map_path` and
-is what the [simulation guides](../simulation/planning-simulation.md) use.
+is what the [simulation guides](../tutorial/02-planning-simulation.md) use.
 
 ## Related
 

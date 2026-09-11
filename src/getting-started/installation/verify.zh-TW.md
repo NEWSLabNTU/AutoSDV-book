@@ -77,7 +77,7 @@ RViz 會開啟並載入 COSS Park 地圖。設定初始姿態、設定目標點�
 並沿線行駛。若這能運作，代表你的 ROS 2 安裝、Autoware 安裝、建置結果以及
 AutoSDV 車輛模型全都沒問題。
 
-完整說明：[路徑規劃模擬](../../simulation/planning-simulation.md)。
+完整說明：[路徑規劃模擬](../../tutorial/02-planning-simulation.md)。
 
 ### 記錄回放模擬 —— 以錄製的感測器資料跑完整管線
 
@@ -98,7 +98,7 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 
 這會運作到定位與感知，而那是路徑規劃模擬不涵蓋的部分。在預設設定下，這也是
 第一項需要 GPU 的檢查——純 CPU 的參數請參閱
-[記錄回放模擬](../../simulation/logging-simulation.md)。
+[記錄回放模擬](../../tutorial/03-logging-simulation.md)。
 
 ## 檢查清單
 

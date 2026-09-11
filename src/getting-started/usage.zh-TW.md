@@ -318,7 +318,7 @@ just sim logging        # rosbag 回放
 just sim coss-park      # 完整的 COSS Park 情境
 ```
 
-參閱[模擬指南](../simulation/planning-simulation.md)。
+參閱[模擬指南](../tutorial/02-planning-simulation.md)。
 
 ### 地圖
 
@@ -345,7 +345,7 @@ ros2 node list      # 應為空
 
 ## 後續步驟
 
-- [路徑規劃模擬](../simulation/planning-simulation.md) —— 最值得先跑的東西，
+- [路徑規劃模擬](../tutorial/02-planning-simulation.md) —— 最值得先跑的東西，
   而且不需要任何感測器
 - [定位方法](../guides/localization-methods.md) —— `pose_source` 在選擇什麼
 - [預設組態](../guides/presets.md) —— `perception_preset` 與
