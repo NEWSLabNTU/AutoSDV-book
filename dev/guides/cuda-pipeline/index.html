@@ -1767,10 +1767,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-autosdv-had-to-supply" class="md-nav__link">
+  <a href="#what-autosdv-had-to-supply-and-is-giving-back" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What AutoSDV had to supply
+        What AutoSDV had to supply, and is giving back
       
     </span>
   </a>
@@ -2757,10 +2757,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-autosdv-had-to-supply" class="md-nav__link">
+  <a href="#what-autosdv-had-to-supply-and-is-giving-back" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What AutoSDV had to supply
+        What AutoSDV had to supply, and is giving back
       
     </span>
   </a>
@@ -2950,15 +2950,36 @@ process, it receives the id and finds nothing behind it.</p>
 <p>So every CUDA stage must load into the same component container. That is why the
 switches are whole-stage: a half-applied backend is not a slower configuration,
 it is a broken one.</p>
-<h2 id="what-autosdv-had-to-supply">What AutoSDV had to supply<a class="headerlink" href="#what-autosdv-had-to-supply" title="Permanent link">#</a></h2>
-<p>Autoware ships CUDA implementations of most of the chain, but not all of it. Two
-filters live in this repository:</p>
+<h2 id="what-autosdv-had-to-supply-and-is-giving-back">What AutoSDV had to supply, and is giving back<a class="headerlink" href="#what-autosdv-had-to-supply-and-is-giving-back" title="Permanent link">#</a></h2>
+<p>Autoware shipped CUDA implementations of most of the chain, but not all of it.
+Two filters were missing:</p>
 <ul>
 <li>a standalone CUDA crop box</li>
 <li>a CUDA random downsample</li>
 </ul>
-<p>They are in <code>src/sensing/cuda_pointcloud_filters</code>. The package skips itself when
-no CUDA toolkit is found, so a machine without CUDA still builds the workspace.</p>
+<p>They live in <code>src/sensing/cuda_pointcloud_filters</code>, a submodule. The package
+skips itself when no CUDA toolkit is found, so a machine without CUDA still
+builds the workspace.</p>
+<div class="admonition note">
+<p class="admonition-title">This submodule is temporary, and has a stated end</p>
+<p>Both filters are now upstream as
+<a href="https://github.com/autowarefoundation/autoware_universe/pull/13301">autoware_universe#13301</a>,
+inside <code>autoware_cuda_pointcloud_preprocessor</code> rather than in a package of
+their own.</p>
+<p>The submodule stays only because the installed <code>/opt/autoware/1.5.0</code> ships
+neither filter, so it remains the only provider until a rebuilt Debian lands
+on a board. Retirement is gated on that, in four steps recorded in
+<code>docs/design/cuda-pipeline-data-flow.md</code>: the PR merges; an Autoware release
+carrying it arrives; the two <code>&lt;composable_node&gt;</code> entries and the
+<code>cuda_filters_package</code> default are repointed at the upstream namespace; and
+then the submodule is dropped.</p>
+<p>The namespaces differ — <code>cuda_pointcloud_filters::</code> here,
+<code>autoware::cuda_pointcloud_preprocessor::</code> upstream — which is why the third
+step is a launch edit and not a drop-in swap.</p>
+<p><strong>If you find a bug in either filter, fix it upstream</strong>, not in this
+submodule. Patching here produces a fix that disappears the moment the
+submodule is retired.</p>
+</div>
 <h2 id="is-it-faster">Is it faster?<a class="headerlink" href="#is-it-faster" title="Permanent link">#</a></h2>
 <ul>
 <li><code>pointcloud_backend:=cuda</code> — the measurements are in
