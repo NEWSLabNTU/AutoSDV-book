@@ -56,15 +56,34 @@ id。如果下一段位於另一個行程，它收到 id 之後會發現後面�
 因此每個 CUDA 階段都必須載入同一個 component container。這正是這些開關是整段式
 的原因：只套用一半的後端不是比較慢的設定，而是壞掉的設定。
 
-## AutoSDV 必須自行補上的部分
+## AutoSDV 曾經補上、而正在回饋的部分
 
-Autoware 提供了這條鏈大部分的 CUDA 實作，但不是全部。有兩個濾波器位於本儲存庫：
+Autoware 過去提供了這條鏈大部分的 CUDA 實作，但不是全部。有兩個濾波器是缺的：
 
 - 獨立的 CUDA 裁切盒
 - CUDA 隨機降採樣
 
-它們位於 `src/sensing/cuda_pointcloud_filters`。找不到 CUDA 工具鏈時，該套件會
-自行略過，所以沒有 CUDA 的機器仍能建置整個工作空間。
+它們位於子模組 `src/sensing/cuda_pointcloud_filters`。找不到 CUDA 工具鏈時，該
+套件會自行略過，所以沒有 CUDA 的機器仍能建置整個工作空間。
+
+!!! note "這個子模組是暫時的，而且有明確的終點"
+
+    兩個濾波器現在都已上游化為
+    [autoware_universe#13301](https://github.com/autowarefoundation/autoware_universe/pull/13301)，
+    位於 `autoware_cuda_pointcloud_preprocessor` 內，而不是自成一個套件。
+
+    這個子模組之所以還在，只是因為已安裝的 `/opt/autoware/1.5.0` 兩個濾波器都沒有
+    附，所以在重新建置的 Debian 送上板子之前，它仍是唯一的提供者。退場以此為前提，
+    分四個步驟，記錄在 `docs/design/cuda-pipeline-data-flow.md`：PR 合併；出現一個
+    含有它的 Autoware 版本；把兩個 `<composable_node>` 項目與 `cuda_filters_package`
+    的預設值重新指向上游命名空間；然後才移除這個子模組。
+
+    兩邊的命名空間不同——這裡是 `cuda_pointcloud_filters::`，上游是
+    `autoware::cuda_pointcloud_preprocessor::`——這就是為什麼第三步是一次啟動檔的
+    編輯，而不是直接替換。
+
+    **如果你在這兩個濾波器裡發現 bug，請到上游修**，不要改這個子模組。在這裡打的
+    修補，會在子模組退場的那一刻消失。
 
 ## 它比較快嗎？
 

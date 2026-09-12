@@ -52,16 +52,40 @@ So every CUDA stage must load into the same component container. That is why the
 switches are whole-stage: a half-applied backend is not a slower configuration,
 it is a broken one.
 
-## What AutoSDV had to supply
+## What AutoSDV had to supply, and is giving back
 
-Autoware ships CUDA implementations of most of the chain, but not all of it. Two
-filters live in this repository:
+Autoware shipped CUDA implementations of most of the chain, but not all of it.
+Two filters were missing:
 
 - a standalone CUDA crop box
 - a CUDA random downsample
 
-They are in `src/sensing/cuda_pointcloud_filters`. The package skips itself when
-no CUDA toolkit is found, so a machine without CUDA still builds the workspace.
+They live in `src/sensing/cuda_pointcloud_filters`, a submodule. The package
+skips itself when no CUDA toolkit is found, so a machine without CUDA still
+builds the workspace.
+
+!!! note "This submodule is temporary, and has a stated end"
+
+    Both filters are now upstream as
+    [autoware_universe#13301](https://github.com/autowarefoundation/autoware_universe/pull/13301),
+    inside `autoware_cuda_pointcloud_preprocessor` rather than in a package of
+    their own.
+
+    The submodule stays only because the installed `/opt/autoware/1.5.0` ships
+    neither filter, so it remains the only provider until a rebuilt Debian lands
+    on a board. Retirement is gated on that, in four steps recorded in
+    `docs/design/cuda-pipeline-data-flow.md`: the PR merges; an Autoware release
+    carrying it arrives; the two `<composable_node>` entries and the
+    `cuda_filters_package` default are repointed at the upstream namespace; and
+    then the submodule is dropped.
+
+    The namespaces differ — `cuda_pointcloud_filters::` here,
+    `autoware::cuda_pointcloud_preprocessor::` upstream — which is why the third
+    step is a launch edit and not a drop-in swap.
+
+    **If you find a bug in either filter, fix it upstream**, not in this
+    submodule. Patching here produces a fix that disappears the moment the
+    submodule is retired.
 
 ## Is it faster?
 
