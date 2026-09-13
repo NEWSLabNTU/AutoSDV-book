@@ -128,6 +128,7 @@ plugins:
             Software: 軟體
             Vehicle Interface: 車輛介面
             Vehicle Build Variants: 車輛組裝變體
+            What Machine You Need: 你需要什麼樣的機器
             Hardware Setup: 硬體設定
             Software Installation: 軟體安裝
             Recommended Installation: 推薦安裝方式
@@ -234,6 +235,7 @@ nav:
       - Inspecting a Running System: concepts/inspecting.md
       - The Autoware Pipeline: concepts/autoware-conventions.md
       - Glossary: concepts/glossary.md
+    - What Machine You Need: getting-started/requirements.md
     - Hardware Setup: getting-started/hardware-assembly.md
     - Software Installation:
       - Overview: getting-started/installation/overview.md
