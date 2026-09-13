@@ -2948,9 +2948,12 @@
 <p>所有模擬頁面使用的那份錄製。</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download
 </span></code></pre></div>
-<p>約 2.8 GB，下載到 <code>data/rosbags/outdoor_20251226_153115</code>。157 秒：前 115.7 秒
-停著不動，接著是 41 秒、最高 1.58 m/s 的行駛，對應的地圖已經在
-<code>data/COSS-map-planning</code>。</p>
+<p>下載 1.6 GiB，解開後在 <code>data/rosbags/outdoor_20251226_153115</code> 佔 2.8 GiB，過程中
+約需 4.4 GiB。缺少 <code>synology-dl</code> 時會用 <code>cargo</code> 安裝，所以必須先有 Rust；完成後會
+驗證 <code>.db3</code> 的 SHA-256，不符就刪除。再跑一次只檢查 checksum 就結束，因此放進腳本
+安全，下載中斷後重跑也安全。</p>
+<p>對應的地圖完全不用下載——<code>data/COSS-map-planning</code> 已納入版本控制。</p>
+<p>錄製長 157 秒：前 115.7 秒停著不動，接著是 41 秒、最高 1.58 m/s 的行駛。</p>
 <p><code>just demo run</code> 會在缺少時自動取得它，所以你很少需要直接呼叫這條指令。</p>
 <h2 id="leo-drive-bus-odd">Leo Drive Bus-ODD 資料集<a class="headerlink" href="#leo-drive-bus-odd" title="Permanent link">#</a></h2>
 <p>Autoware Foundation 的資料集，含相機串流，適合用來測試視覺定位。工具位於

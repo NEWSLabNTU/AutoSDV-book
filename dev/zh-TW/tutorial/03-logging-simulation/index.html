@@ -2960,10 +2960,50 @@
 正是這一頁的用意。</p>
 <p>這就是<a href="../01-first-run/">步驟 1</a> 替你執行的東西。</p>
 <h2 id="_1">你需要什麼<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download<span class="w">    </span><span class="c1"># 約 2.8 GB，只需一次</span>
+<p><strong>地圖已經在了。</strong> <code>data/COSS-map-planning</code> 已納入版本控制，clone 下來就同時拿到
+點雲地圖、lanelet2 地圖與佔據柵格。不用下載，也不用設定。</p>
+<p><strong>錄製檔不在</strong>，因為它有 2.8 GB：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download<span class="w">    </span><span class="c1"># 只需一次</span>
 </span></code></pre></div>
-<p>錄製會落在 <code>data/rosbags/outdoor_20251226_153115</code>。<code>just demo run</code> 會自動取得它，
-所以你可能已經有了。</p>
+<p>它實際做的事，先講清楚免得意外：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需要</td>
+<td><code>synology-dl</code>；缺少時會用 <code>cargo install</code> 裝，所以必須先有 <a href="https://rustup.rs/">Rust</a>，沒有就會停下來告訴你</td>
+</tr>
+<tr>
+<td>下載</td>
+<td>從實驗室 Synology Drive 取得 1.6 GiB 的 zip</td>
+</tr>
+<tr>
+<td>產生</td>
+<td><code>data/rosbags/outdoor_20251226_153115</code>，2.8 GiB，zip 會刪掉</td>
+</tr>
+<tr>
+<td>磁碟需求</td>
+<td>過程中約 4.4 GiB，完成後 2.8 GiB</td>
+</tr>
+<tr>
+<td>驗證</td>
+<td><code>.db3</code> 的 SHA-256，不符就刪掉重下</td>
+</tr>
+</tbody>
+</table>
+<p>再跑一次只會檢查 checksum 然後結束，所以放進腳本裡安全，下載中斷後重跑也安全。</p>
+<p><code>just demo run</code> 會自動取得它，所以你可能已經有了。</p>
+<div class="admonition tip">
+<p class="admonition-title">上課時</p>
+<p>五十個人同時從一台 NAS 拉 1.6 GiB，是任何工作坊裡最慢的一段。事先把解開後的
+<code>data/rosbags/outdoor_20251226_153115</code> 目錄複製到每台機器，或發隨身碟；checksum
+檢查會讓 <code>just bag download</code> 變成不做事，而不是再下載一次。</p>
+</div>
 <h2 id="_2">啟動 —— 兩個終端機<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <p>兩個終端機都需要<a href="../../concepts/environment/">環境</a>。</p>
 <p><strong>終端機 1 —— 堆疊：</strong></p>
@@ -3078,6 +3118,54 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">迭代次數卡在上限，代表根本沒有位姿</p>
+<p><code>config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml</code> 裡的
+<code>max_iterations</code> 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
+上限的那一幀當成**未收斂**，把結果丟掉，位姿因此從來沒有發布過：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>The number of iterations: 15, Limit: 15.
+</span></code></pre></div>
+<p>而整個 stack 看起來仍然定位正常，因為 EKF 只靠輪速與 IMU 就持續發布
+<code>/localization/kinematic_state</code>。關鍵是這一對：
+<code>/localization/pose_estimator/pose_with_covariance</code> 是 <strong>0</strong> 筆，而
+<code>/localization/kinematic_state</code> 有好幾千筆。</p>
+<p>這是真的發生過：AutoSDV 把上限設成 15，而 Autoware 是 30，於是
+<code>pose_source:=ndt</code> 在這份錄製上什麼都沒發布。改回 30 不只正確，而且**更快**
+——匹配器通常四次迭代就收斂，只有最初幾幀需要更多；上限太低時它永遠卡在 15 次
+空轉，從來沒接受過那一幀，而那一幀本來會讓後面全部變簡單。</p>
+<table>
+<thead>
+<tr>
+<th>這份錄製</th>
+<th>上限 15</th>
+<th>上限 30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>發布的 NDT 位姿</td>
+<td>0</td>
+<td>1402</td>
+</tr>
+<tr>
+<td>迭代次數 p50 / max</td>
+<td>15 / 15</td>
+<td>4 / 17</td>
+</tr>
+<tr>
+<td><code>exe_ms</code> 平均</td>
+<td>12.4</td>
+<td>4.6</td>
+</tr>
+<tr>
+<td>NVTL 平均（門檻 2.2）</td>
+<td>4.59</td>
+<td>4.60</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>最有資訊量的分割是 <strong><code>init</code> 與 <code>track</code></strong>：停著的時候匹配容易，因為每個掃描都像上
 一個。一旦車輛移動，同樣的工作大約要花兩倍。實測的一次執行：停著 7.8 毫秒、行駛
 16.7 毫秒、p95 44 毫秒。如果一台機器處於邊緣，它會在那裡失敗——而不是在啟動時。</p>
@@ -3088,7 +3176,7 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 <p><strong>點雲在中途漂離地圖。</strong> 匹配失去了。注意 NVTL——在視覺上的漂移變明顯之前，它就已經
 崩落了。</p>
 <p><strong>主題存在但沒有人訂閱。</strong> 比對兩端的 QoS：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
 </span></code></pre></div>
 <p><code>RELIABLE</code> 的訂閱者不會從 <code>BEST_EFFORT</code> 的發佈者收到東西。參閱
 <a href="../../concepts/inspecting/">檢視執行中的系統</a>。</p>
@@ -3097,9 +3185,9 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 它會在*每一次*啟動時發生。</p>
 <h2 id="_7">比較各種定位方法<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>回放是比較它們的正確場合，因為每次執行的輸入逐位元組完全相同：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
 </span></code></pre></div>
 <p><code>mcl</code> 需要的是佔據網格而非點雲地圖，以及 2D <code>LaserScan</code> 而非 3D 點雲。參閱
 <a href="../../guides/localization-methods/">定位方法</a>。</p>

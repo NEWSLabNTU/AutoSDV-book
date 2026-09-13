@@ -698,6 +698,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#skipping-the-autoware-layer-also-changes-the-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping the Autoware layer also changes the middleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-line-instead-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One line instead of two
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2909,6 +2931,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#skipping-the-autoware-layer-also-changes-the-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skipping the Autoware layer also changes the middleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-line-instead-of-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One line instead of two
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3220,6 +3264,33 @@ wrong so much as incomplete here.</p>
 unset for CycloneDDS, and warnings if the kernel network settings are not
 configured. Those are informational. The line that matters is
 <code>Autoware 1.5.0 environment loaded.</code></p>
+<h3 id="skipping-the-autoware-layer-also-changes-the-middleware">Skipping the Autoware layer also changes the middleware<a class="headerlink" href="#skipping-the-autoware-layer-also-changes-the-middleware" title="Permanent link">#</a></h3>
+<p>This is the part that costs people days, so it is worth stating on its own.
+<code>/opt/autoware/1.5.0/setup.bash</code> sets two variables nothing else sets:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_cyclonedds_cpp
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">CYCLONEDDS_URI</span><span class="o">=</span>file:///opt/autoware/1.5.0/config/cyclonedds.xml
+</span></code></pre></div>
+<p>Source only ROS 2 and the workspace and <code>RMW_IMPLEMENTATION</code> stays unset, which
+means ROS 2's default — <code>rmw_fastrtps_cpp</code>. That is not a slower option or a
+worse one. It is a <strong>different middleware</strong>, and two ROS 2 processes on
+different middlewares cannot see each other at all.</p>
+<p>Nothing reports this. Both sides start cleanly, list their own nodes, and
+publish into a void. What it looks like in practice:</p>
+<ul>
+<li><code>ros2 topic list</code> from your terminal shows nothing, while the stack's own web
+  UI reports every node ready</li>
+<li><code>ros2 bag record</code> writes a bag with zero messages</li>
+<li>a script waiting on <code>/clock</code> waits out its whole timeout while the bag is
+  plainly playing</li>
+</ul>
+<p>It has happened in this repository more than once, most recently to a demo
+runner that sourced ROS and the workspace but not Autoware.</p>
+<h3 id="one-line-instead-of-two">One line instead of two<a class="headerlink" href="#one-line-instead-of-two" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>scripts/env.sh
+</span></code></pre></div>
+<p><code>scripts/env.sh</code> sources the Autoware prefix recorded in <code>versions.yaml</code> and
+then the workspace, in that order. Every <code>just</code> recipe uses it. Use the two
+explicit lines when you want to see what is happening, and this when you do not.</p>
 <h2 id="what-each-layer-actually-gives-you">What each layer actually gives you<a class="headerlink" href="#what-each-layer-actually-gives-you" title="Permanent link">#</a></h2>
 <p>This is the whole point of the page, so here it is measured rather than
 asserted. Each row is a completely clean shell with nothing inherited:</p>
@@ -3272,7 +3343,7 @@ dependency, every time.</p>
 <p>ROS 2 calls each sourced layer an <strong>overlay</strong> over the ones beneath it — the
 underlay. Sourcing appends to a search path, <code>AMENT_PREFIX_PATH</code>, and packages
 are found by walking it.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
 </span></code></pre></div>
 <p>On the clean shells above that path had 1 entry with ROS 2 alone, 2 with
 Autoware added — Autoware is a single merged install, so it contributes one
@@ -3294,7 +3365,7 @@ prefix — and 35 once the AutoSDV workspace was sourced, because a
 <h3 id="package-autosdv_launch-not-found"><code>Package 'autosdv_launch' not found</code><a class="headerlink" href="#package-autosdv_launch-not-found" title="Permanent link">#</a></h3>
 <p>Autoware is sourced, the workspace is not. Either you forgot the second line, or
 you are not in the repository root, or <code>just build</code> has not run yet.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># if this is missing, build first</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># if this is missing, build first</span>
 </span></code></pre></div>
 <h3 id="the-error-names-an-autoware-package-and-you-were-working-on-autosdv">The error names an Autoware package, and you were working on AutoSDV<a class="headerlink" href="#the-error-names-an-autoware-package-and-you-were-working-on-autosdv" title="Permanent link">#</a></h3>
 <p>For example a launch file cannot find <code>autoware_launch</code>, or a node fails to
@@ -3302,8 +3373,8 @@ start on a missing message type. <strong>This is the confusing one.</strong> The
 names an AutoSDV file, so it looks like an AutoSDV bug, and it is not — you
 sourced <code>install/setup.bash</code> without the Autoware layer under it.</p>
 <p>Check before you debug anything else:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># expect /opt/autoware/1.5.0</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># expect …/AutoSDV/install/autosdv_launch</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># expect /opt/autoware/1.5.0</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># expect …/AutoSDV/install/autosdv_launch</span>
 </span></code></pre></div>
 <p>If the first fails, the underlay is missing. Nothing else you are looking at is
 the real problem.</p>
@@ -3317,23 +3388,23 @@ should be able to recognise that it does nothing else.</p>
 <h3 id="direnv">direnv<a class="headerlink" href="#direnv" title="Permanent link">#</a></h3>
 <p>The repository ships an <code>.envrc</code> which runs those same two lines whenever you
 enter the directory:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>direnv<span class="w"> </span>allow
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>direnv<span class="w"> </span>allow
 </span></code></pre></div>
 <p>After <code>direnv allow</code>, entering the directory sources Autoware, then — if
 <code>install/setup.bash</code> exists — the workspace. The relevant part of the file is
 short enough to read:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>...
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">fi</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>...
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">fi</span>
 </span></code></pre></div>
 <p>That is all it is. It is genuinely convenient, and it is also why a newcomer can
 work for a week without learning any of this, and then be stranded the first time
@@ -3350,7 +3421,7 @@ Use the recipes — they are shorter and they carry flags that matter — but kn
 what is underneath, because the day something fails you will need to run that
 directly.</p>
 <h3 id="checking-your-environment-in-one-line">Checking your environment in one line<a class="headerlink" href="#checking-your-environment-in-one-line" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
 </span></code></pre></div>
 <p>Two paths printed means both layers are present and you can stop thinking about
 this page.</p>

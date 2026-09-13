@@ -2948,9 +2948,16 @@
 <p>The recording every simulation page uses.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download
 </span></code></pre></div>
-<p>About 2.8 GB, into <code>data/rosbags/outdoor_20251226_153115</code>. 157 seconds: parked
-for the first 115.7 s, then a 41 s drive at up to 1.58 m/s, with the matching
-map already in <code>data/COSS-map-planning</code>.</p>
+<p>A 1.6 GiB download that unpacks to 2.8 GiB in
+<code>data/rosbags/outdoor_20251226_153115</code>, with about 4.4 GiB needed in between.
+It installs <code>synology-dl</code> with <code>cargo</code> if that is missing, so Rust has to be
+present; it verifies the SHA-256 of the <code>.db3</code> afterwards and deletes the
+download if it does not match. Re-running it checks the checksum and exits, so
+it is safe in a script and safe after an interrupted download.</p>
+<p>The matching map needs no download at all — <code>data/COSS-map-planning</code> is
+committed to the repository.</p>
+<p>The recording is 157 seconds: parked for the first 115.7 s, then a 41 s drive at
+up to 1.58 m/s.</p>
 <p><code>just demo run</code> fetches it automatically if it is missing, so you rarely need to
 call this directly.</p>
 <h2 id="the-leo-drive-bus-odd-dataset">The Leo Drive Bus-ODD dataset<a class="headerlink" href="#the-leo-drive-bus-odd-dataset" title="Permanent link">#</a></h2>

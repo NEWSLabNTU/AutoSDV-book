@@ -2961,10 +2961,53 @@ returns against a map. That estimate can be slow, wrong, or lost, and watching i
 succeed or fail is what this page is for.</p>
 <p>This is what <a href="../01-first-run/">step 1</a> ran for you.</p>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download<span class="w">    </span><span class="c1"># ~2.8 GB, once</span>
+<p><strong>The map is already there.</strong> <code>data/COSS-map-planning</code> is committed to the
+repository, so cloning it gave you the point cloud, the lanelet2 map and the
+occupancy grid. Nothing to download, nothing to configure.</p>
+<p><strong>The recording is not</strong>, because it is 2.8 GB:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download<span class="w">    </span><span class="c1"># once</span>
 </span></code></pre></div>
-<p>The recording lands in <code>data/rosbags/outdoor_20251226_153115</code>. <code>just demo run</code>
-fetches it automatically, so you may already have it.</p>
+<p>What that does, so none of it is a surprise:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>needs</td>
+<td><code>synology-dl</code>, which it installs with <code>cargo install</code> if missing — so <a href="https://rustup.rs/">Rust</a> must be present, or it stops and says so</td>
+</tr>
+<tr>
+<td>downloads</td>
+<td>a 1.6 GiB zip from the lab's Synology Drive</td>
+</tr>
+<tr>
+<td>leaves</td>
+<td><code>data/rosbags/outdoor_20251226_153115</code>, 2.8 GiB, zip deleted</td>
+</tr>
+<tr>
+<td>needs free</td>
+<td>about 4.4 GiB while it works, 2.8 GiB after</td>
+</tr>
+<tr>
+<td>verifies</td>
+<td>the SHA-256 of the <code>.db3</code>, and deletes the download if it fails</td>
+</tr>
+</tbody>
+</table>
+<p>Run it twice and the second run checks the checksum and exits — so it is safe in
+a script, and safe to re-run if a download was interrupted.</p>
+<p><code>just demo run</code> fetches it automatically, so you may already have it.</p>
+<div class="admonition tip">
+<p class="admonition-title">Teaching a class</p>
+<p>Fifty people pulling 1.6 GiB from one NAS at once is the slowest part of any
+workshop. Copy the extracted <code>data/rosbags/outdoor_20251226_153115</code>
+directory to each machine beforehand, or hand out a USB drive; the checksum
+check then makes <code>just bag download</code> a no-op rather than a download.</p>
+</div>
 <h2 id="launch-it-two-terminals">Launch it — two terminals<a class="headerlink" href="#launch-it-two-terminals" title="Permanent link">#</a></h2>
 <p>Both terminals need <a href="../../concepts/environment/">the environment</a>.</p>
 <p><strong>Terminal 1 — the stack:</strong></p>
@@ -3093,6 +3136,58 @@ understanding once.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Iterations pinned at the limit means no pose at all</p>
+<p><code>max_iterations</code> in
+<code>config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml</code> is a cap,
+and reaching it is not "the answer took longer". Autoware's matcher treats a
+frame that hits the cap as <strong>not converged</strong> and throws the result away, so
+the pose is never published:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>The number of iterations: 15, Limit: 15.
+</span></code></pre></div>
+<p>And the stack still looks localized, because the EKF keeps publishing
+<code>/localization/kinematic_state</code> from wheel odometry and IMU alone. The
+telling pair is <code>/localization/pose_estimator/pose_with_covariance</code> at <strong>0</strong>
+messages while <code>/localization/kinematic_state</code> has thousands.</p>
+<p>This was real: AutoSDV shipped a cap of 15 against Autoware's 30, and
+<code>pose_source:=ndt</code> published nothing on this recording. Restoring 30 was
+both correct and <em>faster</em> — the matcher normally converges in about four
+iterations and needs more only on the first frames, so the low cap kept it
+grinding through all 15 forever without ever accepting the frame that would
+have made the rest easy.</p>
+<table>
+<thead>
+<tr>
+<th>on this recording</th>
+<th>cap 15</th>
+<th>cap 30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NDT poses published</td>
+<td>0</td>
+<td>1402</td>
+</tr>
+<tr>
+<td>iterations, p50 / max</td>
+<td>15 / 15</td>
+<td>4 / 17</td>
+</tr>
+<tr>
+<td><code>exe_ms</code>, mean</td>
+<td>12.4</td>
+<td>4.6</td>
+</tr>
+<tr>
+<td>NVTL, mean (gate 2.2)</td>
+<td>4.59</td>
+<td>4.60</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The most informative split is <strong><code>init</code> versus <code>track</code></strong>: while parked, matching
 is easy, because each scan resembles the last. Once the vehicle moves, the same
 work costs roughly twice as much. In a measured run: 7.8 ms parked, 16.7 ms
@@ -3105,7 +3200,7 @@ it was set too far from the truth for NDT to converge. Set it again, closer.</p>
 <p><strong>The cloud drifts away from the map partway through.</strong> The match was lost.
 Watch NVTL — it will have collapsed before the visual drift was obvious.</p>
 <p><strong>Topics exist but nothing subscribes.</strong> Compare QoS on both ends:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
 </span></code></pre></div>
 <p>A <code>RELIABLE</code> subscriber will not receive from a <code>BEST_EFFORT</code> publisher. See
 <a href="../../concepts/inspecting/">Inspecting a Running System</a>.</p>
@@ -3115,9 +3210,9 @@ the engines cannot be cached and it happens on <em>every</em> launch.</p>
 <h2 id="compare-the-localization-methods">Compare the localization methods<a class="headerlink" href="#compare-the-localization-methods" title="Permanent link">#</a></h2>
 <p>The replay is the right place to compare them, because the input is byte for
 byte identical every run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
 </span></code></pre></div>
 <p><code>mcl</code> needs an occupancy grid rather than a point cloud map, and a 2-D
 <code>LaserScan</code> rather than a 3-D cloud. See
