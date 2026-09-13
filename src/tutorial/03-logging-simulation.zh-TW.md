@@ -19,12 +19,34 @@ Translation Metadata:
 
 ## 你需要什麼
 
+**地圖已經在了。** `data/COSS-map-planning` 已納入版本控制，clone 下來就同時拿到
+點雲地圖、lanelet2 地圖與佔據柵格。不用下載，也不用設定。
+
+**錄製檔不在**，因為它有 2.8 GB：
+
 ```bash
-just bag download    # 約 2.8 GB，只需一次
+just bag download    # 只需一次
 ```
 
-錄製會落在 `data/rosbags/outdoor_20251226_153115`。`just demo run` 會自動取得它，
-所以你可能已經有了。
+它實際做的事，先講清楚免得意外：
+
+| | |
+|---|---|
+| 需要 | `synology-dl`；缺少時會用 `cargo install` 裝，所以必須先有 [Rust](https://rustup.rs/)，沒有就會停下來告訴你 |
+| 下載 | 從實驗室 Synology Drive 取得 1.6 GiB 的 zip |
+| 產生 | `data/rosbags/outdoor_20251226_153115`，2.8 GiB，zip 會刪掉 |
+| 磁碟需求 | 過程中約 4.4 GiB，完成後 2.8 GiB |
+| 驗證 | `.db3` 的 SHA-256，不符就刪掉重下 |
+
+再跑一次只會檢查 checksum 然後結束，所以放進腳本裡安全，下載中斷後重跑也安全。
+
+`just demo run` 會自動取得它，所以你可能已經有了。
+
+!!! tip "上課時"
+
+    五十個人同時從一台 NAS 拉 1.6 GiB，是任何工作坊裡最慢的一段。事先把解開後的
+    `data/rosbags/outdoor_20251226_153115` 目錄複製到每台機器，或發隨身碟；checksum
+    檢查會讓 `just bag download` 變成不做事，而不是再下載一次。
 
 ## 啟動 —— 兩個終端機
 
@@ -141,6 +163,34 @@ python3 scripts/testing/localization/ndt_alignment_report.py
 | **`exe_ms`** | 一次掃描匹配的時間 | p95 遠低於 100 毫秒 |
 | **iterations** | 每次匹配的最佳化步數 | 個位數低值 |
 | **publish gap** | 兩次姿態之間的時間 | 約 0.100 秒 |
+
+!!! warning "迭代次數卡在上限，代表根本沒有位姿"
+
+    `config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml` 裡的
+    `max_iterations` 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
+    上限的那一幀當成**未收斂**，把結果丟掉，位姿因此從來沒有發布過：
+
+    ```
+    The number of iterations has reached its upper limit.
+    The number of iterations: 15, Limit: 15.
+    ```
+
+    而整個 stack 看起來仍然定位正常，因為 EKF 只靠輪速與 IMU 就持續發布
+    `/localization/kinematic_state`。關鍵是這一對：
+    `/localization/pose_estimator/pose_with_covariance` 是 **0** 筆，而
+    `/localization/kinematic_state` 有好幾千筆。
+
+    這是真的發生過：AutoSDV 把上限設成 15，而 Autoware 是 30，於是
+    `pose_source:=ndt` 在這份錄製上什麼都沒發布。改回 30 不只正確，而且**更快**
+    ——匹配器通常四次迭代就收斂，只有最初幾幀需要更多；上限太低時它永遠卡在 15 次
+    空轉，從來沒接受過那一幀，而那一幀本來會讓後面全部變簡單。
+
+    | 這份錄製 | 上限 15 | 上限 30 |
+    |---|---|---|
+    | 發布的 NDT 位姿 | 0 | 1402 |
+    | 迭代次數 p50 / max | 15 / 15 | 4 / 17 |
+    | `exe_ms` 平均 | 12.4 | 4.6 |
+    | NVTL 平均（門檻 2.2） | 4.59 | 4.60 |
 
 最有資訊量的分割是 **`init` 與 `track`**：停著的時候匹配容易，因為每個掃描都像上
 一個。一旦車輛移動，同樣的工作大約要花兩倍。實測的一次執行：停著 7.8 毫秒、行駛

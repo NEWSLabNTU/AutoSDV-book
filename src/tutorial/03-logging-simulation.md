@@ -12,12 +12,37 @@ This is what [step 1](./01-first-run.md) ran for you.
 
 ## What you need
 
+**The map is already there.** `data/COSS-map-planning` is committed to the
+repository, so cloning it gave you the point cloud, the lanelet2 map and the
+occupancy grid. Nothing to download, nothing to configure.
+
+**The recording is not**, because it is 2.8 GB:
+
 ```bash
-just bag download    # ~2.8 GB, once
+just bag download    # once
 ```
 
-The recording lands in `data/rosbags/outdoor_20251226_153115`. `just demo run`
-fetches it automatically, so you may already have it.
+What that does, so none of it is a surprise:
+
+| | |
+|---|---|
+| needs | `synology-dl`, which it installs with `cargo install` if missing — so [Rust](https://rustup.rs/) must be present, or it stops and says so |
+| downloads | a 1.6 GiB zip from the lab's Synology Drive |
+| leaves | `data/rosbags/outdoor_20251226_153115`, 2.8 GiB, zip deleted |
+| needs free | about 4.4 GiB while it works, 2.8 GiB after |
+| verifies | the SHA-256 of the `.db3`, and deletes the download if it fails |
+
+Run it twice and the second run checks the checksum and exits — so it is safe in
+a script, and safe to re-run if a download was interrupted.
+
+`just demo run` fetches it automatically, so you may already have it.
+
+!!! tip "Teaching a class"
+
+    Fifty people pulling 1.6 GiB from one NAS at once is the slowest part of any
+    workshop. Copy the extracted `data/rosbags/outdoor_20251226_153115`
+    directory to each machine beforehand, or hand out a USB drive; the checksum
+    check then makes `just bag download` a no-op rather than a download.
 
 ## Launch it — two terminals
 
@@ -148,6 +173,38 @@ understanding once.
 | **`exe_ms`** | time for one scan match | p95 well under 100 ms |
 | **iterations** | optimiser steps per match | low single digits |
 | **publish gap** | time between poses | ~0.100 s |
+
+!!! warning "Iterations pinned at the limit means no pose at all"
+
+    `max_iterations` in
+    `config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml` is a cap,
+    and reaching it is not "the answer took longer". Autoware's matcher treats a
+    frame that hits the cap as **not converged** and throws the result away, so
+    the pose is never published:
+
+    ```
+    The number of iterations has reached its upper limit.
+    The number of iterations: 15, Limit: 15.
+    ```
+
+    And the stack still looks localized, because the EKF keeps publishing
+    `/localization/kinematic_state` from wheel odometry and IMU alone. The
+    telling pair is `/localization/pose_estimator/pose_with_covariance` at **0**
+    messages while `/localization/kinematic_state` has thousands.
+
+    This was real: AutoSDV shipped a cap of 15 against Autoware's 30, and
+    `pose_source:=ndt` published nothing on this recording. Restoring 30 was
+    both correct and *faster* — the matcher normally converges in about four
+    iterations and needs more only on the first frames, so the low cap kept it
+    grinding through all 15 forever without ever accepting the frame that would
+    have made the rest easy.
+
+    | on this recording | cap 15 | cap 30 |
+    |---|---|---|
+    | NDT poses published | 0 | 1402 |
+    | iterations, p50 / max | 15 / 15 | 4 / 17 |
+    | `exe_ms`, mean | 12.4 | 4.6 |
+    | NVTL, mean (gate 2.2) | 4.59 | 4.60 |
 
 The most informative split is **`init` versus `track`**: while parked, matching
 is easy, because each scan resembles the last. Once the vehicle moves, the same

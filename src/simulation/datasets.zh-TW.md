@@ -18,9 +18,14 @@ Translation Metadata:
 just bag download
 ```
 
-約 2.8 GB，下載到 `data/rosbags/outdoor_20251226_153115`。157 秒：前 115.7 秒
-停著不動，接著是 41 秒、最高 1.58 m/s 的行駛，對應的地圖已經在
-`data/COSS-map-planning`。
+下載 1.6 GiB，解開後在 `data/rosbags/outdoor_20251226_153115` 佔 2.8 GiB，過程中
+約需 4.4 GiB。缺少 `synology-dl` 時會用 `cargo` 安裝，所以必須先有 Rust；完成後會
+驗證 `.db3` 的 SHA-256，不符就刪除。再跑一次只檢查 checksum 就結束，因此放進腳本
+安全，下載中斷後重跑也安全。
+
+對應的地圖完全不用下載——`data/COSS-map-planning` 已納入版本控制。
+
+錄製長 157 秒：前 115.7 秒停著不動，接著是 41 秒、最高 1.58 m/s 的行駛。
 
 `just demo run` 會在缺少時自動取得它，所以你很少需要直接呼叫這條指令。
 

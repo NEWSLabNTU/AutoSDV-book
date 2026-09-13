@@ -10,9 +10,18 @@ The recording every simulation page uses.
 just bag download
 ```
 
-About 2.8 GB, into `data/rosbags/outdoor_20251226_153115`. 157 seconds: parked
-for the first 115.7 s, then a 41 s drive at up to 1.58 m/s, with the matching
-map already in `data/COSS-map-planning`.
+A 1.6 GiB download that unpacks to 2.8 GiB in
+`data/rosbags/outdoor_20251226_153115`, with about 4.4 GiB needed in between.
+It installs `synology-dl` with `cargo` if that is missing, so Rust has to be
+present; it verifies the SHA-256 of the `.db3` afterwards and deletes the
+download if it does not match. Re-running it checks the checksum and exits, so
+it is safe in a script and safe after an interrupted download.
+
+The matching map needs no download at all — `data/COSS-map-planning` is
+committed to the repository.
+
+The recording is 157 seconds: parked for the first 115.7 s, then a 41 s drive at
+up to 1.58 m/s.
 
 `just demo run` fetches it automatically if it is missing, so you rarely need to
 call this directly.

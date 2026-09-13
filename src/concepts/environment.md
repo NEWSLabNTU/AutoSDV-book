@@ -70,6 +70,43 @@ unset for CycloneDDS, and warnings if the kernel network settings are not
 configured. Those are informational. The line that matters is
 `Autoware 1.5.0 environment loaded.`
 
+### Skipping the Autoware layer also changes the middleware
+
+This is the part that costs people days, so it is worth stating on its own.
+`/opt/autoware/1.5.0/setup.bash` sets two variables nothing else sets:
+
+```bash
+RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+CYCLONEDDS_URI=file:///opt/autoware/1.5.0/config/cyclonedds.xml
+```
+
+Source only ROS 2 and the workspace and `RMW_IMPLEMENTATION` stays unset, which
+means ROS 2's default — `rmw_fastrtps_cpp`. That is not a slower option or a
+worse one. It is a **different middleware**, and two ROS 2 processes on
+different middlewares cannot see each other at all.
+
+Nothing reports this. Both sides start cleanly, list their own nodes, and
+publish into a void. What it looks like in practice:
+
+- `ros2 topic list` from your terminal shows nothing, while the stack's own web
+  UI reports every node ready
+- `ros2 bag record` writes a bag with zero messages
+- a script waiting on `/clock` waits out its whole timeout while the bag is
+  plainly playing
+
+It has happened in this repository more than once, most recently to a demo
+runner that sourced ROS and the workspace but not Autoware.
+
+### One line instead of two
+
+```bash
+source scripts/env.sh
+```
+
+`scripts/env.sh` sources the Autoware prefix recorded in `versions.yaml` and
+then the workspace, in that order. Every `just` recipe uses it. Use the two
+explicit lines when you want to see what is happening, and this when you do not.
+
 ## What each layer actually gives you
 
 This is the whole point of the page, so here it is measured rather than

@@ -73,6 +73,41 @@ if [ -f /opt/ros/humble/setup.bash ]; then
 核心網路設定未調整時的警告。那些是資訊性的。真正重要的一行是
 `Autoware 1.5.0 environment loaded.`
 
+### 少載入 Autoware 這一層，連 middleware 都會換掉
+
+這件事讓人損失過好幾天，值得單獨講。`/opt/autoware/1.5.0/setup.bash` 會設定兩個
+別處都不會設的變數：
+
+```bash
+RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+CYCLONEDDS_URI=file:///opt/autoware/1.5.0/config/cyclonedds.xml
+```
+
+只載入 ROS 2 與工作空間，`RMW_IMPLEMENTATION` 就維持未設定，也就是 ROS 2 的預設
+值 `rmw_fastrtps_cpp`。那不是比較慢或比較差的選項，而是**另一套 middleware**；
+跑在不同 middleware 上的兩個 ROS 2 process 彼此完全看不到。
+
+沒有任何東西會回報這件事。兩邊都乾淨啟動、都列得出自己的節點、都對著空氣發布。
+實際看起來像這樣：
+
+- 你的終端機 `ros2 topic list` 空無一物，而 stack 自己的 web UI 顯示每個節點都
+  就緒
+- `ros2 bag record` 錄出一個零筆訊息的 bag
+- 等 `/clock` 的腳本一路等到 timeout，而 bag 明明正在播放
+
+這在本專案發生過不只一次，最近一次是 demo runner 只載入了 ROS 與工作空間，沒有
+載入 Autoware。
+
+### 用一行取代兩行
+
+```bash
+source scripts/env.sh
+```
+
+`scripts/env.sh` 會依照 `versions.yaml` 記錄的 Autoware 安裝路徑載入，再載入工作
+空間，順序固定。每個 `just` recipe 都用它。想看清楚發生什麼事時用那兩行，不想看
+時用這一行。
+
 ## 每一層實際給你什麼
 
 這是本頁的重點，所以以下是實測而非斷言。每一列都是一個完全乾淨、沒有繼承任何
