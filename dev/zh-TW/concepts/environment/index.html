@@ -720,6 +720,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#middleware-envrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用哪套 middleware 由你決定，而它住在 .envrc
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2953,6 +2964,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#middleware-envrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用哪套 middleware 由你決定，而它住在 .envrc
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3284,6 +3306,27 @@ Autoware：</p>
 <p><code>scripts/env.sh</code> 會依照 <code>versions.yaml</code> 記錄的 Autoware 安裝路徑載入，再載入工作
 空間，順序固定。每個 <code>just</code> recipe 都用它。想看清楚發生什麼事時用那兩行，不想看
 時用這一行。</p>
+<h3 id="middleware-envrc">用哪套 middleware 由你決定，而它住在 <code>.envrc</code><a class="headerlink" href="#middleware-envrc" title="Permanent link">#</a></h3>
+<p>本專案不會替你決定 RMW。<code>.envrc</code> 是唯一做這個決定的檔案，預設值就是 Autoware 選的
+那個——目前是 CycloneDDS。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 只在這個目錄改用 Zenoh</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_zenoh_cpp<span class="w"> </span>direnv<span class="w"> </span>reload
+</span></code></pre></div>
+<p>之所以要繞這一圈，是因為 Autoware 的 <code>setup.bash</code> 會**無條件** export
+<code>RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code>：你先 export 自己的選擇、再載入 Autoware，
+選擇就被無聲蓋掉。<code>.envrc</code> 會在載入前記下你的選擇、載入後再放回去，
+<code>scripts/env.sh</code> 也做同樣的事，所以 <code>just</code> recipe 也不會蓋掉它。</p>
+<p>不論選哪一個，圖裡的每個 process 都必須一致。</p>
+<div class="admonition tip">
+<p class="admonition-title">沒有 direnv 時</p>
+<p><a href="https://direnv.net/">direnv</a> 會在進入目錄時套用 <code>.envrc</code>，這是最不容易出錯的
+做法，值得花五分鐘安裝。沒有它的話，**每個**終端機都要自己載入：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>.envrc<span class="w">      </span><span class="c1"># PATH_add / watch_file 是 direnv 的指令，會回報找不到；</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                   </span><span class="c1"># 其餘都會生效</span>
+</span></code></pre></div>
+<p>上課時特別容易出事：只要有一位學生的終端機漏掉這一步，他的 stack 就會啟動得
+很漂亮，然後跟誰都講不上話。</p>
+</div>
 <h2 id="_5">每一層實際給你什麼<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
 <p>這是本頁的重點，所以以下是實測而非斷言。每一列都是一個完全乾淨、沒有繼承任何
 變數的 shell：</p>
@@ -3332,7 +3375,7 @@ Autoware：</p>
 <h2 id="overlay">簡述 overlay<a class="headerlink" href="#overlay" title="Permanent link">#</a></h2>
 <p>ROS 2 把每個載入的層稱為底下各層的 <strong>overlay</strong>，底下的則是 underlay。載入的動作
 是往一個搜尋路徑 <code>AMENT_PREFIX_PATH</code> 附加內容，而套件是沿著它尋找的。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
 </span></code></pre></div>
 <p>在上面那些乾淨的 shell 中，只有 ROS 2 時該路徑有 1 個項目；加上 Autoware 後是 2
 個——Autoware 是單一合併安裝，只貢獻一個前綴；載入 AutoSDV 工作空間後變成 35
@@ -3352,15 +3395,15 @@ Autoware：</p>
 <h3 id="package-autosdv_launch-not-found"><code>Package 'autosdv_launch' not found</code><a class="headerlink" href="#package-autosdv_launch-not-found" title="Permanent link">#</a></h3>
 <p>Autoware 載入了，工作空間沒有。可能是你忘了第二行，或你不在儲存庫根目錄，或
 <code>just build</code> 還沒執行過。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># 若不存在，請先建置</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># 若不存在，請先建置</span>
 </span></code></pre></div>
 <h3 id="autoware-autosdv">錯誤指向某個 Autoware 套件，而你在處理 AutoSDV<a class="headerlink" href="#autoware-autosdv" title="Permanent link">#</a></h3>
 <p>例如某個啟動檔找不到 <code>autoware_launch</code>，或某個節點因缺少訊息型別而無法啟動。
 <strong>這是最容易誤導人的一種。</strong> 訊息指向一個 AutoSDV 的檔案，看起來像 AutoSDV 的
 錯誤，但它不是——你載入了 <code>install/setup.bash</code>，卻沒有載入底下的 Autoware 層。</p>
 <p>在你除錯任何其他東西之前先檢查：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># 應為 /opt/autoware/1.5.0</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># 應為 …/AutoSDV/install/autosdv_launch</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># 應為 /opt/autoware/1.5.0</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># 應為 …/AutoSDV/install/autosdv_launch</span>
 </span></code></pre></div>
 <p>如果第一個失敗，就是 underlay 不見了。你正在看的其他東西都不是真正的問題。</p>
 <h3 id="_7">在某個終端機能動，另一個不能<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
@@ -3371,22 +3414,22 @@ Autoware：</p>
 別的事。</p>
 <h3 id="direnv">direnv<a class="headerlink" href="#direnv" title="Permanent link">#</a></h3>
 <p>儲存庫附有一份 <code>.envrc</code>，會在你進入該目錄時執行同樣那兩行：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># 或你所用 shell 的對應寫法</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>direnv<span class="w"> </span>allow
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># 或你所用 shell 的對應寫法</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>direnv<span class="w"> </span>allow
 </span></code></pre></div>
 <p>執行 <code>direnv allow</code> 之後，進入該目錄就會載入 Autoware，接著——若
 <code>install/setup.bash</code> 存在——載入工作空間。該檔案的相關部分短到可以直接讀：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>...
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">fi</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>...
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">fi</span>
 </span></code></pre></div>
 <p>就只有這樣。它確實方便，但這也是為什麼一個新手可以工作一週而完全沒學到這些，
 然後在第一次於別處開終端機時卡住——透過 SSH、在容器裡、在編輯器內建的 shell 中，
@@ -3400,7 +3443,7 @@ Autoware：</p>
 短，而且帶有重要的旗標——但要知道底下是什麼，因為某天出問題時，你會需要直接執行
 底下那一條。</p>
 <h3 id="_9">一行檢查你的環境<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
 </span></code></pre></div>
 <p>印出兩個路徑就表示兩層都在，你可以不用再管這一頁了。</p>
 <h2 id="_10">摘要<a class="headerlink" href="#_10" title="Permanent link">#</a></h2>

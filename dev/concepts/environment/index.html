@@ -720,6 +720,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#which-middleware-is-your-choice-and-it-lives-in-envrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which middleware is your choice, and it lives in .envrc
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2953,6 +2964,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#which-middleware-is-your-choice-and-it-lives-in-envrc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which middleware is your choice, and it lives in .envrc
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3291,6 +3313,29 @@ runner that sourced ROS and the workspace but not Autoware.</p>
 <p><code>scripts/env.sh</code> sources the Autoware prefix recorded in <code>versions.yaml</code> and
 then the workspace, in that order. Every <code>just</code> recipe uses it. Use the two
 explicit lines when you want to see what is happening, and this when you do not.</p>
+<h3 id="which-middleware-is-your-choice-and-it-lives-in-envrc">Which middleware is your choice, and it lives in <code>.envrc</code><a class="headerlink" href="#which-middleware-is-your-choice-and-it-lives-in-envrc" title="Permanent link">#</a></h3>
+<p>Nothing in the repository forces an RMW on you. <code>.envrc</code> is the one file that
+decides, and the default is whatever Autoware selects — CycloneDDS today.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># use Zenoh instead, for this directory</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_zenoh_cpp<span class="w"> </span>direnv<span class="w"> </span>reload
+</span></code></pre></div>
+<p>That indirection exists because Autoware's <code>setup.bash</code> exports
+<code>RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code> <strong>unconditionally</strong>: exporting your own
+choice and then sourcing Autoware loses it without a word. <code>.envrc</code> records the
+choice before sourcing and puts it back afterwards, and <code>scripts/env.sh</code> does
+the same so a <code>just</code> recipe cannot undo it either.</p>
+<p>Whatever you pick, every process in the graph has to agree.</p>
+<div class="admonition tip">
+<p class="admonition-title">Working without direnv</p>
+<p><a href="https://direnv.net/">direnv</a> applies <code>.envrc</code> on entering the directory,
+which is the least error-prone setup and worth the five minutes to install.
+Without it, source the file yourself in <strong>every</strong> terminal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>.envrc<span class="w">      </span><span class="c1"># the PATH_add / watch_file lines are direnv's and</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                   </span><span class="c1"># will report as missing commands; the rest applies</span>
+</span></code></pre></div>
+<p>A class is where this bites: one student with a terminal that skipped it
+gets a stack that starts perfectly and talks to nobody.</p>
+</div>
 <h2 id="what-each-layer-actually-gives-you">What each layer actually gives you<a class="headerlink" href="#what-each-layer-actually-gives-you" title="Permanent link">#</a></h2>
 <p>This is the whole point of the page, so here it is measured rather than
 asserted. Each row is a completely clean shell with nothing inherited:</p>
@@ -3343,7 +3388,7 @@ dependency, every time.</p>
 <p>ROS 2 calls each sourced layer an <strong>overlay</strong> over the ones beneath it — the
 underlay. Sourcing appends to a search path, <code>AMENT_PREFIX_PATH</code>, and packages
 are found by walking it.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AMENT_PREFIX_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">':'</span><span class="w"> </span><span class="s1">'\n'</span>
 </span></code></pre></div>
 <p>On the clean shells above that path had 1 entry with ROS 2 alone, 2 with
 Autoware added — Autoware is a single merged install, so it contributes one
@@ -3365,7 +3410,7 @@ prefix — and 35 once the AutoSDV workspace was sourced, because a
 <h3 id="package-autosdv_launch-not-found"><code>Package 'autosdv_launch' not found</code><a class="headerlink" href="#package-autosdv_launch-not-found" title="Permanent link">#</a></h3>
 <p>Autoware is sourced, the workspace is not. Either you forgot the second line, or
 you are not in the repository root, or <code>just build</code> has not run yet.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># if this is missing, build first</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ls<span class="w"> </span>install/setup.bash<span class="w">    </span><span class="c1"># if this is missing, build first</span>
 </span></code></pre></div>
 <h3 id="the-error-names-an-autoware-package-and-you-were-working-on-autosdv">The error names an Autoware package, and you were working on AutoSDV<a class="headerlink" href="#the-error-names-an-autoware-package-and-you-were-working-on-autosdv" title="Permanent link">#</a></h3>
 <p>For example a launch file cannot find <code>autoware_launch</code>, or a node fails to
@@ -3373,8 +3418,8 @@ start on a missing message type. <strong>This is the confusing one.</strong> The
 names an AutoSDV file, so it looks like an AutoSDV bug, and it is not — you
 sourced <code>install/setup.bash</code> without the Autoware layer under it.</p>
 <p>Check before you debug anything else:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># expect /opt/autoware/1.5.0</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># expect …/AutoSDV/install/autosdv_launch</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">   </span><span class="c1"># expect /opt/autoware/1.5.0</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch<span class="w">    </span><span class="c1"># expect …/AutoSDV/install/autosdv_launch</span>
 </span></code></pre></div>
 <p>If the first fails, the underlay is missing. Nothing else you are looking at is
 the real problem.</p>
@@ -3388,23 +3433,23 @@ should be able to recognise that it does nothing else.</p>
 <h3 id="direnv">direnv<a class="headerlink" href="#direnv" title="Permanent link">#</a></h3>
 <p>The repository ships an <code>.envrc</code> which runs those same two lines whenever you
 enter the directory:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>direnv<span class="w"> </span>allow
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>direnv<span class="w"> </span>allow
 </span></code></pre></div>
 <p>After <code>direnv allow</code>, entering the directory sources Autoware, then — if
 <code>install/setup.bash</code> exists — the workspace. The relevant part of the file is
 short enough to read:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>...
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">fi</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>...
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>install/setup.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span>watch_file<span class="w"> </span>install/setup.bash
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">fi</span>
 </span></code></pre></div>
 <p>That is all it is. It is genuinely convenient, and it is also why a newcomer can
 work for a week without learning any of this, and then be stranded the first time
@@ -3421,7 +3466,7 @@ Use the recipes — they are shorter and they carry flags that matter — but kn
 what is underneath, because the day something fails you will need to run that
 directly.</p>
 <h3 id="checking-your-environment-in-one-line">Checking your environment in one line<a class="headerlink" href="#checking-your-environment-in-one-line" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autosdv_launch
 </span></code></pre></div>
 <p>Two paths printed means both layers are present and you can stop thinking about
 this page.</p>
