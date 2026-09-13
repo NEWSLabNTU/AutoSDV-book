@@ -444,6 +444,8 @@
       
         
       
+        
+      
     
     
     
@@ -751,6 +753,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    你需要什麼樣的機器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../hardware-assembly/" class="md-nav__link">
         
   
@@ -811,10 +841,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
             
   
   
@@ -832,8 +862,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -936,7 +966,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        儲存空間需求
+        儲存空間
       
     </span>
   </a>
@@ -2830,7 +2860,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        儲存空間需求
+        儲存空間
       
     </span>
   </a>
@@ -3042,15 +3072,20 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 <h2 id="_2">系統需求<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <p>請選擇以下其中一個平台：</p>
 <ol>
-<li><strong>NVIDIA Jetson AGX Orin 64GB</strong>（建議用於車輛部署）</li>
-<li><strong>Ubuntu 22.04 PC 配備 NVIDIA GPU</strong>（用於開發和測試）</li>
-<li><strong>Docker 環境</strong>（用於模擬和開發）</li>
+<li><strong>NVIDIA Jetson AGX Orin 64GB</strong>——車輛本身，接著各種感測器。見
+   <a href="../../hardware-assembly/">硬體設定</a>。</li>
+<li><strong>一台 Ubuntu 22.04 筆電或桌機</strong>——用於模擬與開發。有 GPU 有幫助，但
+   <strong>不是必要</strong>；兩種模擬沒有 GPU 也能跑。</li>
+<li><strong>Docker 環境</strong>（未維護）</li>
 </ol>
-<h3 id="_3">儲存空間需求<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
-<ul>
-<li>最少 256GB SSD（Jetson 建議使用 NVMe）</li>
-<li>至少 100GB 可用空間供軟體安裝使用</li>
-</ul>
+<p>Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humble 上，而 Humble
+沒有 24.04 的套件。</p>
+<h3 id="_3">儲存空間<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>在筆電上全部加起來約 <strong>11 GB</strong>——Autoware 4.8 GB、專案 1 GB、建置好的工作空間
+0.9 GB，再加上只有日誌模擬才需要的 2.8 GB rosbag。請保留 <strong>20 GB</strong> 可用空間，因為
+rosbag 的壓縮檔與解開後的副本會並存一段時間。</p>
+<p><a href="../../requirements/">你需要什麼樣的機器</a>有實測數字：記憶體、核心數、建置尖峰，
+以及 GPU 買到什麼、買不到什麼。</p>
 <h2 id="_4">安裝方法<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
 <p>選擇最適合您需求的安裝方法：</p>
 <table>

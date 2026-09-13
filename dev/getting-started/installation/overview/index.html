@@ -444,6 +444,8 @@
       
         
       
+        
+      
     
     
     
@@ -751,6 +753,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What Machine You Need
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../hardware-assembly/" class="md-nav__link">
         
   
@@ -811,10 +841,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
             
   
   
@@ -832,8 +862,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -933,10 +963,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#storage-requirements" class="md-nav__link">
+  <a href="#storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Storage Requirements
+        Storage
       
     </span>
   </a>
@@ -2827,10 +2857,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#storage-requirements" class="md-nav__link">
+  <a href="#storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Storage Requirements
+        Storage
       
     </span>
   </a>
@@ -3045,15 +3075,22 @@ anything later says "package not found".</p>
 <h2 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">#</a></h2>
 <p>Choose one of the following platforms:</p>
 <ol>
-<li><strong>NVIDIA Jetson AGX Orin 64GB</strong> (Recommended for vehicle deployment)</li>
-<li><strong>Ubuntu 22.04 PC with NVIDIA GPU</strong> (For development and testing)</li>
-<li><strong>Docker Environment</strong> (For simulation and development)</li>
+<li><strong>NVIDIA Jetson AGX Orin 64GB</strong> — the vehicle itself, with the sensors
+   attached. See <a href="../../hardware-assembly/">Hardware Setup</a>.</li>
+<li><strong>An Ubuntu 22.04 laptop or desktop</strong> — for the simulations and for
+   development. A GPU is useful and <strong>not required</strong>; both simulations run
+   without one.</li>
+<li><strong>Docker Environment</strong> (unmaintained)</li>
 </ol>
-<h3 id="storage-requirements">Storage Requirements<a class="headerlink" href="#storage-requirements" title="Permanent link">#</a></h3>
-<ul>
-<li>Minimum 256GB SSD (NVMe recommended for Jetson)</li>
-<li>At least 100GB free space for software installation</li>
-</ul>
+<p>Ubuntu 22.04 is the one requirement with no alternative: AutoSDV is built on
+ROS 2 Humble, which is not packaged for 24.04.</p>
+<h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h3>
+<p>About <strong>11 GB</strong> all told on a laptop — 4.8 GB of Autoware, 1 GB of repository,
+0.9 GB of built workspace, and a 2.8 GB rosbag that only the logging simulation
+needs. Keep <strong>20 GB</strong> free, because the rosbag's download and its unpacked copy
+coexist for a while.</p>
+<p><a href="../../requirements/">What Machine You Need</a> has the measured figures: memory,
+cores, the build peak, and what a GPU does and does not buy.</p>
 <h2 id="installation-methods">Installation Methods<a class="headerlink" href="#installation-methods" title="Permanent link">#</a></h2>
 <p>Choose the installation method that best fits your needs:</p>
 <table>

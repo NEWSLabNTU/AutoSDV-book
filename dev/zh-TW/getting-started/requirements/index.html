@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh-TW" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -8,35 +8,35 @@
       
       
       
-        <link rel="canonical" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/tutorial/06-play-launch/">
+        <link rel="canonical" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/requirements/">
       
       
-        <link rel="prev" href="../05-map-and-rosbag/">
+        <link rel="prev" href="../../concepts/glossary/">
       
       
-        <link rel="next" href="../../simulation/coss-park-scenario/">
+        <link rel="next" href="../hardware-assembly/">
       
       
         
-          <link rel="alternate" href="./" hreflang="en">
+          <link rel="alternate" href="../../../getting-started/requirements/" hreflang="en">
         
-          <link rel="alternate" href="../../zh-TW/tutorial/06-play-launch/" hreflang="zh-TW">
+          <link rel="alternate" href="./" hreflang="zh-TW">
         
       
       
-      <link rel="icon" href="../../assets/images/autosdv-logo.png">
+      <link rel="icon" href="../../../assets/images/autosdv-logo.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
-        <title>6. play_launch - AutoSDV Documentation</title>
+        <title>你需要什麼樣的機器 - AutoSDV Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/css/extra.css">
+      <link rel="stylesheet" href="../../../assets/css/extra.css">
     
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,8 +84,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-play_launch" class="md-skip">
-          Skip to content
+        <a href="#_1" class="md-skip">
+          跳轉到
         </a>
       
     </div>
@@ -103,8 +103,8 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="AutoSDV Documentation" class="md-header__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../" title="AutoSDV Documentation" class="md-header__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. play_launch
+              你需要什麼樣的機器
             
           </span>
         </div>
@@ -164,20 +164,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="Select language">
+    <button class="md-header__button md-icon" aria-label="選擇語言">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="./" hreflang="en" class="md-select__link">
+            <a href="../../../getting-started/requirements/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh-TW/tutorial/06-play-launch/" hreflang="zh-TW" class="md-select__link">
+            <a href="./" hreflang="zh-TW" class="md-select__link">
               繁體中文
             </a>
           </li>
@@ -198,21 +198,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="搜尋">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -225,7 +225,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜尋引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -237,7 +237,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -252,31 +252,9 @@
   
     
       
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
-          
-  
-  
-    
-  
-  Get Started
-
-        </a>
-      </li>
-    
-  
-
       
         
   
@@ -288,13 +266,35 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00-what-you-will-build/" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
     
   
-  Tutorial
+  快速入門
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorial/00-what-you-will-build/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  教學
 
         </a>
       </li>
@@ -316,7 +316,7 @@
   
     
   
-  Simulation
+  模擬
 
         </a>
       </li>
@@ -338,7 +338,7 @@
   
     
   
-  Guides
+  指南
 
         </a>
       </li>
@@ -360,7 +360,7 @@
   
     
   
-  Technical Reference
+  技術參考
 
         </a>
       </li>
@@ -394,9 +394,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="AutoSDV Documentation" class="md-nav__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+    <a href="../../" title="AutoSDV Documentation" class="md-nav__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
@@ -406,7 +406,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -423,6 +423,8 @@
       
   
   
+    
+  
   
   
     
@@ -430,658 +432,6 @@
       
         
           
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Get Started
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Get Started
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../platform-models/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vehicle Build Variants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Concepts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/environment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The Environment
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/launch-files/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Launch Files
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/inspecting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Inspecting a Running System
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/autoware-conventions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The Autoware Pipeline
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/glossary/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Glossary
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/requirements/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    What Machine You Need
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/hardware-assembly/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hardware Setup
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Software Installation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_1_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Software Installation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/recommended/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Recommended Installation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/verify/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Verifying the Installation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/manual-environment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Manual Environment Setup (Optional)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/docker/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker Setup (Unmaintained)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/installation/zed-sdk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZED SDK Installation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/usage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operating the Vehicle
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
         
       
         
@@ -1112,17 +462,121 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速入門
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    快速入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    車輛組裝變體
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Tutorial
+    基本概念
   
 
     
@@ -1133,12 +587,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Tutorial
+    基本概念
   
 
           </label>
@@ -1151,14 +605,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-what-you-will-build/" class="md-nav__link">
+      <a href="../../concepts/environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    What You Will Build
+    環境與相依套件
   
 
     
@@ -1179,14 +633,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-first-run/" class="md-nav__link">
+      <a href="../../concepts/launch-files/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. First Run
+    啟動檔
   
 
     
@@ -1207,14 +661,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-planning-simulation/" class="md-nav__link">
+      <a href="../../concepts/inspecting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Planning Simulation
+    檢視執行中的系統
   
 
     
@@ -1235,14 +689,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-logging-simulation/" class="md-nav__link">
+      <a href="../../concepts/autoware-conventions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Logging Simulation
+    Autoware 管線
   
 
     
@@ -1263,14 +717,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-behind-the-recipe/" class="md-nav__link">
+      <a href="../../concepts/glossary/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Behind the Recipe
+    詞彙表
   
 
     
@@ -1284,29 +738,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-map-and-rosbag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5. The Map and the Rosbag
-  
-
-    
-  </span>
-  
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1335,7 +769,7 @@
   <span class="md-ellipsis">
     
   
-    6. play_launch
+    你需要什麼樣的機器
   
 
     
@@ -1353,7 +787,7 @@
   <span class="md-ellipsis">
     
   
-    6. play_launch
+    你需要什麼樣的機器
   
 
     
@@ -1365,7 +799,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
   
   
   
@@ -1374,60 +808,27 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目錄
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-it-is" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What it is
+        簡短的答案
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-project-uses-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this project uses it
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#it-is-our-software-and-ros2-launch-is-the-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        It is our software, and ros2 launch is the reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="It is our software, and ros2 launch is the reference">
+    <nav class="md-nav" aria-label="簡短的答案">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-parser" class="md-nav__link">
+  <a href="#ubuntu-2204" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The parser
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-container-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The container mode
+        Ubuntu 22.04 是硬性要求
       
     </span>
   </a>
@@ -1440,10 +841,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-fallback-ladder" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The fallback ladder
+        每個數字從哪來
       
     </span>
   </a>
@@ -1451,10 +852,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#which-one-is-at-fault" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Which one is at fault
+        磁碟，逐項
       
     </span>
   </a>
@@ -1462,32 +863,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-port-confusion" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The port confusion
+        GPU，細談
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU，細談">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如果你的 GPU 很新
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#rviz-opengl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading
+        RViz 需要能用的 OpenGL
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#you-have-finished-the-tutorial" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        You have finished the tutorial
+        在信任一台機器之前先檢查
       
     </span>
   </a>
@@ -1498,6 +916,578 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬體設定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    軟體安裝
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    軟體安裝
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    總覽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/recommended/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推薦安裝方式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    驗證安裝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/manual-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    手動環境設定（選配）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker 設定（已停止維護）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/zed-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZED SDK 安裝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作車輛
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教學
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    教學
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/00-what-you-will-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    你將建立什麼
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/01-first-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 第一次執行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/02-planning-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 路徑規劃模擬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/03-logging-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 記錄回放模擬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/04-behind-the-recipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 拆解那條指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/05-map-and-rosbag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 地圖與 Rosbag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/06-play-launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. play_launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1546,7 +1536,7 @@
   <span class="md-ellipsis">
     
   
-    Simulation
+    模擬
   
 
     
@@ -1562,7 +1552,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Simulation
+    模擬
   
 
           </label>
@@ -1582,7 +1572,7 @@
   <span class="md-ellipsis">
     
   
-    COSS Park Scenario
+    COSS 公園場景
   
 
     
@@ -1610,7 +1600,7 @@
   <span class="md-ellipsis">
     
   
-    Datasets and Rosbags
+    資料集與 Rosbag
   
 
     
@@ -1681,7 +1671,7 @@
   <span class="md-ellipsis">
     
   
-    Guides
+    指南
   
 
     
@@ -1697,7 +1687,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    指南
   
 
           </label>
@@ -1717,7 +1707,7 @@
   <span class="md-ellipsis">
     
   
-    Development Guide
+    開發指南
   
 
     
@@ -1745,7 +1735,7 @@
   <span class="md-ellipsis">
     
   
-    Source Code Walkthrough
+    原始碼說明
   
 
     
@@ -1773,7 +1763,7 @@
   <span class="md-ellipsis">
     
   
-    Version Control
+    版本控制
   
 
     
@@ -1801,7 +1791,7 @@
   <span class="md-ellipsis">
     
   
-    Presets
+    預設組態
   
 
     
@@ -1829,7 +1819,7 @@
   <span class="md-ellipsis">
     
   
-    Localization Methods
+    定位方法
   
 
     
@@ -1857,7 +1847,7 @@
   <span class="md-ellipsis">
     
   
-    Maps
+    地圖
   
 
     
@@ -1885,7 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    CUDA Point Cloud Pipeline
+    CUDA 點雲管線
   
 
     
@@ -1947,7 +1937,7 @@
   <span class="md-ellipsis">
     
   
-    Sensor Integration
+    感測器整合
   
 
     
@@ -1963,7 +1953,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Sensor Integration
+    感測器整合
   
 
           </label>
@@ -1983,7 +1973,7 @@
   <span class="md-ellipsis">
     
   
-    Using Sensors
+    使用感測器
   
 
     
@@ -2011,7 +2001,7 @@
   <span class="md-ellipsis">
     
   
-    Integration Walkthrough
+    整合範例
   
 
     
@@ -2039,7 +2029,7 @@
   <span class="md-ellipsis">
     
   
-    LiDAR Sensors
+    LiDAR 感測器
   
 
     
@@ -2067,7 +2057,7 @@
   <span class="md-ellipsis">
     
   
-    Camera Sensors
+    相機感測器
   
 
     
@@ -2095,7 +2085,7 @@
   <span class="md-ellipsis">
     
   
-    IMU Sensors
+    IMU 感測器
   
 
     
@@ -2123,7 +2113,7 @@
   <span class="md-ellipsis">
     
   
-    GNSS Sensors
+    GNSS 感測器
   
 
     
@@ -2151,7 +2141,7 @@
   <span class="md-ellipsis">
     
   
-    Adding a Sensor
+    新增感測器
   
 
     
@@ -2179,7 +2169,7 @@
   <span class="md-ellipsis">
     
   
-    Troubleshooting
+    疑難排解
   
 
     
@@ -2241,7 +2231,7 @@
   <span class="md-ellipsis">
     
   
-    Vehicle Control
+    車輛控制
   
 
     
@@ -2257,7 +2247,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Vehicle Control
+    車輛控制
   
 
           </label>
@@ -2277,7 +2267,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    總覽
   
 
     
@@ -2305,7 +2295,7 @@
   <span class="md-ellipsis">
     
   
-    Hardware
+    硬體
   
 
     
@@ -2333,7 +2323,7 @@
   <span class="md-ellipsis">
     
   
-    Control Details
+    控制細節
   
 
     
@@ -2361,7 +2351,7 @@
   <span class="md-ellipsis">
     
   
-    Tuning & Testing
+    調校與測試
   
 
     
@@ -2430,7 +2420,7 @@
   <span class="md-ellipsis">
     
   
-    Technical Reference
+    技術參考
   
 
     
@@ -2446,7 +2436,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Technical Reference
+    技術參考
   
 
           </label>
@@ -2466,7 +2456,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    總覽
   
 
     
@@ -2516,7 +2506,7 @@
   <span class="md-ellipsis">
     
   
-    Hardware
+    硬體
   
 
     
@@ -2532,7 +2522,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hardware
+    硬體
   
 
           </label>
@@ -2552,7 +2542,7 @@
   <span class="md-ellipsis">
     
   
-    Core Components
+    核心組件
   
 
     
@@ -2580,7 +2570,7 @@
   <span class="md-ellipsis">
     
   
-    Wiring Diagrams
+    配線圖
   
 
     
@@ -2636,7 +2626,7 @@
   <span class="md-ellipsis">
     
   
-    Software
+    軟體
   
 
     
@@ -2652,7 +2642,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Software
+    軟體
   
 
           </label>
@@ -2672,7 +2662,7 @@
   <span class="md-ellipsis">
     
   
-    Vehicle Interface
+    車輛介面
   
 
     
@@ -2728,7 +2718,7 @@
   <span class="md-ellipsis">
     
   
-    Networking
+    網路
   
 
     
@@ -2744,7 +2734,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Networking
+    網路
   
 
           </label>
@@ -2764,7 +2754,7 @@
   <span class="md-ellipsis">
     
   
-    5G/LTE Deployment
+    5G/LTE 部署
   
 
     
@@ -2806,7 +2796,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
   
   
   
@@ -2815,60 +2805,27 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目錄
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-it-is" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What it is
+        簡短的答案
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-project-uses-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this project uses it
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#it-is-our-software-and-ros2-launch-is-the-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        It is our software, and ros2 launch is the reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="It is our software, and ros2 launch is the reference">
+    <nav class="md-nav" aria-label="簡短的答案">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-parser" class="md-nav__link">
+  <a href="#ubuntu-2204" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The parser
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-container-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The container mode
+        Ubuntu 22.04 是硬性要求
       
     </span>
   </a>
@@ -2881,10 +2838,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-fallback-ladder" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The fallback ladder
+        每個數字從哪來
       
     </span>
   </a>
@@ -2892,10 +2849,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#which-one-is-at-fault" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Which one is at fault
+        磁碟，逐項
       
     </span>
   </a>
@@ -2903,32 +2860,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-port-confusion" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The port confusion
+        GPU，細談
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU，細談">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如果你的 GPU 很新
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#rviz-opengl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading
+        RViz 需要能用的 OpenGL
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#you-have-finished-the-tutorial" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        You have finished the tutorial
+        在信任一台機器之前先檢查
       
     </span>
   </a>
@@ -2953,14 +2927,14 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="導覽列" >
     <ol class="md-path__list">
       
         
   
   
     <li class="md-path__item">
-      <a href="../.." class="md-path__link">
+      <a href="../../" class="md-path__link">
         
   <span class="md-ellipsis">
     Index
@@ -2978,10 +2952,10 @@
     
     
       <li class="md-path__item">
-        <a href="../00-what-you-will-build/" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Tutorial
+    快速入門
   </span>
 
         </a>
@@ -3000,7 +2974,7 @@
 
 
   
-    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/edit/main/src/tutorial/06-play-launch.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/edit/main/src/getting-started/requirements.zh-TW.md" title="編輯此頁" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3009,143 +2983,220 @@
     
       
     
-    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/raw/main/src/tutorial/06-play-launch.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/raw/main/src/getting-started/requirements.zh-TW.md" title="查看此頁原始碼" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<div><h1 id="6-play_launch">6. play_launch<a class="headerlink" href="#6-play_launch" title="Permanent link">#</a></h1>
-<p>Every launch command in this book has been <code>play_launch launch</code>. This page says
-what it is, why it is used here, and — the part that matters when something goes
-wrong — <strong>that it is our own software, and how to step around it.</strong></p>
-<h2 id="what-it-is">What it is<a class="headerlink" href="#what-it-is" title="Permanent link">#</a></h2>
-<p>A launch runner that replaces <code>ros2 launch</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;package&gt;<span class="w"> </span>&lt;launch_file&gt;<span class="w"> </span><span class="o">[</span>name:<span class="o">=</span>value<span class="w"> </span>...<span class="o">]</span>
-</span></code></pre></div>
-<p>Same three positions, same arguments. It is installed by the setup program, and
-from PyPI otherwise:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>play_launch
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>play_launch<span class="w"> </span>setcap<span class="w">      </span><span class="c1"># optional: per-process I/O monitoring, non-root RT scheduling</span>
-</span></code></pre></div>
-<h2 id="why-this-project-uses-it">Why this project uses it<a class="headerlink" href="#why-this-project-uses-it" title="Permanent link">#</a></h2>
-<p><strong>It shuts the system down properly.</strong> This is the main reason. AutoSDV runs
-most nodes as composable nodes inside container processes. Killing <code>ros2 launch</code>
-kills the launcher and leaves those containers running — still publishing, still
-holding memory and the GPU, surviving the terminal that started them.
-<code>play_launch</code> escalates SIGINT → SIGTERM → SIGKILL across the whole process
-group.</p>
-<p><strong>A web UI</strong>, by default at <code>http://127.0.0.1:8080</code>, listing every node with its
-state and streaming its logs. Faster than reading a merged console when 34 nodes
-start at once.</p>
-<p><strong>Monitoring</strong> — per-process CPU, memory, I/O and GPU, plus <code>/diagnostics</code>.</p>
-<p><strong>A resolve/replay workflow:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>play_launch<span class="w"> </span>resolve<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>args…<span class="w">        </span><span class="c1"># what would start, without starting it</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>play_launch<span class="w"> </span>dump<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>args…<span class="w">    </span><span class="c1"># write a resolved system model</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>play_launch<span class="w"> </span>up<span class="w"> </span>system_model.yaml<span class="w">              </span><span class="c1"># spawn from that model, repeatedly</span>
-</span></code></pre></div>
-<p><code>resolve</code> is the one you will use most. It answers "did my argument take effect"
-without launching anything.</p>
-<h2 id="it-is-our-software-and-ros2-launch-is-the-reference">It is our software, and <code>ros2 launch</code> is the reference<a class="headerlink" href="#it-is-our-software-and-ros2-launch-is-the-reference" title="Permanent link">#</a></h2>
-<p><code>ros2 launch</code> is part of ROS 2. Every launch file in the ecosystem is written
-and tested against it. <code>play_launch</code> is maintained by this project, so when a
-launch file misbehaves under it, the first question is not <em>what is wrong with
-the launch file</em> — it is <strong>is this us?</strong></p>
-<p>The tool's own options tell you where it can differ.</p>
-<h3 id="the-parser">The parser<a class="headerlink" href="#the-parser" title="Permanent link">#</a></h3>
-<p><code>play_launch</code> reimplements the launch-file language in Rust for speed, and ships
-the original Python implementation as a fallback:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--parser<span class="w"> </span>python
-</span></code></pre></div>
-<p>The flag is documented as being "for maximum compatibility", which is a plain
-admission that the fast path is a reimplementation and can disagree with the
-reference on unusual files. If a launch file fails to parse, or parses into
-something you did not expect, try this before anything else.</p>
-<h3 id="the-container-mode">The container mode<a class="headerlink" href="#the-container-mode" title="Permanent link">#</a></h3>
-<p>By default <code>play_launch</code> overrides how composable nodes are containerised, to
-get process isolation:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--container-mode<span class="w"> </span>isolated<span class="w">     </span><span class="c1"># default: fork+exec per node</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--container-mode<span class="w"> </span>observable<span class="w">   </span><span class="c1"># shared process, ComponentEvents</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--container-mode<span class="w"> </span>stock<span class="w">        </span><span class="c1"># no override at all</span>
-</span></code></pre></div>
-<p><code>stock</code> uses the container the launch file asked for and changes nothing. If
-composable nodes behave oddly — a node that will not load, or one that works
-under <code>ros2 launch</code> and not here — this is the setting to try.</p>
-<h2 id="the-fallback-ladder">The fallback ladder<a class="headerlink" href="#the-fallback-ladder" title="Permanent link">#</a></h2>
-<p>In order. Each step gives up one of <code>play_launch</code>'s behaviours:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>…<span class="w">                        </span><span class="c1"># 1. default</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--parser<span class="w"> </span>python<span class="w">          </span><span class="c1"># 2. if it parses wrong</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--container-mode<span class="w"> </span>stock<span class="w">    </span><span class="c1"># 3. if composable nodes misbehave</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>&lt;pkg&gt;<span class="w"> </span>&lt;file&gt;<span class="w"> </span>…<span class="w">                                </span><span class="c1"># 4. the reference; always available</span>
-</span></code></pre></div>
-<p>If you reach step 4, remember you have also given up the shutdown handling, so
-kill by process group:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">kill</span><span class="w"> </span>--<span class="w"> </span>-<span class="k">$(</span>ps<span class="w"> </span>-o<span class="w"> </span><span class="nv">pgid</span><span class="o">=</span><span class="w"> </span>-p<span class="w"> </span>&lt;pid&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">' '</span><span class="k">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">    </span><span class="c1"># confirm it is empty</span>
-</span></code></pre></div>
-<h2 id="which-one-is-at-fault">Which one is at fault<a class="headerlink" href="#which-one-is-at-fault" title="Permanent link">#</a></h2>
-<p>A simple rule:</p>
-<blockquote>
-<p><strong>If it works under <code>ros2 launch</code> and not under <code>play_launch</code>, that is a
-<code>play_launch</code> bug.</strong></p>
-</blockquote>
-<p>Report it to <a href="https://github.com/NEWSLabNTU/play_launch">play_launch</a>, not as an
-AutoSDV issue. Include the launch file, the arguments, and which rung of the
-ladder made it work — that last detail usually identifies the component
-responsible.</p>
-<p>Conversely, if it fails under both, the launch file or the configuration is at
-fault and <code>play_launch</code> is an innocent bystander.</p>
-<p>This test costs one command and saves a great deal of misdirected debugging,
-which is the only reason this page exists.</p>
-<h2 id="the-port-confusion">The port confusion<a class="headerlink" href="#the-port-confusion" title="Permanent link">#</a></h2>
-<p>Worth knowing because it looks like a failure:</p>
+<div><h1 id="_1">你需要什麼樣的機器<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>這頁談的是在筆電或桌機上跑 AutoSDV：兩種模擬，以及在其上開發。<strong>這不是車上那台
+電腦。</strong> 車上跑的是接了 LiDAR、相機、GNSS 與車輛介面的 Jetson AGX Orin，它的數字
+由模擬永遠不會產生的感測器流量主導——那台機器請見
+<a href="../hardware-assembly/">硬體設定</a>。</p>
+<p>以下全部是實測值，在一台桌機上量的，方法寫在每張表下面。把它當成採購時的下限，
+而不是保證。</p>
+<h2 id="_2">簡短的答案<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>Started with</th>
-<th>Web UI</th>
+<th></th>
+<th>最低</th>
+<th>從容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>play_launch launch …</code></td>
-<td><code>http://127.0.0.1:8080</code></td>
+<td>作業系統</td>
+<td><strong>Ubuntu 22.04 LTS</strong>——沒有商量餘地，見下</td>
+<td>Ubuntu 22.04 LTS</td>
 </tr>
 <tr>
-<td><code>just launch</code>, <code>just sim …</code>, <code>just demo run</code></td>
-<td><code>http://localhost:8081</code></td>
+<td>CPU</td>
+<td>4 核</td>
+<td>8 核以上</td>
+</tr>
+<tr>
+<td>記憶體</td>
+<td>8 GB</td>
+<td>16 GB</td>
+</tr>
+<tr>
+<td>可用磁碟</td>
+<td>20 GB</td>
+<td>40 GB</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td><strong>不需要</strong></td>
+<td>NVIDIA，CUDA 12.x</td>
 </tr>
 </tbody>
 </table>
-<p>The <code>just</code> recipes pass <code>--web-addr 0.0.0.0:8081</code>. Opening the wrong port shows
-nothing, and looks exactly like a system that failed to start.</p>
-<p><code>0.0.0.0</code> also means the UI is reachable from other machines on your network,
-which is convenient on a vehicle and worth knowing about on a shared one.</p>
-<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">#</a></h2>
-<p><code>play_launch</code> has had breaking changes — <code>replay</code> became <code>up</code> in 0.9.0, among
-others, and its changelog notes that some of them change behaviour rather than
-erroring. The setup program installs a version known to work with this
-repository. If you upgrade it independently and launches start behaving oddly,
-that is a likely cause.</p>
-<h2 id="you-have-finished-the-tutorial">You have finished the tutorial<a class="headerlink" href="#you-have-finished-the-tutorial" title="Permanent link">#</a></h2>
-<p>You can now:</p>
+<p>最低規格的機器能跑完兩種模擬、也能建置工作空間。「從容」那一欄讓你感覺不到它在
+工作，並且留下跑 GPU 路徑與感知的餘裕。</p>
+<h3 id="ubuntu-2204">Ubuntu 22.04 是硬性要求<a class="headerlink" href="#ubuntu-2204" title="Permanent link">#</a></h3>
+<p>AutoSDV 建立在 ROS 2 Humble 上，而 Humble 的目標是 Ubuntu 22.04，沒有 24.04 的
+套件。這是唯一沒有彈性的一列：不是更新的 Ubuntu、不是 Debian，也不建議一開始就用
+WSL。虛擬機在核心數與記憶體夠的情況下可以跑模擬，但拿不到 GPU。</p>
+<h2 id="_3">每個數字從哪來<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<p>量測環境：Ubuntu 22.04、Intel Core Ultra 7 270K Plus（24 核）、125 GB 記憶體、
+RTX 5090，工具是 <code>scripts/profiling/host_resource_sampler.py</code>。記憶體以「相對於
+閒置基線，整台機器多用了多少」表示，那正是小機器必須擠出來的量。CPU 以「核數」
+表示，因為那才是能換算到不同核心數機器上的數字。</p>
+<table>
+<thead>
+<tr>
+<th>工作負載</th>
+<th>記憶體尖峰</th>
+<th>啟動時 CPU</th>
+<th>穩態 CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>just build</code>，乾淨工作空間</td>
+<td><strong>11.3 GiB</strong></td>
+<td>有幾核用幾核</td>
+<td>—</td>
+</tr>
+<tr>
+<td>規劃模擬</td>
+<td><strong>2.5 GiB</strong></td>
+<td>短暫 19 核</td>
+<td>約 2 核</td>
+</tr>
+<tr>
+<td>日誌模擬，CPU 路徑</td>
+<td><strong>3.4 GiB</strong></td>
+<td>短暫 21 核</td>
+<td>約 3 核</td>
+</tr>
+<tr>
+<td>日誌模擬，GPU 路徑</td>
+<td>3.4 GiB 加約 1 GiB VRAM</td>
+<td>同上</td>
+<td>約 3 核</td>
+</tr>
+<tr>
+<td>任一項再加上 RViz</td>
+<td>約多 1.4 GiB</td>
+<td>—</td>
+<td>約 1 核</td>
+</tr>
+</tbody>
+</table>
+<p>其中三個數字各值得一句說明。</p>
+<p><strong>建置尖峰最大，而且可以調。</strong> 11.3 GiB 是 colcon 以 24 個工作並行編譯 31 個套件
+時達到的；整段軌跡在那裡停留約十二秒，然後就掉下來。尖峰隨同時跑幾個編譯器而變，
+所以四核筆電不用特別設定就大約只會用到四分之一。如果機器記憶體吃緊，明確設上限，
+不要等 OOM killer 出手：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--base-paths<span class="w"> </span>src<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>--parallel-workers<span class="w"> </span><span class="m">2</span>
+</span></code></pre></div>
+<p><strong>「啟動時 CPU」是突波，不是需求。</strong> 啟動一個 stack 會一次拉起三十幾個節點，它們
+會把在場的核心全部用上——這裡是 24 核用掉 21 核。在四核機器上同樣的工作只是比較
+久，不會失敗。機器必須長時間撐住的是穩態那一欄，也就是兩到三核。</p>
+<p><strong>建置很快，是因為 Autoware 大部分早就建好了。</strong> 在這台桌機上 31 個套件花了
+<strong>89 秒</strong>。AutoSDV 是疊在二進位 Autoware 安裝*之上*的工作空間，所以 <code>just build</code>
+編譯的是車輛自己的套件，而不是底下那 30 GB 的 Autoware。預算以分鐘計，不是小時；
+四核機器上也仍然以分鐘計。</p>
+<h2 id="_4">磁碟，逐項<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autoware Debian，下載</td>
+<td>1.9 GB</td>
+</tr>
+<tr>
+<td>Autoware，安裝於 <code>/opt/autoware/1.5.0</code></td>
+<td>4.8 GB</td>
+</tr>
+<tr>
+<td>本專案 clone 後（含 COSS 地圖）</td>
+<td>約 1 GB</td>
+</tr>
+<tr>
+<td><code>just build</code> 後的工作空間（<code>build/</code> + <code>install/</code>）</td>
+<td>0.9 GB</td>
+</tr>
+<tr>
+<td>COSS rosbag，下載</td>
+<td>1.6 GB</td>
+</tr>
+<tr>
+<td>COSS rosbag，解開後</td>
+<td>2.8 GB</td>
+</tr>
+<tr>
+<td><strong>全部裝完、清理後合計</strong></td>
+<td><strong>約 11 GB</strong></td>
+</tr>
+</tbody>
+</table>
+<p>最低要 20 GB，是因為 rosbag 的壓縮檔與解開後的副本會並存一段時間，也因為
+<code>play_log/</code> 下的 ROS 紀錄會隨每次執行增加。如果你打算自己錄 bag，就抓 40 GB——那
+是這裡唯一沒有自然大小上限的東西。</p>
+<p>地圖不用下載：<code>data/COSS-map-planning</code> 已納入版本控制。rosbag 是唯一一個大檔，而且
+只有日誌模擬需要它——見<a href="../../simulation/datasets/">資料集與 Rosbag</a>。</p>
+<h2 id="gpu">GPU，細談<a class="headerlink" href="#gpu" title="Permanent link">#</a></h2>
+<p><strong>兩種模擬都不需要 GPU。</strong> 這是最常被想錯的一點。</p>
 <ul>
-<li>run the whole stack with one command, and stop it without leaving orphans</li>
-<li>drive the planning simulator and read the state panel</li>
-<li>replay real sensor data and tell whether localization is actually working</li>
-<li>pass arguments, and check whether they took effect</li>
-<li>drop a layer when something breaks</li>
+<li>**規劃模擬**沒有感測器、沒有感知、沒有定位，從頭到尾不碰 GPU。</li>
+<li>**日誌模擬**回放真實 LiDAR 並對地圖定位。用
+  <code>pose_source:=ndt launch_perception:=false</code> 時純靠 CPU，而且維持感測器完整的
+  10 Hz——對著 10 Hz 的錄製實測為 10.06 Hz。</li>
 </ul>
-<p>Where to go next:</p>
-<ul>
-<li><strong><a href="../../guides/localization-methods/">Localization Methods</a></strong> — what else
-  <code>pose_source</code> can be</li>
-<li><strong><a href="../../guides/presets/">Presets</a></strong> — configuring perception and localization</li>
-<li><strong><a href="../../getting-started/usage/">Operating the Vehicle</a></strong> — the full argument
-  reference</li>
-<li><strong><a href="../../guides/maps/">Maps</a></strong> — building a map for your own site</li>
-</ul></div>
+<p>GPU 買到的是兩件事：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>需要</th>
+<th>代價</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pose_source:=cuda_ndt</code></td>
+<td>CUDA，且 toolkit 認得你的 GPU</td>
+<td>約 1 GiB VRAM</td>
+</tr>
+<tr>
+<td>感知（TensorRT 模型）</td>
+<td>NVIDIA GPU</td>
+<td>VRAM，外加首次啟動 **10–30 分鐘**的 engine 編譯</td>
+</tr>
+</tbody>
+</table>
+<p>engine 編譯每台機器、每個 Autoware 版本只需一次，而 <code>just build-engines</code> 是刻意
+先做掉它，而不是讓它發生在你第一次啟動時。在那之前，<code>launch_perception:=false</code>
+才是筆電上誠實的跑法。</p>
+<h3 id="gpu_1">如果你的 GPU 很新<a class="headerlink" href="#gpu_1" title="Permanent link">#</a></h3>
+<p><code>cuda_ndt</code> 在執行期才編譯 kernel，所以 CUDA toolkit 必須認得你顯卡的架構。比
+toolkit 新的顯卡，失敗方式跟沒有 GPU 一模一樣，只是更吵也更晚——launcher 回報每個
+節點都就緒，然後什麼都不發布。Blackwell（RTX 50 系列，sm_120）需要 <strong>CUDA 12.8</strong>
+或更新。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scripts/check-cuda-arch.sh<span class="w">     </span><span class="c1"># 也包含在 `just demo check` 裡</span>
+</span></code></pre></div>
+<p>它會比對你的 GPU 與選定的 toolkit，不合時會列出機器上哪些 toolkit 可用。要選一個
+只是一個變數的事——見<a href="../../concepts/environment/">環境</a>。</p>
+<h3 id="rviz-opengl">RViz 需要能用的 OpenGL<a class="headerlink" href="#rviz-opengl" title="Permanent link">#</a></h3>
+<p>RViz 是唯一真正需要圖形堆疊的部分。在只有軟體算繪的 VNC 上，本機實測是 <strong>1 fps</strong>
+——足以確認畫面上有東西，但完全不足以看車子開。要讓教學裡視覺的部分值得做，需要
+本機顯示，或是有 GPU 加速的 VNC。</p>
+<h2 id="_5">在信任一台機器之前先檢查<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
+</span></code></pre></div>
+<p>它會回報 rosbag、地圖、建置結果、<code>play_launch</code>、CUDA toolkit 與你的 GPU 是否相容，
+以及有沒有可用的顯示。它報缺的每一項，都能在它指向的頁面找到解法。</p></div>
 
 
 
@@ -3169,7 +3220,7 @@ that is a likely cause.</p>
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  回到頂端
 </button>
         
       </main>
@@ -3178,33 +3229,33 @@ that is a likely cause.</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="頁腳" >
         
           
-          <a href="../05-map-and-rosbag/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5. The Map and the Rosbag">
+          <a href="../../concepts/glossary/" class="md-footer__link md-footer__link--prev" aria-label="上一頁: 詞彙表">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一頁
               </span>
               <div class="md-ellipsis">
-                5. The Map and the Rosbag
+                詞彙表
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../simulation/coss-park-scenario/" class="md-footer__link md-footer__link--next" aria-label="Next: COSS Park Scenario">
+          <a href="../hardware-assembly/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 硬體設定">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一頁
               </span>
               <div class="md-ellipsis">
-                COSS Park Scenario
+                硬體設定
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3256,12 +3307,12 @@ that is a likely cause.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../assets/js/mathjax.js"></script>
+        <script src="../../../assets/js/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

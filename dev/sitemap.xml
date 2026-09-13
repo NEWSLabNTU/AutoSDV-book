@@ -57,6 +57,13 @@
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/hardware-assembly/"/>
     </url>
     <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/requirements/</loc>
+        <lastmod>2026-09-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/getting-started/requirements/"/>
+    </url>
+    <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/getting-started/usage/</loc>
         <lastmod>2026-09-13</lastmod>
         <changefreq>daily</changefreq>
@@ -391,6 +398,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/hardware-assembly/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/hardware-assembly/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/requirements/</loc>
+        <lastmod>2026-09-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devgetting-started/requirements/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/usage/</loc>
