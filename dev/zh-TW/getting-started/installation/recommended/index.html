@@ -3477,11 +3477,6 @@
 <td><em>選用</em></td>
 <td>Cube1 LiDAR 驅動程式。選取它即表示接受該函式庫的授權條款</td>
 </tr>
-<tr>
-<td><code>isaac-ros</code></td>
-<td><em>選用</em></td>
-<td><code>pose_source:=visual</code> 與 <code>pose_source:=isaac</code>。需要 NVIDIA GPU</td>
-</tr>
 </tbody>
 </table>
 <h4 id="system-configuration">系統設定（System configuration）<a class="headerlink" href="#system-configuration" title="Permanent link">#</a></h4>
@@ -3517,12 +3512,11 @@
 </tbody>
 </table>
 <h3 id="_7">選用步驟是你必須做的選擇<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
-<p>有四個步驟**不屬於任何**設定檔——沒有任何東西會替你選取它們：</p>
+<p>有三個步驟**不屬於任何**設定檔——沒有任何東西會替你選取它們：</p>
 <ul>
 <li><code>zed-sdk</code> —— 有 ZED 相機時需要。每個預設感測器組合都包含一台，所以在車輛上你
   幾乎一定需要它。</li>
 <li><code>blickfeld</code> —— 只有 Cube1 LiDAR 需要。</li>
-<li><code>isaac-ros</code> —— 只有視覺定位需要。</li>
 <li><code>tensorrt-engines</code> —— 嚴格來說永遠不是必要的，但在車輛上永遠值得。</li>
 </ul>
 <blockquote>

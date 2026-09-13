@@ -3481,11 +3481,6 @@ without you asking.</p>
 <td><em>opt-in</em></td>
 <td>the Cube1 LiDAR driver. Selecting it accepts the library's licence terms</td>
 </tr>
-<tr>
-<td><code>isaac-ros</code></td>
-<td><em>opt-in</em></td>
-<td><code>pose_source:=visual</code> and <code>pose_source:=isaac</code>. Needs an NVIDIA GPU</td>
-</tr>
 </tbody>
 </table>
 <h4 id="system-configuration">System configuration<a class="headerlink" href="#system-configuration" title="Permanent link">#</a></h4>
@@ -3521,12 +3516,11 @@ without you asking.</p>
 </tbody>
 </table>
 <h3 id="the-opt-in-steps-are-a-choice-you-have-to-make">The opt-in steps are a choice you have to make<a class="headerlink" href="#the-opt-in-steps-are-a-choice-you-have-to-make" title="Permanent link">#</a></h3>
-<p>Four steps are in <strong>no</strong> profile — nothing selects them for you:</p>
+<p>Three steps are in <strong>no</strong> profile — nothing selects them for you:</p>
 <ul>
 <li><code>zed-sdk</code> — needed if you have a ZED camera. Every default sensor suite
   includes one, so on a vehicle you almost certainly want it.</li>
 <li><code>blickfeld</code> — only for the Cube1 LiDAR.</li>
-<li><code>isaac-ros</code> — only for visual localization.</li>
 <li><code>tensorrt-engines</code> — never strictly needed, always worth it on a vehicle.</li>
 </ul>
 <blockquote>

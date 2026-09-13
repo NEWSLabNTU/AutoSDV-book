@@ -3510,7 +3510,7 @@ value. Set one explicitly to override just that sensor.</p>
 <tr>
 <td><code>pose_source</code></td>
 <td><code>cuda_ndt</code></td>
-<td><code>cuda_ndt</code>, <code>ndt</code>, <code>mcl</code>, <code>isaac</code>, <code>visual</code> — see <a href="../../guides/localization-methods/">Localization Methods</a></td>
+<td><code>cuda_ndt</code>, <code>ndt</code>, <code>mcl</code> — see <a href="../../guides/localization-methods/">Localization Methods</a></td>
 </tr>
 <tr>
 <td><code>pose_source_package</code></td>
@@ -3541,11 +3541,6 @@ value. Set one explicitly to override just that sensor.</p>
 <td><code>mcl_random_seed</code></td>
 <td><code>-1</code></td>
 <td>Particle filter RNG seed; <code>-1</code> is nondeterministic (<code>mcl</code> only)</td>
-</tr>
-<tr>
-<td><code>visual_map_dir</code></td>
-<td><code>""</code></td>
-<td>Visual map directory for <code>pose_source:=visual</code></td>
 </tr>
 </tbody>
 </table>
@@ -3700,10 +3695,6 @@ machine that cannot support everything.</p>
 </tr>
 </tbody>
 </table>
-<p>Isaac-specific arguments — <code>enable_visual_slam</code>, <code>enable_global_localization</code>,
-<code>enable_pose_initializer</code>, <code>enable_imu_fusion</code>, <code>enable_visualization</code>,
-<code>auto_initialize</code> — all default to <code>true</code> and only apply to
-<code>pose_source:=isaac</code> and <code>pose_source:=visual</code>.</p>
 <h3 id="worked-examples">Worked examples<a class="headerlink" href="#worked-examples" title="Permanent link">#</a></h3>
 <p>Indoor, no GNSS, no map:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>

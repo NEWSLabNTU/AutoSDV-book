@@ -1789,17 +1789,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visual-maps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visual maps
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#the-default-map" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2857,17 +2846,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visual-maps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visual maps
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#the-default-map" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2995,11 +2973,6 @@ to start — which is why this page is mostly about checking.</p>
 <td><code>occupancy_grid.yaml</code> + <code>occupancy_grid.pgm</code></td>
 </tr>
 <tr>
-<td><code>visual</code></td>
-<td>a visual map</td>
-<td><code>cuvgl_map/</code>, <code>cuvslam_map/</code></td>
-</tr>
-<tr>
 <td>any of them</td>
 <td>the lanelet2 map, for planning</td>
 <td><code>lanelet2_map.osm</code> + the projector info</td>
@@ -3059,16 +3032,6 @@ traced back to how it was made.</p>
 <p>A 0.3 m band starting a little above the estimated ground level is a reasonable
 first attempt. Then look at the <code>.pgm</code>: walls and building faces should be
 continuous lines, and open ground should be empty.</p>
-<h2 id="visual-maps">Visual maps<a class="headerlink" href="#visual-maps" title="Permanent link">#</a></h2>
-<p>For <code>pose_source:=visual</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. record a rosbag with ZED stereo + IMU</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>./scripts/visual-map/record.sh<span class="w"> </span>./data/visual_maps/my_location
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. build the map</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>./scripts/visual-map/create-map.sh<span class="w"> </span>./data/visual_maps/my_location_recording
-</span></code></pre></div>
-<p>This produces <code>cuvgl_map/</code>, <code>cuvslam_map/</code> and <code>occupancy_map/</code>, and is passed
-with <code>visual_map_dir:=</code> rather than <code>map_path:=</code>.</p>
 <h2 id="the-default-map">The default map<a class="headerlink" href="#the-default-map" title="Permanent link">#</a></h2>
 <p><code>data/COSS-map-planning</code>, the COSS Park map, is the default for <code>map_path</code> and
 is what the <a href="../../tutorial/02-planning-simulation/">simulation guides</a> use.</p>

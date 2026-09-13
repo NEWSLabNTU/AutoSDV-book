@@ -1792,17 +1792,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        視覺地圖
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         預設地圖
       
     </span>
@@ -1811,7 +1800,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         相關頁面
@@ -2860,17 +2849,6 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        視覺地圖
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         預設地圖
       
     </span>
@@ -2879,7 +2857,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         相關頁面
@@ -2994,11 +2972,6 @@
 <td><code>occupancy_grid.yaml</code> + <code>occupancy_grid.pgm</code></td>
 </tr>
 <tr>
-<td><code>visual</code></td>
-<td>視覺地圖</td>
-<td><code>cuvgl_map/</code>、<code>cuvslam_map/</code></td>
-</tr>
-<tr>
 <td>全部</td>
 <td>供規劃使用的 lanelet2 地圖</td>
 <td><code>lanelet2_map.osm</code> 與投影資訊</td>
@@ -3050,20 +3023,10 @@
 </ul>
 <p>從估計地面高度稍微往上、取 0.3 公尺的帶，是個合理的初次嘗試。接著看看那張
 <code>.pgm</code>：牆面與建築立面應該是連續的線條，開闊地面應該是空的。</p>
-<h2 id="_5">視覺地圖<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
-<p>供 <code>pose_source:=visual</code> 使用：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. 以 ZED 立體相機 + IMU 錄製 rosbag</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>./scripts/visual-map/record.sh<span class="w"> </span>./data/visual_maps/my_location
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. 建立地圖</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>./scripts/visual-map/create-map.sh<span class="w"> </span>./data/visual_maps/my_location_recording
-</span></code></pre></div>
-<p>這會產生 <code>cuvgl_map/</code>、<code>cuvslam_map/</code> 與 <code>occupancy_map/</code>，並以
-<code>visual_map_dir:=</code> 而非 <code>map_path:=</code> 傳入。</p>
-<h2 id="_6">預設地圖<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<h2 id="_5">預設地圖<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
 <p><code>data/COSS-map-planning</code>，即 COSS Park 地圖，是 <code>map_path</code> 的預設值，也是
 <a href="../../tutorial/02-planning-simulation/">模擬指南</a>所使用的地圖。</p>
-<h2 id="_7">相關頁面<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<h2 id="_6">相關頁面<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="../localization-methods/">定位方法</a></li>
 <li>儲存庫中的 <code>docs/design/map-handling-per-localization-method.md</code></li>

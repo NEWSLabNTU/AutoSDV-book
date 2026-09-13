@@ -1794,28 +1794,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#isaac" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        isaac —— 僅視覺里程計
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        visual —— 純相機全域定位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2945,28 +2923,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#isaac" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        isaac —— 僅視覺里程計
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        visual —— 純相機全域定位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3081,7 +3037,7 @@
 
 
 <div><h1 id="_1">定位方法<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
-<p><code>pose_source</code> 決定 AutoSDV 如何估測自己的位置。共有五個選項，需求差異很大——
+<p><code>pose_source</code> 決定 AutoSDV 如何估測自己的位置。共有三個選項，需求差異很大——
 不同的感測器、不同的地圖產物、不同的硬體。</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
 </span></code></pre></div>
@@ -3113,18 +3069,6 @@
 <td>單一 2D <code>LaserScan</code> 對佔據網格做匹配</td>
 <td>佔據網格</td>
 <td>否</td>
-</tr>
-<tr>
-<td><code>isaac</code></td>
-<td>立體相機 + IMU，僅相對</td>
-<td>無</td>
-<td>是</td>
-</tr>
-<tr>
-<td><code>visual</code></td>
-<td>立體相機，含全域定位</td>
-<td>視覺地圖</td>
-<td>是</td>
 </tr>
 </tbody>
 </table>
@@ -3226,37 +3170,10 @@ p95 2.075 公尺、平均 |yaw| 0.0159 弧度</strong>，使用三環的掃描�
 驗證；參閱<a href="../maps/">地圖</a>。</p>
 <p>正規化節點會回報：掃描缺失、TF 缺失、整份掃描皆為非有限值，以及安裝偏離平面。
 在本專案的歷史中，每一個掃描端的失敗過去都是靜默的。</p>
-<h2 id="isaac"><code>isaac</code> —— 僅視覺里程計<a class="headerlink" href="#isaac" title="Permanent link">#</a></h2>
-<p>cuVSLAM 立體視覺里程計，並融合 IMU。<strong>僅提供相對追蹤</strong>：它給你的是運動，而不是
-地圖上的位置，因此初始姿態必須手動設定，且漂移沒有全域修正。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>isaac
-</span></code></pre></div>
-<h2 id="visual"><code>visual</code> —— 純相機全域定位<a class="headerlink" href="#visual" title="Permanent link">#</a></h2>
-<p>以 cuVGL 做全域定位，搭配 cuVSLAM 做連續追蹤。這是純相機版的 NDT：cuVGL 從視覺
-地圖的關鍵影格找出初始姿態，由一個橋接節點送入 Autoware 的姿態初始化器，接著
-由 cuVSLAM 繼續追蹤。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>pose_source:<span class="o">=</span>visual<span class="w"> </span>visual_map_dir:<span class="o">=</span>/path/to/visual_map
-</span></code></pre></div>
-<p>建立視覺地圖：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./scripts/visual-map/record.sh<span class="w"> </span>./data/visual_maps/my_location
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>./scripts/visual-map/create-map.sh<span class="w"> </span>./data/visual_maps/my_location_recording
-</span></code></pre></div>
-<p>這會產生 <code>cuvgl_map/</code>、<code>cuvslam_map/</code> 與 <code>occupancy_map/</code>。</p>
-<p>兩個 Isaac 來源都需要 <code>isaac-ros</code> 設定步驟（選用，不屬於任何設定檔）以及一張
-NVIDIA GPU（x86_64 上需 Ampere 或更新；Jetson 皆可）。</p>
-<div class="admonition note">
-<p class="admonition-title">若 Isaac 以 <code>libgxf_*.so not found</code> 失敗</p>
-<p>GXF 函式庫路徑不在 <code>LD_LIBRARY_PATH</code> 中。請重新載入環境：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span></code></pre></div>
-</div>
 <h2 id="_7">無地圖模式<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>這不是一種 <code>pose_source</code>，而是一個逃生出口。用於沒有地圖、也無法定位的室內場合：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>use_mapless_mode:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>use_gnss:<span class="o">=</span><span class="nb">false</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>use_mapless_mode:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>use_gnss:<span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
 <p>無地圖模式意味著不使用點雲地圖。</p>
 <h2 id="_8">如何選擇<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
@@ -3264,7 +3181,6 @@ NVIDIA GPU（x86_64 上需 Ampere 或更新；Jetson 皆可）。</p>
 <li><strong>在車上、戶外、有 3D 光達</strong>：<code>cuda_ndt</code>。</li>
 <li><strong>在沒有 CUDA 的筆電上</strong>：<code>ndt</code>。</li>
 <li><strong>只有 2D 光達，或有旋轉式 3D 光達但只有平面圖</strong>：<code>mcl</code>。</li>
-<li><strong>完全沒有光達</strong>：能建視覺地圖就用 <code>visual</code>；若相對追蹤已足夠則用 <code>isaac</code>。</li>
 </ul>
 <p><a href="../../tutorial/03-logging-simulation/">記錄回放模擬</a>是比較它們的正確場合，因為
 每次執行的錄製輸入都完全相同。</p>

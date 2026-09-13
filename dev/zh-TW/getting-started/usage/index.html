@@ -3495,7 +3495,7 @@
 <tr>
 <td><code>pose_source</code></td>
 <td><code>cuda_ndt</code></td>
-<td><code>cuda_ndt</code>、<code>ndt</code>、<code>mcl</code>、<code>isaac</code>、<code>visual</code>——參閱<a href="../../guides/localization-methods/">定位方法</a></td>
+<td><code>cuda_ndt</code>、<code>ndt</code>、<code>mcl</code>——參閱<a href="../../guides/localization-methods/">定位方法</a></td>
 </tr>
 <tr>
 <td><code>pose_source_package</code></td>
@@ -3526,11 +3526,6 @@
 <td><code>mcl_random_seed</code></td>
 <td><code>-1</code></td>
 <td>粒子濾波器的亂數種子；<code>-1</code> 為不可重現（僅 <code>mcl</code>）</td>
-</tr>
-<tr>
-<td><code>visual_map_dir</code></td>
-<td><code>""</code></td>
-<td><code>pose_source:=visual</code> 使用的視覺地圖目錄</td>
 </tr>
 </tbody>
 </table>
@@ -3685,10 +3680,6 @@
 </tr>
 </tbody>
 </table>
-<p>Isaac 專屬的參數——<code>enable_visual_slam</code>、<code>enable_global_localization</code>、
-<code>enable_pose_initializer</code>、<code>enable_imu_fusion</code>、<code>enable_visualization</code>、
-<code>auto_initialize</code>——全都預設為 <code>true</code>，且僅適用於 <code>pose_source:=isaac</code> 與
-<code>pose_source:=visual</code>。</p>
 <h3 id="_12">實例<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
 <p>室內，無 GNSS，無地圖：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>

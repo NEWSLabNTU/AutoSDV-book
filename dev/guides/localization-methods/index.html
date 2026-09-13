@@ -1794,28 +1794,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#isaac-visual-odometry-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        isaac — visual odometry only
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visual-camera-only-global-localization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        visual — camera-only global localization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#mapless-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2945,28 +2923,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#isaac-visual-odometry-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        isaac — visual odometry only
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#visual-camera-only-global-localization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        visual — camera-only global localization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#mapless-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3081,7 +3037,7 @@
 
 
 <div><h1 id="localization-methods">Localization Methods<a class="headerlink" href="#localization-methods" title="Permanent link">#</a></h1>
-<p><code>pose_source</code> selects how AutoSDV estimates where it is. Five values, with
+<p><code>pose_source</code> selects how AutoSDV estimates where it is. Three values, with
 genuinely different requirements — different sensors, different map artefacts,
 different hardware.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
@@ -3114,18 +3070,6 @@ different hardware.</p>
 <td>one 2-D <code>LaserScan</code> matched to an occupancy grid</td>
 <td>occupancy grid</td>
 <td>no</td>
-</tr>
-<tr>
-<td><code>isaac</code></td>
-<td>stereo camera + IMU, relative only</td>
-<td>none</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>visual</code></td>
-<td>stereo camera, global</td>
-<td>a visual map</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -3240,40 +3184,11 @@ check</code>; see <a href="../maps/">Maps</a>.</p>
 <p>The scan normaliser reports a missing scan, a missing TF, an all-non-finite
 scan, and an out-of-plane mount. Every scan-side failure in this project's
 history was previously silent.</p>
-<h2 id="isaac-visual-odometry-only"><code>isaac</code> — visual odometry only<a class="headerlink" href="#isaac-visual-odometry-only" title="Permanent link">#</a></h2>
-<p>cuVSLAM stereo visual odometry with IMU fusion. <strong>Relative tracking only</strong>: it
-gives you motion, not a position on a map, so the initial pose must be set
-manually and there is no global correction for drift.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>isaac
-</span></code></pre></div>
-<h2 id="visual-camera-only-global-localization"><code>visual</code> — camera-only global localization<a class="headerlink" href="#visual-camera-only-global-localization" title="Permanent link">#</a></h2>
-<p>cuVGL for global localization plus cuVSLAM for continuous tracking. This is the
-camera-only equivalent of NDT: cuVGL finds the initial pose from visual map
-keyframes, a bridge pushes it to Autoware's pose initializer, and cuVSLAM tracks
-from there.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>pose_source:<span class="o">=</span>visual<span class="w"> </span>visual_map_dir:<span class="o">=</span>/path/to/visual_map
-</span></code></pre></div>
-<p>Creating a visual map:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./scripts/visual-map/record.sh<span class="w"> </span>./data/visual_maps/my_location
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>./scripts/visual-map/create-map.sh<span class="w"> </span>./data/visual_maps/my_location_recording
-</span></code></pre></div>
-<p>This produces <code>cuvgl_map/</code>, <code>cuvslam_map/</code> and <code>occupancy_map/</code>.</p>
-<p>Both Isaac sources need the <code>isaac-ros</code> setup step, which is opt-in and in no
-profile, and an NVIDIA GPU (Ampere or newer on x86_64; any Jetson).</p>
-<div class="admonition note">
-<p class="admonition-title">If Isaac fails with <code>libgxf_*.so not found</code></p>
-<p>The GXF library paths are not in <code>LD_LIBRARY_PATH</code>. Re-source:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span></code></pre></div>
-</div>
 <h2 id="mapless-mode">Mapless mode<a class="headerlink" href="#mapless-mode" title="Permanent link">#</a></h2>
 <p>Not a <code>pose_source</code> — an escape hatch. For indoor operation where no map exists
 and no localization is possible:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>use_mapless_mode:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>use_gnss:<span class="o">=</span><span class="nb">false</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>use_mapless_mode:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>use_gnss:<span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
 <p>Mapless mode implies no point cloud map.</p>
 <h2 id="choosing-between-them">Choosing between them<a class="headerlink" href="#choosing-between-them" title="Permanent link">#</a></h2>
@@ -3281,8 +3196,6 @@ and no localization is possible:</p>
 <li><strong>On the vehicle, outdoors, with a 3-D LiDAR</strong>: <code>cuda_ndt</code>.</li>
 <li><strong>On a laptop without CUDA</strong>: <code>ndt</code>.</li>
 <li><strong>With a 2-D LiDAR, or a spinning 3-D one and only a floor plan</strong>: <code>mcl</code>.</li>
-<li><strong>With no LiDAR at all</strong>: <code>visual</code>, if you can build a visual map; <code>isaac</code> if
-  relative tracking is enough.</li>
 </ul>
 <p>The <a href="../../tutorial/03-logging-simulation/">logging simulation</a> is the right place
 to compare them, because the recorded input is identical every run.</p>

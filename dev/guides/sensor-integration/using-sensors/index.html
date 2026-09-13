@@ -1942,17 +1942,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#using-isaac-visual-slam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using Isaac Visual SLAM
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2976,17 +2965,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#using-isaac-visual-slam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using Isaac Visual SLAM
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3272,18 +3250,13 @@
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=robin_zed use_gnss:=false"</span>
 </span></code></pre></div>
 <p>You'll need to manually set the initial pose in RViz using "2D Pose Estimate" tool.</p>
-<h3 id="using-isaac-visual-slam">Using Isaac Visual SLAM<a class="headerlink" href="#using-isaac-visual-slam" title="Permanent link">#</a></h3>
-<p>For camera-based localization instead of LiDAR NDT:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Use Isaac Visual SLAM for pose estimation</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=robin_zed pose_source:=isaac"</span>
-</span></code></pre></div>
 <h2 id="custom-sensor-selection">Custom Sensor Selection<a class="headerlink" href="#custom-sensor-selection" title="Permanent link">#</a></h2>
 <p>Instead of using predefined suites, you can select individual sensors:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Custom combination</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Minimal setup (LiDAR only)</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Custom combination</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Minimal setup (LiDAR only)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
 </span></code></pre></div>
 <h3 id="available-options">Available Options<a class="headerlink" href="#available-options" title="Permanent link">#</a></h3>
 <p><strong>LiDAR Models:</strong>
@@ -3304,27 +3277,27 @@
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
 <h3 id="no-sensor-data">No sensor data<a class="headerlink" href="#no-sensor-data" title="Permanent link">#</a></h3>
 <p><strong>Check topics exist:</strong>
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/sensing
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/sensing
 </span></code></pre></div>
 <p>If topics are missing, the sensor driver may have failed to start. Check logs:
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># View latest logs</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>tail<span class="w"> </span>-f<span class="w"> </span>play_log/latest/*.log
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># View latest logs</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>tail<span class="w"> </span>-f<span class="w"> </span>play_log/latest/*.log
 </span></code></pre></div>
 <h3 id="sensor-not-detected">Sensor not detected<a class="headerlink" href="#sensor-not-detected" title="Permanent link">#</a></h3>
 <p><strong>Check hardware connection:</strong>
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># For LiDAR (check network)</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ping<span class="w"> </span><span class="m">172</span>.168.1.10<span class="w">  </span><span class="c1"># Robin-W</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ping<span class="w"> </span><span class="m">192</span>.168.1.201<span class="w">  </span><span class="c1"># Velodyne</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># For camera (check ZED SDK)</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>ZED_Explorer
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># For GNSS (check USB device)</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ublox-gps
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># For LiDAR (check network)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ping<span class="w"> </span><span class="m">172</span>.168.1.10<span class="w">  </span><span class="c1"># Robin-W</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ping<span class="w"> </span><span class="m">192</span>.168.1.201<span class="w">  </span><span class="c1"># Velodyne</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># For camera (check ZED SDK)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>ZED_Explorer
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># For GNSS (check USB device)</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ublox-gps
 </span></code></pre></div>
 <h3 id="transform-errors-in-rviz">Transform errors in RViz<a class="headerlink" href="#transform-errors-in-rviz" title="Permanent link">#</a></h3>
 <p>If RViz shows "No transform from X to Y", rebuild the project:
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>just<span class="w"> </span>build
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>just<span class="w"> </span>build
 </span></code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
 <ul>
