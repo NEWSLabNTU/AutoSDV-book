@@ -3061,9 +3061,17 @@
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    nvrtc: error: invalid value for --gpu-architecture (-arch)
 </span></code></pre></div>
 <p>兩種情況下 launcher 都回報每個節點就緒，而下游**什麼都沒有**發布——匹配器沒有，
-連 EKF 也沒有——所以症狀是一個啟動得非常漂亮、卻完全沒有定位的 stack。
-<code>pose_source:=ndt</code> 是通往下一步的路。車輛使用的 Jetson Orin 是 compute
-capability 8.7，不受影響。</p>
+連 EKF 也沒有——所以症狀是一個啟動得非常漂亮、卻完全沒有定位的 stack。</p>
+<p>重新編譯救不了，因為根本沒有東西是事先編譯的。把工作空間指向夠新的 toolkit 就
+能原樣運作——sm_120 需要 CUDA 12.8：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check<span class="w">                                  </span><span class="c1"># 會說它們合不合</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-12.8<span class="w"> </span>direnv<span class="w"> </span>reload<span class="w">     </span><span class="c1"># 或用 update-alternatives</span>
+</span></code></pre></div>
+<p><code>.envrc</code> 會依序解析 <code>CUDA_HOME</code>、<code>CUDA_PATH</code>、<code>/usr/local/cuda</code>，並把該
+toolkit 的 <code>lib64</code> 放進 <code>LD_LIBRARY_PATH</code>——那才是決定實際載入哪個 NVRTC 的
+地方。選用 CUDA 12.8 後，同一份錄製就會以感測器的完整速率發布位姿。</p>
+<p>如果機器上沒有夠新的 toolkit，<code>pose_source:=ndt</code> 是通往下一步的路。車輛使用的
+Jetson Orin 是 compute capability 8.7，兩種情況都不受影響。</p>
 </div>
 <h2 id="_3">植入初始姿態<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
 <p>NDT 需要一個起點。它會精修一個估計值，而不是搜尋整張地圖。</p>
@@ -3086,13 +3094,13 @@ capability 8.7，不受影響。</p>
 上——牆對齊牆。如果失敗，點雲會相對地圖滑動，或以固定偏移停在旁邊。那個視覺判斷比
 任何節點自己回報的狀態都可靠。</p>
 <p><strong>在第三個終端機中</strong>，看數字：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
 </span></code></pre></div>
 <p>預期約 10 Hz，與 LiDAR 相符，因為 NDT 每個掃描跑一次。明顯低於它就表示匹配器跟不上。</p>
 <p>AutoSDV 附了用來分辨「節點在跑」與「定位正常運作」的檢查，這兩者並不是同一個主張：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
 </span></code></pre></div>
 <h2 id="_5">讀懂結果<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
 <p><code>just demo run</code> 印出的量測數據——以及這些腳本產生的——值得理解一次。</p>
@@ -3137,8 +3145,8 @@ capability 8.7，不受影響。</p>
 <p><code>config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml</code> 裡的
 <code>max_iterations</code> 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
 上限的那一幀當成**未收斂**，把結果丟掉，位姿因此從來沒有發布過：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>The number of iterations has reached its upper limit.
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>The number of iterations: 15, Limit: 15.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>The number of iterations: 15, Limit: 15.
 </span></code></pre></div>
 <p>而整個 stack 看起來仍然定位正常，因為 EKF 只靠輪速與 IMU 就持續發布
 <code>/localization/kinematic_state</code>。關鍵是這一對：
@@ -3190,7 +3198,7 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 <p><strong>點雲在中途漂離地圖。</strong> 匹配失去了。注意 NVTL——在視覺上的漂移變明顯之前，它就已經
 崩落了。</p>
 <p><strong>主題存在但沒有人訂閱。</strong> 比對兩端的 QoS：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
 </span></code></pre></div>
 <p><code>RELIABLE</code> 的訂閱者不會從 <code>BEST_EFFORT</code> 的發佈者收到東西。參閱
 <a href="../../concepts/inspecting/">檢視執行中的系統</a>。</p>
@@ -3199,9 +3207,9 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 它會在*每一次*啟動時發生。</p>
 <h2 id="_7">比較各種定位方法<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
 <p>回放是比較它們的正確場合，因為每次執行的輸入逐位元組完全相同：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
 </span></code></pre></div>
 <p><code>mcl</code> 需要的是佔據網格而非點雲地圖，以及 2D <code>LaserScan</code> 而非 3D 點雲。參閱
 <a href="../../guides/localization-methods/">定位方法</a>。</p>
