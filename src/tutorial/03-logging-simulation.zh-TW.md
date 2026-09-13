@@ -126,8 +126,21 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
 
     兩種情況下 launcher 都回報每個節點就緒，而下游**什麼都沒有**發布——匹配器沒有，
     連 EKF 也沒有——所以症狀是一個啟動得非常漂亮、卻完全沒有定位的 stack。
-    `pose_source:=ndt` 是通往下一步的路。車輛使用的 Jetson Orin 是 compute
-    capability 8.7，不受影響。
+
+    重新編譯救不了，因為根本沒有東西是事先編譯的。把工作空間指向夠新的 toolkit 就
+    能原樣運作——sm_120 需要 CUDA 12.8：
+
+    ```bash
+    just demo check                                  # 會說它們合不合
+    CUDA_HOME=/usr/local/cuda-12.8 direnv reload     # 或用 update-alternatives
+    ```
+
+    `.envrc` 會依序解析 `CUDA_HOME`、`CUDA_PATH`、`/usr/local/cuda`，並把該
+    toolkit 的 `lib64` 放進 `LD_LIBRARY_PATH`——那才是決定實際載入哪個 NVRTC 的
+    地方。選用 CUDA 12.8 後，同一份錄製就會以感測器的完整速率發布位姿。
+
+    如果機器上沒有夠新的 toolkit，`pose_source:=ndt` 是通往下一步的路。車輛使用的
+    Jetson Orin 是 compute capability 8.7，兩種情況都不受影響。
 
 ## 植入初始姿態
 

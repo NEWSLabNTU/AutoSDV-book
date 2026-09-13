@@ -128,9 +128,25 @@ running out of budget looks like.
 
     The launcher reports every node ready either way, and **nothing** downstream
     publishes — not the matcher, not even the EKF — so the symptom is a stack
-    that starts perfectly and localizes not at all. `pose_source:=ndt` is the
-    way through. The Jetson Orin the vehicle runs on is compute capability 8.7
-    and unaffected.
+    that starts perfectly and localizes not at all.
+
+    No rebuild fixes this, because nothing is compiled in advance. Point the
+    workspace at a toolkit new enough for the card — sm_120 needs CUDA 12.8 —
+    and it works unchanged:
+
+    ```bash
+    just demo check                                  # says whether they agree
+    CUDA_HOME=/usr/local/cuda-12.8 direnv reload     # or update-alternatives
+    ```
+
+    `.envrc` resolves `CUDA_HOME`, then `CUDA_PATH`, then `/usr/local/cuda`, and
+    puts that toolkit's `lib64` on `LD_LIBRARY_PATH` — which is what selects the
+    NVRTC that runs. With CUDA 12.8 selected, the same replay publishes poses at
+    the sensor's full rate.
+
+    If no new-enough toolkit is installed, `pose_source:=ndt` is the way
+    through. The Jetson Orin the vehicle runs on is compute capability 8.7 and
+    unaffected either way.
 
 ## Seeding the initial pose
 
