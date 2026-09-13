@@ -91,7 +91,8 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
     just sim logging ARGS="pose_source:=ndt"
     ```
 
-## If you have no NVIDIA GPU
+## If you have no NVIDIA GPU — or a very new one
+
 
 The defaults assume one: `pose_source:=cuda_ndt` needs CUDA, and perception
 loads TensorRT models. Two arguments remove both requirements:
@@ -112,6 +113,24 @@ Measured with `pose_source:=ndt` on a desktop CPU, the matcher held the sensor's
 full 10 Hz with a driving-phase p95 of 44 ms against a 100 ms budget. On a
 laptop expect worse; if the pose starts lagging behind the vehicle, that is what
 running out of budget looks like.
+
+!!! warning "A GPU newer than the CUDA toolkit fails the same way as no GPU"
+
+    `cuda_ndt` compiles its kernels at run time, so the toolkit on the machine
+    has to know the GPU's architecture. On an RTX 5090 (compute capability 12.0)
+    with CUDA 12.3 it does not, and the matcher dies at the first scan:
+
+    ```
+    thread 'main' panicked at cubecl-cuda-0.8.1/src/compute/context.rs:161:17:
+    [Compilation Error]
+        nvrtc: error: invalid value for --gpu-architecture (-arch)
+    ```
+
+    The launcher reports every node ready either way, and **nothing** downstream
+    publishes — not the matcher, not even the EKF — so the symptom is a stack
+    that starts perfectly and localizes not at all. `pose_source:=ndt` is the
+    way through. The Jetson Orin the vehicle runs on is compute capability 8.7
+    and unaffected.
 
 ## Seeding the initial pose
 

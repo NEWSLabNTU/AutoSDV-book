@@ -92,7 +92,7 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
     just sim logging ARGS="pose_source:=ndt"
     ```
 
-## 如果你沒有 NVIDIA GPU
+## 如果你沒有 NVIDIA GPU——或者顯卡太新
 
 預設值假設你有：`pose_source:=cuda_ndt` 需要 CUDA，而感知會載入 TensorRT 模型。
 兩個參數就能移除這兩個需求：
@@ -111,6 +111,23 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
 在一台桌上型 CPU 上以 `pose_source:=ndt` 量測，匹配器維持了感測器完整的 10 Hz，
 行駛階段的 p95 為 44 毫秒，預算是 100 毫秒。在筆電上預期會更差；如果姿態開始落後
 車輛，那就是預算用盡的樣子。
+
+!!! warning "顯卡比 CUDA toolkit 新，結果和沒有 GPU 一樣"
+
+    `cuda_ndt` 在執行期才編譯 kernel，所以機器上的 toolkit 必須認得該 GPU 的架構。
+    在 RTX 5090（compute capability 12.0）配 CUDA 12.3 上它不認得，匹配器在第一個
+    掃描就掛掉：
+
+    ```
+    thread 'main' panicked at cubecl-cuda-0.8.1/src/compute/context.rs:161:17:
+    [Compilation Error]
+        nvrtc: error: invalid value for --gpu-architecture (-arch)
+    ```
+
+    兩種情況下 launcher 都回報每個節點就緒，而下游**什麼都沒有**發布——匹配器沒有，
+    連 EKF 也沒有——所以症狀是一個啟動得非常漂亮、卻完全沒有定位的 stack。
+    `pose_source:=ndt` 是通往下一步的路。車輛使用的 Jetson Orin 是 compute
+    capability 8.7，不受影響。
 
 ## 植入初始姿態
 
