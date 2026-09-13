@@ -8,7 +8,7 @@ Translation Metadata:
 
 # 定位方法
 
-`pose_source` 決定 AutoSDV 如何估測自己的位置。共有五個選項，需求差異很大——
+`pose_source` 決定 AutoSDV 如何估測自己的位置。共有三個選項，需求差異很大——
 不同的感測器、不同的地圖產物、不同的硬體。
 
 ```bash
@@ -22,8 +22,6 @@ play_launch launch autosdv_launch autosdv.launch.yaml pose_source:=ndt
 | `cuda_ndt`（預設） | 3D 光達掃描對點雲地圖做匹配 | PCD | 是 |
 | `ndt` | 同上，但在 CPU 上 | PCD | 否 |
 | `mcl` | 單一 2D `LaserScan` 對佔據網格做匹配 | 佔據網格 | 否 |
-| `isaac` | 立體相機 + IMU，僅相對 | 無 | 是 |
-| `visual` | 立體相機，含全域定位 | 視覺地圖 | 是 |
 
 ## `cuda_ndt` —— 預設
 
@@ -124,48 +122,6 @@ MCL 需要 `occupancy_grid.yaml` 與其 `.pgm`，而不是 PCD。請以
 正規化節點會回報：掃描缺失、TF 缺失、整份掃描皆為非有限值，以及安裝偏離平面。
 在本專案的歷史中，每一個掃描端的失敗過去都是靜默的。
 
-## `isaac` —— 僅視覺里程計
-
-cuVSLAM 立體視覺里程計，並融合 IMU。**僅提供相對追蹤**：它給你的是運動，而不是
-地圖上的位置，因此初始姿態必須手動設定，且漂移沒有全域修正。
-
-```bash
-play_launch launch autosdv_launch autosdv.launch.yaml pose_source:=isaac
-```
-
-## `visual` —— 純相機全域定位
-
-以 cuVGL 做全域定位，搭配 cuVSLAM 做連續追蹤。這是純相機版的 NDT：cuVGL 從視覺
-地圖的關鍵影格找出初始姿態，由一個橋接節點送入 Autoware 的姿態初始化器，接著
-由 cuVSLAM 繼續追蹤。
-
-```bash
-play_launch launch autosdv_launch autosdv.launch.yaml \
-  pose_source:=visual visual_map_dir:=/path/to/visual_map
-```
-
-建立視覺地圖：
-
-```bash
-./scripts/visual-map/record.sh ./data/visual_maps/my_location
-./scripts/visual-map/create-map.sh ./data/visual_maps/my_location_recording
-```
-
-這會產生 `cuvgl_map/`、`cuvslam_map/` 與 `occupancy_map/`。
-
-兩個 Isaac 來源都需要 `isaac-ros` 設定步驟（選用，不屬於任何設定檔）以及一張
-NVIDIA GPU（x86_64 上需 Ampere 或更新；Jetson 皆可）。
-
-!!! note "若 Isaac 以 `libgxf_*.so not found` 失敗"
-
-    GXF 函式庫路徑不在 `LD_LIBRARY_PATH` 中。請重新載入環境：
-
-    ```bash
-    source /opt/ros/humble/setup.bash
-    source /opt/autoware/1.5.0/setup.bash
-    source install/setup.bash
-    ```
-
 ## 無地圖模式
 
 這不是一種 `pose_source`，而是一個逃生出口。用於沒有地圖、也無法定位的室內場合：
@@ -182,7 +138,6 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
 - **在車上、戶外、有 3D 光達**：`cuda_ndt`。
 - **在沒有 CUDA 的筆電上**：`ndt`。
 - **只有 2D 光達，或有旋轉式 3D 光達但只有平面圖**：`mcl`。
-- **完全沒有光達**：能建視覺地圖就用 `visual`；若相對追蹤已足夠則用 `isaac`。
 
 [記錄回放模擬](../tutorial/03-logging-simulation.md)是比較它們的正確場合，因為
 每次執行的錄製輸入都完全相同。

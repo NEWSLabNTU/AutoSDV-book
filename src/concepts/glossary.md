@@ -107,8 +107,6 @@ well a scan matched the map. Low values mean a poor match.
 
 **TP** — Transformation Probability, the other NDT match score.
 
-**cuVSLAM / cuVGL** — NVIDIA Isaac's visual odometry and global localization,
-used by `pose_source:=isaac` and `pose_source:=visual`.
 
 ## Sensing and perception
 

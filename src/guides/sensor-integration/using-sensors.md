@@ -85,15 +85,6 @@ just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 
 You'll need to manually set the initial pose in RViz using "2D Pose Estimate" tool.
 
-### Using Isaac Visual SLAM
-
-For camera-based localization instead of LiDAR NDT:
-
-```bash
-# Use Isaac Visual SLAM for pose estimation
-just launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
-```
-
 ## Custom Sensor Selection
 
 Instead of using predefined suites, you can select individual sensors:

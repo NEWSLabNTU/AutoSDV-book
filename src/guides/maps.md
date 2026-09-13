@@ -10,7 +10,6 @@ to start — which is why this page is mostly about checking.
 |---------------|-------|----------------------|
 | `cuda_ndt`, `ndt` | a 3-D point cloud map | `pointcloud_map.pcd` |
 | `mcl` | a 2-D occupancy grid | `occupancy_grid.yaml` + `occupancy_grid.pgm` |
-| `visual` | a visual map | `cuvgl_map/`, `cuvslam_map/` |
 | any of them | the lanelet2 map, for planning | `lanelet2_map.osm` + the projector info |
 
 A map directory is passed with `map_path`:
@@ -91,21 +90,6 @@ The band is a horizontal slice through the point cloud. You want it:
 A 0.3 m band starting a little above the estimated ground level is a reasonable
 first attempt. Then look at the `.pgm`: walls and building faces should be
 continuous lines, and open ground should be empty.
-
-## Visual maps
-
-For `pose_source:=visual`:
-
-```bash
-# 1. record a rosbag with ZED stereo + IMU
-./scripts/visual-map/record.sh ./data/visual_maps/my_location
-
-# 2. build the map
-./scripts/visual-map/create-map.sh ./data/visual_maps/my_location_recording
-```
-
-This produces `cuvgl_map/`, `cuvslam_map/` and `occupancy_map/`, and is passed
-with `visual_map_dir:=` rather than `map_path:=`.
 
 ## The default map
 

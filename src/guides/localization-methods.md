@@ -1,6 +1,6 @@
 # Localization Methods
 
-`pose_source` selects how AutoSDV estimates where it is. Five values, with
+`pose_source` selects how AutoSDV estimates where it is. Three values, with
 genuinely different requirements — different sensors, different map artefacts,
 different hardware.
 
@@ -15,8 +15,6 @@ play_launch launch autosdv_launch autosdv.launch.yaml pose_source:=ndt
 | `cuda_ndt` *(default)* | 3-D LiDAR scan matched to a point cloud map | PCD | yes |
 | `ndt` | the same, on CPU | PCD | no |
 | `mcl` | one 2-D `LaserScan` matched to an occupancy grid | occupancy grid | no |
-| `isaac` | stereo camera + IMU, relative only | none | yes |
-| `visual` | stereo camera, global | a visual map | yes |
 
 ## `cuda_ndt` — the default
 
@@ -130,50 +128,6 @@ The scan normaliser reports a missing scan, a missing TF, an all-non-finite
 scan, and an out-of-plane mount. Every scan-side failure in this project's
 history was previously silent.
 
-## `isaac` — visual odometry only
-
-cuVSLAM stereo visual odometry with IMU fusion. **Relative tracking only**: it
-gives you motion, not a position on a map, so the initial pose must be set
-manually and there is no global correction for drift.
-
-```bash
-play_launch launch autosdv_launch autosdv.launch.yaml pose_source:=isaac
-```
-
-## `visual` — camera-only global localization
-
-cuVGL for global localization plus cuVSLAM for continuous tracking. This is the
-camera-only equivalent of NDT: cuVGL finds the initial pose from visual map
-keyframes, a bridge pushes it to Autoware's pose initializer, and cuVSLAM tracks
-from there.
-
-```bash
-play_launch launch autosdv_launch autosdv.launch.yaml \
-  pose_source:=visual visual_map_dir:=/path/to/visual_map
-```
-
-Creating a visual map:
-
-```bash
-./scripts/visual-map/record.sh ./data/visual_maps/my_location
-./scripts/visual-map/create-map.sh ./data/visual_maps/my_location_recording
-```
-
-This produces `cuvgl_map/`, `cuvslam_map/` and `occupancy_map/`.
-
-Both Isaac sources need the `isaac-ros` setup step, which is opt-in and in no
-profile, and an NVIDIA GPU (Ampere or newer on x86_64; any Jetson).
-
-!!! note "If Isaac fails with `libgxf_*.so not found`"
-
-    The GXF library paths are not in `LD_LIBRARY_PATH`. Re-source:
-
-    ```bash
-    source /opt/ros/humble/setup.bash
-    source /opt/autoware/1.5.0/setup.bash
-    source install/setup.bash
-    ```
-
 ## Mapless mode
 
 Not a `pose_source` — an escape hatch. For indoor operation where no map exists
@@ -191,8 +145,6 @@ Mapless mode implies no point cloud map.
 - **On the vehicle, outdoors, with a 3-D LiDAR**: `cuda_ndt`.
 - **On a laptop without CUDA**: `ndt`.
 - **With a 2-D LiDAR, or a spinning 3-D one and only a floor plan**: `mcl`.
-- **With no LiDAR at all**: `visual`, if you can build a visual map; `isaac` if
-  relative tracking is enough.
 
 The [logging simulation](../tutorial/03-logging-simulation.md) is the right place
 to compare them, because the recorded input is identical every run.

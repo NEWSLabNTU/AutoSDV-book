@@ -17,7 +17,6 @@ Translation Metadata:
 |---------------|------|-----------------|
 | `cuda_ndt`、`ndt` | 3D 點雲地圖 | `pointcloud_map.pcd` |
 | `mcl` | 2D 佔據網格 | `occupancy_grid.yaml` + `occupancy_grid.pgm` |
-| `visual` | 視覺地圖 | `cuvgl_map/`、`cuvslam_map/` |
 | 全部 | 供規劃使用的 lanelet2 地圖 | `lanelet2_map.osm` 與投影資訊 |
 
 地圖目錄以 `map_path` 傳入：
@@ -90,21 +89,6 @@ just map grid-from-bag <bag> <map_dir>
 
 從估計地面高度稍微往上、取 0.3 公尺的帶，是個合理的初次嘗試。接著看看那張
 `.pgm`：牆面與建築立面應該是連續的線條，開闊地面應該是空的。
-
-## 視覺地圖
-
-供 `pose_source:=visual` 使用：
-
-```bash
-# 1. 以 ZED 立體相機 + IMU 錄製 rosbag
-./scripts/visual-map/record.sh ./data/visual_maps/my_location
-
-# 2. 建立地圖
-./scripts/visual-map/create-map.sh ./data/visual_maps/my_location_recording
-```
-
-這會產生 `cuvgl_map/`、`cuvslam_map/` 與 `occupancy_map/`，並以
-`visual_map_dir:=` 而非 `map_path:=` 傳入。
 
 ## 預設地圖
 

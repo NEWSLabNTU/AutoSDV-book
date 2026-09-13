@@ -37,7 +37,7 @@ Translation Metadata:
 - CycloneDDS 所需的核心 socket 緩衝區，以及持續生效的 loopback 多播設定
 - u-blox GNSS udev 規則（僅 vehicle 設定檔）
 
-選用而不被任何設定檔選取的步驟：ZED SDK、Blickfeld Scanner Library、Isaac ROS、
+選用而不被任何設定檔選取的步驟：ZED SDK、Blickfeld Scanner Library、
 TensorRT 引擎預先編譯，以及 TurboVNC/VirtualGL。
 
 以下的手動步驟提供此自動設定的替代方案或補充。

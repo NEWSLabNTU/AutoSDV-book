@@ -114,7 +114,6 @@ just checkout    # git submodule update --init --recursive --checkout
 | `opencv` | dev、vehicle | JetPack 會留下 4.8.0 的標頭檔搭配 4.5.4 的執行期，能編譯但行為異常。也提供 aruco/contrib |
 | `zed-sdk` | *選用* | ZED X Mini，每個預設感測器組合都包含它。下載量大 |
 | `blickfeld` | *選用* | Cube1 LiDAR 驅動程式。選取它即表示接受該函式庫的授權條款 |
-| `isaac-ros` | *選用* | `pose_source:=visual` 與 `pose_source:=isaac`。需要 NVIDIA GPU |
 
 #### 系統設定（System configuration）
 
@@ -127,12 +126,11 @@ just checkout    # git submodule update --init --recursive --checkout
 
 ### 選用步驟是你必須做的選擇
 
-有四個步驟**不屬於任何**設定檔——沒有任何東西會替你選取它們：
+有三個步驟**不屬於任何**設定檔——沒有任何東西會替你選取它們：
 
 - `zed-sdk` —— 有 ZED 相機時需要。每個預設感測器組合都包含一台，所以在車輛上你
   幾乎一定需要它。
 - `blickfeld` —— 只有 Cube1 LiDAR 需要。
-- `isaac-ros` —— 只有視覺定位需要。
 - `tensorrt-engines` —— 嚴格來說永遠不是必要的，但在車輛上永遠值得。
 
 > **注意：** 除非你選取，否則不會安裝 ZED SDK。參閱

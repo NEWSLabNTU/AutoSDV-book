@@ -93,15 +93,6 @@ just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 
 您需要在 RViz 中使用「2D Pose Estimate」工具手動設定初始姿態。
 
-### 使用 Isaac Visual SLAM
-
-使用基於相機的定位而非光達 NDT：
-
-```bash
-# Use Isaac Visual SLAM for pose estimation
-just launch ARGS="sensor_suite:=robin_zed pose_source:=isaac"
-```
-
 ## 自訂感測器選擇
 
 除了使用預定義套件，您還可以選擇個別感測器：

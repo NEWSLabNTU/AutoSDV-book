@@ -169,14 +169,13 @@ value. Set one explicitly to override just that sensor.
 
 | Argument | Default | Meaning |
 |----------|---------|---------|
-| `pose_source` | `cuda_ndt` | `cuda_ndt`, `ndt`, `mcl`, `isaac`, `visual` — see [Localization Methods](../guides/localization-methods.md) |
+| `pose_source` | `cuda_ndt` | `cuda_ndt`, `ndt`, `mcl` — see [Localization Methods](../guides/localization-methods.md) |
 | `pose_source_package` | `auto` | Derived from `pose_source`. Set explicitly only to plug in a third-party estimator |
 | `localization_preset` | `default` | `default` (gyro odometry) or `eagleye` (GNSS odometry) |
 | `use_mapless_mode` | `false` | Indoor operation with no localization at all |
 | `map_path` | `./data/COSS-map-planning` | Map directory |
 | `occupancy_grid_file` | `occupancy_grid.yaml` | Grid metadata filename inside `map_path` (`pose_source:=mcl` only) |
 | `mcl_random_seed` | `-1` | Particle filter RNG seed; `-1` is nondeterministic (`mcl` only) |
-| `visual_map_dir` | `""` | Visual map directory for `pose_source:=visual` |
 
 ### Choosing perception
 
@@ -226,10 +225,6 @@ machine that cannot support everything.
 | `sensor_model` | `autosdv_sensor_kit` | Sensor kit description package prefix |
 | `rviz_config` | the AutoSDV layout | RViz layout to load |
 
-Isaac-specific arguments — `enable_visual_slam`, `enable_global_localization`,
-`enable_pose_initializer`, `enable_imu_fusion`, `enable_visualization`,
-`auto_initialize` — all default to `true` and only apply to
-`pose_source:=isaac` and `pose_source:=visual`.
 
 ### Worked examples
 

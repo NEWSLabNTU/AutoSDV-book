@@ -35,7 +35,7 @@ AutoSDV 遵循[超專案](https://en.wikibooks.org/wiki/Git/Submodules_and_Super
 | `AutoSDV/src/`          | Autoware 原始碼樹的入口。              |
 | `├── calibration/`      | 校正工具與公用程式。                   |
 | `├── launcher/`         | 包含啟動整個駕駛系統的啟動檔案。       |
-| `├── localization/`     | 定位套件（Isaac Visual SLAM 等）。     |
+| `├── localization/`     | 定位套件（NDT、CUDA NDT、MCL）。     |
 | `├── param/`            | 特定於車輛型號的參數。                 |
 | `├── sensor_component/` | 感測器驅動程式與感測資料處理器。       |
 | `├── sensor_kit/`       | 感測器相關參數與啟動檔案。             |

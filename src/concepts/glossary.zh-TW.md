@@ -106,8 +106,6 @@ AutoSDV 的工作空間是 Autoware 的 overlay，而 Autoware 是 ROS 2 的 ove
 
 **TP** —— Transformation Probability，NDT 的另一個匹配分數。
 
-**cuVSLAM / cuVGL** —— NVIDIA Isaac 的視覺里程計與全域定位，由
-`pose_source:=isaac` 與 `pose_source:=visual` 使用。
 
 ## 感測與感知
 

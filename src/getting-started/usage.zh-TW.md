@@ -162,14 +162,13 @@ play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml [A
 
 | 參數 | 預設 | 意義 |
 |------|------|------|
-| `pose_source` | `cuda_ndt` | `cuda_ndt`、`ndt`、`mcl`、`isaac`、`visual`——參閱[定位方法](../guides/localization-methods.md) |
+| `pose_source` | `cuda_ndt` | `cuda_ndt`、`ndt`、`mcl`——參閱[定位方法](../guides/localization-methods.md) |
 | `pose_source_package` | `auto` | 由 `pose_source` 推導而來。只有在要接入第三方估測器時才明確設定 |
 | `localization_preset` | `default` | `default`（陀螺儀里程計）或 `eagleye`（GNSS 里程計） |
 | `use_mapless_mode` | `false` | 室內運作，完全不做定位 |
 | `map_path` | `./data/COSS-map-planning` | 地圖目錄 |
 | `occupancy_grid_file` | `occupancy_grid.yaml` | `map_path` 內的佔據網格描述檔名（僅 `pose_source:=mcl`） |
 | `mcl_random_seed` | `-1` | 粒子濾波器的亂數種子；`-1` 為不可重現（僅 `mcl`） |
-| `visual_map_dir` | `""` | `pose_source:=visual` 使用的視覺地圖目錄 |
 
 ### 選擇感知設定
 
@@ -219,10 +218,6 @@ play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml [A
 | `sensor_model` | `autosdv_sensor_kit` | 感測器套件描述前綴 |
 | `rviz_config` | AutoSDV 的版面 | 要載入的 RViz 版面 |
 
-Isaac 專屬的參數——`enable_visual_slam`、`enable_global_localization`、
-`enable_pose_initializer`、`enable_imu_fusion`、`enable_visualization`、
-`auto_initialize`——全都預設為 `true`，且僅適用於 `pose_source:=isaac` 與
-`pose_source:=visual`。
 
 ### 實例
 

@@ -34,7 +34,7 @@ the reason for each step. In summary:
 - u-blox GNSS udev rules (vehicle profile only)
 
 Opt-in, selected by no profile: the ZED SDK, the Blickfeld Scanner Library,
-Isaac ROS, TensorRT engine pre-compilation, and TurboVNC/VirtualGL.
+TensorRT engine pre-compilation, and TurboVNC/VirtualGL.
 
 The manual steps below provide alternatives or additions to this automated setup.
 

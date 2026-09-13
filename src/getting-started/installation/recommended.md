@@ -110,7 +110,6 @@ without you asking.
 | `opencv` | dev, vehicle | JetPack leaves 4.8.0 headers over a 4.5.4 runtime, which compiles and then misbehaves. Also provides aruco/contrib |
 | `zed-sdk` | *opt-in* | the ZED X Mini, which every default sensor suite includes. Large download |
 | `blickfeld` | *opt-in* | the Cube1 LiDAR driver. Selecting it accepts the library's licence terms |
-| `isaac-ros` | *opt-in* | `pose_source:=visual` and `pose_source:=isaac`. Needs an NVIDIA GPU |
 
 #### System configuration
 
@@ -123,12 +122,11 @@ without you asking.
 
 ### The opt-in steps are a choice you have to make
 
-Four steps are in **no** profile — nothing selects them for you:
+Three steps are in **no** profile — nothing selects them for you:
 
 - `zed-sdk` — needed if you have a ZED camera. Every default sensor suite
   includes one, so on a vehicle you almost certainly want it.
 - `blickfeld` — only for the Cube1 LiDAR.
-- `isaac-ros` — only for visual localization.
 - `tensorrt-engines` — never strictly needed, always worth it on a vehicle.
 
 > **Note:** the ZED SDK is not installed unless you select it. See

@@ -27,7 +27,7 @@ Here you can visit the GitHub repository:
 | `AutoSDV/src/`          | The entry to the Autoware source tree.                  |
 | `├── calibration/`      | Calibration tools and utilities.                        |
 | `├── launcher/`         | Includes launch files to run the entire driving system. |
-| `├── localization/`     | Localization packages (Isaac Visual SLAM, etc.).        |
+| `├── localization/`     | Localization packages (NDT, CUDA NDT, MCL).             |
 | `├── param/`            | Parameters specific to vehicle models.                  |
 | `├── sensor_component/` | Sensor drivers and sensing data processors.             |
 | `├── sensor_kit/`       | Sensor related parameters and launch files.             |
