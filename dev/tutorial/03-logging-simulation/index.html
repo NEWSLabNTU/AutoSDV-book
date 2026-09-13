@@ -1287,10 +1287,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#if-you-have-no-nvidia-gpu" class="md-nav__link">
+  <a href="#if-you-have-no-nvidia-gpu-or-a-very-new-one" class="md-nav__link">
     <span class="md-ellipsis">
       
-        If you have no NVIDIA GPU
+        If you have no NVIDIA GPU — or a very new one
       
     </span>
   </a>
@@ -2795,10 +2795,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#if-you-have-no-nvidia-gpu" class="md-nav__link">
+  <a href="#if-you-have-no-nvidia-gpu-or-a-very-new-one" class="md-nav__link">
     <span class="md-ellipsis">
       
-        If you have no NVIDIA GPU
+        If you have no NVIDIA GPU — or a very new one
       
     </span>
   </a>
@@ -3042,7 +3042,7 @@ check this first:</p>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>sim<span class="w"> </span>logging<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"pose_source:=ndt"</span>
 </span></code></pre></div>
 </details>
-<h2 id="if-you-have-no-nvidia-gpu">If you have no NVIDIA GPU<a class="headerlink" href="#if-you-have-no-nvidia-gpu" title="Permanent link">#</a></h2>
+<h2 id="if-you-have-no-nvidia-gpu-or-a-very-new-one">If you have no NVIDIA GPU — or a very new one<a class="headerlink" href="#if-you-have-no-nvidia-gpu-or-a-very-new-one" title="Permanent link">#</a></h2>
 <p>The defaults assume one: <code>pose_source:=cuda_ndt</code> needs CUDA, and perception
 loads TensorRT models. Two arguments remove both requirements:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span><span class="se">\</span>
@@ -3060,6 +3060,21 @@ loads TensorRT models. Two arguments remove both requirements:</p>
 full 10 Hz with a driving-phase p95 of 44 ms against a 100 ms budget. On a
 laptop expect worse; if the pose starts lagging behind the vehicle, that is what
 running out of budget looks like.</p>
+<div class="admonition warning">
+<p class="admonition-title">A GPU newer than the CUDA toolkit fails the same way as no GPU</p>
+<p><code>cuda_ndt</code> compiles its kernels at run time, so the toolkit on the machine
+has to know the GPU's architecture. On an RTX 5090 (compute capability 12.0)
+with CUDA 12.3 it does not, and the matcher dies at the first scan:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>thread 'main' panicked at cubecl-cuda-0.8.1/src/compute/context.rs:161:17:
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[Compilation Error]
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    nvrtc: error: invalid value for --gpu-architecture (-arch)
+</span></code></pre></div>
+<p>The launcher reports every node ready either way, and <strong>nothing</strong> downstream
+publishes — not the matcher, not even the EKF — so the symptom is a stack
+that starts perfectly and localizes not at all. <code>pose_source:=ndt</code> is the
+way through. The Jetson Orin the vehicle runs on is compute capability 8.7
+and unaffected.</p>
+</div>
 <h2 id="seeding-the-initial-pose">Seeding the initial pose<a class="headerlink" href="#seeding-the-initial-pose" title="Permanent link">#</a></h2>
 <p>NDT needs somewhere to start. It refines an estimate; it does not search the
 whole map.</p>
@@ -3087,15 +3102,15 @@ If it is failing, the cloud slides relative to the map, or sits beside it at a
 constant offset. That visual is more reliable than any node's self-reported
 state.</p>
 <p><strong>In a third terminal</strong>, the numbers:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
 </span></code></pre></div>
 <p>Expect ~10 Hz, matching the LiDAR, because NDT runs once per scan. A rate well
 below that means the matcher is not keeping up.</p>
 <p>AutoSDV ships checks for the distinction between "the node is running" and
 "localization is working", which are not the same claim:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
 </span></code></pre></div>
 <h2 id="reading-the-result">Reading the result<a class="headerlink" href="#reading-the-result" title="Permanent link">#</a></h2>
 <p>The metrics <code>just demo run</code> prints — and that these scripts produce — are worth
@@ -3143,8 +3158,8 @@ understanding once.</p>
 and reaching it is not "the answer took longer". Autoware's matcher treats a
 frame that hits the cap as <strong>not converged</strong> and throws the result away, so
 the pose is never published:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>The number of iterations has reached its upper limit.
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>The number of iterations: 15, Limit: 15.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>The number of iterations: 15, Limit: 15.
 </span></code></pre></div>
 <p>And the stack still looks localized, because the EKF keeps publishing
 <code>/localization/kinematic_state</code> from wheel odometry and IMU alone. The
@@ -3200,7 +3215,7 @@ it was set too far from the truth for NDT to converge. Set it again, closer.</p>
 <p><strong>The cloud drifts away from the map partway through.</strong> The match was lost.
 Watch NVTL — it will have collapsed before the visual drift was obvious.</p>
 <p><strong>Topics exist but nothing subscribes.</strong> Compare QoS on both ends:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
 </span></code></pre></div>
 <p>A <code>RELIABLE</code> subscriber will not receive from a <code>BEST_EFFORT</code> publisher. See
 <a href="../../concepts/inspecting/">Inspecting a Running System</a>.</p>
@@ -3210,9 +3225,9 @@ the engines cannot be cached and it happens on <em>every</em> launch.</p>
 <h2 id="compare-the-localization-methods">Compare the localization methods<a class="headerlink" href="#compare-the-localization-methods" title="Permanent link">#</a></h2>
 <p>The replay is the right place to compare them, because the input is byte for
 byte identical every run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
 </span></code></pre></div>
 <p><code>mcl</code> needs an occupancy grid rather than a point cloud map, and a 2-D
 <code>LaserScan</code> rather than a 3-D cloud. See
