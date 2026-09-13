@@ -108,6 +108,36 @@ source scripts/env.sh
 空間，順序固定。每個 `just` recipe 都用它。想看清楚發生什麼事時用那兩行，不想看
 時用這一行。
 
+### 用哪套 middleware 由你決定，而它住在 `.envrc`
+
+本專案不會替你決定 RMW。`.envrc` 是唯一做這個決定的檔案，預設值就是 Autoware 選的
+那個——目前是 CycloneDDS。
+
+```bash
+# 只在這個目錄改用 Zenoh
+RMW_IMPLEMENTATION=rmw_zenoh_cpp direnv reload
+```
+
+之所以要繞這一圈，是因為 Autoware 的 `setup.bash` 會**無條件** export
+`RMW_IMPLEMENTATION=rmw_cyclonedds_cpp`：你先 export 自己的選擇、再載入 Autoware，
+選擇就被無聲蓋掉。`.envrc` 會在載入前記下你的選擇、載入後再放回去，
+`scripts/env.sh` 也做同樣的事，所以 `just` recipe 也不會蓋掉它。
+
+不論選哪一個，圖裡的每個 process 都必須一致。
+
+!!! tip "沒有 direnv 時"
+
+    [direnv](https://direnv.net/) 會在進入目錄時套用 `.envrc`，這是最不容易出錯的
+    做法，值得花五分鐘安裝。沒有它的話，**每個**終端機都要自己載入：
+
+    ```bash
+    source .envrc      # PATH_add / watch_file 是 direnv 的指令，會回報找不到；
+                       # 其餘都會生效
+    ```
+
+    上課時特別容易出事：只要有一位學生的終端機漏掉這一步，他的 stack 就會啟動得
+    很漂亮，然後跟誰都講不上話。
+
 ## 每一層實際給你什麼
 
 這是本頁的重點，所以以下是實測而非斷言。每一列都是一個完全乾淨、沒有繼承任何

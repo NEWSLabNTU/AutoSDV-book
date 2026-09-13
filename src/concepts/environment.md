@@ -107,6 +107,38 @@ source scripts/env.sh
 then the workspace, in that order. Every `just` recipe uses it. Use the two
 explicit lines when you want to see what is happening, and this when you do not.
 
+### Which middleware is your choice, and it lives in `.envrc`
+
+Nothing in the repository forces an RMW on you. `.envrc` is the one file that
+decides, and the default is whatever Autoware selects — CycloneDDS today.
+
+```bash
+# use Zenoh instead, for this directory
+RMW_IMPLEMENTATION=rmw_zenoh_cpp direnv reload
+```
+
+That indirection exists because Autoware's `setup.bash` exports
+`RMW_IMPLEMENTATION=rmw_cyclonedds_cpp` **unconditionally**: exporting your own
+choice and then sourcing Autoware loses it without a word. `.envrc` records the
+choice before sourcing and puts it back afterwards, and `scripts/env.sh` does
+the same so a `just` recipe cannot undo it either.
+
+Whatever you pick, every process in the graph has to agree.
+
+!!! tip "Working without direnv"
+
+    [direnv](https://direnv.net/) applies `.envrc` on entering the directory,
+    which is the least error-prone setup and worth the five minutes to install.
+    Without it, source the file yourself in **every** terminal:
+
+    ```bash
+    source .envrc      # the PATH_add / watch_file lines are direnv's and
+                       # will report as missing commands; the rest applies
+    ```
+
+    A class is where this bites: one student with a terminal that skipped it
+    gets a stack that starts perfectly and talks to nobody.
+
 ## What each layer actually gives you
 
 This is the whole point of the page, so here it is measured rather than
