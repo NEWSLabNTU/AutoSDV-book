@@ -10,6 +10,13 @@ exactly what makes this the right place to learn planning.
 
 It needs no GPU, no rosbag and no sensors.
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 960px;">
+  <video autoplay loop muted playsinline controls style="width: 100%; border-radius: 8px;">
+    <source src="../../figures/planning_sim_video/planning-sim.webm" type="video/webm">
+  </video>
+  <figcaption>The whole page, end to end: launch it from the repository root, place the vehicle, give it a goal, engage — and watch it drive there.</figcaption>
+</figure>
+
 ## Launch it
 
 ```bash

@@ -16,6 +16,13 @@ Translation Metadata:
 
 它不需要 GPU、不需要 rosbag、也不需要感測器。
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 960px;">
+  <video autoplay loop muted playsinline controls style="width: 100%; border-radius: 8px;">
+    <source src="../../../figures/planning_sim_video/planning-sim.webm" type="video/webm">
+  </video>
+  <figcaption>整頁的流程：從儲存庫根目錄啟動、放置車輛、給它一個目標、切到自動駕駛，然後看它開到目的地。</figcaption>
+</figure>
+
 ## 啟動
 
 ```bash
