@@ -1,70 +1,105 @@
 <!--
 Translation Metadata:
 - Source file: zed-sdk.md
-- Last synced: 2026-01-09
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
 
 # ZED SDK 安裝
 
-ZED SDK 提供 ZED 立體相機和 ZED Link 擷取卡的驅動程式和 API。這是執行 AutoSDV 安裝腳本前**必須手動完成的安裝步驟**。
+ZED SDK 提供 ZED 立體相機與 ZED Link 擷取卡的驅動與 API。**這一步由你手動安裝。**
+Stereolabs 並未提供 apt 套件庫，唯一的官方安裝檔是自解壓安裝程式，且會要求你接受
+專有授權；因此 `setup.sh` 只檢查它是否存在、並告訴你該下載什麼，而不會代你回答
+授權問題。
 
-## 何時需要安裝？
+## 什麼時候需要它？
 
-如果您使用以下設備，請安裝 ZED SDK：
-- ZED X Mini 相機（標準 AutoSDV 配置）
+使用以下裝置時需要安裝 ZED SDK：
+
+- ZED X Mini 相機（AutoSDV 的標準配置）
 - ZED 2/2i 相機
 - ZED Link 擷取卡（Mono/Dual/Quad）
 
-如果您僅使用光達感測器（Velodyne、Blickfeld、Robin-W），可以跳過此步驟。
+只用光達（Velodyne、Blickfeld、Robin-W）時可以跳過。缺少它不會影響其他部分：
+`zed_components` 會回報自行跳過，工作空間其餘部分照常建置。
 
-## 先決條件
+## 版本不是偏好問題
 
-- Ubuntu 22.04 已安裝 NVIDIA 驅動程式（550+），或
-- Jetson AGX Orin 配備 JetPack 6.0
+| 元件 | 版本 |
+|------|------|
+| ZED SDK | 5.4.1 |
+| ZED ROS 2 wrapper | 5.4.1（我們的 `ntust-workshop` 分支，rebase 到 `v5.4.1`） |
 
-## 安裝步驟
+`zed_components` 是對著 SDK 自己的標頭檔編譯的，所以 SDK 與 wrapper 版本不一致
+是建置或執行失敗，而不是功能降級。這一對版本記錄在 `versions.yaml` 的 `zed:`
+之下；要升就兩個一起升。
 
-### 步驟 1：下載 ZED SDK 5.1
+## 先備條件
 
-前往 [ZED SDK Downloads](https://www.stereolabs.com/developers/release) 頁面。
+- Ubuntu 22.04，已安裝 NVIDIA 驅動與 CUDA 12（Autoware 鎖定的版本），或
+- 執行 JetPack 6.x 的 Jetson（L4T 36.4 或 36.5）
 
-下載適合的安裝程式：
-
-**Jetson AGX Orin（JetPack 6.0）：**
-- [ZED SDK 5.1 for JetPack 6.0](https://download.stereolabs.com/zedsdk/5.1/l4t36.3/jetsons)
-
-**Ubuntu 22.04 PC：**
-- [ZED SDK 5.1 for Ubuntu 22 + CUDA 12](https://download.stereolabs.com/zedsdk/5.1/cu124/ubuntu22)
-
-### 步驟 2：安裝 ZED SDK
+## 步驟 1 — 先問 setup.sh 這台機器需要什麼
 
 ```bash
-# Make the installer executable
-chmod +x ZED_SDK_*.run
-
-# Run the installer
-sudo ./ZED_SDK_*.run
+./setup.sh --run --only zed-sdk --yes
 ```
 
-按照螢幕提示操作：
-- 接受授權協議
-- 安裝所有元件（SDK、工具、Python API、範例）
-- 允許下載 AI 模型（物件偵測所需）
+若已安裝，它會印出版本；否則印出適合這台機器的下載連結。任何讓這個步驟仍未滿足的
+安裝流程，結束時都會以醒目顏色再提示一次。
 
-安裝需要 10-20 分鐘，視網路速度而定。
+## 步驟 2 — 下載
 
-### 步驟 3：驗證安裝
+| 機器 | 安裝檔 |
+|------|--------|
+| amd64、Ubuntu 22.04、CUDA 12 | <https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22> |
+| Jetson、L4T 36.4（JetPack 6.0/6.1） | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
+| Jetson、L4T 36.5 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+
+這些是 Stereolabs 維持穩定的轉址連結，各自會轉到檔名帶有修訂版號的 CDN 檔案
+（amd64 目前是 `ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run`）。請
+收藏轉址連結，不要收藏它轉到的檔案。
+
+選擇前先確認 Jetson 上的 L4T 版本：
 
 ```bash
-# Run ZED diagnostic tool
-/usr/local/zed/tools/ZED_Diagnostic
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 4.4" -> L4T 36.4
+```
 
-# Expected output should show:
-# - ZED SDK Version: 5.1.x
-# - CUDA version detected
-# - Camera detection status (if connected)
+## 步驟 3 — 安裝
+
+```bash
+curl -fsSL -o zed_sdk.run 'https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22'
+chmod +x zed_sdk.run
+./zed_sdk.run
+```
+
+依提示回答：接受授權、安裝工具與 Python API；若要使用物件偵測，允許下載 AI 模型。
+約需 10–20 分鐘，大部分時間在下載。
+
+## 步驟 4 — 確認
+
+```bash
+./setup.sh --rerun zed-sdk     # "ZED SDK 5.4.1 is installed at /usr/local/zed."
+just build                     # 這時才會建置 zed_components
+```
+
+`./setup.sh --status` 讀的是 SDK 自己的 cmake 版本檔——與建置時 `find_package(ZED)`
+讀的是同一個檔案——所以版本不符會被回報為未安裝，這是誠實的答案。
+
+## 在 amd64 上，這個安裝檔同時帶來 TensorRT 10.9
+
+amd64 版安裝檔附帶 TensorRT 10.9，而 Autoware 的感知引擎需要**恰好** 10.8：快取的
+引擎會記錄建置它的 TensorRT 版本，Autoware 會丟棄版本不同的引擎，於是每次啟動都
+重建全部五個模型。
+
+兩者可以並存，AutoSDV 已經替你安排好：`tensorrt-runtime` 步驟把 Autoware 的
+TensorRT 裝在獨立前綴下，`scripts/env.sh` 只為 AutoSDV 的程序把它排在系統版本
+前面。這也正是該步驟不去降級系統函式庫的原因——那樣會弄壞 ZED SDK。
+
+```bash
+./setup.sh --run --only tensorrt-runtime --yes
 ```
 
 ## ZED Link 驅動程式安裝（選用）

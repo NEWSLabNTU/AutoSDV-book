@@ -1,62 +1,106 @@
 # ZED SDK Installation
 
-The ZED SDK provides drivers and APIs for ZED stereo cameras and ZED Link capture cards. This is a **manual installation step** required before running the AutoSDV setup script.
+The ZED SDK provides the drivers and APIs for ZED stereo cameras and ZED Link
+capture cards. **You install it by hand.** Stereolabs publishes no apt
+repository; the only official artifact is a self-extracting installer that asks
+you to accept a proprietary licence, so `setup.sh` checks for it and tells you
+what to download rather than answering that question on your behalf.
 
 ## When Do You Need This?
 
-Install ZED SDK if you're using:
-- ZED X Mini camera (standard AutoSDV configuration)
-- ZED 2/2i cameras
-- ZED Link capture cards (Mono/Dual/Quad)
+Install the ZED SDK if you are using:
 
-Skip this step if you're using only LiDAR sensors (Velodyne, Blickfeld, Robin-W).
+- a ZED X Mini camera (the standard AutoSDV configuration)
+- a ZED 2/2i camera
+- a ZED Link capture card (Mono/Dual/Quad)
+
+Skip it if you run LiDAR only (Velodyne, Blickfeld, Robin-W). Nothing else
+breaks without it: `zed_components` reports that it is skipping itself, and the
+rest of the workspace builds.
+
+## The version is not a preference
+
+| Component | Version |
+|-----------|---------|
+| ZED SDK | 5.4.1 |
+| ZED ROS 2 wrapper | 5.4.1 (our `ntust-workshop` branch, rebased onto `v5.4.1`) |
+
+`zed_components` compiles against the SDK's own headers, so an SDK and a wrapper
+at different versions is a build or a runtime failure, not a degraded mode. The
+pair is recorded in `versions.yaml` under `zed:`; bump both or neither.
 
 ## Prerequisites
 
-- Ubuntu 22.04 with NVIDIA drivers (550+) installed, OR
-- Jetson AGX Orin with JetPack 6.0
+- Ubuntu 22.04 with an NVIDIA driver and CUDA 12 (the version Autoware pins), or
+- a Jetson running JetPack 6.x (L4T 36.4 or 36.5)
 
-## Installation Steps
-
-### Step 1: Download ZED SDK 5.1
-
-Visit the [ZED SDK Downloads](https://www.stereolabs.com/developers/release) page.
-
-Download the appropriate installer:
-
-**For Jetson AGX Orin (JetPack 6.0):**
-- [ZED SDK 5.1 for JetPack 6.0](https://download.stereolabs.com/zedsdk/5.1/l4t36.3/jetsons)
-
-**For Ubuntu 22.04 PC:**
-- [ZED SDK 5.1 for Ubuntu 22 + CUDA 12](https://download.stereolabs.com/zedsdk/5.1/cu124/ubuntu22)
-
-### Step 2: Install ZED SDK
+## Step 1 — Ask setup.sh what this machine needs
 
 ```bash
-# Make the installer executable
-chmod +x ZED_SDK_*.run
-
-# Run the installer
-sudo ./ZED_SDK_*.run
+./setup.sh --run --only zed-sdk --yes
 ```
 
-Follow the on-screen prompts:
-- Accept the license agreement
-- Install all components (SDK, tools, Python API, samples)
-- Allow AI model downloads (required for object detection)
+It prints the installed version if there is one, and otherwise the exact
+download for this machine. The same advice is repeated, highlighted, at the end
+of any setup run that leaves it unsatisfied.
 
-Installation takes 10-20 minutes depending on internet speed.
+## Step 2 — Download
 
-### Step 3: Verify Installation
+| Machine | Installer |
+|---------|-----------|
+| amd64, Ubuntu 22.04, CUDA 12 | <https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22> |
+| Jetson, L4T 36.4 (JetPack 6.0/6.1) | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
+| Jetson, L4T 36.5 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+
+These are redirects Stereolabs keeps stable. Each resolves to a CDN file whose
+name carries the patch version (for amd64, today,
+`ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run`), so bookmark the
+redirect and not the file it lands on.
+
+Check which L4T a Jetson is running before you choose:
 
 ```bash
-# Run ZED diagnostic tool
-/usr/local/zed/tools/ZED_Diagnostic
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 4.4" -> L4T 36.4
+```
 
-# Expected output should show:
-# - ZED SDK Version: 5.1.x
-# - CUDA version detected
-# - Camera detection status (if connected)
+## Step 3 — Install
+
+```bash
+curl -fsSL -o zed_sdk.run 'https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22'
+chmod +x zed_sdk.run
+./zed_sdk.run
+```
+
+Answer the prompts: accept the licence, install the tools and the Python API,
+and allow the AI model download if you intend to use object detection. It takes
+10–20 minutes, mostly download.
+
+## Step 4 — Confirm
+
+```bash
+./setup.sh --rerun zed-sdk     # "ZED SDK 5.4.1 is installed at /usr/local/zed."
+just build                     # now builds zed_components
+```
+
+`./setup.sh --status` reads the SDK's own cmake version file — the same file
+`find_package(ZED)` reads during the build — so it reports a version mismatch as
+not-installed, which is the honest answer.
+
+## On amd64, the installer also brings TensorRT 10.9
+
+The amd64 package ships TensorRT 10.9, while Autoware's perception engines
+require 10.8 **exactly**: a cached engine records the TensorRT that built it, and
+Autoware discards any engine whose version differs, rebuilding all five models on
+every launch.
+
+Both can coexist, and AutoSDV arranges that for you. The `tensorrt-runtime`
+setup step installs Autoware's TensorRT into a private prefix, and
+`scripts/env.sh` puts it ahead of the system one for AutoSDV processes only —
+which is exactly why that step does not downgrade the system libraries: doing so
+would break the ZED SDK.
+
+```bash
+./setup.sh --run --only tensorrt-runtime --yes
 ```
 
 ## ZED Link Driver Installation (Optional)
@@ -105,10 +149,13 @@ If the installer cannot find CUDA:
 # Verify CUDA installation
 nvcc --version
 nvidia-smi
-
-# CUDA should be 12.3 or compatible
-# If not installed, return to Step 1 of the main installation guide
 ```
+
+CUDA 12 is what Autoware pins (`nvidia_amd64.cuda` in `versions.yaml`), so match
+that rather than a specific patch. On a Jetson it comes from JetPack; on a
+workstation it comes from the host image or NVIDIA's apt repository —
+`setup.sh` deliberately does not install a CUDA toolkit, because doing so
+repoints `/usr/local/cuda` for every other user of the machine.
 
 ### Python Dependencies
 

@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: recommended.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -81,60 +81,62 @@ just checkout    # git submodule update --init --recursive --checkout
 
 ### 各個步驟
 
-依選單的分組排列。「預設於」指的是不必你要求就會選取該步驟的設定檔。
+**你不需要把它們背下來。** 選一個設定檔即可；游標停在哪個步驟，選單就顯示那個
+步驟的一行說明，包含跳過它的代價。那段文字寫在步驟旁邊，而不是寫在這裡——寫在
+這裡遲早會和實際情況脫節。`./setup.sh --list` 印出的是同一份說明。
 
-#### 工具鏈（Toolchain）
+選單依工作性質分組：
 
-| 步驟 | 預設於 | 存在的理由 |
-|------|--------|-----------|
-| `just` | 全部 | 本儲存庫的每個工作流程都是一個 `just` recipe |
-| `ros2` | 全部 | ROS 2 Humble，其餘一切建置的基礎 |
-| `ros2-dev-tools` | 全部 | colcon、rosdep、vcstool——沒有它們什麼都建不起來 |
-| `rust` | 全部 | `cuda_ndt_matcher` 是 Rust 寫的；沒有工具鏈時 colcon 會略過它，`pose_source:=cuda_ndt` 便無物可啟動 |
-| `colcon-cargo-ros2` | 全部 | 讓 colcon 會建置 Rust 套件；缺少它時這些套件會被*靜默*略過，建置改在稍後因找不到套件而失敗 |
-| `play-launch` | 全部 | 本書全程使用的啟動協調器 |
-| `python-deps` | 全部 | `Adafruit-PCA9685`、`simple-pid`——車輛介面在執行時匯入 |
-| `geographiclib` | 全部 | Autoware 的地圖投影需要 egm2008-1 大地水準面來換算 GNSS 高度 |
-| `gdown` | dev、vehicle | 範例資料下載腳本會用到 |
-| `dev-tools` | dev、vehicle | git-lfs、pre-commit、clang-format、PlotJuggler |
+| 分組 | 涵蓋內容 |
+|------|----------|
+| Toolchain | `just`、ROS 2 Humble、colcon/rosdep、Rust 工具鏈與其 colcon 外掛、`play_launch`，以及車輛介面在執行期匯入的 Python 套件 |
+| Autoware | Autoware 1.5.0 Debian 套件（2–3 GB）、它們建置時所用的 TensorRT runtime、可寫入的模型樹、對 `src/` 執行的 rosdep，以及感知引擎 |
+| Libraries | OpenCV 一致性、ZED SDK 檢查、Blickfeld Cube1 驅動 |
+| System configuration | CycloneDDS 所需的核心 socket 緩衝區、loopback multicast、u-blox udev 規則、TurboVNC/VirtualGL |
 
-#### Autoware
+其中四項過去在本頁是要你手動執行的步驟。最常讓全新安裝失敗的兩項——CycloneDDS
+的 socket 緩衝區與 loopback 的 `MULTICAST` 旗標——正是「讓設定檔替你選」的理由：
+`net.core.rmem_max` 低於約 10 MB 時**沒有任何 ROS 2 節點能啟動**，而 `lo` 每次
+重開機都會失去 multicast 旗標。`dev` 與 `vehicle` 都會選取修正這兩者的步驟，不必
+再照著手冊逐條輸入。
 
-| 步驟 | 預設於 | 存在的理由 |
-|------|--------|-----------|
-| `autoware-debian` | dev、vehicle | Autoware 1.5.0 localrepo，2–3 GB。`src/` 中的一切都以它為基礎建置 |
-| `autoware-data` | dev、vehicle | **見下文**——少了它，感知模組會在每一次啟動時失敗，永遠如此 |
-| `ros-deps` | 全部 | rosdep 解析 `src/` 下套件宣告的每個相依鍵，這也是這裡沒有個別驅動程式 apt 步驟的原因 |
-| `tensorrt-engines` | *選用* | 預先編譯引擎；每個模型數分鐘。略過它只是把成本移到你的第一次啟動 |
+確認之前，有兩個選擇值得先了解——它們是少數「預設值出於判斷而非必要」的地方。
 
-#### 函式庫（Libraries）
+#### TensorRT 引擎：下載或自行建置
 
-| 步驟 | 預設於 | 存在的理由 |
-|------|--------|-----------|
-| `opencv` | dev、vehicle | JetPack 會留下 4.8.0 的標頭檔搭配 4.5.4 的執行期，能編譯但行為異常。也提供 aruco/contrib |
-| `zed-sdk` | *選用* | ZED X Mini，每個預設感測器組合都包含它。下載量大 |
-| `blickfeld` | *選用* | Cube1 LiDAR 驅動程式。選取它即表示接受該函式庫的授權條款 |
+Autoware 會把五個感知模型編譯成 TensorRT 引擎。在機器上編譯，Orin 約一小時，
+桌機 GPU 約九分鐘；若跳過，同樣的工作會發生在第一次啟動時的節點建構子裡，看起來
+像當掉，而且在完成前感知功能都不可用。
 
-#### 系統設定（System configuration）
+選單把它呈現成一個決定、兩個答案：
 
-| 步驟 | 預設於 | 存在的理由 |
-|------|--------|-----------|
-| `cyclonedds-sysctl` | dev、vehicle | `net.core.rmem_max` 與 IP 分片設定。**低於約 10 MB 時沒有任何 ROS 2 節點能啟動** |
-| `multicast-lo` | dev、vehicle | `cyclonedds.xml` 指定 `lo`，而 `lo` 每次重開機都會失去 `MULTICAST` 旗標。安裝一個 unit 讓它撐過重開機 |
-| `ublox-udev` | vehicle | 提供穩定的 `/dev/ublox-gps` 名稱，並把你加入 `dialout`。需登出再登入群組才生效 |
-| `turbovnc-virtualgl` | *選用* | 透過 VNC 進行 GPU 加速繪圖，ZED 工具在 VNC 工作階段中需要它 |
+```
+    TensorRT engines (pick one, or neither)
+   15   (o) Download the published set (build only if none matches)
+   16   ( ) Build here, ignoring the published set
+```
 
-### 選用步驟是你必須做的選擇
+預設是下載，約 30 秒：AutoSDV 的 releases 上發佈了針對特定硬體建置的引擎，而下載
+回來的引擎會先逐一載入驗證過才採用。我們實際使用的板子都有對應的發佈版本；其他
+硬體則由同一個步驟在本機建置，也就是你本來就得付出的成本。當你自己在改模型、或
+要產生一份要發佈的引擎時，才選第二個答案。
 
-有三個步驟**不屬於任何**設定檔——沒有任何東西會替你選取它們：
+引擎同時綁定 GPU **與** 確切的 TensorRT 版本，所以兩種答案都無法預先烘焙進在別處
+建置的映像檔，而且在 Autoware 或 JetPack 升級後都必須重做。
 
-- `zed-sdk` —— 有 ZED 相機時需要。每個預設感測器組合都包含一台，所以在車輛上你
-  幾乎一定需要它。
-- `blickfeld` —— 只有 Cube1 LiDAR 需要。
-- `tensorrt-engines` —— 嚴格來說永遠不是必要的，但在車輛上永遠值得。
+#### ZED SDK 由你安裝，不是由設定程式安裝
 
-> **注意：** 除非你選取，否則不會安裝 ZED SDK。參閱
-> [ZED SDK 安裝](./zed-sdk.md)。
+Stereolabs 沒有提供 apt 套件庫——唯一的官方安裝檔是互動式安裝程式，會要求你接受
+專有授權。因此 `zed-sdk` 這個步驟只做**檢查**：回報你目前安裝的版本，若缺少或版本
+不符，就印出適合這台機器的下載連結，並在整個安裝流程結束時以醒目顏色再印一次，
+確保它是螢幕上最後看到的東西。
+
+在沒有 ZED 相機的機器上保留這個步驟不會有任何代價：驅動套件會自行跳過，工作空間
+其餘部分照常建置。當安裝流程提示你時，再依
+[ZED SDK 安裝](./zed-sdk.md) 進行即可。
+
+另一個需要自行選取的步驟是 `blickfeld`，供 Cube1 光達使用；選取它等同接受該函式庫
+的授權條款。
 
 ## 安裝並設定 direnv
 
@@ -192,17 +194,19 @@ just setup-autoware-data
 這會以符號連結把資料樹鏡像到 `data/autoware_data`（171 個檔案，不到 1 MB），
 而啟動檔案本來就預設指向該處。Autoware 升級後請重新執行。
 
-## 預先編譯 TensorRT 引擎（選用，建議）
+## TensorRT 引擎：如果你在選單裡跳過了
+
+設定程式會替你處理——見上面「TensorRT 引擎：下載或自行建置」一節。
+事後要補做：
 
 ```bash
-just build-engines
+just engines          # 取用這台機器適用的已發佈引擎，沒有才自行建置（setup.sh 預設）
+just build-engines    # 直接在本機建置，忽略已發佈的版本
 ```
 
-少了這一步，第一次啟動會在各節點的建構子內編譯引擎——在 Orin 上需 10 到 30
-分鐘，期間感知模組不可用。
-
-引擎**同時**綁定 TensorRT 版本與 GPU，因此必須在將要使用它們的機器上執行。它
-無法被烘進在別處建置的映像檔，且在 Autoware 或 JetPack 升級後必須重新執行。
+當已發佈的引擎符合這台硬體時，`just engines` 約 30 秒完成，否則退回自行建置。
+它可以安全地重複執行：第二次會發現快取已就位而什麼都不做，中斷的下載則會續傳
+而不是從頭來過。
 
 ## 驗證
 

@@ -76,61 +76,73 @@ step succeeded but its script has changed since.
 
 ### The steps
 
-Grouped as the menu groups them. "Default in" is the profile that selects a step
-without you asking.
+**You do not need to learn them.** Pick a profile, and read the one-line
+explanation the menu shows for whatever is highlighted — every step carries its
+own reasoning, including the cost of skipping it, and that text is written
+beside the step rather than here where it would drift. `./setup.sh --list`
+prints the same thing.
 
-#### Toolchain
+The menu groups them the way the work divides:
 
-| Step | Default in | Why it is there |
-|------|-----------|-----------------|
-| `just` | all | every workflow in this repo is a `just` recipe |
-| `ros2` | all | ROS 2 Humble, the base everything builds against |
-| `ros2-dev-tools` | all | colcon, rosdep, vcstool — without these nothing builds |
-| `rust` | all | `cuda_ndt_matcher` is Rust; without a toolchain colcon skips it and `pose_source:=cuda_ndt` has nothing to launch |
-| `colcon-cargo-ros2` | all | teaches colcon to build the Rust packages; without it they are skipped *silently* and the build fails later on a missing package |
-| `play-launch` | all | the launch orchestrator this book uses throughout |
-| `python-deps` | all | `Adafruit-PCA9685`, `simple-pid` — imported by the vehicle interface at runtime |
-| `geographiclib` | all | Autoware's map projection needs the egm2008-1 geoid to convert GNSS altitude |
-| `gdown` | dev, vehicle | used by the sample-data download scripts |
-| `dev-tools` | dev, vehicle | git-lfs, pre-commit, clang-format, PlotJuggler |
+| Group | What it covers |
+|-------|----------------|
+| Toolchain | `just`, ROS 2 Humble, colcon/rosdep, the Rust toolchain and its colcon plugin, `play_launch`, and the Python packages the vehicle interface imports at runtime |
+| Autoware | the Autoware 1.5.0 Debians (2–3 GB), the TensorRT runtime they were built against, the writable model tree, rosdep over `src/`, and the perception engines |
+| Libraries | OpenCV consistency, the ZED SDK check, the Blickfeld Cube1 driver |
+| System configuration | kernel socket buffers for CycloneDDS, loopback multicast, the u-blox udev rule, TurboVNC/VirtualGL |
 
-#### Autoware
+Four of those used to be documented here as things to do by hand, and the two
+that most often broke a fresh install — the CycloneDDS socket buffers and the
+loopback `MULTICAST` flag — are the reason to let the profile choose. **Below
+about 10 MB of `net.core.rmem_max` no ROS 2 node starts at all**, and `lo` drops
+its multicast flag on every reboot, so `dev` and `vehicle` both select the steps
+that fix them. Nothing here needs to be typed out of a manual any more.
 
-| Step | Default in | Why it is there |
-|------|-----------|-----------------|
-| `autoware-debian` | dev, vehicle | the Autoware 1.5.0 localrepo, 2–3 GB. Everything in `src/` builds against it |
-| `autoware-data` | dev, vehicle | **see below** — without it, perception fails on every launch, forever |
-| `ros-deps` | all | rosdep resolves every key the packages under `src/` declare, which is why there are no per-driver apt steps |
-| `tensorrt-engines` | *opt-in* | pre-compiles the engines; minutes per model. Skipping it moves the cost to your first launch |
+Two choices are worth understanding before you confirm, because they are the
+only ones where the default is a judgement call rather than a requirement.
 
-#### Libraries
+#### TensorRT engines: download or build
 
-| Step | Default in | Why it is there |
-|------|-----------|-----------------|
-| `opencv` | dev, vehicle | JetPack leaves 4.8.0 headers over a 4.5.4 runtime, which compiles and then misbehaves. Also provides aruco/contrib |
-| `zed-sdk` | *opt-in* | the ZED X Mini, which every default sensor suite includes. Large download |
-| `blickfeld` | *opt-in* | the Cube1 LiDAR driver. Selecting it accepts the library's licence terms |
+Autoware compiles five perception models into TensorRT engines. Doing that on
+the machine takes about an hour on an Orin and nine minutes on a desktop GPU —
+and if you skip it, that same work happens inside the first launch's node
+constructors, where it looks like a hang and leaves perception unavailable until
+it finishes.
 
-#### System configuration
+The menu offers it as one decision with two answers:
 
-| Step | Default in | Why it is there |
-|------|-----------|-----------------|
-| `cyclonedds-sysctl` | dev, vehicle | `net.core.rmem_max` and the IP fragment settings. **Below about 10 MB no ROS 2 node can start at all** |
-| `multicast-lo` | dev, vehicle | `cyclonedds.xml` pins `lo`, and `lo` loses its `MULTICAST` flag on every reboot. Installs a unit so it survives one |
-| `ublox-udev` | vehicle | a stable `/dev/ublox-gps` name, and adds you to `dialout`. Log out and back in for the group to take effect |
-| `turbovnc-virtualgl` | *opt-in* | GPU-accelerated rendering over VNC, which the ZED tools need in a VNC session |
+```
+    TensorRT engines (pick one, or neither)
+   15   (o) Download the published set (build only if none matches)
+   16   ( ) Build here, ignoring the published set
+```
 
-### The opt-in steps are a choice you have to make
+The default is the download, and it takes about 30 seconds: engines built for
+this exact hardware are published on the AutoSDV releases, and the download is
+verified by loading every engine before it is trusted. A published set exists
+for the boards we run; for anything else the same step builds locally, which is
+what you would have paid anyway. Pick the second answer when you are changing a
+model yourself, or producing a set to publish.
 
-Three steps are in **no** profile — nothing selects them for you:
+An engine is tied to the GPU *and* to the exact TensorRT version, so neither
+answer can be baked into an image built somewhere else, and both must be redone
+after an Autoware or JetPack upgrade.
 
-- `zed-sdk` — needed if you have a ZED camera. Every default sensor suite
-  includes one, so on a vehicle you almost certainly want it.
-- `blickfeld` — only for the Cube1 LiDAR.
-- `tensorrt-engines` — never strictly needed, always worth it on a vehicle.
+#### The ZED SDK is installed by you, not by the setup program
 
-> **Note:** the ZED SDK is not installed unless you select it. See
-> [ZED SDK Installation](./zed-sdk.md).
+Stereolabs publishes no apt repository — the only official artifact is an
+interactive installer that asks you to accept a proprietary licence. So the
+`zed-sdk` step **checks** rather than installs: it reports the version you have,
+and if it is missing or wrong it prints the exact download for your machine, and
+prints it again in bright text at the end of the run so it is the last thing on
+screen.
+
+Leaving it selected costs nothing on a machine with no ZED camera: the driver
+package skips itself and the rest of the workspace builds. Follow
+[ZED SDK Installation](./zed-sdk.md) when the run tells you to.
+
+The remaining opt-in step is `blickfeld`, for the Cube1 LiDAR; selecting it
+accepts that library's licence terms.
 
 ## Install and Configure direnv
 
@@ -192,18 +204,21 @@ This mirrors the tree into `data/autoware_data` with symlinks (171 files, under
 a megabyte), which the launch files already default to. Re-run it after an
 Autoware upgrade.
 
-## Pre-compile the TensorRT engines (optional, recommended)
+## TensorRT engines, if you skipped them in the menu
+
+The setup program does this for you — see
+[TensorRT engines: download or build](#tensorrt-engines-download-or-build)
+above. To do it afterwards:
 
 ```bash
-just build-engines
+just engines          # the published set for this machine, else build (setup.sh default)
+just build-engines    # build here, ignoring what is published
 ```
 
-Without this, the first launch compiles engines inside each node's constructor —
-10 to 30 minutes on an Orin, with perception unavailable throughout.
-
-Engines are tied to **both** the TensorRT version and the GPU, so this must run
-on the machine that will use them. It cannot be baked into an image built
-elsewhere, and must be re-run after an Autoware or JetPack upgrade.
+`just engines` takes about 30 seconds when a published set matches this
+hardware, and falls back to the build when none does. It is safe to re-run: a
+second run notices the cache is already in place and does nothing, and an
+interrupted download resumes rather than starting over.
 
 ## Verify
 
