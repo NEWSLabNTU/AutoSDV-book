@@ -54,7 +54,7 @@ ls install/cuda_ndt_matcher
 ```
 
 If that directory does not exist, colcon skipped the package. See
-[the troubleshooting section](./overview.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent).
+[the troubleshooting section](./recommended.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent).
 
 ## 4. Does a system actually come up?
 
@@ -111,7 +111,7 @@ arguments.
 
 ## If something failed
 
-The [troubleshooting section](./overview.md#troubleshooting) of the installation
+The [troubleshooting section](./recommended.md#troubleshooting) of the installation
 page covers the failures that have actual causes worth naming — a silently
 skipped Rust package, kernel socket buffers too small for any node to start, a
 loopback interface that lost multicast across a reboot, and models that

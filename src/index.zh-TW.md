@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: index.md
-- Last synced: 2026-01-15
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -57,6 +57,8 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
    能證明多少事情排序
 3. **[開始教學](tutorial/00-what-you-will-build.md)** —— 在模擬中駕駛兩次，
    並理解每一種各自教你什麼
+4. **[然後讀基本概念](concepts/environment.md)** —— 環境、啟動檔與 Autoware
+   管線，對照你剛剛跑過的那些檔案來讀
 
 ### 組裝並駕駛一台車
 
@@ -69,8 +71,9 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
 
 ## 探索更多
 
-- [**基本概念**](concepts/environment.md) —— 環境、啟動檔，以及本專案與原生
-  Autoware 安裝的差異
+- [**基本概念**](concepts/environment.md) —— 環境、啟動檔與 Autoware 管線，
+  對照你手上已有的檔案來解釋。刻意排在教學**之後**：每一頁都要你打開某個路徑或
+  執行某道指令，那需要一份原始碼，而不是想像力
 - [**平台型號**](platform-models.md) —— 硬體配置與組裝變體
 - [**定位方法**](guides/localization-methods.md) —— `pose_source` 在選擇什麼
 - [**感測器整合**](guides/sensor-integration/using-sensors.md) —— 設定 LiDAR、

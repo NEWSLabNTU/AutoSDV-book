@@ -49,6 +49,8 @@ simulation runs without sensors, without a GPU and without a rosbag.
    order of what they prove
 3. **[Start the tutorial](tutorial/00-what-you-will-build.md)** — drive in
    simulation twice, and understand what each one teaches
+4. **[Then the concepts](concepts/environment.md)** — the environment, launch
+   files and the Autoware pipeline, read against the files you just ran
 
 ### Build and drive a vehicle
 
@@ -64,7 +66,9 @@ simulation runs without sensors, without a GPU and without a rosbag.
 ## Explore
 
 - [**Concepts**](concepts/environment.md) — the environment, launch files, and
-  what makes this project different from a stock Autoware install
+  the Autoware pipeline, explained against files you now have. Deliberately
+  *after* the tutorial: each page asks you to open a path or run a command, which
+  needs a checkout rather than an imagination
 - [**Platform Models**](platform-models.md) — hardware configurations and build
   variants
 - [**Localization Methods**](guides/localization-methods.md) — what

@@ -33,7 +33,7 @@ CUDA 加速的 NDT 掃描匹配。比 CPU 匹配器快 1.3–1.6 倍，在 Jetso
 
 它以 Rust 撰寫。若建置時缺少 Rust 工具鏈或 `colcon-cargo-ros2`，colcon 會
 **靜默地**略過該套件，這個姿態來源便無物可啟動——參閱
-[安裝疑難排解](../getting-started/installation/overview.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent)。
+[安裝疑難排解](../getting-started/installation/recommended.md#建置成功但少了-cuda_ndt_matcher)。
 
 它也必須以 release 模式建置。`just build` 之所以傳入 `--cargo-args --release`
 正是為此；少了它，匹配器每個掃描約需 80 毫秒而非 5 毫秒。

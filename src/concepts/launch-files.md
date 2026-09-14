@@ -6,6 +6,15 @@ going to change how AutoSDV runs, you will do it by passing a launch argument or
 by editing a launch file — so it is worth twenty minutes to understand how they
 work.
 
+**Read this with the files open.** You already ran two of them in the tutorial;
+they are in your checkout, and every example below names a real path:
+
+```bash
+cd ~/AutoSDV
+$EDITOR src/launcher/autosdv_launch/launch/autosdv.launch.yaml
+ls src/launcher/autosdv_launch/config/perception/preset/
+```
+
 This page covers what AutoSDV actually uses. For the full launch system, see the
 [ROS 2 launch documentation](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html).
 

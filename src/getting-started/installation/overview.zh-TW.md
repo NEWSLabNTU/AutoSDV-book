@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: overview.md
-- Last synced: 2026-03-29
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -28,27 +28,18 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 的意義所在，也是套件相依性被解析的地方——而不是在建置時。之後若出現
 「package not found」，請先讀那一頁。
 
-## 系統需求
+## 你要把它裝在什麼機器上
 
-請選擇以下其中一個平台：
-
-1. **NVIDIA Jetson AGX Orin 64GB**——車輛本身，接著各種感測器。見
+1. **一台 Ubuntu 22.04 筆電或桌機**——用於模擬與開發。有 GPU 有幫助，但
+   **不是必要**；兩種模擬沒有 GPU 也能跑。請保留 **20 GB** 可用空間。核心數、
+   記憶體、建置尖峰，以及 GPU 買到什麼、買不到什麼，實測數字在下一頁
+   [你需要什麼樣的機器](../requirements.md)。
+2. **NVIDIA Jetson AGX Orin 64GB**——車輛本身，接著各種感測器。見
    [硬體設定](../hardware-assembly.md)。
-2. **一台 Ubuntu 22.04 筆電或桌機**——用於模擬與開發。有 GPU 有幫助，但
-   **不是必要**；兩種模擬沒有 GPU 也能跑。
 3. **Docker 環境**（未維護）
 
 Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humble 上，而 Humble
 沒有 24.04 的套件。
-
-### 儲存空間
-
-在筆電上全部加起來約 **11 GB**——Autoware 4.8 GB、專案 1 GB、建置好的工作空間
-0.9 GB，再加上只有日誌模擬才需要的 2.8 GB rosbag。請保留 **20 GB** 可用空間，因為
-rosbag 的壓縮檔與解開後的副本會並存一段時間。
-
-[你需要什麼樣的機器](../requirements.md)有實測數字：記憶體、核心數、建置尖峰，
-以及 GPU 買到什麼、買不到什麼。
 
 ## 安裝方法
 

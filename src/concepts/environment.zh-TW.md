@@ -1,14 +1,18 @@
 <!--
 Translation Metadata:
 - Source file: environment.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
 
 # 環境與相依套件的來源
 
-請在第一次看到「package not found」之前讀這一頁。
+**這一頁假設你已經有了原始碼，並且跑過教學。** 它提到的每個路徑現在都在你的硬碟
+上，所以請在 `~/AutoSDV` 開一個終端機邊讀邊執行——「相信」相依套件從哪裡來，和
+「看到」它從哪裡來，差別就在這裡。
+
+請在第一次看到「package not found」之前——或之後立刻——讀這一頁。
 
 AutoSDV 早期幾乎每一個失敗都源自同一個錯誤：某個終端機沒有被告知 ROS 2、
 Autoware 與 AutoSDV 工作空間在哪裡。這個錯誤之所以容易犯，是因為本專案同時附了

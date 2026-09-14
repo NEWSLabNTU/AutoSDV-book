@@ -57,7 +57,7 @@ ls install/cuda_ndt_matcher
 ```
 
 如果該目錄不存在，表示 colcon 略過了該套件。參閱
-[疑難排解章節](./overview.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent)。
+[疑難排解章節](./recommended.md#建置成功但少了-cuda_ndt_matcher)。
 
 ## 4. 系統真的起得來嗎？
 
@@ -111,6 +111,6 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 
 ## 如果有東西失敗了
 
-安裝頁的[疑難排解章節](./overview.md#troubleshooting)涵蓋了那些有明確成因、
+安裝頁的[疑難排解章節](./recommended.md#疑難排解)涵蓋了那些有明確成因、
 值得指名的失敗——被靜默略過的 Rust 套件、小到任何節點都無法啟動的核心 socket
 緩衝區、重開機後失去多播的 loopback 介面，以及每次啟動都重新編譯的模型。

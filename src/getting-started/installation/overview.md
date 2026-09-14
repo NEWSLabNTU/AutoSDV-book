@@ -23,29 +23,19 @@ top. That shape is what the two `source` lines in
 package dependencies are resolved — not by the build. Read that page if
 anything later says "package not found".
 
-## System Requirements
+## What you install it on
 
-Choose one of the following platforms:
-
-1. **NVIDIA Jetson AGX Orin 64GB** — the vehicle itself, with the sensors
-   attached. See [Hardware Setup](../hardware-assembly.md).
-2. **An Ubuntu 22.04 laptop or desktop** — for the simulations and for
+1. **An Ubuntu 22.04 laptop or desktop** — for the simulations and for
    development. A GPU is useful and **not required**; both simulations run
-   without one.
+   without one. Keep **20 GB** free. Measured figures — cores, memory, the build
+   peak, what a GPU does and does not buy — are in
+   [What Machine You Need](../requirements.md), the next page.
+2. **NVIDIA Jetson AGX Orin 64GB** — the vehicle itself, with the sensors
+   attached. See [Hardware Setup](../hardware-assembly.md).
 3. **Docker Environment** (unmaintained)
 
 Ubuntu 22.04 is the one requirement with no alternative: AutoSDV is built on
 ROS 2 Humble, which is not packaged for 24.04.
-
-### Storage
-
-About **11 GB** all told on a laptop — 4.8 GB of Autoware, 1 GB of repository,
-0.9 GB of built workspace, and a 2.8 GB rosbag that only the logging simulation
-needs. Keep **20 GB** free, because the rosbag's download and its unpacked copy
-coexist for a while.
-
-[What Machine You Need](../requirements.md) has the measured figures: memory,
-cores, the build peak, and what a GPU does and does not buy.
 
 ## Installation Methods
 

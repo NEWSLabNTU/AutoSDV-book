@@ -15,7 +15,7 @@ Use manual setup if you need:
 
 Before proceeding, understand what `./setup.sh` already installs. The
 authoritative list is the step registry itself — `setup/autosdv_setup/registry.py`
-— and [the installation page](./overview.md#the-steps) reproduces it in full with
+— and [the installation page](./recommended.md#the-steps) reproduces it in full with
 the reason for each step. In summary:
 
 - ROS 2 Humble (`ros-humble-desktop`) and the development tools (colcon, rosdep,
@@ -40,7 +40,7 @@ The manual steps below provide alternatives or additions to this automated setup
 
 ## Prerequisites
 
-1. **Operating system prepared** (see [System requirements](./overview.md#system-requirements))
+1. **Operating system prepared** (see [What you install it on](./overview.md#what-you-install-it-on))
 2. **ZED SDK installed** if using a ZED camera (see [ZED SDK Installation](./zed-sdk.md))
 
 ## Building Autoware from Source

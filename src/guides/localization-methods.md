@@ -29,7 +29,7 @@ NDT.
 It is written in Rust. If the Rust toolchain or `colcon-cargo-ros2` was missing
 at build time, colcon skips the package **silently** and this pose source has
 nothing to launch — see
-[the installation troubleshooting](../getting-started/installation/overview.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent).
+[the installation troubleshooting](../getting-started/installation/recommended.md#the-build-succeeds-but-cuda_ndt_matcher-is-absent).
 
 It must also be built in release mode. `just build` passes `--cargo-args
 --release` for exactly this reason; without it the matcher runs at roughly 80 ms

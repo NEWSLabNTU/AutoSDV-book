@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: launch-files.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -11,6 +11,15 @@ Translation Metadata:
 AutoSDV 中幾乎所有東西都是啟動檔。整個駕駛系統是一個；每個感測器驅動程式、每個
 組件群組、每個預設組態也都是。如果你要改變 AutoSDV 的執行方式，你會透過傳入啟動
 參數或編輯啟動檔來做——所以花二十分鐘理解它們的運作方式是值得的。
+
+**請打開檔案邊讀。** 教學裡你已經跑過其中兩個；它們就在你的原始碼裡，下面每個
+例子指的都是真實路徑：
+
+```bash
+cd ~/AutoSDV
+$EDITOR src/launcher/autosdv_launch/launch/autosdv.launch.yaml
+ls src/launcher/autosdv_launch/config/perception/preset/
+```
 
 本頁只涵蓋 AutoSDV 實際用到的部分。完整的啟動系統請參閱
 [ROS 2 launch 文件](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html)。

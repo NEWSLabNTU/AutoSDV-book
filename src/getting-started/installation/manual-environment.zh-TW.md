@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: manual-environment.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -22,7 +22,7 @@ Translation Metadata:
 ## 自動設定所做的事情
 
 在繼續之前，請了解 `./setup.sh` 已安裝的內容。權威的清單是步驟註冊表本身
-——`setup/autosdv_setup/registry.py`——而[安裝頁面](./overview.md#the-steps)
+——`setup/autosdv_setup/registry.py`——而[安裝頁面](./recommended.md#各個步驟)
 完整重現了它，並說明每個步驟存在的理由。摘要如下：
 
 - ROS 2 Humble (`ros-humble-desktop`) 與開發工具 (colcon、rosdep、vcstool)
@@ -44,7 +44,7 @@ TensorRT 引擎預先編譯，以及 TurboVNC/VirtualGL。
 
 ## 先決條件
 
-1. **作業系統已準備好**（參閱[系統需求](./overview.md#system-requirements)）
+1. **作業系統已準備好**（參閱[你要把它裝在什麼機器上](./overview.md#你要把它裝在什麼機器上)）
 2. **已安裝 ZED SDK**（如果使用 ZED 相機，參閱 [ZED SDK 安裝](./zed-sdk.md)）
 
 ## 從原始碼建置 Autoware

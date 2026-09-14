@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: autoware-conventions.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -10,6 +10,13 @@ Translation Metadata:
 
 Autoware 是以一條組件管線組織起來的，而**它的主題名稱依循那個組織方式**。一旦你
 看出這一點，`ros2 topic list` 的輸出就不再是一堵字串牆，而變成一張系統的地圖。
+
+**邊讀邊讓系統跑著。** 教學裡的路徑規劃模擬就夠了，一道指令而已：
+
+```bash
+just sim planning          # 然後在另一個已 source 環境的終端機：
+ros2 topic list | sort     # 下面那條管線，以名稱的形式呈現
+```
 
 ## 管線
 

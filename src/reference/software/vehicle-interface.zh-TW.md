@@ -33,7 +33,7 @@ play_launch launch autosdv_vehicle_launch vehicle_interface.launch.xml
 ```
 
 `play_launch` 是本專案用來取代 `ros2 launch` 的啟動協調器；參閱
-[操作車輛](../../getting-started/usage.md#why-play_launch-and-not-ros2-launch)。
+[操作車輛](../../getting-started/usage.md#為什麼用-play_launch-而不是-ros2-launch)。
 
 一般情況下這個介面會作為整個系統的一部分啟動，並以 `launch_vehicle:=false`
 關閉，而不是單獨啟動。

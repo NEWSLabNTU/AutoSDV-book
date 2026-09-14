@@ -4,6 +4,14 @@ Autoware is organised as a pipeline of components, and **its topic names follow
 that organisation**. Once you see that, the output of `ros2 topic list` stops
 being a wall of strings and becomes a map of the system.
 
+**Have a system running while you read.** The planning simulation from the
+tutorial is enough, and it costs one command:
+
+```bash
+just sim planning          # then, in a second terminal with the environment sourced:
+ros2 topic list | sort     # the pipeline below, as names
+```
+
 ## The pipeline
 
 ```mermaid

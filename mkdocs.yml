@@ -105,6 +105,7 @@ plugins:
           build: true
           nav_translations:
             Get Started: 快速入門
+            The Vehicle: 車輛
             Concepts: 基本概念
             The Environment: 環境與相依套件
             Launch Files: 啟動檔
@@ -177,6 +178,11 @@ markdown_extensions:
   - toc:
       permalink: "#"
       toc_depth: 3
+      # Unicode-preserving slugs. Without this every Chinese heading becomes an
+      # anonymous `_2`, `_3`, ... which cannot be linked to on purpose and
+      # renumbers whenever a heading is added above it -- so the zh-TW pages
+      # carried in-page links that had never resolved.
+      slugify: !!python/name:pymdownx.slugs.uslugify
 
   # Code highlighting
   - codehilite:
@@ -228,23 +234,14 @@ markdown_extensions:
 nav:
   - Get Started:
     - index.md
-    - Vehicle Build Variants: platform-models.md
-    - Concepts:
-      - The Environment: concepts/environment.md
-      - Launch Files: concepts/launch-files.md
-      - Inspecting a Running System: concepts/inspecting.md
-      - The Autoware Pipeline: concepts/autoware-conventions.md
-      - Glossary: concepts/glossary.md
-    - What Machine You Need: getting-started/requirements.md
-    - Hardware Setup: getting-started/hardware-assembly.md
     - Software Installation:
       - Overview: getting-started/installation/overview.md
+      - What Machine You Need: getting-started/requirements.md
       - Recommended Installation: getting-started/installation/recommended.md
       - Verifying the Installation: getting-started/installation/verify.md
+      - ZED SDK Installation: getting-started/installation/zed-sdk.md
       - Manual Environment Setup (Optional): getting-started/installation/manual-environment.md
       - Docker Setup (Unmaintained): getting-started/installation/docker.md
-      - ZED SDK Installation: getting-started/installation/zed-sdk.md
-    - Operating the Vehicle: getting-started/usage.md
   - Tutorial:
     - What You Will Build: tutorial/00-what-you-will-build.md
     - 1. First Run: tutorial/01-first-run.md
@@ -253,6 +250,16 @@ nav:
     - 4. Behind the Recipe: tutorial/04-behind-the-recipe.md
     - 5. The Map and the Rosbag: tutorial/05-map-and-rosbag.md
     - 6. play_launch: tutorial/06-play-launch.md
+  - Concepts:
+    - The Environment: concepts/environment.md
+    - Launch Files: concepts/launch-files.md
+    - Inspecting a Running System: concepts/inspecting.md
+    - The Autoware Pipeline: concepts/autoware-conventions.md
+    - Glossary: concepts/glossary.md
+  - The Vehicle:
+    - Vehicle Build Variants: platform-models.md
+    - Hardware Setup: getting-started/hardware-assembly.md
+    - Operating the Vehicle: getting-started/usage.md
   - Simulation:
     - COSS Park Scenario: simulation/coss-park-scenario.md
     - Datasets and Rosbags: simulation/datasets.md

@@ -1,10 +1,15 @@
 # What Machine You Need
 
-For running AutoSDV on a laptop or desktop: the two simulations, and developing
-against them. **This is not the vehicle's computer.** The car runs a Jetson AGX
-Orin with LiDAR, camera, GNSS and the vehicle interface attached, and its
-numbers are dominated by sensor traffic that a simulation never generates — see
-[Hardware Setup](./hardware-assembly.md) for that machine.
+**Read this first if you are installing on your own laptop or desktop** — it is
+the prerequisite for [Recommended Installation](./installation/recommended.md),
+and the answer is probably "the machine you already have": both simulations run
+on four cores, 8 GB and no GPU at all.
+
+**This is not the vehicle's computer.** The car runs a Jetson AGX Orin with
+LiDAR, camera, GNSS and the vehicle interface attached, and its numbers are
+dominated by sensor traffic that a simulation never generates. That machine is
+described under [The Vehicle](../platform-models.md) →
+[Hardware Setup](./hardware-assembly.md); nothing on this page constrains it.
 
 Everything below was measured, on one desktop, with the method named under each
 table. Treat it as a floor to design a purchase around, not a guarantee.

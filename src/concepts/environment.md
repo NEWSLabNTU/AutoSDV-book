@@ -1,6 +1,12 @@
 # The Environment, and Where Dependencies Come From
 
-Read this before the first time something says "package not found".
+**This page assumes you have a checkout and have run the tutorial.** Every path
+it names exists on your disk now, so read it with a terminal open in `~/AutoSDV`
+and run the commands as you go — that is the difference between believing where
+dependencies come from and seeing it.
+
+Read it before, or immediately after, the first time something says "package not
+found".
 
 Almost every early failure in AutoSDV is one mistake: a terminal that has not
 been told where ROS 2, Autoware and the AutoSDV workspace live. The mistake is
