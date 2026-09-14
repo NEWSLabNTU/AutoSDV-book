@@ -3313,7 +3313,7 @@
 </span></code></pre></div>
 <h3 id="rtk">啟用 RTK<a class="headerlink" href="#rtk" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Launch with NTRIP corrections</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"gnss_receiver:=ublox use_ntrip:=true"</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"gnss_receiver:=ublox use_ntrip:=true"</span>
 </span></code></pre></div>
 <h3 id="rtk_1">監控 RTK 狀態<a class="headerlink" href="#rtk_1" title="Permanent link">#</a></h3>
 <p><strong>檢查 RTCM 修正</strong>：
@@ -3405,14 +3405,14 @@
 <h2 id="gnss_1">室內操作（無 GNSS）<a class="headerlink" href="#gnss_1" title="Permanent link">#</a></h2>
 <p>對於無衛星訊號的室內環境：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Disable GNSS, use NDT localization only</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"use_gnss:=false"</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"use_gnss:=false"</span>
 </span></code></pre></div>
 <p>使用 RViz「2D Pose Estimate」工具手動設定初始位置。</p>
 <h2 id="_8">快速參考<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Launch commands</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"gnss_receiver:=ublox use_ntrip:=true"</span><span class="w">   </span><span class="c1"># u-blox RTK</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"gnss_receiver:=garmin"</span><span class="w">                  </span><span class="c1"># Garmin</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"use_gnss:=false"</span><span class="w">                        </span><span class="c1"># Indoor (no GNSS)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"gnss_receiver:=ublox use_ntrip:=true"</span><span class="w">   </span><span class="c1"># u-blox RTK</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"gnss_receiver:=garmin"</span><span class="w">                  </span><span class="c1"># Garmin</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"use_gnss:=false"</span><span class="w">                        </span><span class="c1"># Indoor (no GNSS)</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># u-blox verification</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ublox-gps

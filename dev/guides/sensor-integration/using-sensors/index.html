@@ -3233,13 +3233,13 @@
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">#</a></h2>
 <h3 id="launch-with-sensor-suite">Launch with Sensor Suite<a class="headerlink" href="#launch-with-sensor-suite" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Launch with Robin-W LiDAR + ZED camera (recommended)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=robin_zed"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"sensor_suite:=robin_zed"</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Launch with Velodyne LiDAR + ZED camera</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=vlp32c_zed"</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"sensor_suite:=vlp32c_zed"</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Launch with Blickfeld LiDAR + ZED camera</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=cube1_zed"</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"sensor_suite:=cube1_zed"</span>
 </span></code></pre></div>
 <h3 id="verify-sensors-are-working">Verify Sensors are Working<a class="headerlink" href="#verify-sensors-are-working" title="Permanent link">#</a></h3>
 <p>After launching, check that sensors are publishing data:</p>
@@ -3271,22 +3271,22 @@
 <h3 id="outdoor-with-rtk-gps">Outdoor with RTK GPS<a class="headerlink" href="#outdoor-with-rtk-gps" title="Permanent link">#</a></h3>
 <p>For high-precision outdoor localization with RTK corrections:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Enable NTRIP for RTK positioning</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=robin_zed use_ntrip:=true"</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"sensor_suite:=robin_zed use_ntrip:=true"</span>
 </span></code></pre></div>
 <p>This connects to the e-GNSS Taiwan VRS for ~2cm accuracy GPS.</p>
 <h3 id="indoor-no-gps">Indoor (No GPS)<a class="headerlink" href="#indoor-no-gps" title="Permanent link">#</a></h3>
 <p>For indoor operation without GPS signal:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Disable GPS, use NDT localization only</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"sensor_suite:=robin_zed use_gnss:=false"</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"sensor_suite:=robin_zed use_gnss:=false"</span>
 </span></code></pre></div>
 <p>You'll need to manually set the initial pose in RViz using "2D Pose Estimate" tool.</p>
 <h2 id="custom-sensor-selection">Custom Sensor Selection<a class="headerlink" href="#custom-sensor-selection" title="Permanent link">#</a></h2>
 <p>Instead of using predefined suites, you can select individual sensors:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Custom combination</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Minimal setup (LiDAR only)</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
 </span></code></pre></div>
 <h3 id="available-options">Available Options<a class="headerlink" href="#available-options" title="Permanent link">#</a></h3>
 <p><strong>LiDAR Models:</strong>
