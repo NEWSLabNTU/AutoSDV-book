@@ -3442,10 +3442,11 @@ TensorRT 裝在獨立前綴下，<code>scripts/env.sh</code> 只為 AutoSDV 的�
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Verify CUDA installation</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>nvcc<span class="w"> </span>--version
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>nvidia-smi
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># CUDA should be 12.3 or compatible</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># If not installed, return to Step 1 of the main installation guide</span>
 </span></code></pre></div>
+<p>CUDA 12 是 Autoware 鎖定的版本（<code>versions.yaml</code> 的 <code>nvidia_amd64.cuda</code>），請對齊
+它，而不是對齊某個修訂版號。Jetson 上它來自 JetPack；工作站上來自主機映像或
+NVIDIA 的 apt 套件庫——<code>setup.sh</code> 刻意不安裝 CUDA 工具鏈，因為那會改動
+<code>/usr/local/cuda</code>，影響這台機器上的每一個使用者。</p>
 <h3 id="python-相依套件">Python 相依套件<a class="headerlink" href="#python-%E7%9B%B8%E4%BE%9D%E5%A5%97%E4%BB%B6" title="Permanent link">#</a></h3>
 <p>安裝程式可能會安裝 Python 套件。為避免衝突：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># After installation, verify numpy location</span>

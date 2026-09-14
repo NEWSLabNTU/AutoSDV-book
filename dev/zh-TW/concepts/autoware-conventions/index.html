@@ -3078,8 +3078,8 @@
 <p>Autoware 是以一條組件管線組織起來的，而**它的主題名稱依循那個組織方式**。一旦你
 看出這一點，<code>ros2 topic list</code> 的輸出就不再是一堵字串牆，而變成一張系統的地圖。</p>
 <p><strong>邊讀邊讓系統跑著。</strong> 教學裡的路徑規劃模擬就夠了，一道指令而已：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>sim<span class="w"> </span>planning<span class="w">          </span><span class="c1"># 然後在另一個已 source 環境的終端機：</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w">     </span><span class="c1"># 下面那條管線，以名稱的形式呈現</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>just<span class="w"> </span>coss<span class="w"> </span>planning-sim<span class="w">     </span><span class="c1"># then, in a second terminal with the environment sourced:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w">     </span><span class="c1"># the pipeline below, as names</span>
 </span></code></pre></div>
 <h2 id="管線">管線<a class="headerlink" href="#%E7%AE%A1%E7%B7%9A" title="Permanent link">#</a></h2>
 <pre class="mermaid"><code>flowchart LR

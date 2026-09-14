@@ -3152,13 +3152,22 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>pose_source:<span class="o">=</span>ndt<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>launch_perception:<span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
-<p>這兩個參數就是讓它能在任何機器上跑起來的原因，下一節會說明。</p>
+<p><code>pose_source:=ndt</code> 選的是 CPU 版的掃描匹配器而不是 CUDA 版，
+<code>launch_perception:=false</code> 則讓物件偵測模型不啟動——這兩者加起來，就是它能在任何
+機器上跑起來的原因。下一節會說明為什麼。</p>
+<details class="note">
+<summary><code>just</code> 捷徑</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w">      </span><span class="c1"># 終端機 1：這套系統</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>just<span class="w"> </span>coss<span class="w"> </span>play-rosbag<span class="w">      </span><span class="c1"># 終端機 2：下面那份錄製</span>
+</span></code></pre></div>
+<p>同樣的指令，另外加上網頁介面位址。等你讀完這份教學之後就用它們。</p>
+</details>
 <p>等它起來。點雲地圖有 490 萬個點，需要數十秒載入；掃描匹配器在它載完之前什麼都做不了。
 太早開始播放錄製只是浪費它的開頭。</p>
 <p><strong>終端機 2 —— 資料：</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ros2<span class="w"> </span>bag<span class="w"> </span>play<span class="w"> </span>data/rosbags/outdoor_20251226_153115<span class="w"> </span>--clock
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ros2<span class="w"> </span>bag<span class="w"> </span>play<span class="w"> </span>data/rosbags/outdoor_20251226_153115<span class="w"> </span>--clock
 </span></code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title"><code>--clock</code> 不是選用的</p>
@@ -3166,22 +3175,22 @@
 取自 <code>/clock</code> 主題的模擬時間上。沒有 <code>--clock</code>，就沒有東西發佈那個主題，時鐘
 永遠不會前進，系統就只是坐在那裡什麼都不做——而且沒有任何錯誤。</p>
 <p>這是本頁最常見的失敗。如果什麼都沒發生，先檢查這個：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/clock<span class="w"> </span>--once
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/clock<span class="w"> </span>--once
 </span></code></pre></div>
 </div>
 <details class="note">
 <summary><code>just</code> 捷徑</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w">      </span><span class="c1"># 終端機 1，預設走 CPU 路徑</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>just<span class="w"> </span>coss<span class="w"> </span>play-rosbag<span class="w">      </span><span class="c1"># 終端機 2</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w"> </span>gpu<span class="w">  </span><span class="c1"># 有 GPU 的話，用 cuda_ndt 與感知</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w">      </span><span class="c1"># 終端機 1，預設走 CPU 路徑</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>coss<span class="w"> </span>play-rosbag<span class="w">      </span><span class="c1"># 終端機 2</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w"> </span>gpu<span class="w">  </span><span class="c1"># 有 GPU 的話，用 cuda_ndt 與感知</span>
 </span></code></pre></div>
 </details>
 <h2 id="如果你沒有-nvidia-gpu或者顯卡太新">如果你沒有 NVIDIA GPU——或者顯卡太新<a class="headerlink" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%B2%92%E6%9C%89-nvidia-gpu%E6%88%96%E8%80%85%E9%A1%AF%E5%8D%A1%E5%A4%AA%E6%96%B0" title="Permanent link">#</a></h2>
 <p>預設值假設你有：<code>pose_source:=cuda_ndt</code> 需要 CUDA，而感知會載入 TensorRT 模型。
 兩個參數就能移除這兩個需求：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>pose_source:<span class="o">=</span>ndt<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>launch_perception:<span class="o">=</span><span class="nb">false</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>pose_source:<span class="o">=</span>ndt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>launch_perception:<span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
 <ul>
 <li><code>pose_source:=ndt</code> 選用 Autoware 以 OpenMP 實作的 <strong>CPU</strong> 掃描匹配器。每個掃描
@@ -3197,16 +3206,16 @@
 <p><code>cuda_ndt</code> 在執行期才編譯 kernel，所以機器上的 toolkit 必須認得該 GPU 的架構。
 在 RTX 5090（compute capability 12.0）配 CUDA 12.3 上它不認得，匹配器在第一個
 掃描就掛掉：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>thread 'main' panicked at cubecl-cuda-0.8.1/src/compute/context.rs:161:17:
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[Compilation Error]
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    nvrtc: error: invalid value for --gpu-architecture (-arch)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>thread 'main' panicked at cubecl-cuda-0.8.1/src/compute/context.rs:161:17:
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>[Compilation Error]
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    nvrtc: error: invalid value for --gpu-architecture (-arch)
 </span></code></pre></div>
 <p>兩種情況下 launcher 都回報每個節點就緒，而下游**什麼都沒有**發布——匹配器沒有，
 連 EKF 也沒有——所以症狀是一個啟動得非常漂亮、卻完全沒有定位的 stack。</p>
 <p>重新編譯救不了，因為根本沒有東西是事先編譯的。把工作空間指向夠新的 toolkit 就
 能原樣運作——sm_120 需要 CUDA 12.8：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check<span class="w">                                  </span><span class="c1"># 會說它們合不合</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-12.8<span class="w"> </span>direnv<span class="w"> </span>reload<span class="w">     </span><span class="c1"># 或用 update-alternatives</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check<span class="w">                                  </span><span class="c1"># 會說它們合不合</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-12.8<span class="w"> </span>direnv<span class="w"> </span>reload<span class="w">     </span><span class="c1"># 或用 update-alternatives</span>
 </span></code></pre></div>
 <p><code>.envrc</code> 會依序解析 <code>CUDA_HOME</code>、<code>CUDA_PATH</code>、<code>/usr/local/cuda</code>，並把該
 toolkit 的 <code>lib64</code> 放進 <code>LD_LIBRARY_PATH</code>——那才是決定實際載入哪個 NVRTC 的
@@ -3260,13 +3269,13 @@ Jetson Orin 是 compute capability 8.7，兩種情況都不受影響。</p>
 上——牆對齊牆。如果失敗，點雲會相對地圖滑動，或以固定偏移停在旁邊。那個視覺判斷比
 任何節點自己回報的狀態都可靠。</p>
 <p><strong>在第三個終端機中</strong>，看數字：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/pose_estimator/pose_with_covariance
 </span></code></pre></div>
 <p>預期約 10 Hz，與 LiDAR 相符，因為 NDT 每個掃描跑一次。明顯低於它就表示匹配器跟不上。</p>
 <p>AutoSDV 附了用來分辨「節點在跑」與「定位正常運作」的檢查，這兩者並不是同一個主張：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py
 </span></code></pre></div>
 <h2 id="讀懂結果">讀懂結果<a class="headerlink" href="#%E8%AE%80%E6%87%82%E7%B5%90%E6%9E%9C" title="Permanent link">#</a></h2>
 <p><code>just demo run</code> 印出的量測數據——以及這些腳本產生的——值得理解一次。</p>
@@ -3308,55 +3317,19 @@ Jetson Orin 是 compute capability 8.7，兩種情況都不受影響。</p>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">迭代次數卡在上限，代表根本沒有位姿</p>
-<p><code>config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml</code> 裡的
-<code>max_iterations</code> 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
+<p><code>max_iterations</code> 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
 上限的那一幀當成**未收斂**，把結果丟掉，位姿因此從來沒有發布過：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>The number of iterations has reached its upper limit.
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>The number of iterations: 15, Limit: 15.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>The number of iterations: 30, Limit: 30.
 </span></code></pre></div>
-<p>而整個 stack 看起來仍然定位正常，因為 EKF 只靠輪速與 IMU 就持續發布
-<code>/localization/kinematic_state</code>。關鍵是這一對：
-<code>/localization/pose_estimator/pose_with_covariance</code> 是 <strong>0</strong> 筆，而
-<code>/localization/kinematic_state</code> 有好幾千筆。</p>
-<p>這是真的發生過：AutoSDV 把上限設成 15，而 Autoware 是 30，於是
-<code>pose_source:=ndt</code> 在這份錄製上什麼都沒發布。改回 30 不只正確，而且**更快**
-——匹配器通常四次迭代就收斂，只有最初幾幀需要更多；上限太低時它永遠卡在 15 次
-空轉，從來沒接受過那一幀，而那一幀本來會讓後面全部變簡單。</p>
-<table>
-<thead>
-<tr>
-<th>這份錄製</th>
-<th>上限 15</th>
-<th>上限 30</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>發布的 NDT 位姿</td>
-<td>0</td>
-<td>1402</td>
-</tr>
-<tr>
-<td>迭代次數 p50 / max</td>
-<td>15 / 15</td>
-<td>4 / 17</td>
-</tr>
-<tr>
-<td><code>exe_ms</code> 平均</td>
-<td>12.4</td>
-<td>4.6</td>
-</tr>
-<tr>
-<td>NVTL 平均（門檻 2.2）</td>
-<td>4.59</td>
-<td>4.60</td>
-</tr>
-</tbody>
-</table>
+<p>而整套系統看起來仍然「定位正常」，因為 EKF 仍然只靠輪速里程計與 IMU 持續發布
+<code>/localization/kinematic_state</code>。真正的線索是這一對：
+<code>/localization/pose_estimator/pose_with_covariance</code> 是 0 則訊息，而
+<code>/localization/kinematic_state</code> 有好幾千則。</p>
 </div>
 <p>最有資訊量的分割是 <strong><code>init</code> 與 <code>track</code></strong>：停著的時候匹配容易，因為每個掃描都像上
-一個。一旦車輛移動，同樣的工作大約要花兩倍。實測的一次執行：停著 7.8 毫秒、行駛
-16.7 毫秒、p95 44 毫秒。如果一台機器處於邊緣，它會在那裡失敗——而不是在啟動時。</p>
+一個。一旦車輛移動，同樣的工作大約要花兩倍。如果一台機器處於邊緣，它會在那裡
+失敗——而不是在啟動時。</p>
 <h2 id="疑難排解">疑難排解<a class="headerlink" href="#%E7%96%91%E9%9B%A3%E6%8E%92%E8%A7%A3" title="Permanent link">#</a></h2>
 <p><strong>播放 bag 時什麼都沒發生。</strong> <code>--clock</code>。見上文。</p>
 <p><strong>姿態始終沒出現，或跳到原點。</strong> 沒有設定初始姿態，或設定的位置離真實位置太遠，使
@@ -3364,7 +3337,7 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 <p><strong>點雲在中途漂離地圖。</strong> 匹配失去了。注意 NVTL——在視覺上的漂移變明顯之前，它就已經
 崩落了。</p>
 <p><strong>主題存在但沒有人訂閱。</strong> 比對兩端的 QoS：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>-v<span class="w"> </span>/sensing/lidar/concatenated/pointcloud
 </span></code></pre></div>
 <p><code>RELIABLE</code> 的訂閱者不會從 <code>BEST_EFFORT</code> 的發佈者收到東西。參閱
 <a href="../../concepts/inspecting/">檢視執行中的系統</a>。</p>
@@ -3373,9 +3346,9 @@ NDT 無法收斂。請重新設定，並靠近一些。</p>
 它會在*每一次*啟動時發生。</p>
 <h2 id="比較各種定位方法">比較各種定位方法<a class="headerlink" href="#%E6%AF%94%E8%BC%83%E5%90%84%E7%A8%AE%E5%AE%9A%E4%BD%8D%E6%96%B9%E6%B3%95" title="Permanent link">#</a></h2>
 <p>回放是比較它們的正確場合，因為每次執行的輸入逐位元組完全相同：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>cuda_ndt
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>ndt
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span>pose_source:<span class="o">=</span>mcl
 </span></code></pre></div>
 <p><code>mcl</code> 需要的是佔據網格而非點雲地圖，以及 2D <code>LaserScan</code> 而非 3D 點雲。參閱
 <a href="../../guides/localization-methods/">定位方法</a>。</p>

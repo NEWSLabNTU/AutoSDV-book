@@ -772,10 +772,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-does-the-environment-activate" class="md-nav__link">
+  <a href="#2-is-autoware-where-it-should-be" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Does the environment activate?
+        2. Is Autoware where it should be?
       
     </span>
   </a>
@@ -783,10 +783,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-does-the-workspace-build" class="md-nav__link">
+  <a href="#3-can-ros-see-the-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Does the workspace build?
+        3. Can ROS see the packages?
       
     </span>
   </a>
@@ -794,49 +794,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-does-a-system-actually-come-up" class="md-nav__link">
+  <a href="#4-did-the-rust-package-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Does a system actually come up?
+        4. Did the Rust package build?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="4. Does a system actually come up?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-planning-simulation--no-sensors-no-gpu-no-map-download" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The planning simulation — no sensors, no GPU, no map download
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-logging-simulation--the-full-pipeline-on-recorded-sensor-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The logging simulation — the full pipeline, on recorded sensor data
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-checklist" class="md-nav__link">
+  <a href="#then-run-something" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A checklist
+        Then run something
       
     </span>
   </a>
@@ -2916,10 +2888,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-does-the-environment-activate" class="md-nav__link">
+  <a href="#2-is-autoware-where-it-should-be" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Does the environment activate?
+        2. Is Autoware where it should be?
       
     </span>
   </a>
@@ -2927,10 +2899,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-does-the-workspace-build" class="md-nav__link">
+  <a href="#3-can-ros-see-the-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Does the workspace build?
+        3. Can ROS see the packages?
       
     </span>
   </a>
@@ -2938,49 +2910,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-does-a-system-actually-come-up" class="md-nav__link">
+  <a href="#4-did-the-rust-package-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Does a system actually come up?
+        4. Did the Rust package build?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="4. Does a system actually come up?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-planning-simulation--no-sensors-no-gpu-no-map-download" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The planning simulation — no sensors, no GPU, no map download
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-logging-simulation--the-full-pipeline-on-recorded-sensor-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The logging simulation — the full pipeline, on recorded sensor data
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-checklist" class="md-nav__link">
+  <a href="#then-run-something" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A checklist
+        Then run something
       
     </span>
   </a>
@@ -3098,84 +3042,55 @@
 
 
 <div><h1 id="verifying-the-installation">Verifying the Installation<a class="headerlink" href="#verifying-the-installation" title="Permanent link">#</a></h1>
-<p>Four checks, in order of how much they prove. Run them after
-<a href="../overview/">Software Installation</a>. Each one tells you something the
-previous one could not.</p>
+<p>Four quick checks that the software is on disk and visible to ROS. None of them
+starts a vehicle stack — that is what
+<a href="../../../tutorial/00-what-you-will-build/">the tutorial</a> is for, and it is the
+real proof.</p>
 <h2 id="1-what-does-setup-think-is-installed">1. What does setup think is installed?<a class="headerlink" href="#1-what-does-setup-think-is-installed" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./setup.sh<span class="w"> </span>--status
 </span></code></pre></div>
-<p>Every step is listed with its state. Remember that this command <strong>reads the
-machine</strong> where it can, so its answer can differ from what you remember running
-— and where they differ, it is usually right.</p>
-<p>What matters here is that nothing you selected reports as missing. A step you
-deliberately skipped (<code>zed-sdk</code> without a ZED camera, say) reporting as not
-installed is the correct result, not a failure.</p>
-<h2 id="2-does-the-environment-activate">2. Does the environment activate?<a class="headerlink" href="#2-does-the-environment-activate" title="Permanent link">#</a></h2>
-<p>Open a <strong>new</strong> shell and enter the repository:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>--help
+<p>Nothing you selected should report as missing. A step you skipped on purpose —
+<code>zed-sdk</code> with no ZED camera — reporting as not installed is the correct result.</p>
+<p>This command reads the machine where it can, so its answer can differ from what
+you remember running. Where they differ, it is usually right.</p>
+<h2 id="2-is-autoware-where-it-should-be">2. Is Autoware where it should be?<a class="headerlink" href="#2-is-autoware-where-it-should-be" title="Permanent link">#</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w">      </span><span class="c1"># the environment script</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ls<span class="w"> </span>data/autoware_data<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w">           </span><span class="c1"># the writable model tree</span>
 </span></code></pre></div>
-<p>If <code>ros2</code> is not found, direnv is not hooked into your shell, or you have not
-run <code>direnv allow</code>. Source the environment by hand to confirm that is the only
-problem:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ros2<span class="w"> </span>--help
+<p>Both must exist. The second is a farm of symlinks the setup program creates; if
+it is missing, perception rebuilds its models on every launch.</p>
+<h2 id="3-can-ros-see-the-packages">3. Can ROS see the packages?<a class="headerlink" href="#3-can-ros-see-the-packages" title="Permanent link">#</a></h2>
+<p>Source the environment, then ask ROS what it has:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w">  </span><span class="c1"># includes ROS 2</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash<span class="w">              </span><span class="c1"># the workspace you just built</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w">                  </span><span class="c1"># hundreds, not zero</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>autosdv<span class="w">           </span><span class="c1"># this project's packages</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>prefix<span class="w"> </span>autoware_launch<span class="w">        </span><span class="c1"># Autoware, from the Debian install</span>
 </span></code></pre></div>
-<h2 id="3-does-the-workspace-build">3. Does the workspace build?<a class="headerlink" href="#3-does-the-workspace-build" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>just<span class="w"> </span>build
+<p><code>grep autosdv</code> should name the launcher, the sensor kit and the vehicle
+packages. If <code>ros2</code> itself is not found, the environment is not sourced — which
+is the whole subject of <a href="../../../concepts/environment/">The Environment</a>.</p>
+<h2 id="4-did-the-rust-package-build">4. Did the Rust package build?<a class="headerlink" href="#4-did-the-rust-package-build" title="Permanent link">#</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>install/cuda_ndt_matcher
 </span></code></pre></div>
-<p>Expected: colcon finishes with a <code>Summary:</code> line and no failed packages.
-Warnings on stderr are normal — several vendored packages produce them.</p>
-<p>Confirm the Rust package in particular, because it is the one that fails
-quietly:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ls<span class="w"> </span>install/cuda_ndt_matcher
-</span></code></pre></div>
-<p>If that directory does not exist, colcon skipped the package. See
+<p>Worth its own check because it is the one that fails quietly: without the Rust
+toolchain or the colcon plugin, colcon skips it and the build still reports
+success. See
 <a href="../recommended/#the-build-succeeds-but-cuda_ndt_matcher-is-absent">the troubleshooting section</a>.</p>
-<h2 id="4-does-a-system-actually-come-up">4. Does a system actually come up?<a class="headerlink" href="#4-does-a-system-actually-come-up" title="Permanent link">#</a></h2>
-<p>This is the check that matters. Two simulations, in increasing order of what
-they exercise.</p>
-<h3 id="the-planning-simulation--no-sensors-no-gpu-no-map-download">The planning simulation — no sensors, no GPU, no map download<a class="headerlink" href="#the-planning-simulation--no-sensors-no-gpu-no-map-download" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autoware_launch<span class="w"> </span>planning_simulator.launch.xml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>map_path:<span class="o">=</span><span class="nv">$PWD</span>/data/COSS-map-planning<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>vehicle_model:<span class="o">=</span>autosdv_vehicle<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>sensor_model:<span class="o">=</span>autosdv_sensor_kit
+<h2 id="then-run-something">Then run something<a class="headerlink" href="#then-run-something" title="Permanent link">#</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
 </span></code></pre></div>
-<p>RViz opens with the COSS Park map. Set an initial pose, set a goal, and the
-vehicle plans a route and drives it. If that works, your ROS 2 installation,
-your Autoware installation, your build and the AutoSDV vehicle model are all
-sound.</p>
-<p>Full walkthrough: <a href="../../../tutorial/02-planning-simulation/">Planning Simulation</a>.</p>
-<h3 id="the-logging-simulation--the-full-pipeline-on-recorded-sensor-data">The logging simulation — the full pipeline, on recorded sensor data<a class="headerlink" href="#the-logging-simulation--the-full-pipeline-on-recorded-sensor-data" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>just<span class="w"> </span>coss<span class="w"> </span>download-rosbag<span class="w">          </span><span class="c1"># ~2.8 GB, once</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml
-</span></code></pre></div>
-<p>and in a second terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>bag<span class="w"> </span>play<span class="w"> </span>data/rosbags/outdoor_20251226_153115<span class="w"> </span>--clock
-</span></code></pre></div>
-<p>This exercises localization and perception, which the planning simulation does
-not. It is also the first check that needs a GPU under the default settings —
-see <a href="../../../tutorial/03-logging-simulation/">Logging Simulation</a> for the CPU-only
-arguments.</p>
-<h2 id="a-checklist">A checklist<a class="headerlink" href="#a-checklist" title="Permanent link">#</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>./setup.sh --status</code> shows nothing missing that you selected</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>ros2 --help</code> works in a fresh shell inside the repository</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>just build</code> completes with no failed packages</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>install/cuda_ndt_matcher</code> exists</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> the planning simulation opens RViz and drives to a goal</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> the logging simulation localizes against the recorded bag</li>
-</ul>
+<p>Reports the rosbag, the map, the build, <code>play_launch</code>, the CUDA toolkit against
+your GPU, and whether a display is available.</p>
+<p>After that, go to <a href="../../../tutorial/00-what-you-will-build/">the tutorial</a>. It
+starts the planning simulation — no sensors, no GPU, no downloads — and if that
+drives to a goal, every layer underneath it is sound.</p>
 <h2 id="if-something-failed">If something failed<a class="headerlink" href="#if-something-failed" title="Permanent link">#</a></h2>
-<p>The <a href="../recommended/#troubleshooting">troubleshooting section</a> of the installation
-page covers the failures that have actual causes worth naming — a silently
-skipped Rust package, kernel socket buffers too small for any node to start, a
-loopback interface that lost multicast across a reboot, and models that
-recompile on every launch.</p></div>
+<p><a href="../recommended/#troubleshooting">Troubleshooting</a> on the installation page
+covers the failures with causes worth naming: a silently skipped Rust package,
+kernel socket buffers too small for any node to start, a loopback interface that
+lost multicast across a reboot, and models that recompile on every launch.</p></div>
 
 
 

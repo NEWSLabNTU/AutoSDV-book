@@ -733,10 +733,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-each-number-came-from" class="md-nav__link">
+  <a href="#disk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What each number came from
+        Disk
       
     </span>
   </a>
@@ -744,26 +744,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-itemised" class="md-nav__link">
+  <a href="#the-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disk, itemised
+        The GPU
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-gpu-in-detail" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The GPU, in detail
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The GPU, in detail">
+    <nav class="md-nav" aria-label="The GPU">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2939,10 +2928,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-each-number-came-from" class="md-nav__link">
+  <a href="#disk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What each number came from
+        Disk
       
     </span>
   </a>
@@ -2950,26 +2939,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-itemised" class="md-nav__link">
+  <a href="#the-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disk, itemised
+        The GPU
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-gpu-in-detail" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The GPU, in detail
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The GPU, in detail">
+    <nav class="md-nav" aria-label="The GPU">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3166,128 +3144,20 @@ GPU path and for perception.</p>
 packaged for 24.04. This is the one row with no flexibility: not a newer Ubuntu,
 not Debian, not WSL as a first choice. A virtual machine works for the
 simulations if it gets enough cores and RAM, but it will not get the GPU.</p>
-<h2 id="what-each-number-came-from">What each number came from<a class="headerlink" href="#what-each-number-came-from" title="Permanent link">#</a></h2>
-<p>Measured on: Ubuntu 22.04, Intel Core Ultra 7 270K Plus (24 cores), 125 GB RAM,
-RTX 5090, with <code>scripts/profiling/host_resource_sampler.py</code>. Memory is reported
-as the machine's own usage over an idle baseline, which is what a smaller
-machine has to find. CPU is reported in whole cores, because that is the figure
-that transfers to a machine with a different core count.</p>
-<table>
-<thead>
-<tr>
-<th>Workload</th>
-<th>Peak RAM</th>
-<th>CPU at startup</th>
-<th>CPU in steady state</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>just build</code>, clean workspace</td>
-<td><strong>11.3 GiB</strong></td>
-<td>every core available</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Planning simulation</td>
-<td><strong>2.5 GiB</strong></td>
-<td>19 cores, briefly</td>
-<td>~2 cores</td>
-</tr>
-<tr>
-<td>Logging simulation, CPU path</td>
-<td><strong>3.4 GiB</strong></td>
-<td>21 cores, briefly</td>
-<td>~3 cores</td>
-</tr>
-<tr>
-<td>Logging simulation, GPU path</td>
-<td>3.4 GiB + ~1 GiB VRAM</td>
-<td>same</td>
-<td>~3 cores</td>
-</tr>
-<tr>
-<td>RViz, added to any of them</td>
-<td>~1.4 GiB</td>
-<td>—</td>
-<td>~1 core</td>
-</tr>
-</tbody>
-</table>
-<p>Three of those numbers deserve a sentence each.</p>
-<p><strong>The build peak is the largest, and it is adjustable.</strong> 11.3 GiB is what colcon
-reached compiling 31 packages with 24 jobs in parallel; the trace spends about
-twelve seconds there and then falls away. The peak scales with how many
-compilers run at once, so a 4-core laptop reaches roughly a quarter of it
-without being asked. If a machine is short of memory, cap it explicitly rather
-than discovering the OOM killer:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--base-paths<span class="w"> </span>src<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>--parallel-workers<span class="w"> </span><span class="m">2</span>
-</span></code></pre></div>
-<p><strong>"CPU at startup" is a burst, not a requirement.</strong> Launching a stack starts
-thirty-odd nodes at once, and they will use every core present — 21 of 24 here.
-On four cores the same work simply takes longer; nothing fails. What a machine
-has to sustain is the steady-state column, and that is two to three cores.</p>
-<p><strong>The build is quick because most of Autoware is already built.</strong> 31 packages in
-<strong>89 seconds</strong> on this desktop. AutoSDV is a workspace <em>over</em> a binary Autoware
-installation, so <code>just build</code> compiles the vehicle's own packages and not the
-30 GB of Autoware underneath. Budget minutes, not hours — and on four cores,
-still minutes.</p>
-<h2 id="disk-itemised">Disk, itemised<a class="headerlink" href="#disk-itemised" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Autoware Debian, downloaded</td>
-<td>1.9 GB</td>
-</tr>
-<tr>
-<td>Autoware, installed at <code>/opt/autoware/1.5.0</code></td>
-<td>4.8 GB</td>
-</tr>
-<tr>
-<td>This repository, cloned (includes the COSS map)</td>
-<td>~1 GB</td>
-</tr>
-<tr>
-<td>Workspace after <code>just build</code> (<code>build/</code> + <code>install/</code>)</td>
-<td>0.9 GB</td>
-</tr>
-<tr>
-<td>COSS rosbag, downloaded</td>
-<td>1.6 GB</td>
-</tr>
-<tr>
-<td>COSS rosbag, unpacked</td>
-<td>2.8 GB</td>
-</tr>
-<tr>
-<td><strong>Total, everything, after cleanup</strong></td>
-<td><strong>~11 GB</strong></td>
-</tr>
-</tbody>
-</table>
-<p>20 GB free is the minimum because the download and the unpacked copy of the
-rosbag coexist for a while, and because ROS logs under <code>play_log/</code> grow with
-every run. 40 GB if you intend to record your own bags, which is the one thing
-here that has no natural size.</p>
-<p>The map needs no download: <code>data/COSS-map-planning</code> is committed to the
-repository. The rosbag is the only large fetch, and only the logging simulation
-needs it — see <a href="../../simulation/datasets/">Datasets and Rosbags</a>.</p>
-<h2 id="the-gpu-in-detail">The GPU, in detail<a class="headerlink" href="#the-gpu-in-detail" title="Permanent link">#</a></h2>
-<p><strong>Neither simulation requires one.</strong> This is the part most often assumed wrong.</p>
-<ul>
-<li>The <strong>planning simulation</strong> has no sensors, no perception and no
-  localization. It never touches a GPU.</li>
-<li>The <strong>logging simulation</strong> replays real LiDAR and localizes against a map.
-  With <code>pose_source:=ndt launch_perception:=false</code> it is pure CPU, and it holds
-  the sensor's full 10 Hz — measured at 10.06 Hz against a 10 Hz recording.</li>
-</ul>
+<h2 id="disk">Disk<a class="headerlink" href="#disk" title="Permanent link">#</a></h2>
+<p>About <strong>11 GB</strong> all told: Autoware 4.8 GB, the repository ~1 GB, the built
+workspace ~1 GB, and a 2.8 GB rosbag that only the logging simulation needs.</p>
+<p>Keep <strong>20 GB</strong> free — the rosbag's download and its unpacked copy coexist for a
+while, and run logs accumulate under <code>play_log/</code>. Make it 40 GB if you intend to
+record your own bags.</p>
+<p>The map needs no download: <code>data/COSS-map-planning</code> is in the repository. The
+rosbag is the only large fetch — see
+<a href="../../simulation/datasets/">Datasets and Rosbags</a>.</p>
+<h2 id="the-gpu">The GPU<a class="headerlink" href="#the-gpu" title="Permanent link">#</a></h2>
+<p><strong>Neither simulation requires one.</strong> This is the part most often assumed wrong.
+The planning simulation has no sensors and never touches a GPU; the logging
+simulation runs on the CPU with <code>pose_source:=ndt launch_perception:=false</code> and
+still keeps up with the recording.</p>
 <p>A GPU buys two things:</p>
 <table>
 <thead>
@@ -3319,23 +3189,26 @@ your card's architecture. A card newer than the toolkit fails exactly like
 having no GPU, except louder and later — the launcher reports every node ready
 and then nothing publishes. Blackwell (RTX 50-series, sm_120) needs <strong>CUDA
 12.8</strong> or newer.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scripts/check-cuda-arch.sh<span class="w">     </span><span class="c1"># also part of `just demo check`</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scripts/check-cuda-arch.sh<span class="w">     </span><span class="c1"># also part of `just demo check`</span>
 </span></code></pre></div>
 <p>It compares your GPU against the selected toolkit and, if they disagree, names
 the installed toolkits that would work. Selecting one is a single variable —
 see <a href="../../concepts/environment/">The Environment</a>.</p>
 <h3 id="rviz-needs-working-opengl">RViz needs working OpenGL<a class="headerlink" href="#rviz-needs-working-opengl" title="Permanent link">#</a></h3>
-<p>RViz is the one part that wants a real graphics stack. Over a plain VNC server
-with software rendering it rendered at <strong>1 fps</strong> on this machine — usable to
-confirm something is on screen, useless to watch a vehicle drive. A local
-display, or VNC with GPU acceleration, is what makes the visual parts of the
-tutorial worth doing.</p>
+<p>RViz is the one part that wants a real graphics stack. Over a VNC server with
+software rendering it draws about one frame a second — enough to confirm
+something is on screen, useless for watching a vehicle drive. Use a local
+display, or VNC with GPU acceleration.</p>
 <h2 id="checking-a-machine-before-you-trust-it">Checking a machine before you trust it<a class="headerlink" href="#checking-a-machine-before-you-trust-it" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
 </span></code></pre></div>
 <p>Reports the rosbag, the map, the build, <code>play_launch</code>, the CUDA toolkit against
 your GPU, and whether a display is available. Everything it names as missing has
-a fix on the page it points to.</p></div>
+a fix on the page it points to.</p>
+<hr>
+<p>The measured figures behind this page — per-workload memory and CPU, the build
+peak and how to cap it, the disk itemisation — are kept in the repository, in
+<code>docs/reports/host-resource-measurements.md</code>.</p></div>
 
 
 

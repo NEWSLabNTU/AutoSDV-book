@@ -733,10 +733,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#每個數字從哪來" class="md-nav__link">
+  <a href="#磁碟" class="md-nav__link">
     <span class="md-ellipsis">
       
-        每個數字從哪來
+        磁碟
       
     </span>
   </a>
@@ -744,26 +744,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#磁碟逐項" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        磁碟，逐項
+        GPU
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gpu細談" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GPU，細談
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GPU，細談">
+    <nav class="md-nav" aria-label="GPU">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2939,10 +2928,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#每個數字從哪來" class="md-nav__link">
+  <a href="#磁碟" class="md-nav__link">
     <span class="md-ellipsis">
       
-        每個數字從哪來
+        磁碟
       
     </span>
   </a>
@@ -2950,26 +2939,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#磁碟逐項" class="md-nav__link">
+  <a href="#gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        磁碟，逐項
+        GPU
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gpu細談" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GPU，細談
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GPU，細談">
+    <nav class="md-nav" aria-label="GPU">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3162,121 +3140,18 @@ Jetson AGX Orin，它的數字由模擬永遠不會產生的感測器流量主�
 <p>AutoSDV 建立在 ROS 2 Humble 上，而 Humble 的目標是 Ubuntu 22.04，沒有 24.04 的
 套件。這是唯一沒有彈性的一列：不是更新的 Ubuntu、不是 Debian，也不建議一開始就用
 WSL。虛擬機在核心數與記憶體夠的情況下可以跑模擬，但拿不到 GPU。</p>
-<h2 id="每個數字從哪來">每個數字從哪來<a class="headerlink" href="#%E6%AF%8F%E5%80%8B%E6%95%B8%E5%AD%97%E5%BE%9E%E5%93%AA%E4%BE%86" title="Permanent link">#</a></h2>
-<p>量測環境：Ubuntu 22.04、Intel Core Ultra 7 270K Plus（24 核）、125 GB 記憶體、
-RTX 5090，工具是 <code>scripts/profiling/host_resource_sampler.py</code>。記憶體以「相對於
-閒置基線，整台機器多用了多少」表示，那正是小機器必須擠出來的量。CPU 以「核數」
-表示，因為那才是能換算到不同核心數機器上的數字。</p>
-<table>
-<thead>
-<tr>
-<th>工作負載</th>
-<th>記憶體尖峰</th>
-<th>啟動時 CPU</th>
-<th>穩態 CPU</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>just build</code>，乾淨工作空間</td>
-<td><strong>11.3 GiB</strong></td>
-<td>有幾核用幾核</td>
-<td>—</td>
-</tr>
-<tr>
-<td>規劃模擬</td>
-<td><strong>2.5 GiB</strong></td>
-<td>短暫 19 核</td>
-<td>約 2 核</td>
-</tr>
-<tr>
-<td>日誌模擬，CPU 路徑</td>
-<td><strong>3.4 GiB</strong></td>
-<td>短暫 21 核</td>
-<td>約 3 核</td>
-</tr>
-<tr>
-<td>日誌模擬，GPU 路徑</td>
-<td>3.4 GiB 加約 1 GiB VRAM</td>
-<td>同上</td>
-<td>約 3 核</td>
-</tr>
-<tr>
-<td>任一項再加上 RViz</td>
-<td>約多 1.4 GiB</td>
-<td>—</td>
-<td>約 1 核</td>
-</tr>
-</tbody>
-</table>
-<p>其中三個數字各值得一句說明。</p>
-<p><strong>建置尖峰最大，而且可以調。</strong> 11.3 GiB 是 colcon 以 24 個工作並行編譯 31 個套件
-時達到的；整段軌跡在那裡停留約十二秒，然後就掉下來。尖峰隨同時跑幾個編譯器而變，
-所以四核筆電不用特別設定就大約只會用到四分之一。如果機器記憶體吃緊，明確設上限，
-不要等 OOM killer 出手：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--base-paths<span class="w"> </span>src<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>--parallel-workers<span class="w"> </span><span class="m">2</span>
-</span></code></pre></div>
-<p><strong>「啟動時 CPU」是突波，不是需求。</strong> 啟動一個 stack 會一次拉起三十幾個節點，它們
-會把在場的核心全部用上——這裡是 24 核用掉 21 核。在四核機器上同樣的工作只是比較
-久，不會失敗。機器必須長時間撐住的是穩態那一欄，也就是兩到三核。</p>
-<p><strong>建置很快，是因為 Autoware 大部分早就建好了。</strong> 在這台桌機上 31 個套件花了
-<strong>89 秒</strong>。AutoSDV 是疊在二進位 Autoware 安裝*之上*的工作空間，所以 <code>just build</code>
-編譯的是車輛自己的套件，而不是底下那 30 GB 的 Autoware。預算以分鐘計，不是小時；
-四核機器上也仍然以分鐘計。</p>
-<h2 id="磁碟逐項">磁碟，逐項<a class="headerlink" href="#%E7%A3%81%E7%A2%9F%E9%80%90%E9%A0%85" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Autoware Debian，下載</td>
-<td>1.9 GB</td>
-</tr>
-<tr>
-<td>Autoware，安裝於 <code>/opt/autoware/1.5.0</code></td>
-<td>4.8 GB</td>
-</tr>
-<tr>
-<td>本專案 clone 後（含 COSS 地圖）</td>
-<td>約 1 GB</td>
-</tr>
-<tr>
-<td><code>just build</code> 後的工作空間（<code>build/</code> + <code>install/</code>）</td>
-<td>0.9 GB</td>
-</tr>
-<tr>
-<td>COSS rosbag，下載</td>
-<td>1.6 GB</td>
-</tr>
-<tr>
-<td>COSS rosbag，解開後</td>
-<td>2.8 GB</td>
-</tr>
-<tr>
-<td><strong>全部裝完、清理後合計</strong></td>
-<td><strong>約 11 GB</strong></td>
-</tr>
-</tbody>
-</table>
-<p>最低要 20 GB，是因為 rosbag 的壓縮檔與解開後的副本會並存一段時間，也因為
-<code>play_log/</code> 下的 ROS 紀錄會隨每次執行增加。如果你打算自己錄 bag，就抓 40 GB——那
-是這裡唯一沒有自然大小上限的東西。</p>
-<p>地圖不用下載：<code>data/COSS-map-planning</code> 已納入版本控制。rosbag 是唯一一個大檔，而且
-只有日誌模擬需要它——見<a href="../../simulation/datasets/">資料集與 Rosbag</a>。</p>
-<h2 id="gpu細談">GPU，細談<a class="headerlink" href="#gpu%E7%B4%B0%E8%AB%87" title="Permanent link">#</a></h2>
-<p><strong>兩種模擬都不需要 GPU。</strong> 這是最常被想錯的一點。</p>
-<ul>
-<li>**規劃模擬**沒有感測器、沒有感知、沒有定位，從頭到尾不碰 GPU。</li>
-<li>**日誌模擬**回放真實 LiDAR 並對地圖定位。用
-  <code>pose_source:=ndt launch_perception:=false</code> 時純靠 CPU，而且維持感測器完整的
-  10 Hz——對著 10 Hz 的錄製實測為 10.06 Hz。</li>
-</ul>
-<p>GPU 買到的是兩件事：</p>
+<h2 id="磁碟">磁碟<a class="headerlink" href="#%E7%A3%81%E7%A2%9F" title="Permanent link">#</a></h2>
+<p>全部加起來約 <strong>11 GB</strong>：Autoware 4.8 GB、專案約 1 GB、建置好的工作空間約 1 GB，
+再加上只有記錄回放模擬才需要的 2.8 GB rosbag。</p>
+<p>請保留 <strong>20 GB</strong> 可用空間——rosbag 的壓縮檔與解開後的副本會並存一段時間，而
+<code>play_log/</code> 下的執行紀錄也會累積。如果你打算自己錄製 rosbag，請準備 40 GB。</p>
+<p>地圖不需要下載：<code>data/COSS-map-planning</code> 就在專案裡。唯一要下載的大檔是 rosbag，
+見<a href="../../simulation/datasets/">資料集與 Rosbag</a>。</p>
+<h2 id="gpu">GPU<a class="headerlink" href="#gpu" title="Permanent link">#</a></h2>
+<p><strong>兩種模擬都不需要 GPU。</strong> 這是最常被誤解的一點。路徑規劃模擬沒有感測器，完全
+不會碰到 GPU；記錄回放模擬加上 <code>pose_source:=ndt launch_perception:=false</code> 就是
+純 CPU，而且跟得上錄製的速度。</p>
+<p>有 GPU 可以換到兩件事：</p>
 <table>
 <thead>
 <tr>
@@ -3306,19 +3181,22 @@ RTX 5090，工具是 <code>scripts/profiling/host_resource_sampler.py</code>。�
 toolkit 新的顯卡，失敗方式跟沒有 GPU 一模一樣，只是更吵也更晚——launcher 回報每個
 節點都就緒，然後什麼都不發布。Blackwell（RTX 50 系列，sm_120）需要 <strong>CUDA 12.8</strong>
 或更新。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scripts/check-cuda-arch.sh<span class="w">     </span><span class="c1"># 也包含在 `just demo check` 裡</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scripts/check-cuda-arch.sh<span class="w">     </span><span class="c1"># 也包含在 `just demo check` 裡</span>
 </span></code></pre></div>
 <p>它會比對你的 GPU 與選定的 toolkit，不合時會列出機器上哪些 toolkit 可用。要選一個
 只是一個變數的事——見<a href="../../concepts/environment/">環境</a>。</p>
 <h3 id="rviz-需要能用的-opengl">RViz 需要能用的 OpenGL<a class="headerlink" href="#rviz-%E9%9C%80%E8%A6%81%E8%83%BD%E7%94%A8%E7%9A%84-opengl" title="Permanent link">#</a></h3>
-<p>RViz 是唯一真正需要圖形堆疊的部分。在只有軟體算繪的 VNC 上，本機實測是 <strong>1 fps</strong>
-——足以確認畫面上有東西，但完全不足以看車子開。要讓教學裡視覺的部分值得做，需要
-本機顯示，或是有 GPU 加速的 VNC。</p>
+<p>RViz 是唯一需要真正圖形堆疊的部分。在只有軟體算繪的 VNC 上，它大約每秒一張
+畫面——足以確認畫面上有東西，但完全不適合看車子行駛。請用本機顯示器，或啟用
+GPU 加速的 VNC。</p>
 <h2 id="在信任一台機器之前先檢查">在信任一台機器之前先檢查<a class="headerlink" href="#%E5%9C%A8%E4%BF%A1%E4%BB%BB%E4%B8%80%E5%8F%B0%E6%A9%9F%E5%99%A8%E4%B9%8B%E5%89%8D%E5%85%88%E6%AA%A2%E6%9F%A5" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>demo<span class="w"> </span>check
 </span></code></pre></div>
 <p>它會回報 rosbag、地圖、建置結果、<code>play_launch</code>、CUDA toolkit 與你的 GPU 是否相容，
-以及有沒有可用的顯示。它報缺的每一項，都能在它指向的頁面找到解法。</p></div>
+以及有沒有可用的顯示。它報缺的每一項，都能在它指向的頁面找到解法。</p>
+<hr>
+<p>這一頁背後的實測數字——各工作負載的記憶體與 CPU、建置尖峰與如何限制它、磁碟的
+逐項明細——放在程式碼庫裡：<code>docs/reports/host-resource-measurements.md</code>。</p></div>
 
 
 
