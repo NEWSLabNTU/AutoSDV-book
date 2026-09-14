@@ -3187,19 +3187,65 @@ ROS 2 Humble, which is not packaged for 24.04.</p>
 <h3 id="for-nvidia-jetson-agx-orin">For NVIDIA Jetson AGX Orin<a class="headerlink" href="#for-nvidia-jetson-agx-orin" title="Permanent link">#</a></h3>
 <ol>
 <li>Download and install <a href="https://developer.nvidia.com/sdk-manager">NVIDIA SDK Manager</a></li>
-<li>Flash the Jetson with the following configuration:<ul>
-<li><strong>JetPack SDK version: 6.2.1</strong></li>
-<li>Install all CUDA and TensorRT packages</li>
-<li>Flash to external NVMe SSD (not internal eMMC)</li>
+<li>Flash the Jetson with:<ul>
+<li><strong>JetPack SDK 6.2.2 or newer</strong> — a floor, not an exact version</li>
+<li>all CUDA and TensorRT packages selected</li>
+<li>an external NVMe SSD as the target, not the internal eMMC</li>
 </ul>
 </li>
 </ol>
+<p><strong>Check the L4T version, not the JetPack version,</strong> once the board is up:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 5.0" -&gt; L4T 36.5.0</span>
+</span></code></pre></div>
+<p>JetPack's patch numbering crosses an L4T <em>minor</em> inside the 6.2 series, which is
+why the floor is where it is and why several downloads later on ask for L4T
+rather than JetPack (<a href="https://developer.nvidia.com/embedded/jetpack-archive">NVIDIA's
+mapping</a>):</p>
+<table>
+<thead>
+<tr>
+<th>JetPack</th>
+<th>L4T</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.2</td>
+<td>36.4.3</td>
+<td>below the floor</td>
+</tr>
+<tr>
+<td>6.2.1</td>
+<td>36.4.4</td>
+<td>below the floor</td>
+</tr>
+<tr>
+<td><strong>6.2.2</strong></td>
+<td><strong>36.5.0</strong></td>
+<td>the floor</td>
+</tr>
+<tr>
+<td>6.2.3</td>
+<td>36.5.2</td>
+<td>fine</td>
+</tr>
+</tbody>
+</table>
+<p>Three things read that number rather than the JetPack one: the
+<a href="../zed-sdk/">ZED SDK installer</a> is published per L4T minor, NVIDIA's Jetson apt
+pocket is <code>r36.5</code>, and a prebuilt TensorRT engine set is keyed by L4T — so a board
+at the floor will not match the engine set published from JetPack 6.2.1 and will
+build its own the first time, about an hour. That is slow, not broken; see
+<a href="../recommended/#tensorrt-engines-download-or-build">TensorRT engines</a>.</p>
+<p>The Autoware package for arm64 keeps the filename suffix <code>jetpack62</code> at every
+patch: it names the 6.2 series it was built for, and 6.2.2 is in that series.</p>
 <h3 id="for-ubuntu-2204-pc">For Ubuntu 22.04 PC<a class="headerlink" href="#for-ubuntu-2204-pc" title="Permanent link">#</a></h3>
 <ol>
 <li>Install Ubuntu 22.04 LTS</li>
 <li>Install the NVIDIA driver (version 550 or higher):
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-driver-550
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-driver-550
 </span></code></pre></div></li>
 <li>Install <strong>CUDA 12.x</strong> using the deb (network) installer</li>
 <li>Install <strong>TensorRT 10.x</strong></li>
@@ -3212,13 +3258,13 @@ with an unresolved-symbol or missing-library error that names a shared
 object rather than the real cause. Earlier versions of this page said
 "TensorRT 8.6 GA"; that applied to an older Autoware base.</p>
 <p>You can verify what your installation actually requires:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># libnvinfer.so.10 =&gt; ...</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># libnvinfer.so.10 =&gt; ...</span>
 </span></code></pre></div>
 <p>The same check gives the CUDA major version:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'cublas|cudart'</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># libcublas.so.12 =&gt; ...</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'cublas|cudart'</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># libcublas.so.12 =&gt; ...</span>
 </span></code></pre></div>
 <p>These sonames are the real requirement. Any CUDA 12.x and TensorRT 10.x
 that satisfy them will work; the exact patch versions do not matter.</p>

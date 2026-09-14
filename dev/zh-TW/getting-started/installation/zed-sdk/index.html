@@ -3346,7 +3346,7 @@ Stereolabs 並未提供 apt 套件庫，唯一的官方安裝檔是自解壓安�
 <h2 id="先備條件">先備條件<a class="headerlink" href="#%E5%85%88%E5%82%99%E6%A2%9D%E4%BB%B6" title="Permanent link">#</a></h2>
 <ul>
 <li>Ubuntu 22.04，已安裝 NVIDIA 驅動與 CUDA 12（Autoware 鎖定的版本），或</li>
-<li>執行 JetPack 6.x 的 Jetson（L4T 36.4 或 36.5）</li>
+<li>達到本專案下限的 Jetson：<strong>JetPack 6.2.2 或更新</strong>，也就是 L4T 36.5</li>
 </ul>
 <h2 id="步驟-1--先問-setupsh-這台機器需要什麼">步驟 1 — 先問 setup.sh 這台機器需要什麼<a class="headerlink" href="#%E6%AD%A5%E9%A9%9F-1--%E5%85%88%E5%95%8F-setupsh-%E9%80%99%E5%8F%B0%E6%A9%9F%E5%99%A8%E9%9C%80%E8%A6%81%E4%BB%80%E9%BA%BC" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./setup.sh<span class="w"> </span>--run<span class="w"> </span>--only<span class="w"> </span>zed-sdk<span class="w"> </span>--yes
@@ -3367,20 +3367,21 @@ Stereolabs 並未提供 apt 套件庫，唯一的官方安裝檔是自解壓安�
 <td><a href="https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22">https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22</a></td>
 </tr>
 <tr>
-<td>Jetson、L4T 36.4（JetPack 6.0/6.1）</td>
-<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons</a></td>
+<td>Jetson、L4T 36.5——JetPack 6.2.2 以上，本專案所訂的版本</td>
+<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons</a></td>
 </tr>
 <tr>
-<td>Jetson、L4T 36.5</td>
-<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons</a></td>
+<td>Jetson、L4T 36.4——JetPack 6.2 或 6.2.1，低於下限</td>
+<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons</a></td>
 </tr>
 </tbody>
 </table>
 <p>這些是 Stereolabs 維持穩定的轉址連結，各自會轉到檔名帶有修訂版號的 CDN 檔案
 （amd64 目前是 <code>ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run</code>）。請
 收藏轉址連結，不要收藏它轉到的檔案。</p>
-<p>選擇前先確認 Jetson 上的 L4T 版本：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 4.4" -&gt; L4T 36.4</span>
+<p>選擇前先確認 Jetson 上的 L4T 版本——看盒子上的 JetPack 版本不夠，因為 6.2.1 是
+L4T 36.4，而 6.2.2 是 L4T 36.5：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 5.0" -&gt; L4T 36.5</span>
 </span></code></pre></div>
 <h2 id="步驟-3--安裝">步驟 3 — 安裝<a class="headerlink" href="#%E6%AD%A5%E9%A9%9F-3--%E5%AE%89%E8%A3%9D" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span>zed_sdk.run<span class="w"> </span><span class="s1">'https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22'</span>

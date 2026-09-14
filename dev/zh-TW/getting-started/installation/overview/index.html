@@ -3185,19 +3185,63 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 <h3 id="nvidia-jetson-agx-orin">NVIDIA Jetson AGX Orin<a class="headerlink" href="#nvidia-jetson-agx-orin" title="Permanent link">#</a></h3>
 <ol>
 <li>下載並安裝 <a href="https://developer.nvidia.com/sdk-manager">NVIDIA SDK Manager</a></li>
-<li>使用以下配置燒錄 Jetson：<ul>
-<li><strong>JetPack SDK 版本：6.2.1</strong></li>
-<li>安裝所有 CUDA 和 TensorRT 套件</li>
-<li>燒錄至外接 NVMe SSD（不要使用內建 eMMC）</li>
+<li>燒錄 Jetson，設定如下：<ul>
+<li><strong>JetPack SDK 6.2.2 或更新</strong>——這是下限，不是某個確切版本</li>
+<li>勾選所有 CUDA 與 TensorRT 套件</li>
+<li>目標選外接 NVMe SSD，不要用內建 eMMC</li>
 </ul>
 </li>
 </ol>
+<p>板子開起來後，<strong>要看的是 L4T 版本，不是 JetPack 版本</strong>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 5.0" -&gt; L4T 36.5.0</span>
+</span></code></pre></div>
+<p>JetPack 的修訂號在 6.2 系列內部跨越了一個 L4T <strong>次版本</strong>，這既是下限訂在這裡的
+原因，也是後面好幾個下載連結問的是 L4T 而不是 JetPack 的原因（<a href="https://developer.nvidia.com/embedded/jetpack-archive">NVIDIA 的對應
+表</a>）：</p>
+<table>
+<thead>
+<tr>
+<th>JetPack</th>
+<th>L4T</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.2</td>
+<td>36.4.3</td>
+<td>低於下限</td>
+</tr>
+<tr>
+<td>6.2.1</td>
+<td>36.4.4</td>
+<td>低於下限</td>
+</tr>
+<tr>
+<td><strong>6.2.2</strong></td>
+<td><strong>36.5.0</strong></td>
+<td>下限</td>
+</tr>
+<tr>
+<td>6.2.3</td>
+<td>36.5.2</td>
+<td>可以</td>
+</tr>
+</tbody>
+</table>
+<p>有三件事看的是這個號碼而不是 JetPack 的號碼：<a href="../zed-sdk/">ZED SDK 安裝檔</a>是按
+L4T 次版本發佈的、NVIDIA 的 Jetson apt pocket 是 <code>r36.5</code>，以及預先建置的 TensorRT
+引擎集是以 L4T 為鍵——所以在下限版本的板子上，不會命中從 JetPack 6.2.1 發佈的那
+份引擎集，第一次會自己建置，約一小時。那是慢，不是壞；見
+<a href="../recommended/#tensorrt-%E5%BC%95%E6%93%8E%E4%B8%8B%E8%BC%89%E6%88%96%E8%87%AA%E8%A1%8C%E5%BB%BA%E7%BD%AE">TensorRT 引擎</a>。</p>
+<p>arm64 版 Autoware 套件在每個修訂版都保留 <code>jetpack62</code> 這個檔名後綴：它指的是建置
+時所針對的 6.2 系列，而 6.2.2 就在這個系列裡。</p>
 <h3 id="ubuntu-2204-pc">Ubuntu 22.04 PC<a class="headerlink" href="#ubuntu-2204-pc" title="Permanent link">#</a></h3>
 <ol>
 <li>安裝 Ubuntu 22.04 LTS</li>
 <li>安裝 NVIDIA 驅動程式（版本 550 或更高）：
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-driver-550
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-driver-550
 </span></code></pre></div></li>
 <li>使用 deb（網路）安裝程式安裝 <strong>CUDA 12.x</strong></li>
 <li>安裝 <strong>TensorRT 10.x</strong></li>
@@ -3209,13 +3253,13 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 物件而非真正的原因。本頁較早的版本寫「TensorRT 8.6 GA」；那適用於較舊的
 Autoware 基底。</p>
 <p>你可以驗證你的安裝實際需要什麼：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># libnvinfer.so.10 =&gt; ...</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># libnvinfer.so.10 =&gt; ...</span>
 </span></code></pre></div>
 <p>同樣的檢查可得出 CUDA 主版本：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'cublas|cudart'</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># libcublas.so.12 =&gt; ...</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libautoware_lidar_centerpoint_cuda_lib.so<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'cublas|cudart'</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># libcublas.so.12 =&gt; ...</span>
 </span></code></pre></div>
 <p>這些 soname 才是真正的需求。任何滿足它們的 CUDA 12.x 與 TensorRT 10.x 都
 可以；確切的修訂版本並不重要。</p>

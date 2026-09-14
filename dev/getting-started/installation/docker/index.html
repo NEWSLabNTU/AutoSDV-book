@@ -2989,8 +2989,8 @@ repository. Use <a href="../overview/">the standard installation</a> instead.</p
    build fails at that line.</li>
 <li><strong>Its base image is the wrong platform generation.</strong> It builds
    <code>FROM nvcr.io/nvidia/l4t-tensorrt:r8.6.2-devel</code>, a JetPack 5 era image.
-   Autoware 1.5.0 for arm64 targets JetPack 6.2 and the TensorRT that comes
-   with it.</li>
+   Autoware 1.5.0 for arm64 targets the JetPack 6.2 series — 6.2.2 or newer
+   here, which is L4T 36.5 — and the TensorRT that comes with it.</li>
 </ol>
 <p>Fixing it is a real piece of work — a new base image, and a Dockerfile that
 drives <code>./setup.sh --run --profile ci --yes</code> rather than a deleted script.
@@ -3039,7 +3039,8 @@ build would want <code>--profile dev</code>.</p>
 <h2 id="if-you-want-to-revive-it">If you want to revive it<a class="headerlink" href="#if-you-want-to-revive-it" title="Permanent link">#</a></h2>
 <p>The shape of the fix is known:</p>
 <ol>
-<li>Choose a JetPack 6.2 base image with a matching TensorRT.</li>
+<li>Choose an L4T 36.5 base image (JetPack 6.2.2 or newer) with a matching
+   TensorRT.</li>
 <li>Replace the deleted <code>setup-dev-env.sh</code> call with
    <code>./setup.sh --run --profile dev --yes</code>.</li>
 <li>Decide what to do about the Autoware Debian download (2–3 GB) — baking it

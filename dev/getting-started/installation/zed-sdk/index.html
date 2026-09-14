@@ -3348,7 +3348,7 @@ pair is recorded in <code>versions.yaml</code> under <code>zed:</code>; bump bot
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
 <li>Ubuntu 22.04 with an NVIDIA driver and CUDA 12 (the version Autoware pins), or</li>
-<li>a Jetson running JetPack 6.x (L4T 36.4 or 36.5)</li>
+<li>a Jetson at this project's floor, <strong>JetPack 6.2.2 or newer</strong>, which is L4T 36.5</li>
 </ul>
 <h2 id="step-1--ask-setupsh-what-this-machine-needs">Step 1 — Ask setup.sh what this machine needs<a class="headerlink" href="#step-1--ask-setupsh-what-this-machine-needs" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./setup.sh<span class="w"> </span>--run<span class="w"> </span>--only<span class="w"> </span>zed-sdk<span class="w"> </span>--yes
@@ -3370,12 +3370,12 @@ of any setup run that leaves it unsatisfied.</p>
 <td><a href="https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22">https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22</a></td>
 </tr>
 <tr>
-<td>Jetson, L4T 36.4 (JetPack 6.0/6.1)</td>
-<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons</a></td>
+<td>Jetson, L4T 36.5 — JetPack 6.2.2+, the version this project pins</td>
+<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons</a></td>
 </tr>
 <tr>
-<td>Jetson, L4T 36.5</td>
-<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons</a></td>
+<td>Jetson, L4T 36.4 — JetPack 6.2 or 6.2.1, below the floor</td>
+<td><a href="https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons">https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons</a></td>
 </tr>
 </tbody>
 </table>
@@ -3383,8 +3383,9 @@ of any setup run that leaves it unsatisfied.</p>
 name carries the patch version (for amd64, today,
 <code>ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run</code>), so bookmark the
 redirect and not the file it lands on.</p>
-<p>Check which L4T a Jetson is running before you choose:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 4.4" -&gt; L4T 36.4</span>
+<p>Check which L4T a Jetson is running before you choose — the JetPack version on
+the box is not enough, because 6.2.1 is L4T 36.4 and 6.2.2 is L4T 36.5:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>head<span class="w"> </span>-1<span class="w"> </span>/etc/nv_tegra_release<span class="w">     </span><span class="c1"># "# R36 (release), REVISION: 5.0" -&gt; L4T 36.5</span>
 </span></code></pre></div>
 <h2 id="step-3--install">Step 3 — Install<a class="headerlink" href="#step-3--install" title="Permanent link">#</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span>zed_sdk.run<span class="w"> </span><span class="s1">'https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22'</span>
