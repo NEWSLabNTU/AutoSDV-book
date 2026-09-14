@@ -61,10 +61,36 @@ Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humb
 ### NVIDIA Jetson AGX Orin
 
 1. 下載並安裝 [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
-2. 使用以下配置燒錄 Jetson：
-   - **JetPack SDK 版本：6.2.1**
-   - 安裝所有 CUDA 和 TensorRT 套件
-   - 燒錄至外接 NVMe SSD（不要使用內建 eMMC）
+2. 燒錄 Jetson，設定如下：
+   - **JetPack SDK 6.2.2 或更新**——這是下限，不是某個確切版本
+   - 勾選所有 CUDA 與 TensorRT 套件
+   - 目標選外接 NVMe SSD，不要用內建 eMMC
+
+板子開起來後，**要看的是 L4T 版本，不是 JetPack 版本**：
+
+```bash
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 5.0" -> L4T 36.5.0
+```
+
+JetPack 的修訂號在 6.2 系列內部跨越了一個 L4T **次版本**，這既是下限訂在這裡的
+原因，也是後面好幾個下載連結問的是 L4T 而不是 JetPack 的原因（[NVIDIA 的對應
+表](https://developer.nvidia.com/embedded/jetpack-archive)）：
+
+| JetPack | L4T | |
+|---------|-----|---|
+| 6.2 | 36.4.3 | 低於下限 |
+| 6.2.1 | 36.4.4 | 低於下限 |
+| **6.2.2** | **36.5.0** | 下限 |
+| 6.2.3 | 36.5.2 | 可以 |
+
+有三件事看的是這個號碼而不是 JetPack 的號碼：[ZED SDK 安裝檔](./zed-sdk.md)是按
+L4T 次版本發佈的、NVIDIA 的 Jetson apt pocket 是 `r36.5`，以及預先建置的 TensorRT
+引擎集是以 L4T 為鍵——所以在下限版本的板子上，不會命中從 JetPack 6.2.1 發佈的那
+份引擎集，第一次會自己建置，約一小時。那是慢，不是壞；見
+[TensorRT 引擎](./recommended.md#tensorrt-引擎下載或自行建置)。
+
+arm64 版 Autoware 套件在每個修訂版都保留 `jetpack62` 這個檔名後綴：它指的是建置
+時所針對的 6.2 系列，而 6.2.2 就在這個系列裡。
 
 ### Ubuntu 22.04 PC
 

@@ -54,10 +54,38 @@ Before installing AutoSDV, prepare your target platform.
 ### For NVIDIA Jetson AGX Orin
 
 1. Download and install [NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
-2. Flash the Jetson with the following configuration:
-   - **JetPack SDK version: 6.2.1**
-   - Install all CUDA and TensorRT packages
-   - Flash to external NVMe SSD (not internal eMMC)
+2. Flash the Jetson with:
+   - **JetPack SDK 6.2.2 or newer** — a floor, not an exact version
+   - all CUDA and TensorRT packages selected
+   - an external NVMe SSD as the target, not the internal eMMC
+
+**Check the L4T version, not the JetPack version,** once the board is up:
+
+```bash
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 5.0" -> L4T 36.5.0
+```
+
+JetPack's patch numbering crosses an L4T *minor* inside the 6.2 series, which is
+why the floor is where it is and why several downloads later on ask for L4T
+rather than JetPack ([NVIDIA's
+mapping](https://developer.nvidia.com/embedded/jetpack-archive)):
+
+| JetPack | L4T | |
+|---------|-----|---|
+| 6.2 | 36.4.3 | below the floor |
+| 6.2.1 | 36.4.4 | below the floor |
+| **6.2.2** | **36.5.0** | the floor |
+| 6.2.3 | 36.5.2 | fine |
+
+Three things read that number rather than the JetPack one: the
+[ZED SDK installer](./zed-sdk.md) is published per L4T minor, NVIDIA's Jetson apt
+pocket is `r36.5`, and a prebuilt TensorRT engine set is keyed by L4T — so a board
+at the floor will not match the engine set published from JetPack 6.2.1 and will
+build its own the first time, about an hour. That is slow, not broken; see
+[TensorRT engines](./recommended.md#tensorrt-engines-download-or-build).
+
+The Autoware package for arm64 keeps the filename suffix `jetpack62` at every
+patch: it names the 6.2 series it was built for, and 6.2.2 is in that series.
 
 ### For Ubuntu 22.04 PC
 

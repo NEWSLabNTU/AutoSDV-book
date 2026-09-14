@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: docker.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -21,7 +21,8 @@ Translation Metadata:
        因此建置會在該行失敗。
     2. **它的基礎映像檔屬於錯誤的平台世代。** 它以
        `FROM nvcr.io/nvidia/l4t-tensorrt:r8.6.2-devel` 建置，那是 JetPack 5
-       時期的映像檔。arm64 版的 Autoware 1.5.0 以 JetPack 6.2 及其隨附的
+       時期的映像檔。arm64 版的 Autoware 1.5.0 以 JetPack 6.2 系列（這裡是 6.2.2 或
+       更新，也就是 L4T 36.5）及其隨附的
        TensorRT 為目標。
 
     修好它是一件實際的工作——需要新的基礎映像檔，以及一份改為驅動
@@ -59,7 +60,7 @@ Translation Metadata:
 
 修復的輪廓是已知的：
 
-1. 選擇一個 JetPack 6.2 的基礎映像檔，搭配相符的 TensorRT。
+1. 選擇一個 L4T 36.5（JetPack 6.2.2 或更新）的基礎映像檔，搭配相符的 TensorRT。
 2. 將已刪除的 `setup-dev-env.sh` 呼叫改為
    `./setup.sh --run --profile dev --yes`。
 3. 決定如何處理 Autoware Debian 套件的下載（2–3 GB）——把它烘進一層會讓映像檔

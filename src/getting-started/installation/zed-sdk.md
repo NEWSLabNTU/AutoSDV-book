@@ -32,7 +32,7 @@ pair is recorded in `versions.yaml` under `zed:`; bump both or neither.
 ## Prerequisites
 
 - Ubuntu 22.04 with an NVIDIA driver and CUDA 12 (the version Autoware pins), or
-- a Jetson running JetPack 6.x (L4T 36.4 or 36.5)
+- a Jetson at this project's floor, **JetPack 6.2.2 or newer**, which is L4T 36.5
 
 ## Step 1 — Ask setup.sh what this machine needs
 
@@ -49,18 +49,19 @@ of any setup run that leaves it unsatisfied.
 | Machine | Installer |
 |---------|-----------|
 | amd64, Ubuntu 22.04, CUDA 12 | <https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22> |
-| Jetson, L4T 36.4 (JetPack 6.0/6.1) | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
-| Jetson, L4T 36.5 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+| Jetson, L4T 36.5 — JetPack 6.2.2+, the version this project pins | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+| Jetson, L4T 36.4 — JetPack 6.2 or 6.2.1, below the floor | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
 
 These are redirects Stereolabs keeps stable. Each resolves to a CDN file whose
 name carries the patch version (for amd64, today,
 `ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run`), so bookmark the
 redirect and not the file it lands on.
 
-Check which L4T a Jetson is running before you choose:
+Check which L4T a Jetson is running before you choose — the JetPack version on
+the box is not enough, because 6.2.1 is L4T 36.4 and 6.2.2 is L4T 36.5:
 
 ```bash
-head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 4.4" -> L4T 36.4
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 5.0" -> L4T 36.5
 ```
 
 ## Step 3 — Install

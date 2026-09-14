@@ -38,7 +38,7 @@ Stereolabs 並未提供 apt 套件庫，唯一的官方安裝檔是自解壓安�
 ## 先備條件
 
 - Ubuntu 22.04，已安裝 NVIDIA 驅動與 CUDA 12（Autoware 鎖定的版本），或
-- 執行 JetPack 6.x 的 Jetson（L4T 36.4 或 36.5）
+- 達到本專案下限的 Jetson：**JetPack 6.2.2 或更新**，也就是 L4T 36.5
 
 ## 步驟 1 — 先問 setup.sh 這台機器需要什麼
 
@@ -54,17 +54,18 @@ Stereolabs 並未提供 apt 套件庫，唯一的官方安裝檔是自解壓安�
 | 機器 | 安裝檔 |
 |------|--------|
 | amd64、Ubuntu 22.04、CUDA 12 | <https://download.stereolabs.com/zedsdk/5.4/cu12/ubuntu22> |
-| Jetson、L4T 36.4（JetPack 6.0/6.1） | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
-| Jetson、L4T 36.5 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+| Jetson、L4T 36.5——JetPack 6.2.2 以上，本專案所訂的版本 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.5/jetsons> |
+| Jetson、L4T 36.4——JetPack 6.2 或 6.2.1，低於下限 | <https://download.stereolabs.com/zedsdk/5.4/l4t36.4/jetsons> |
 
 這些是 Stereolabs 維持穩定的轉址連結，各自會轉到檔名帶有修訂版號的 CDN 檔案
 （amd64 目前是 `ZED_SDK_Ubuntu22_cuda12.8_tensorrt10.9_v5.4.1.zstd.run`）。請
 收藏轉址連結，不要收藏它轉到的檔案。
 
-選擇前先確認 Jetson 上的 L4T 版本：
+選擇前先確認 Jetson 上的 L4T 版本——看盒子上的 JetPack 版本不夠，因為 6.2.1 是
+L4T 36.4，而 6.2.2 是 L4T 36.5：
 
 ```bash
-head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 4.4" -> L4T 36.4
+head -1 /etc/nv_tegra_release     # "# R36 (release), REVISION: 5.0" -> L4T 36.5
 ```
 
 ## 步驟 3 — 安裝
