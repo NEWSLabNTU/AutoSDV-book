@@ -1034,17 +1034,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#the-opt-in-steps-are-a-choice-you-have-to-make" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The opt-in steps are a choice you have to make
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1084,10 +1073,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pre-compile-the-tensorrt-engines-optional-recommended" class="md-nav__link">
+  <a href="#tensorrt-engines-if-you-skipped-them-in-the-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pre-compile the TensorRT engines (optional, recommended)
+        TensorRT engines, if you skipped them in the menu
       
     </span>
   </a>
@@ -3032,17 +3021,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#the-opt-in-steps-are-a-choice-you-have-to-make" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The opt-in steps are a choice you have to make
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3082,10 +3060,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pre-compile-the-tensorrt-engines-optional-recommended" class="md-nav__link">
+  <a href="#tensorrt-engines-if-you-skipped-them-in-the-menu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pre-compile the TensorRT engines (optional, recommended)
+        TensorRT engines, if you skipped them in the menu
       
     </span>
   </a>
@@ -3390,197 +3368,102 @@ not installed although you installed it, and be right:</p>
 <p>It also fingerprints the <em>content</em> of the scripts it ran, so it can tell you a
 step succeeded but its script has changed since.</p>
 <h3 id="the-steps">The steps<a class="headerlink" href="#the-steps" title="Permanent link">#</a></h3>
-<p>Grouped as the menu groups them. "Default in" is the profile that selects a step
-without you asking.</p>
-<h4 id="toolchain">Toolchain<a class="headerlink" href="#toolchain" title="Permanent link">#</a></h4>
+<p><strong>You do not need to learn them.</strong> Pick a profile, and read the one-line
+explanation the menu shows for whatever is highlighted — every step carries its
+own reasoning, including the cost of skipping it, and that text is written
+beside the step rather than here where it would drift. <code>./setup.sh --list</code>
+prints the same thing.</p>
+<p>The menu groups them the way the work divides:</p>
 <table>
 <thead>
 <tr>
-<th>Step</th>
-<th>Default in</th>
-<th>Why it is there</th>
+<th>Group</th>
+<th>What it covers</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>just</code></td>
-<td>all</td>
-<td>every workflow in this repo is a <code>just</code> recipe</td>
+<td>Toolchain</td>
+<td><code>just</code>, ROS 2 Humble, colcon/rosdep, the Rust toolchain and its colcon plugin, <code>play_launch</code>, and the Python packages the vehicle interface imports at runtime</td>
 </tr>
 <tr>
-<td><code>ros2</code></td>
-<td>all</td>
-<td>ROS 2 Humble, the base everything builds against</td>
+<td>Autoware</td>
+<td>the Autoware 1.5.0 Debians (2–3 GB), the TensorRT runtime they were built against, the writable model tree, rosdep over <code>src/</code>, and the perception engines</td>
 </tr>
 <tr>
-<td><code>ros2-dev-tools</code></td>
-<td>all</td>
-<td>colcon, rosdep, vcstool — without these nothing builds</td>
+<td>Libraries</td>
+<td>OpenCV consistency, the ZED SDK check, the Blickfeld Cube1 driver</td>
 </tr>
 <tr>
-<td><code>rust</code></td>
-<td>all</td>
-<td><code>cuda_ndt_matcher</code> is Rust; without a toolchain colcon skips it and <code>pose_source:=cuda_ndt</code> has nothing to launch</td>
-</tr>
-<tr>
-<td><code>colcon-cargo-ros2</code></td>
-<td>all</td>
-<td>teaches colcon to build the Rust packages; without it they are skipped <em>silently</em> and the build fails later on a missing package</td>
-</tr>
-<tr>
-<td><code>play-launch</code></td>
-<td>all</td>
-<td>the launch orchestrator this book uses throughout</td>
-</tr>
-<tr>
-<td><code>python-deps</code></td>
-<td>all</td>
-<td><code>Adafruit-PCA9685</code>, <code>simple-pid</code> — imported by the vehicle interface at runtime</td>
-</tr>
-<tr>
-<td><code>geographiclib</code></td>
-<td>all</td>
-<td>Autoware's map projection needs the egm2008-1 geoid to convert GNSS altitude</td>
-</tr>
-<tr>
-<td><code>gdown</code></td>
-<td>dev, vehicle</td>
-<td>used by the sample-data download scripts</td>
-</tr>
-<tr>
-<td><code>dev-tools</code></td>
-<td>dev, vehicle</td>
-<td>git-lfs, pre-commit, clang-format, PlotJuggler</td>
+<td>System configuration</td>
+<td>kernel socket buffers for CycloneDDS, loopback multicast, the u-blox udev rule, TurboVNC/VirtualGL</td>
 </tr>
 </tbody>
 </table>
-<h4 id="autoware">Autoware<a class="headerlink" href="#autoware" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>Default in</th>
-<th>Why it is there</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>autoware-debian</code></td>
-<td>dev, vehicle</td>
-<td>the Autoware 1.5.0 localrepo, 2–3 GB. Everything in <code>src/</code> builds against it</td>
-</tr>
-<tr>
-<td><code>autoware-data</code></td>
-<td>dev, vehicle</td>
-<td><strong>see below</strong> — without it, perception fails on every launch, forever</td>
-</tr>
-<tr>
-<td><code>ros-deps</code></td>
-<td>all</td>
-<td>rosdep resolves every key the packages under <code>src/</code> declare, which is why there are no per-driver apt steps</td>
-</tr>
-<tr>
-<td><code>tensorrt-engines</code></td>
-<td><em>opt-in</em></td>
-<td>pre-compiles the engines; minutes per model. Skipping it moves the cost to your first launch</td>
-</tr>
-</tbody>
-</table>
-<h4 id="libraries">Libraries<a class="headerlink" href="#libraries" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>Default in</th>
-<th>Why it is there</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>opencv</code></td>
-<td>dev, vehicle</td>
-<td>JetPack leaves 4.8.0 headers over a 4.5.4 runtime, which compiles and then misbehaves. Also provides aruco/contrib</td>
-</tr>
-<tr>
-<td><code>zed-sdk</code></td>
-<td><em>opt-in</em></td>
-<td>the ZED X Mini, which every default sensor suite includes. Large download</td>
-</tr>
-<tr>
-<td><code>blickfeld</code></td>
-<td><em>opt-in</em></td>
-<td>the Cube1 LiDAR driver. Selecting it accepts the library's licence terms</td>
-</tr>
-</tbody>
-</table>
-<h4 id="system-configuration">System configuration<a class="headerlink" href="#system-configuration" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>Default in</th>
-<th>Why it is there</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cyclonedds-sysctl</code></td>
-<td>dev, vehicle</td>
-<td><code>net.core.rmem_max</code> and the IP fragment settings. <strong>Below about 10 MB no ROS 2 node can start at all</strong></td>
-</tr>
-<tr>
-<td><code>multicast-lo</code></td>
-<td>dev, vehicle</td>
-<td><code>cyclonedds.xml</code> pins <code>lo</code>, and <code>lo</code> loses its <code>MULTICAST</code> flag on every reboot. Installs a unit so it survives one</td>
-</tr>
-<tr>
-<td><code>ublox-udev</code></td>
-<td>vehicle</td>
-<td>a stable <code>/dev/ublox-gps</code> name, and adds you to <code>dialout</code>. Log out and back in for the group to take effect</td>
-</tr>
-<tr>
-<td><code>turbovnc-virtualgl</code></td>
-<td><em>opt-in</em></td>
-<td>GPU-accelerated rendering over VNC, which the ZED tools need in a VNC session</td>
-</tr>
-</tbody>
-</table>
-<h3 id="the-opt-in-steps-are-a-choice-you-have-to-make">The opt-in steps are a choice you have to make<a class="headerlink" href="#the-opt-in-steps-are-a-choice-you-have-to-make" title="Permanent link">#</a></h3>
-<p>Three steps are in <strong>no</strong> profile — nothing selects them for you:</p>
-<ul>
-<li><code>zed-sdk</code> — needed if you have a ZED camera. Every default sensor suite
-  includes one, so on a vehicle you almost certainly want it.</li>
-<li><code>blickfeld</code> — only for the Cube1 LiDAR.</li>
-<li><code>tensorrt-engines</code> — never strictly needed, always worth it on a vehicle.</li>
-</ul>
-<blockquote>
-<p><strong>Note:</strong> the ZED SDK is not installed unless you select it. See
-<a href="../zed-sdk/">ZED SDK Installation</a>.</p>
-</blockquote>
+<p>Four of those used to be documented here as things to do by hand, and the two
+that most often broke a fresh install — the CycloneDDS socket buffers and the
+loopback <code>MULTICAST</code> flag — are the reason to let the profile choose. <strong>Below
+about 10 MB of <code>net.core.rmem_max</code> no ROS 2 node starts at all</strong>, and <code>lo</code> drops
+its multicast flag on every reboot, so <code>dev</code> and <code>vehicle</code> both select the steps
+that fix them. Nothing here needs to be typed out of a manual any more.</p>
+<p>Two choices are worth understanding before you confirm, because they are the
+only ones where the default is a judgement call rather than a requirement.</p>
+<h4 id="tensorrt-engines-download-or-build">TensorRT engines: download or build<a class="headerlink" href="#tensorrt-engines-download-or-build" title="Permanent link">#</a></h4>
+<p>Autoware compiles five perception models into TensorRT engines. Doing that on
+the machine takes about an hour on an Orin and nine minutes on a desktop GPU —
+and if you skip it, that same work happens inside the first launch's node
+constructors, where it looks like a hang and leaves perception unavailable until
+it finishes.</p>
+<p>The menu offers it as one decision with two answers:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    TensorRT engines (pick one, or neither)
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   15   (o) Download the published set (build only if none matches)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>   16   ( ) Build here, ignoring the published set
+</span></code></pre></div>
+<p>The default is the download, and it takes about 30 seconds: engines built for
+this exact hardware are published on the AutoSDV releases, and the download is
+verified by loading every engine before it is trusted. A published set exists
+for the boards we run; for anything else the same step builds locally, which is
+what you would have paid anyway. Pick the second answer when you are changing a
+model yourself, or producing a set to publish.</p>
+<p>An engine is tied to the GPU <em>and</em> to the exact TensorRT version, so neither
+answer can be baked into an image built somewhere else, and both must be redone
+after an Autoware or JetPack upgrade.</p>
+<h4 id="the-zed-sdk-is-installed-by-you-not-by-the-setup-program">The ZED SDK is installed by you, not by the setup program<a class="headerlink" href="#the-zed-sdk-is-installed-by-you-not-by-the-setup-program" title="Permanent link">#</a></h4>
+<p>Stereolabs publishes no apt repository — the only official artifact is an
+interactive installer that asks you to accept a proprietary licence. So the
+<code>zed-sdk</code> step <strong>checks</strong> rather than installs: it reports the version you have,
+and if it is missing or wrong it prints the exact download for your machine, and
+prints it again in bright text at the end of the run so it is the last thing on
+screen.</p>
+<p>Leaving it selected costs nothing on a machine with no ZED camera: the driver
+package skips itself and the rest of the workspace builds. Follow
+<a href="../zed-sdk/">ZED SDK Installation</a> when the run tells you to.</p>
+<p>The remaining opt-in step is <code>blickfeld</code>, for the Cube1 LiDAR; selecting it
+accepts that library's licence terms.</p>
 <h2 id="install-and-configure-direnv">Install and Configure direnv<a class="headerlink" href="#install-and-configure-direnv" title="Permanent link">#</a></h2>
 <p>AutoSDV ships an <code>.envrc</code> that activates the environment when you enter the
 directory:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>direnv<span class="w"> </span>allow
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>direnv
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'eval "$(direnv hook bash)"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w">   </span><span class="c1"># or your shell's equivalent</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">cd</span><span class="w"> </span>~/AutoSDV
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>direnv<span class="w"> </span>allow
 </span></code></pre></div>
 <p>Without direnv, source the two lines by hand in every new shell:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w">   </span><span class="c1"># includes ROS 2</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash<span class="w">               </span><span class="c1"># after the first build</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w">   </span><span class="c1"># includes ROS 2</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash<span class="w">               </span><span class="c1"># after the first build</span>
 </span></code></pre></div>
 <p><strong>Those two lines are where package dependencies are resolved</strong>, which is worth
 understanding before something says "package not found" — see
 <a href="../../../concepts/environment/">The Environment</a>.</p>
 <h2 id="build">Build<a class="headerlink" href="#build" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>just<span class="w"> </span>build
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>just<span class="w"> </span>build
 </span></code></pre></div>
 <p>This runs colcon with the flags the project needs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--base-paths<span class="w"> </span>src<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--cargo-args<span class="w"> </span>--release
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--base-paths<span class="w"> </span>src<span class="w"> </span>--symlink-install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--cmake-args<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--cargo-args<span class="w"> </span>--release
 </span></code></pre></div>
 <p><code>--cargo-args --release</code> is not decoration. <code>CMAKE_BUILD_TYPE=Release</code> covers
 only the C++ packages; without the cargo flag the Rust ones build unoptimised,
@@ -3591,55 +3474,58 @@ and <code>pose_source:=cuda_ndt</code> runs at roughly 80 ms per scan instead of
 onnx file</em>. The Debian package's tree at <code>/opt/autoware/1.5.0/data</code> is
 root-owned, so that write fails, the engine is discarded, and the same models
 rebuild — and fail again — on every single launch.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>just<span class="w"> </span>setup-autoware-data
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>just<span class="w"> </span>setup-autoware-data
 </span></code></pre></div>
 <p>This mirrors the tree into <code>data/autoware_data</code> with symlinks (171 files, under
 a megabyte), which the launch files already default to. Re-run it after an
 Autoware upgrade.</p>
-<h2 id="pre-compile-the-tensorrt-engines-optional-recommended">Pre-compile the TensorRT engines (optional, recommended)<a class="headerlink" href="#pre-compile-the-tensorrt-engines-optional-recommended" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>just<span class="w"> </span>build-engines
+<h2 id="tensorrt-engines-if-you-skipped-them-in-the-menu">TensorRT engines, if you skipped them in the menu<a class="headerlink" href="#tensorrt-engines-if-you-skipped-them-in-the-menu" title="Permanent link">#</a></h2>
+<p>The setup program does this for you — see
+<a href="#tensorrt-engines-download-or-build">TensorRT engines: download or build</a>
+above. To do it afterwards:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>just<span class="w"> </span>engines<span class="w">          </span><span class="c1"># the published set for this machine, else build (setup.sh default)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>just<span class="w"> </span>build-engines<span class="w">    </span><span class="c1"># build here, ignoring what is published</span>
 </span></code></pre></div>
-<p>Without this, the first launch compiles engines inside each node's constructor —
-10 to 30 minutes on an Orin, with perception unavailable throughout.</p>
-<p>Engines are tied to <strong>both</strong> the TensorRT version and the GPU, so this must run
-on the machine that will use them. It cannot be baked into an image built
-elsewhere, and must be re-run after an Autoware or JetPack upgrade.</p>
+<p><code>just engines</code> takes about 30 seconds when a published set matches this
+hardware, and falls back to the build when none does. It is safe to re-run: a
+second run notices the cache is already in place and does nothing, and an
+interrupted download resumes rather than starting over.</p>
 <h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">#</a></h2>
 <p>See <a href="../verify/">Verifying the Installation</a> — four checks, in order of how
 much each one proves.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
 <h3 id="the-build-fails-on-a-missing-package">The build fails on a missing package<a class="headerlink" href="#the-build-fails-on-a-missing-package" title="Permanent link">#</a></h3>
 <p>Usually rosdep has not resolved something:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rosdep<span class="w"> </span>update
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rosdep<span class="w"> </span>update
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
 </span></code></pre></div>
 <h3 id="the-build-succeeds-but-cuda_ndt_matcher-is-absent">The build succeeds but <code>cuda_ndt_matcher</code> is absent<a class="headerlink" href="#the-build-succeeds-but-cuda_ndt_matcher-is-absent" title="Permanent link">#</a></h3>
 <p>The Rust toolchain or <code>colcon-cargo-ros2</code> is missing, and colcon skipped the
 package without saying so:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>rust
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>colcon-cargo-ros2
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>just<span class="w"> </span>build
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>rust
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>colcon-cargo-ros2
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>just<span class="w"> </span>build
 </span></code></pre></div>
 <h3 id="no-ros-2-node-starts-at-all">No ROS 2 node starts at all<a class="headerlink" href="#no-ros-2-node-starts-at-all" title="Permanent link">#</a></h3>
 <p>Kernel socket buffers. This is not subtle — nothing starts:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>cyclonedds-sysctl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>cyclonedds-sysctl
 </span></code></pre></div>
 <h3 id="nodes-cannot-see-each-other-on-one-machine-after-a-reboot">Nodes cannot see each other on one machine after a reboot<a class="headerlink" href="#nodes-cannot-see-each-other-on-one-machine-after-a-reboot" title="Permanent link">#</a></h3>
 <p>The loopback interface lost its <code>MULTICAST</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./setup.sh<span class="w"> </span>--status<span class="w">          </span><span class="c1"># multicast-lo will report as not satisfied</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>multicast-lo
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>./setup.sh<span class="w"> </span>--status<span class="w">          </span><span class="c1"># multicast-lo will report as not satisfied</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>./setup.sh<span class="w"> </span>--rerun<span class="w"> </span>multicast-lo
 </span></code></pre></div>
 <h3 id="perception-recompiles-its-models-on-every-launch">Perception recompiles its models on every launch<a class="headerlink" href="#perception-recompiles-its-models-on-every-launch" title="Permanent link">#</a></h3>
 <p>The writable data tree step was skipped, or an Autoware upgrade invalidated the
 mirror:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>just<span class="w"> </span>setup-autoware-data
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>just<span class="w"> </span>setup-autoware-data
 </span></code></pre></div>
 <h3 id="cuda-or-tensorrt-problems">CUDA or TensorRT problems<a class="headerlink" href="#cuda-or-tensorrt-problems" title="Permanent link">#</a></h3>
 <p>Check what your Autoware installation actually requires, rather than what you
 think you installed:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># libnvinfer.so.10  -&gt; you need TensorRT 10.x, not 8.x</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>nvidia-smi
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ldd<span class="w"> </span>/opt/autoware/1.5.0/lib/libtensorrt_ops.so<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvinfer
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1"># libnvinfer.so.10  -&gt; you need TensorRT 10.x, not 8.x</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>nvidia-smi
 </span></code></pre></div>
 <h3 id="a-step-reports-as-not-installed-although-you-installed-it">A step reports as not installed although you installed it<a class="headerlink" href="#a-step-reports-as-not-installed-although-you-installed-it" title="Permanent link">#</a></h3>
 <p>That is <code>--status</code> reading the machine rather than its own records, and it is
