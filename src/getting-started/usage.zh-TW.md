@@ -118,7 +118,7 @@ kill -- -$(ps -o pgid= -p $LAUNCH_PID | tr -d ' ')
 
 ```bash
 just launch
-just launch ARGS="pose_source:=ndt launch_perception:=false"
+just launch "pose_source:=ndt launch_perception:=false"
 ```
 
 它只是一層薄薄的包裝，而值得確切知道它加了什麼，因為這些附加內容從命令列上

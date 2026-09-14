@@ -89,7 +89,7 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 
     ```bash
     just sim logging
-    just sim logging ARGS="pose_source:=ndt"
+    just sim logging "pose_source:=ndt"
     ```
 
 ## 如果你沒有 NVIDIA GPU——或者顯卡太新

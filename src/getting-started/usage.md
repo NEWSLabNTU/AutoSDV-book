@@ -123,7 +123,7 @@ The repository provides a convenience recipe:
 
 ```bash
 just launch
-just launch ARGS="pose_source:=ndt launch_perception:=false"
+just launch "pose_source:=ndt launch_perception:=false"
 ```
 
 It is a thin wrapper, and it is worth knowing exactly what it adds, because the

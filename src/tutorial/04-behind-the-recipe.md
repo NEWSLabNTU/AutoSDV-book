@@ -174,7 +174,7 @@ Arguments to a recipe go in one quoted string — a `just` requirement, not a RO
 one:
 
 ```bash
-just launch ARGS="pose_source:=ndt launch_perception:=false"
+just launch "pose_source:=ndt launch_perception:=false"
 ```
 
 ## Which layer to use

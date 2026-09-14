@@ -167,7 +167,7 @@ python3 demo/scripts/seed_initialpose.py
 給 recipe 的參數要放進單一個加引號的字串——這是 `just` 的要求，不是 ROS 的：
 
 ```bash
-just launch ARGS="pose_source:=ndt launch_perception:=false"
+just launch "pose_source:=ndt launch_perception:=false"
 ```
 
 ## 該用哪一層

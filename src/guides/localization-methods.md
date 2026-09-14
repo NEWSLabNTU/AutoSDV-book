@@ -68,7 +68,7 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
   pose_source:=mcl map_path:=data/my_site
 
 # MCL synthesises one from a 3-D cloud (test scaffolding only)
-just sim logging ARGS="pose_source:=mcl scan_source:=test_pointcloud"
+just sim logging "pose_source:=mcl scan_source:=test_pointcloud"
 ```
 
 `mcl_scan_normalizer` resolves the mounting offset itself. This is not a detail:

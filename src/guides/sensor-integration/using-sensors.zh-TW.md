@@ -26,13 +26,13 @@ AutoSDV 支援稱為**感測器套件**的預定義感測器組合。每個套�
 
 ```bash
 # Launch with Robin-W LiDAR + ZED camera (recommended)
-just launch ARGS="sensor_suite:=robin_zed"
+just launch "sensor_suite:=robin_zed"
 
 # Launch with Velodyne LiDAR + ZED camera
-just launch ARGS="sensor_suite:=vlp32c_zed"
+just launch "sensor_suite:=vlp32c_zed"
 
 # Launch with Blickfeld LiDAR + ZED camera
-just launch ARGS="sensor_suite:=cube1_zed"
+just launch "sensor_suite:=cube1_zed"
 ```
 
 ### 驗證感測器運作
@@ -77,7 +77,7 @@ just tool rviz
 
 ```bash
 # Enable NTRIP for RTK positioning
-just launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
+just launch "sensor_suite:=robin_zed use_ntrip:=true"
 ```
 
 這會連接到 e-GNSS Taiwan VRS 以獲得約 2 公分精度的 GPS。
@@ -88,7 +88,7 @@ just launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
 
 ```bash
 # Disable GPS, use NDT localization only
-just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
+just launch "sensor_suite:=robin_zed use_gnss:=false"
 ```
 
 您需要在 RViz 中使用「2D Pose Estimate」工具手動設定初始姿態。
@@ -99,10 +99,10 @@ just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
 
 ```bash
 # Custom combination
-just launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
+just launch "lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-just launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
 ```
 
 ### 可用選項

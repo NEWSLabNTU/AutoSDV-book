@@ -125,7 +125,7 @@ sensor_model_param = DeclareLaunchArgument(
 just build
 
 # Launch with your sensor
-just launch ARGS="sensor_model:=your_sensor"
+just launch "sensor_model:=your_sensor"
 
 # Verify topic in Autoware namespace
 ros2 topic list | grep /sensing

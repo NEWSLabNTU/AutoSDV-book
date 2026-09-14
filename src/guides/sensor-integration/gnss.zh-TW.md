@@ -81,7 +81,7 @@ Internet → NTRIP Client → RTCM Corrections → u-blox Driver → Receiver
 
 ```bash
 # Launch with NTRIP corrections
-just launch ARGS="gnss_receiver:=ublox use_ntrip:=true"
+just launch "gnss_receiver:=ublox use_ntrip:=true"
 ```
 
 ### 監控 RTK 狀態
@@ -211,7 +211,7 @@ ros2 topic hz /fix  # ~5 Hz
 
 ```bash
 # Disable GNSS, use NDT localization only
-just launch ARGS="use_gnss:=false"
+just launch "use_gnss:=false"
 ```
 
 使用 RViz「2D Pose Estimate」工具手動設定初始位置。
@@ -220,9 +220,9 @@ just launch ARGS="use_gnss:=false"
 
 ```bash
 # Launch commands
-just launch ARGS="gnss_receiver:=ublox use_ntrip:=true"   # u-blox RTK
-just launch ARGS="gnss_receiver:=garmin"                  # Garmin
-just launch ARGS="use_gnss:=false"                        # Indoor (no GNSS)
+just launch "gnss_receiver:=ublox use_ntrip:=true"   # u-blox RTK
+just launch "gnss_receiver:=garmin"                  # Garmin
+just launch "use_gnss:=false"                        # Indoor (no GNSS)
 
 # u-blox verification
 ls -l /dev/ublox-gps

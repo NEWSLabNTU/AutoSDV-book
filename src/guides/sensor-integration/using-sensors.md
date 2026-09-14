@@ -18,13 +18,13 @@ AutoSDV supports predefined sensor combinations called **sensor suites**. Each s
 
 ```bash
 # Launch with Robin-W LiDAR + ZED camera (recommended)
-just launch ARGS="sensor_suite:=robin_zed"
+just launch "sensor_suite:=robin_zed"
 
 # Launch with Velodyne LiDAR + ZED camera
-just launch ARGS="sensor_suite:=vlp32c_zed"
+just launch "sensor_suite:=vlp32c_zed"
 
 # Launch with Blickfeld LiDAR + ZED camera
-just launch ARGS="sensor_suite:=cube1_zed"
+just launch "sensor_suite:=cube1_zed"
 ```
 
 ### Verify Sensors are Working
@@ -69,7 +69,7 @@ For high-precision outdoor localization with RTK corrections:
 
 ```bash
 # Enable NTRIP for RTK positioning
-just launch ARGS="sensor_suite:=robin_zed use_ntrip:=true"
+just launch "sensor_suite:=robin_zed use_ntrip:=true"
 ```
 
 This connects to the e-GNSS Taiwan VRS for ~2cm accuracy GPS.
@@ -80,7 +80,7 @@ For indoor operation without GPS signal:
 
 ```bash
 # Disable GPS, use NDT localization only
-just launch ARGS="sensor_suite:=robin_zed use_gnss:=false"
+just launch "sensor_suite:=robin_zed use_gnss:=false"
 ```
 
 You'll need to manually set the initial pose in RViz using "2D Pose Estimate" tool.
@@ -91,10 +91,10 @@ Instead of using predefined suites, you can select individual sensors:
 
 ```bash
 # Custom combination
-just launch ARGS="lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
+just launch "lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-just launch ARGS="lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
 ```
 
 ### Available Options
