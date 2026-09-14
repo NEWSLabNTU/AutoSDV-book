@@ -82,7 +82,7 @@ AutoSDV 車輛模型全都沒問題。
 ### 記錄回放模擬 —— 以錄製的感測器資料跑完整管線
 
 ```bash
-just bag download          # 約 2.8 GB，只需一次
+just coss download-rosbag          # 約 2.8 GB，只需一次
 ```
 
 ```bash

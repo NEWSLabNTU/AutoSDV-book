@@ -58,7 +58,7 @@ stack except the actuators can be exercised at a desk.
   and [verification](../getting-started/installation/verify.md)
 - A terminal with [the environment sourced](../concepts/environment.md) — two
   lines, and everything on this page depends on them
-- For the logging simulation, the COSS rosbag: `just bag download`, about
+- For the logging simulation, the COSS rosbag: `just coss download-rosbag`, about
   2.8 GB, fetched automatically by step 1
 
 You do **not** need a vehicle, a LiDAR, a camera, or a GPU.

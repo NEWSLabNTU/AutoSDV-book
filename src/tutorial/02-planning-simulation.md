@@ -33,7 +33,7 @@ the trajectories you see are ones this vehicle could actually follow.
 ??? note "The `just` shortcut"
 
     ```bash
-    just sim planning
+    just coss planning-sim
     ```
 
     The same command with `--web-addr 0.0.0.0:8081` added. Once you are past
@@ -115,8 +115,37 @@ Two things appear, and the difference between them is the heart of planning:
 
 `Routing` in the panel becomes **Set**.
 
-If nothing appears, the goal was not on a drivable lane. Put it on a road, not
-on the grey space between roads.
+### When nothing appears
+
+A goal that is refused says nothing at all — no message, no marker, `Routing`
+simply stays `Unset`. There are two reasons, and they need different responses.
+
+**The goal was not inside a lanelet.** Being on something that looks like road
+is not enough: the goal has to fall within a lane the map defines, and on this
+map that is a narrower target than it appears. Heading is forgiving — roughly
+±45° of the lane direction is accepted — so it is nearly always position that
+failed. Click closer to the middle of a lane, not on the line that bounds it.
+
+**The stack was not ready yet.** The mission planner needs about a minute after
+launch before it will accept anything, and until then a goal is refused exactly
+as if it were off-road. Wait and click again; the same goal that failed will
+take.
+
+!!! tip "A goal that is known to work"
+
+    If you would rather see the rest of the tutorial before hunting for a
+    routable spot, use this pair. It was driven end to end while writing this
+    page: 28.4 m, up to 3.12 m/s, arriving within 0.1 m.
+
+    | | x | y | heading |
+    |---|---|---|---|
+    | initial pose | −1.84 | −8.28 | ≈ 175° |
+    | goal | −27.9 | −4.4 | ≈ 135° |
+
+    The coordinates are metres in the `map` frame, whose origin is fixed by
+    `map_projector_info.yaml` — see [The Map and the
+    Rosbag](./05-map-and-rosbag.md). You are placing these by eye in RViz, so
+    getting within a metre or so is enough.
 
 ## Step 3 — Drive
 
@@ -125,9 +154,13 @@ Click **`Auto`** in the AutowareStatePanel.
 The vehicle follows the trajectory. Watch the speedometer at the top of the view
 and the `Motion` field, which becomes `Moving`.
 
-If it will not move, the answer is in the panel. `Routing | Unset` means no goal
-took. `Localization | Uninitialized` means step 1 did not take. Both are more
-common than a real planning failure.
+**If the first click does nothing, click it again.** Engaging is refused while
+the operation mode is still changing — which it is for a second or two after the
+route is set — and the refusal is silent. A second click a moment later takes.
+
+If it still will not move, the answer is in the panel. `Routing | Unset` means no
+goal took. `Localization | Uninitialized` means step 1 did not take. Both are
+more common than a real planning failure.
 
 ## Now experiment
 

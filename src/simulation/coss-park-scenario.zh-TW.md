@@ -100,7 +100,7 @@ just demo bench-report <tsv>    # 從已錄製的執行重新產生報告
 
 ```bash
 parallel --line-buffer ::: \
-    "just sim logging" \
+    "just coss logging-sim" \
     "sleep 40 && ros2 bag play data/rosbags/outdoor_20251226_153115/ --clock -l -r 1.0" \
     "sleep 45 && ./scripts/rosbag/record_localization.sh"
 ```

@@ -7,7 +7,7 @@ What to replay, how to get it, and how to record your own.
 The recording every simulation page uses.
 
 ```bash
-just bag download
+just coss download-rosbag
 ```
 
 A 1.6 GiB download that unpacks to 2.8 GiB in

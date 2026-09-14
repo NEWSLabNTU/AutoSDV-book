@@ -161,8 +161,8 @@ worth knowing:
 |---|---|
 | `just build` | `colcon build --base-paths src --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --cargo-args --release` |
 | `just launch` | `play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml` (plus `rviz:=false` with no `$DISPLAY`) |
-| `just sim logging` | the same, with `logging_simulation.launch.yaml` |
-| `just sim planning` | `play_launch launch autoware_launch planning_simulator.launch.xml` with the COSS map and AutoSDV models |
+| `just coss logging-sim` | the same, with `logging_simulation.launch.yaml` |
+| `just coss planning-sim` | `play_launch launch autoware_launch planning_simulator.launch.xml` with the COSS map and AutoSDV models |
 | `just demo stop` | kills the stack's process group |
 
 Two details in `just launch` worth carrying: the web UI moves to **8081**, not

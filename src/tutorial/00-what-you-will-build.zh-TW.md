@@ -60,7 +60,7 @@ flowchart LR
   [驗證](../getting-started/installation/verify.md)的機器
 - 一個已[載入環境](../concepts/environment.md)的終端機——兩行，而本頁的一切都
   依賴它們
-- 記錄回放模擬需要 COSS rosbag：`just bag download`，約 2.8 GB，步驟 1 會自動取得
+- 記錄回放模擬需要 COSS rosbag：`just coss download-rosbag`，約 2.8 GB，步驟 1 會自動取得
 
 你**不需要**車輛、LiDAR、相機或 GPU。
 

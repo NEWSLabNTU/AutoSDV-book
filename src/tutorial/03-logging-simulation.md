@@ -19,7 +19,7 @@ occupancy grid. Nothing to download, nothing to configure.
 **The recording is not**, because it is 2.8 GB:
 
 ```bash
-just bag download    # once
+just coss download-rosbag    # once
 ```
 
 What that does, so none of it is a surprise:
@@ -42,7 +42,7 @@ a script, and safe to re-run if a download was interrupted.
     Fifty people pulling 1.6 GiB from one NAS at once is the slowest part of any
     workshop. Copy the extracted `data/rosbags/outdoor_20251226_153115`
     directory to each machine beforehand, or hand out a USB drive; the checksum
-    check then makes `just bag download` a no-op rather than a download.
+    check then makes `just coss download-rosbag` a no-op rather than a download.
 
 ## Launch it — two terminals
 
@@ -51,11 +51,15 @@ Both terminals need [the environment](../concepts/environment.md).
 **Terminal 1 — the stack:**
 
 ```bash
-source /opt/autoware/1.5.0/setup.bash
 source install/setup.bash
 
-play_launch launch autosdv_launch logging_simulation.launch.yaml
+play_launch launch autosdv_launch logging_simulation.launch.yaml \
+  pose_source:=ndt \
+  launch_perception:=false
 ```
+
+Those two arguments are what make this run on any machine, and the next section
+says why.
 
 Wait for it. The point cloud map is 4.9 million points and takes tens of seconds
 to load; the scan matcher cannot do anything until it has finished. Starting the
@@ -64,7 +68,6 @@ recording early simply wastes the beginning of it.
 **Terminal 2 — the data:**
 
 ```bash
-source /opt/autoware/1.5.0/setup.bash
 source install/setup.bash
 
 ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
@@ -87,8 +90,9 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 ??? note "The `just` shortcut"
 
     ```bash
-    just sim logging
-    just sim logging "pose_source:=ndt"
+    just coss logging-sim      # terminal 1, the CPU path by default
+    just coss play-rosbag      # terminal 2
+    just coss logging-sim gpu  # cuda_ndt and perception, if you have a GPU
     ```
 
 ## If you have no NVIDIA GPU — or a very new one
@@ -155,9 +159,24 @@ whole map.
 
 - **In RViz** — `2D Pose Estimate`, as in the planning simulation, clicked near
   where the recording starts.
-- **Automatically** — `just demo run` publishes a known pose 8 seconds into
+- **Automatically** — `just coss demo` publishes a known pose 8 seconds into
   playback, which is what makes its results reproducible. Without that seed, two
   runs of the same recording can differ.
+
+**Set it while the bag is playing.** The initialiser runs an NDT alignment, and
+that needs a live scan and a running clock. Clicking before the replay starts
+does nothing.
+
+!!! tip "Where the recording starts"
+
+    | | x | y | heading |
+    |---|---|---|---|
+    | the drive's start | −1.84 | −8.28 | ≈ 175° |
+
+    Metres in the `map` frame. NDT refines whatever you give it, so clicking
+    within a couple of metres and roughly along the road is enough — it is the
+    *heading* that matters most, because a pose facing the wrong way down the
+    road will not converge.
 
 The recording's own GNSS is *not* used (`use_gnss:=false`): it is single-point
 with about 20 m of scatter and disagrees with the direction of travel, so

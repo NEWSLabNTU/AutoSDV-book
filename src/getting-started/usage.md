@@ -309,14 +309,14 @@ just control circle     # a circular trajectory
 ```bash
 just bag record         # record the outdoor sensor topics
 just bag play           # play the most recent recording
-just bag download       # fetch the test rosbag (~2.8 GB)
+just coss download-rosbag       # fetch the test rosbag (~2.8 GB)
 ```
 
 ### Simulation
 
 ```bash
-just sim planning       # planning simulator, no sensors needed
-just sim logging        # rosbag replay
+just coss planning-sim       # planning simulator, no sensors needed
+just coss logging-sim        # rosbag replay
 just sim coss-park      # the full COSS Park scenario
 ```
 

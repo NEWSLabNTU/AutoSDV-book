@@ -81,7 +81,7 @@ Full walkthrough: [Planning Simulation](../../tutorial/02-planning-simulation.md
 ### The logging simulation — the full pipeline, on recorded sensor data
 
 ```bash
-just bag download          # ~2.8 GB, once
+just coss download-rosbag          # ~2.8 GB, once
 ```
 
 ```bash

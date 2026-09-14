@@ -302,14 +302,14 @@ just control circle     # 圓形軌跡
 ```bash
 just bag record         # 錄製戶外感測器主題
 just bag play           # 回放最近一次的錄製
-just bag download       # 取得測試 rosbag（約 2.8 GB）
+just coss download-rosbag       # 取得測試 rosbag（約 2.8 GB）
 ```
 
 ### 模擬
 
 ```bash
-just sim planning       # 路徑規劃模擬器，不需感測器
-just sim logging        # rosbag 回放
+just coss planning-sim       # 路徑規劃模擬器，不需感測器
+just coss logging-sim        # rosbag 回放
 just sim coss-park      # 完整的 COSS Park 情境
 ```
 

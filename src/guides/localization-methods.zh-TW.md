@@ -69,7 +69,7 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
   pose_source:=mcl map_path:=data/my_site
 
 # 由 MCL 從 3D 點雲合成一份（僅供測試）
-just sim logging "pose_source:=mcl scan_source:=test_pointcloud"
+just coss logging-sim   # then, for MCL: pass pose_source:=mcl scan_source:=test_pointcloud
 ```
 
 `mcl_scan_normalizer` 會自行處理安裝位移。這不是細節：粒子濾波器把掃描視為

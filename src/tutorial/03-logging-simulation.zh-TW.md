@@ -25,7 +25,7 @@ Translation Metadata:
 **錄製檔不在**，因為它有 2.8 GB：
 
 ```bash
-just bag download    # 只需一次
+just coss download-rosbag    # 只需一次
 ```
 
 它實際做的事，先講清楚免得意外：
@@ -46,7 +46,7 @@ just bag download    # 只需一次
 
     五十個人同時從一台 NAS 拉 1.6 GiB，是任何工作坊裡最慢的一段。事先把解開後的
     `data/rosbags/outdoor_20251226_153115` 目錄複製到每台機器，或發隨身碟；checksum
-    檢查會讓 `just bag download` 變成不做事，而不是再下載一次。
+    檢查會讓 `just coss download-rosbag` 變成不做事，而不是再下載一次。
 
 ## 啟動 —— 兩個終端機
 
@@ -55,11 +55,14 @@ just bag download    # 只需一次
 **終端機 1 —— 堆疊：**
 
 ```bash
-source /opt/autoware/1.5.0/setup.bash
 source install/setup.bash
 
-play_launch launch autosdv_launch logging_simulation.launch.yaml
+play_launch launch autosdv_launch logging_simulation.launch.yaml \
+  pose_source:=ndt \
+  launch_perception:=false
 ```
+
+這兩個參數就是讓它能在任何機器上跑起來的原因，下一節會說明。
 
 等它起來。點雲地圖有 490 萬個點，需要數十秒載入；掃描匹配器在它載完之前什麼都做不了。
 太早開始播放錄製只是浪費它的開頭。
@@ -67,7 +70,6 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml
 **終端機 2 —— 資料：**
 
 ```bash
-source /opt/autoware/1.5.0/setup.bash
 source install/setup.bash
 
 ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
@@ -88,8 +90,9 @@ ros2 bag play data/rosbags/outdoor_20251226_153115 --clock
 ??? note "`just` 捷徑"
 
     ```bash
-    just sim logging
-    just sim logging "pose_source:=ndt"
+    just coss logging-sim      # 終端機 1，預設走 CPU 路徑
+    just coss play-rosbag      # 終端機 2
+    just coss logging-sim gpu  # 有 GPU 的話，用 cuda_ndt 與感知
     ```
 
 ## 如果你沒有 NVIDIA GPU——或者顯卡太新
@@ -148,8 +151,20 @@ NDT 需要一個起點。它會精修一個估計值，而不是搜尋整張地�
 
 - **在 RViz 中** —— 用 `2D Pose Estimate`，就像路徑規劃模擬那樣，點在錄製起始位置
   附近。
-- **自動** —— `just demo run` 會在回放開始 8 秒時發佈一個已知姿態，那正是它的結果
+- **自動** —— `just coss demo` 會在回放開始 8 秒時發佈一個已知姿態，那正是它的結果
   可重現的原因。沒有那個植入，同一段錄製跑兩次可能不同。
+
+**要在 bag 播放中設定。** 初始化器會跑一次 NDT 對齊，那需要即時的掃描與正在前進的
+時鐘。在回放開始前點，什麼都不會發生。
+
+!!! tip "錄製從哪裡開始"
+
+    | | x | y | 朝向 |
+    |---|---|---|---|
+    | 行駛起點 | −1.84 | −8.28 | 約 175° |
+
+    單位是 `map` 座標系的公尺。NDT 會精修你給的任何值，所以點在兩公尺內、大致沿著
+    道路方向就夠了——其中**朝向**最重要，因為在路上朝反方向的姿態不會收斂。
 
 錄製本身的 GNSS *不會*被使用（`use_gnss:=false`）：它是單點定位、約有 20 公尺的
 散佈，而且與行進方向不一致，所以讓它來初始化定位會讓車輛每次落在不同地方。那是一個

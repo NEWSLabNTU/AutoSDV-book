@@ -15,7 +15,7 @@ Translation Metadata:
 所有模擬頁面使用的那份錄製。
 
 ```bash
-just bag download
+just coss download-rosbag
 ```
 
 下載 1.6 GiB，解開後在 `data/rosbags/outdoor_20251226_153115` 佔 2.8 GiB，過程中

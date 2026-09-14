@@ -156,8 +156,8 @@ python3 demo/scripts/seed_initialpose.py
 |---|---|
 | `just build` | `colcon build --base-paths src --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --cargo-args --release` |
 | `just launch` | `play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml`（在沒有 `$DISPLAY` 時另加 `rviz:=false`） |
-| `just sim logging` | 同上，但用 `logging_simulation.launch.yaml` |
-| `just sim planning` | `play_launch launch autoware_launch planning_simulator.launch.xml`，帶 COSS 地圖與 AutoSDV 模型 |
+| `just coss logging-sim` | 同上，但用 `logging_simulation.launch.yaml` |
+| `just coss planning-sim` | `play_launch launch autoware_launch planning_simulator.launch.xml`，帶 COSS 地圖與 AutoSDV 模型 |
 | `just demo stop` | 殺掉堆疊的行程群組 |
 
 `just launch` 有兩個值得記住的細節：網頁介面移到 **8081**，而不是 `play_launch`

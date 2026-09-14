@@ -39,17 +39,53 @@ Autoware 的程式碼。
 所以你始終處於一種混合狀態：**底層是二進位的 Autoware，上層是原始碼工作空間。**
 本頁其餘部分談的就是這個結構。
 
-## 那兩行
-
-每一個要執行任何東西的終端機，都需要這兩行：
+## 一行就找得到套件，但有一樣東西它帶不來
 
 ```bash
-source /opt/autoware/1.5.0/setup.bash   # ROS 2 Humble 與 Autoware 套件
-source install/setup.bash               # AutoSDV 工作空間，來自 src/
+source install/setup.bash    # 在儲存庫根目錄，且要先 `just build`
 ```
 
-第二行要在儲存庫根目錄執行，而且只有在 `just build` 產生 `install/` 目錄之後
-才有效。
+這一行就足以*找到*所有東西。`install/setup.bash` 是 colcon 在建置時產生的，裡面
+記下了建置當下已經載入的 prefix：
+
+```sh
+# install/setup.sh 內部
+COLCON_CURRENT_PREFIX="/opt/autoware/1.5.0"
+_colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
+```
+
+所以載入工作空間會把 ROS 2 與 Autoware 一起帶進來。在一個沒有載入其他東西的乾淨
+shell 上實測：
+
+```console
+$ source install/setup.bash
+$ ros2 pkg prefix autoware_launch
+/opt/autoware/1.5.0
+$ ros2 pkg prefix autosdv_launch
+…/AutoSDV/install/autosdv_launch
+```
+
+**它帶不來的是 middleware。** 這條鏈載入的是 `local_setup.bash`，那是 colcon 產生
+的檔案，只帶套件環境，別的都沒有。`RMW_IMPLEMENTATION` 與 `CYCLONEDDS_URI` 是寫在
+`/opt/autoware/1.5.0/setup.bash` 裡的普通 export——那是包在產生檔外面的手寫
+wrapper——所以不會被繼承：
+
+```console
+$ source install/setup.bash
+$ echo "${RMW_IMPLEMENTATION:-unset}"
+unset
+```
+
+未設定就是 ROS 2 的預設值 `rmw_fastrtps_cpp`，那和別處啟動的 stack 正在用的是
+*另一套 middleware*。這就是下面描述的故障，也正是 `.envrc` 存在的理由：它替這個
+目錄做一次選擇，於是一行 `source install/setup.bash` 就真的是終端機所需的全部。
+
+如果你不想依賴 `.envrc`，就先載入 Autoware、再載入工作空間——這個順序兩者都拿得到：
+
+```bash
+source /opt/autoware/1.5.0/setup.bash
+source install/setup.bash
+```
 
 ### 第一行做的事比看起來多
 
@@ -143,16 +179,17 @@ RMW_IMPLEMENTATION=rmw_zenoh_cpp direnv reload
 這是本頁的重點，所以以下是實測而非斷言。每一列都是一個完全乾淨、沒有繼承任何
 變數的 shell：
 
-| 已 source | PATH 上有 `ros2` | `ros2 pkg prefix autoware_launch` | `ros2 pkg prefix autosdv_launch` |
-|-----------|------------------|-----------------------------------|----------------------------------|
-| 什麼都沒有 | **找不到** | — | — |
-| `/opt/ros/humble/setup.bash` | 有 | **Package not found** | **Package not found** |
-| `/opt/autoware/1.5.0/setup.bash` | 有 | `/opt/autoware/1.5.0` | **Package not found** |
-| 上面兩行都做 | 有 | `/opt/autoware/1.5.0` | `…/AutoSDV/install/autosdv_launch` |
+| 已 source | PATH 上有 `ros2` | `autoware_launch` | `autosdv_launch` | `RMW_IMPLEMENTATION` |
+|---|---|---|---|---|
+| 什麼都沒有 | **找不到** | — | — | — |
+| `/opt/ros/humble/setup.bash` | 有 | **找不到** | **找不到** | **未設定** |
+| `/opt/autoware/1.5.0/setup.bash` | 有 | `/opt/autoware/1.5.0` | **找不到** | `rmw_cyclonedds_cpp` |
+| **只有** `install/setup.bash` | 有 | `/opt/autoware/1.5.0` | `…/install/autosdv_launch` | **未設定** |
+| 先 Autoware 再工作空間 | 有 | `/opt/autoware/1.5.0` | `…/install/autosdv_launch` | `rmw_cyclonedds_cpp` |
 
-請仔細讀第三列。載入 Autoware 之後你可以執行 `ros2`、可以啟動 Autoware 自己的
-檔案，而 **AutoSDV 仍然是看不見的**。只載入工作空間則相反：你的套件找得到，但
-它們建置時所依賴的 Autoware 訊息與節點找不到。
+請把最後兩列一起讀。只載入工作空間就找得到**每一個**套件，因為建置當下已經把底下
+那幾層記了下來——但 middleware 仍然是未設定的。套件能不能被找到，和要用哪一套
+middleware，是兩個不同的問題，而只有第二個需要那行 Autoware。
 
 **這就是你的相依套件的來源。** 不是來自建置——建置只產生了 `install/`。AutoSDV
 的節點所連結的 ROS 2 與 Autoware 套件、它們發佈的訊息型別、它們 include 的啟動
@@ -168,8 +205,9 @@ echo $AMENT_PREFIX_PATH | tr ':' '\n'
 ```
 
 在上面那些乾淨的 shell 中，只有 ROS 2 時該路徑有 1 個項目；加上 Autoware 後是 2
-個——Autoware 是單一合併安裝，只貢獻一個前綴；載入 AutoSDV 工作空間後變成 35
-個，因為 `--symlink-install` 的工作空間是每個套件貢獻一個項目。
+個——Autoware 是單一合併安裝，只貢獻一個前綴；載入工作空間後變成 33 個，因為
+`--symlink-install` 的工作空間是每個套件貢獻一個項目，而底下那兩層是透過記錄下來
+的鏈一起帶進來的，不另外計數。
 
 兩個值得記住的後果：
 
