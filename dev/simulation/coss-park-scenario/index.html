@@ -3010,7 +3010,7 @@ the only way the comparison means anything.</p>
 simulation, the bag, and a localization recorder, started together under GNU
 <code>parallel</code> with fixed sleeps:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>parallel<span class="w"> </span>--line-buffer<span class="w"> </span>:::<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="s2">"just sim logging"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="s2">"just coss logging-sim"</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="s2">"sleep 40 &amp;&amp; ros2 bag play data/rosbags/outdoor_20251226_153115/ --clock -l -r 1.0"</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="s2">"sleep 45 &amp;&amp; ./scripts/rosbag/record_localization.sh"</span>
 </span></code></pre></div>

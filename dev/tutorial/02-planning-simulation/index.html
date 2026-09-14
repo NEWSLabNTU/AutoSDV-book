@@ -1308,6 +1308,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 2 — Give it a goal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-nothing-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When nothing appears
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2872,6 +2889,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 2 — Give it a goal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-nothing-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When nothing appears
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3063,7 +3097,7 @@ which supplies the real vehicle's dimensions, wheelbase and steering limits, so
 the trajectories you see are ones this vehicle could actually follow.</p>
 <details class="note">
 <summary>The <code>just</code> shortcut</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>sim<span class="w"> </span>planning
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>coss<span class="w"> </span>planning-sim
 </span></code></pre></div>
 <p>The same command with <code>--web-addr 0.0.0.0:8081</code> added. Once you are past
 this tutorial, use it.</p>
@@ -3176,15 +3210,62 @@ drag sets which way the vehicle should be facing when it arrives.</p>
   continuously. This is what the controller follows.</li>
 </ul>
 <p><code>Routing</code> in the panel becomes <strong>Set</strong>.</p>
-<p>If nothing appears, the goal was not on a drivable lane. Put it on a road, not
-on the grey space between roads.</p>
+<h3 id="when-nothing-appears">When nothing appears<a class="headerlink" href="#when-nothing-appears" title="Permanent link">#</a></h3>
+<p>A goal that is refused says nothing at all — no message, no marker, <code>Routing</code>
+simply stays <code>Unset</code>. There are two reasons, and they need different responses.</p>
+<p><strong>The goal was not inside a lanelet.</strong> Being on something that looks like road
+is not enough: the goal has to fall within a lane the map defines, and on this
+map that is a narrower target than it appears. Heading is forgiving — roughly
+±45° of the lane direction is accepted — so it is nearly always position that
+failed. Click closer to the middle of a lane, not on the line that bounds it.</p>
+<p><strong>The stack was not ready yet.</strong> The mission planner needs about a minute after
+launch before it will accept anything, and until then a goal is refused exactly
+as if it were off-road. Wait and click again; the same goal that failed will
+take.</p>
+<div class="admonition tip">
+<p class="admonition-title">A goal that is known to work</p>
+<p>If you would rather see the rest of the tutorial before hunting for a
+routable spot, use this pair. It was driven end to end while writing this
+page: 28.4 m, up to 3.12 m/s, arriving within 0.1 m.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x</th>
+<th>y</th>
+<th>heading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initial pose</td>
+<td>−1.84</td>
+<td>−8.28</td>
+<td>≈ 175°</td>
+</tr>
+<tr>
+<td>goal</td>
+<td>−27.9</td>
+<td>−4.4</td>
+<td>≈ 135°</td>
+</tr>
+</tbody>
+</table>
+<p>The coordinates are metres in the <code>map</code> frame, whose origin is fixed by
+<code>map_projector_info.yaml</code> — see <a href="../05-map-and-rosbag/">The Map and the
+Rosbag</a>. You are placing these by eye in RViz, so
+getting within a metre or so is enough.</p>
+</div>
 <h2 id="step-3-drive">Step 3 — Drive<a class="headerlink" href="#step-3-drive" title="Permanent link">#</a></h2>
 <p>Click <strong><code>Auto</code></strong> in the AutowareStatePanel.</p>
 <p>The vehicle follows the trajectory. Watch the speedometer at the top of the view
 and the <code>Motion</code> field, which becomes <code>Moving</code>.</p>
-<p>If it will not move, the answer is in the panel. <code>Routing | Unset</code> means no goal
-took. <code>Localization | Uninitialized</code> means step 1 did not take. Both are more
-common than a real planning failure.</p>
+<p><strong>If the first click does nothing, click it again.</strong> Engaging is refused while
+the operation mode is still changing — which it is for a second or two after the
+route is set — and the refusal is silent. A second click a moment later takes.</p>
+<p>If it still will not move, the answer is in the panel. <code>Routing | Unset</code> means no
+goal took. <code>Localization | Uninitialized</code> means step 1 did not take. Both are
+more common than a real planning failure.</p>
 <h2 id="now-experiment">Now experiment<a class="headerlink" href="#now-experiment" title="Permanent link">#</a></h2>
 <p>This is the part worth your time. The planner is the only thing running, so
 everything you see is the planner.</p>

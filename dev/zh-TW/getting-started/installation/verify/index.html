@@ -3043,7 +3043,7 @@ ZED 相機時的 <code>zed-sdk</code>）顯示為未安裝，那是正確的結�
 AutoSDV 車輛模型全都沒問題。</p>
 <p>完整說明：<a href="../../../tutorial/02-planning-simulation/">路徑規劃模擬</a>。</p>
 <h3 id="_2">記錄回放模擬 —— 以錄製的感測器資料跑完整管線<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>just<span class="w"> </span>bag<span class="w"> </span>download<span class="w">          </span><span class="c1"># 約 2.8 GB，只需一次</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>just<span class="w"> </span>coss<span class="w"> </span>download-rosbag<span class="w">          </span><span class="c1"># 約 2.8 GB，只需一次</span>
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml

@@ -3143,7 +3143,7 @@ is mounted.</p>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>pose_source:<span class="o">=</span>mcl<span class="w"> </span>map_path:<span class="o">=</span>data/my_site
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># MCL synthesises one from a 3-D cloud (test scaffolding only)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>just<span class="w"> </span>sim<span class="w"> </span>logging<span class="w"> </span><span class="s2">"pose_source:=mcl scan_source:=test_pointcloud"</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w">   </span><span class="c1"># then, for MCL: pass pose_source:=mcl scan_source:=test_pointcloud</span>
 </span></code></pre></div>
 <p><code>mcl_scan_normalizer</code> resolves the mounting offset itself. This is not a detail:
 the particle filter treats the scan as originating <em>at the particle pose</em>, so a

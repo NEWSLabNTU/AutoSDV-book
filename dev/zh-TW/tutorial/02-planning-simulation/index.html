@@ -1308,6 +1308,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="步驟 2 —— 給它一個目標">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什麼都沒出現的時候
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1322,7 +1339,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         現在來實驗
@@ -1334,7 +1351,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         放一個障礙物在路中間
@@ -1345,7 +1362,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         行駛中更換目標
@@ -1356,7 +1373,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         在第二個終端機中觀察管線
@@ -1372,7 +1389,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         停止
@@ -1383,7 +1400,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         這一步沒有測試到什麼
@@ -2872,6 +2889,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="步驟 2 —— 給它一個目標">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什麼都沒出現的時候
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2886,7 +2920,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         現在來實驗
@@ -2898,7 +2932,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         放一個障礙物在路中間
@@ -2909,7 +2943,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         行駛中更換目標
@@ -2920,7 +2954,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         在第二個終端機中觀察管線
@@ -2936,7 +2970,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         停止
@@ -2947,7 +2981,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         這一步沒有測試到什麼
@@ -3059,7 +3093,7 @@
 所以你看到的軌跡是這台車真的能跟隨的。</p>
 <details class="note">
 <summary><code>just</code> 捷徑</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>sim<span class="w"> </span>planning
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>just<span class="w"> </span>coss<span class="w"> </span>planning-sim
 </span></code></pre></div>
 <p>同樣的指令，另外加上 <code>--web-addr 0.0.0.0:8081</code>。等你走完這份教學，就用它。</p>
 </details>
@@ -3167,23 +3201,65 @@ Localization、Perception、Planning、Control。那些正是
   的東西。</li>
 </ul>
 <p>面板中的 <code>Routing</code> 會變成 <strong>Set</strong>。</p>
-<p>如果什麼都沒出現，就是那個目標不在可行駛車道上。請放在道路上，而不是道路之間的灰色
-區域。</p>
+<h3 id="_3">什麼都沒出現的時候<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<p>被拒絕的目標什麼都不會說——沒有訊息、沒有標記，<code>Routing</code> 就只是停在 <code>Unset</code>。原因
+有兩個，而它們需要不同的處理。</p>
+<p><strong>目標不在 lanelet 裡面。</strong> 「看起來像路」並不夠：目標必須落在地圖定義的車道範圍
+內，而在這張地圖上那個範圍比看起來窄。朝向反而寬鬆——大約車道方向 ±45° 都會被接
+受——所以失敗幾乎都是位置。請點在車道中間，而不是界線上。</p>
+<p><strong>stack 還沒準備好。</strong> mission planner 在啟動後大約需要一分鐘才會接受任何東西，在
+那之前送出的目標會被拒絕，表現得和目標離開道路一模一樣。等一下再點一次；剛才失敗
+的同一個目標就會生效。</p>
+<div class="admonition tip">
+<p class="admonition-title">一組已知可行的目標</p>
+<p>如果你想先把教學看完、之後再找可行的位置，就用這一組。寫這一頁時實際跑過：
+28.4 公尺、最高 3.12 m/s，抵達誤差 0.1 公尺以內。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x</th>
+<th>y</th>
+<th>朝向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始位姿</td>
+<td>−1.84</td>
+<td>−8.28</td>
+<td>約 175°</td>
+</tr>
+<tr>
+<td>目標</td>
+<td>−27.9</td>
+<td>−4.4</td>
+<td>約 135°</td>
+</tr>
+</tbody>
+</table>
+<p>座標是 <code>map</code> 座標系中的公尺，原點由 <code>map_projector_info.yaml</code>
+固定——見<a href="../05-map-and-rosbag/">地圖與 Rosbag</a>。你是在 RViz 裡用眼睛放的，
+誤差一公尺左右就夠了。</p>
+</div>
 <h2 id="3">步驟 3 —— 開車<a class="headerlink" href="#3" title="Permanent link">#</a></h2>
 <p>點選 AutowareStatePanel 中的 <strong><code>Auto</code></strong>。</p>
 <p>車輛開始跟隨軌跡。注意檢視上方的速度表，以及會變成 <code>Moving</code> 的 <code>Motion</code> 欄位。</p>
-<p>如果它不動，答案就在面板上。<code>Routing | Unset</code> 表示沒有目標生效。
+<p><strong>如果第一次點下去沒反應，就再點一次。</strong> 當操作模式還在切換中時，engage 會被拒絕
+——而路線設定完之後的一兩秒正是切換中——並且這個拒絕是無聲的。過一會兒再點一次就
+會生效。</p>
+<p>如果還是不動，答案就在面板上。<code>Routing | Unset</code> 表示沒有目標生效。
 <code>Localization | Uninitialized</code> 表示步驟 1 沒有生效。這兩者都比真正的規劃失敗常見。</p>
-<h2 id="_3">現在來實驗<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<h2 id="_4">現在來實驗<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
 <p>這是最值得花時間的部分。唯一在跑的是規劃器，所以你看到的一切都是規劃器。</p>
-<h3 id="_4">放一個障礙物在路中間<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<h3 id="_5">放一個障礙物在路中間<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>選擇 <strong><code>2D Dummy Car</code></strong> 並點在車輛前方的道路上。</p>
 <p>看看發生什麼：<strong>路線不會變</strong>——車道還是那些車道——但**軌跡**會變。依可用空間多寡，
 車輛會減速、停下，或繞過去。那就是步驟 2 中那個區別的具體呈現。</p>
 <p><code>2D Dummy Pedestrian</code> 與 <code>2D Dummy Bus</code> 做同樣的事，但佔用面積與行為規則不同。</p>
-<h3 id="_5">行駛中更換目標<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<h3 id="_6">行駛中更換目標<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>在車輛移動時設定一個新的 <code>2D Goal Pose</code>。路線會從目前位置重新規劃。</p>
-<h3 id="_6">在第二個終端機中觀察管線<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<h3 id="_7">在第二個終端機中觀察管線<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>/opt/autoware/1.5.0/setup.bash<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/planning/scenario_planning/trajectory<span class="w"> </span>--once
@@ -3195,11 +3271,11 @@ Localization、Perception、Planning、Control。那些正是
 <p>這也是命名慣例回報你的時刻——<code>/planning/…</code> 與 <code>/control/…</code> 在你對其他事一無所知時，
 就告訴你是哪個組件產出了什麼。參閱
 <a href="../../concepts/autoware-conventions/">Autoware 管線</a>。</p>
-<h2 id="_7">停止<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<h2 id="_8">停止<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
 <p>在 <code>play_launch</code> 的終端機按 <code>Ctrl-C</code>，然後確認沒有殘留：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w">    </span><span class="c1"># 應為空</span>
 </span></code></pre></div>
-<h2 id="_8">這一步沒有測試到什麼<a class="headerlink" href="#_8" title="Permanent link">#</a></h2>
+<h2 id="_9">這一步沒有測試到什麼<a class="headerlink" href="#_9" title="Permanent link">#</a></h2>
 <p>所有跟真實世界有關的東西：</p>
 <ul>
 <li><strong>定位</strong> —— 姿態是你斷言的；沒有任何感測器需要找出它</li>
