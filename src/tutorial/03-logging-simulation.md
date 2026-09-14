@@ -10,6 +10,13 @@ succeed or fail is what this page is for.
 
 This is what [step 1](./01-first-run.md) ran for you.
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 960px;">
+  <video autoplay loop muted playsinline controls style="width: 100%; border-radius: 8px;">
+    <source src="../../figures/logging_sim_video/logging-sim.webm" type="video/webm">
+  </video>
+  <figcaption>Two terminals, then the moment that matters: the stack launches, the recording starts, a pose is clicked in RViz — and the scattered live scan snaps onto the map and stays there as the vehicle drives.</figcaption>
+</figure>
+
 ## What you need
 
 **The map is already there.** `data/COSS-map-planning` is committed to the

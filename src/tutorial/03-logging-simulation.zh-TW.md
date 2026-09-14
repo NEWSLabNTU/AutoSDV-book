@@ -17,6 +17,13 @@ Translation Metadata:
 
 這就是[步驟 1](./01-first-run.md) 替你執行的東西。
 
+<figure style="text-align: center; margin: 1.5em auto; max-width: 960px;">
+  <video autoplay loop muted playsinline controls style="width: 100%; border-radius: 8px;">
+    <source src="../../../figures/logging_sim_video/logging-sim.webm" type="video/webm">
+  </video>
+  <figcaption>兩個終端機，然後是關鍵的一刻：stack 啟動、錄製開始、在 RViz 點下一個姿態——散開的即時掃描就貼合到地圖上，並在車輛行駛期間一直貼著。</figcaption>
+</figure>
+
 ## 你需要什麼
 
 **地圖已經在了。** `data/COSS-map-planning` 已納入版本控制，clone 下來就同時拿到
