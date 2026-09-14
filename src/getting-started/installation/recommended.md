@@ -25,126 +25,81 @@ just checkout    # git submodule update --init --recursive --checkout
 ./setup.sh
 ```
 
-This opens a menu: choose a **profile**, adjust individual steps if you want to,
-then confirm. Nothing is installed until you do.
-
-### Profiles
-
-A profile is a default selection of steps, not a restriction — you can toggle
-any step in the menu.
+Pick a profile, confirm, and let it run. Nothing is installed until you confirm.
 
 | Profile | For |
 |---------|-----|
-| `dev` | a development workstation. Everything needed to build, simulate and run. |
-| `vehicle` | a vehicle computer. `dev`, plus the u-blox GNSS udev rules. |
-| `ci` | build-only automation. Toolchain and workspace dependencies, **no Autoware** — it cannot build the workspace, and is not what you want on a laptop. |
-| `all` / `none` | computed: every step, or none. |
+| `dev` | a development workstation: everything needed to build, simulate and run |
+| `vehicle` | a vehicle computer: `dev`, plus the u-blox GNSS udev rules |
+| `ci` | build-only automation. **No Autoware** — not what you want on a laptop |
 
-For an unattended install:
-
-```bash
-./setup.sh --run --profile vehicle --yes
-```
-
-### Command line
-
-The menu is optional; every operation has a flag:
+Unattended, same thing:
 
 ```bash
-./setup.sh --status                      # what is installed, checked against the machine
-./setup.sh --list                        # every step, and whether it applies here
-./setup.sh --run --profile dev --yes     # unattended
-./setup.sh --run --all --skip tensorrt-engines
-./setup.sh --rerun opencv                # one step again
-./setup.sh --run --dry-run --profile ci  # print what would run, install nothing
-./setup.sh --plain                       # numbered menu, when curses cannot drive the terminal
+./setup.sh --run --profile dev --yes
 ```
 
-### What `--status` actually reports
+The menu lists every step with a one-line reason, so read it there rather than
+here. Two of them ask you to choose, and both have a sensible default:
 
-`--status` is not a log of what you ran. Where a step carries a verification
-command, **the machine's answer wins over the record** — so a step can read as
-not installed although you installed it, and be right:
+- **TensorRT engines** — download the set published for this machine (about 30
+  seconds) or build them here (about an hour on an Orin). The download is the
+  default; it falls back to building when nothing matches your hardware.
+- **ZED SDK** — checked, not installed, because Stereolabs ships no apt package.
+  If you have a ZED camera the run ends by telling you what to download; see
+  [ZED SDK Installation](./zed-sdk.md). Without a camera, ignore it.
 
-- a reboot drops the loopback `MULTICAST` flag
-- a JetPack OTA replaces the OpenCV headers
-- an Autoware upgrade leaves the mirrored data tree pointing at a version that
-  is gone
+## Build
 
-It also fingerprints the *content* of the scripts it ran, so it can tell you a
-step succeeded but its script has changed since.
+The workspace is built with colcon, and this is the full command:
 
-### The steps
-
-**You do not need to learn them.** Pick a profile, and read the one-line
-explanation the menu shows for whatever is highlighted — every step carries its
-own reasoning, including the cost of skipping it, and that text is written
-beside the step rather than here where it would drift. `./setup.sh --list`
-prints the same thing.
-
-The menu groups them the way the work divides:
-
-| Group | What it covers |
-|-------|----------------|
-| Toolchain | `just`, ROS 2 Humble, colcon/rosdep, the Rust toolchain and its colcon plugin, `play_launch`, and the Python packages the vehicle interface imports at runtime |
-| Autoware | the Autoware 1.5.0 Debians (2–3 GB), the TensorRT runtime they were built against, the writable model tree, rosdep over `src/`, and the perception engines |
-| Libraries | OpenCV consistency, the ZED SDK check, the Blickfeld Cube1 driver |
-| System configuration | kernel socket buffers for CycloneDDS, loopback multicast, the u-blox udev rule, TurboVNC/VirtualGL |
-
-Four of those used to be documented here as things to do by hand, and the two
-that most often broke a fresh install — the CycloneDDS socket buffers and the
-loopback `MULTICAST` flag — are the reason to let the profile choose. **Below
-about 10 MB of `net.core.rmem_max` no ROS 2 node starts at all**, and `lo` drops
-its multicast flag on every reboot, so `dev` and `vehicle` both select the steps
-that fix them. Nothing here needs to be typed out of a manual any more.
-
-Two choices are worth understanding before you confirm, because they are the
-only ones where the default is a judgement call rather than a requirement.
-
-#### TensorRT engines: download or build
-
-Autoware compiles five perception models into TensorRT engines. Doing that on
-the machine takes about an hour on an Orin and nine minutes on a desktop GPU —
-and if you skip it, that same work happens inside the first launch's node
-constructors, where it looks like a hang and leaves perception unavailable until
-it finishes.
-
-The menu offers it as one decision with two answers:
-
-```
-    TensorRT engines (pick one, or neither)
-   15   (o) Download the published set (build only if none matches)
-   16   ( ) Build here, ignoring the published set
+```bash
+source /opt/autoware/1.5.0/setup.bash
+colcon build --base-paths src --symlink-install \
+  --cmake-args -DCMAKE_BUILD_TYPE=Release \
+  --cargo-args --release
 ```
 
-The default is the download, and it takes about 30 seconds: engines built for
-this exact hardware are published on the AutoSDV releases, and the download is
-verified by loading every engine before it is trusted. A published set exists
-for the boards we run; for anything else the same step builds locally, which is
-what you would have paid anyway. Pick the second answer when you are changing a
-model yourself, or producing a set to publish.
+Four flags, each load-bearing:
 
-An engine is tied to the GPU *and* to the exact TensorRT version, so neither
-answer can be baked into an image built somewhere else, and both must be redone
-after an Autoware or JetPack upgrade.
+| flag | what it does |
+|------|--------------|
+| `--base-paths src` | build the packages under `src/`, not whatever else is in the directory |
+| `--symlink-install` | install by symlink, so edits to YAML, XML and Python take effect without rebuilding |
+| `--cmake-args -DCMAKE_BUILD_TYPE=Release` | optimised C++ |
+| `--cargo-args --release` | optimised Rust — `CMAKE_BUILD_TYPE` does not reach cargo, and an unoptimised `cuda_ndt_matcher` runs roughly 15x slower |
 
-#### The ZED SDK is installed by you, not by the setup program
+**Shortcut:** `just build` runs exactly that, sourcing included.
 
-Stereolabs publishes no apt repository — the only official artifact is an
-interactive installer that asks you to accept a proprietary licence. So the
-`zed-sdk` step **checks** rather than installs: it reports the version you have,
-and if it is missing or wrong it prints the exact download for your machine, and
-prints it again in bright text at the end of the run so it is the last thing on
-screen.
+```bash
+just build
+```
 
-Leaving it selected costs nothing on a machine with no ZED camera: the driver
-package skips itself and the rest of the workspace builds. Follow
-[ZED SDK Installation](./zed-sdk.md) when the run tells you to.
+Expect a few minutes and a `Summary:` line with no failed packages; warnings on
+stderr are normal.
 
-The remaining opt-in step is `blickfeld`, for the Cube1 LiDAR; selecting it
-accepts that library's licence terms.
+## Check it worked
 
-## Install and Configure direnv
+```bash
+./setup.sh --status
+```
+
+Then [Verifying the Installation](./verify.md) — a handful of checks that take a
+minute.
+
+## Next
+
+[The tutorial](../../tutorial/00-what-you-will-build.md): drive in simulation,
+twice, and see the system actually run. That is the real proof the install
+worked.
+
+---
+
+## Going further
+
+Nothing below is needed for a working install.
+
+### Enter the environment automatically with direnv
 
 AutoSDV ships an `.envrc` that activates the environment when you enter the
 directory:
@@ -158,72 +113,48 @@ cd ~/AutoSDV
 direnv allow
 ```
 
-Without direnv, source the two lines by hand in every new shell:
+Without direnv, source two lines by hand in each new shell:
 
 ```bash
 source /opt/autoware/1.5.0/setup.bash   # includes ROS 2
 source install/setup.bash               # after the first build
 ```
 
-**Those two lines are where package dependencies are resolved**, which is worth
-understanding before something says "package not found" — see
+Those two lines are where package dependencies are resolved — see
 [The Environment](../../concepts/environment.md).
 
-## Build
+### Driving setup.sh from the command line
 
 ```bash
-just build
+./setup.sh --status                      # what is installed, checked against the machine
+./setup.sh --list                        # every step, and whether it applies here
+./setup.sh --run --profile dev --yes     # unattended
+./setup.sh --rerun opencv                # one step again
+./setup.sh --run --dry-run --profile ci  # print what would run, install nothing
+./setup.sh --plain                       # numbered menu, when curses cannot drive the terminal
 ```
 
-This runs colcon with the flags the project needs:
+`--status` is not a log of what you ran. Where a step can be checked on the
+machine, **the machine's answer wins** — so a step can read as not installed
+although you installed it, and be right: a reboot drops the loopback
+`MULTICAST` flag, a JetPack OTA replaces the OpenCV headers, an Autoware upgrade
+invalidates the mirrored model tree.
+
+### TensorRT engines, afterwards
+
+If you skipped the engine step, or want to change your mind:
 
 ```bash
-colcon build --base-paths src --symlink-install \
-  --cmake-args -DCMAKE_BUILD_TYPE=Release \
-  --cargo-args --release
-```
-
-`--cargo-args --release` is not decoration. `CMAKE_BUILD_TYPE=Release` covers
-only the C++ packages; without the cargo flag the Rust ones build unoptimised,
-and `pose_source:=cuda_ndt` runs at roughly 80 ms per scan instead of 5.
-
-## Make the Autoware model tree writable
-
-**Do this even if you skipped every optional step.**
-
-Autoware compiles each `.onnx` model into a `.engine` and writes it *next to the
-onnx file*. The Debian package's tree at `/opt/autoware/1.5.0/data` is
-root-owned, so that write fails, the engine is discarded, and the same models
-rebuild — and fail again — on every single launch.
-
-```bash
-just setup-autoware-data
-```
-
-This mirrors the tree into `data/autoware_data` with symlinks (171 files, under
-a megabyte), which the launch files already default to. Re-run it after an
-Autoware upgrade.
-
-## TensorRT engines, if you skipped them in the menu
-
-The setup program does this for you — see
-[TensorRT engines: download or build](#tensorrt-engines-download-or-build)
-above. To do it afterwards:
-
-```bash
-just engines          # the published set for this machine, else build (setup.sh default)
+just engines          # the published set for this machine, else build
 just build-engines    # build here, ignoring what is published
 ```
 
-`just engines` takes about 30 seconds when a published set matches this
-hardware, and falls back to the build when none does. It is safe to re-run: a
-second run notices the cache is already in place and does nothing, and an
-interrupted download resumes rather than starting over.
+Safe to re-run: a second run notices the cache is in place and does nothing, and
+an interrupted download resumes.
 
-## Verify
-
-See [Verifying the Installation](./verify.md) — four checks, in order of how
-much each one proves.
+Engines are tied to the GPU *and* the TensorRT version, so they cannot be baked
+into an image built elsewhere, and must be redone after an Autoware or JetPack
+upgrade.
 
 ## Troubleshooting
 
@@ -288,12 +219,6 @@ nvidia-smi
 
 That is `--status` reading the machine rather than its own records, and it is
 usually right.
-
-## Next Steps
-
-- [Verifying the Installation](./verify.md)
-- [The Tutorial](../../tutorial/00-what-you-will-build.md) — drive in simulation
-- [Operating the Vehicle](../usage.md) — the full launch argument reference
 
 ## Getting Help
 

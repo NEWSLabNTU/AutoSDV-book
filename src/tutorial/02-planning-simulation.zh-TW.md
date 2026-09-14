@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: 02-planning-simulation.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -35,7 +35,21 @@ play_launch launch autoware_launch planning_simulator.launch.xml \
   sensor_model:=autosdv_sensor_kit
 ```
 
-三個參數，它們就是全部的設定：用哪張地圖、哪個車輛描述、哪個感測器套件描述。
+把那道指令分成四個部分來讀，因為本書裡每一道啟動指令都是同樣的形狀：
+
+```
+play_launch launch   <package>         <launch file>                  <arg>:=<value> ...
+             ^                          ^                              ^
+             the verb                   a file inside that package     launch arguments
+```
+
+也就是：動詞、套件名稱、該套件裡的啟動檔，以及啟動參數。
+
+`play_launch launch` 接一個套件名稱與該套件裡的啟動檔，後面接任意數量的
+`name:=value` 參數——文法和 `ros2 launch` 相同，你也可以直接換成它（[為什麼本書
+用 `play_launch`](../getting-started/usage.md)）。
+
+那三個參數就是全部的設定：用哪張地圖、哪個車輛描述、哪個感測器套件描述。
 
 注意套件是 `autoware_launch`——這個啟動檔來自 Autoware 本身。讓它成為一個 *AutoSDV*
 模擬的是 `vehicle_model:=autosdv_vehicle`，它提供真實車輛的尺寸、軸距與轉向極限，

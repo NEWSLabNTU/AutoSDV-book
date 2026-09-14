@@ -87,7 +87,7 @@ JetPack 的修訂號在 6.2 系列內部跨越了一個 L4T **次版本**，這�
 L4T 次版本發佈的、NVIDIA 的 Jetson apt pocket 是 `r36.5`，以及預先建置的 TensorRT
 引擎集是以 L4T 為鍵——所以在下限版本的板子上，不會命中從 JetPack 6.2.1 發佈的那
 份引擎集，第一次會自己建置，約一小時。那是慢，不是壞；見
-[TensorRT 引擎](./recommended.md#tensorrt-引擎下載或自行建置)。
+[TensorRT 引擎，事後補做](./recommended.md#tensorrt-引擎事後補做)。
 
 arm64 版 Autoware 套件在每個修訂版都保留 `jetpack62` 這個檔名後綴：它指的是建置
 時所針對的 6.2 系列，而 6.2.2 就在這個系列裡。

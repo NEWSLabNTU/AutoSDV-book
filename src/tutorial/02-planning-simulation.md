@@ -29,7 +29,21 @@ play_launch launch autoware_launch planning_simulator.launch.xml \
   sensor_model:=autosdv_sensor_kit
 ```
 
-Three arguments, and they are the whole configuration: which map, which vehicle
+Read that command as four parts, because every launch in this book has the same
+shape:
+
+```
+play_launch launch   <package>         <launch file>                  <arg>:=<value> ...
+             ^                          ^                              ^
+             the verb                   a file inside that package     launch arguments
+```
+
+`play_launch launch` takes a package name and a launch file in it, then any
+number of `name:=value` arguments — the same grammar as `ros2 launch`, which you
+can substitute here if you prefer ([why this book uses
+`play_launch`](../getting-started/usage.md)).
+
+The three arguments are the whole configuration: which map, which vehicle
 description, which sensor kit description.
 
 Note the package is `autoware_launch` — this launch file comes from Autoware

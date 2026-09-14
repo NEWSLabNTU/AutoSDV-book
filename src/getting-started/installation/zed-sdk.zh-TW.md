@@ -149,10 +149,12 @@ lspci | grep -i stereolabs
 # Verify CUDA installation
 nvcc --version
 nvidia-smi
-
-# CUDA should be 12.3 or compatible
-# If not installed, return to Step 1 of the main installation guide
 ```
+
+CUDA 12 是 Autoware 鎖定的版本（`versions.yaml` 的 `nvidia_amd64.cuda`），請對齊
+它，而不是對齊某個修訂版號。Jetson 上它來自 JetPack；工作站上來自主機映像或
+NVIDIA 的 apt 套件庫——`setup.sh` 刻意不安裝 CUDA 工具鏈，因為那會改動
+`/usr/local/cuda`，影響這台機器上的每一個使用者。
 
 ### Python 相依套件
 

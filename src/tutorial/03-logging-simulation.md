@@ -65,8 +65,19 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
   launch_perception:=false
 ```
 
-Those two arguments are what make this run on any machine, and the next section
-says why.
+`pose_source:=ndt` picks the CPU scan matcher over the CUDA one, and
+`launch_perception:=false` leaves the object-detection models unstarted — between
+them, that is what makes this run on any machine. The next section says why.
+
+??? note "The `just` shortcuts"
+
+    ```bash
+    just coss logging-sim      # terminal 1: this stack
+    just coss play-rosbag      # terminal 2: the recording, below
+    ```
+
+    The same commands, with the web UI address added. Use them once you are past
+    this tutorial.
 
 Wait for it. The point cloud map is 4.9 million points and takes tens of seconds
 to load; the scan matcher cannot do anything until it has finished. Starting the
@@ -237,41 +248,24 @@ understanding once.
 
 !!! warning "Iterations pinned at the limit means no pose at all"
 
-    `max_iterations` in
-    `config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml` is a cap,
-    and reaching it is not "the answer took longer". Autoware's matcher treats a
-    frame that hits the cap as **not converged** and throws the result away, so
-    the pose is never published:
+    `max_iterations` is a cap, and hitting it is not "the answer took longer".
+    Autoware treats a frame that reaches the cap as **not converged** and throws
+    the result away, so no pose is published:
 
     ```
     The number of iterations has reached its upper limit.
-    The number of iterations: 15, Limit: 15.
+    The number of iterations: 30, Limit: 30.
     ```
 
-    And the stack still looks localized, because the EKF keeps publishing
+    The stack still *looks* localized, because the EKF keeps publishing
     `/localization/kinematic_state` from wheel odometry and IMU alone. The
-    telling pair is `/localization/pose_estimator/pose_with_covariance` at **0**
+    telling pair is `/localization/pose_estimator/pose_with_covariance` at zero
     messages while `/localization/kinematic_state` has thousands.
-
-    This was real: AutoSDV shipped a cap of 15 against Autoware's 30, and
-    `pose_source:=ndt` published nothing on this recording. Restoring 30 was
-    both correct and *faster* — the matcher normally converges in about four
-    iterations and needs more only on the first frames, so the low cap kept it
-    grinding through all 15 forever without ever accepting the frame that would
-    have made the rest easy.
-
-    | on this recording | cap 15 | cap 30 |
-    |---|---|---|
-    | NDT poses published | 0 | 1402 |
-    | iterations, p50 / max | 15 / 15 | 4 / 17 |
-    | `exe_ms`, mean | 12.4 | 4.6 |
-    | NVTL, mean (gate 2.2) | 4.59 | 4.60 |
 
 The most informative split is **`init` versus `track`**: while parked, matching
 is easy, because each scan resembles the last. Once the vehicle moves, the same
-work costs roughly twice as much. In a measured run: 7.8 ms parked, 16.7 ms
-driving, p95 44 ms. If a machine is marginal, that is where it fails — not at
-startup.
+work costs roughly twice as much. If a machine is marginal, that is where it
+fails — not at startup.
 
 ## Troubleshooting
 

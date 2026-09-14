@@ -39,71 +39,24 @@ AutoSDV 建立在 ROS 2 Humble 上，而 Humble 的目標是 Ubuntu 22.04，沒�
 套件。這是唯一沒有彈性的一列：不是更新的 Ubuntu、不是 Debian，也不建議一開始就用
 WSL。虛擬機在核心數與記憶體夠的情況下可以跑模擬，但拿不到 GPU。
 
-## 每個數字從哪來
+## 磁碟
 
-量測環境：Ubuntu 22.04、Intel Core Ultra 7 270K Plus（24 核）、125 GB 記憶體、
-RTX 5090，工具是 `scripts/profiling/host_resource_sampler.py`。記憶體以「相對於
-閒置基線，整台機器多用了多少」表示，那正是小機器必須擠出來的量。CPU 以「核數」
-表示，因為那才是能換算到不同核心數機器上的數字。
+全部加起來約 **11 GB**：Autoware 4.8 GB、專案約 1 GB、建置好的工作空間約 1 GB，
+再加上只有記錄回放模擬才需要的 2.8 GB rosbag。
 
-| 工作負載 | 記憶體尖峰 | 啟動時 CPU | 穩態 CPU |
-|---|---|---|---|
-| `just build`，乾淨工作空間 | **11.3 GiB** | 有幾核用幾核 | — |
-| 規劃模擬 | **2.5 GiB** | 短暫 19 核 | 約 2 核 |
-| 日誌模擬，CPU 路徑 | **3.4 GiB** | 短暫 21 核 | 約 3 核 |
-| 日誌模擬，GPU 路徑 | 3.4 GiB 加約 1 GiB VRAM | 同上 | 約 3 核 |
-| 任一項再加上 RViz | 約多 1.4 GiB | — | 約 1 核 |
+請保留 **20 GB** 可用空間——rosbag 的壓縮檔與解開後的副本會並存一段時間，而
+`play_log/` 下的執行紀錄也會累積。如果你打算自己錄製 rosbag，請準備 40 GB。
 
-其中三個數字各值得一句說明。
+地圖不需要下載：`data/COSS-map-planning` 就在專案裡。唯一要下載的大檔是 rosbag，
+見[資料集與 Rosbag](../simulation/datasets.md)。
 
-**建置尖峰最大，而且可以調。** 11.3 GiB 是 colcon 以 24 個工作並行編譯 31 個套件
-時達到的；整段軌跡在那裡停留約十二秒，然後就掉下來。尖峰隨同時跑幾個編譯器而變，
-所以四核筆電不用特別設定就大約只會用到四分之一。如果機器記憶體吃緊，明確設上限，
-不要等 OOM killer 出手：
+## GPU
 
-```bash
-colcon build --base-paths src --symlink-install \
-  --cmake-args -DCMAKE_BUILD_TYPE=Release --parallel-workers 2
-```
+**兩種模擬都不需要 GPU。** 這是最常被誤解的一點。路徑規劃模擬沒有感測器，完全
+不會碰到 GPU；記錄回放模擬加上 `pose_source:=ndt launch_perception:=false` 就是
+純 CPU，而且跟得上錄製的速度。
 
-**「啟動時 CPU」是突波，不是需求。** 啟動一個 stack 會一次拉起三十幾個節點，它們
-會把在場的核心全部用上——這裡是 24 核用掉 21 核。在四核機器上同樣的工作只是比較
-久，不會失敗。機器必須長時間撐住的是穩態那一欄，也就是兩到三核。
-
-**建置很快，是因為 Autoware 大部分早就建好了。** 在這台桌機上 31 個套件花了
-**89 秒**。AutoSDV 是疊在二進位 Autoware 安裝*之上*的工作空間，所以 `just build`
-編譯的是車輛自己的套件，而不是底下那 30 GB 的 Autoware。預算以分鐘計，不是小時；
-四核機器上也仍然以分鐘計。
-
-## 磁碟，逐項
-
-| | |
-|---|---|
-| Autoware Debian，下載 | 1.9 GB |
-| Autoware，安裝於 `/opt/autoware/1.5.0` | 4.8 GB |
-| 本專案 clone 後（含 COSS 地圖） | 約 1 GB |
-| `just build` 後的工作空間（`build/` + `install/`） | 0.9 GB |
-| COSS rosbag，下載 | 1.6 GB |
-| COSS rosbag，解開後 | 2.8 GB |
-| **全部裝完、清理後合計** | **約 11 GB** |
-
-最低要 20 GB，是因為 rosbag 的壓縮檔與解開後的副本會並存一段時間，也因為
-`play_log/` 下的 ROS 紀錄會隨每次執行增加。如果你打算自己錄 bag，就抓 40 GB——那
-是這裡唯一沒有自然大小上限的東西。
-
-地圖不用下載：`data/COSS-map-planning` 已納入版本控制。rosbag 是唯一一個大檔，而且
-只有日誌模擬需要它——見[資料集與 Rosbag](../simulation/datasets.md)。
-
-## GPU，細談
-
-**兩種模擬都不需要 GPU。** 這是最常被想錯的一點。
-
-- **規劃模擬**沒有感測器、沒有感知、沒有定位，從頭到尾不碰 GPU。
-- **日誌模擬**回放真實 LiDAR 並對地圖定位。用
-  `pose_source:=ndt launch_perception:=false` 時純靠 CPU，而且維持感測器完整的
-  10 Hz——對著 10 Hz 的錄製實測為 10.06 Hz。
-
-GPU 買到的是兩件事：
+有 GPU 可以換到兩件事：
 
 | | 需要 | 代價 |
 |---|---|---|
@@ -130,9 +83,9 @@ scripts/check-cuda-arch.sh     # 也包含在 `just demo check` 裡
 
 ### RViz 需要能用的 OpenGL
 
-RViz 是唯一真正需要圖形堆疊的部分。在只有軟體算繪的 VNC 上，本機實測是 **1 fps**
-——足以確認畫面上有東西，但完全不足以看車子開。要讓教學裡視覺的部分值得做，需要
-本機顯示，或是有 GPU 加速的 VNC。
+RViz 是唯一需要真正圖形堆疊的部分。在只有軟體算繪的 VNC 上，它大約每秒一張
+畫面——足以確認畫面上有東西，但完全不適合看車子行駛。請用本機顯示器，或啟用
+GPU 加速的 VNC。
 
 ## 在信任一台機器之前先檢查
 
@@ -142,3 +95,8 @@ just demo check
 
 它會回報 rosbag、地圖、建置結果、`play_launch`、CUDA toolkit 與你的 GPU 是否相容，
 以及有沒有可用的顯示。它報缺的每一項，都能在它指向的頁面找到解法。
+
+---
+
+這一頁背後的實測數字——各工作負載的記憶體與 CPU、建置尖峰與如何限制它、磁碟的
+逐項明細——放在程式碼庫裡：`docs/reports/host-resource-measurements.md`。

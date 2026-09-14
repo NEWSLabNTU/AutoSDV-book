@@ -22,8 +22,8 @@ Translation Metadata:
 ## 自動設定所做的事情
 
 在繼續之前，請了解 `./setup.sh` 已安裝的內容。權威的清單是步驟註冊表本身
-——`setup/autosdv_setup/registry.py`——而[安裝頁面](./recommended.md#各個步驟)
-完整重現了它，並說明每個步驟存在的理由。摘要如下：
+——`setup/autosdv_setup/registry.py`——而 `./setup.sh --list` 會把它印出來，
+每個步驟都附上存在的理由。摘要如下：
 
 - ROS 2 Humble (`ros-humble-desktop`) 與開發工具 (colcon、rosdep、vcstool)
 - **Autoware 1.5.0** Debian 套件，來自 `autoware-localrepo` 發布

@@ -8,7 +8,7 @@ being a wall of strings and becomes a map of the system.
 tutorial is enough, and it costs one command:
 
 ```bash
-just sim planning          # then, in a second terminal with the environment sourced:
+just coss planning-sim     # then, in a second terminal with the environment sourced:
 ros2 topic list | sort     # the pipeline below, as names
 ```
 

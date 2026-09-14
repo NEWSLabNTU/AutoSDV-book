@@ -82,7 +82,7 @@ Three things read that number rather than the JetPack one: the
 pocket is `r36.5`, and a prebuilt TensorRT engine set is keyed by L4T — so a board
 at the floor will not match the engine set published from JetPack 6.2.1 and will
 build its own the first time, about an hour. That is slow, not broken; see
-[TensorRT engines](./recommended.md#tensorrt-engines-download-or-build).
+[TensorRT engines, afterwards](./recommended.md#tensorrt-engines-afterwards).
 
 The Autoware package for arm64 keeps the filename suffix `jetpack62` at every
 patch: it names the 6.2 series it was built for, and 6.2.2 is in that series.

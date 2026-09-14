@@ -14,8 +14,8 @@ Autoware 是以一條組件管線組織起來的，而**它的主題名稱依循
 **邊讀邊讓系統跑著。** 教學裡的路徑規劃模擬就夠了，一道指令而已：
 
 ```bash
-just sim planning          # 然後在另一個已 source 環境的終端機：
-ros2 topic list | sort     # 下面那條管線，以名稱的形式呈現
+just coss planning-sim     # then, in a second terminal with the environment sourced:
+ros2 topic list | sort     # the pipeline below, as names
 ```
 
 ## 管線

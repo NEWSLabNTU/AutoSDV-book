@@ -35,77 +35,25 @@ packaged for 24.04. This is the one row with no flexibility: not a newer Ubuntu,
 not Debian, not WSL as a first choice. A virtual machine works for the
 simulations if it gets enough cores and RAM, but it will not get the GPU.
 
-## What each number came from
+## Disk
 
-Measured on: Ubuntu 22.04, Intel Core Ultra 7 270K Plus (24 cores), 125 GB RAM,
-RTX 5090, with `scripts/profiling/host_resource_sampler.py`. Memory is reported
-as the machine's own usage over an idle baseline, which is what a smaller
-machine has to find. CPU is reported in whole cores, because that is the figure
-that transfers to a machine with a different core count.
+About **11 GB** all told: Autoware 4.8 GB, the repository ~1 GB, the built
+workspace ~1 GB, and a 2.8 GB rosbag that only the logging simulation needs.
 
-| Workload | Peak RAM | CPU at startup | CPU in steady state |
-|---|---|---|---|
-| `just build`, clean workspace | **11.3 GiB** | every core available | — |
-| Planning simulation | **2.5 GiB** | 19 cores, briefly | ~2 cores |
-| Logging simulation, CPU path | **3.4 GiB** | 21 cores, briefly | ~3 cores |
-| Logging simulation, GPU path | 3.4 GiB + ~1 GiB VRAM | same | ~3 cores |
-| RViz, added to any of them | ~1.4 GiB | — | ~1 core |
+Keep **20 GB** free — the rosbag's download and its unpacked copy coexist for a
+while, and run logs accumulate under `play_log/`. Make it 40 GB if you intend to
+record your own bags.
 
-Three of those numbers deserve a sentence each.
+The map needs no download: `data/COSS-map-planning` is in the repository. The
+rosbag is the only large fetch — see
+[Datasets and Rosbags](../simulation/datasets.md).
 
-**The build peak is the largest, and it is adjustable.** 11.3 GiB is what colcon
-reached compiling 31 packages with 24 jobs in parallel; the trace spends about
-twelve seconds there and then falls away. The peak scales with how many
-compilers run at once, so a 4-core laptop reaches roughly a quarter of it
-without being asked. If a machine is short of memory, cap it explicitly rather
-than discovering the OOM killer:
-
-```bash
-colcon build --base-paths src --symlink-install \
-  --cmake-args -DCMAKE_BUILD_TYPE=Release --parallel-workers 2
-```
-
-**"CPU at startup" is a burst, not a requirement.** Launching a stack starts
-thirty-odd nodes at once, and they will use every core present — 21 of 24 here.
-On four cores the same work simply takes longer; nothing fails. What a machine
-has to sustain is the steady-state column, and that is two to three cores.
-
-**The build is quick because most of Autoware is already built.** 31 packages in
-**89 seconds** on this desktop. AutoSDV is a workspace *over* a binary Autoware
-installation, so `just build` compiles the vehicle's own packages and not the
-30 GB of Autoware underneath. Budget minutes, not hours — and on four cores,
-still minutes.
-
-## Disk, itemised
-
-| | |
-|---|---|
-| Autoware Debian, downloaded | 1.9 GB |
-| Autoware, installed at `/opt/autoware/1.5.0` | 4.8 GB |
-| This repository, cloned (includes the COSS map) | ~1 GB |
-| Workspace after `just build` (`build/` + `install/`) | 0.9 GB |
-| COSS rosbag, downloaded | 1.6 GB |
-| COSS rosbag, unpacked | 2.8 GB |
-| **Total, everything, after cleanup** | **~11 GB** |
-
-20 GB free is the minimum because the download and the unpacked copy of the
-rosbag coexist for a while, and because ROS logs under `play_log/` grow with
-every run. 40 GB if you intend to record your own bags, which is the one thing
-here that has no natural size.
-
-The map needs no download: `data/COSS-map-planning` is committed to the
-repository. The rosbag is the only large fetch, and only the logging simulation
-needs it — see [Datasets and Rosbags](../simulation/datasets.md).
-
-## The GPU, in detail
+## The GPU
 
 **Neither simulation requires one.** This is the part most often assumed wrong.
-
-- The **planning simulation** has no sensors, no perception and no
-  localization. It never touches a GPU.
-- The **logging simulation** replays real LiDAR and localizes against a map.
-  With `pose_source:=ndt launch_perception:=false` it is pure CPU, and it holds
-  the sensor's full 10 Hz — measured at 10.06 Hz against a 10 Hz recording.
+The planning simulation has no sensors and never touches a GPU; the logging
+simulation runs on the CPU with `pose_source:=ndt launch_perception:=false` and
+still keeps up with the recording.
 
 A GPU buys two things:
 
@@ -136,11 +84,10 @@ see [The Environment](../concepts/environment.md).
 
 ### RViz needs working OpenGL
 
-RViz is the one part that wants a real graphics stack. Over a plain VNC server
-with software rendering it rendered at **1 fps** on this machine — usable to
-confirm something is on screen, useless to watch a vehicle drive. A local
-display, or VNC with GPU acceleration, is what makes the visual parts of the
-tutorial worth doing.
+RViz is the one part that wants a real graphics stack. Over a VNC server with
+software rendering it draws about one frame a second — enough to confirm
+something is on screen, useless for watching a vehicle drive. Use a local
+display, or VNC with GPU acceleration.
 
 ## Checking a machine before you trust it
 
@@ -151,3 +98,9 @@ just demo check
 Reports the rosbag, the map, the build, `play_launch`, the CUDA toolkit against
 your GPU, and whether a display is available. Everything it names as missing has
 a fix on the page it points to.
+
+---
+
+The measured figures behind this page — per-workload memory and CPU, the build
+peak and how to cap it, the disk itemisation — are kept in the repository, in
+`docs/reports/host-resource-measurements.md`.

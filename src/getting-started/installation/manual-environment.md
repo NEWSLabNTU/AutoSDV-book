@@ -15,8 +15,7 @@ Use manual setup if you need:
 
 Before proceeding, understand what `./setup.sh` already installs. The
 authoritative list is the step registry itself — `setup/autosdv_setup/registry.py`
-— and [the installation page](./recommended.md#the-steps) reproduces it in full with
-the reason for each step. In summary:
+— and `./setup.sh --list` prints it, each step with its reason. In summary:
 
 - ROS 2 Humble (`ros-humble-desktop`) and the development tools (colcon, rosdep,
   vcstool)

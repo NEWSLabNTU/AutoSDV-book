@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: 03-logging-simulation.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-14
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -69,7 +69,18 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
   launch_perception:=false
 ```
 
-這兩個參數就是讓它能在任何機器上跑起來的原因，下一節會說明。
+`pose_source:=ndt` 選的是 CPU 版的掃描匹配器而不是 CUDA 版，
+`launch_perception:=false` 則讓物件偵測模型不啟動——這兩者加起來，就是它能在任何
+機器上跑起來的原因。下一節會說明為什麼。
+
+??? note "`just` 捷徑"
+
+    ```bash
+    just coss logging-sim      # 終端機 1：這套系統
+    just coss play-rosbag      # 終端機 2：下面那份錄製
+    ```
+
+    同樣的指令，另外加上網頁介面位址。等你讀完這份教學之後就用它們。
 
 等它起來。點雲地圖有 490 萬個點，需要數十秒載入；掃描匹配器在它載完之前什麼都做不了。
 太早開始播放錄製只是浪費它的開頭。
@@ -218,35 +229,22 @@ python3 scripts/testing/localization/ndt_alignment_report.py
 
 !!! warning "迭代次數卡在上限，代表根本沒有位姿"
 
-    `config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml` 裡的
     `max_iterations` 是上限，碰到上限不是「算比較久」。Autoware 的匹配器會把碰到
     上限的那一幀當成**未收斂**，把結果丟掉，位姿因此從來沒有發布過：
 
     ```
     The number of iterations has reached its upper limit.
-    The number of iterations: 15, Limit: 15.
+    The number of iterations: 30, Limit: 30.
     ```
 
-    而整個 stack 看起來仍然定位正常，因為 EKF 只靠輪速與 IMU 就持續發布
-    `/localization/kinematic_state`。關鍵是這一對：
-    `/localization/pose_estimator/pose_with_covariance` 是 **0** 筆，而
-    `/localization/kinematic_state` 有好幾千筆。
-
-    這是真的發生過：AutoSDV 把上限設成 15，而 Autoware 是 30，於是
-    `pose_source:=ndt` 在這份錄製上什麼都沒發布。改回 30 不只正確，而且**更快**
-    ——匹配器通常四次迭代就收斂，只有最初幾幀需要更多；上限太低時它永遠卡在 15 次
-    空轉，從來沒接受過那一幀，而那一幀本來會讓後面全部變簡單。
-
-    | 這份錄製 | 上限 15 | 上限 30 |
-    |---|---|---|
-    | 發布的 NDT 位姿 | 0 | 1402 |
-    | 迭代次數 p50 / max | 15 / 15 | 4 / 17 |
-    | `exe_ms` 平均 | 12.4 | 4.6 |
-    | NVTL 平均（門檻 2.2） | 4.59 | 4.60 |
+    而整套系統看起來仍然「定位正常」，因為 EKF 仍然只靠輪速里程計與 IMU 持續發布
+    `/localization/kinematic_state`。真正的線索是這一對：
+    `/localization/pose_estimator/pose_with_covariance` 是 0 則訊息，而
+    `/localization/kinematic_state` 有好幾千則。
 
 最有資訊量的分割是 **`init` 與 `track`**：停著的時候匹配容易，因為每個掃描都像上
-一個。一旦車輛移動，同樣的工作大約要花兩倍。實測的一次執行：停著 7.8 毫秒、行駛
-16.7 毫秒、p95 44 毫秒。如果一台機器處於邊緣，它會在那裡失敗——而不是在啟動時。
+一個。一旦車輛移動，同樣的工作大約要花兩倍。如果一台機器處於邊緣，它會在那裡
+失敗——而不是在啟動時。
 
 ## 疑難排解
 
