@@ -2,8 +2,14 @@
 
 !!! danger "This image does not build. Do not start here."
 
-    The Dockerfile in `docker/` cannot be built against the current
-    repository. Use [the standard installation](./overview.md) instead.
+    The Dockerfile in `docker/jetson/` cannot be built against the current
+    repository.
+
+    **If you want a container, you want
+    [Run It in a Container](./container.md)** — the desktop image, which is
+    built, published for both architectures, and runs the simulations on any
+    laptop. It is a different image and it works. To install on the host
+    instead, see [the standard installation](./overview.md).
 
     Two independent reasons:
 

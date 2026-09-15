@@ -23,6 +23,15 @@ top. That shape is what the two `source` lines in
 package dependencies are resolved — not by the build. Read that page if
 anything later says "package not found".
 
+## The shortest way in
+
+If you want to *run the simulations* rather than develop AutoSDV — a workshop, a
+class, or a first look — you do not need any of this page.
+[Run It in a Container](./container.md) gets you there on Windows, macOS
+(including Apple Silicon) or Linux with one command and no ROS 2, no Autoware
+and no build on your machine. The rest of this page is the host install, which
+is what a vehicle and a development machine need.
+
 ## What you install it on
 
 1. **An Ubuntu 22.04 laptop or desktop** — for the simulations and for
@@ -32,7 +41,8 @@ anything later says "package not found".
    [What Machine You Need](../requirements.md), the next page.
 2. **NVIDIA Jetson AGX Orin 64GB** — the vehicle itself, with the sensors
    attached. See [Hardware Setup](../hardware-assembly.md).
-3. **Docker Environment** (unmaintained)
+3. **Any laptop, in a container** — see [Run It in a Container](./container.md).
+   Not an install at all: the simulations only, with nothing added to the host.
 
 Ubuntu 22.04 is the one requirement with no alternative: AutoSDV is built on
 ROS 2 Humble, which is not packaged for 24.04.
@@ -43,6 +53,7 @@ Choose the installation method that best fits your needs:
 
 | Method                                                      | Best For                              | Difficulty | Customization |
 |-------------------------------------------------------------|---------------------------------------|------------|---------------|
+| **[Run It in a Container](./container.md)**                 | Simulations on any laptop; workshops  | Easiest    | None          |
 | **[Recommended Installation](./recommended.md)**            | Most users, production deployment     | Easy       | Limited       |
 | **[Manual Environment Setup](./manual-environment.md)**     | Advanced users, custom configurations | Advanced   | Full          |
 | **[Docker Setup](./docker.md)**                             | Development, testing, simulation      | Easy       | Limited       |

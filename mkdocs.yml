@@ -132,6 +132,7 @@ plugins:
             What Machine You Need: 你需要什麼樣的機器
             Hardware Setup: 硬體設定
             Software Installation: 軟體安裝
+            Run It in a Container: 以容器執行
             Recommended Installation: 推薦安裝方式
             Manual Environment Setup (Optional): 手動環境設定（選配）
             Docker Setup (Optional): Docker 設定（選配）
@@ -236,6 +237,7 @@ nav:
     - index.md
     - Software Installation:
       - Overview: getting-started/installation/overview.md
+      - Run It in a Container: getting-started/installation/container.md
       - What Machine You Need: getting-started/requirements.md
       - Recommended Installation: getting-started/installation/recommended.md
       - Verifying the Installation: getting-started/installation/verify.md
