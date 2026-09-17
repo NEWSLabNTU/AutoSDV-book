@@ -122,7 +122,11 @@ check:
 	uv run python -c "import mkdocs_static_i18n; print('      [OK] mkdocs-static-i18n')" 2>/dev/null || { echo "      [X] mkdocs-static-i18n not found (run 'just setup')"; exit 1; }
 	echo ""
 	echo "[2/3] Validating MkDocs configuration..."
-	uv run mkdocs build --strict --quiet && echo "      [OK] MkDocs build successful (strict mode)" || { echo "      [X] MkDocs build failed"; exit 1; }
+	# NOT --quiet. It raises the log level above WARNING, and --strict aborts on
+	# warnings -- so the two together silently cancel out and this step passed a
+	# build that CI then failed. Demonstrated on a page with a macro syntax
+	# error: `--strict --quiet` exits 0, `--strict` exits 1.
+	uv run mkdocs build --strict && echo "      [OK] MkDocs build successful (strict mode)" || { echo "      [X] MkDocs build failed"; exit 1; }
 	echo ""
 	echo "[3/3] Checking translation status..."
 	uv run python scripts/check-translations.py || { echo ""; echo "      [!] Translation issues found (see above)"; echo "      Run with --verbose for details: uv run python scripts/check-translations.py --verbose"; }

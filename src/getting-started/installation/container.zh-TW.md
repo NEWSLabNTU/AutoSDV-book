@@ -165,7 +165,9 @@ logging simulation 需要一個 shell 執行整個系統，另一個執行 rosba
     .\docker\desktop\autosdv.ps1
     ```
 
-## 給 Docker 足夠的記憶體 {#give-docker-enough-memory}
+<a id="give-docker-enough-memory"></a>
+
+## 給 Docker 足夠的記憶體
 
 這是最容易毀掉第一次嘗試的設定，而它的症狀完全不會提到記憶體。
 

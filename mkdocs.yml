@@ -183,7 +183,20 @@ markdown_extensions:
       # anonymous `_2`, `_3`, ... which cannot be linked to on purpose and
       # renumbers whenever a heading is added above it -- so the zh-TW pages
       # carried in-page links that had never resolved.
-      slugify: !!python/name:pymdownx.slugs.uslugify
+      #
+      # `slugify(case=lower)`, NOT the `uslugify` alias this used to name:
+      # pymdown-extensions removed that alias, and because CI installs
+      # unpinned (`pip install -r requirements.txt`) the first push after
+      # that release failed with
+      #
+      #   cannot find 'uslugify' in the module 'pymdownx.slugs'
+      #
+      # while every local build kept working against the older pinned
+      # version in uv.lock. This spelling is the supported one and exists in
+      # both.
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
   # Code highlighting
   - codehilite:
