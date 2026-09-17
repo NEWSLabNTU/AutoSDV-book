@@ -14,7 +14,7 @@
         <link rel="prev" href="../../..">
       
       
-        <link rel="next" href="../../requirements/">
+        <link rel="next" href="../container/">
       
       
         
@@ -562,6 +562,8 @@
       
         
       
+        
+      
     
     
     
@@ -688,6 +690,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-shortest-way-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The shortest way in
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-install-it-on" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -785,6 +798,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run It in a Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2927,6 +2968,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-shortest-way-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The shortest way in
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-install-it-on" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3137,6 +3189,13 @@ top. That shape is what the two <code>source</code> lines in
 <a href="../../../concepts/environment/">The Environment</a> are about, and it is where
 package dependencies are resolved — not by the build. Read that page if
 anything later says "package not found".</p>
+<h2 id="the-shortest-way-in">The shortest way in<a class="headerlink" href="#the-shortest-way-in" title="Permanent link">#</a></h2>
+<p>If you want to <em>run the simulations</em> rather than develop AutoSDV — a workshop, a
+class, or a first look — you do not need any of this page.
+<a href="../container/">Run It in a Container</a> gets you there on Windows, macOS
+(including Apple Silicon) or Linux with one command and no ROS 2, no Autoware
+and no build on your machine. The rest of this page is the host install, which
+is what a vehicle and a development machine need.</p>
 <h2 id="what-you-install-it-on">What you install it on<a class="headerlink" href="#what-you-install-it-on" title="Permanent link">#</a></h2>
 <ol>
 <li><strong>An Ubuntu 22.04 laptop or desktop</strong> — for the simulations and for
@@ -3146,7 +3205,8 @@ anything later says "package not found".</p>
    <a href="../../requirements/">What Machine You Need</a>, the next page.</li>
 <li><strong>NVIDIA Jetson AGX Orin 64GB</strong> — the vehicle itself, with the sensors
    attached. See <a href="../../hardware-assembly/">Hardware Setup</a>.</li>
-<li><strong>Docker Environment</strong> (unmaintained)</li>
+<li><strong>Any laptop, in a container</strong> — see <a href="../container/">Run It in a Container</a>.
+   Not an install at all: the simulations only, with nothing added to the host.</li>
 </ol>
 <p>Ubuntu 22.04 is the one requirement with no alternative: AutoSDV is built on
 ROS 2 Humble, which is not packaged for 24.04.</p>
@@ -3162,6 +3222,12 @@ ROS 2 Humble, which is not packaged for 24.04.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong><a href="../container/">Run It in a Container</a></strong></td>
+<td>Simulations on any laptop; workshops</td>
+<td>Easiest</td>
+<td>None</td>
+</tr>
 <tr>
 <td><strong><a href="../recommended/">Recommended Installation</a></strong></td>
 <td>Most users, production deployment</td>
@@ -3331,13 +3397,13 @@ that satisfy them will work; the exact patch versions do not matter.</p>
         
         
           
-          <a href="../../requirements/" class="md-footer__link md-footer__link--next" aria-label="Next: What Machine You Need">
+          <a href="../container/" class="md-footer__link md-footer__link--next" aria-label="Next: Run It in a Container">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                What Machine You Need
+                Run It in a Container
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -14,7 +14,7 @@
         <link rel="prev" href="../../../">
       
       
-        <link rel="next" href="../../requirements/">
+        <link rel="next" href="../container/">
       
       
         
@@ -562,6 +562,8 @@
       
         
       
+        
+      
     
     
     
@@ -688,6 +690,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#最快的入門方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最快的入門方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#你要把它裝在什麼機器上" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -785,6 +798,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    以容器執行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2927,6 +2968,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#最快的入門方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最快的入門方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#你要把它裝在什麼機器上" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3134,6 +3186,11 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 這個結構正是<a href="../../../concepts/environment/">環境與相依套件</a>中那兩行 <code>source</code>
 的意義所在，也是套件相依性被解析的地方——而不是在建置時。之後若出現
 「package not found」，請先讀那一頁。</p>
+<h2 id="最快的入門方式">最快的入門方式<a class="headerlink" href="#%E6%9C%80%E5%BF%AB%E7%9A%84%E5%85%A5%E9%96%80%E6%96%B9%E5%BC%8F" title="Permanent link">#</a></h2>
+<p>如果你只是想*執行模擬*而不是開發 AutoSDV——工作坊、課堂，或第一次試用——本頁的
+內容你都不需要。<a href="../container/">以容器執行</a>可以在 Windows、macOS（含 Apple
+Silicon）或 Linux 上用一行指令完成，不需要 ROS 2、不需要 Autoware，也不需要在你
+的機器上編譯。本頁其餘部分說明的是主機安裝，那是車輛與開發機所需要的。</p>
 <h2 id="你要把它裝在什麼機器上">你要把它裝在什麼機器上<a class="headerlink" href="#%E4%BD%A0%E8%A6%81%E6%8A%8A%E5%AE%83%E8%A3%9D%E5%9C%A8%E4%BB%80%E9%BA%BC%E6%A9%9F%E5%99%A8%E4%B8%8A" title="Permanent link">#</a></h2>
 <ol>
 <li><strong>一台 Ubuntu 22.04 筆電或桌機</strong>——用於模擬與開發。有 GPU 有幫助，但
@@ -3142,7 +3199,8 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
    <a href="../../requirements/">你需要什麼樣的機器</a>。</li>
 <li><strong>NVIDIA Jetson AGX Orin 64GB</strong>——車輛本身，接著各種感測器。見
    <a href="../../hardware-assembly/">硬體設定</a>。</li>
-<li><strong>Docker 環境</strong>（未維護）</li>
+<li><strong>任何一台筆電，以容器執行</strong>——見<a href="../container/">以容器執行</a>。
+   這其實不算安裝：只跑模擬，不在主機上添加任何東西。</li>
 </ol>
 <p>Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humble 上，而 Humble
 沒有 24.04 的套件。</p>
@@ -3158,6 +3216,12 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong><a href="../container/">以容器執行</a></strong></td>
+<td>在任何筆電上跑模擬、工作坊</td>
+<td>最簡單</td>
+<td>無</td>
+</tr>
 <tr>
 <td><strong><a href="../recommended/">推薦安裝方式</a></strong></td>
 <td>大多數使用者、生產部署</td>
@@ -3326,13 +3390,13 @@ Autoware 基底。</p>
         
         
           
-          <a href="../../requirements/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 你需要什麼樣的機器">
+          <a href="../container/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 以容器執行">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一頁
               </span>
               <div class="md-ellipsis">
-                你需要什麼樣的機器
+                以容器執行
               </div>
             </div>
             <div class="md-footer__button md-icon">

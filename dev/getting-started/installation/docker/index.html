@@ -562,6 +562,8 @@
       
         
       
+        
+      
     
     
     
@@ -625,6 +627,34 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run It in a Container
   
 
     
@@ -2978,8 +3008,13 @@
 <div><h1 id="docker-setup-unmaintained">Docker Setup (unmaintained)<a class="headerlink" href="#docker-setup-unmaintained" title="Permanent link">#</a></h1>
 <div class="admonition danger">
 <p class="admonition-title">This image does not build. Do not start here.</p>
-<p>The Dockerfile in <code>docker/</code> cannot be built against the current
-repository. Use <a href="../overview/">the standard installation</a> instead.</p>
+<p>The Dockerfile in <code>docker/jetson/</code> cannot be built against the current
+repository.</p>
+<p><strong>If you want a container, you want
+<a href="../container/">Run It in a Container</a></strong> — the desktop image, which is
+built, published for both architectures, and runs the simulations on any
+laptop. It is a different image and it works. To install on the host
+instead, see <a href="../overview/">the standard installation</a>.</p>
 <p>Two independent reasons:</p>
 <ol>
 <li><strong>Its build step no longer exists.</strong> The Dockerfile's final step runs
