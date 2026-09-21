@@ -171,7 +171,7 @@ def check_watchdog():
 **觸發**：
 ```bash
 # Publish zero velocity
-ros2 topic pub /control/command/control_cmd autoware_auto_control_msgs/AckermannControlCommand "{
+ros2 topic pub /control/command/control_cmd autoware_control_msgs/msg/Control "{
   longitudinal: {speed: 0.0, acceleration: -5.0}
 }" -1
 

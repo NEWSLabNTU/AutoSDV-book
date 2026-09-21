@@ -205,7 +205,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 1. **Check topic bandwidth**:
    ```bash
    # Monitor data rate
-   ros2 topic bw /sensing/lidar/robin_lidar/points_raw
+   ros2 topic bw /sensing/lidar/sensing/lidar/iv_points
 
    # Check all sensor topics
    ros2 topic bw /sensing/*
@@ -274,7 +274,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
    ```bash
    ping <lidar_ip>
    # Robin-W: 172.168.1.10
-   # Velodyne: 192.168.1.201
+   # Velodyne: 192.168.7.10
    # Blickfeld: 192.168.26.26
    ```
 

@@ -200,7 +200,7 @@ Most problems are answered by step 3.
 Everything above is plain ROS 2, and works on any system. This project also
 ships tools of its own:
 
-- [Localization Diagnostics](../guides/localization-diagnostics.md) — fifteen
+- [Localization Diagnostics](../guides/localization-diagnostics.md) — purpose-built
   scripts that answer localization questions `ros2 topic` cannot: is NDT
   *activated* or merely alive, how good is the pose, what is the scan-to-map
   residual.

@@ -30,7 +30,7 @@ Translation Metadata:
 這是一個 git 子模組（外部套件），它會：
 1. 透過網路連接到 Robin-W（172.168.1.10）
 2. 接收點雲資料
-3. 發布到 ROS 主題：`/robin_lidar/points_raw`
+3. 發布到 ROS 主題：`/sensing/lidar/iv_points`
 
 驅動程式輸出 **PointXYZIRC** 格式（與 Autoware 相容）：
 - `x, y, z` - 3D 位置
@@ -51,7 +51,7 @@ Translation Metadata:
 
 ```yaml
 sensor_kit_base_link:
-  robin_lidar_link:
+  robin_w:
     x: 0.0        # Position: at front center
     y: 0.0
     z: 0.15       # 15cm above sensor kit base
@@ -60,7 +60,7 @@ sensor_kit_base_link:
     yaw: 0.0
 ```
 
-這定義了一個稱為 `robin_lidar_link` 的**座標框架**，代表感測器在車輛上的位置和方向。
+這定義了一個稱為 `robin_w` 的**座標框架**，代表感測器在車輛上的位置和方向。
 
 <span id="why-the-strange-rotation"></span>
 #### 為什麼會有奇怪的旋轉？
@@ -93,19 +93,19 @@ Robin-W 使用的座標軸與 ROS 標準不同：
 
 ```xml
 <!-- Robin-W LiDAR -->
-<link name="robin_lidar_link"/>
+<link name="robin_w"/>
 
 <joint name="robin_lidar_joint" type="fixed">
   <origin
-    xyz="${calibration['sensor_kit_base_link']['robin_lidar_link']['x']} ..."
-    rpy="${calibration['sensor_kit_base_link']['robin_lidar_link']['roll']} ..."
+    xyz="${calibration['sensor_kit_base_link']['robin_w']['x']} ..."
+    rpy="${calibration['sensor_kit_base_link']['robin_w']['roll']} ..."
   />
   <parent link="sensor_kit_base_link"/>
-  <child link="robin_lidar_link"/>
+  <child link="robin_w"/>
 </joint>
 ```
 
-這會使用上述校正值在機器人的 TF 樹中建立 `robin_lidar_link` 框架。
+這會使用上述校正值在機器人的 TF 樹中建立 `robin_w` 框架。
 
 ### 驅動程式啟動配置
 
@@ -120,8 +120,8 @@ Robin-W 使用的座標軸與 ROS 標準不同：
   </include>
 
   <!-- Remap topic to Autoware standard -->
-  <remap from="/robin_lidar/points_raw"
-         to="/sensing/lidar/robin_lidar/points_raw"/>
+  <remap from="/sensing/lidar/iv_points"
+         to="/sensing/lidar/sensing/lidar/iv_points"/>
 
 </group>
 ```
@@ -137,7 +137,7 @@ Robin-W 使用的座標軸與 ROS 標準不同：
   ros__parameters:
     ip_address: "172.168.1.10"    # Robin-W network address
     port: 2368                     # UDP port
-    frame_id: "robin_lidar_link"   # TF frame name
+    frame_id: "robin_w"   # TF frame name
     min_range: 0.5                 # Filter points closer than 0.5m
     max_range: 200.0               # Filter points farther than 200m
 ```
@@ -154,10 +154,10 @@ Robin-W 使用的座標軸與 ROS 標準不同：
    ▼
 2. seyond_ros_driver Node
    │ Converts to ROS PointCloud2 message
-   │ Publishes to /robin_lidar/points_raw
+   │ Publishes to /sensing/lidar/iv_points
    ▼
 3. Topic Remapping
-   │ Remaps to /sensing/lidar/robin_lidar/points_raw
+   │ Remaps to /sensing/lidar/sensing/lidar/iv_points
    ▼
 4. TF Transform
    │ Applies rotation (roll=180°, pitch=-90°)
@@ -177,7 +177,7 @@ Robin-W 使用的座標軸與 ROS 標準不同：
 
 ```bash
 $ ros2 topic list | grep lidar
-/sensing/lidar/robin_lidar/points_raw
+/sensing/lidar/sensing/lidar/iv_points
 ```
 
 所有感測器資料都遵循以下模式：`/sensing/[類型]/[名稱]/[資料]`
@@ -192,10 +192,10 @@ $ ros2 run tf2_tools view_frames
 ```
 base_link
   └─ sensor_kit_base_link
-       └─ robin_lidar_link  ← Robin-W sensor frame
+       └─ robin_w  ← Robin-W sensor frame
 ```
 
-從 `sensor_kit_base_link` → `robin_lidar_link` 的轉換使用校正值（位置 + 旋轉）。
+從 `sensor_kit_base_link` → `robin_w` 的轉換使用校正值（位置 + 旋轉）。
 
 ### 驗證
 
@@ -203,13 +203,13 @@ base_link
 
 ```bash
 # Topic publishing at ~10 Hz?
-ros2 topic hz /sensing/lidar/robin_lidar/points_raw
+ros2 topic hz /sensing/lidar/sensing/lidar/iv_points
 
 # Point cloud has data?
-ros2 topic echo /sensing/lidar/robin_lidar/points_raw --once
+ros2 topic echo /sensing/lidar/sensing/lidar/iv_points --once
 
 # Transform exists?
-ros2 run tf2_ros tf2_echo sensor_kit_base_link robin_lidar_link
+ros2 run tf2_ros tf2_echo sensor_kit_base_link robin_w
 ```
 
 ## 整體架構
@@ -236,7 +236,7 @@ ros2 run tf2_ros tf2_echo sensor_kit_base_link robin_lidar_link
 ## 重點要點
 
 - **座標轉換很重要**：Robin-W 的非標準座標需要 roll=180°, pitch=-90°
-- **一切都是座標框架**：`robin_lidar_link` 代表 3D 空間中的感測器
+- **一切都是座標框架**：`robin_w` 代表 3D 空間中的感測器
 - **主題重新映射標準化命名**：驅動程式輸出 → `/sensing/` 命名空間
 - **雙層系統**：驅動程式（感測器元件）+ 整合（感測器套件）
 

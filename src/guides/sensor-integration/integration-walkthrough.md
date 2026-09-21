@@ -22,7 +22,7 @@ The driver converts the sensor's raw data into ROS 2 messages.
 This is a git submodule (external package) that:
 1. Connects to Robin-W over network (172.168.1.10)
 2. Receives point cloud data
-3. Publishes to ROS topic: `/robin_lidar/points_raw`
+3. Publishes to ROS topic: `/sensing/lidar/iv_points`
 
 The driver outputs **PointXYZIRC** format (compatible with Autoware):
 - `x, y, z` - 3D position
@@ -43,7 +43,7 @@ To integrate Robin-W into the vehicle, we need to tell AutoSDV:
 
 ```yaml
 sensor_kit_base_link:
-  robin_lidar_link:
+  robin_w:
     x: 0.0        # Position: at front center
     y: 0.0
     z: 0.15       # 15cm above sensor kit base
@@ -52,7 +52,7 @@ sensor_kit_base_link:
     yaw: 0.0
 ```
 
-This defines a **coordinate frame** called `robin_lidar_link` that represents the sensor's position and orientation on the vehicle.
+This defines a **coordinate frame** called `robin_w` that represents the sensor's position and orientation on the vehicle.
 
 #### Why the Strange Rotation?
 
@@ -84,19 +84,19 @@ Without this transformation, the point cloud would appear upside down and rotate
 
 ```xml
 <!-- Robin-W LiDAR -->
-<link name="robin_lidar_link"/>
+<link name="robin_w"/>
 
 <joint name="robin_lidar_joint" type="fixed">
   <origin
-    xyz="${calibration['sensor_kit_base_link']['robin_lidar_link']['x']} ..."
-    rpy="${calibration['sensor_kit_base_link']['robin_lidar_link']['roll']} ..."
+    xyz="${calibration['sensor_kit_base_link']['robin_w']['x']} ..."
+    rpy="${calibration['sensor_kit_base_link']['robin_w']['roll']} ..."
   />
   <parent link="sensor_kit_base_link"/>
-  <child link="robin_lidar_link"/>
+  <child link="robin_w"/>
 </joint>
 ```
 
-This creates the `robin_lidar_link` frame in the robot's TF tree using the calibration values above.
+This creates the `robin_w` frame in the robot's TF tree using the calibration values above.
 
 ### Driver Launch Configuration
 
@@ -111,8 +111,8 @@ This creates the `robin_lidar_link` frame in the robot's TF tree using the calib
   </include>
 
   <!-- Remap topic to Autoware standard -->
-  <remap from="/robin_lidar/points_raw"
-         to="/sensing/lidar/robin_lidar/points_raw"/>
+  <remap from="/sensing/lidar/iv_points"
+         to="/sensing/lidar/sensing/lidar/iv_points"/>
 
 </group>
 ```
@@ -128,7 +128,7 @@ This says: "When user selects `lidar_model:=robin-w`, start the Robin-W driver a
   ros__parameters:
     ip_address: "172.168.1.10"    # Robin-W network address
     port: 2368                     # UDP port
-    frame_id: "robin_lidar_link"   # TF frame name
+    frame_id: "robin_w"   # TF frame name
     min_range: 0.5                 # Filter points closer than 0.5m
     max_range: 200.0               # Filter points farther than 200m
 ```
@@ -145,10 +145,10 @@ When you launch AutoSDV with `lidar_model:=robin-w`:
    ▼
 2. seyond_ros_driver Node
    │ Converts to ROS PointCloud2 message
-   │ Publishes to /robin_lidar/points_raw
+   │ Publishes to /sensing/lidar/iv_points
    ▼
 3. Topic Remapping
-   │ Remaps to /sensing/lidar/robin_lidar/points_raw
+   │ Remaps to /sensing/lidar/sensing/lidar/iv_points
    ▼
 4. TF Transform
    │ Applies rotation (roll=180°, pitch=-90°)
@@ -168,7 +168,7 @@ When you launch AutoSDV with `lidar_model:=robin-w`:
 
 ```bash
 $ ros2 topic list | grep lidar
-/sensing/lidar/robin_lidar/points_raw
+/sensing/lidar/sensing/lidar/iv_points
 ```
 
 All sensor data follows the pattern: `/sensing/[type]/[name]/[data]`
@@ -183,10 +183,10 @@ This generates a PDF showing:
 ```
 base_link
   └─ sensor_kit_base_link
-       └─ robin_lidar_link  ← Robin-W sensor frame
+       └─ robin_w  ← Robin-W sensor frame
 ```
 
-The transform from `sensor_kit_base_link` → `robin_lidar_link` uses the calibration values (position + rotation).
+The transform from `sensor_kit_base_link` → `robin_w` uses the calibration values (position + rotation).
 
 ### Verification
 
@@ -194,13 +194,13 @@ Check that Robin-W is working:
 
 ```bash
 # Topic publishing at ~10 Hz?
-ros2 topic hz /sensing/lidar/robin_lidar/points_raw
+ros2 topic hz /sensing/lidar/sensing/lidar/iv_points
 
 # Point cloud has data?
-ros2 topic echo /sensing/lidar/robin_lidar/points_raw --once
+ros2 topic echo /sensing/lidar/sensing/lidar/iv_points --once
 
 # Transform exists?
-ros2 run tf2_ros tf2_echo sensor_kit_base_link robin_lidar_link
+ros2 run tf2_ros tf2_echo sensor_kit_base_link robin_w
 ```
 
 ## The Big Picture
@@ -227,7 +227,7 @@ Every sensor integration follows this pattern:
 ## Key Takeaways
 
 - **Coordinate transformation matters**: Robin-W's non-standard coordinates require roll=180°, pitch=-90°
-- **Everything is a coordinate frame**: `robin_lidar_link` represents the sensor in 3D space
+- **Everything is a coordinate frame**: `robin_w` represents the sensor in 3D space
 - **Topic remapping standardizes naming**: Driver outputs → `/sensing/` namespace
 - **Two-layer system**: Drivers (sensor component) + Integration (sensor kit)
 

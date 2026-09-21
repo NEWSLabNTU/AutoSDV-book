@@ -192,7 +192,7 @@ python3 scripts/testing/localization/check_imu_velocity.py     # EKF 的兩個�
 
 上面所有東西都是原生的 ROS 2，在任何系統上都能用。本專案另外還備有自己的工具：
 
-- [定位診斷](../guides/localization-diagnostics.md) —— 十五個腳本，回答
+- [定位診斷](../guides/localization-diagnostics.md) —— 專用腳本，回答
   `ros2 topic` 回答不了的定位問題：NDT 是真的*啟用*了還是只是活著、位姿品質如何、
   掃描對地圖的殘差是多少。
 - [指令參考](../reference/commands.md#tool--開發與監控) ——

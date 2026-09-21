@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: glossary.md
-- Last synced: 2026-09-12
+- Last synced: 2026-09-21
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -106,6 +106,15 @@ AutoSDV 的工作空間是 Autoware 的 overlay，而 Autoware 是 ROS 2 的 ove
 
 **TP** —— Transformation Probability，NDT 的另一個匹配分數。
 
+**收斂門檻（convergence gate）** —— NVTL 的門檻值；低於它，匹配器就把該幀判為未
+收斂並丟棄結果。碰到 `max_iterations` 上限的幀同樣算未收斂，於是位姿根本不會發布。
+
+**GLIM** —— 用來建立點雲地圖的光達慣性 SLAM 套件。它保留可再編輯的 dump（因子圖、
+submap、軌跡），而不只是一團點雲。
+
+**迴路閉合（loop closure）** —— 認出曾經到過的地點，並修正兩次造訪之間累積的漂移。
+受限的視野會讓這件事變難，而它屬於建圖的問題，不是定位的問題。
+
 
 ## 感測與感知
 
@@ -128,6 +137,12 @@ AutoSDV 的工作空間是 Autoware 的 overlay，而 Autoware 是 ROS 2 的 ove
 ## 操作
 
 **MRM** —— Minimum Risk Manoeuvre，最小風險操作。系統必須安全停下時所做的事。
+
+**舒適停車（comfortable stop）** —— 兩種 MRM 行為中較溫和的那一種：受控的減速，
+相對於緊急停車所用的最大可用煞車力。
+
+**診斷圖（diagnostic graph）** —— Autoware 把各項健康檢查匯聚成單一系統判定的那棵
+樹，也是決定要不要啟動 MRM 的依據。
 
 **ODD** —— Operational Design Domain，系統被設計來運作的條件範圍。
 
