@@ -4051,7 +4051,7 @@
 <h3 id="緊急停止">緊急停止<a class="headerlink" href="#%E7%B7%8A%E6%80%A5%E5%81%9C%E6%AD%A2" title="Permanent link">#</a></h3>
 <p><strong>觸發</strong>：
 </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Publish zero velocity</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/control/command/control_cmd<span class="w"> </span>autoware_auto_control_msgs/AckermannControlCommand<span class="w"> </span><span class="s2">"{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/control/command/control_cmd<span class="w"> </span>autoware_control_msgs/msg/Control<span class="w"> </span><span class="s2">"{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">  longitudinal: {speed: 0.0, acceleration: -5.0}</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s2">}"</span><span class="w"> </span>-1
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>

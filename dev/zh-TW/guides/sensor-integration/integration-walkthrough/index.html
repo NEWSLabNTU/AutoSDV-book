@@ -3730,7 +3730,7 @@
 <p>這是一個 git 子模組（外部套件），它會：
 1. 透過網路連接到 Robin-W（172.168.1.10）
 2. 接收點雲資料
-3. 發布到 ROS 主題：<code>/robin_lidar/points_raw</code></p>
+3. 發布到 ROS 主題：<code>/sensing/lidar/iv_points</code></p>
 <p>驅動程式輸出 <strong>PointXYZIRC</strong> 格式（與 Autoware 相容）：
 - <code>x, y, z</code> - 3D 位置
 - <code>intensity</code> - 反射強度
@@ -3744,7 +3744,7 @@
 <h3 id="實體位置">實體位置<a class="headerlink" href="#%E5%AF%A6%E9%AB%94%E4%BD%8D%E7%BD%AE" title="Permanent link">#</a></h3>
 <p><strong>檔案</strong>：<code>src/sensor_kit/autosdv_sensor_kit_description/config/sensor_kit_calibration.yaml</code></p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">sensor_kit_base_link</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">robin_lidar_link</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">robin_w</span><span class="p">:</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span><span class="w">        </span><span class="c1"># Position: at front center</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span><span class="w">       </span><span class="c1"># 15cm above sensor kit base</span>
@@ -3752,7 +3752,7 @@
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">pitch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1.5708</span><span class="w">  </span><span class="c1"># -90° rotation</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">yaw</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 </span></code></pre></div>
-<p>這定義了一個稱為 <code>robin_lidar_link</code> 的**座標框架**，代表感測器在車輛上的位置和方向。</p>
+<p>這定義了一個稱為 <code>robin_w</code> 的**座標框架**，代表感測器在車輛上的位置和方向。</p>
 <p><span id="why-the-strange-rotation"></span></p>
 <h4 id="為什麼會有奇怪的旋轉">為什麼會有奇怪的旋轉？<a class="headerlink" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%83%E6%9C%89%E5%A5%87%E6%80%AA%E7%9A%84%E6%97%8B%E8%BD%89" title="Permanent link">#</a></h4>
 <p>Robin-W 使用的座標軸與 ROS 標準不同：</p>
@@ -3773,18 +3773,18 @@
 <h3 id="機器人描述urdf">機器人描述（URDF）<a class="headerlink" href="#%E6%A9%9F%E5%99%A8%E4%BA%BA%E6%8F%8F%E8%BF%B0urdf" title="Permanent link">#</a></h3>
 <p><strong>檔案</strong>：<code>src/sensor_kit/autosdv_sensor_kit_description/urdf/sensor_kit.xacro</code></p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">&lt;!-- Robin-W LiDAR --&gt;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">"robin_lidar_link"</span><span class="nt">/&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">"robin_w"</span><span class="nt">/&gt;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">"robin_lidar_joint"</span><span class="w"> </span><span class="na">type=</span><span class="s">"fixed"</span><span class="nt">&gt;</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">&lt;origin</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="na">xyz=</span><span class="s">"${calibration['sensor_kit_base_link']['robin_lidar_link']['x']} ..."</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="na">rpy=</span><span class="s">"${calibration['sensor_kit_base_link']['robin_lidar_link']['roll']} ..."</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="na">xyz=</span><span class="s">"${calibration['sensor_kit_base_link']['robin_w']['x']} ..."</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="na">rpy=</span><span class="s">"${calibration['sensor_kit_base_link']['robin_w']['roll']} ..."</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">/&gt;</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">"sensor_kit_base_link"</span><span class="nt">/&gt;</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">"robin_lidar_link"</span><span class="nt">/&gt;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">"robin_w"</span><span class="nt">/&gt;</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nt">&lt;/joint&gt;</span>
 </span></code></pre></div>
-<p>這會使用上述校正值在機器人的 TF 樹中建立 <code>robin_lidar_link</code> 框架。</p>
+<p>這會使用上述校正值在機器人的 TF 樹中建立 <code>robin_w</code> 框架。</p>
 <h3 id="驅動程式啟動配置">驅動程式啟動配置<a class="headerlink" href="#%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F%E5%95%9F%E5%8B%95%E9%85%8D%E7%BD%AE" title="Permanent link">#</a></h3>
 <p><strong>檔案</strong>：<code>src/sensor_kit/autosdv_sensor_kit_launch/launch/lidar.launch.xml</code></p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;group</span><span class="w"> </span><span class="na">if=</span><span class="s">"$(eval &amp;quot;'$(var lidar_model)' == 'robin-w'&amp;quot;)"</span><span class="nt">&gt;</span>
@@ -3795,8 +3795,8 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="cm">&lt;!-- Remap topic to Autoware standard --&gt;</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">"/robin_lidar/points_raw"</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">         </span><span class="na">to=</span><span class="s">"/sensing/lidar/robin_lidar/points_raw"</span><span class="nt">/&gt;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">"/sensing/lidar/iv_points"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">         </span><span class="na">to=</span><span class="s">"/sensing/lidar/sensing/lidar/iv_points"</span><span class="nt">/&gt;</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">&lt;/group&gt;</span>
 </span></code></pre></div>
@@ -3807,7 +3807,7 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">ip_address</span><span class="p">:</span><span class="w"> </span><span class="s">"172.168.1.10"</span><span class="w">    </span><span class="c1"># Robin-W network address</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2368</span><span class="w">                     </span><span class="c1"># UDP port</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"robin_lidar_link"</span><span class="w">   </span><span class="c1"># TF frame name</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"robin_w"</span><span class="w">   </span><span class="c1"># TF frame name</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span><span class="w">                 </span><span class="c1"># Filter points closer than 0.5m</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200.0</span><span class="w">               </span><span class="c1"># Filter points farther than 200m</span>
 </span></code></pre></div>
@@ -3819,10 +3819,10 @@
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>   ▼
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>2. seyond_ros_driver Node
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>   │ Converts to ROS PointCloud2 message
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>   │ Publishes to /robin_lidar/points_raw
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>   │ Publishes to /sensing/lidar/iv_points
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>   ▼
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>3. Topic Remapping
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>   │ Remaps to /sensing/lidar/robin_lidar/points_raw
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>   │ Remaps to /sensing/lidar/sensing/lidar/iv_points
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>   ▼
 </span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>4. TF Transform
 </span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>   │ Applies rotation (roll=180°, pitch=-90°)
@@ -3838,7 +3838,7 @@
 <h2 id="系統中的表現方式">系統中的表現方式<a class="headerlink" href="#%E7%B3%BB%E7%B5%B1%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%8F%BE%E6%96%B9%E5%BC%8F" title="Permanent link">#</a></h2>
 <h3 id="主題命名空間">主題命名空間<a class="headerlink" href="#%E4%B8%BB%E9%A1%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%96%93" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>lidar
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>/sensing/lidar/robin_lidar/points_raw
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>/sensing/lidar/sensing/lidar/iv_points
 </span></code></pre></div>
 <p>所有感測器資料都遵循以下模式：<code>/sensing/[類型]/[名稱]/[資料]</code></p>
 <h3 id="tf-樹">TF 樹<a class="headerlink" href="#tf-%E6%A8%B9" title="Permanent link">#</a></h3>
@@ -3847,19 +3847,19 @@
 <p>這會產生一個 PDF 顯示：
 </p><div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>base_link
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  └─ sensor_kit_base_link
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       └─ robin_lidar_link  ← Robin-W sensor frame
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>       └─ robin_w  ← Robin-W sensor frame
 </span></code></pre></div>
-<p>從 <code>sensor_kit_base_link</code> → <code>robin_lidar_link</code> 的轉換使用校正值（位置 + 旋轉）。</p>
+<p>從 <code>sensor_kit_base_link</code> → <code>robin_w</code> 的轉換使用校正值（位置 + 旋轉）。</p>
 <h3 id="驗證">驗證<a class="headerlink" href="#%E9%A9%97%E8%AD%89" title="Permanent link">#</a></h3>
 <p>檢查 Robin-W 是否正常運作：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Topic publishing at ~10 Hz?</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/lidar/robin_lidar/points_raw
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/lidar/sensing/lidar/iv_points
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Point cloud has data?</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/lidar/robin_lidar/points_raw<span class="w"> </span>--once
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/lidar/sensing/lidar/iv_points<span class="w"> </span>--once
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Transform exists?</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>sensor_kit_base_link<span class="w"> </span>robin_lidar_link
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>sensor_kit_base_link<span class="w"> </span>robin_w
 </span></code></pre></div>
 <h2 id="整體架構">整體架構<a class="headerlink" href="#%E6%95%B4%E9%AB%94%E6%9E%B6%E6%A7%8B" title="Permanent link">#</a></h2>
 <p>每個感測器整合都遵循此模式：</p>
@@ -3897,7 +3897,7 @@
 <h2 id="重點要點">重點要點<a class="headerlink" href="#%E9%87%8D%E9%BB%9E%E8%A6%81%E9%BB%9E" title="Permanent link">#</a></h2>
 <ul>
 <li><strong>座標轉換很重要</strong>：Robin-W 的非標準座標需要 roll=180°, pitch=-90°</li>
-<li><strong>一切都是座標框架</strong>：<code>robin_lidar_link</code> 代表 3D 空間中的感測器</li>
+<li><strong>一切都是座標框架</strong>：<code>robin_w</code> 代表 3D 空間中的感測器</li>
 <li><strong>主題重新映射標準化命名</strong>：驅動程式輸出 → <code>/sensing/</code> 命名空間</li>
 <li><strong>雙層系統</strong>：驅動程式（感測器元件）+ 整合（感測器套件）</li>
 </ul>

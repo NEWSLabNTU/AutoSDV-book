@@ -3599,6 +3599,12 @@ AutoSDV 的工作空間是 Autoware 的 overlay，而 Autoware 是 ROS 2 的 ove
 <p><strong>NVTL</strong> —— Nearest Voxel Transformation Likelihood，NDT 回報的掃描與地圖匹配程度
 分數。數值低表示匹配不良。</p>
 <p><strong>TP</strong> —— Transformation Probability，NDT 的另一個匹配分數。</p>
+<p><strong>收斂門檻（convergence gate）</strong> —— NVTL 的門檻值；低於它，匹配器就把該幀判為未
+收斂並丟棄結果。碰到 <code>max_iterations</code> 上限的幀同樣算未收斂，於是位姿根本不會發布。</p>
+<p><strong>GLIM</strong> —— 用來建立點雲地圖的光達慣性 SLAM 套件。它保留可再編輯的 dump（因子圖、
+submap、軌跡），而不只是一團點雲。</p>
+<p><strong>迴路閉合（loop closure）</strong> —— 認出曾經到過的地點，並修正兩次造訪之間累積的漂移。
+受限的視野會讓這件事變難，而它屬於建圖的問題，不是定位的問題。</p>
 <h2 id="感測與感知">感測與感知<a class="headerlink" href="#%E6%84%9F%E6%B8%AC%E8%88%87%E6%84%9F%E7%9F%A5" title="Permanent link">#</a></h2>
 <p><strong>Deskew（去畸變）</strong> —— 修正掃描期間車輛運動造成的失真。需要每個點的時間偏移量，
 而不是每個 LiDAR 驅動程式都提供。</p>
@@ -3612,6 +3618,10 @@ AutoSDV 的工作空間是 Autoware 的 overlay，而 Autoware 是 ROS 2 的 ove
 這就是所有 CUDA 階段必須共用一個容器的原因。</p>
 <h2 id="操作">操作<a class="headerlink" href="#%E6%93%8D%E4%BD%9C" title="Permanent link">#</a></h2>
 <p><strong>MRM</strong> —— Minimum Risk Manoeuvre，最小風險操作。系統必須安全停下時所做的事。</p>
+<p><strong>舒適停車（comfortable stop）</strong> —— 兩種 MRM 行為中較溫和的那一種：受控的減速，
+相對於緊急停車所用的最大可用煞車力。</p>
+<p><strong>診斷圖（diagnostic graph）</strong> —— Autoware 把各項健康檢查匯聚成單一系統判定的那棵
+樹，也是決定要不要啟動 MRM 的依據。</p>
 <p><strong>ODD</strong> —— Operational Design Domain，系統被設計來運作的條件範圍。</p>
 <p><strong>Planning simulator（路徑規劃模擬器）</strong> —— 使用運動學車輛模型、沒有感測器的模擬。
 運作到規劃與控制。</p>
