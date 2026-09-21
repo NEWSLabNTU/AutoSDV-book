@@ -144,6 +144,11 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
 
 ## 相關頁面
 
+- [NDT 調校](./ndt-tuning.md) —— 位姿不對時該改什麼，以及你實際在編輯的是兩份
+  參數檔中的哪一份
+- [定位診斷](./localization-diagnostics.md) —— 回答「收斂了嗎、品質如何」的那些腳本
+- [感測器能力對照表](../reference/hardware/sensor-capability-matrix.md) ——
+  哪一顆光達餵得了哪一種方法
 - [地圖](./maps.md) —— 每種方法需要什麼，以及如何建立
 - [CUDA 點雲管線](./cuda-pipeline.md)
 - [操作車輛](../running/on-the-vehicle.md)

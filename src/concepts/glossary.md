@@ -107,6 +107,17 @@ well a scan matched the map. Low values mean a poor match.
 
 **TP** — Transformation Probability, the other NDT match score.
 
+**Convergence gate** — the NVTL threshold below which the matcher reports a scan
+as not converged and discards the result. A frame that hits `max_iterations`
+counts as not converged too, so the pose is simply never published.
+
+**GLIM** — the LiDAR-inertial SLAM package used to build the point cloud map.
+Keeps an editable dump (factor graph, submaps, trajectories), not just a cloud.
+
+**Loop closure** — recognising a previously visited place and correcting the
+accumulated drift between the two visits. What a restricted field of view makes
+hard, and a mapping concern rather than a localization one.
+
 
 ## Sensing and perception
 
@@ -130,6 +141,12 @@ pointers. Process-local, which is why all CUDA stages must share one container.
 ## Operation
 
 **MRM** — Minimum Risk Manoeuvre. What the system does when it must stop safely.
+
+**Comfortable stop** — the gentler of the two MRM behaviours: a controlled
+deceleration, as against the emergency stop's hardest available braking.
+
+**Diagnostic graph** — the tree of health checks Autoware aggregates into one
+system verdict, and the thing that decides an MRM is needed.
 
 **ODD** — Operational Design Domain: the conditions a system is designed to
 operate in.

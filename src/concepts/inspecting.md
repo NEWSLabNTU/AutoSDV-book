@@ -195,6 +195,23 @@ When something does not work, in this order:
 
 Most problems are answered by step 3.
 
+## Beyond the generic tools
+
+Everything above is plain ROS 2, and works on any system. This project also
+ships tools of its own:
+
+- [Localization Diagnostics](../guides/localization-diagnostics.md) — fifteen
+  scripts that answer localization questions `ros2 topic` cannot: is NDT
+  *activated* or merely alive, how good is the pose, what is the scan-to-map
+  residual.
+- [Command Reference](../reference/commands.md#tool--development-and-monitoring) — `just tool tui` is a
+  drive monitor and control surface (pose, speed, component states, and the
+  initialise/route/engage sequence without RViz); `just tool plotjuggler` plots
+  any topic over time.
+- `/system/fail_safe/mrm_state` and `/system/operation_mode/availability` are
+  the two topics to echo when the vehicle stops on its own — see
+  [Minimum Risk Manoeuvre](../guides/mrm.md).
+
 ## Next
 
 - [Autoware Conventions](./autoware-conventions.md) — what topic names tell you

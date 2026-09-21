@@ -136,7 +136,10 @@ play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml [A
 - 在沒有 X forwarding 的 SSH 下，RViz 會被自動關閉——方便，但也表示同一條指令
   會因環境不同而行為不同
 
-所有參數要放進單一個加引號的 `ARGS=` 字串裡，這是 `just` 的要求，不是 ROS 的。
+所有參數要放進**單一個加引號的字串**裡，如上面的例子。不要寫
+`just launch ARGS="…"`：在 recipe 名稱之後，`just` 會把它當成位置參數，於是 recipe
+收到的是字面上的 `ARGS=…`，再原樣交給 `play_launch`，結果系統是用**預設值**啟動的。
+現在這個 recipe 會直接拒絕這種寫法，而不是默默啟動錯的東西。
 
 ## 參數
 

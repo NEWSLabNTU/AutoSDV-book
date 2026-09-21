@@ -141,8 +141,11 @@ Three consequences:
 - over SSH without X forwarding, RViz is disabled for you — convenient, but it
   means the same command behaves differently depending on your environment
 
-All arguments go inside one quoted `ARGS=` string, which is a `just` requirement
-rather than a ROS one.
+All arguments go inside **one quoted string**, as the example above shows. Do
+not write `just launch ARGS="…"`: after a recipe name, `just` reads that as a
+positional value, so the recipe receives the literal text `ARGS=…`, hands it to
+`play_launch`, and the system launches with **defaults** instead. The recipe now
+refuses that spelling rather than launching the wrong thing silently.
 
 ## The arguments
 

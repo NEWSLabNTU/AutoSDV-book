@@ -151,6 +151,12 @@ to compare them, because the recorded input is identical every run.
 
 ## Related
 
+- [NDT Tuning](./ndt-tuning.md) — what to change when the pose is wrong, and
+  which of the two parameter files you are actually editing
+- [Localization Diagnostics](./localization-diagnostics.md) — the scripts that
+  answer "is it converged, and how well"
+- [Sensor Capability Matrix](../reference/hardware/sensor-capability-matrix.md) —
+  which LiDAR can feed which method
 - [Maps](./maps.md) — what each method needs, and how to build it
 - [The CUDA point cloud pipeline](./cuda-pipeline.md)
 - [Operating the Vehicle](../running/on-the-vehicle.md)

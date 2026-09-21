@@ -19,7 +19,8 @@ Translation Metadata:
 ### 進階主題
 - [5G/LTE 部署](./networking/5g-deployment.md) - 行動網路連線設定的詳細指南
 - [感測器整合](../guides/sensor-integration/using-sensors.md) - 完整的感測器整合指南
-- 車輛介面 - CAN 匯流排與致動器控制（即將推出）
+- [車輛介面](./software/vehicle-interface.md) - PCA9685 致動路徑、速度感測，以及為什麼轉向狀態沒有回授
+- [指令參考](./commands.md) - 每一個 `just` recipe，以及它包起來的那道指令
 
 ## 快速參考表
 

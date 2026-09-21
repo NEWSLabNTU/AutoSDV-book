@@ -100,7 +100,7 @@ just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gns
 ### Available Options
 
 **LiDAR Models:**
-- `robin-w` - Robin-W 360° LiDAR (default)
+- `robin-w` - Robin-W solid-state LiDAR, 120° horizontal (not 360°)
 - `vlp32c` - Velodyne VLP-32C
 - `cube1` - Blickfeld Cube1
 

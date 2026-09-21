@@ -108,7 +108,7 @@ just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gns
 ### 可用選項
 
 **光達型號：**
-- `robin-w` - Robin-W 360° 光達（預設）
+- `robin-w` - Robin-W 固態光達，水平 120°（不是 360°）
 - `vlp32c` - Velodyne VLP-32C
 - `cube1` - Blickfeld Cube1
 

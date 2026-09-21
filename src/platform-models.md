@@ -3,7 +3,7 @@
 | Feature              | Base        | 360° LiDAR | Solid-State        | Connected          |
 |----------------------|-------------|------------|--------------------|--------------------|
 | **LiDAR Model**      | -           | VLP-32C    | Robin-W            | Robin-W            |
-| **LiDAR FOV**        | -           | 360° × 40° | 120° × 25°         | 120° × 25°         |
+| **LiDAR FOV**        | -           | 360° × 40° | 120° × ?°[^1]         | 120° × ?°[^1]         |
 | **LiDAR Range**      | -           | 100m       | 150m               | 150m               |
 | **Localization**     | Vision only | NDT ready  | Development needed | Development needed |
 | **Remote Operation** | Manual      | No         | No                 | Yes (5G)           |
@@ -131,7 +131,7 @@ Modern solid-state LiDAR platform with high point density. Localization features
 
 ### LiDAR Specifications
 
-- **Field of View**: 120° × 25°
+- **Field of View**: 120° × ?°[^1]
 - **Range**: 150m
 - **Points/Second**: 750,000
 - **Technology**: Solid-state (no moving parts)
@@ -159,7 +159,7 @@ Connected platform enabling remote operation and fleet management. Note: 5G modu
 | **5G Mount**    | Top center bracket |
 
 ### LiDAR Specifications
-- **Field of View**: 120° × 25°
+- **Field of View**: 120° × ?°[^1]
 - **Range**: 150m
 - **Points/Second**: 750,000
 - **Technology**: Solid-state (no moving parts)
@@ -182,3 +182,9 @@ Connected platform enabling remote operation and fleet management. Note: 5G modu
 
 - [Hardware Assembly Guide](./getting-started/hardware-assembly.md) - Build instructions
 - [Software Installation](./getting-started/installation/overview.md) - Software setup
+
+[^1]: The Robin-W's vertical field of view is not settled — this book
+    has said 25°, the repository's research note says 70°, and nothing in
+    the tree resolves it. See
+    [Sensor Capability Matrix](reference/hardware/sensor-capability-matrix.md)
+    for what would settle it.

@@ -188,6 +188,20 @@ python3 scripts/testing/localization/check_imu_velocity.py     # EKF 的兩個�
 
 多數問題在第 3 步就有答案。
 
+## 通用工具之外
+
+上面所有東西都是原生的 ROS 2，在任何系統上都能用。本專案另外還備有自己的工具：
+
+- [定位診斷](../guides/localization-diagnostics.md) —— 十五個腳本，回答
+  `ros2 topic` 回答不了的定位問題：NDT 是真的*啟用*了還是只是活著、位姿品質如何、
+  掃描對地圖的殘差是多少。
+- [指令參考](../reference/commands.md#tool--開發與監控) ——
+  `just tool tui` 是行車監看與控制介面（位姿、速度、各組件狀態，以及不開 RViz
+  就能完成的初始化／設定路線／engage 流程）；`just tool plotjuggler` 可以把任何
+  主題畫成時間曲線。
+- 當車輛自己停下來時，該 echo 的兩個主題是 `/system/fail_safe/mrm_state` 與
+  `/system/operation_mode/availability` —— 見[最小風險操作](../guides/mrm.md)。
+
 ## 接下來
 
 - [Autoware 管線](./autoware-conventions.md) —— 主題名稱告訴你什麼

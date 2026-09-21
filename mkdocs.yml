@@ -105,6 +105,11 @@ plugins:
           build: true
           nav_translations:
             Get Started: 快速入門
+            NDT Tuning: NDT 調校
+            Localization Diagnostics: 定位診斷
+            Minimum Risk Manoeuvre: 最小風險操作
+            Command Reference: 指令參考
+            Sensor Capability Matrix: 感測器能力對照表
             Sensor Troubleshooting: 感測器疑難排解
             In Simulation: 在模擬中執行
             On the Vehicle: 在車上執行
@@ -289,12 +294,15 @@ nav:
       - CUDA Point Cloud Pipeline: guides/cuda-pipeline.md
     - Localization:
       - Localization Methods: guides/localization-methods.md
+      - NDT Tuning: guides/ndt-tuning.md
       - Maps: guides/maps.md
+      - Localization Diagnostics: guides/localization-diagnostics.md
     - Control and Safety:
       - Overview: guides/vehicle-control/overview.md
       - Hardware: guides/vehicle-control/hardware.md
       - Control Details: guides/vehicle-control/control-details.md
       - Tuning & Testing: guides/vehicle-control/tuning-and-testing.md
+      - Minimum Risk Manoeuvre: guides/mrm.md
   - Concepts:
     - The Environment: concepts/environment.md
     - Launch Files: concepts/launch-files.md
@@ -312,8 +320,10 @@ nav:
     - Integration Walkthrough: guides/sensor-integration/integration-walkthrough.md
   - Technical Reference:
     - Overview: reference/overview.md
+    - Command Reference: reference/commands.md
     - Hardware:
       - Core Components: reference/hardware/core-components.md
+      - Sensor Capability Matrix: reference/hardware/sensor-capability-matrix.md
       - Wiring Diagrams: reference/hardware/wiring-diagrams.md
     - Software:
       - Vehicle Interface: reference/software/vehicle-interface.md

@@ -11,7 +11,7 @@ Translation Metadata:
 | 特性                 | 基礎型     | 360° 光達    | 固態型             | 聯網型             |
 |----------------------|-----------|------------|--------------------|--------------------|
 | **光達型號**         | -         | VLP-32C    | Robin-W            | Robin-W            |
-| **光達視野**         | -         | 360° × 40° | 120° × 25°         | 120° × 25°         |
+| **光達視野**         | -         | 360° × 40° | 120° × ?°[^1]         | 120° × ?°[^1]         |
 | **光達範圍**         | -         | 100m       | 150m               | 150m               |
 | **定位**             | 純視覺    | NDT 就緒   | 開發中             | 開發中             |
 | **遠端操作**         | 手動      | 否         | 否                 | 是（5G）           |
@@ -142,7 +142,7 @@ Translation Metadata:
 
 ### 光達規格
 
-- **視野範圍**：120° × 25°
+- **視野範圍**：120° × ?°[^1]
 - **範圍**：150m
 - **點數/秒**：750,000
 - **技術**：固態（無可動零件）
@@ -171,7 +171,7 @@ Translation Metadata:
 | **5G 支架**     | 頂部中央支架        |
 
 ### 光達規格
-- **視野範圍**：120° × 25°
+- **視野範圍**：120° × ?°[^1]
 - **範圍**：150m
 - **點數/秒**：750,000
 - **技術**：固態（無可動零件）
@@ -194,3 +194,9 @@ Translation Metadata:
 
 - [硬體組裝指南](./getting-started/hardware-assembly.md) - 建置說明
 - [軟體安裝](./getting-started/installation/overview.md) - 軟體設定
+
+[^1]: The Robin-W's vertical field of view is not settled — this book
+    has said 25°, the repository's research note says 70°, and nothing in
+    the tree resolves it. See
+    [Sensor Capability Matrix](reference/hardware/sensor-capability-matrix.md)
+    for what would settle it.
