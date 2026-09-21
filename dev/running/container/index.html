@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="zh-TW" class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -8,35 +8,35 @@
       
       
       
-        <link rel="canonical" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/getting-started/installation/container/">
+        <link rel="canonical" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/running/container/">
       
       
-        <link rel="prev" href="../overview/">
+        <link rel="prev" href="../../tutorial/06-play-launch/">
       
       
-        <link rel="next" href="../../requirements/">
+        <link rel="next" href="../on-the-vehicle/">
       
       
         
-          <link rel="alternate" href="../../../../getting-started/installation/container/" hreflang="en">
+          <link rel="alternate" href="./" hreflang="en">
         
-          <link rel="alternate" href="./" hreflang="zh-TW">
+          <link rel="alternate" href="../../zh-TW/running/container/" hreflang="zh-TW">
         
       
       
-      <link rel="icon" href="../../../../assets/images/autosdv-logo.png">
+      <link rel="icon" href="../../assets/images/autosdv-logo.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
-        <title>以容器執行 - AutoSDV Documentation</title>
+        <title>Run It in a Container - AutoSDV Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/css/extra.css">
+      <link rel="stylesheet" href="../../assets/css/extra.css">
     
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,8 +84,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#以容器執行" class="md-skip">
-          跳轉到
+        <a href="#run-it-in-a-container" class="md-skip">
+          Skip to content
         </a>
       
     </div>
@@ -103,8 +103,8 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="頁首">
-    <a href="../../../" title="AutoSDV Documentation" class="md-header__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AutoSDV Documentation" class="md-header__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              以容器執行
+              Run It in a Container
             
           </span>
         </div>
@@ -164,20 +164,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="選擇語言">
+    <button class="md-header__button md-icon" aria-label="Select language">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../../getting-started/installation/container/" hreflang="en" class="md-select__link">
+            <a href="./" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="./" hreflang="zh-TW" class="md-select__link">
+            <a href="../../zh-TW/running/container/" hreflang="zh-TW" class="md-select__link">
               繁體中文
             </a>
           </li>
@@ -198,21 +198,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="搜尋">
+      <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -225,7 +225,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            正在初始化搜尋引擎
+            Initializing search
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -237,7 +237,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
+        <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -252,9 +252,53 @@
   
     
       
-<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorial/00-what-you-will-build/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
       
         
   
@@ -266,13 +310,13 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
     
   
-  快速入門
+  Running the System
 
         </a>
       </li>
@@ -288,13 +332,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../tutorial/00-what-you-will-build/" class="md-tabs__link">
+        <a href="../../guides/presets/" class="md-tabs__link">
           
   
   
     
   
-  教學
+  Building the Stack
 
         </a>
       </li>
@@ -310,13 +354,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../concepts/environment/" class="md-tabs__link">
+        <a href="../../concepts/environment/" class="md-tabs__link">
           
   
   
     
   
-  基本概念
+  Concepts
 
         </a>
       </li>
@@ -332,13 +376,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../platform-models/" class="md-tabs__link">
+        <a href="../../platform-models/" class="md-tabs__link">
           
   
   
     
   
-  車輛
+  The Vehicle
 
         </a>
       </li>
@@ -354,13 +398,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../simulation/coss-park-scenario/" class="md-tabs__link">
+        <a href="../../guides/development/" class="md-tabs__link">
           
   
   
     
   
-  模擬
+  Developer Guide
 
         </a>
       </li>
@@ -376,13 +420,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../guides/development/" class="md-tabs__link">
+        <a href="../../reference/overview/" class="md-tabs__link">
           
   
   
     
   
-  指南
+  Technical Reference
 
         </a>
       </li>
@@ -398,13 +442,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../reference/overview/" class="md-tabs__link">
+        <a href="../../getting-started/installation/zed-sdk/" class="md-tabs__link">
           
   
   
     
   
-  技術參考
+  Appendix
 
         </a>
       </li>
@@ -438,9 +482,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../" title="AutoSDV Documentation" class="md-nav__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+    <a href="../.." title="AutoSDV Documentation" class="md-nav__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
@@ -450,7 +494,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
+      <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
@@ -467,8 +511,6 @@
       
   
   
-    
-  
   
   
     
@@ -480,34 +522,33 @@
       
         
       
-    
-    
-    
-      
-        
-        
-      
-      
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    快速入門
+    Get Started
   
 
     
@@ -518,18 +559,18 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    快速入門
+    Get Started
   
 
           </label>
@@ -541,22 +582,38 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
+  
+    What Machine You Need
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
+  
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -569,28 +626,25 @@
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    軟體安裝
+    Software Installation
   
 
     
@@ -601,12 +655,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    軟體安裝
+    Software Installation
   
 
           </label>
@@ -619,261 +673,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../getting-started/installation/overview/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    總覽
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    以容器執行
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    以容器執行
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目錄
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#你需要什麼" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        你需要什麼
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#取得" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        取得
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="取得">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#手動執行" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        手動執行
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#執行模擬" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        執行模擬
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="執行模擬">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#直接執行-autoware-的-launch-檔" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        直接執行 Autoware 的 launch 檔
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#兩個終端機" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        兩個終端機
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#給-docker-足夠的記憶體" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        給 Docker 足夠的記憶體
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#停止容器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        停止容器
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#選項" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        選項
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#離線發放" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        離線發放
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#這個容器不適用於什麼" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        這個容器不適用於什麼
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#下一步" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        下一步
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../requirements/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    你需要什麼樣的機器
+    Overview
   
 
     
@@ -894,14 +701,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../recommended/" class="md-nav__link">
+      <a href="../../getting-started/installation/recommended/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    推薦安裝方式
+    Recommended Installation
   
 
     
@@ -922,98 +729,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../verify/" class="md-nav__link">
+      <a href="../../getting-started/installation/verify/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    驗證安裝
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../zed-sdk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZED SDK 安裝
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../manual-environment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    手動環境設定（選配）
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../docker/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker 設定（已停止維護）
+    Verifying the Installation
   
 
     
@@ -1088,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    教學
+    Tutorial
   
 
     
@@ -1104,7 +827,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    教學
+    Tutorial
   
 
           </label>
@@ -1117,14 +840,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/00-what-you-will-build/" class="md-nav__link">
+      <a href="../../tutorial/00-what-you-will-build/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    你將建立什麼
+    What You Will Build
   
 
     
@@ -1145,14 +868,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/01-first-run/" class="md-nav__link">
+      <a href="../../tutorial/01-first-run/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. 第一次執行
+    1. First Run
   
 
     
@@ -1173,14 +896,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/02-planning-simulation/" class="md-nav__link">
+      <a href="../../tutorial/02-planning-simulation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. 路徑規劃模擬
+    2. Planning Simulation
   
 
     
@@ -1201,14 +924,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/03-logging-simulation/" class="md-nav__link">
+      <a href="../../tutorial/03-logging-simulation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. 記錄回放模擬
+    3. Logging Simulation
   
 
     
@@ -1229,14 +952,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/04-behind-the-recipe/" class="md-nav__link">
+      <a href="../../tutorial/04-behind-the-recipe/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. 拆解那條指令
+    4. Behind the Recipe
   
 
     
@@ -1257,14 +980,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/05-map-and-rosbag/" class="md-nav__link">
+      <a href="../../tutorial/05-map-and-rosbag/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. 地圖與 Rosbag
+    5. The Map and the Rosbag
   
 
     
@@ -1285,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/06-play-launch/" class="md-nav__link">
+      <a href="../../tutorial/06-play-launch/" class="md-nav__link">
         
   
   
@@ -1317,14 +1040,12 @@
       
   
   
+    
   
   
+  
     
     
-      
-        
-      
-        
       
         
       
@@ -1336,26 +1057,29 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    基本概念
+    Running the System
   
 
     
@@ -1366,12 +1090,320 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    基本概念
+    Running the System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run It in a Container
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run It in a Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you need
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#doing-it-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Doing it by hand
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-a-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run a simulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run a simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-autowares-launch-files-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Autoware's launch files directly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-terminals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two terminals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#give-docker-enough-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Give Docker enough memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stopping-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stopping it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handing-it-out-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handing it out offline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-container-is-not-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the container is not for
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on-the-vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On the Vehicle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In Simulation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    In Simulation
   
 
           </label>
@@ -1384,14 +1416,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/environment/" class="md-nav__link">
+      <a href="../coss-park-scenario/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    環境與相依套件
+    COSS Park Scenario
   
 
     
@@ -1412,14 +1444,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/launch-files/" class="md-nav__link">
+      <a href="../datasets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    啟動檔
+    Datasets and Rosbags
   
 
     
@@ -1433,85 +1465,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/inspecting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    檢視執行中的系統
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/autoware-conventions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Autoware 管線
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/glossary/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    詞彙表
-  
-
-    
-  </span>
-  
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1532,6 +1488,8 @@
   
     
     
+      
+        
       
         
       
@@ -1562,7 +1520,7 @@
   <span class="md-ellipsis">
     
   
-    車輛
+    Building the Stack
   
 
     
@@ -1578,7 +1536,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    車輛
+    Building the Stack
   
 
           </label>
@@ -1591,14 +1549,110 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../platform-models/" class="md-nav__link">
+      <a href="../../guides/presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    車輛組裝變體
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/using-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Sensors
   
 
     
@@ -1619,14 +1673,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hardware-assembly/" class="md-nav__link">
+      <a href="../../guides/sensor-integration/lidar/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    硬體設定
+    LiDAR Sensors
   
 
     
@@ -1647,14 +1701,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/" class="md-nav__link">
+      <a href="../../guides/sensor-integration/camera/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    操作車輛
+    Camera Sensors
   
 
     
@@ -1663,6 +1717,430 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/imu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/gnss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNSS Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensor Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/cuda-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUDA Point Cloud Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Localization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Localization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/localization-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Localization Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control and Safety
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Control and Safety
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/vehicle-control/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/vehicle-control/hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/vehicle-control/control-details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/vehicle-control/tuning-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning & Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1683,6 +2161,12 @@
   
     
     
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1711,7 +2195,7 @@
   <span class="md-ellipsis">
     
   
-    模擬
+    Concepts
   
 
     
@@ -1727,7 +2211,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    模擬
+    Concepts
   
 
           </label>
@@ -1740,14 +2224,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../simulation/coss-park-scenario/" class="md-nav__link">
+      <a href="../../concepts/environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    COSS 公園場景
+    The Environment
   
 
     
@@ -1768,14 +2252,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../simulation/datasets/" class="md-nav__link">
+      <a href="../../concepts/launch-files/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    資料集與 Rosbag
+    Launch Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/inspecting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspecting a Running System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/autoware-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Autoware Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
   
 
     
@@ -1804,20 +2372,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1846,7 +2400,7 @@
   <span class="md-ellipsis">
     
   
-    指南
+    The Vehicle
   
 
     
@@ -1862,7 +2416,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    指南
+    The Vehicle
   
 
           </label>
@@ -1875,14 +2429,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/development/" class="md-nav__link">
+      <a href="../../platform-models/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    開發指南
+    Vehicle Build Variants
   
 
     
@@ -1903,14 +2457,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/source-code/" class="md-nav__link">
+      <a href="../../getting-started/hardware-assembly/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    原始碼說明
+    Hardware Setup
   
 
     
@@ -1919,630 +2473,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/version-control/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    版本控制
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/presets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    預設組態
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/localization-methods/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    定位方法
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/maps/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    地圖
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/cuda-pipeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CUDA 點雲管線
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    感測器整合
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_8">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    感測器整合
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/using-sensors/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    使用感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/integration-walkthrough/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    整合範例
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/lidar/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    LiDAR 感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/camera/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    相機感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/imu/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    IMU 感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/gnss/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GNSS 感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/adding-sensor/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    新增感測器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/sensor-integration/troubleshooting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    疑難排解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    車輛控制
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    車輛控制
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/vehicle-control/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    總覽
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/vehicle-control/hardware/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    硬體
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/vehicle-control/control-details/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    控制細節
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../guides/vehicle-control/tuning-and-testing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    調校與測試
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2563,6 +2493,8 @@
   
     
     
+      
+        
       
         
       
@@ -2595,7 +2527,7 @@
   <span class="md-ellipsis">
     
   
-    技術參考
+    Developer Guide
   
 
     
@@ -2611,7 +2543,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    技術參考
+    Developer Guide
   
 
           </label>
@@ -2624,14 +2556,223 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/overview/" class="md-nav__link">
+      <a href="../../guides/development/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    總覽
+    Development Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/source-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source Code Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/version-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/adding-sensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding a Sensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sensor-integration/integration-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
   
 
     
@@ -2671,17 +2812,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
         
           
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    硬體
+    Hardware
   
 
     
@@ -2692,12 +2833,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    硬體
+    Hardware
   
 
           </label>
@@ -2710,14 +2851,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/hardware/core-components/" class="md-nav__link">
+      <a href="../../reference/hardware/core-components/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    核心組件
+    Core Components
   
 
     
@@ -2738,14 +2879,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/hardware/wiring-diagrams/" class="md-nav__link">
+      <a href="../../reference/hardware/wiring-diagrams/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    配線圖
+    Wiring Diagrams
   
 
     
@@ -2791,17 +2932,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    軟體
+    Software
   
 
     
@@ -2812,12 +2953,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    軟體
+    Software
   
 
           </label>
@@ -2830,14 +2971,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/software/vehicle-interface/" class="md-nav__link">
+      <a href="../../reference/software/vehicle-interface/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    車輛介面
+    Vehicle Interface
   
 
     
@@ -2883,17 +3024,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    網路
+    Networking
   
 
     
@@ -2904,12 +3045,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    網路
+    Networking
   
 
           </label>
@@ -2922,14 +3063,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/networking/5g-deployment/" class="md-nav__link">
+      <a href="../../reference/networking/5g-deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5G/LTE 部署
+    5G/LTE Deployment
   
 
     
@@ -2946,6 +3087,157 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/zed-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZED SDK Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/manual-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Setup (Unmaintained)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2971,7 +3263,7 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="目錄">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
@@ -2980,15 +3272,15 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目錄
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#你需要什麼" class="md-nav__link">
+  <a href="#what-you-need" class="md-nav__link">
     <span class="md-ellipsis">
       
-        你需要什麼
+        What you need
       
     </span>
   </a>
@@ -2996,22 +3288,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#取得" class="md-nav__link">
+  <a href="#get-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        取得
+        Get it
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="取得">
+    <nav class="md-nav" aria-label="Get it">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#手動執行" class="md-nav__link">
+  <a href="#doing-it-by-hand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        手動執行
+        Doing it by hand
       
     </span>
   </a>
@@ -3024,22 +3316,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#執行模擬" class="md-nav__link">
+  <a href="#run-a-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        執行模擬
+        Run a simulation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="執行模擬">
+    <nav class="md-nav" aria-label="Run a simulation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#直接執行-autoware-的-launch-檔" class="md-nav__link">
+  <a href="#running-autowares-launch-files-directly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        直接執行 Autoware 的 launch 檔
+        Running Autoware's launch files directly
       
     </span>
   </a>
@@ -3047,10 +3339,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#兩個終端機" class="md-nav__link">
+  <a href="#two-terminals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        兩個終端機
+        Two terminals
       
     </span>
   </a>
@@ -3063,10 +3355,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#給-docker-足夠的記憶體" class="md-nav__link">
+  <a href="#give-docker-enough-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        給 Docker 足夠的記憶體
+        Give Docker enough memory
       
     </span>
   </a>
@@ -3074,10 +3366,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#停止容器" class="md-nav__link">
+  <a href="#stopping-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        停止容器
+        Stopping it
       
     </span>
   </a>
@@ -3085,10 +3377,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#選項" class="md-nav__link">
+  <a href="#options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        選項
+        Options
       
     </span>
   </a>
@@ -3096,10 +3388,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#離線發放" class="md-nav__link">
+  <a href="#handing-it-out-offline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        離線發放
+        Handing it out offline
       
     </span>
   </a>
@@ -3107,10 +3399,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#這個容器不適用於什麼" class="md-nav__link">
+  <a href="#what-the-container-is-not-for" class="md-nav__link">
     <span class="md-ellipsis">
       
-        這個容器不適用於什麼
+        What the container is not for
       
     </span>
   </a>
@@ -3118,10 +3410,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#下一步" class="md-nav__link">
+  <a href="#next" class="md-nav__link">
     <span class="md-ellipsis">
       
-        下一步
+        Next
       
     </span>
   </a>
@@ -3146,14 +3438,14 @@
   
 
 
-  <nav class="md-path" aria-label="導覽列" >
+  <nav class="md-path" aria-label="Navigation" >
     <ol class="md-path__list">
       
         
   
   
     <li class="md-path__item">
-      <a href="../../../" class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Index
@@ -3171,28 +3463,10 @@
     
     
       <li class="md-path__item">
-        <a href="../../../" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    快速入門
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../overview/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    軟體安裝
+    Running the System
   </span>
 
         </a>
@@ -3211,7 +3485,7 @@
 
 
   
-    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/edit/main/src/getting-started/installation/container.zh-TW.md" title="編輯此頁" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/edit/main/src/running/container.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3220,25 +3494,27 @@
     
       
     
-    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/raw/main/src/getting-started/installation/container.zh-TW.md" title="查看此頁原始碼" class="md-content__button md-icon">
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/raw/main/src/running/container.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<div><h1 id="以容器執行">以容器執行<a class="headerlink" href="#%E4%BB%A5%E5%AE%B9%E5%99%A8%E5%9F%B7%E8%A1%8C" title="Permanent link">#</a></h1>
-<p>在你現有的筆電上執行模擬，不需要安裝 ROS 2、Autoware，也不需要編譯
-AutoSDV。你只要打開瀏覽器，就會看到一個含有 RViz 與終端機的桌面。</p>
-<p>這是為工作坊、課堂，以及任何想在投入一台機器之前先試用 AutoSDV 的人所準備的
-路徑。Windows、macOS（Intel <strong>與</strong> Apple Silicon）以及 Linux 都執行同一個指令。</p>
+<div><h1 id="run-it-in-a-container">Run It in a Container<a class="headerlink" href="#run-it-in-a-container" title="Permanent link">#</a></h1>
+<p>The simulations, on the laptop you already own, with no ROS 2, no Autoware and
+no AutoSDV build on it. You open a browser and get a desktop with RViz and a
+terminal.</p>
+<p>This is the path for a workshop, a classroom, or anyone who wants to try
+AutoSDV before committing a machine to it. Windows, macOS — Intel <strong>and</strong> Apple
+Silicon — and Linux all run the same command.</p>
 <div class="admonition info">
-<p class="admonition-title">這不是已停止維護的 <code>docker/</code> 映像檔</p>
-<p>那個是 <a href="../docker/">Docker 設定（已停止維護）</a>，是另一個已經無法建置的
-東西。本頁說明的是 desktop 映像檔，它已建置、已發布，並在兩種架構上通過
-測試。</p>
+<p class="admonition-title">This is not the unmaintained <code>docker/</code> image</p>
+<p>That one is <a href="../../getting-started/installation/docker/">Docker Setup (Unmaintained)</a>, a different thing
+that no longer builds. This page is the desktop image, which is built,
+published and tested on both architectures.</p>
 </div>
-<h2 id="你需要什麼">你需要什麼<a class="headerlink" href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BB%80%E9%BA%BC" title="Permanent link">#</a></h2>
+<h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -3248,35 +3524,36 @@ AutoSDV。你只要打開瀏覽器，就會看到一個含有 RViz 與終端機�
 </thead>
 <tbody>
 <tr>
-<td><strong>Docker Desktop</strong>（Linux 上為 Docker Engine）</td>
+<td><strong>Docker Desktop</strong> (or Docker Engine on Linux)</td>
 <td><a href="https://docs.docker.com/desktop/">docs.docker.com/desktop</a></td>
 </tr>
 <tr>
-<td><strong>磁碟空間</strong></td>
-<td>30 GB 可用空間</td>
+<td><strong>Disk</strong></td>
+<td>30 GB free</td>
 </tr>
 <tr>
-<td><strong>配給 Docker 的記憶體</strong></td>
-<td>最低 8 GB，<strong>建議 12 GB</strong> — 見<a href="#give-docker-enough-memory">給 Docker 足夠的記憶體</a></td>
+<td><strong>Memory given to Docker</strong></td>
+<td>8 GB minimum, <strong>12 GB recommended</strong> — see <a href="#give-docker-enough-memory">Give Docker enough memory</a></td>
 </tr>
 <tr>
-<td><strong>下載量</strong></td>
-<td>Apple Silicon 為 5.4 GB，其他平台為 14.3 GB</td>
+<td><strong>Download</strong></td>
+<td>5.4 GB on Apple Silicon, 14.3 GB elsewhere</td>
 </tr>
 </tbody>
 </table>
-<p>不需要 GPU；在 macOS 上也不可能有 GPU：Hypervisor.framework 不會把 GPU 提供給
-容器，任何選項都改變不了這一點。兩種模擬都是以這個底線為前提設計的，沒有 GPU
-也能執行。</p>
-<h2 id="取得">取得<a class="headerlink" href="#%E5%8F%96%E5%BE%97" title="Permanent link">#</a></h2>
-<p>你仍然需要 clone 儲存庫，因為地圖與 rosbag **不在**映像檔裡——它們很大、獨立
-更新，而且已經有這些檔案的學生不該再下載一次。</p>
+<p>No GPU is needed, and on macOS none is possible: Hypervisor.framework exposes
+no GPU to a container, and no flag changes that. Both simulations were designed
+around that floor and run without one.</p>
+<h2 id="get-it">Get it<a class="headerlink" href="#get-it" title="Permanent link">#</a></h2>
+<p>You still clone the repository, because the map and the rosbags are <strong>not</strong> in
+the image — they are large, they change independently, and a student who
+already has them should not download them twice.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/NEWSLabNTU/AutoSDV.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>AutoSDV
 </span></code></pre></div>
-<p>接著啟動容器。每個平台都有對應的啟動腳本，它會一次完成 pull、run 與開啟
-shell：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux / macOS</label><label for="__tabbed_1_2">Windows（PowerShell）</label></div>
+<p>Then start the container. There is a launcher per platform, and it does the
+pull, the run and the shell in one step:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux / macOS</label><label for="__tabbed_1_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./docker/desktop/autosdv.sh
@@ -3285,26 +3562,28 @@ shell：</p>
 <div class="tabbed-block">
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">.\</span><span class="n">docker</span><span class="p">\</span><span class="n">desktop</span><span class="p">\</span><span class="n">autosdv</span><span class="p">.</span><span class="n">ps1</span>
 </span></code></pre></div>
-<p>若 PowerShell 拒絕執行——顯示 <em>"running scripts is disabled"</em>——請為你自己的
-帳號放行本機腳本，只需一次：</p>
+<p>If PowerShell refuses to run it — <em>"running scripts is disabled"</em> — allow
+local scripts for your own account, once:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">RemoteSigned</span>
 </span></code></pre></div>
 </div>
 </div>
 </div>
-<p>第一次執行會下載數 GB，而且只會發生一次。完成後你會進入容器**內部**的 shell，
-ROS 2、Autoware 與工作空間都已經 source 完成。</p>
-<p>在瀏覽器中開啟桌面：</p>
+<p>The first run pulls several gigabytes and only happens once. When it finishes
+you are at a shell <strong>inside</strong> the container, with ROS 2, Autoware and the
+workspace already sourced.</p>
+<p>Open the desktop in a browser:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>http://localhost:6080/vnc.html?autoconnect=1&amp;resize=remote
 </span></code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">一個 tag，適用每一台機器</p>
-<p><code>jerry73204/autosdv:desktop</code> 是一個多架構 manifest。Docker 會依你所在的平台
-索取對應的映像檔——Windows、Linux 與 Intel Mac 取得 amd64 版，Apple Silicon
-取得 arm64 版。沒有人需要挑選版本。</p>
+<p class="admonition-title">One tag, every machine</p>
+<p><code>jerry73204/autosdv:desktop</code> is a multi-architecture manifest. Docker asks
+for the platform you are on and gets the matching image — the amd64 one on
+Windows, Linux and Intel Macs, the arm64 one on Apple Silicon. Nobody picks
+a variant.</p>
 </div>
-<h3 id="手動執行">手動執行<a class="headerlink" href="#%E6%89%8B%E5%8B%95%E5%9F%B7%E8%A1%8C" title="Permanent link">#</a></h3>
-<p>啟動腳本只是便利工具，不是必要條件。直接執行相同的動作：</p>
+<h3 id="doing-it-by-hand">Doing it by hand<a class="headerlink" href="#doing-it-by-hand" title="Permanent link">#</a></h3>
+<p>The launcher is a convenience, not a requirement. The same thing directly:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>jerry73204/autosdv:desktop
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </span>--name<span class="w"> </span>autosdv<span class="w"> </span><span class="se">\</span>
@@ -3317,67 +3596,71 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>autosdv<span class="w"> </span>bash
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title"><code>data</code> 掛載不是選用的</p>
-<p>沒有它，地圖目錄會是空的，而 <code>lanelet2_map_loader</code> 面對缺少的地圖會直接
-<strong>segfault</strong>，而不是回報問題——所以你看到的第一行是當機訊息，而不是原因：</p>
+<p class="admonition-title">The <code>data</code> mount is not optional</p>
+<p>Without it the map directory is empty, and <code>lanelet2_map_loader</code>
+<strong>segfaults</strong> on a missing map rather than reporting one — so the first
+line you read is a crash, not the cause:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>PCD load failed: /opt/AutoSDV/data/COSS-map-planning/pointcloud_map.pcd
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Composable node '/map/lanelet2_map_loader' crashed: killed by signal 11
 </span></code></pre></div>
 </div>
-<h2 id="執行模擬">執行模擬<a class="headerlink" href="#%E5%9F%B7%E8%A1%8C%E6%A8%A1%E6%93%AC" title="Permanent link">#</a></h2>
-<p>在容器的 shell 中：</p>
+<h2 id="run-a-simulation">Run a simulation<a class="headerlink" href="#run-a-simulation" title="Permanent link">#</a></h2>
+<p>Inside the container shell:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>just<span class="w"> </span>sim<span class="w"> </span>planning
 </span></code></pre></div>
-<p>然後在瀏覽器分頁中觀看。關於你所看到的內容，教學本身的說明請繼續閱讀
-<a href="../../../tutorial/01-first-run/">1. 第一次執行</a>；那裡的每一步在容器中同樣適用。</p>
+<p>Then watch it in the browser tab. For the tutorial's own walkthrough of what
+you are looking at, continue to <a href="../../tutorial/01-first-run/">1. First Run</a>;
+everything there works the same inside the container.</p>
 <div class="admonition note">
-<p class="admonition-title">RViz 大約 90 秒內不會畫出任何東西</p>
-<p>地圖載入期間畫面是黑的。這是載入時間，不是故障——在地圖出現之前不要開始
-除錯。</p>
+<p class="admonition-title">RViz draws nothing for about 90 seconds</p>
+<p>The viewport is black while the map loads. This is load time, not a
+failure — do not start debugging it until the map appears.</p>
 </div>
-<h3 id="直接執行-autoware-的-launch-檔">直接執行 Autoware 的 launch 檔<a class="headerlink" href="#%E7%9B%B4%E6%8E%A5%E5%9F%B7%E8%A1%8C-autoware-%E7%9A%84-launch-%E6%AA%94" title="Permanent link">#</a></h3>
-<p>如果你依照的教學會自己呼叫 <code>play_launch</code>，請加上
-<code>--container-mode observable</code>：</p>
+<h3 id="running-autowares-launch-files-directly">Running Autoware's launch files directly<a class="headerlink" href="#running-autowares-launch-files-directly" title="Permanent link">#</a></h3>
+<p>If you follow a recipe that calls <code>play_launch</code> yourself, add
+<code>--container-mode observable</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>--container-mode<span class="w"> </span>observable<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>autoware_launch<span class="w"> </span>planning_simulator.launch.xml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>map_path:<span class="o">=</span><span class="nv">$PWD</span>/data/COSS-map-planning<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>vehicle_model:<span class="o">=</span>autosdv_vehicle<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>sensor_model:<span class="o">=</span>autosdv_sensor_kit
 </span></code></pre></div>
-<p>預設值（<code>isolated</code>）會為每個 composable node 各 fork 一個行程。在筆電上，這就是
-能否正常運作的差別——在限制為 8 核心與 8 GB 的容器中實測：</p>
+<p>The default (<code>isolated</code>) forks one process per composable node. On a laptop
+that is the difference between working and not — measured in a container
+limited to 8 cores and 8 GB:</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>isolated（預設）</th>
+<th>isolated (default)</th>
 <th>observable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>所有節點就緒</td>
-<td>約 90 秒</td>
-<td><strong>7 秒</strong></td>
+<td>all nodes ready</td>
+<td>~90 s</td>
+<td><strong>7 s</strong></td>
 </tr>
 <tr>
-<td>記憶體</td>
+<td>memory</td>
 <td>5.71 GiB</td>
 <td><strong>3.09 GiB</strong></td>
 </tr>
 <tr>
-<td>行程數</td>
+<td>processes</td>
 <td>119</td>
 <td><strong>49</strong></td>
 </tr>
 </tbody>
 </table>
-<p>代價是失去個別節點的故障隔離與 OOM 記帳，而這是教學用不到的。</p>
-<h3 id="兩個終端機">兩個終端機<a class="headerlink" href="#%E5%85%A9%E5%80%8B%E7%B5%82%E7%AB%AF%E6%A9%9F" title="Permanent link">#</a></h3>
-<p>logging simulation 需要一個 shell 執行整個系統，另一個執行 rosbag 重播。再執行
-一次啟動腳本——在任何目錄都可以——它會在**同一個容器中開啟第二個 shell**，而不是
-啟動新的容器：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux / macOS</label><label for="__tabbed_2_2">Windows（PowerShell）</label></div>
+<p>What you give up is per-node fault isolation and OOM accounting, which a
+tutorial does not need.</p>
+<h3 id="two-terminals">Two terminals<a class="headerlink" href="#two-terminals" title="Permanent link">#</a></h3>
+<p>The logging simulation needs one shell for the stack and one for the rosbag
+replay. Run the launcher again — from anywhere — and it opens a <strong>second shell
+in the same container</strong> rather than starting a new one:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux / macOS</label><label for="__tabbed_2_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./docker/desktop/autosdv.sh
@@ -3389,20 +3672,22 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
 </div>
 </div>
 </div>
-<p><a id="give-docker-enough-memory"></a></p>
-<h2 id="給-docker-足夠的記憶體">給 Docker 足夠的記憶體<a class="headerlink" href="#%E7%B5%A6-docker-%E8%B6%B3%E5%A4%A0%E7%9A%84%E8%A8%98%E6%86%B6%E9%AB%94" title="Permanent link">#</a></h2>
-<p>這是最容易毀掉第一次嘗試的設定，而它的症狀完全不會提到記憶體。</p>
-<p><strong>Docker Desktop → Settings → Resources → Memory。</strong> 機器允許的話請給
-<strong>12 GB</strong>；8 GB 是底線。Linux 搭配 Docker Engine 沒有這個限制，不需要調整。</p>
-<p>當上限太低時，節點會在啟動過程中被殺掉，而 log 看起來會像是系統中彼此無關的
-部分零星當機：</p>
+<h2 id="give-docker-enough-memory">Give Docker enough memory<a class="headerlink" href="#give-docker-enough-memory" title="Permanent link">#</a></h2>
+<p>This is the single setting most likely to spoil a first attempt, and its
+symptom does not mention memory at all.</p>
+<p><strong>Docker Desktop → Settings → Resources → Memory.</strong> Give it <strong>12 GB</strong> if the
+machine can spare it; 8 GB is the floor. Linux with Docker Engine has no such
+limit and needs no change.</p>
+<p>When the limit is too low, nodes are killed as they start, and the log reads as
+scattered crashes across unrelated parts of the stack:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Composable node '/map/lanelet2_map_visualization' crashed: killed by signal 6 (Aborted)
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Composable node '/adapi/node/vehicle_metrics' crashed: killed by signal 6 (Aborted)
 </span></code></pre></div>
-<p>其中沒有任何一行提到記憶體不足。如果你看到數個不相關的節點出現 abort，請先
-提高記憶體並加上 <code>--container-mode observable</code>，再去找 bug。</p>
-<h2 id="停止容器">停止容器<a class="headerlink" href="#%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8" title="Permanent link">#</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Linux / macOS</label><label for="__tabbed_3_2">Windows（PowerShell）</label></div>
+<p>Nothing there says "out of memory". If you see aborts in several unrelated
+nodes, raise the memory and add <code>--container-mode observable</code> before looking
+for a bug.</p>
+<h2 id="stopping-it">Stopping it<a class="headerlink" href="#stopping-it" title="Permanent link">#</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Linux / macOS</label><label for="__tabbed_3_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>./docker/desktop/autosdv.sh<span class="w"> </span>--stop
@@ -3414,8 +3699,9 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
 </div>
 </div>
 </div>
-<p>容器會刻意在多個 shell 之間持續執行，所以關閉一個終端機並不會中斷模擬。</p>
-<h2 id="選項">選項<a class="headerlink" href="#%E9%81%B8%E9%A0%85" title="Permanent link">#</a></h2>
+<p>The container keeps running between shells on purpose, so closing a terminal
+does not tear down a simulation.</p>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -3426,53 +3712,57 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
 </thead>
 <tbody>
 <tr>
-<td>先檢查較新的映像檔</td>
+<td>newer image first</td>
 <td><code>--pull</code></td>
 <td><code>-Pull</code></td>
 </tr>
 <tr>
-<td>將 NVIDIA GPU 傳遞進容器</td>
+<td>pass an NVIDIA GPU through</td>
 <td><code>--gpu</code></td>
 <td><code>-Gpu</code></td>
 </tr>
 <tr>
-<td>停止並移除</td>
+<td>stop and remove</td>
 <td><code>--stop</code></td>
 <td><code>-Stop</code></td>
 </tr>
 </tbody>
 </table>
-<p><code>--gpu</code> 可用於安裝了 NVIDIA Container Toolkit 的 Linux，以及透過 Docker Desktop
-的 WSL2 GPU 支援的 Windows。在 macOS 上**無法**運作。它只在容器建立時生效，所以
-若已有容器在執行，請先停止它。</p>
-<p>有三個環境變數可以改變預設值：<code>AUTOSDV_PORT</code>（當 6080 已被占用時）、
-<code>AUTOSDV_IMAGE</code> 與 <code>AUTOSDV_CONTAINER</code>。</p>
-<h2 id="離線發放">離線發放<a class="headerlink" href="#%E9%9B%A2%E7%B7%9A%E7%99%BC%E6%94%BE" title="Permanent link">#</a></h2>
-<p>五十台筆電透過同一個無線基地台下載 14 GB，會浪費掉一整個早上。請改為把映像檔
-匯出成檔案並在本地端提供：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./docker/desktop/export-images.sh<span class="w">          </span><span class="c1"># 兩種架構</span>
+<p><code>--gpu</code> works on Linux with the NVIDIA Container Toolkit, and on Windows
+through Docker Desktop's WSL2 GPU support. It <strong>cannot</strong> work on macOS. It only
+takes effect when the container is created, so stop the container first if one
+is already running.</p>
+<p>Three environment variables change the defaults: <code>AUTOSDV_PORT</code> (when 6080 is
+taken), <code>AUTOSDV_IMAGE</code>, and <code>AUTOSDV_CONTAINER</code>.</p>
+<h2 id="handing-it-out-offline">Handing it out offline<a class="headerlink" href="#handing-it-out-offline" title="Permanent link">#</a></h2>
+<p>Fifty laptops pulling 14 GB through one access point is a lost morning. Export
+the images to files and serve them locally instead:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./docker/desktop/export-images.sh<span class="w">          </span><span class="c1"># both architectures</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">cd</span><span class="w"> </span>/srv/autosdv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./docker/desktop/serve-images.sh
 </span></code></pre></div>
-<p>它會印出一個可以寫在白板上的網址。每位學生下載自己筆電對應的檔案——檔名寫的是
-<em>"Apple Silicon Mac"</em> 而不是 <em>"arm64"</em>——然後載入：</p>
+<p>That prints an address to put on the board. Each student downloads the file for
+their laptop — the names say <em>"Apple Silicon Mac"</em> rather than <em>"arm64"</em> — and
+loads it:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span>load<span class="w"> </span>&lt;<span class="w"> </span>autosdv-desktop-arm64.tar.gz
 </span></code></pre></div>
-<p>啟動腳本接著會在本機找到映像檔，不會再下載。</p>
-<h2 id="這個容器不適用於什麼">這個容器不適用於什麼<a class="headerlink" href="#%E9%80%99%E5%80%8B%E5%AE%B9%E5%99%A8%E4%B8%8D%E9%81%A9%E7%94%A8%E6%96%BC%E4%BB%80%E9%BA%BC" title="Permanent link">#</a></h2>
+<p>The launcher then finds the image locally and pulls nothing.</p>
+<h2 id="what-the-container-is-not-for">What the container is not for<a class="headerlink" href="#what-the-container-is-not-for" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>車輛本體。</strong> 容器沒有可以溝通的感測器驅動程式，而 Jetson 使用的是真正的
-  安裝方式。請見<a href="../overview/">軟體安裝</a>。</li>
-<li><strong>感知（Perception）。</strong> TensorRT engine 沒有預先建置，也沒有 GPU 可以執行；
-  工作坊的模擬不會啟動感知模組。</li>
-<li><strong><code>pose_source:=cuda_ndt</code></strong>，那是真實機器上的預設值，執行時需要 NVIDIA GPU。
-  在容器中請使用 <code>pose_source:=ndt</code>。</li>
+<li><strong>The vehicle.</strong> It has no sensor drivers to talk to, and the Jetson runs the
+  real install. See <a href="../../getting-started/installation/overview/">Software Installation</a>.</li>
+<li><strong>Perception.</strong> The TensorRT engines are not prebuilt and there is no GPU to
+  run them on; the workshop simulations do not launch perception.</li>
+<li><strong><code>pose_source:=cuda_ndt</code></strong>, the default on a real machine, which needs an
+  NVIDIA GPU at run time. Use <code>pose_source:=ndt</code> in the container.</li>
 </ul>
-<h2 id="下一步">下一步<a class="headerlink" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5" title="Permanent link">#</a></h2>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../../../tutorial/01-first-run/">1. 第一次執行</a> — 教學，在容器中完全適用</li>
-<li><a href="../../requirements/">你需要什麼樣的機器</a> — 如果你更想直接安裝在主機上</li>
-<li><a href="../../../concepts/environment/">執行環境</a> — 那兩行 <code>source</code> 為何存在；啟動
-  腳本開啟的每個 shell 都已經幫你做好了</li>
+<li><a href="../../tutorial/01-first-run/">1. First Run</a> — the tutorial, which works
+  unchanged in here</li>
+<li><a href="../../getting-started/requirements/">What Machine You Need</a> — if you would rather install on
+  the host</li>
+<li><a href="../../concepts/environment/">The Environment</a> — why those two <code>source</code>
+  lines exist, already done for you in every shell the launcher opens</li>
 </ul></div>
 
 
@@ -3497,7 +3787,7 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  回到頂端
+  Back to top
 </button>
         
       </main>
@@ -3506,33 +3796,33 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="頁腳" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="上一頁: 總覽">
+          <a href="../../tutorial/06-play-launch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. play_launch">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                上一頁
+                Previous
               </span>
               <div class="md-ellipsis">
-                總覽
+                6. play_launch
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../requirements/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 你需要什麼樣的機器">
+          <a href="../on-the-vehicle/" class="md-footer__link md-footer__link--next" aria-label="Next: On the Vehicle">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                下一頁
+                Next
               </span>
               <div class="md-ellipsis">
-                你需要什麼樣的機器
+                On the Vehicle
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3584,12 +3874,12 @@ ROS 2、Autoware 與工作空間都已經 source 完成。</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../../assets/js/mathjax.js"></script>
+        <script src="../../assets/js/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       
