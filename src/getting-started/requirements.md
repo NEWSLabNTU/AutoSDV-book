@@ -46,7 +46,7 @@ record your own bags.
 
 The map needs no download: `data/COSS-map-planning` is in the repository. The
 rosbag is the only large fetch — see
-[Datasets and Rosbags](../simulation/datasets.md).
+[Datasets and Rosbags](../running/datasets.md).
 
 ## The GPU
 

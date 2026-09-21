@@ -99,5 +99,5 @@ Autoware 過去提供了這條鏈大部分的 CUDA 實作，但不是全部。�
 ## 相關頁面
 
 - [定位方法](./localization-methods.md)
-- [操作車輛](../getting-started/usage.md)
+- [操作車輛](../running/on-the-vehicle.md)
 - 儲存庫中的 `docs/design/cuda-pipeline-data-flow.md`

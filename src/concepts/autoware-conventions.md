@@ -143,7 +143,7 @@ ROS types elsewhere:
     Older Autoware used `autoware_auto_msgs`. Autoware 1.5.0 does not define
     those types at all, so a rosbag recorded against them will replay without
     error and satisfy no subscriber. The Leo Drive dataset needs migrating for
-    exactly this reason — see [Datasets](../simulation/datasets.md).
+    exactly this reason — see [Datasets](../running/datasets.md).
 
 ## Using this to debug
 

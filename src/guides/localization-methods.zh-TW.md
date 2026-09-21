@@ -146,4 +146,4 @@ play_launch launch autosdv_launch autosdv.launch.yaml \
 
 - [地圖](./maps.md) —— 每種方法需要什麼，以及如何建立
 - [CUDA 點雲管線](./cuda-pipeline.md)
-- [操作車輛](../getting-started/usage.md)
+- [操作車輛](../running/on-the-vehicle.md)

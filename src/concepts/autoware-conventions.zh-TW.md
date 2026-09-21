@@ -137,7 +137,7 @@ Autoware 使用一套標準的座標系樹，名稱和主題一樣依循慣例�
 
     較舊的 Autoware 使用 `autoware_auto_msgs`。Autoware 1.5.0 根本不定義那些型別，
     所以對著它們錄製的 rosbag 會毫無錯誤地播放完畢，卻滿足不了任何訂閱者。Leo
-    Drive 資料集需要遷移正是為此——參閱[資料集](../simulation/datasets.md)。
+    Drive 資料集需要遷移正是為此——參閱[資料集](../running/datasets.md)。
 
 ## 用這套慣例除錯
 

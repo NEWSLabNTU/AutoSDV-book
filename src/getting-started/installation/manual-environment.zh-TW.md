@@ -396,5 +396,5 @@ colcon test --packages-select autosdv_launch
 ## 下一步
 
 - 返回[軟體安裝總覽](./overview.md)以完成標準工作流程
-- 參閱[使用指南](../usage.md)以啟動與操作系統
+- 參閱[使用指南](../../running/on-the-vehicle.md)以啟動與操作系統
 - 檢查[開發指南](../../guides/development.md)以了解開發工作流程

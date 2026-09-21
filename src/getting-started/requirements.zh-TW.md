@@ -48,7 +48,7 @@ WSL。虛擬機在核心數與記憶體夠的情況下可以跑模擬，但拿�
 `play_log/` 下的執行紀錄也會累積。如果你打算自己錄製 rosbag，請準備 40 GB。
 
 地圖不需要下載：`data/COSS-map-planning` 就在專案裡。唯一要下載的大檔是 rosbag，
-見[資料集與 Rosbag](../simulation/datasets.md)。
+見[資料集與 Rosbag](../running/datasets.md)。
 
 ## GPU
 

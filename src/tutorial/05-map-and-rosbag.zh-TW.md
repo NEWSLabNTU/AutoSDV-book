@@ -171,7 +171,7 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
 ```
 
 先用 `just map check` 驗證地圖。更多內容參閱
-[資料集與 Rosbag](../simulation/datasets.md)與[地圖](../guides/maps.md)。
+[資料集與 Rosbag](../running/datasets.md)與[地圖](../guides/maps.md)。
 
 **接下來：** [6. play_launch](./06-play-launch.md) —— 最後一層，也是你在需要之前就
 該知道其注意事項的那一層。

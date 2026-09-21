@@ -255,4 +255,4 @@ Autoware uses this heavily, and it has two consequences you will meet:
 
 - [Inspecting a Running System](./inspecting.md) — now that it is running
 - [Autoware Conventions](./autoware-conventions.md) — what the topic names mean
-- [Operating the Vehicle](../getting-started/usage.md) — the full argument list
+- [Operating the Vehicle](../running/on-the-vehicle.md) — the full argument list

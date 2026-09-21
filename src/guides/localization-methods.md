@@ -153,4 +153,4 @@ to compare them, because the recorded input is identical every run.
 
 - [Maps](./maps.md) — what each method needs, and how to build it
 - [The CUDA point cloud pipeline](./cuda-pipeline.md)
-- [Operating the Vehicle](../getting-started/usage.md)
+- [Operating the Vehicle](../running/on-the-vehicle.md)

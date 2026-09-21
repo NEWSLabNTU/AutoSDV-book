@@ -142,5 +142,5 @@ play_launch resolve autosdv_launch autosdv.launch.yaml \
 
 ## 相關頁面
 
-- [操作車輛](../getting-started/usage.md) —— 完整的參數清單
+- [操作車輛](../running/on-the-vehicle.md) —— 完整的參數清單
 - 儲存庫中的 `config/{perception,localization}/preset/README.md`

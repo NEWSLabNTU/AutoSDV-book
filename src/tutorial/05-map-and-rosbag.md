@@ -179,7 +179,7 @@ play_launch launch autosdv_launch logging_simulation.launch.yaml \
 ```
 
 Validate the map first with `just map check`. More in
-[Datasets & Rosbags](../simulation/datasets.md) and [Maps](../guides/maps.md).
+[Datasets & Rosbags](../running/datasets.md) and [Maps](../guides/maps.md).
 
 **Next:** [6. play_launch](./06-play-launch.md) — the last layer, and the one
 whose caveats you should know before you need them.

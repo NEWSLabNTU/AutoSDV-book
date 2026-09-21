@@ -150,5 +150,5 @@ changelog 指出其中有些是改變行為而不是報錯。設定程式會安�
 
 - **[定位方法](../guides/localization-methods.md)** —— `pose_source` 還能是什麼
 - **[預設組態](../guides/presets.md)** —— 設定感知與定位
-- **[操作車輛](../getting-started/usage.md)** —— 完整的參數參考
+- **[操作車輛](../running/on-the-vehicle.md)** —— 完整的參數參考
 - **[地圖](../guides/maps.md)** —— 為你自己的場地建一張地圖

@@ -10,7 +10,7 @@ Silicon — and Linux all run the same command.
 
 !!! info "This is not the unmaintained `docker/` image"
 
-    That one is [Docker Setup (Unmaintained)](./docker.md), a different thing
+    That one is [Docker Setup (Unmaintained)](../getting-started/installation/docker.md), a different thing
     that no longer builds. This page is the desktop image, which is built,
     published and tested on both architectures.
 
@@ -114,7 +114,7 @@ just sim planning
 ```
 
 Then watch it in the browser tab. For the tutorial's own walkthrough of what
-you are looking at, continue to [1. First Run](../../tutorial/01-first-run.md);
+you are looking at, continue to [1. First Run](../tutorial/01-first-run.md);
 everything there works the same inside the container.
 
 !!! note "RViz draws nothing for about 90 seconds"
@@ -243,7 +243,7 @@ The launcher then finds the image locally and pulls nothing.
 ## What the container is not for
 
 - **The vehicle.** It has no sensor drivers to talk to, and the Jetson runs the
-  real install. See [Software Installation](./overview.md).
+  real install. See [Software Installation](../getting-started/installation/overview.md).
 - **Perception.** The TensorRT engines are not prebuilt and there is no GPU to
   run them on; the workshop simulations do not launch perception.
 - **`pose_source:=cuda_ndt`**, the default on a real machine, which needs an
@@ -251,9 +251,9 @@ The launcher then finds the image locally and pulls nothing.
 
 ## Next
 
-- [1. First Run](../../tutorial/01-first-run.md) — the tutorial, which works
+- [1. First Run](../tutorial/01-first-run.md) — the tutorial, which works
   unchanged in here
-- [What Machine You Need](../requirements.md) — if you would rather install on
+- [What Machine You Need](../getting-started/requirements.md) — if you would rather install on
   the host
-- [The Environment](../../concepts/environment.md) — why those two `source`
+- [The Environment](../concepts/environment.md) — why those two `source`
   lines exist, already done for you in every shell the launcher opens

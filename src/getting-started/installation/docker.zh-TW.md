@@ -12,7 +12,7 @@ Translation Metadata:
 
     `docker/jetson/` 中的 Dockerfile 無法針對目前的儲存庫建置。
 
-    **如果你想要的是容器，你要找的是[以容器執行](./container.md)**——那是
+    **如果你想要的是容器，你要找的是[以容器執行](../../running/container.md)**——那是
     desktop 映像檔，兩種架構都已建置並發布，可以在任何筆電上執行模擬。它是另一
     個映像檔，而且可以正常運作。若要改為安裝在主機上，請見
     [標準安裝方式](./overview.md)。

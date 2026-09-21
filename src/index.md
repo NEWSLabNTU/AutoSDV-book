@@ -60,7 +60,7 @@ simulation runs without sensors, without a GPU and without a rosbag.
    the `vehicle` profile
 3. **[ZED SDK Installation](getting-started/installation/zed-sdk.md)** — if you
    have a ZED camera
-4. **[Operating the Vehicle](getting-started/usage.md)** — launch the system,
+4. **[Operating the Vehicle](./running/on-the-vehicle.md)** — launch the system,
    monitor, and record data
 
 ## Explore

@@ -22,7 +22,7 @@ play_launch launch autosdv_vehicle_launch vehicle_interface.launch.xml
 ```
 
 `play_launch` is the launch orchestrator this project uses in place of
-`ros2 launch`; see [Operating the Vehicle](../../getting-started/usage.md#why-play_launch-and-not-ros2-launch).
+`ros2 launch`; see [Operating the Vehicle](../../running/on-the-vehicle.md#why-play_launch-and-not-ros2-launch).
 
 Normally the interface is started as part of the whole system, and is turned off
 with `launch_vehicle:=false` rather than started separately.

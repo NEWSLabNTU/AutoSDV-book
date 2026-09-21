@@ -47,7 +47,7 @@ play_launch launch   <package>         <launch file>                  <arg>:=<va
 
 `play_launch launch` 接一個套件名稱與該套件裡的啟動檔，後面接任意數量的
 `name:=value` 參數——文法和 `ros2 launch` 相同，你也可以直接換成它（[為什麼本書
-用 `play_launch`](../getting-started/usage.md)）。
+用 `play_launch`](../running/on-the-vehicle.md)）。
 
 那三個參數就是全部的設定：用哪張地圖、哪個車輛描述、哪個感測器套件描述。
 

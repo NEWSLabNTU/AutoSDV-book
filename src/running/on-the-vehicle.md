@@ -6,7 +6,7 @@ change — which LiDAR, which localization method, whether perception runs at al
 — is a **launch argument**, and arguments are something you pass, not something
 a wrapper passes for you.
 
-Before starting, complete [Software Installation](./installation/overview.md)
+Before starting, complete [Software Installation](../getting-started/installation/overview.md)
 and build the workspace.
 
 ## The launch command

@@ -16,7 +16,7 @@ AutoSDV。你只要打開瀏覽器，就會看到一個含有 RViz 與終端機�
 
 !!! info "這不是已停止維護的 `docker/` 映像檔"
 
-    那個是 [Docker 設定（已停止維護）](./docker.md)，是另一個已經無法建置的
+    那個是 [Docker 設定（已停止維護）](../getting-started/installation/docker.md)，是另一個已經無法建置的
     東西。本頁說明的是 desktop 映像檔，它已建置、已發布，並在兩種架構上通過
     測試。
 
@@ -116,7 +116,7 @@ just sim planning
 ```
 
 然後在瀏覽器分頁中觀看。關於你所看到的內容，教學本身的說明請繼續閱讀
-[1. 第一次執行](../../tutorial/01-first-run.md)；那裡的每一步在容器中同樣適用。
+[1. 第一次執行](../tutorial/01-first-run.md)；那裡的每一步在容器中同樣適用。
 
 !!! note "RViz 大約 90 秒內不會畫出任何東西"
 
@@ -238,7 +238,7 @@ docker load < autosdv-desktop-arm64.tar.gz
 ## 這個容器不適用於什麼
 
 - **車輛本體。** 容器沒有可以溝通的感測器驅動程式，而 Jetson 使用的是真正的
-  安裝方式。請見[軟體安裝](./overview.md)。
+  安裝方式。請見[軟體安裝](../getting-started/installation/overview.md)。
 - **感知（Perception）。** TensorRT engine 沒有預先建置，也沒有 GPU 可以執行；
   工作坊的模擬不會啟動感知模組。
 - **`pose_source:=cuda_ndt`**，那是真實機器上的預設值，執行時需要 NVIDIA GPU。
@@ -246,7 +246,7 @@ docker load < autosdv-desktop-arm64.tar.gz
 
 ## 下一步
 
-- [1. 第一次執行](../../tutorial/01-first-run.md) — 教學，在容器中完全適用
-- [你需要什麼樣的機器](../requirements.md) — 如果你更想直接安裝在主機上
-- [執行環境](../../concepts/environment.md) — 那兩行 `source` 為何存在；啟動
+- [1. 第一次執行](../tutorial/01-first-run.md) — 教學，在容器中完全適用
+- [你需要什麼樣的機器](../getting-started/requirements.md) — 如果你更想直接安裝在主機上
+- [執行環境](../concepts/environment.md) — 那兩行 `source` 為何存在；啟動
   腳本開啟的每個 shell 都已經幫你做好了

@@ -67,7 +67,7 @@ AutoSDV 提供從硬體規格到軟體實作的完整堆疊，使用業界標準
    設定檔
 3. **[ZED SDK 安裝](getting-started/installation/zed-sdk.md)** —— 如果你有
    ZED 相機
-4. **[操作車輛](getting-started/usage.md)** —— 啟動系統、監看與錄製資料
+4. **[操作車輛](./running/on-the-vehicle.md)** —— 啟動系統、監看與錄製資料
 
 ## 探索更多
 

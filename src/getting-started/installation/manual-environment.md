@@ -396,5 +396,5 @@ colcon test --packages-select autosdv_launch
 ## Next Steps
 
 - Return to [Software Installation Overview](./overview.md) to complete the standard workflow
-- See [Usage Guide](../usage.md) for launching and operating the system
+- See [Usage Guide](../../running/on-the-vehicle.md) for launching and operating the system
 - Check [Development Guide](../../guides/development.md) for development workflows

@@ -104,5 +104,5 @@ running perception, planning and control.
 ## Related
 
 - [Localization Methods](./localization-methods.md)
-- [Operating the Vehicle](../getting-started/usage.md)
+- [Operating the Vehicle](../running/on-the-vehicle.md)
 - `docs/design/cuda-pipeline-data-flow.md` in the repository

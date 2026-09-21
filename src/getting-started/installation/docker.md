@@ -6,7 +6,7 @@
     repository.
 
     **If you want a container, you want
-    [Run It in a Container](./container.md)** — the desktop image, which is
+    [Run It in a Container](../../running/container.md)** — the desktop image, which is
     built, published for both architectures, and runs the simulations on any
     laptop. It is a different image and it works. To install on the host
     instead, see [the standard installation](./overview.md).

@@ -246,4 +246,4 @@ Autoware 大量使用這個機制，而它有兩個你會遇到的後果：
 
 - [檢視執行中的系統](./inspecting.md) —— 既然它已經在跑了
 - [Autoware 管線](./autoware-conventions.md) —— 那些主題名稱的意義
-- [操作車輛](../getting-started/usage.md) —— 完整的參數清單
+- [操作車輛](../running/on-the-vehicle.md) —— 完整的參數清單

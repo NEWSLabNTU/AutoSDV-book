@@ -143,5 +143,5 @@ when a preset changes which models the stack actually loads.
 
 ## Related
 
-- [Operating the Vehicle](../getting-started/usage.md) — the full argument set
+- [Operating the Vehicle](../running/on-the-vehicle.md) — the full argument set
 - `config/{perception,localization}/preset/README.md` in the repository

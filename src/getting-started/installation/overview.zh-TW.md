@@ -31,7 +31,7 @@ Autoware 的程式碼——在 Orin 上從原始碼建置要花掉數小時，�
 ## 最快的入門方式
 
 如果你只是想*執行模擬*而不是開發 AutoSDV——工作坊、課堂，或第一次試用——本頁的
-內容你都不需要。[以容器執行](./container.md)可以在 Windows、macOS（含 Apple
+內容你都不需要。[以容器執行](../../running/container.md)可以在 Windows、macOS（含 Apple
 Silicon）或 Linux 上用一行指令完成，不需要 ROS 2、不需要 Autoware，也不需要在你
 的機器上編譯。本頁其餘部分說明的是主機安裝，那是車輛與開發機所需要的。
 
@@ -43,7 +43,7 @@ Silicon）或 Linux 上用一行指令完成，不需要 ROS 2、不需要 Autow
    [你需要什麼樣的機器](../requirements.md)。
 2. **NVIDIA Jetson AGX Orin 64GB**——車輛本身，接著各種感測器。見
    [硬體設定](../hardware-assembly.md)。
-3. **任何一台筆電，以容器執行**——見[以容器執行](./container.md)。
+3. **任何一台筆電，以容器執行**——見[以容器執行](../../running/container.md)。
    這其實不算安裝：只跑模擬，不在主機上添加任何東西。
 
 Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humble 上，而 Humble
@@ -55,7 +55,7 @@ Ubuntu 22.04 是唯一沒有替代方案的要求：AutoSDV 建立在 ROS 2 Humb
 
 | 方法                                                  | 最適合                          | 難度   | 客製化程度 |
 |-------------------------------------------------------|--------------------------------|--------|-----------|
-| **[以容器執行](./container.md)**                       | 在任何筆電上跑模擬、工作坊      | 最簡單 | 無        |
+| **[以容器執行](../../running/container.md)**                       | 在任何筆電上跑模擬、工作坊      | 最簡單 | 無        |
 | **[推薦安裝方式](./recommended.md)**                   | 大多數使用者、生產部署          | 簡單   | 有限      |
 | **[手動環境安裝](./manual-environment.md)**            | 進階使用者、客製化配置          | 進階   | 完整      |
 | **[Docker 安裝](./docker.md)**                        | 開發、測試、模擬                | 簡單   | 有限      |

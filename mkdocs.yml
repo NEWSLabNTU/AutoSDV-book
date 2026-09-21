@@ -105,6 +105,16 @@ plugins:
           build: true
           nav_translations:
             Get Started: 快速入門
+            Sensor Troubleshooting: 感測器疑難排解
+            In Simulation: 在模擬中執行
+            On the Vehicle: 在車上執行
+            Control and Safety: 控制與安全
+            Localization: 定位
+            Sensing: 感測
+            Appendix: 附錄
+            Developer Guide: 開發者指南
+            Building the Stack: 建構系統堆疊
+            Running the System: 執行系統
             The Vehicle: 車輛
             Concepts: 基本概念
             The Environment: 環境與相依套件
@@ -248,15 +258,11 @@ markdown_extensions:
 nav:
   - Get Started:
     - index.md
+    - What Machine You Need: getting-started/requirements.md
     - Software Installation:
       - Overview: getting-started/installation/overview.md
-      - Run It in a Container: getting-started/installation/container.md
-      - What Machine You Need: getting-started/requirements.md
       - Recommended Installation: getting-started/installation/recommended.md
       - Verifying the Installation: getting-started/installation/verify.md
-      - ZED SDK Installation: getting-started/installation/zed-sdk.md
-      - Manual Environment Setup (Optional): getting-started/installation/manual-environment.md
-      - Docker Setup (Unmaintained): getting-started/installation/docker.md
   - Tutorial:
     - What You Will Build: tutorial/00-what-you-will-build.md
     - 1. First Run: tutorial/01-first-run.md
@@ -265,6 +271,30 @@ nav:
     - 4. Behind the Recipe: tutorial/04-behind-the-recipe.md
     - 5. The Map and the Rosbag: tutorial/05-map-and-rosbag.md
     - 6. play_launch: tutorial/06-play-launch.md
+  - Running the System:
+    - Run It in a Container: running/container.md
+    - On the Vehicle: running/on-the-vehicle.md
+    - In Simulation:
+      - COSS Park Scenario: running/coss-park-scenario.md
+      - Datasets and Rosbags: running/datasets.md
+  - Building the Stack:
+    - Presets: guides/presets.md
+    - Sensing:
+      - Using Sensors: guides/sensor-integration/using-sensors.md
+      - LiDAR Sensors: guides/sensor-integration/lidar.md
+      - Camera Sensors: guides/sensor-integration/camera.md
+      - IMU Sensors: guides/sensor-integration/imu.md
+      - GNSS Sensors: guides/sensor-integration/gnss.md
+      - Sensor Troubleshooting: guides/sensor-integration/troubleshooting.md
+      - CUDA Point Cloud Pipeline: guides/cuda-pipeline.md
+    - Localization:
+      - Localization Methods: guides/localization-methods.md
+      - Maps: guides/maps.md
+    - Control and Safety:
+      - Overview: guides/vehicle-control/overview.md
+      - Hardware: guides/vehicle-control/hardware.md
+      - Control Details: guides/vehicle-control/control-details.md
+      - Tuning & Testing: guides/vehicle-control/tuning-and-testing.md
   - Concepts:
     - The Environment: concepts/environment.md
     - Launch Files: concepts/launch-files.md
@@ -274,32 +304,12 @@ nav:
   - The Vehicle:
     - Vehicle Build Variants: platform-models.md
     - Hardware Setup: getting-started/hardware-assembly.md
-    - Operating the Vehicle: getting-started/usage.md
-  - Simulation:
-    - COSS Park Scenario: simulation/coss-park-scenario.md
-    - Datasets and Rosbags: simulation/datasets.md
-  - Guides:
+  - Developer Guide:
     - Development Guide: guides/development.md
     - Source Code Walkthrough: guides/source-code.md
     - Version Control: guides/version-control.md
-    - Presets: guides/presets.md
-    - Localization Methods: guides/localization-methods.md
-    - Maps: guides/maps.md
-    - CUDA Point Cloud Pipeline: guides/cuda-pipeline.md
-    - Sensor Integration:
-      - Using Sensors: guides/sensor-integration/using-sensors.md
-      - Integration Walkthrough: guides/sensor-integration/integration-walkthrough.md
-      - LiDAR Sensors: guides/sensor-integration/lidar.md
-      - Camera Sensors: guides/sensor-integration/camera.md
-      - IMU Sensors: guides/sensor-integration/imu.md
-      - GNSS Sensors: guides/sensor-integration/gnss.md
-      - Adding a Sensor: guides/sensor-integration/adding-sensor.md
-      - Troubleshooting: guides/sensor-integration/troubleshooting.md
-    - Vehicle Control:
-      - Overview: guides/vehicle-control/overview.md
-      - Hardware: guides/vehicle-control/hardware.md
-      - Control Details: guides/vehicle-control/control-details.md
-      - Tuning & Testing: guides/vehicle-control/tuning-and-testing.md
+    - Adding a Sensor: guides/sensor-integration/adding-sensor.md
+    - Integration Walkthrough: guides/sensor-integration/integration-walkthrough.md
   - Technical Reference:
     - Overview: reference/overview.md
     - Hardware:
@@ -309,3 +319,7 @@ nav:
       - Vehicle Interface: reference/software/vehicle-interface.md
     - Networking:
       - 5G/LTE Deployment: reference/networking/5g-deployment.md
+  - Appendix:
+    - ZED SDK Installation: getting-started/installation/zed-sdk.md
+    - Manual Environment Setup: getting-started/installation/manual-environment.md
+    - Docker Setup (Unmaintained): getting-started/installation/docker.md

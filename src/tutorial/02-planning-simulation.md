@@ -41,7 +41,7 @@ play_launch launch   <package>         <launch file>                  <arg>:=<va
 `play_launch launch` takes a package name and a launch file in it, then any
 number of `name:=value` arguments — the same grammar as `ros2 launch`, which you
 can substitute here if you prefer ([why this book uses
-`play_launch`](../getting-started/usage.md)).
+`play_launch`](../running/on-the-vehicle.md)).
 
 The three arguments are the whole configuration: which map, which vehicle
 description, which sensor kit description.

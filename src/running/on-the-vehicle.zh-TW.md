@@ -12,7 +12,7 @@ Translation Metadata:
 你將來會想改的每一件事——用哪顆光達、用哪種定位方法、感知模組要不要跑——都是一個
 **啟動參數**，而參數是你自己傳的，不是包裝腳本替你傳的。
 
-開始之前，請先完成[軟體安裝](./installation/overview.md)並建置工作空間。
+開始之前，請先完成[軟體安裝](../getting-started/installation/overview.md)並建置工作空間。
 
 ## 啟動指令
 

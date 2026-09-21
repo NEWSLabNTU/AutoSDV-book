@@ -159,6 +159,6 @@ Where to go next:
 - **[Localization Methods](../guides/localization-methods.md)** — what else
   `pose_source` can be
 - **[Presets](../guides/presets.md)** — configuring perception and localization
-- **[Operating the Vehicle](../getting-started/usage.md)** — the full argument
+- **[Operating the Vehicle](../running/on-the-vehicle.md)** — the full argument
   reference
 - **[Maps](../guides/maps.md)** — building a map for your own site
