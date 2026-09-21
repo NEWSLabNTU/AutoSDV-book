@@ -120,6 +120,13 @@
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/development/"/>
     </url>
     <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/localization-diagnostics/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/localization-diagnostics/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/localization-diagnostics/"/>
+    </url>
+    <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/localization-methods/</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>daily</changefreq>
@@ -132,6 +139,20 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/maps/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/maps/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/mrm/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/mrm/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/mrm/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/ndt-tuning/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/ndt-tuning/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/ndt-tuning/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/guides/presets/</loc>
@@ -239,6 +260,13 @@
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/guides/vehicle-control/tuning-and-testing/"/>
     </url>
     <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/commands/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/commands/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/commands/"/>
+    </url>
+    <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/overview/</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>daily</changefreq>
@@ -251,6 +279,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/core-components/"/>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/hardware/core-components/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/sensor-capability-matrix/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/sensor-capability-matrix/"/>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/devzh-TW/reference/hardware/sensor-capability-matrix/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/reference/hardware/wiring-diagrams/</loc>
@@ -470,6 +505,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/development/"/>
     </url>
     <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/localization-diagnostics/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/localization-diagnostics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/localization-diagnostics/"/>
+    </url>
+    <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/localization-methods/</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>daily</changefreq>
@@ -482,6 +524,20 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/maps/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/maps/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/mrm/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/mrm/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/mrm/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/ndt-tuning/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/ndt-tuning/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/ndt-tuning/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/presets/</loc>
@@ -589,6 +645,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devguides/vehicle-control/tuning-and-testing/"/>
     </url>
     <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/commands/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/commands/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/commands/"/>
+    </url>
+    <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/overview/</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>daily</changefreq>
@@ -601,6 +664,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/core-components/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/hardware/core-components/"/>
+    </url>
+    <url>
+        <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/sensor-capability-matrix/</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/sensor-capability-matrix/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://NEWSLabNTU.github.io/AutoSDV-book/devreference/hardware/sensor-capability-matrix/"/>
     </url>
     <url>
         <loc>https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/reference/hardware/wiring-diagrams/</loc>

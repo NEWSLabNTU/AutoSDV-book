@@ -1,0 +1,4363 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://NEWSLabNTU.github.io/AutoSDV-book/dev/zh-TW/guides/ndt-tuning/">
+      
+      
+        <link rel="prev" href="../localization-methods/">
+      
+      
+        <link rel="next" href="../maps/">
+      
+      
+        
+          <link rel="alternate" href="../../../guides/ndt-tuning/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh-TW">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/autosdv-logo.png">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>NDT 調校 - AutoSDV Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/extra.css">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ndt-調校" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../" title="AutoSDV Documentation" class="md-header__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AutoSDV Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NDT 調校
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="選擇語言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../guides/ndt-tuning/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh-TW" class="md-select__link">
+              繁體中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    NEWSLabNTU/AutoSDV-book
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  快速入門
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorial/00-what-you-will-build/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  教學
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../running/container/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  執行系統
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../presets/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  建構系統堆疊
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/environment/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../platform-models/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  車輛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  開發者指南
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  技術參考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/installation/zed-sdk/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  附錄
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="AutoSDV Documentation" class="md-nav__button md-logo" aria-label="AutoSDV Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
+
+    </a>
+    AutoSDV Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NEWSLabNTU/AutoSDV-book" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    NEWSLabNTU/AutoSDV-book
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速入門
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    快速入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    你需要什麼樣的機器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    軟體安裝
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    軟體安裝
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    總覽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/recommended/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推薦安裝方式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    驗證安裝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    教學
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    教學
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/00-what-you-will-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    你將建立什麼
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/01-first-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 第一次執行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/02-planning-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 路徑規劃模擬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/03-logging-simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 記錄回放模擬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/04-behind-the-recipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 拆解那條指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/05-map-and-rosbag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 地圖與 Rosbag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/06-play-launch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. play_launch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    執行系統
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    執行系統
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    以容器執行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/on-the-vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在車上執行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在模擬中執行
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    在模擬中執行
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/coss-park-scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    COSS 公園場景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../running/datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    資料集與 Rosbag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    建構系統堆疊
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    建構系統堆疊
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    預設組態
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感測
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    感測
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/using-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/lidar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LiDAR 感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    相機感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/imu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU 感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/gnss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNSS 感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感測器疑難排解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cuda-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUDA 點雲管線
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    定位
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NDT 調校
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NDT 調校
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ndt-通常是最後才出錯的那個" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDT 通常是最後才出錯的那個
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#先取得可重複的重播" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先取得可重複的重播
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#你正在編輯哪個檔案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你正在編輯哪個檔案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#該看什麼依什麼順序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        該看什麼，依什麼順序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="該看什麼，依什麼順序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-匹配器有被啟用嗎" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 匹配器有被啟用嗎？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-先驗鏈還活著嗎" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 先驗鏈還活著嗎？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-位姿好不好用不依賴-ndt-的方式判斷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 位姿好不好——用不依賴 NDT 的方式判斷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-到這裡才輪到參數" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 到這裡才輪到參數
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#這些數字的意義" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        這些數字的意義
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvtl-把關收斂不排序品質" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVTL 把關收斂，不排序品質
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#各參數以及何時該動它們" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各參數，以及何時該動它們
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各參數，以及何時該動它們">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#程式樹中的預設值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        程式樹中的預設值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max_iterations那個什麼都沒發布的上限" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        max_iterations：那個什麼都沒發布的上限
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#哪些不是調校旋鈕" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        哪些不是調校旋鈕
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#看起來像調校問題的陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        看起來像調校問題的陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#檢查清單" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        檢查清單
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#相關資料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相關資料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    地圖
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization-diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位診斷
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制與安全
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    控制與安全
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle-control/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    總覽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle-control/hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬體
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle-control/control-details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制細節
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vehicle-control/tuning-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    調校與測試
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mrm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最小風險操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本概念
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基本概念
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境與相依套件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/launch-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    啟動檔
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/inspecting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    檢視執行中的系統
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/autoware-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autoware 管線
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    詞彙表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    車輛
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    車輛
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    車輛組裝變體
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/hardware-assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬體設定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    開發者指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    開發者指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    開發指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    原始碼說明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../version-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    版本控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/adding-sensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    新增感測器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-integration/integration-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整合範例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技術參考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技術參考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    總覽
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    指令參考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬體
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    硬體
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/hardware/core-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心組件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/hardware/sensor-capability-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感測器能力對照表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/hardware/wiring-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配線圖
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    軟體
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    軟體
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/software/vehicle-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    車輛介面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    網路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    網路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/networking/5g-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5G/LTE 部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附錄
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/zed-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZED SDK 安裝
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/manual-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker 設定（已停止維護）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ndt-通常是最後才出錯的那個" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDT 通常是最後才出錯的那個
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#先取得可重複的重播" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先取得可重複的重播
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#你正在編輯哪個檔案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你正在編輯哪個檔案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#該看什麼依什麼順序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        該看什麼，依什麼順序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="該看什麼，依什麼順序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-匹配器有被啟用嗎" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 匹配器有被啟用嗎？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-先驗鏈還活著嗎" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 先驗鏈還活著嗎？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-位姿好不好用不依賴-ndt-的方式判斷" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 位姿好不好——用不依賴 NDT 的方式判斷
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-到這裡才輪到參數" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 到這裡才輪到參數
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#這些數字的意義" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        這些數字的意義
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvtl-把關收斂不排序品質" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVTL 把關收斂，不排序品質
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#各參數以及何時該動它們" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各參數，以及何時該動它們
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各參數，以及何時該動它們">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#程式樹中的預設值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        程式樹中的預設值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max_iterations那個什麼都沒發布的上限" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        max_iterations：那個什麼都沒發布的上限
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#哪些不是調校旋鈕" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        哪些不是調校旋鈕
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#看起來像調校問題的陷阱" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        看起來像調校問題的陷阱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#檢查清單" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        檢查清單
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#相關資料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相關資料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="導覽列" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Index
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../presets/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    建構系統堆疊
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../localization-methods/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    定位
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/edit/main/src/guides/ndt-tuning.zh-TW.md" title="編輯此頁" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book/raw/main/src/guides/ndt-tuning.zh-TW.md" title="查看此頁原始碼" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<div><h1 id="ndt-調校">NDT 調校<a class="headerlink" href="#ndt-%E8%AA%BF%E6%A0%A1" title="Permanent link">#</a></h1>
+<p>NDT 是 <code>pose_source:=ndt</code> 與 <code>pose_source:=cuda_ndt</code> 背後的掃描匹配器。它接收一個
+位姿先驗、一份 LiDAR 掃描與一張點雲地圖，回傳修正後的位姿。本頁談的是當那個位姿
+錯了要改什麼、依什麼順序檢查——以及更常見的情況：如何確認 NDT 裡根本沒有東西需要改。</p>
+<h2 id="ndt-通常是最後才出錯的那個">NDT 通常是最後才出錯的那個<a class="headerlink" href="#ndt-%E9%80%9A%E5%B8%B8%E6%98%AF%E6%9C%80%E5%BE%8C%E6%89%8D%E5%87%BA%E9%8C%AF%E7%9A%84%E9%82%A3%E5%80%8B" title="Permanent link">#</a></h2>
+<p>匹配器位於一條鏈的末端：TF、IMU、twist、EKF、點雲前處理、地圖。鏈上較早的環節
+*安靜地*壞掉時，它會*大聲地*失敗，所以責任都算到它頭上。</p>
+<p>促成本頁的那次失敗看起來完全像調校問題。NDT 分數很差、拒絕多數影格，最後停止發布。
+真正的原因是一條缺失的 TF：logging simulation 中沒有任何節點發布 IMU 的轉換，所以
+EKF 從未推進，NDT 每一幀拿到的都是同一個過期的先驗。任何人第一個會伸手去動的參數
+——解析度、收斂門檻、crop box——都會被調成去補償那件事，而每一個在 TF 修好之後都會
+讓系統更糟。</p>
+<p>所以規則是：<strong>先證明整條鏈，再調匹配器。</strong> 以下章節刻意依此順序排列。</p>
+<h2 id="先取得可重複的重播">先取得可重複的重播<a class="headerlink" href="#%E5%85%88%E5%8F%96%E5%BE%97%E5%8F%AF%E9%87%8D%E8%A4%87%E7%9A%84%E9%87%8D%E6%92%AD" title="Permanent link">#</a></h2>
+<p>如果每次執行無法互相比較，參數研究就毫無價值。固定錄製檔、地圖、初始位姿與節點集合，
+然後每次只改一件事。</p>
+<p>COSS 錄製檔是本專案調校時所用的固定素材。它需要兩個終端機，而這正是重點：整個系統
+跑在模擬時間上，在有 bag 驅動它的時鐘之前什麼都不會發生。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 終端機 1 —— 系統本身，等待時鐘</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>play_launch<span class="w"> </span>launch<span class="w"> </span>--web-addr<span class="w"> </span><span class="m">0</span>.0.0.0:8081<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>autosdv_launch<span class="w"> </span>logging_simulation.launch.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>map_path:<span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/data/COSS-map-planning"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>pose_source:<span class="o">=</span>ndt<span class="w"> </span>launch_perception:<span class="o">=</span><span class="nb">false</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 終端機 2 —— 錄製檔，驅動那個時鐘</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>bag<span class="w"> </span>play<span class="w"> </span>data/rosbags/outdoor_20251226_153115<span class="w"> </span>--clock
+</span></code></pre></div>
+<p>同樣這兩道命令的捷徑：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>just<span class="w"> </span>coss<span class="w"> </span>logging-sim<span class="w">        </span><span class="c1"># cpu 路徑（pose_source:=ndt）；用 `gpu` 走 cuda_ndt</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>just<span class="w"> </span>coss<span class="w"> </span>play-rosbag<span class="w">        </span><span class="c1"># --clock 不是選配，而這個 recipe 知道這件事</span>
+</span></code></pre></div>
+<p>若錄製檔尚未下載，<code>just coss download-rosbag</code> 會取得它（下載約 1.6 GB，解開後 2.8 GB）。</p>
+<p>有三件事讓連續多次執行可以互相比較，而三件都很容易被略過：</p>
+<ul>
+<li><strong>刻意設定初始位姿。</strong> 不要交給 GNSS。在這份錄製檔上，GNSS 自動初始化每次落點相差
+  約 5 m，那個散布會出現在結果裡，看起來像是參數差異。擷取一次位姿再重放它——見
+  <a href="../localization-diagnostics/#%E8%AE%93%E5%9F%B7%E8%A1%8C%E4%B8%8D%E9%9C%80%E8%A6%81%E4%BA%BA%E4%BB%8B%E5%85%A5%E7%9A%84%E4%BD%8D%E5%A7%BF%E7%A8%AE%E5%AD%90">定位診斷</a>。</li>
+<li><strong>關掉你不在研究的東西。</strong> <code>launch_perception:=false</code> 移除 TensorRT 引擎編譯，連帶
+  移除 GPU 爭用。</li>
+<li><strong>用 release 建置。</strong> <code>-DCMAKE_BUILD_TYPE=Release</code> 到不了 Rust 套件，而
+  <code>cuda_ndt_matcher</code> 是 Rust 寫的。<code>just build</code> 正是為此傳入 <code>--cargo-args
+  --release</code>；debug 版匹配器大約慢一個數量級並且會丟掉掃描，那看起來像調校問題，但不是。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">這些命令需要已建置的工作空間與那份錄製檔</p>
+<p>撰寫本頁時並未實際執行它們。以下的參數名稱、預設值與檔案路徑*確實*是從程式樹讀出來的。</p>
+</div>
+<h2 id="你正在編輯哪個檔案">你正在編輯哪個檔案<a class="headerlink" href="#%E4%BD%A0%E6%AD%A3%E5%9C%A8%E7%B7%A8%E8%BC%AF%E5%93%AA%E5%80%8B%E6%AA%94%E6%A1%88" title="Permanent link">#</a></h2>
+<p>兩個 pose source 不共用參數檔，而且數值不同。改錯檔案是「什麼都沒改到」最常見的方式。</p>
+<table>
+<thead>
+<tr>
+<th><code>pose_source</code></th>
+<th>參數檔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndt</code></td>
+<td><code>src/launcher/autosdv_launch/config/localization/ndt_scan_matcher/ndt_scan_matcher.param.yaml</code></td>
+</tr>
+<tr>
+<td><code>cuda_ndt</code></td>
+<td><code>src/localization/cuda_ndt_matcher/src/cuda_ndt_matcher_launch/config/cuda_scan_matcher.param.yaml</code></td>
+</tr>
+</tbody>
+</table>
+<p>輸入前處理鏈——crop box、voxel grid、random downsample——以同樣方式分開，位於上述各檔
+旁邊的 <code>pointcloud_preprocessor/</code> 目錄下。</p>
+<p>有了 <code>--symlink-install</code>，編輯這些 YAML 會在下次啟動時生效，不需重新建置。這也表示你
+編輯的檔案*就是*載入的檔案——這值得確認而非假設，因為本儲存庫裡存在多個同名檔案：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/localization/pose_estimator/ndt_scan_matcher<span class="w"> </span>ndt.resolution
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/localization/util/crop_box_filter_measurement_range<span class="w"> </span>max_x
+</span></code></pre></div>
+<p>問正在執行的節點。那是唯一真正關於你眼前這套系統的答案。</p>
+<h2 id="該看什麼依什麼順序">該看什麼，依什麼順序<a class="headerlink" href="#%E8%A9%B2%E7%9C%8B%E4%BB%80%E9%BA%BC%E4%BE%9D%E4%BB%80%E9%BA%BC%E9%A0%86%E5%BA%8F" title="Permanent link">#</a></h2>
+<h3 id="1-匹配器有被啟用嗎">1. 匹配器有被啟用嗎？<a class="headerlink" href="#1-%E5%8C%B9%E9%85%8D%E5%99%A8%E6%9C%89%E8%A2%AB%E5%95%9F%E7%94%A8%E5%97%8E" title="Permanent link">#</a></h3>
+<p>不是「行程還活著嗎」——是啟用（activated）。<code>ndt_scan_matcher</code> 有一個 <code>is_activated_</code>
+閂鎖，只有 trigger service 會寫入它；節點不會自行啟用。若初始化在抵達那個服務之前丟出
+例外——缺少 <code>map</code> 到 <code>pose.frame_id</code> 的 TF、地圖尚未載入、或還沒有掃描被接受——NDT 就會
+被鎖在關閉狀態並維持下去。沒有任何東西會重試。此時 EKF 繼續以 IMU 與輪速推算，
+<code>/localization/kinematic_state</code> 照樣以 40 Hz 運行，車輛也照樣在地圖上移動。這幅畫面裡
+沒有任何東西說「壞了」。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_ndt_activated.py
+</span></code></pre></div>
+<p>離開碼 0 代表已啟用。若不是，就停在這裡：改任何參數都沒有意義。</p>
+<h3 id="2-先驗鏈還活著嗎">2. 先驗鏈還活著嗎？<a class="headerlink" href="#2-%E5%85%88%E9%A9%97%E9%8F%88%E9%82%84%E6%B4%BB%E8%91%97%E5%97%8E" title="Permanent link">#</a></h3>
+<p>NDT 不是無中生有估出位姿——它修正 EKF 交給它的先驗。先驗過期時，匹配器做什麼都救不了。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/imu/imu_data
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/twist_estimator/twist_with_covariance
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/localization/kinematic_state
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>base_link<span class="w"> </span>&lt;sensor_frame&gt;
+</span></code></pre></div>
+<p>這裡出現零頻率的主題就是 bug。無法解析的 TF 也是。</p>
+<p>去讀*其他*節點的 log，不只是匹配器的——<code>play_log/latest/node/*/err</code>。COSS 那次失敗的
+自白是 <code>imu_corrector</code> 印出的數千行 <code>Please publish TF base_link to zedxm_imu_link</code>，
+那是沒人在看的節點，而 <code>ndt_scan_matcher</code> 只是回報分數偏低。</p>
+<p>先驗實際建立在其上的那兩個訊號有自己的檢查：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python3<span class="w"> </span>scripts/testing/localization/check_imu_velocity.py
+</span></code></pre></div>
+<p>它針對這兩個訊號會出錯的三種方式做檢查：軸向或正負號錯誤、尺度誤差，以及發布率下陷或
+有缺口。</p>
+<h3 id="3-位姿好不好用不依賴-ndt-的方式判斷">3. 位姿好不好——用不依賴 NDT 的方式判斷<a class="headerlink" href="#3-%E4%BD%8D%E5%A7%BF%E5%A5%BD%E4%B8%8D%E5%A5%BD%E7%94%A8%E4%B8%8D%E4%BE%9D%E8%B3%B4-ndt-%E7%9A%84%E6%96%B9%E5%BC%8F%E5%88%A4%E6%96%B7" title="Permanent link">#</a></h3>
+<p>NDT 自己的分數無法告訴你 NDT 是不是對的。要用它不依賴的參照：</p>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>獨立參照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yaw 的*轉動*正確嗎？</td>
+<td>在同一段時間窗內積分陀螺儀</td>
+</tr>
+<tr>
+<td>yaw 的*指向*正確嗎？</td>
+<td>對地航跡角，且僅限直線路段</td>
+</tr>
+<tr>
+<td>距離對嗎？</td>
+<td>輪速里程，以及地圖本身的尺度</td>
+</tr>
+<tr>
+<td>位姿吻合真實世界嗎？</td>
+<td>掃描對地圖的最近鄰距離</td>
+</tr>
+<tr>
+<td>地圖在遠處可信嗎？</td>
+<td>從多個位姿觀察同一個地圖網格</td>
+</tr>
+</tbody>
+</table>
+<p>其中兩項已寫成腳本：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_quality_report.py<span class="w">    </span><span class="c1"># 散布、yaw 步進、init-to-result</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>python3<span class="w"> </span>scripts/testing/localization/ndt_alignment_report.py<span class="w">  </span><span class="c1"># 掃描對地圖殘差</span>
+</span></code></pre></div>
+<h3 id="4-到這裡才輪到參數">4. 到這裡才輪到參數<a class="headerlink" href="#4-%E5%88%B0%E9%80%99%E8%A3%A1%E6%89%8D%E8%BC%AA%E5%88%B0%E5%8F%83%E6%95%B8" title="Permanent link">#</a></h3>
+<p>每次執行只改一個變數。當兩個候選原因互相混淆時，一個 2x2 只多花兩次執行就能定案——在這張
+地圖上，把解析度與裁切範圍交叉之後，單看其中任一項所得到的結論被推翻了。</p>
+<h2 id="這些數字的意義">這些數字的意義<a class="headerlink" href="#%E9%80%99%E4%BA%9B%E6%95%B8%E5%AD%97%E7%9A%84%E6%84%8F%E7%BE%A9" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>數字</th>
+<th>它是什麼</th>
+<th>健康時</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已發布位姿數</td>
+<td>通過收斂門檻的影格</td>
+<td>每次掃描一筆，約 10 Hz</td>
+</tr>
+<tr>
+<td>最糟發布間隔</td>
+<td>位姿估計器最長的沉默</td>
+<td>約 0.1 s</td>
+</tr>
+<tr>
+<td><code>initial_to_result_distance</code></td>
+<td>NDT 必須把先驗搬多遠</td>
+<td>停車時接近零；行進時小而*穩定*</td>
+</tr>
+<tr>
+<td>位置散布</td>
+<td>每幀相對於局部平滑路徑的偏離</td>
+<td>對著靜態地圖抖動的位姿即使分數好也是錯的</td>
+</tr>
+<tr>
+<td>yaw 步進</td>
+<td>相鄰影格間的航向變化</td>
+<td>沒有孤立的大跳動</td>
+</tr>
+<tr>
+<td><code>iteration_num</code></td>
+<td>每次掃描的最佳化步數</td>
+<td>個位數；卡在上限代表根本沒有位姿</td>
+</tr>
+<tr>
+<td><code>exe_time_ms</code></td>
+<td>一次掃描匹配</td>
+<td>遠小於 100 ms 的掃描週期</td>
+</tr>
+<tr>
+<td>NVTL</td>
+<td>每點平均擬合分數</td>
+<td>高於門檻且有餘裕——僅此而已（見下）</td>
+</tr>
+</tbody>
+</table>
+<p><code>initial_to_result_distance</code> 是資訊量最大的單一數字，而且必須依運動狀態拆開看。停車時
+接近零、行進時大得多，代表問題在預測路徑上——twist 尺度、IMU 或某個外參——而不在匹配器。
+在 COSS 錄製檔上這組數字是行進 0.819 m 對停車 0.024 m；修正輪速尺度與 LiDAR 安裝 yaw
+之後，行進值降到 0.049 m，而完全沒有動過任何一個 NDT 參數。</p>
+<h2 id="nvtl-把關收斂不排序品質">NVTL 把關收斂，不排序品質<a class="headerlink" href="#nvtl-%E6%8A%8A%E9%97%9C%E6%94%B6%E6%96%82%E4%B8%8D%E6%8E%92%E5%BA%8F%E5%93%81%E8%B3%AA" title="Permanent link">#</a></h2>
+<p><code>nearest_voxel_transformation_likelihood</code> 會與
+<code>converged_param_nearest_voxel_transformation_likelihood</code> 比較，以決定是否發布該影格。
+它是一道*門檻*。它不是準確度指標，而且以最大化它為目標調校會把答案反過來：</p>
+<ul>
+<li><strong>它隨 <code>ndt.resolution</code> 放大。</strong> 較粗的體素會抬高 NVTL 同時降低準確度。在這張地圖上，
+  解析度 4.0 的分數明顯高於 2.0，而每幀位置散布是後者的五倍。</li>
+<li><strong>誠實但不完美的遠距回波會拉低平均值卻改善位姿。</strong> 把 crop box 放寬使 NVTL 下降，
+  同時讓 yaw 誤差減半。</li>
+</ul>
+<p>所以最大化 NVTL 是在挑選粗體素與窄 crop box，無論位姿是否變好。改用位置散布、yaw 步進、
+<code>initial_to_result_distance</code> 與發布連續性來排序。</p>
+<p>關於它還有兩件事：</p>
+<p><strong>NVTL 偏低代表先驗不好的機率，至少與匹配器不好一樣高。</strong> 若它貼近門檻，先往上游看再去
+動匹配器——而且要注意這個失敗會自我強化。被拒絕的影格不發布，先驗因此更舊，分數再往下掉。
+已發布位姿率出現斷崖就是它的特徵。</p>
+<p><strong>絕對分數只在同一個建置內可比。</strong> NVTL 不是物理量：它取決於解析度、點數，以及計分程式
+是否正確。本專案 CUDA 匹配器中的兩個缺陷曾讓它虛高約 1.45 倍，直到 2026 年 8 月修正，
+所以在那之前記錄的任何門檻都是對著另一個尺度校準的。<strong>從你正在跑的那個建置的分數分布
+重新推導門檻</strong>——絕不要跨版本、跨地圖、跨解析度或跨降採樣點數沿用。</p>
+<h2 id="各參數以及何時該動它們">各參數，以及何時該動它們<a class="headerlink" href="#%E5%90%84%E5%8F%83%E6%95%B8%E4%BB%A5%E5%8F%8A%E4%BD%95%E6%99%82%E8%A9%B2%E5%8B%95%E5%AE%83%E5%80%91" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>什麼時候動它</th>
+<th>不要拿它來</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndt.resolution</code></td>
+<td>地圖的點密度真的改變了</td>
+<td>換取 NVTL 餘裕</td>
+</tr>
+<tr>
+<td><code>converged_param_nearest_voxel_transformation_likelihood</code></td>
+<td>你已重新量測*這個*建置的分數分布</td>
+<td>掩蓋先驗不良的症狀</td>
+</tr>
+<tr>
+<td>crop box <code>min/max_x</code>、<code>min/max_y</code></td>
+<td>地圖遠場經量測是好的，且 yaw 約束不足</td>
+<td>補償被縮放錯的 twist</td>
+</tr>
+<tr>
+<td><code>random_downsample_filter.sample_num</code></td>
+<td><code>exe_time_ms</code> 有餘裕，或沒有</td>
+<td>修正準確度問題</td>
+</tr>
+<tr>
+<td><code>ndt.max_iterations</code></td>
+<td><code>exe_time_ms</code> 在掃描週期內還有寬裕空間</td>
+<td>修正因先驗過期造成的不收斂</td>
+</tr>
+<tr>
+<td><code>initial_pose_estimation.particles_num</code></td>
+<td>蒙地卡羅初始化不可靠</td>
+<td>改善追蹤</td>
+</tr>
+</tbody>
+</table>
+<h3 id="程式樹中的預設值">程式樹中的預設值<a class="headerlink" href="#%E7%A8%8B%E5%BC%8F%E6%A8%B9%E4%B8%AD%E7%9A%84%E9%A0%90%E8%A8%AD%E5%80%BC" title="Permanent link">#</a></h3>
+<p>讀自那兩個參數檔，2026-09-21。兩者不同之處是刻意的，而 CUDA 那個檔案在每個數值旁的註解
+中帶著量測資料。</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th><code>ndt</code></th>
+<th><code>cuda_ndt</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ndt.resolution</code></td>
+<td>4.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td><code>ndt.max_iterations</code></td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>ndt.trans_epsilon</code></td>
+<td>0.01</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td><code>ndt.step_size</code></td>
+<td>0.1</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td><code>ndt.num_threads</code></td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>converged_param_nearest_voxel_transformation_likelihood</code></td>
+<td>2.2</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td><code>validation.skipping_publish_num</code></td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>validation.critical_upper_bound_exe_time_ms</code></td>
+<td>100.0</td>
+<td>100.0</td>
+</tr>
+<tr>
+<td><code>sensor_points.required_distance</code></td>
+<td>10.0</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td><code>initial_pose_estimation.particles_num</code></td>
+<td>200</td>
+<td>200</td>
+</tr>
+<tr>
+<td>crop box <code>min/max_x</code>、<code>min/max_y</code></td>
+<td>±40.0</td>
+<td>±60.0</td>
+</tr>
+<tr>
+<td>voxel grid <code>voxel_size_*</code></td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td><code>random_downsample_filter.sample_num</code></td>
+<td>2000</td>
+<td>5000</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">兩邊的解析度不一致，而量測結果支持 2.0</p>
+<p>本儲存庫自己在 COSS 地圖上的量測顯示，解析度 2.0 在每一項位姿品質指標上都勝過 4.0，
+而 NVTL 分數反而*較低*。<code>cuda_ndt</code> 出貨的是 2.0。內建的 <code>ndt</code> 路徑仍出貨 4.0，而它的
+crop box 註解記錄的量測卻是在 2.0 下做的。如果你在 <code>ndt</code> 路徑上調校，這是第一件該試
+的事；而且就程式樹中的任何資訊而言，這個差異並不是刻意的 CPU 對 GPU 取捨。</p>
+</div>
+<p><code>cuda_ndt</code> 有四個 CPU 路徑沒有的參數：</p>
+<ul>
+<li><code>ndt.use_line_search</code>（<code>true</code>）——批次平行線搜尋，可減少約四分之一的迭代次數。</li>
+<li><code>score_estimation.compute_before_scores</code>（<code>false</code>）——同時在初始位姿上計分，以填入兩個
+  沒有其他東西消費的診斷欄位。在 AGX Orin 上這一對約花 28 ms，而對位本身是 32 ms。調校時
+  打開它以觀察 NDT 把位姿搬了多遠，之後再關掉。關閉時這兩個欄位回報 NaN 而非 0.0，所以
+  被停用的分數不會被誤讀成真的是零。</li>
+<li><code>initial_pose_estimation.yaw_weight_sigma</code>（<code>30.0</code>，度）——初始化朝初始航向偏置的強度。</li>
+<li><code>batch.*</code>（<code>enabled: false</code>）——把數次掃描排入佇列以進行 GPU 平行對位。</li>
+</ul>
+<h3 id="max_iterations那個什麼都沒發布的上限"><code>max_iterations</code>：那個什麼都沒發布的上限<a class="headerlink" href="#max_iterations%E9%82%A3%E5%80%8B%E4%BB%80%E9%BA%BC%E9%83%BD%E6%B2%92%E7%99%BC%E5%B8%83%E7%9A%84%E4%B8%8A%E9%99%90" title="Permanent link">#</a></h3>
+<p>值得留著，因為這個失敗看起來像成功。AutoSDV 曾經出貨 <code>max_iterations: 15</code>，對上 Autoware
+的 30，而 <code>pose_source:=ndt</code> 在 COSS 錄製檔上完全沒有發布任何位姿。</p>
+<p>Autoware 的匹配器把達到上限的影格視為**未收斂**並丟棄結果，所以沒有任何東西到達
+<code>/localization/pose_estimator/pose_with_covariance</code>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>The number of iterations has reached its upper limit.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>The number of iterations: 15, Limit: 15.
+</span></code></pre></div>
+<p>而整個系統*看起來*仍然定位正常，因為 EKF 持續以輪速里程與 IMU 發布
+<code>/localization/kinematic_state</code>。關鍵的對照是：那個主題有數千筆訊息，而位姿估計器的主題
+是零。</p>
+<p>把它還原成 30 既正確又*更快*。匹配器大約四次迭代就收斂，只有最初幾幀需要更多，所以那個
+過低的上限讓它永遠磨完全部 15 次，而不是接受那一幀能讓後面全部變容易的結果。現在兩邊
+都是 30；量測比較表在
+<a href="https://github.com/NEWSLabNTU/AutoSDV/blob/main/docs/guides/ndt-tuning.md#incident-a-max_iterations-cap-that-published-nothing">儲存庫的調校指南</a>。</p>
+<h2 id="哪些不是調校旋鈕">哪些不是調校旋鈕<a class="headerlink" href="#%E5%93%AA%E4%BA%9B%E4%B8%8D%E6%98%AF%E8%AA%BF%E6%A0%A1%E6%97%8B%E9%88%95" title="Permanent link">#</a></h2>
+<p>以下這些是量測值。把它們弄對，而不是在它們上面搜尋，因為為了補償其中之一而調出來的參數，
+在其他每個地方都會是錯的：</p>
+<ul>
+<li>感測器外參，位於 <code>sensor_kit_calibration.yaml</code></li>
+<li>輪徑與編碼器計數</li>
+<li>IMU 座標系及其軸向約定</li>
+<li>地圖本身</li>
+</ul>
+<h2 id="看起來像調校問題的陷阱">看起來像調校問題的陷阱<a class="headerlink" href="#%E7%9C%8B%E8%B5%B7%E4%BE%86%E5%83%8F%E8%AA%BF%E6%A0%A1%E5%95%8F%E9%A1%8C%E7%9A%84%E9%99%B7%E9%98%B1" title="Permanent link">#</a></h2>
+<p><strong>未校正的安裝旋轉。</strong> 如果 LiDAR 相對 <code>base_link</code> 有 yaw 偏轉而校正檔寫 0，NDT 會把*感測器*
+擺對，軌跡看起來沒問題，但回報的航向會恆定地偏掉那個安裝誤差。它能通過每一項分數檢查，
+因為匹配本身是好的。症狀是：直線路段上航向與對地航跡角相差一個常數、yaw 的*變化*仍與陀螺儀
+一致，而 <code>initial_to_result_distance</code> 在行進時偏高、靜止時正常。及早檢查
+<code>sensor_kit_calibration.yaml</code>，並對一個全是零的檔案抱持懷疑。</p>
+<p><strong>相鄰影格統計會藏住緩慢漂移。</strong> 10 秒內累積 30 度的 yaw 誤差，每幀只有 0.3 度，在任何
+「步進 p95」指標中都很健康。要把絕對量對時間畫出來，並與獨立參照並排。</p>
+<p><strong>轉彎中的對地航跡角。</strong> 拿航向與行進方向比較是抓 yaw 偏移的方法，但有限弦長在曲線中會
+系統性地落後瞬時航向，製造出一個根本不存在的偏差。把比較限制在大約 |yaw rate| &lt; 2 deg/s。
+在 COSS 錄製檔上，這讓估計值從混淆的 -11.5 度變成乾淨的 -12.66 度。</p>
+<p><strong>共用的 GPU。</strong> CUDA NDT 在整場調查中量到每次掃描 67-83 ms，而它應該只要幾毫秒。匹配器
+沒問題；是另一個行程佔住了 32 GB 顯示卡中的 26 GB。線索是*只有*牆鐘時間在動——迭代次數與
+NVTL 完全相同，因為爭用付出的是時間，不是收斂。迭代次數不變的時間退化，指向演算法之外。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>nvidia-smi<span class="w"> </span>--query-compute-apps<span class="o">=</span>pid,process_name,used_memory<span class="w"> </span>--format<span class="o">=</span>csv
+</span></code></pre></div>
+<p><strong>把消費級 GNSS 當成真值。</strong> 在信任 <code>/sensing/gnss/pose</code> 之前，檢查 <code>nav_sat_fix.status</code>
+以及 RTCM 是否有在流動。COSS 錄製檔的定位是 <code>status: 0</code> 且沒有 NTRIP：水平散布約 20 m、
+高度差了數十公尺，而且它與實際行進方向不一致。當作粗略的初始化種子可以，當參照則毫無用處。</p>
+<p><strong>錄製檔會把感測器誤差烙進去。</strong> 任何參數變更都無法消除已經寫進
+<code>/vehicle/status/velocity_status</code> 的輪速尺度誤差。你可以重新發布一份縮放過的副本來測試
+假設，但修正要在車上做。也要留意死掉的訊號：COSS 錄製檔中的 <code>steering_status</code> 恆為零，
+因為這台車沒有轉向角感測器。</p>
+<p><strong>地圖的遠場沒有近場那麼好。</strong> 掃描對地圖的殘差隨距離增長，而超過某個距離地圖就直接結束了
+——在 COSS 地圖上大約是 60 m，超過之後幾乎沒有回波落在任何已建圖的網格上。在放寬 crop box
+之前，先量測地圖是否值得：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python3<span class="w"> </span>scripts/testing/localization/mapcheck/map_coverage.py<span class="w"> </span>--run<span class="w"> </span>&lt;run_dir&gt;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python3<span class="w"> </span>scripts/testing/localization/mapcheck/map_agreement.py<span class="w"> </span>--run<span class="w"> </span>&lt;run_dir&gt;
+</span></code></pre></div>
+<p>要分辨變形的地圖與會動的植被：比較同一個地圖網格從多個車輛位姿看過去的殘差。跨觀測者一致
+代表地圖在那裡位移了；隨機則代表是樹葉。</p>
+<h2 id="檢查清單">檢查清單<a class="headerlink" href="#%E6%AA%A2%E6%9F%A5%E6%B8%85%E5%96%AE" title="Permanent link">#</a></h2>
+<p>在調任何東西之前：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 重播能從頭跑到尾並記錄診斷資料</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 初始位姿刻意設定，每次執行都相同</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> Release 建置——用 <code>just build</code>，而不是手寫、少了 <code>--cargo-args --release</code> 的 colcon</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>check_ndt_activated.py</code> 離開碼為 0</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> IMU 主題有在發布，且 <code>imu_corrector</code> 的 log 乾淨</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> twist 有在發布，且 EKF 位移在一段行駛中與現實相符</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 每個感測器 TF 都能從 <code>base_link</code> 解析</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 參數從執行中的節點讀回，而不是從你編輯的檔案</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 在把 GNSS 用於任何用途之前先確立其品質</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 若要相信任何時間數字，GPU 沒有與其他行程共用</li>
+</ul>
+<p>每次執行要記錄：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 已發布位姿數、對位影格數，以及最糟的發布間隔</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> <code>initial_to_result_distance</code>，拆成停車與行進</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 每幀位置散布與 yaw 步進</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> NVTL 僅作為門檻檢查，連同它高於門檻的餘裕</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 迭代次數與 <code>exe_time_ms</code>，對照掃描週期</li>
+</ul>
+<p>相信之前先驗證：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> yaw 變化對積分陀螺儀，依時間分桶</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 航向對對地航跡角，僅限直線路段</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 行駛距離對輪速里程、也對地圖</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled><span class="task-list-indicator"></span></label> 每次執行只改一個變數，或把混淆的那一對做完整交叉</li>
+</ul>
+<h2 id="相關資料">相關資料<a class="headerlink" href="#%E7%9B%B8%E9%97%9C%E8%B3%87%E6%96%99" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../localization-diagnostics/">定位診斷</a> —— 本頁提到的每個腳本，以及它各自回答的問題</li>
+<li><a href="../localization-methods/">定位方法</a> —— 在 <code>ndt</code>、<code>cuda_ndt</code> 與 <code>mcl</code> 之間選擇</li>
+<li><a href="../maps/">地圖</a> —— 每種方法需要什麼，以及如何建立</li>
+<li><a href="../../tutorial/03-logging-simulation/">Logging Simulation</a> —— 本頁所調校的那個重播，從頭講起</li>
+<li>本頁背後的量測結果放在儲存庫中：
+  <a href="https://github.com/NEWSLabNTU/AutoSDV/blob/main/docs/reports/cuda-ndt-coss-replay.md"><code>docs/reports/cuda-ndt-coss-replay.md</code></a>
+  與
+  <a href="https://github.com/NEWSLabNTU/AutoSDV/blob/main/docs/reports/localization-open-questions.md"><code>docs/reports/localization-open-questions.md</code></a></li>
+</ul></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到頂端
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="頁腳" >
+        
+          
+          <a href="../localization-methods/" class="md-footer__link md-footer__link--prev" aria-label="上一頁: 定位方法">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一頁
+              </span>
+              <div class="md-ellipsis">
+                定位方法
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../maps/" class="md-footer__link md-footer__link--next" aria-label="下一頁: 地圖">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一頁
+              </span>
+              <div class="md-ellipsis">
+                地圖
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024-2026 AutoSDV Project
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/NEWSLabNTU/AutoSDV-book" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": {"alias": true, "default": ["latest"], "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/js/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
