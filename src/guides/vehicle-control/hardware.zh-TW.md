@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: hardware.md
-- Last synced: 2026-01-09
+- Last synced: 2026-10-05
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -16,8 +16,8 @@ Translation Metadata:
 - **型號**：PCA9685 16 通道 PWM 控制器
 - **介面**：I2C
 - **I2C 位址**：0x40（預設）
-- **I2C 匯流排**：Bus 1（Jetson 上的 `/dev/i2c-1`）
-- **PWM 頻率**：60 Hz（在 actuator.py 中配置）
+- **I2C 匯流排**：Bus 7（AGX Orin 上的 `/dev/i2c-7`，排針腳位 3 與 5）
+- **PWM 頻率**：60 Hz（`actuator.yaml` 中的 `pwm_freq`）
 - **解析度**：12 位元（4096 步進）
 
 **通道分配**：
@@ -31,8 +31,8 @@ PCA9685         Jetson/Computer
 ────────        ───────────────
 VCC      ────── 3.3V or 5V (check board)
 GND      ────── GND
-SDA      ────── I2C SDA (pin 3 on Jetson)
-SCL      ────── I2C SCL (pin 5 on Jetson)
+SDA      ────── I2C SDA (pin 3, I2C bus 7)
+SCL      ────── I2C SCL (pin 5, I2C bus 7)
 ```
 
 **電源**：
@@ -43,8 +43,8 @@ SCL      ────── I2C SCL (pin 5 on Jetson)
 
 **裝置偵測**：
 ```bash
-# Check I2C devices on bus 1
-sudo i2cdetect -y 1
+# Check I2C devices on bus 7
+sudo i2cdetect -y 7
 
 # Expected output:
 #      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -71,7 +71,7 @@ Actuator 節點使用 Adafruit 的 PCA9685 函式庫：
 from Adafruit_PCA9685 import PCA9685
 
 # Initialize PCA9685
-pwm = PCA9685(address=0x40, busnum=1)
+pwm = PCA9685(address=0x40, busnum=7)  # i2c_busnum in actuator.yaml
 pwm.set_pwm_freq(60)  # 60 Hz for RC servos/ESC
 
 # Set motor PWM (channel 0)
@@ -86,34 +86,22 @@ pwm.set_pwm(1, 0, steering_pwm)
 **硬體**：配備電子調速器（ESC）的無刷馬達
 
 **PWM 訊號需求**：
-- 頻率：60 Hz（20ms 週期）
-- 脈衝寬度：1000-2000 μs（映射至整數值）
+- 頻率：60 Hz（16.7 ms 週期）
+- PWM 值是每個週期 4096 中的計數，因此脈衝寬度為
+  `value × 16.67 ms / 4096`——每個計數約 4.07 μs。空檔 370 對應 1.51 ms 的脈衝。
 
-**PWM 範圍**：280-460
+**PWM 值**（取自 `actuator.yaml`，以該檔案為準——重要時請直接查閱）：
 
-**PWM 映射**：
+| 參數        | 值  | 意義                         |
+|-------------|-----|------------------------------|
+| `min_pwm`   | 360 | 控制器輸出的最低值（倒車）   |
+| `brake_pwm` | 340 | 煞車，用於前進轉倒車的過渡   |
+| `init_pwm`  | 370 | 空檔——車輛停止               |
+| `max_pwm`   | 470 | 控制器輸出的最高值（前進）   |
 
-| PWM 值 | 功能           | 說明                |
-|--------|----------------|---------------------|
-| 280    | 最大倒車       | 最快倒車速度        |
-| 340    | 緊急煞車       | 快速減速            |
-| 350-369| 倒車範圍       | 可變倒車速度        |
-| 370    | 空檔/死區      | 無移動              |
-| 371-400| 前進範圍       | 可變前進速度        |
-| 400-460| 前進範圍       | 較高前進速度        |
-| 460    | 最大前進       | 最快前進速度        |
-
-**典型速度與 PWM 對應**（取決於車輛，需要校正）：
-
-| PWM 值 | 近似速度                 |
-|--------|--------------------------|
-| 370    | 0.0 m/s（停止）          |
-| 380    | ~0.5 m/s 前進            |
-| 400    | ~1.0 m/s 前進            |
-| 430    | ~2.0 m/s 前進            |
-| 340    | 緊急煞車                 |
-| 350    | ~0.5 m/s 倒車            |
-| 280    | 最大倒車                 |
+PWM 與速度之間沒有固定的對照表。速度採閉迴路控制：actuator 節點中的 PID
+控制器依據霍爾感測器量到的速度調整 PWM，因此達到某一速度所需的 PWM 會隨電池電量、
+負載與地面而改變。校正方式請參閱[調校與測試](./tuning-and-testing.md)。
 
 **配線**：
 ```
@@ -129,7 +117,7 @@ Battery- ───────────────────────�
 ```
 
 **電源需求**：
-- 工作電壓：檢查 ESC 規格（例如 2S-3S LiPo，7.4V-11.1V）
+- 工作電壓：本車為 7.4 V（2S LiPo）；更換電池前請先確認 ESC 的額定值
 - 電流額定值：需與馬達規格匹配
 - **安全**：務必最後連接 ESC 電池，最先移除
 
@@ -138,23 +126,24 @@ Battery- ───────────────────────�
 **硬體**：標準 RC 伺服馬達（例如 Futaba S3003）
 
 **PWM 訊號需求**：
-- 頻率：60 Hz（在 PCA9685 中配置）
-- 中心：1500 μs（映射至 PWM 值 400）
-- 範圍：1000-2000 μs（映射至 PWM 值 350-450）
+- 頻率：60 Hz（與電機通道共用）
 
-**PWM 範圍**：350-450
+**PWM 值**（取自 `actuator.yaml`）。**轉向在硬體上是反向的：數值越低越往右轉。**
 
-**PWM 映射**：
+| 參數         | 值  | 轉向位置     |
+|--------------|-----|--------------|
+| `min_steer`  | 439 | 最大右轉     |
+| `init_steer` | 489 | 中心（直行） |
+| `max_steer`  | 539 | 最大左轉     |
 
-| PWM 值 | 轉向位置       | 近似角度 |
-|--------|----------------|----------|
-| 350    | 最大左轉       | -20°     |
-| 375    | 左轉           | -10°     |
-| 400    | 中心（直行）   | 0°       |
-| 425    | 右轉           | +10°     |
-| 450    | 最大右轉       | +20°     |
+**最大轉向角度**：0.349 rad ≈ 20°（`vehicle_info.param.yaml` 中的
+`max_steer_angle`）。actuator 會連同 `wheel_base` 與 `wheel_tread` 一起直接從該檔案讀取——
+也就是規劃器所用的同一份檔案——因此不需要維護第二份副本。
 
-**最大轉向角度**：0.349 rad ≈ 20°（來自 `vehicle_info.param.yaml`）
+車輪在最大轉角時實際達到的角度**尚未量測**。角度轉 PWM 的換算
+`tire_angle_to_steer_ratio: -1000` 在僅 0.05 rad 時就達到 ±50 計數的上限，
+這表示該比例或 20° 這個數字其中之一有誤；解決方法（繞圓測試）請參閱
+[已知設定缺陷 §8](https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md)。
 
 **配線**：
 ```
@@ -175,8 +164,8 @@ Ground (black)  GND              5V supply-/GND
 **實體安裝**：
 - 將伺服馬達固定在底盤上
 - 將伺服馬達臂連接至轉向連桿
-- 確保全範圍運動（350-450 PWM）不會卡住
-- 在連接連桿前，先將伺服馬達置於 PWM 400 的中心位置
+- 確保全範圍運動（439–539 PWM）不會卡住
+- 在連接連桿前，先將伺服馬達置於 PWM 489 的中心位置
 
 ## 霍爾效應感測器（速度感測）
 
@@ -198,18 +187,20 @@ KY-003          Jetson/Computer
 ──────          ───────────────
 VCC      ────── 5V or 3.3V
 GND      ────── GND
-Signal   ────── GPIO pin (configured in velocity_report.yaml)
+Signal   ────── Pin 15 (`pin` in velocity_report.yaml)
 ```
 
 **GPIO 配置範例**：
 ```yaml
 # velocity_report.yaml
-gpio_pin: 17                   # GPIO pin number (BCM numbering)
+pin: 15                        # physical header pin (Jetson.GPIO BOARD numbering)
+wheel_diameter: 10.5           # cm
+markers_per_rotation: 12
 ```
 
 **磁鐵設定**：
 - **磁鐵**：小型釹磁鐵（例如 5mm 直徑）
-- **數量**：4 個磁鐵（可透過 `markers_per_rotation` 參數配置）
+- **數量**：本車使用 12 個磁鐵（`velocity_report.yaml` 中的 `markers_per_rotation`）
 - **位置**：均勻分布在輪圈周圍
 - **間隙**：感測器到磁鐵距離 < 5mm 以確保可靠偵測
 - **極性**：北極或南極面向感測器（一致的方向）
@@ -275,7 +266,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
                     ┌─────────────────┐
                     │  Computer/Jetson│
                     │                 │
-                    │  GPIO 17 ───────┼──→ Hall Effect Sensor
+                    │  Pin 15 ────────┼──→ Hall Effect Sensor
                     │  I2C SDA ───────┼──→ PCA9685 SDA
                     │  I2C SCL ───────┼──→ PCA9685 SCL
                     │  GND ───────────┼──→ Common GND
@@ -321,8 +312,8 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 | PCA9685 Ch 1       | Servo Signal      |                 | 轉向控制 PWM                    |
 | Hall Effect VCC    | 5V or 3.3V        |                 | 感測器電源                      |
 | Hall Effect GND    | Common GND        |                 |                                 |
-| Hall Effect Signal | GPIO 17           | BCM numbering   | 可配置                          |
-| ESC Battery+       | Battery+          | 7.4V-11.1V      | 電機電源（檢查 ESC 額定值）     |
+| Hall Effect Signal | Pin 15            | BOARD numbering | 可配置                          |
+| ESC Battery+       | Battery+          | 7.4 V (2S)      | 電機電源（檢查 ESC 額定值）     |
 | ESC Battery-       | Common GND        |                 |                                 |
 | Servo Power        | 5V external       | 1A+ capacity    | 與 PCA9685 V+ 分開              |
 | Servo GND          | Common GND        |                 |                                 |
@@ -330,7 +321,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 ### 電源分配
 
 **電源軌**：
-1. **電池電源**（7.4V-11.1V）：僅供電機 ESC 使用
+1. **電池電源**（7.4 V，2S）：僅供電機 ESC 使用
 2. **5V 外部電源**：伺服馬達與 PCA9685 V+
 3. **3.3V/5V 邏輯電源**：PCA9685 VCC、霍爾效應感測器
 4. **共地 GND**：所有元件共用共地
@@ -354,7 +345,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 
 ```bash
 # Check I2C device detection
-sudo i2cdetect -y 1
+sudo i2cdetect -y 7
 # Should show device at 0x40
 
 # Test PWM output (careful - vehicle may move!)

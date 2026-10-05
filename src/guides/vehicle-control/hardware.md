@@ -8,8 +8,8 @@ Physical hardware components and electrical specifications for the vehicle contr
 - **Model**: PCA9685 16-channel PWM controller
 - **Interface**: I2C
 - **I2C Address**: 0x40 (default)
-- **I2C Bus**: Bus 1 (`/dev/i2c-1` on Jetson)
-- **PWM Frequency**: 60 Hz (configured in actuator.py)
+- **I2C Bus**: Bus 7 (`/dev/i2c-7` on the AGX Orin, header pins 3 and 5)
+- **PWM Frequency**: 60 Hz (`pwm_freq` in `actuator.yaml`)
 - **Resolution**: 12-bit (4096 steps)
 
 **Channel Assignments**:
@@ -23,8 +23,8 @@ PCA9685         Jetson/Computer
 ────────        ───────────────
 VCC      ────── 3.3V or 5V (check board)
 GND      ────── GND
-SDA      ────── I2C SDA (pin 3 on Jetson)
-SCL      ────── I2C SCL (pin 5 on Jetson)
+SDA      ────── I2C SDA (pin 3, I2C bus 7)
+SCL      ────── I2C SCL (pin 5, I2C bus 7)
 ```
 
 **Power**:
@@ -35,8 +35,8 @@ SCL      ────── I2C SCL (pin 5 on Jetson)
 
 **Device Detection**:
 ```bash
-# Check I2C devices on bus 1
-sudo i2cdetect -y 1
+# Check I2C devices on bus 7
+sudo i2cdetect -y 7
 
 # Expected output:
 #      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -63,7 +63,7 @@ The actuator node uses Adafruit's PCA9685 library:
 from Adafruit_PCA9685 import PCA9685
 
 # Initialize PCA9685
-pwm = PCA9685(address=0x40, busnum=1)
+pwm = PCA9685(address=0x40, busnum=7)  # i2c_busnum in actuator.yaml
 pwm.set_pwm_freq(60)  # 60 Hz for RC servos/ESC
 
 # Set motor PWM (channel 0)
@@ -78,34 +78,24 @@ pwm.set_pwm(1, 0, steering_pwm)
 **Hardware**: Brushless motor with Electronic Speed Controller (ESC)
 
 **PWM Signal Requirements**:
-- Frequency: 60 Hz (20ms period)
-- Pulse width: 1000-2000 μs (mapped to integer values)
+- Frequency: 60 Hz (16.7 ms period)
+- A PWM value is a count out of 4096 per period, so the pulse width is
+  `value × 16.67 ms / 4096` — about 4.07 μs per count. Neutral, 370, is a
+  1.51 ms pulse.
 
-**PWM Range**: 280-460
+**PWM values** (from `actuator.yaml`, which is the authority — read it there when it matters):
 
-**PWM Mapping**:
+| Parameter   | Value | Meaning                                       |
+|-------------|-------|-----------------------------------------------|
+| `min_pwm`   | 360   | Lowest value the controller commands (reverse) |
+| `brake_pwm` | 340   | Brake, used for forward-to-reverse transitions |
+| `init_pwm`  | 370   | Neutral — the vehicle is stopped              |
+| `max_pwm`   | 470   | Highest value the controller commands (forward) |
 
-| PWM Value | Function           | Description                  |
-|-----------|--------------------|------------------------------|
-| 280       | Maximum reverse    | Fastest reverse speed        |
-| 340       | Emergency brake    | Rapid deceleration           |
-| 350-369   | Reverse range      | Variable reverse speeds      |
-| 370       | Neutral/Dead zone  | No movement                  |
-| 371-400   | Forward range      | Variable forward speeds      |
-| 400-460   | Forward range      | Higher forward speeds        |
-| 460       | Maximum forward    | Fastest forward speed        |
-
-**Typical Velocity vs PWM** (vehicle-dependent, requires calibration):
-
-| PWM Value | Approximate Velocity |
-|-----------|----------------------|
-| 370       | 0.0 m/s (stopped)    |
-| 380       | ~0.5 m/s forward     |
-| 400       | ~1.0 m/s forward     |
-| 430       | ~2.0 m/s forward     |
-| 340       | Emergency brake      |
-| 350       | ~0.5 m/s reverse     |
-| 280       | Maximum reverse      |
+There is no fixed PWM-to-speed table. Speed is closed-loop: a PID controller
+in the actuator node adjusts the PWM against the hall-sensor velocity, so the
+PWM needed for a given speed changes with battery charge, load and floor. See
+[Tuning & Testing](./tuning-and-testing.md) for calibration.
 
 **Wiring**:
 ```
@@ -121,7 +111,7 @@ Battery- ───────────────────────�
 ```
 
 **Power Requirements**:
-- Operating voltage: Check ESC specifications (e.g., 2S-3S LiPo, 7.4V-11.1V)
+- Operating voltage: 7.4 V (2S LiPo) on this vehicle; check the ESC's rating before changing the battery
 - Current rating: Match to motor specifications
 - **Safety**: Always connect ESC battery last, disconnect first
 
@@ -130,23 +120,27 @@ Battery- ───────────────────────�
 **Hardware**: Standard RC servo (e.g., Futaba S3003)
 
 **PWM Signal Requirements**:
-- Frequency: 60 Hz (configured in PCA9685)
-- Center: 1500 μs (mapped to PWM value 400)
-- Range: 1000-2000 μs (mapped to PWM values 350-450)
+- Frequency: 60 Hz (shared with the motor channel)
 
-**PWM Range**: 350-450
+**PWM values** (from `actuator.yaml`). **The steering is reversed in
+hardware: a lower value turns right.**
 
-**PWM Mapping**:
+| Parameter    | Value | Steering position |
+|--------------|-------|-------------------|
+| `min_steer`  | 439   | Full right        |
+| `init_steer` | 489   | Centre (straight) |
+| `max_steer`  | 539   | Full left         |
 
-| PWM Value | Steering Position  | Approximate Angle |
-|-----------|--------------------|-------------------|
-| 350       | Maximum left       | -20°              |
-| 375       | Left               | -10°              |
-| 400       | Center (straight)  | 0°                |
-| 425       | Right              | +10°              |
-| 450       | Maximum right      | +20°              |
+**Maximum Steering Angle**: 0.349 rad ≈ 20° (`max_steer_angle` in
+`vehicle_info.param.yaml`). The actuator reads it, together with `wheel_base`
+and `wheel_tread`, from that file — the same one the planner uses — so there is
+no second copy to keep in step.
 
-**Maximum Steering Angle**: 0.349 rad ≈ 20° (from `vehicle_info.param.yaml`)
+The angle the wheels actually reach at full lock has **not been measured**. The
+angle-to-PWM conversion, `tire_angle_to_steer_ratio: -1000`, reaches the ±50
+count limit at only 0.05 rad, which suggests either the ratio or the 20° figure
+is wrong; see [known configuration defects, §8](https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md) for the circle test that
+settles it.
 
 **Wiring**:
 ```
@@ -167,8 +161,8 @@ Ground (black)  GND              5V supply-/GND
 **Physical Installation**:
 - Secure servo to chassis
 - Connect servo horn to steering linkage
-- Ensure full range of motion (350-450 PWM) without binding
-- Center servo at PWM 400 before connecting linkage
+- Ensure full range of motion (439–539 PWM) without binding
+- Center servo at PWM 489 before connecting linkage
 
 ## Hall Effect Sensor (Velocity Sensing)
 
@@ -190,18 +184,20 @@ KY-003          Jetson/Computer
 ──────          ───────────────
 VCC      ────── 5V or 3.3V
 GND      ────── GND
-Signal   ────── GPIO pin (configured in velocity_report.yaml)
+Signal   ────── Pin 15 (`pin` in velocity_report.yaml)
 ```
 
 **Example GPIO Configuration**:
 ```yaml
 # velocity_report.yaml
-gpio_pin: 17                   # GPIO pin number (BCM numbering)
+pin: 15                        # physical header pin (Jetson.GPIO BOARD numbering)
+wheel_diameter: 10.5           # cm
+markers_per_rotation: 12
 ```
 
 **Magnet Setup**:
 - **Magnets**: Small neodymium magnets (e.g., 5mm diameter)
-- **Quantity**: 4 magnets (configurable via `markers_per_rotation` parameter)
+- **Quantity**: 12 magnets on this vehicle (`markers_per_rotation` in `velocity_report.yaml`)
 - **Placement**: Evenly spaced around wheel rim
 - **Gap**: Sensor-to-magnet distance < 5mm for reliable detection
 - **Polarity**: North or South pole facing sensor (consistent orientation)
@@ -267,7 +263,7 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
                     ┌─────────────────┐
                     │  Computer/Jetson│
                     │                 │
-                    │  GPIO 17 ───────┼──→ Hall Effect Sensor
+                    │  Pin 15 ────────┼──→ Hall Effect Sensor
                     │  I2C SDA ───────┼──→ PCA9685 SDA
                     │  I2C SCL ───────┼──→ PCA9685 SCL
                     │  GND ───────────┼──→ Common GND
@@ -313,8 +309,8 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
 | PCA9685 Ch 1       | Servo Signal      |                 | Steering control PWM            |
 | Hall Effect VCC    | 5V or 3.3V        |                 | Sensor power                    |
 | Hall Effect GND    | Common GND        |                 |                                 |
-| Hall Effect Signal | GPIO 17           | BCM numbering   | Configurable                    |
-| ESC Battery+       | Battery+          | 7.4V-11.1V      | Motor power (check ESC rating)  |
+| Hall Effect Signal | Pin 15            | BOARD numbering | Configurable                    |
+| ESC Battery+       | Battery+          | 7.4 V (2S)      | Motor power (check ESC rating)  |
 | ESC Battery-       | Common GND        |                 |                                 |
 | Servo Power        | 5V external       | 1A+ capacity    | Separate from PCA9685 V+        |
 | Servo GND          | Common GND        |                 |                                 |
@@ -322,7 +318,7 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
 ### Power Distribution
 
 **Power Rails**:
-1. **Battery Power** (7.4V-11.1V): Motor ESC only
+1. **Battery Power** (7.4 V, 2S): Motor ESC only
 2. **5V External**: Servo and PCA9685 V+
 3. **3.3V/5V Logic**: PCA9685 VCC, Hall effect sensor
 4. **Common GND**: All components share common ground
@@ -346,7 +342,7 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
 
 ```bash
 # Check I2C device detection
-sudo i2cdetect -y 1
+sudo i2cdetect -y 7
 # Should show device at 0x40
 
 # Test PWM output (careful - vehicle may move!)
