@@ -3728,8 +3728,8 @@
 - <strong>Model</strong>: PCA9685 16-channel PWM controller
 - <strong>Interface</strong>: I2C
 - <strong>I2C Address</strong>: 0x40 (default)
-- <strong>I2C Bus</strong>: Bus 1 (<code>/dev/i2c-1</code> on Jetson)
-- <strong>PWM Frequency</strong>: 60 Hz (configured in actuator.py)
+- <strong>I2C Bus</strong>: Bus 7 (<code>/dev/i2c-7</code> on the AGX Orin, header pins 3 and 5)
+- <strong>PWM Frequency</strong>: 60 Hz (<code>pwm_freq</code> in <code>actuator.yaml</code>)
 - <strong>Resolution</strong>: 12-bit (4096 steps)</p>
 <p><strong>Channel Assignments</strong>:
 - <strong>Channel 0</strong>: Motor ESC control
@@ -3740,8 +3740,8 @@
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>────────        ───────────────
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>VCC      ────── 3.3V or 5V (check board)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GND      ────── GND
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>SDA      ────── I2C SDA (pin 3 on Jetson)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SCL      ────── I2C SCL (pin 5 on Jetson)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>SDA      ────── I2C SDA (pin 3, I2C bus 7)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SCL      ────── I2C SCL (pin 5, I2C bus 7)
 </span></code></pre></div>
 <p><strong>Power</strong>:
 - Logic power: 3.3V or 5V (from computer)
@@ -3749,8 +3749,8 @@
   - <strong>Important</strong>: Connect external 5V to V+ terminal for servos
   - Do NOT power servos from computer's 5V rail (insufficient current)</p>
 <p><strong>Device Detection</strong>:
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 1</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 7</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Expected output:</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">#      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f</span>
@@ -3770,7 +3770,7 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">Adafruit_PCA9685</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA9685</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Initialize PCA9685</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pwm</span> <span class="o">=</span> <span class="n">PCA9685</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="mh">0x40</span><span class="p">,</span> <span class="n">busnum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pwm</span> <span class="o">=</span> <span class="n">PCA9685</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="mh">0x40</span><span class="p">,</span> <span class="n">busnum</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># i2c_busnum in actuator.yaml</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">pwm</span><span class="o">.</span><span class="n">set_pwm_freq</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># 60 Hz for RC servos/ESC</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Set motor PWM (channel 0)</span>
@@ -3782,95 +3782,46 @@
 <h2 id="motor-esc">Motor ESC<a class="headerlink" href="#motor-esc" title="Permanent link">#</a></h2>
 <p><strong>Hardware</strong>: Brushless motor with Electronic Speed Controller (ESC)</p>
 <p><strong>PWM Signal Requirements</strong>:
-- Frequency: 60 Hz (20ms period)
-- Pulse width: 1000-2000 μs (mapped to integer values)</p>
-<p><strong>PWM Range</strong>: 280-460</p>
-<p><strong>PWM Mapping</strong>:</p>
+- Frequency: 60 Hz (16.7 ms period)
+- A PWM value is a count out of 4096 per period, so the pulse width is
+  <code>value × 16.67 ms / 4096</code> — about 4.07 μs per count. Neutral, 370, is a
+  1.51 ms pulse.</p>
+<p><strong>PWM values</strong> (from <code>actuator.yaml</code>, which is the authority — read it there when it matters):</p>
 <table>
 <thead>
 <tr>
-<th>PWM Value</th>
-<th>Function</th>
-<th>Description</th>
+<th>Parameter</th>
+<th>Value</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>280</td>
-<td>Maximum reverse</td>
-<td>Fastest reverse speed</td>
+<td><code>min_pwm</code></td>
+<td>360</td>
+<td>Lowest value the controller commands (reverse)</td>
 </tr>
 <tr>
+<td><code>brake_pwm</code></td>
 <td>340</td>
-<td>Emergency brake</td>
-<td>Rapid deceleration</td>
+<td>Brake, used for forward-to-reverse transitions</td>
 </tr>
 <tr>
-<td>350-369</td>
-<td>Reverse range</td>
-<td>Variable reverse speeds</td>
-</tr>
-<tr>
+<td><code>init_pwm</code></td>
 <td>370</td>
-<td>Neutral/Dead zone</td>
-<td>No movement</td>
+<td>Neutral — the vehicle is stopped</td>
 </tr>
 <tr>
-<td>371-400</td>
-<td>Forward range</td>
-<td>Variable forward speeds</td>
-</tr>
-<tr>
-<td>400-460</td>
-<td>Forward range</td>
-<td>Higher forward speeds</td>
-</tr>
-<tr>
-<td>460</td>
-<td>Maximum forward</td>
-<td>Fastest forward speed</td>
+<td><code>max_pwm</code></td>
+<td>470</td>
+<td>Highest value the controller commands (forward)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Typical Velocity vs PWM</strong> (vehicle-dependent, requires calibration):</p>
-<table>
-<thead>
-<tr>
-<th>PWM Value</th>
-<th>Approximate Velocity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>370</td>
-<td>0.0 m/s (stopped)</td>
-</tr>
-<tr>
-<td>380</td>
-<td>~0.5 m/s forward</td>
-</tr>
-<tr>
-<td>400</td>
-<td>~1.0 m/s forward</td>
-</tr>
-<tr>
-<td>430</td>
-<td>~2.0 m/s forward</td>
-</tr>
-<tr>
-<td>340</td>
-<td>Emergency brake</td>
-</tr>
-<tr>
-<td>350</td>
-<td>~0.5 m/s reverse</td>
-</tr>
-<tr>
-<td>280</td>
-<td>Maximum reverse</td>
-</tr>
-</tbody>
-</table>
+<p>There is no fixed PWM-to-speed table. Speed is closed-loop: a PID controller
+in the actuator node adjusts the PWM against the hall-sensor velocity, so the
+PWM needed for a given speed changes with battery charge, load and floor. See
+<a href="../tuning-and-testing/">Tuning &amp; Testing</a> for calibration.</p>
 <p><strong>Wiring</strong>:
 </p><div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ESC             PCA9685          Motor           Power
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>────            ───────          ─────           ─────
@@ -3883,54 +3834,50 @@
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Battery- ──────────────────────────────────────── Battery-/GND
 </span></code></pre></div>
 <p><strong>Power Requirements</strong>:
-- Operating voltage: Check ESC specifications (e.g., 2S-3S LiPo, 7.4V-11.1V)
+- Operating voltage: 7.4 V (2S LiPo) on this vehicle; check the ESC's rating before changing the battery
 - Current rating: Match to motor specifications
 - <strong>Safety</strong>: Always connect ESC battery last, disconnect first</p>
 <h2 id="steering-servo">Steering Servo<a class="headerlink" href="#steering-servo" title="Permanent link">#</a></h2>
 <p><strong>Hardware</strong>: Standard RC servo (e.g., Futaba S3003)</p>
 <p><strong>PWM Signal Requirements</strong>:
-- Frequency: 60 Hz (configured in PCA9685)
-- Center: 1500 μs (mapped to PWM value 400)
-- Range: 1000-2000 μs (mapped to PWM values 350-450)</p>
-<p><strong>PWM Range</strong>: 350-450</p>
-<p><strong>PWM Mapping</strong>:</p>
+- Frequency: 60 Hz (shared with the motor channel)</p>
+<p><strong>PWM values</strong> (from <code>actuator.yaml</code>). <strong>The steering is reversed in
+hardware: a lower value turns right.</strong></p>
 <table>
 <thead>
 <tr>
-<th>PWM Value</th>
-<th>Steering Position</th>
-<th>Approximate Angle</th>
+<th>Parameter</th>
+<th>Value</th>
+<th>Steering position</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>350</td>
-<td>Maximum left</td>
-<td>-20°</td>
+<td><code>min_steer</code></td>
+<td>439</td>
+<td>Full right</td>
 </tr>
 <tr>
-<td>375</td>
-<td>Left</td>
-<td>-10°</td>
+<td><code>init_steer</code></td>
+<td>489</td>
+<td>Centre (straight)</td>
 </tr>
 <tr>
-<td>400</td>
-<td>Center (straight)</td>
-<td>0°</td>
-</tr>
-<tr>
-<td>425</td>
-<td>Right</td>
-<td>+10°</td>
-</tr>
-<tr>
-<td>450</td>
-<td>Maximum right</td>
-<td>+20°</td>
+<td><code>max_steer</code></td>
+<td>539</td>
+<td>Full left</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Maximum Steering Angle</strong>: 0.349 rad ≈ 20° (from <code>vehicle_info.param.yaml</code>)</p>
+<p><strong>Maximum Steering Angle</strong>: 0.349 rad ≈ 20° (<code>max_steer_angle</code> in
+<code>vehicle_info.param.yaml</code>). The actuator reads it, together with <code>wheel_base</code>
+and <code>wheel_tread</code>, from that file — the same one the planner uses — so there is
+no second copy to keep in step.</p>
+<p>The angle the wheels actually reach at full lock has <strong>not been measured</strong>. The
+angle-to-PWM conversion, <code>tire_angle_to_steer_ratio: -1000</code>, reaches the ±50
+count limit at only 0.05 rad, which suggests either the ratio or the 20° figure
+is wrong; see <a href="https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md">known configuration defects, §8</a> for the circle test that
+settles it.</p>
 <p><strong>Wiring</strong>:
 </p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685          External Power
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────          ──────────────
@@ -3947,8 +3894,8 @@
 <p><strong>Physical Installation</strong>:
 - Secure servo to chassis
 - Connect servo horn to steering linkage
-- Ensure full range of motion (350-450 PWM) without binding
-- Center servo at PWM 400 before connecting linkage</p>
+- Ensure full range of motion (439–539 PWM) without binding
+- Center servo at PWM 489 before connecting linkage</p>
 <h2 id="hall-effect-sensor-velocity-sensing">Hall Effect Sensor (Velocity Sensing)<a class="headerlink" href="#hall-effect-sensor-velocity-sensing" title="Permanent link">#</a></h2>
 <p><strong>Hardware</strong>: KY-003 Hall effect magnetic sensor module</p>
 <p><strong>Purpose</strong>: Detect wheel rotation for velocity measurement</p>
@@ -3964,15 +3911,17 @@
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>──────          ───────────────
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>VCC      ────── 5V or 3.3V
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>GND      ────── GND
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Signal   ────── GPIO pin (configured in velocity_report.yaml)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Signal   ────── Pin 15 (`pin` in velocity_report.yaml)
 </span></code></pre></div>
 <p><strong>Example GPIO Configuration</strong>:
 </p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># velocity_report.yaml</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">gpio_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">17</span><span class="w">                   </span><span class="c1"># GPIO pin number (BCM numbering)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w">                        </span><span class="c1"># physical header pin (Jetson.GPIO BOARD numbering)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">wheel_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5</span><span class="w">           </span><span class="c1"># cm</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">markers_per_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
 </span></code></pre></div>
 <p><strong>Magnet Setup</strong>:
 - <strong>Magnets</strong>: Small neodymium magnets (e.g., 5mm diameter)
-- <strong>Quantity</strong>: 4 magnets (configurable via <code>markers_per_rotation</code> parameter)
+- <strong>Quantity</strong>: 12 magnets on this vehicle (<code>markers_per_rotation</code> in <code>velocity_report.yaml</code>)
 - <strong>Placement</strong>: Evenly spaced around wheel rim
 - <strong>Gap</strong>: Sensor-to-magnet distance &lt; 5mm for reliable detection
 - <strong>Polarity</strong>: North or South pole facing sensor (consistent orientation)</p>
@@ -4033,7 +3982,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>                    ┌─────────────────┐
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                    │  Computer/Jetson│
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                    │                 │
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    │  GPIO 17 ───────┼──→ Hall Effect Sensor
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    │  Pin 15 ────────┼──→ Hall Effect Sensor
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>                    │  I2C SDA ───────┼──→ PCA9685 SDA
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>                    │  I2C SCL ───────┼──→ PCA9685 SCL
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>                    │  GND ───────────┼──→ Common GND
@@ -4132,14 +4081,14 @@
 </tr>
 <tr>
 <td>Hall Effect Signal</td>
-<td>GPIO 17</td>
-<td>BCM numbering</td>
+<td>Pin 15</td>
+<td>BOARD numbering</td>
 <td>Configurable</td>
 </tr>
 <tr>
 <td>ESC Battery+</td>
 <td>Battery+</td>
-<td>7.4V-11.1V</td>
+<td>7.4 V (2S)</td>
 <td>Motor power (check ESC rating)</td>
 </tr>
 <tr>
@@ -4164,7 +4113,7 @@
 </table>
 <h3 id="power-distribution">Power Distribution<a class="headerlink" href="#power-distribution" title="Permanent link">#</a></h3>
 <p><strong>Power Rails</strong>:
-1. <strong>Battery Power</strong> (7.4V-11.1V): Motor ESC only
+1. <strong>Battery Power</strong> (7.4 V, 2S): Motor ESC only
 2. <strong>5V External</strong>: Servo and PCA9685 V+
 3. <strong>3.3V/5V Logic</strong>: PCA9685 VCC, Hall effect sensor
 4. <strong>Common GND</strong>: All components share common ground</p>
@@ -4182,7 +4131,7 @@
 <h2 id="testing-hardware-connections">Testing Hardware Connections<a class="headerlink" href="#testing-hardware-connections" title="Permanent link">#</a></h2>
 <h3 id="test-pca9685">Test PCA9685<a class="headerlink" href="#test-pca9685" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check I2C device detection</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Should show device at 0x40</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Test PWM output (careful - vehicle may move!)</span>

@@ -3728,8 +3728,8 @@
 - <strong>型號</strong>：PCA9685 16 通道 PWM 控制器
 - <strong>介面</strong>：I2C
 - <strong>I2C 位址</strong>：0x40（預設）
-- <strong>I2C 匯流排</strong>：Bus 1（Jetson 上的 <code>/dev/i2c-1</code>）
-- <strong>PWM 頻率</strong>：60 Hz（在 actuator.py 中配置）
+- <strong>I2C 匯流排</strong>：Bus 7（AGX Orin 上的 <code>/dev/i2c-7</code>，排針腳位 3 與 5）
+- <strong>PWM 頻率</strong>：60 Hz（<code>actuator.yaml</code> 中的 <code>pwm_freq</code>）
 - <strong>解析度</strong>：12 位元（4096 步進）</p>
 <p><strong>通道分配</strong>：
 - <strong>通道 0</strong>：電機 ESC 控制
@@ -3740,8 +3740,8 @@
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>────────        ───────────────
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>VCC      ────── 3.3V or 5V (check board)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GND      ────── GND
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>SDA      ────── I2C SDA (pin 3 on Jetson)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SCL      ────── I2C SCL (pin 5 on Jetson)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>SDA      ────── I2C SDA (pin 3, I2C bus 7)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SCL      ────── I2C SCL (pin 5, I2C bus 7)
 </span></code></pre></div>
 <p><strong>電源</strong>：
 - 邏輯電源：3.3V 或 5V（來自電腦）
@@ -3749,8 +3749,8 @@
   - <strong>重要</strong>：將外部 5V 連接至 V+ 端子以供伺服馬達使用
   - 請勿從電腦的 5V 軌供電給伺服馬達（電流不足）</p>
 <p><strong>裝置偵測</strong>：
-</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 1</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 7</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Expected output:</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">#      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f</span>
@@ -3770,7 +3770,7 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">Adafruit_PCA9685</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA9685</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Initialize PCA9685</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pwm</span> <span class="o">=</span> <span class="n">PCA9685</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="mh">0x40</span><span class="p">,</span> <span class="n">busnum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pwm</span> <span class="o">=</span> <span class="n">PCA9685</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="mh">0x40</span><span class="p">,</span> <span class="n">busnum</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># i2c_busnum in actuator.yaml</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">pwm</span><span class="o">.</span><span class="n">set_pwm_freq</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># 60 Hz for RC servos/ESC</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Set motor PWM (channel 0)</span>
@@ -3782,95 +3782,44 @@
 <h2 id="電機-esc">電機 ESC<a class="headerlink" href="#%E9%9B%BB%E6%A9%9F-esc" title="Permanent link">#</a></h2>
 <p><strong>硬體</strong>：配備電子調速器（ESC）的無刷馬達</p>
 <p><strong>PWM 訊號需求</strong>：
-- 頻率：60 Hz（20ms 週期）
-- 脈衝寬度：1000-2000 μs（映射至整數值）</p>
-<p><strong>PWM 範圍</strong>：280-460</p>
-<p><strong>PWM 映射</strong>：</p>
+- 頻率：60 Hz（16.7 ms 週期）
+- PWM 值是每個週期 4096 中的計數，因此脈衝寬度為
+  <code>value × 16.67 ms / 4096</code>——每個計數約 4.07 μs。空檔 370 對應 1.51 ms 的脈衝。</p>
+<p><strong>PWM 值</strong>（取自 <code>actuator.yaml</code>，以該檔案為準——重要時請直接查閱）：</p>
 <table>
 <thead>
 <tr>
-<th>PWM 值</th>
-<th>功能</th>
-<th>說明</th>
+<th>參數</th>
+<th>值</th>
+<th>意義</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>280</td>
-<td>最大倒車</td>
-<td>最快倒車速度</td>
+<td><code>min_pwm</code></td>
+<td>360</td>
+<td>控制器輸出的最低值（倒車）</td>
 </tr>
 <tr>
+<td><code>brake_pwm</code></td>
 <td>340</td>
-<td>緊急煞車</td>
-<td>快速減速</td>
+<td>煞車，用於前進轉倒車的過渡</td>
 </tr>
 <tr>
-<td>350-369</td>
-<td>倒車範圍</td>
-<td>可變倒車速度</td>
-</tr>
-<tr>
+<td><code>init_pwm</code></td>
 <td>370</td>
-<td>空檔/死區</td>
-<td>無移動</td>
+<td>空檔——車輛停止</td>
 </tr>
 <tr>
-<td>371-400</td>
-<td>前進範圍</td>
-<td>可變前進速度</td>
-</tr>
-<tr>
-<td>400-460</td>
-<td>前進範圍</td>
-<td>較高前進速度</td>
-</tr>
-<tr>
-<td>460</td>
-<td>最大前進</td>
-<td>最快前進速度</td>
+<td><code>max_pwm</code></td>
+<td>470</td>
+<td>控制器輸出的最高值（前進）</td>
 </tr>
 </tbody>
 </table>
-<p><strong>典型速度與 PWM 對應</strong>（取決於車輛，需要校正）：</p>
-<table>
-<thead>
-<tr>
-<th>PWM 值</th>
-<th>近似速度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>370</td>
-<td>0.0 m/s（停止）</td>
-</tr>
-<tr>
-<td>380</td>
-<td>~0.5 m/s 前進</td>
-</tr>
-<tr>
-<td>400</td>
-<td>~1.0 m/s 前進</td>
-</tr>
-<tr>
-<td>430</td>
-<td>~2.0 m/s 前進</td>
-</tr>
-<tr>
-<td>340</td>
-<td>緊急煞車</td>
-</tr>
-<tr>
-<td>350</td>
-<td>~0.5 m/s 倒車</td>
-</tr>
-<tr>
-<td>280</td>
-<td>最大倒車</td>
-</tr>
-</tbody>
-</table>
+<p>PWM 與速度之間沒有固定的對照表。速度採閉迴路控制：actuator 節點中的 PID
+控制器依據霍爾感測器量到的速度調整 PWM，因此達到某一速度所需的 PWM 會隨電池電量、
+負載與地面而改變。校正方式請參閱<a href="../tuning-and-testing/">調校與測試</a>。</p>
 <p><strong>配線</strong>：
 </p><div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ESC             PCA9685          Motor           Power
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>────            ───────          ─────           ─────
@@ -3883,54 +3832,47 @@
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Battery- ──────────────────────────────────────── Battery-/GND
 </span></code></pre></div>
 <p><strong>電源需求</strong>：
-- 工作電壓：檢查 ESC 規格（例如 2S-3S LiPo，7.4V-11.1V）
+- 工作電壓：本車為 7.4 V（2S LiPo）；更換電池前請先確認 ESC 的額定值
 - 電流額定值：需與馬達規格匹配
 - <strong>安全</strong>：務必最後連接 ESC 電池，最先移除</p>
 <h2 id="轉向伺服馬達">轉向伺服馬達<a class="headerlink" href="#%E8%BD%89%E5%90%91%E4%BC%BA%E6%9C%8D%E9%A6%AC%E9%81%94" title="Permanent link">#</a></h2>
 <p><strong>硬體</strong>：標準 RC 伺服馬達（例如 Futaba S3003）</p>
 <p><strong>PWM 訊號需求</strong>：
-- 頻率：60 Hz（在 PCA9685 中配置）
-- 中心：1500 μs（映射至 PWM 值 400）
-- 範圍：1000-2000 μs（映射至 PWM 值 350-450）</p>
-<p><strong>PWM 範圍</strong>：350-450</p>
-<p><strong>PWM 映射</strong>：</p>
+- 頻率：60 Hz（與電機通道共用）</p>
+<p><strong>PWM 值</strong>（取自 <code>actuator.yaml</code>）。<strong>轉向在硬體上是反向的：數值越低越往右轉。</strong></p>
 <table>
 <thead>
 <tr>
-<th>PWM 值</th>
+<th>參數</th>
+<th>值</th>
 <th>轉向位置</th>
-<th>近似角度</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>350</td>
-<td>最大左轉</td>
-<td>-20°</td>
-</tr>
-<tr>
-<td>375</td>
-<td>左轉</td>
-<td>-10°</td>
-</tr>
-<tr>
-<td>400</td>
-<td>中心（直行）</td>
-<td>0°</td>
-</tr>
-<tr>
-<td>425</td>
-<td>右轉</td>
-<td>+10°</td>
-</tr>
-<tr>
-<td>450</td>
+<td><code>min_steer</code></td>
+<td>439</td>
 <td>最大右轉</td>
-<td>+20°</td>
+</tr>
+<tr>
+<td><code>init_steer</code></td>
+<td>489</td>
+<td>中心（直行）</td>
+</tr>
+<tr>
+<td><code>max_steer</code></td>
+<td>539</td>
+<td>最大左轉</td>
 </tr>
 </tbody>
 </table>
-<p><strong>最大轉向角度</strong>：0.349 rad ≈ 20°（來自 <code>vehicle_info.param.yaml</code>）</p>
+<p><strong>最大轉向角度</strong>：0.349 rad ≈ 20°（<code>vehicle_info.param.yaml</code> 中的
+<code>max_steer_angle</code>）。actuator 會連同 <code>wheel_base</code> 與 <code>wheel_tread</code> 一起直接從該檔案讀取——
+也就是規劃器所用的同一份檔案——因此不需要維護第二份副本。</p>
+<p>車輪在最大轉角時實際達到的角度**尚未量測**。角度轉 PWM 的換算
+<code>tire_angle_to_steer_ratio: -1000</code> 在僅 0.05 rad 時就達到 ±50 計數的上限，
+這表示該比例或 20° 這個數字其中之一有誤；解決方法（繞圓測試）請參閱
+<a href="https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md">已知設定缺陷 §8</a>。</p>
 <p><strong>配線</strong>：
 </p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685          External Power
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────          ──────────────
@@ -3947,8 +3889,8 @@
 <p><strong>實體安裝</strong>：
 - 將伺服馬達固定在底盤上
 - 將伺服馬達臂連接至轉向連桿
-- 確保全範圍運動（350-450 PWM）不會卡住
-- 在連接連桿前，先將伺服馬達置於 PWM 400 的中心位置</p>
+- 確保全範圍運動（439–539 PWM）不會卡住
+- 在連接連桿前，先將伺服馬達置於 PWM 489 的中心位置</p>
 <h2 id="霍爾效應感測器速度感測">霍爾效應感測器（速度感測）<a class="headerlink" href="#%E9%9C%8D%E7%88%BE%E6%95%88%E6%87%89%E6%84%9F%E6%B8%AC%E5%99%A8%E9%80%9F%E5%BA%A6%E6%84%9F%E6%B8%AC" title="Permanent link">#</a></h2>
 <p><strong>硬體</strong>：KY-003 霍爾效應磁性感測器模組</p>
 <p><strong>用途</strong>：偵測輪胎旋轉以測量速度</p>
@@ -3964,15 +3906,17 @@
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>──────          ───────────────
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>VCC      ────── 5V or 3.3V
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>GND      ────── GND
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Signal   ────── GPIO pin (configured in velocity_report.yaml)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Signal   ────── Pin 15 (`pin` in velocity_report.yaml)
 </span></code></pre></div>
 <p><strong>GPIO 配置範例</strong>：
 </p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># velocity_report.yaml</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">gpio_pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">17</span><span class="w">                   </span><span class="c1"># GPIO pin number (BCM numbering)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w">                        </span><span class="c1"># physical header pin (Jetson.GPIO BOARD numbering)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">wheel_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5</span><span class="w">           </span><span class="c1"># cm</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">markers_per_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
 </span></code></pre></div>
 <p><strong>磁鐵設定</strong>：
 - <strong>磁鐵</strong>：小型釹磁鐵（例如 5mm 直徑）
-- <strong>數量</strong>：4 個磁鐵（可透過 <code>markers_per_rotation</code> 參數配置）
+- <strong>數量</strong>：本車使用 12 個磁鐵（<code>velocity_report.yaml</code> 中的 <code>markers_per_rotation</code>）
 - <strong>位置</strong>：均勻分布在輪圈周圍
 - <strong>間隙</strong>：感測器到磁鐵距離 &lt; 5mm 以確保可靠偵測
 - <strong>極性</strong>：北極或南極面向感測器（一致的方向）</p>
@@ -4033,7 +3977,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>                    ┌─────────────────┐
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                    │  Computer/Jetson│
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                    │                 │
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    │  GPIO 17 ───────┼──→ Hall Effect Sensor
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    │  Pin 15 ────────┼──→ Hall Effect Sensor
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>                    │  I2C SDA ───────┼──→ PCA9685 SDA
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>                    │  I2C SCL ───────┼──→ PCA9685 SCL
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>                    │  GND ───────────┼──→ Common GND
@@ -4132,14 +4076,14 @@
 </tr>
 <tr>
 <td>Hall Effect Signal</td>
-<td>GPIO 17</td>
-<td>BCM numbering</td>
+<td>Pin 15</td>
+<td>BOARD numbering</td>
 <td>可配置</td>
 </tr>
 <tr>
 <td>ESC Battery+</td>
 <td>Battery+</td>
-<td>7.4V-11.1V</td>
+<td>7.4 V (2S)</td>
 <td>電機電源（檢查 ESC 額定值）</td>
 </tr>
 <tr>
@@ -4164,7 +4108,7 @@
 </table>
 <h3 id="電源分配">電源分配<a class="headerlink" href="#%E9%9B%BB%E6%BA%90%E5%88%86%E9%85%8D" title="Permanent link">#</a></h3>
 <p><strong>電源軌</strong>：
-1. <strong>電池電源</strong>（7.4V-11.1V）：僅供電機 ESC 使用
+1. <strong>電池電源</strong>（7.4 V，2S）：僅供電機 ESC 使用
 2. <strong>5V 外部電源</strong>：伺服馬達與 PCA9685 V+
 3. <strong>3.3V/5V 邏輯電源</strong>：PCA9685 VCC、霍爾效應感測器
 4. <strong>共地 GND</strong>：所有元件共用共地</p>
@@ -4182,7 +4126,7 @@
 <h2 id="測試硬體連接">測試硬體連接<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6%E7%A1%AC%E9%AB%94%E9%80%A3%E6%8E%A5" title="Permanent link">#</a></h2>
 <h3 id="測試-pca9685">測試 PCA9685<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6-pca9685" title="Permanent link">#</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check I2C device detection</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Should show device at 0x40</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Test PWM output (careful - vehicle may move!)</span>
