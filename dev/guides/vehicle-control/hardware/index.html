@@ -3745,9 +3745,8 @@
 </span></code></pre></div>
 <p><strong>Power</strong>:
 - Logic power: 3.3V or 5V (from computer)
-- Servo power: External 5V supply (V+, GND)
-  - <strong>Important</strong>: Connect external 5V to V+ terminal for servos
-  - Do NOT power servos from computer's 5V rail (insufficient current)</p>
+- Servo power: V+ and GND from the Jetson's 5 V header pins as well, on this
+  vehicle (one servo; the header's 5 V pins are rated 1 A)</p>
 <p><strong>Device Detection</strong>:
 </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 7</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
@@ -3834,7 +3833,7 @@ PWM needed for a given speed changes with battery charge, load and floor. See
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Battery- ──────────────────────────────────────── Battery-/GND
 </span></code></pre></div>
 <p><strong>Power Requirements</strong>:
-- Operating voltage: 7.4 V (2S LiPo) on this vehicle; check the ESC's rating before changing the battery
+- Operating voltage: 11.1 V (3S LiPo) on this vehicle, a separate battery for the ESC alone; check the ESC's rating before changing it
 - Current rating: Match to motor specifications
 - <strong>Safety</strong>: Always connect ESC battery last, disconnect first</p>
 <h2 id="steering-servo">Steering Servo<a class="headerlink" href="#steering-servo" title="Permanent link">#</a></h2>
@@ -3879,18 +3878,18 @@ count limit at only 0.05 rad, which suggests either the ratio or the 20° figure
 is wrong; see <a href="https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md">known configuration defects, §8</a> for the circle test that
 settles it.</p>
 <p><strong>Wiring</strong>:
-</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685          External Power
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────          ──────────────
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Signal (white)  Channel 1
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Power (red)                      5V supply+
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Ground (black)  GND              5V supply-/GND
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Power (red)     V+ (5 V from the Jetson)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Ground (black)  GND
 </span></code></pre></div>
 <p><strong>Power Requirements</strong>:
 - Operating voltage: 4.8V - 6.0V (typical for standard servos)
 - Current draw: 0.5A - 1.5A (depending on load and speed)
-- <strong>Important</strong>: Use separate 5V power supply for servo
-  - Servo draws high current during motion
-  - Insufficient power causes jitter or failure to respond</p>
+- Powered from the PCA9685's V+ rail, which this vehicle feeds from the
+  Jetson's 5 V header pin. The servo draws its peak current while moving;
+  jitter or a servo that does not respond points at that supply first.</p>
 <p><strong>Physical Installation</strong>:
 - Secure servo to chassis
 - Connect servo horn to steering linkage
@@ -4013,9 +4012,9 @@ page, which also has the Jetson's 40-pin header pin by pin:</p>
 </tr>
 <tr>
 <td>PCA9685 V+</td>
-<td>5V external</td>
-<td>2A+ capacity</td>
-<td>Servo power supply</td>
+<td>Jetson 5 V</td>
+<td>Pin 2</td>
+<td>Servo rail</td>
 </tr>
 <tr>
 <td>PCA9685 GND</td>
@@ -4056,7 +4055,7 @@ page, which also has the Jetson's 40-pin header pin by pin:</p>
 <tr>
 <td>ESC Battery+</td>
 <td>Battery+</td>
-<td>7.4 V (2S)</td>
+<td>11.1 V (3S)</td>
 <td>Motor power (check ESC rating)</td>
 </tr>
 <tr>
@@ -4067,9 +4066,9 @@ page, which also has the Jetson's 40-pin header pin by pin:</p>
 </tr>
 <tr>
 <td>Servo Power</td>
-<td>5V external</td>
-<td>1A+ capacity</td>
-<td>Separate from PCA9685 V+</td>
+<td>PCA9685 V+</td>
+<td></td>
+<td>From the Jetson's 5 V</td>
 </tr>
 <tr>
 <td>Servo GND</td>
@@ -4081,9 +4080,8 @@ page, which also has the Jetson's 40-pin header pin by pin:</p>
 </table>
 <h3 id="power-distribution">Power Distribution<a class="headerlink" href="#power-distribution" title="Permanent link">#</a></h3>
 <p><strong>Power Rails</strong>:
-1. <strong>Battery Power</strong> (7.4 V, 2S): Motor ESC only
-2. <strong>5V External</strong>: Servo and PCA9685 V+
-3. <strong>3.3V/5V Logic</strong>: PCA9685 VCC, Hall effect sensor
+1. <strong>Battery Power</strong> (11.1 V, 3S): Motor ESC only
+2. <strong>Jetson 5 V</strong> (header pins 2 and 4): PCA9685 VCC and V+, servo, hall sensor
 4. <strong>Common GND</strong>: All components share common ground</p>
 <p><strong>Current Requirements</strong>:
 - Motor ESC: 10A-30A (depends on motor and load)

@@ -3814,7 +3814,8 @@ way.</p>
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">#</a></h2>
 <p><img alt="Power distribution" src="../../../figures/wiring/power.svg"></p>
 <p>Two batteries, two switches, and no connection between the two sides other
-than signal ground:</p>
+than signal ground. The PCA9685 and the steering servo run on the Orin's 5 V,
+so they belong to the computer side:</p>
 <table>
 <thead>
 <tr>
@@ -3835,9 +3836,14 @@ than signal ground:</p>
 <td>Jetson AGX Orin (DC jack), ZED Link, LiDAR, 5G router</td>
 </tr>
 <tr>
-<td>7.4 V (2S LiPo)</td>
+<td>11.1 V (3S LiPo)</td>
 <td>powertrain switch</td>
-<td>motor ESC; PCA9685 V+ (the servo rail)</td>
+<td>motor ESC only</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>Jetson header pins 2 and 4</td>
+<td>KY-003; PCA9685 logic (VCC) and servo rail (V+)</td>
 </tr>
 <tr>
 <td>servo rail</td>
@@ -3845,13 +3851,8 @@ than signal ground:</p>
 <td>steering servo power pin</td>
 </tr>
 <tr>
-<td>5 V</td>
-<td>Jetson header pins 2 and 4</td>
-<td>KY-003, PCA9685 logic (VCC)</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>the ESC's BEC (to confirm on the vehicle)</td>
+<td>6 V</td>
+<td>the ESC's built-in BEC, over its receiver lead</td>
 <td>RC receiver</td>
 </tr>
 </tbody>
@@ -4140,7 +4141,7 @@ and takes 12 V on its own DC input. The camera's IMU is the vehicle's IMU
 </tr>
 <tr>
 <td>V+</td>
-<td>7.4 V from the powertrain switch (servo rail)</td>
+<td>Jetson pin 2 (5 V), the servo rail</td>
 </tr>
 <tr>
 <td>ch0</td>
@@ -4161,8 +4162,10 @@ channel order is <code>actuator.yaml</code>'s: channel 0 is the motor, channel 1
 steering.</p>
 <h3 id="esc-and-motor">ESC and motor<a class="headerlink" href="#esc-and-motor" title="Permanent link">#</a></h3>
 <p>The motor ESC is a Dynamite Fuze brushless ESC. It takes the throttle pulse
-from the selector switch and 7.4 V from the powertrain switch, and drives the
-4274 / 1500 kV brushless motor on three phase leads.</p>
+from the selector switch and 11.1 V from its own 3S battery through the
+powertrain switch, and drives the 4274 / 1500 kV brushless motor on three
+phase leads. Its built-in 6 V BEC powers the RC receiver over the receiver
+lead, so the receiver needs no supply of its own.</p>
 <h2 id="5g-module-optional">5G module (optional)<a class="headerlink" href="#5g-module-optional" title="Permanent link">#</a></h2>
 <p>MOXA OnCell G4302 or similar: 12 V at 2 A from the DC-DC converter, two SIM
 slots (primary and backup carrier), and an Ethernet port that reaches the
@@ -4183,9 +4186,9 @@ Jetson through a USB-to-Ethernet adapter.</p>
 <td>cell monitor with alarm on the 6-cell balance lead</td>
 </tr>
 <tr>
-<td>2S, 7.4 V</td>
-<td>drive</td>
-<td>cell monitor with alarm on the 2-cell balance lead</td>
+<td>3S, 11.1 V</td>
+<td>drive (ESC only)</td>
+<td>cell monitor with alarm on the 3-cell balance lead</td>
 </tr>
 </tbody>
 </table>

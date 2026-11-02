@@ -3745,9 +3745,7 @@
 </span></code></pre></div>
 <p><strong>電源</strong>：
 - 邏輯電源：3.3V 或 5V（來自電腦）
-- 伺服馬達電源：外部 5V 供電（V+、GND）
-  - <strong>重要</strong>：將外部 5V 連接至 V+ 端子以供伺服馬達使用
-  - 請勿從電腦的 5V 軌供電給伺服馬達（電流不足）</p>
+- 伺服馬達電源：本車的 V+ 與 GND 同樣來自 Jetson 的 5 V 接頭針（只有一顆伺服；接頭的 5 V 針額定 1 A）</p>
 <p><strong>裝置偵測</strong>：
 </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check I2C devices on bus 7</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
@@ -3832,7 +3830,7 @@
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Battery- ──────────────────────────────────────── Battery-/GND
 </span></code></pre></div>
 <p><strong>電源需求</strong>：
-- 工作電壓：本車為 7.4 V（2S LiPo）；更換電池前請先確認 ESC 的額定值
+- 工作電壓：本車為 11.1 V（3S LiPo），為 ESC 專用的獨立電池；更換前請先確認 ESC 的額定值
 - 電流額定值：需與馬達規格匹配
 - <strong>安全</strong>：務必最後連接 ESC 電池，最先移除</p>
 <h2 id="轉向伺服馬達">轉向伺服馬達<a class="headerlink" href="#%E8%BD%89%E5%90%91%E4%BC%BA%E6%9C%8D%E9%A6%AC%E9%81%94" title="Permanent link">#</a></h2>
@@ -3874,18 +3872,16 @@
 這表示該比例或 20° 這個數字其中之一有誤；解決方法（繞圓測試）請參閱
 <a href="https://github.com/NEWSLabNTU/AutoSDV/blob/develop/docs/known-config-defects.md">已知設定缺陷 §8</a>。</p>
 <p><strong>配線</strong>：
-</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685          External Power
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────          ──────────────
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Servo           PCA9685
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>─────           ───────
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Signal (white)  Channel 1
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Power (red)                      5V supply+
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Ground (black)  GND              5V supply-/GND
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Power (red)     V+ (5 V from the Jetson)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Ground (black)  GND
 </span></code></pre></div>
 <p><strong>電源需求</strong>：
 - 工作電壓：4.8V - 6.0V（標準伺服馬達的典型值）
 - 電流消耗：0.5A - 1.5A（取決於負載與速度）
-- <strong>重要</strong>：使用獨立的 5V 電源供應給伺服馬達
-  - 伺服馬達在運動時會消耗高電流
-  - 電源不足會導致抖動或無法回應</p>
+- 由 PCA9685 的 V+ 電源軌供電，本車由 Jetson 的 5 V 接頭針供給。伺服馬達在運動時電流最大；抖動或沒有反應時先查這條電源。</p>
 <p><strong>實體安裝</strong>：
 - 將伺服馬達固定在底盤上
 - 將伺服馬達臂連接至轉向連桿
@@ -4005,9 +4001,9 @@
 </tr>
 <tr>
 <td>PCA9685 V+</td>
-<td>5V external</td>
-<td>2A+ capacity</td>
-<td>伺服馬達電源供應</td>
+<td>Jetson 5 V</td>
+<td>Pin 2</td>
+<td>伺服電源軌</td>
 </tr>
 <tr>
 <td>PCA9685 GND</td>
@@ -4048,7 +4044,7 @@
 <tr>
 <td>ESC Battery+</td>
 <td>Battery+</td>
-<td>7.4 V (2S)</td>
+<td>11.1 V (3S)</td>
 <td>電機電源（檢查 ESC 額定值）</td>
 </tr>
 <tr>
@@ -4059,9 +4055,9 @@
 </tr>
 <tr>
 <td>Servo Power</td>
-<td>5V external</td>
-<td>1A+ capacity</td>
-<td>與 PCA9685 V+ 分開</td>
+<td>PCA9685 V+</td>
+<td></td>
+<td>來自 Jetson 的 5 V</td>
 </tr>
 <tr>
 <td>Servo GND</td>
@@ -4073,9 +4069,8 @@
 </table>
 <h3 id="電源分配">電源分配<a class="headerlink" href="#%E9%9B%BB%E6%BA%90%E5%88%86%E9%85%8D" title="Permanent link">#</a></h3>
 <p><strong>電源軌</strong>：
-1. <strong>電池電源</strong>（7.4 V，2S）：僅供電機 ESC 使用
-2. <strong>5V 外部電源</strong>：伺服馬達與 PCA9685 V+
-3. <strong>3.3V/5V 邏輯電源</strong>：PCA9685 VCC、霍爾效應感測器
+1. <strong>電池電源</strong>（11.1 V，3S）：僅供電機 ESC 使用
+2. <strong>Jetson 5 V</strong>（接頭第 2、4 針）：PCA9685 VCC 與 V+、伺服馬達、霍爾感測器
 4. <strong>共地 GND</strong>：所有元件共用共地</p>
 <p><strong>電流需求</strong>：
 - 電機 ESC：10A-30A（取決於馬達與負載）
