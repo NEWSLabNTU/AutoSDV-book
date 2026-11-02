@@ -3814,8 +3814,9 @@ way.</p>
 <h2 id="power">Power<a class="headerlink" href="#power" title="Permanent link">#</a></h2>
 <p><img alt="Power distribution" src="../../../figures/wiring/power.svg"></p>
 <p>Two batteries, two switches, and no connection between the two sides other
-than signal ground. The PCA9685 and the steering servo run on the Orin's 5 V,
-so they belong to the computer side:</p>
+than signal ground. The PCA9685 only carries signals: its logic runs on the
+Orin's 5 V and its V+ terminal is unused, because the steering servo is
+powered from the drive battery through the ESC's BEC:</p>
 <table>
 <thead>
 <tr>
@@ -3838,22 +3839,17 @@ so they belong to the computer side:</p>
 <tr>
 <td>11.1 V (3S LiPo)</td>
 <td>powertrain switch</td>
-<td>motor ESC only</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>Jetson header pins 2 and 4</td>
-<td>KY-003; PCA9685 logic (VCC) and servo rail (V+)</td>
-</tr>
-<tr>
-<td>servo rail</td>
-<td>PCA9685 V+ terminal</td>
-<td>steering servo power pin</td>
+<td>motor ESC</td>
 </tr>
 <tr>
 <td>6 V</td>
 <td>the ESC's built-in BEC, over its receiver lead</td>
-<td>RC receiver</td>
+<td>RC receiver, steering servo</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>Jetson header pins 2 and 4</td>
+<td>KY-003; PCA9685 logic (VCC)</td>
 </tr>
 </tbody>
 </table>
@@ -4141,7 +4137,7 @@ and takes 12 V on its own DC input. The camera's IMU is the vehicle's IMU
 </tr>
 <tr>
 <td>V+</td>
-<td>Jetson pin 2 (5 V), the servo rail</td>
+<td>unused: the servo is powered from the ESC's BEC, not from this board</td>
 </tr>
 <tr>
 <td>ch0</td>
@@ -4165,7 +4161,8 @@ steering.</p>
 from the selector switch and 11.1 V from its own 3S battery through the
 powertrain switch, and drives the 4274 / 1500 kV brushless motor on three
 phase leads. Its built-in 6 V BEC powers the RC receiver over the receiver
-lead, so the receiver needs no supply of its own.</p>
+lead, and the steering servo with it, so neither needs a supply of its own;
+the PCA9685 only sends them their pulses.</p>
 <h2 id="5g-module-optional">5G module (optional)<a class="headerlink" href="#5g-module-optional" title="Permanent link">#</a></h2>
 <p>MOXA OnCell G4302 or similar: 12 V at 2 A from the DC-DC converter, two SIM
 slots (primary and backup carrier), and an Ethernet port that reaches the
@@ -4187,7 +4184,7 @@ Jetson through a USB-to-Ethernet adapter.</p>
 </tr>
 <tr>
 <td>3S, 11.1 V</td>
-<td>drive (ESC only)</td>
+<td>drive: ESC, and through its BEC the receiver and servo</td>
 <td>cell monitor with alarm on the 3-cell balance lead</td>
 </tr>
 </tbody>

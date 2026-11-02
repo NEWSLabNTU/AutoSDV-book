@@ -3807,7 +3807,7 @@
 <p>選擇開關決定誰在駕駛：一個位置讓 ESC 與伺服收到 PCA9685 的脈衝，另一個位置則收到接收器的脈衝。Orin 不會被告知目前是哪一個；它一律從霍爾感測器與相機讀取車輛狀態。</p>
 <h2 id="電源">電源<a class="headerlink" href="#%E9%9B%BB%E6%BA%90" title="Permanent link">#</a></h2>
 <p><img alt="電源分配" src="../../../../figures/wiring/power.svg"></p>
-<p>兩顆電池、兩個開關，兩側除了訊號地之外沒有任何連接。PCA9685 與轉向伺服使用 Orin 的 5 V，所以屬於電腦側：</p>
+<p>兩顆電池、兩個開關，兩側除了訊號地之外沒有任何連接。PCA9685 只傳送訊號：其邏輯電源來自 Orin 的 5 V，V+ 端子未使用，因為轉向伺服是由動力電池經 ESC 的 BEC 供電：</p>
 <table>
 <thead>
 <tr>
@@ -3830,22 +3830,17 @@
 <tr>
 <td>11.1 V（3S LiPo）</td>
 <td>動力開關</td>
-<td>僅電機 ESC</td>
-</tr>
-<tr>
-<td>5 V</td>
-<td>Jetson 接頭第 2、4 針</td>
-<td>KY-003；PCA9685 邏輯電源（VCC）與伺服電源軌（V+）</td>
-</tr>
-<tr>
-<td>伺服電源軌</td>
-<td>PCA9685 V+ 端子</td>
-<td>轉向伺服的電源針</td>
+<td>電機 ESC</td>
 </tr>
 <tr>
 <td>6 V</td>
 <td>ESC 內建 BEC，經其接收器線</td>
-<td>RC 接收器</td>
+<td>RC 接收器、轉向伺服</td>
+</tr>
+<tr>
+<td>5 V</td>
+<td>Jetson 接頭第 2、4 針</td>
+<td>KY-003；PCA9685 邏輯電源（VCC）</td>
 </tr>
 </tbody>
 </table>
@@ -4118,7 +4113,7 @@
 </tr>
 <tr>
 <td>V+</td>
-<td>Jetson 第 2 針（5 V），即伺服電源軌</td>
+<td>未使用：伺服由 ESC 的 BEC 供電，不經此板</td>
 </tr>
 <tr>
 <td>ch0</td>
@@ -4136,7 +4131,7 @@
 </table>
 <p>I2C 位址 0x40，PWM 頻率 60 Hz（<code>actuator.yaml</code> 的 <code>pwm_freq</code>）。通道順序以 <code>actuator.yaml</code> 為準：通道 0 是馬達，通道 1 是轉向。</p>
 <h3 id="esc-與馬達">ESC 與馬達<a class="headerlink" href="#esc-%E8%88%87%E9%A6%AC%E9%81%94" title="Permanent link">#</a></h3>
-<p>電機 ESC 是 Dynamite Fuze 無刷 ESC。它從選擇開關取得油門脈衝、經動力開關從自己的 3S 電池取得 11.1 V，並以三條相線驅動 4274 / 1500 kV 無刷馬達。其內建的 6 V BEC 經接收器線供電給 RC 接收器，接收器不需另外的電源。</p>
+<p>電機 ESC 是 Dynamite Fuze 無刷 ESC。它從選擇開關取得油門脈衝、經動力開關從自己的 3S 電池取得 11.1 V，並以三條相線驅動 4274 / 1500 kV 無刷馬達。其內建的 6 V BEC 經接收器線供電給 RC 接收器，也一併供電給轉向伺服，兩者都不需另外的電源；PCA9685 只送脈衝給它們。</p>
 <h2 id="5g-模組選配">5G 模組（選配）<a class="headerlink" href="#5g-%E6%A8%A1%E7%B5%84%E9%81%B8%E9%85%8D" title="Permanent link">#</a></h2>
 <p>MOXA OnCell G4302 或同類產品：由 DC-DC 轉換器供應 12 V、2 A，兩個 SIM 卡槽（主要與備用電信商），以及一個經 USB 轉乙太網路轉接器連到 Jetson 的乙太網路埠。</p>
 <h2 id="電池管理">電池管理<a class="headerlink" href="#%E9%9B%BB%E6%B1%A0%E7%AE%A1%E7%90%86" title="Permanent link">#</a></h2>
@@ -4156,7 +4151,7 @@
 </tr>
 <tr>
 <td>3S，11.1 V</td>
-<td>動力（僅 ESC）</td>
+<td>動力：ESC，並經其 BEC 供電給接收器與伺服</td>
 <td>電芯監視器，警報接在 3 芯平衡線</td>
 </tr>
 </tbody>
