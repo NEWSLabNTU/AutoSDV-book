@@ -263,7 +263,7 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
                     ┌─────────────────┐
                     │  Computer/Jetson│
                     │                 │
-                    │  Pin 15 ────────┼──→ Hall Effect Sensor
+                    │  Pin 16 ────────┼──→ Hall Effect Sensor
                     │  I2C SDA ───────┼──→ PCA9685 SDA
                     │  I2C SCL ───────┼──→ PCA9685 SCL
                     │  GND ───────────┼──→ Common GND
@@ -309,7 +309,7 @@ For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
 | PCA9685 Ch 1       | Servo Signal      |                 | Steering control PWM            |
 | Hall Effect VCC    | 5V or 3.3V        |                 | Sensor power                    |
 | Hall Effect GND    | Common GND        |                 |                                 |
-| Hall Effect Signal | Pin 15            | BOARD numbering | Configurable                    |
+| Hall Effect Signal | Pin 16            | BOARD numbering | Configurable                    |
 | ESC Battery+       | Battery+          | 7.4 V (2S)      | Motor power (check ESC rating)  |
 | ESC Battery-       | Common GND        |                 |                                 |
 | Servo Power        | 5V external       | 1A+ capacity    | Separate from PCA9685 V+        |

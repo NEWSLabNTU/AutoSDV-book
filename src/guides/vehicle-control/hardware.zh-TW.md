@@ -266,7 +266,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
                     ┌─────────────────┐
                     │  Computer/Jetson│
                     │                 │
-                    │  Pin 15 ────────┼──→ Hall Effect Sensor
+                    │  Pin 16 ────────┼──→ Hall Effect Sensor
                     │  I2C SDA ───────┼──→ PCA9685 SDA
                     │  I2C SCL ───────┼──→ PCA9685 SCL
                     │  GND ───────────┼──→ Common GND
@@ -312,7 +312,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 | PCA9685 Ch 1       | Servo Signal      |                 | 轉向控制 PWM                    |
 | Hall Effect VCC    | 5V or 3.3V        |                 | 感測器電源                      |
 | Hall Effect GND    | Common GND        |                 |                                 |
-| Hall Effect Signal | Pin 15            | BOARD numbering | 可配置                          |
+| Hall Effect Signal | Pin 16            | BOARD numbering | 可配置                          |
 | ESC Battery+       | Battery+          | 7.4 V (2S)      | 電機電源（檢查 ESC 額定值）     |
 | ESC Battery-       | Common GND        |                 |                                 |
 | Servo Power        | 5V external       | 1A+ capacity    | 與 PCA9685 V+ 分開              |

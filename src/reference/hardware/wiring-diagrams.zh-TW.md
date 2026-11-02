@@ -76,7 +76,7 @@ I2C Bus 1 (MPU9250 IMU)
 GPIO (KY-003 Hall Sensor)
 ├── Pin 2: 5V Power
 ├── Pin 14: Ground
-└── Pin 15: GPIO27 Signal
+└── Pin 16: GPIO8 Signal
 ```
 
 ## 感測器連接
@@ -235,7 +235,7 @@ MOXA OnCell G4302 (or similar)
 |         | GND                                     | 9              | 10             | UART1_RX UART #1 Receive                |          |
 |         | UART1_RTS UART #1 Request to Send       | 11             | 12             | I2S2_CLK Audio I2S #2 Clock             |          |
 |         | GPIO32 GPIO #32                         | 13             | 14             | GND                                     | KY-003   |
-| KY-003  | GPIO27 (PWM)                            | 15             | 16             | GPIO8                                   |          |
+|         | GPIO27 (PWM)                            | 15             | 16             | GPIO8                                   | KY-003   |
 | MPU9250 | 3.3 VDC Power, 1A max                   | 17             | 18             | GPIO35 (PWM)                            |          |
 |         | SPI1_MOSI SPI #1 Master Out/Slave In    | 19             | 20             | GND                                     | MPU9250  |
 |         | SPI1_MISO SPI #1 Master In/Slave Out    | 21             | 22             | GPIO17 GPIO                             |          |
