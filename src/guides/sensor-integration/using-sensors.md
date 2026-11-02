@@ -94,7 +94,7 @@ Instead of using predefined suites, you can select individual sensors:
 just launch "lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch "lidar_model:=robin-w camera_model:=none imu_source:=zed use_gnss:=false"
 ```
 
 ### Available Options
@@ -111,7 +111,6 @@ just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gns
 
 **IMU Sources:**
 - `zed` - ZED built-in IMU (default)
-- `mpu9250` - External MPU9250 IMU
 
 **GNSS Receivers:**
 - `ublox` - u-blox ZED-F9R (RTK-capable, default)

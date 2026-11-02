@@ -75,7 +75,7 @@ pwm.set_pwm(1, 0, steering_pwm)
 
 ## Motor ESC
 
-**Hardware**: Brushless motor with Electronic Speed Controller (ESC)
+**Hardware**: Dynamite Fuze brushless ESC driving a 4274 / 1500 kV brushless motor
 
 **PWM Signal Requirements**:
 - Frequency: 60 Hz (16.7 ms period)
@@ -190,7 +190,7 @@ Signal   ────── Pin 16 (`pin` in velocity_report.yaml)
 **Example GPIO Configuration**:
 ```yaml
 # velocity_report.yaml
-pin: 15                        # physical header pin (Jetson.GPIO BOARD numbering)
+pin: 16                        # physical header pin (Jetson.GPIO BOARD numbering)
 wheel_diameter: 10.5           # cm
 markers_per_rotation: 12
 ```
@@ -248,53 +248,22 @@ Some sensors may require pull-up resistor on signal line:
 - **Fallback Mode** steering (v < 0.3 m/s)
 - Open-loop feedforward control at low speeds
 
-**Typical IMU Types**:
-- MPU9250 (I2C/SPI)
-- ZED camera built-in IMU
-- Other 6-DOF or 9-DOF IMUs
+**Source**: the ZED X Mini's built-in IMU (`imu_source:=zed`); the vehicle
+carries no separate IMU.
 
 For IMU setup, see [Sensor Integration guides](../sensor-integration/imu.md).
 
 ## Wiring Summary
 
-### Complete Wiring Diagram
+### Wiring figures
 
-```
-                    ┌─────────────────┐
-                    │  Computer/Jetson│
-                    │                 │
-                    │  Pin 16 ────────┼──→ Hall Effect Sensor
-                    │  I2C SDA ───────┼──→ PCA9685 SDA
-                    │  I2C SCL ───────┼──→ PCA9685 SCL
-                    │  GND ───────────┼──→ Common GND
-                    └─────────────────┘
-                            │
-                            │ I2C
-                            ↓
-                    ┌─────────────────┐
-                    │    PCA9685      │
-                    │  I2C: 0x40      │
-                    │                 │
-                    │  Channel 0 ─────┼──→ Motor ESC Signal
-                    │  Channel 1 ─────┼──→ Steering Servo Signal
-                    │  GND ───────────┼──→ Common GND
-                    │  V+ ────────────┼──← 5V External (for servos)
-                    └─────────────────┘
-                            │
-                    ┌───────┴──────────┐
-                    │                  │
-                    ↓                  ↓
-            ┌─────────────┐    ┌─────────────┐
-            │  Motor ESC  │    │ Servo       │
-            │             │    │             │
-            │  Battery+ ──┼──← Battery+      │  Power ──← 5V Ext
-            │  Battery- ──┼──→ Common GND    │  GND ────→ Common GND
-            │             │    │             │
-            │  Motor A ───┼──→ Brushless     │
-            │  Motor B ───┼──→ Motor         │
-            │  Motor C ───┼──→              │
-            └─────────────┘    └─────────────┘
-```
+The signal side and the power side, as drawn on the
+[Wiring Diagrams](../../reference/hardware/wiring-diagrams.md) reference
+page, which also has the Jetson's 40-pin header pin by pin:
+
+![Signal and data connections](../../figures/wiring/overview.svg)
+
+![Power distribution](../../figures/wiring/power.svg)
 
 ### Connection Table
 

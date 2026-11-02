@@ -84,7 +84,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 **Solutions by Sensor Type**:
 - **LiDAR**: Check network settings, IP configuration
 - **Camera**: Verify ZED SDK installed, GMSL connection
-- **IMU**: Check I2C bus, device address
+- **IMU**: Built into the ZED camera; check the camera first
 - **GNSS**: Ensure clear sky view, wait for satellite acquisition
 
 ---
@@ -379,42 +379,13 @@ See [Camera Sensors - Namespace Workaround](./camera.md#special-namespace-workar
 
 ### IMU
 
-#### MPU9250 Not Detected
-
-**Symptoms**: i2cdetect doesn't show device
-
-**Solutions**:
-1. **Check I2C bus**:
-   ```bash
-   # List I2C buses
-   ls /dev/i2c-*
-
-   # Scan bus 1
-   sudo i2cdetect -y -r 1
-   # Should show device at 0x68 or 0x69
-   ```
-
-2. **Verify wiring**:
-   - VCC → 3.3V (not 5V!)
-   - GND → GND
-   - SDA → Pin 3 (I2C1 SDA)
-   - SCL → Pin 5 (I2C1 SCL)
-
-3. **Check I2C address**:
-   ```bash
-   # Try alternate address
-   sudo i2cdetect -y -r 1
-   # Look for 0x68 or 0x69
-   ```
-
 #### Noisy IMU Data
 
 **Symptoms**: Large fluctuations, unstable orientation
 
 **Solutions**:
-1. **Check IMU configuration**: See [IMU Sensors - Configuration](./imu.md#configuration)
+1. **Check IMU configuration**: See [IMU Sensors](./imu.md)
 2. **Secure mounting**: Minimize vibration
-3. **Add software filtering**: Low-pass filter in driver config
 
 #### ZED IMU Not Publishing
 
@@ -647,7 +618,7 @@ du -sh *
 For sensor-specific troubleshooting, see:
 - [LiDAR Sensors](./lidar.md) - Robin-W, Velodyne, Blickfeld issues
 - [Camera Sensors](./camera.md) - ZED camera troubleshooting
-- [IMU Sensors](./imu.md) - MPU9250 and ZED IMU issues
+- [IMU Sensors](./imu.md) - ZED IMU issues
 - [GNSS Sensors](./gnss.md) - GNSS and RTK troubleshooting
 
 For integration help:

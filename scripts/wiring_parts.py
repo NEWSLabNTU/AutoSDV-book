@@ -188,15 +188,15 @@ def receiver() -> str:
     )
 
 
-def toggle_3pdt() -> str:
-    """3PDT toggle switch: body, nut, lever, solder lugs."""
+def selector_switch() -> str:
+    """Selector switch, Orin or joystick: body, nut, lever, solder lugs."""
     return (
         f'<rect x="54" y="50" width="52" height="46" rx="3" fill="#eceff1" {STROKE}/>'
         + f'<rect x="64" y="38" width="32" height="14" fill="{METAL}" {STROKE}/>'
         + f'<rect x="76" y="10" width="8" height="30" rx="4" fill="{METAL}" {STROKE}/>'
         + "".join(_pins(64 + c * 16, 102 + r * 8, 1, r=2.5, color=METAL)
                   for c in range(3) for r in range(2))
-        + _text(80, 78, "AUTO", 9, "#263238", weight="bold")
+        + _text(80, 78, "SEL", 9, "#263238", weight="bold")
     )
 
 
@@ -214,12 +214,12 @@ def arbiter() -> str:
     )
 
 
-def vesc() -> str:
-    """VESC: board on an aluminium heat spreader, three phase leads."""
+def esc() -> str:
+    """Brushless ESC: finned case, battery leads in, three phase leads out."""
     return (
         f'<rect x="22" y="28" width="104" height="70" rx="4" fill="#78909c" {STROKE}/>'
         + f'<rect x="30" y="36" width="88" height="54" rx="2" fill="{PCB_BLACK}"/>'
-        + _text(74, 68, "VESC", 14, WHITE, weight="bold")
+        + _text(74, 68, "ESC", 14, WHITE, weight="bold")
         + "".join(f'<path d="M126 {44 + i * 14} H150" stroke="{c}" stroke-width="4"/>'
                   for i, c in enumerate(("#1e88e5", "#fdd835", "#212121")))
         + '<path d="M22 52 H6" stroke="#d32f2f" stroke-width="4"/>'
@@ -261,15 +261,13 @@ DRAWINGS = {
     "zed-link": (zed_link, 160, 120),
     "zed-x-mini": (zed_x_mini, 160, 120),
     "lidar": (lidar, 160, 120),
-    "mpu9250": (mpu9250, 160, 120),
     "ky003": (ky003, 160, 120),
     "moxa-5g": (modem_5g, 160, 120),
     "gps": (gps, 160, 120),
     "pca9685": (pca9685, 160, 120),
     "receiver": (receiver, 160, 120),
-    "auto-mode-switch": (toggle_3pdt, 160, 120),
-    "arbiter": (arbiter, 160, 120),
-    "vesc": (vesc, 160, 120),
+    "selector-switch": (selector_switch, 160, 120),
+    "esc": (esc, 160, 120),
     "motor": (motor, 160, 120),
     "servo": (servo, 160, 120),
 }

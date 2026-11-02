@@ -102,7 +102,7 @@ just launch "sensor_suite:=robin_zed use_gnss:=false"
 just launch "lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"
 
 # Minimal setup (LiDAR only)
-just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"
+just launch "lidar_model:=robin-w camera_model:=none imu_source:=zed use_gnss:=false"
 ```
 
 ### 可用選項
@@ -119,7 +119,6 @@ just launch "lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gns
 
 **IMU 來源：**
 - `zed` - ZED 內建 IMU（預設）
-- `mpu9250` - 外部 MPU9250 IMU
 
 **GNSS 接收器：**
 - `ublox` - u-blox ZED-F9R（支援 RTK，預設）

@@ -27,7 +27,6 @@ The vehicle is assembled using core components and optional supplementary compon
 | ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **# Navigation Sensors**                                           |
 | KY-003 Hall Effect Sensor                                          |
-| MPU9250 9-axis Motion Processing Unit                              |
 | ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **# Battery and Power Supply**                                     |
 | Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60                       |

@@ -92,7 +92,7 @@ ros2 launch autosdv_launch autosdv.launch.yaml --log-level DEBUG
 **按感測器類型的解決方案**：
 - **光達**：檢查網路設定、IP 配置
 - **相機**：驗證已安裝 ZED SDK、GMSL 連接
-- **IMU**：檢查 I2C 匯流排、裝置位址
+- **IMU**：內建於 ZED 相機；先檢查相機
 - **GNSS**：確保有清晰的天空視野，等待衛星取得
 
 ---
@@ -387,42 +387,13 @@ vglrun rviz2
 
 ### IMU
 
-#### 未偵測到 MPU9250
-
-**症狀**：i2cdetect 未顯示裝置
-
-**解決方案**：
-1. **檢查 I2C 匯流排**：
-   ```bash
-   # List I2C buses
-   ls /dev/i2c-*
-
-   # Scan bus 1
-   sudo i2cdetect -y -r 1
-   # Should show device at 0x68 or 0x69
-   ```
-
-2. **驗證配線**：
-   - VCC → 3.3V（不是 5V！）
-   - GND → GND
-   - SDA → Pin 3（I2C1 SDA）
-   - SCL → Pin 5（I2C1 SCL）
-
-3. **檢查 I2C 位址**：
-   ```bash
-   # Try alternate address
-   sudo i2cdetect -y -r 1
-   # Look for 0x68 or 0x69
-   ```
-
 #### IMU 資料雜訊
 
 **症狀**：大幅波動、方向不穩定
 
 **解決方案**：
-1. **檢查 IMU 配置**：請參閱 [IMU 感測器 - 配置](./imu.md#configuration)
+1. **檢查 IMU 配置**：請參閱 [IMU 感測器](./imu.md)
 2. **固定安裝**：將振動降至最低
-3. **加入軟體濾波**：驅動程式配置中的低通濾波器
 
 #### ZED IMU 未發布
 
@@ -655,7 +626,7 @@ du -sh *
 有關感測器特定的疑難排解，請參閱：
 - [光達感測器](./lidar.md) - Robin-W、Velodyne、Blickfeld 問題
 - [相機感測器](./camera.md) - ZED 相機疑難排解
-- [IMU 感測器](./imu.md) - MPU9250 和 ZED IMU 問題
+- [IMU 感測器](./imu.md) - ZED IMU 問題
 - [GNSS 感測器](./gnss.md) - GNSS 和 RTK 疑難排解
 
 有關整合協助：

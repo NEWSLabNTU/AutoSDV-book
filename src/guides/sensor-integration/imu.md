@@ -1,85 +1,12 @@
 # IMU Sensors
 
-Configuration details for supported IMU sources.
+Configuration details for the vehicle's IMU source.
 
-## Supported IMUs
+## Supported IMU
 
-| Model | Type | Update Rate | Features | Config |
-|-------|------|-------------|----------|--------|
-| **MPU9250** | 9-axis (external) | ~100 Hz | Accel, Gyro, Magnetometer | `imu_source:=mpu9250` |
-| **ZED Built-in** | 6-axis (integrated) | 400 Hz | Accel, Gyro, Camera-synced | `imu_source:=zed` |
-
-**Recommendation**: Use ZED built-in IMU when using ZED camera (factory-calibrated, synchronized, more stable).
-
-## MPU9250
-
-### Hardware Connection
-
-**Interface**: I2C Bus 1 on Jetson
-
-```
-MPU9250          Jetson AGX Orin
-───────          ───────────────
-VCC (3.3V) ───── Pin 1 (3.3V)
-GND ──────────── Pin 6 (GND)
-SDA ──────────── Pin 3 (I2C SDA)
-SCL ──────────── Pin 5 (I2C SCL)
-```
-
-**I2C Address**: 0x68 (default) or 0x69 (if AD0 pin high)
-
-### Driver Package
-
-**Location**: `src/sensor_component/external/ros2_mpu9250_driver/`
-
-### Configuration
-
-**I2C settings**:
-```yaml
-/**:
-  ros__parameters:
-    i2c_bus: 1
-    i2c_address: 0x68
-    frame_id: "mpu9250_link"
-```
-
-**Calibration** (for accurate measurements):
-```yaml
-/**:
-  ros__parameters:
-    accel_bias: [0.0, 0.0, 0.0]
-    gyro_bias: [0.0, 0.0, 0.0]
-    mag_bias: [0.0, 0.0, 0.0]
-```
-
-### Test Standalone
-
-```bash
-# Check I2C device detected
-sudo i2cdetect -y -r 1
-# Should show 68 at address 0x68
-
-# Build and launch driver
-colcon build --packages-select mpu9250driver
-source install/setup.bash
-ros2 run mpu9250driver mpu9250driver
-
-# Verify IMU data
-ros2 topic hz /imu/data  # ~100 Hz
-ros2 topic echo /imu/data --once
-```
-
-### Troubleshooting
-
-**Device not detected**:
-- Check wiring (SDA, SCL, VCC, GND)
-- Verify I2C enabled: `ls /dev/i2c-*`
-- Try alternate address 0x69
-
-**Noisy data**:
-- Calibrate IMU (record bias values)
-- Secure mounting (minimize vibration)
-- Add low-pass filter in software
+The vehicle's IMU is the one built into the ZED X Mini camera: a 6-axis
+(accelerometer and gyroscope) sensor, camera-synced, publishing at 400 Hz.
+It is selected with `imu_source:=zed`, which every sensor suite does.
 
 ## ZED Built-in IMU
 
@@ -115,8 +42,8 @@ sensors.publish_imu_tf: true         # Publish TF transform
 
 - **Factory-calibrated**: No manual calibration needed
 - **Synchronized**: Hardware-synced with camera frames (precise timestamps)
-- **Higher rate**: 400 Hz vs 100 Hz (MPU9250)
-- **More stable**: Professional-grade sensor, lower drift
+- **High rate**: 400 Hz
+- **Stable**: Professional-grade sensor, low drift
 
 ### Test
 
@@ -145,12 +72,12 @@ ros2 topic hz /zedxm/zed_node/imu/data  # ~400 Hz
 
 ## IMU Data Format
 
-Both IMUs publish standard `sensor_msgs/Imu`:
+The IMU publishes standard `sensor_msgs/Imu`:
 
 ```yaml
 header:
   stamp: {sec, nanosec}
-  frame_id: "mpu9250_link" or "zed_imu_link"
+  frame_id: "zed_imu_link"
 
 orientation: {x, y, z, w}           # Quaternion
 angular_velocity: {x, y, z}         # rad/s
@@ -160,10 +87,6 @@ linear_acceleration: {x, y, z}      # m/s²
 ## Quick Reference
 
 ```bash
-# MPU9250
-sudo i2cdetect -y -r 1                    # Check I2C device
-ros2 topic hz /sensing/imu/mpu9250/imu_raw
-
 # ZED IMU
 ros2 topic hz /sensing/imu/zed/imu_raw
 ros2 topic echo /sensing/camera/zedxm/imu/data --once

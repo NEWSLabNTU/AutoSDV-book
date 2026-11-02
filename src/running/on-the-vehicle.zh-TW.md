@@ -149,10 +149,10 @@ play_launch launch --web-addr 0.0.0.0:8081 autosdv_launch autosdv.launch.yaml [A
 
 | 參數 | 預設 | 意義 |
 |------|------|------|
-| `sensor_suite` | `vlp32c_zed_imu` | 預先定義的組合：`robin_zed`、`robin_zed_mpu`、`vlp32c_zed`、`vlp32c_zed_mpu`、`vlp32c_zed_imu`、`cube1_usb`、`custom` |
+| `sensor_suite` | `vlp32c_zed_imu` | 預先定義的組合：`robin_zed`、`vlp32c_zed`、`vlp32c_zed_imu`、`cube1_usb`、`custom` |
 | `lidar_model` | *(組合)* | `cube1`、`robin-w`、`vlp32c` |
 | `camera_model` | *(組合)* | `zedxm`、`usb`、`none` |
-| `imu_source` | *(組合)* | `mpu9250`、`zed` |
+| `imu_source` | *(組合)* | `zed` |
 | `gnss_receiver` | *(組合)* | `ublox`、`septentrio`、`garmin` |
 | `use_gnss` | *(組合)* | 戶外運作時啟用 GNSS |
 | `use_ntrip` | `true` | RTK 修正用的 NTRIP 用戶端（僅 u-blox） |

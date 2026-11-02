@@ -47,14 +47,10 @@ def pin_fill(name: str) -> str:
 
 # Parts below the header: (key, drawing, x, title, subtitle, [(pin label, header pin, colour)])
 PARTS = [
-    ("pca", "pca9685", 960, "PCA9685 PWM driver", "I2C bus 7, address 0x40",
-     [("VCC", 4, RED), ("GND", 6, BLACK), ("SDA", 3, BLUE), ("SCL", 5, YELLOW)]),
-    ("hall", "ky003", 660, "KY-003 hall sensor", "rear wheel, 12 magnets",
+    ("hall", "ky003", 360, "KY-003 hall sensor", "rear wheel, 12 magnets",
      [("+", 2, RED), ("-", 14, BLACK), ("S", 16, GREEN)]),
-    ("imu", "mpu9250", 360, "MPU9250 IMU", "I2C bus 1",
-     [("VCC", 17, ORANGE), ("GND", 20, BLACK), ("SDA", 27, BLUE), ("SCL", 28, YELLOW)]),
-    ("arb", "arbiter", 60, "Arbiter board", "XIAO RP2350",
-     [("D10 AUTO", 22, PURPLE), ("GND", 25, BLACK)]),
+    ("pca", "pca9685", 760, "PCA9685 PWM driver", "I2C bus 7, address 0x40",
+     [("VCC", 4, RED), ("GND", 6, BLACK), ("SDA", 3, BLUE), ("SCL", 5, YELLOW)]),
 ]
 
 NOTES = {
@@ -62,9 +58,6 @@ NOTES = {
              "At 5 V its pull-up puts 5 V on S, a",
              "3.3 V pin: add a 10k/20k divider or",
              "move the pull-up to 3.3 V."],
-    "arb": ["High only in AUTO; 1 kohm series",
-            "resistor on the board. Pin 22 is",
-            "proposed: nothing reads it yet."],
     "pca": ["V+ (servo rail) comes from the",
             "7.4 V side: see the power figure."],
 }
@@ -145,8 +138,8 @@ def render() -> str:
         box_w = 240
         out.append(f'<rect x="{px}" y="{PART_Y}" width="{box_w}" height="200" rx="6" '
                    f'fill="#fafafa" stroke="#9e9e9e"/>')
-        out.append(f'<g transform="translate({px + 40} {PART_Y + 38}) scale(1.0)">'
-                   + getattr(parts, drawing.replace("-", "_"))() + "</g>")
+        out.append(f'<g transform="translate({px + 40} {PART_Y + 38})">'
+                   + parts.DRAWINGS[drawing][0]() + "</g>")
         out.append(text(px + box_w / 2, PART_Y + 176, title, 13, weight="bold"))
         out.append(text(px + box_w / 2, PART_Y + 193, sub, 11, color="#616161"))
         n = len(pins)
@@ -185,9 +178,8 @@ def render() -> str:
     # Legend.
     lx, ly = 40, 1110
     out.append(text(lx, ly, "Wires:", 12, "start", "bold"))
-    for i, (label, color) in enumerate((("5 V", RED), ("3.3 V", ORANGE), ("GND", BLACK),
-                                        ("SDA", BLUE), ("SCL", YELLOW), ("hall signal", GREEN),
-                                        ("AUTO line", PURPLE))):
+    for i, (label, color) in enumerate((("5 V", RED), ("GND", BLACK), ("SDA", BLUE),
+                                        ("SCL", YELLOW), ("hall signal", GREEN))):
         x = lx + 70 + i * 120
         out.append(f'<rect x="{x}" y="{ly - 10}" width="28" height="6" fill="{color}"/>')
         out.append(text(x + 34, ly - 2, label, 12, "start"))

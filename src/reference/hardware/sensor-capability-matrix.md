@@ -96,11 +96,9 @@ override whatever the suite chose. From `sensing.launch.xml`:
 |---|---|---|---|---|---|---|
 | `vlp32c_zed_imu` *(default)* | `vlp32c` | `none` | `zed` | `ublox` | true | false |
 | `vlp32c_zed` | `vlp32c` | `zedxm` | `zed` | `ublox` | true | true |
-| `vlp32c_zed_mpu` | `vlp32c` | `zedxm` | `mpu9250` | `ublox` | true | true |
 | `robin_zed` | `robin-w` | `zedxm` | `zed` | `ublox` | true | true |
-| `robin_zed_mpu` | `robin-w` | `zedxm` | `mpu9250` | `ublox` | true | true |
-| `cube1_usb` | `cube1` | `usb` | `mpu9250` | `ublox` | true | false |
-| `custom` | `vlp32c` | `zedxm` | `mpu9250` | `garmin` | true | — |
+| `cube1_usb` | `cube1` | `usb` | `zed` | `ublox` | true | false |
+| `custom` | `vlp32c` | `zedxm` | `zed` | `garmin` | true | — |
 
 The default suite is `vlp32c_zed_imu`, so the default LiDAR is the VLP-32C —
 the only one of the three that can feed 2-D MCL, and one of the two that can be
@@ -120,7 +118,7 @@ Individual selectors, for `sensor_suite:=custom` or to override one value:
 |----------|--------|
 | `lidar_model` | `robin-w`, `vlp32c`, `cube1` |
 | `camera_model` | `zedxm`, `usb`, `none` |
-| `imu_source` | `mpu9250`, `zed` |
+| `imu_source` | `zed` |
 | `gnss_receiver` | `ublox`, `septentrio`, `garmin` |
 
 ## Choosing by what you need

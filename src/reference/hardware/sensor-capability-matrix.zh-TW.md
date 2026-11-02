@@ -94,11 +94,9 @@ Translation Metadata:
 |---|---|---|---|---|---|---|
 | `vlp32c_zed_imu` *（預設）* | `vlp32c` | `none` | `zed` | `ublox` | true | false |
 | `vlp32c_zed` | `vlp32c` | `zedxm` | `zed` | `ublox` | true | true |
-| `vlp32c_zed_mpu` | `vlp32c` | `zedxm` | `mpu9250` | `ublox` | true | true |
 | `robin_zed` | `robin-w` | `zedxm` | `zed` | `ublox` | true | true |
-| `robin_zed_mpu` | `robin-w` | `zedxm` | `mpu9250` | `ublox` | true | true |
-| `cube1_usb` | `cube1` | `usb` | `mpu9250` | `ublox` | true | false |
-| `custom` | `vlp32c` | `zedxm` | `mpu9250` | `garmin` | true | — |
+| `cube1_usb` | `cube1` | `usb` | `zed` | `ublox` | true | false |
+| `custom` | `vlp32c` | `zedxm` | `zed` | `garmin` | true | — |
 
 預設套組是 `vlp32c_zed_imu`，所以預設光達是 VLP-32C——三者之中唯一能餵給 2D MCL 的
 一顆，也是能被去畸變的兩顆之一。
@@ -117,7 +115,7 @@ just launch sensor_suite:=robin_zed
 |----------|--------|
 | `lidar_model` | `robin-w`、`vlp32c`、`cube1` |
 | `camera_model` | `zedxm`、`usb`、`none` |
-| `imu_source` | `mpu9250`、`zed` |
+| `imu_source` | `zed` |
 | `gnss_receiver` | `ublox`、`septentrio`、`garmin` |
 
 ## 依需求選擇

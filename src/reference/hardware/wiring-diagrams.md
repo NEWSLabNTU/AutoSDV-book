@@ -1,246 +1,170 @@
 # Wiring Diagrams
 
-Detailed electrical connections and power distribution for the AutoSDV platform.
+Every electrical connection on the vehicle, in three figures: the signal and
+data links, the power distribution, and the Jetson's 40-pin header pin by
+pin. The figures are generated from source in the book repository
+(`just diagrams`), so a wiring change is a change to one file there.
 
-⚠️ **WARNING**: Always disconnect batteries before wiring changes
+⚠️ **WARNING**: Always disconnect both batteries before wiring changes.
 
-## Power Distribution Overview
+## Signals and data
 
-### Upper Power System (22.2V Battery)
-```
-Main Battery (22.2V) ──── DC-DC (12V) ──┬── Jetson AGX Orin
-                                        ├── ZED Link Capture Card
-                                        ├── LiDAR (optional)
-                                        └── 5G Module (optional)
+![Signal and data connections](../../figures/wiring/overview.svg)
 
-Jetson AGX Orin GPIO ──┬── 3.3V Pin 17 ──── MPU9250 (IMU)
-                       ├── 5V Pin 2 ─────── KY-003 Hall Sensors
-                       └── 5V Pin 4 ─────── PCA9685 PWM Driver
+| Link | From | To | Carries |
+|---|---|---|---|
+| GMSL2 | ZED X Mini | ZED Link capture card | stereo video and the camera's IMU; also powers the camera |
+| Samtec CSI | ZED Link | Jetson AGX Orin (underside) | camera data |
+| Ethernet | LiDAR | Jetson | point clouds (addresses below) |
+| USB | 5G router (optional) | Jetson, via a USB-to-Ethernet adapter | uplink |
+| USB | GNSS receiver (optional) | Jetson | position fixes |
+| GPIO | KY-003 hall sensor | Jetson header pin 16 | one pulse per magnet, 12 per wheel turn |
+| I2C bus 7 | Jetson header pins 3 and 5 | PCA9685, address 0x40 | PWM commands |
+| PWM | PCA9685 ch0, ch1 | selector switch | the Orin's throttle and steer pulses |
+| PWM | RC receiver | selector switch | the joystick's throttle and steer pulses |
+| PWM | selector switch | motor ESC (throttle), steering servo (steer) | whichever source the switch selects |
+| 3 phases | motor ESC | brushless motor | motor current |
 
-ZED Link ──────────── GMSL2 Cable ───────── ZED X Mini Camera
-```
+The selector switch decides who drives: in one position the ESC and the servo
+see the PCA9685's pulses, in the other the receiver's. The Orin is not told
+which; it reads the car's state from the hall sensor and the camera either
+way.
 
-### Motor Power System (7.4V Battery)
-```
-Motor Battery (7.4V) ──┬── ESC ──────────── Brushless Motor
-                       └── PCA9685 ──────── Steering Servo
-```
+## Power
 
-## NVIDIA Jetson AGX Orin Connections
+![Power distribution](../../figures/wiring/power.svg)
 
-### Main Interfaces
+Two batteries, two switches, and no connection between the two sides other
+than signal ground:
 
-```
-Jetson AGX Orin
-├── Power Input
-│   └── DC Jack: 12V from DC-DC Converter
-│
-├── Ethernet Port
-│   └── LiDAR Connection (if equipped)
-│
-├── USB Ports
-│   ├── USB Port: USB-to-Ethernet Adapter → 5G Module (if equipped)
-│   └── USB Port: GPS Receiver (optional)
-│
-├── SAMTEC CSI Port (bottom mounted)
-│   └── ZED Link Capture Card
-│       ├── GMSL2 Ports → ZED X Mini Camera
-│       └── DC Power Input (12V)
-│
-└── GPIO Header (40-pin) → See GPIO Connections section
-```
+| Rail | Source | Loads |
+|---|---|---|
+| 22.2 V (6S LiPo) | upper power switch, then the DC-DC converter | — |
+| 12 V | DC-DC converter output | Jetson AGX Orin (DC jack), ZED Link, LiDAR, 5G router |
+| 7.4 V (2S LiPo) | powertrain switch | motor ESC; PCA9685 V+ (the servo rail) |
+| servo rail | PCA9685 V+ terminal | steering servo power pin |
+| 5 V | Jetson header pins 2 and 4 | KY-003, PCA9685 logic (VCC) |
+| 5 V | the ESC's BEC (to confirm on the vehicle) | RC receiver |
 
-### GPIO Header Connections
+Each battery has its own cell monitor with an alarm on the JST-XH balance
+lead. The ZED X Mini draws its power over the GMSL2 cable from the ZED Link,
+which is why it has no line of its own in the power figure.
 
-```
-I2C Bus 7 (PCA9685 PWM Driver)
-├── Pin 3: I2C5_DAT (SDA)
-├── Pin 4: 5V Power
-├── Pin 5: I2C5_CLK (SCL)
-└── Pin 6: Ground
+## Jetson AGX Orin 40-pin header
 
-I2C Bus 1 (MPU9250 IMU)
-├── Pin 17: 3.3V Power
-├── Pin 20: Ground
-├── Pin 27: I2C2_DAT (SDA)
-└── Pin 28: I2C2_CLK (SCL)
+![40-pin header](../../figures/wiring/orin-header.svg)
 
-GPIO (KY-003 Hall Sensor)
-├── Pin 2: 5V Power
-├── Pin 14: Ground
-└── Pin 16: GPIO8 Signal
-```
+Pin numbers are BOARD numbers, the ones `velocity_report.yaml` and
+Jetson.GPIO use. Pin 1 is at the top right when you face the header, marked
+by a white triangle on the carrier board; odd pins run along the top row.
+Pin names are NVIDIA's, from the carrier board specification.
 
-## Sensor Connections
+| Device | Label | Pin | Pin | Label | Device |
+|---|---|---|---|---|---|
+| | 3.3V | 1 | 2 | 5.0V | KY-003 |
+| PCA9685 | I2C5_DAT (I2C bus 7) | 3 | 4 | 5.0V | PCA9685 |
+| PCA9685 | I2C5_CLK (I2C bus 7) | 5 | 6 | GND | PCA9685 |
+| | MCLK05 | 7 | 8 | UART1_TX | |
+| | GND | 9 | 10 | UART1_RX | |
+| | UART1_RTS | 11 | 12 | I2S2_CLK | |
+| | GPIO32 | 13 | 14 | GND | KY-003 |
+| | GPIO27 (PWM) | 15 | 16 | GPIO08 | KY-003 |
+| | 3.3V | 17 | 18 | GPIO35 (PWM) | |
+| | SPI1_MOSI | 19 | 20 | GND | |
+| | SPI1_MISO | 21 | 22 | GPIO17 | |
+| | SPI1_SCK | 23 | 24 | SPI1_CS0_N | |
+| | GND | 25 | 26 | SPI1_CS1_N | |
+| | I2C2_DAT (I2C bus 1) | 27 | 28 | I2C2_CLK (I2C bus 1) | |
+| | CAN0_DIN | 29 | 30 | GND | |
+| | CAN0_DOUT | 31 | 32 | GPIO09 | |
+| | CAN1_DOUT | 33 | 34 | GND | |
+| | I2S_FS | 35 | 36 | UART1_CTS | |
+| | CAN1_DIN | 37 | 38 | I2S_SDIN | |
+| | GND | 39 | 40 | I2S_SDOUT | |
 
-### LiDAR Connections (Model Specific)
+The hall sensor moved from pin 15 to pin 16 on 2026-10-27, after pin 15 on
+one car stopped delivering edges; every car now uses pin 16. Powered from
+5 V, the KY-003's pull-up puts 5 V on its signal pin, which is a 3.3 V input:
+add a 10 kΩ / 20 kΩ divider, or move the pull-up to 3.3 V.
 
-**Velodyne VLP-32C:**
-```
-VLP-32C
-├── Power: 12V from DC-DC converter
-├── Ethernet: Direct to Jetson
-│   ├── IP: 192.168.1.201
-│   └── Port: 2368 (data), 8308 (position)
-└── GPS Sync: Optional PPS input
-```
+The full pinout is on NVIDIA's
+[hardware layout page](https://docs.nvidia.com/jetson/agx-orin-devkit/user-guide/latest/hardware_layout.html).
 
-**Seyond Robin-W:**
-```
-Robin-W
-├── Power: 12V from DC-DC converter
-├── Ethernet: Cat6 to Jetson
-│   ├── IP: 192.168.1.10
-│   └── Port: 2368
-└── Sync: IEEE 1588 PTP
-```
+## Sensors
 
-**Blickfeld Cube1:**
-```
-Cube1
-├── Power: 12V from DC-DC converter
-├── Ethernet: RJ45 to Jetson
-│   ├── IP: 192.168.1.21
-│   └── Port: 8000
-└── Status LED: RGB indicator
-```
+### LiDAR
 
-### Camera System (ZED X Mini)
+One LiDAR at a time, on the Jetson's Ethernet port, powered from the 12 V
+rail.
 
-```
-ZED X Mini Camera
-└── GMSL2 Fakra Cable ──── ZED Link Capture Card
-```
+| Model | Address | Ports | Time sync |
+|---|---|---|---|
+| Velodyne VLP-32C | 192.168.1.201 | 2368 (data), 8308 (position) | optional PPS input |
+| Seyond Robin-W | 192.168.1.10 | 2368 | IEEE 1588 PTP |
+| Blickfeld Cube1 | 192.168.1.21 | 8000 | — |
 
-*Note: Camera receives power through GMSL2 connection from ZED Link. The ZED Link is attached to the bottom of the Jetson AGX Orin via SAMTEC CSI port.*
+### Camera and IMU (ZED X Mini)
 
-### IMU (MPU9250)
+The ZED X Mini connects to the ZED Link capture card over one GMSL2 Fakra
+cable, which carries video, the camera's IMU data and power. The ZED Link
+sits on the underside of the Jetson AGX Orin, on the Samtec CSI connector,
+and takes 12 V on its own DC input. The camera's IMU is the vehicle's IMU
+(`imu_source:=zed`).
 
-```
-MPU9250 Module (I2C Bus 1)
-├── VCC ────── 3.3V (Jetson Pin 17)
-├── GND ────── GND (Jetson Pin 20)
-├── SDA ────── I2C2_DAT (Jetson Pin 27)
-└── SCL ────── I2C2_CLK (Jetson Pin 28)
-```
+### Hall sensor (KY-003)
 
-### Hall Sensor (KY-003)
+| KY-003 | Jetson header |
+|---|---|
+| + | pin 2 (5 V) |
+| − | pin 14 (GND) |
+| S | pin 16 (GPIO08) |
 
-```
-KY-003 Hall Sensor
-├── VCC ────── 5V (Jetson Pin 2)
-├── GND ────── GND (Jetson Pin 14)
-└── Signal ── GPIO8 (Jetson Pin 16)
-```
+Twelve magnets on the rear wheel; the
+[hardware page](../../guides/vehicle-control/hardware.md) covers mounting.
 
-### GPS Module (Optional)
+### GNSS receiver (optional)
 
-```
-u-blox GPS (if equipped)
-├── VCC ────── 5V (USB powered)
-├── GND ────── Ground
-├── TX ─────── UART RX (Jetson Pin 10)
-├── RX ─────── UART TX (Jetson Pin 8)
-└── PPS ────── GPIO (Optional timing)
-```
+A u-blox receiver on USB, powered by the port. Its PPS output is not wired.
 
-## Motor Control System
+## Motor control
 
-### PWM Driver (PCA9685)
+### PCA9685 PWM driver
 
-```
-PCA9685 Board (I2C Bus 7)
-├── Power
-│   ├── VCC: 5V (Jetson Pin 4)
-│   ├── GND: Ground (Jetson Pin 6)
-│   └── V+: 7.4V Motor Battery
-│
-├── I2C Interface
-│   ├── SDA ── I2C5_DAT (Jetson Pin 3)
-│   ├── SCL ── I2C5_CLK (Jetson Pin 5)
-│   └── Addr: 0x40 (default)
-│
-└── PWM Outputs
-    ├── Channel 0: Steering Servo
-    ├── Channel 1: ESC Throttle
-    └── Channel 2-15: Available
-```
+| PCA9685 | Connects to |
+|---|---|
+| VCC | Jetson pin 4 (5 V) |
+| GND | Jetson pin 6 |
+| SDA | Jetson pin 3 (I2C5_DAT, bus 7) |
+| SCL | Jetson pin 5 (I2C5_CLK, bus 7) |
+| V+ | 7.4 V from the powertrain switch (servo rail) |
+| ch0 | motor ESC throttle, through the selector switch |
+| ch1 | steering servo, through the selector switch |
+| ch2–ch15 | free |
 
-### Motor and ESC
+I2C address 0x40, PWM frequency 60 Hz (`pwm_freq` in `actuator.yaml`). The
+channel order is `actuator.yaml`'s: channel 0 is the motor, channel 1 the
+steering.
 
-```
-Brushless Motor System
-├── ESC (Electronic Speed Controller)
-│   ├── Input: PWM from PCA9685 Ch1
-│   ├── Power: 7.4V from battery
-│   └── Output: 3-phase to motor
-│
-└── Motor (4274/1500kv)
-    ├── Phase A,B,C from ESC
-    └── Hall sensors (optional)
-```
+### ESC and motor
 
-## 5G Module (Optional)
+The motor ESC is a Dynamite Fuze brushless ESC. It takes the throttle pulse
+from the selector switch and 7.4 V from the powertrain switch, and drives the
+4274 / 1500 kV brushless motor on three phase leads.
 
-```
-MOXA OnCell G4302 (or similar)
-├── Power
-│   ├── Input: 12V @ 2A
-│   └── Ground: Common ground
-│
-├── Data Connection
-│   └── Ethernet → USB-to-Ethernet Adapter → Jetson USB
-│
-└── SIM Slots
-    ├── SIM1: Primary carrier
-    └── SIM2: Backup carrier
-```
+## 5G module (optional)
 
-## Battery Management
+MOXA OnCell G4302 or similar: 12 V at 2 A from the DC-DC converter, two SIM
+slots (primary and backup carrier), and an Ethernet port that reaches the
+Jetson through a USB-to-Ethernet adapter.
 
-### Battery Monitoring
+## Battery management
 
-```
-6S Battery (22.2V) - Upper Power
-├── Cell 1-6 Balance Leads
-└── JST-XH to Battery Monitor/Alarm
+| Battery | Use | Monitor |
+|---|---|---|
+| 6S, 22.2 V | computer and sensors | cell monitor with alarm on the 6-cell balance lead |
+| 2S, 7.4 V | drive | cell monitor with alarm on the 2-cell balance lead |
 
-2S Battery (7.4V) - Motor Power
-├── Cell 1-2 Balance Leads
-└── JST-XH to Battery Monitor/Alarm
-```
-
-*Note: Each battery has its own independent monitor with built-in alarm.*
-
-## GPIO 40-Pin Header Reference
-
-The detailed pinout specification can be found on [JetsonHacks](https://jetsonhacks.com/nvidia-jetson-agx-orin-gpio-header-pinout/).
-
-**Physical Layout Note:** Pin 1-2 are physically on the rightmost side of the header when viewing the Jetson from above. Pin 39-40 are on the leftmost side.
-
-| Device  | Label                                   | Pin No. (Upper) | Pin No. (Lower) | Label                                   | Device  |
-|---------|-----------------------------------------|-----------------|-----------------|-----------------------------------------|---------|
-|         | 3.3 VDC Power, 1A max                   | 1               | 2               | 5.0 VDC Power, 1A max                   | KY-003  |
-| PCA9685 | I2C5_DAT General I2C5 Data I2C Bus 7    | 3               | 4               | 5.0 VDC Power, 1A max                   | PCA9685 |
-| PCA9685 | I2C5_CLK General I2C #5 Clock I2C Bus 7 | 5               | 6               | GND                                     | PCA9685 |
-|         | MCLK05 Audio Master Clock               | 7               | 8               | UART1_TX UART #1 Transmit               |         |
-|         | GND                                     | 9               | 10              | UART1_RX UART #1 Receive                |         |
-|         | UART1_RTS UART #1 Request to Send       | 11              | 12              | I2S2_CLK Audio I2S #2 Clock             |         |
-|         | GPIO32 GPIO #32                         | 13              | 14              | GND                                     | KY-003  |
-|         | GPIO27 (PWM)                            | 15              | 16              | GPIO8                                   | KY-003  |
-| MPU9250 | 3.3 VDC Power, 1A max                   | 17              | 18              | GPIO35 (PWM)                            |         |
-|         | SPI1_MOSI SPI #1 Master Out/Slave In    | 19              | 20              | GND                                     | MPU9250 |
-|         | SPI1_MISO SPI #1 Master In/Slave Out    | 21              | 22              | GPIO17 GPIO                             |         |
-|         | SPI1_SCK SPI #1 Shift Clock             | 23              | 24              | SPI1_CS0_N SPI #1 Chip Select #0        |         |
-|         | GND                                     | 25              | 26              | SPI1_CS1_N SPI #1 Chip Select #1        |         |
-| MPU9250 | I2C2_DAT General I2C #2 Data I2C Bus 1  | 27              | 28              | I2C2_CLK General I2C #2 Clock I2C Bus 1 | MPU9250 |
-|         | Reserved                                | 29              | 30              | GND                                     |         |
-|         | Reserved                                | 31              | 32              | GPIO9                                   |         |
-|         | Reserved                                | 33              | 34              | GND                                     |         |
-|         | I2S_FS AUDIO I2S #2 Left/Right Clock    | 35              | 36              | UART1_CTS UART #1 Clear to Send         |         |
-|         | Reserved                                | 37              | 38              | I2S_SDIN Audio I2S #2 Data In           |         |
-|         | GND                                     | 39              | 40              | I2S_SDOUT Audio I2S #2 Data Out         |         |
-
+Each monitor is independent; neither battery charges or feeds the other.
 
 ## Next Steps
 

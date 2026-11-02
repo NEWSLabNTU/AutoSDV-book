@@ -74,7 +74,7 @@ Translation Metadata:
 | **儲存裝置**        | 1TB NVMe SSD                 |
 | **相機**            | ZED X Mini 立體相機          |
 | **ZED Link**        | ZED 擷取卡                   |
-| **IMU**             | MPU9250 9 軸                 |
+| **IMU**             | ZED X Mini 內建              |
 | **霍爾感測器**      | KY-003 輪速編碼器            |
 | **上層電池**        | 22.2V 6S 5000mAh LiPo        |
 | **下層電池**        | 7.4V 2S 7200mAh LiPo         |

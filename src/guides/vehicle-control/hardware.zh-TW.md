@@ -1,7 +1,7 @@
 <!--
 Translation Metadata:
 - Source file: hardware.md
-- Last synced: 2026-10-05
+- Last synced: 2026-11-02
 - Translator: Claude (Anthropic)
 - Status: Complete
 -->
@@ -83,7 +83,7 @@ pwm.set_pwm(1, 0, steering_pwm)
 
 ## 電機 ESC
 
-**硬體**：配備電子調速器（ESC）的無刷馬達
+**硬體**：Dynamite Fuze 無刷 ESC，驅動 4274 / 1500 kV 無刷馬達
 
 **PWM 訊號需求**：
 - 頻率：60 Hz（16.7 ms 週期）
@@ -193,7 +193,7 @@ Signal   ────── Pin 16 (`pin` in velocity_report.yaml)
 **GPIO 配置範例**：
 ```yaml
 # velocity_report.yaml
-pin: 15                        # physical header pin (Jetson.GPIO BOARD numbering)
+pin: 16                        # physical header pin (Jetson.GPIO BOARD numbering)
 wheel_diameter: 10.5           # cm
 markers_per_rotation: 12
 ```
@@ -251,53 +251,19 @@ markers_per_rotation: 12
 - **後備模式**轉向（v < 0.3 m/s）
 - 低速時的開迴路前饋控制
 
-**典型 IMU 類型**：
-- MPU9250（I2C/SPI）
-- ZED 相機內建 IMU
-- 其他 6 自由度或 9 自由度 IMU
+**來源**：ZED X Mini 內建 IMU（`imu_source:=zed`）；車輛沒有另外的 IMU。
 
 IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 
 ## 配線摘要
 
-### 完整配線圖
+### 配線圖
 
-```
-                    ┌─────────────────┐
-                    │  Computer/Jetson│
-                    │                 │
-                    │  Pin 16 ────────┼──→ Hall Effect Sensor
-                    │  I2C SDA ───────┼──→ PCA9685 SDA
-                    │  I2C SCL ───────┼──→ PCA9685 SCL
-                    │  GND ───────────┼──→ Common GND
-                    └─────────────────┘
-                            │
-                            │ I2C
-                            ↓
-                    ┌─────────────────┐
-                    │    PCA9685      │
-                    │  I2C: 0x40      │
-                    │                 │
-                    │  Channel 0 ─────┼──→ Motor ESC Signal
-                    │  Channel 1 ─────┼──→ Steering Servo Signal
-                    │  GND ───────────┼──→ Common GND
-                    │  V+ ────────────┼──← 5V External (for servos)
-                    └─────────────────┘
-                            │
-                    ┌───────┴──────────┐
-                    │                  │
-                    ↓                  ↓
-            ┌─────────────┐    ┌─────────────┐
-            │  Motor ESC  │    │ Servo       │
-            │             │    │             │
-            │  Battery+ ──┼──← Battery+      │  Power ──← 5V Ext
-            │  Battery- ──┼──→ Common GND    │  GND ────→ Common GND
-            │             │    │             │
-            │  Motor A ───┼──→ Brushless     │
-            │  Motor B ───┼──→ Motor         │
-            │  Motor C ───┼──→              │
-            └─────────────┘    └─────────────┘
-```
+訊號側與電源側的配線圖，出自[配線圖](../../reference/hardware/wiring-diagrams.md)參考頁；該頁還有 Jetson 40 針接頭的逐針圖：
+
+![訊號與資料連接](../../figures/wiring/overview.svg)
+
+![電源分配](../../figures/wiring/power.svg)
 
 ### 連接表
 

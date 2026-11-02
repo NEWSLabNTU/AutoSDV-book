@@ -156,10 +156,10 @@ actually reach for are in the first three tables.
 
 | Argument | Default | Meaning |
 |----------|---------|---------|
-| `sensor_suite` | `vlp32c_zed_imu` | Predefined combination: `robin_zed`, `robin_zed_mpu`, `vlp32c_zed`, `vlp32c_zed_mpu`, `vlp32c_zed_imu`, `cube1_usb`, `custom` |
+| `sensor_suite` | `vlp32c_zed_imu` | Predefined combination: `robin_zed`, `vlp32c_zed`, `vlp32c_zed_imu`, `cube1_usb`, `custom` |
 | `lidar_model` | *(suite)* | `cube1`, `robin-w`, `vlp32c` |
 | `camera_model` | *(suite)* | `zedxm`, `usb`, `none` |
-| `imu_source` | *(suite)* | `mpu9250`, `zed` |
+| `imu_source` | *(suite)* | `zed` |
 | `gnss_receiver` | *(suite)* | `ublox`, `septentrio`, `garmin` |
 | `use_gnss` | *(suite)* | GNSS for outdoor operation |
 | `use_ntrip` | `true` | NTRIP client for RTK corrections (u-blox only) |

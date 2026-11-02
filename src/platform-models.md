@@ -65,7 +65,7 @@ The core AutoSDV platform with compute, vision, and control capabilities. Ideal 
 | **Storage**         | 1TB NVMe SSD                 |
 | **Camera**          | ZED X Mini Stereo            |
 | **ZED Link**        | Capture Card for ZED         |
-| **IMU**             | MPU9250 9-axis               |
+| **IMU**             | ZED X Mini built-in          |
 | **Hall Sensor**     | KY-003 wheel encoder         |
 | **Upper Battery**   | 22.2V 6S 5000mAh LiPo        |
 | **Lower Battery**   | 7.4V 2S 7200mAh LiPo         |
