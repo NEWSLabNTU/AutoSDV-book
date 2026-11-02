@@ -130,7 +130,7 @@ MPU9250 Module (I2C Bus 1)
 KY-003 Hall Sensor
 ├── VCC ────── 5V (Jetson Pin 2)
 ├── GND ────── GND (Jetson Pin 14)
-└── Signal ── GPIO27 (Jetson Pin 15)
+└── Signal ── GPIO8 (Jetson Pin 16)
 ```
 
 ### GPS Module (Optional)

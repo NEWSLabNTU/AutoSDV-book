@@ -184,7 +184,7 @@ KY-003          Jetson/Computer
 ──────          ───────────────
 VCC      ────── 5V or 3.3V
 GND      ────── GND
-Signal   ────── Pin 15 (`pin` in velocity_report.yaml)
+Signal   ────── Pin 16 (`pin` in velocity_report.yaml)
 ```
 
 **Example GPIO Configuration**:
