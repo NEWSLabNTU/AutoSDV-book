@@ -3865,7 +3865,7 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Minimal setup (LiDAR only)</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=zed use_gnss:=false"</span>
 </span></code></pre></div>
 <h3 id="可用選項">可用選項<a class="headerlink" href="#%E5%8F%AF%E7%94%A8%E9%81%B8%E9%A0%85" title="Permanent link">#</a></h3>
 <p><strong>光達型號：</strong>
@@ -3877,8 +3877,7 @@
 - <code>usb</code> - USB 網路攝影機
 - <code>none</code> - 無相機</p>
 <p><strong>IMU 來源：</strong>
-- <code>zed</code> - ZED 內建 IMU（預設）
-- <code>mpu9250</code> - 外部 MPU9250 IMU</p>
+- <code>zed</code> - ZED 內建 IMU（預設）</p>
 <p><strong>GNSS 接收器：</strong>
 - <code>ublox</code> - u-blox ZED-F9R（支援 RTK，預設）
 - <code>garmin</code> - Garmin GPS 18x（標準 GPS）

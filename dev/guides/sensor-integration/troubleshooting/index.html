@@ -4035,7 +4035,7 @@
 <p><strong>Solutions by Sensor Type</strong>:
 - <strong>LiDAR</strong>: Check network settings, IP configuration
 - <strong>Camera</strong>: Verify ZED SDK installed, GMSL connection
-- <strong>IMU</strong>: Check I2C bus, device address
+- <strong>IMU</strong>: Built into the ZED camera; check the camera first
 - <strong>GNSS</strong>: Ensure clear sky view, wait for satellite acquisition</p>
 <hr>
 <h3 id="wrong-coordinate-frame--sensor-in-wrong-location">Wrong Coordinate Frame / Sensor in Wrong Location<a class="headerlink" href="#wrong-coordinate-frame--sensor-in-wrong-location" title="Permanent link">#</a></h3>
@@ -4308,52 +4308,22 @@
 <p>See <a href="../camera/#special-namespace-workaround">Camera Sensors - Namespace Workaround</a></p>
 <hr>
 <h3 id="imu">IMU<a class="headerlink" href="#imu" title="Permanent link">#</a></h3>
-<h4 id="mpu9250-not-detected">MPU9250 Not Detected<a class="headerlink" href="#mpu9250-not-detected" title="Permanent link">#</a></h4>
-<p><strong>Symptoms</strong>: i2cdetect doesn't show device</p>
-<p><strong>Solutions</strong>:
-1. <strong>Check I2C bus</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># List I2C buses</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>ls<span class="w"> </span>/dev/i2c-*
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Scan bus 1</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># Should show device at 0x68 or 0x69</span>
-</span></code></pre></div>
-<ol>
-<li>
-<p><strong>Verify wiring</strong>:</p>
-<ul>
-<li>VCC → 3.3V (not 5V!)</li>
-<li>GND → GND</li>
-<li>SDA → Pin 3 (I2C1 SDA)</li>
-<li>SCL → Pin 5 (I2C1 SCL)</li>
-</ul>
-</li>
-<li>
-<p><strong>Check I2C address</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Try alternate address</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1"># Look for 0x68 or 0x69</span>
-</span></code></pre></div>
-</li>
-</ol>
 <h4 id="noisy-imu-data">Noisy IMU Data<a class="headerlink" href="#noisy-imu-data" title="Permanent link">#</a></h4>
 <p><strong>Symptoms</strong>: Large fluctuations, unstable orientation</p>
 <p><strong>Solutions</strong>:
-1. <strong>Check IMU configuration</strong>: See <a href="../imu/#configuration">IMU Sensors - Configuration</a>
-2. <strong>Secure mounting</strong>: Minimize vibration
-3. <strong>Add software filtering</strong>: Low-pass filter in driver config</p>
+1. <strong>Check IMU configuration</strong>: See <a href="../imu/">IMU Sensors</a>
+2. <strong>Secure mounting</strong>: Minimize vibration</p>
 <h4 id="zed-imu-not-publishing">ZED IMU Not Publishing<a class="headerlink" href="#zed-imu-not-publishing" title="Permanent link">#</a></h4>
 <p><strong>Symptoms</strong>: ZED camera works but no IMU topic</p>
 <p><strong>Solutions</strong>:
 1. <strong>Enable IMU in ZED config</strong>:
-   </p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">sensors.sensors_image_sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nt">sensors.publish_imu_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+   </p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">sensors.sensors_image_sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">sensors.publish_imu_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div>
 <ol>
 <li><strong>Check IMU relay node</strong>:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>relay
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># Should show IMU relay node running</span>
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>relay
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># Should show IMU relay node running</span>
 </span></code></pre></div></li>
 </ol>
 <hr>
@@ -4369,8 +4339,8 @@
 <p><strong>Symptoms</strong>: GPS fix but no RTK (status != 2)</p>
 <p><strong>Solutions</strong>:
 1. <strong>Check NTRIP connection</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/gnss/ntrip/rtcm
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1"># Should show ~1 Hz</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/gnss/ntrip/rtcm
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1"># Should show ~1 Hz</span>
 </span></code></pre></div>
 <ol>
 <li><strong>Verify internet connection</strong>: NTRIP requires network</li>
@@ -4382,25 +4352,25 @@
 <p><strong>Symptoms</strong>: No data from Garmin GPS 18x</p>
 <p><strong>Solutions</strong>:
 1. <strong>Start gpsd</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>/usr/sbin/gpsd<span class="w"> </span>-n<span class="w"> </span>-G<span class="w"> </span>-b<span class="w"> </span>/dev/ttyUSB0
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>/usr/sbin/gpsd<span class="w"> </span>-n<span class="w"> </span>-G<span class="w"> </span>-b<span class="w"> </span>/dev/ttyUSB0
 </span></code></pre></div>
 <ol>
 <li>
 <p><strong>Check device</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyUSB*
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/dev/ttyUSB0
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="c1"># Should see NMEA sentences</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyUSB*
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/dev/ttyUSB0
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># Should see NMEA sentences</span>
 </span></code></pre></div>
 </li>
 <li>
 <p><strong>Set baud rate</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>stty<span class="w"> </span>-F<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">9600</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>stty<span class="w"> </span>-F<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">9600</span>
 </span></code></pre></div>
 </li>
 <li>
 <p><strong>Test with cgps</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>cgps
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1"># Should show GPS data</span>
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>cgps
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># Should show GPS data</span>
 </span></code></pre></div>
 </li>
 </ol>
@@ -4410,8 +4380,8 @@
 <p><strong>Symptoms</strong>: <code>colcon build</code> fails with "package 'X' not found"</p>
 <p><strong>Solutions</strong>:
 1. <strong>Update rosdep</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rosdep<span class="w"> </span>update
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>rosdep<span class="w"> </span>update
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
 </span></code></pre></div>
 <ol>
 <li>
@@ -4419,7 +4389,7 @@
 </li>
 <li>
 <p><strong>Install missing ROS packages</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-&lt;package-name&gt;
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-&lt;package-name&gt;
 </span></code></pre></div>
 </li>
 </ol>
@@ -4427,8 +4397,8 @@
 <p><strong>Symptoms</strong>: CMake configuration fails</p>
 <p><strong>Solutions</strong>:
 1. <strong>Clean build</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>build<span class="w"> </span>install<span class="w"> </span>log
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>colcon<span class="w"> </span>build
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>build<span class="w"> </span>install<span class="w"> </span>log
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>colcon<span class="w"> </span>build
 </span></code></pre></div>
 <ol>
 <li>
@@ -4436,7 +4406,7 @@
 </li>
 <li>
 <p><strong>Source ROS 2</strong>:
-   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+   </p><div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
 </span></code></pre></div>
 </li>
 </ol>
@@ -4444,23 +4414,23 @@
 <h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">#</a></h2>
 <p>If issues persist after trying these solutions:</p>
 <h3 id="1-enable-debug-logging">1. Enable Debug Logging<a class="headerlink" href="#1-enable-debug-logging" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>--log-level<span class="w"> </span>DEBUG<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>debug.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>autosdv_launch<span class="w"> </span>autosdv.launch.yaml<span class="w"> </span>--log-level<span class="w"> </span>DEBUG<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>debug.log
 </span></code></pre></div>
 <h3 id="2-gather-diagnostic-information">2. Gather Diagnostic Information<a class="headerlink" href="#2-gather-diagnostic-information" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># System info</span>
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>lsb_release<span class="w"> </span>-a
-</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>uname<span class="w"> </span>-a
-</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
-</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="c1"># ROS info</span>
-</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>ros2<span class="w"> </span>doctor
-</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>ros2<span class="w"> </span>wtf
-</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
-</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="c1"># Topic info</span>
-</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
-</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/lidar/*/points_raw
-</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>
-</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="c1"># TF tree</span>
-</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># System info</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>lsb_release<span class="w"> </span>-a
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>uname<span class="w"> </span>-a
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="c1"># ROS info</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>ros2<span class="w"> </span>doctor
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>ros2<span class="w"> </span>wtf
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="c1"># Topic info</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/lidar/*/points_raw
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="c1"># TF tree</span>
+</span><span id="__span-37-14"><a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
 </span></code></pre></div>
 <h3 id="3-check-github-issues">3. Check GitHub Issues<a class="headerlink" href="#3-check-github-issues" title="Permanent link">#</a></h3>
 <p>Search <a href="https://github.com/NEWSLabNTU/AutoSDV/issues">AutoSDV Issues</a> for similar problems</p>
@@ -4474,66 +4444,66 @@
 <hr>
 <h2 id="useful-diagnostic-tools">Useful Diagnostic Tools<a class="headerlink" href="#useful-diagnostic-tools" title="Permanent link">#</a></h2>
 <h3 id="ros-2-tools">ROS 2 Tools<a class="headerlink" href="#ros-2-tools" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># List nodes</span>
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>
-</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="c1"># Node info</span>
-</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/node_name
-</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
-</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="c1"># Topic info</span>
-</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/topic_name
-</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/topic_name
-</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>ros2<span class="w"> </span>topic<span class="w"> </span>bw<span class="w"> </span>/topic_name
-</span><span id="__span-40-11"><a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/topic_name
-</span><span id="__span-40-12"><a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>
-</span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a><span class="c1"># Parameter inspection</span>
-</span><span id="__span-40-14"><a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>/node_name
-</span><span id="__span-40-15"><a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/node_name<span class="w"> </span>parameter_name
-</span><span id="__span-40-16"><a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>
-</span><span id="__span-40-17"><a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a><span class="c1"># Service calls</span>
-</span><span id="__span-40-18"><a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a>ros2<span class="w"> </span>service<span class="w"> </span>list
-</span><span id="__span-40-19"><a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/service_name<span class="w"> </span>service_type<span class="w"> </span><span class="s2">"{args}"</span>
-</span><span id="__span-40-20"><a id="__codelineno-40-20" name="__codelineno-40-20" href="#__codelineno-40-20"></a>
-</span><span id="__span-40-21"><a id="__codelineno-40-21" name="__codelineno-40-21" href="#__codelineno-40-21"></a><span class="c1"># TF debugging</span>
-</span><span id="__span-40-22"><a id="__codelineno-40-22" name="__codelineno-40-22" href="#__codelineno-40-22"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>frame1<span class="w"> </span>frame2
-</span><span id="__span-40-23"><a id="__codelineno-40-23" name="__codelineno-40-23" href="#__codelineno-40-23"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># List nodes</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="c1"># Node info</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>ros2<span class="w"> </span>node<span class="w"> </span>info<span class="w"> </span>/node_name
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="c1"># Topic info</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/topic_name
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/topic_name
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>ros2<span class="w"> </span>topic<span class="w"> </span>bw<span class="w"> </span>/topic_name
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/topic_name
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="c1"># Parameter inspection</span>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>/node_name
+</span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a>ros2<span class="w"> </span>param<span class="w"> </span>get<span class="w"> </span>/node_name<span class="w"> </span>parameter_name
+</span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>
+</span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a><span class="c1"># Service calls</span>
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a>ros2<span class="w"> </span>service<span class="w"> </span>list
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/service_name<span class="w"> </span>service_type<span class="w"> </span><span class="s2">"{args}"</span>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a>
+</span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a><span class="c1"># TF debugging</span>
+</span><span id="__span-38-22"><a id="__codelineno-38-22" name="__codelineno-38-22" href="#__codelineno-38-22"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_ros<span class="w"> </span>tf2_echo<span class="w"> </span>frame1<span class="w"> </span>frame2
+</span><span id="__span-38-23"><a id="__codelineno-38-23" name="__codelineno-38-23" href="#__codelineno-38-23"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
 </span></code></pre></div>
 <h3 id="system-tools">System Tools<a class="headerlink" href="#system-tools" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># Process monitoring</span>
-</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>htop
-</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>top
-</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
-</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="c1"># GPU monitoring</span>
-</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>nvidia-smi
-</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>nvidia-smi
-</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>
-</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="c1"># Network</span>
-</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>ip<span class="w"> </span>addr<span class="w"> </span>show
-</span><span id="__span-41-11"><a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>ping<span class="w"> </span>&lt;ip&gt;
-</span><span id="__span-41-12"><a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a>iftop<span class="w"> </span>-i<span class="w"> </span>eth0
-</span><span id="__span-41-13"><a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a>
-</span><span id="__span-41-14"><a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a><span class="c1"># USB devices</span>
-</span><span id="__span-41-15"><a id="__codelineno-41-15" name="__codelineno-41-15" href="#__codelineno-41-15"></a>lsusb
-</span><span id="__span-41-16"><a id="__codelineno-41-16" name="__codelineno-41-16" href="#__codelineno-41-16"></a>lsusb<span class="w"> </span>-t
-</span><span id="__span-41-17"><a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a>
-</span><span id="__span-41-18"><a id="__codelineno-41-18" name="__codelineno-41-18" href="#__codelineno-41-18"></a><span class="c1"># Serial devices</span>
-</span><span id="__span-41-19"><a id="__codelineno-41-19" name="__codelineno-41-19" href="#__codelineno-41-19"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/tty*
-</span><span id="__span-41-20"><a id="__codelineno-41-20" name="__codelineno-41-20" href="#__codelineno-41-20"></a>sudo<span class="w"> </span>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tty
-</span><span id="__span-41-21"><a id="__codelineno-41-21" name="__codelineno-41-21" href="#__codelineno-41-21"></a>
-</span><span id="__span-41-22"><a id="__codelineno-41-22" name="__codelineno-41-22" href="#__codelineno-41-22"></a><span class="c1"># I2C devices</span>
-</span><span id="__span-41-23"><a id="__codelineno-41-23" name="__codelineno-41-23" href="#__codelineno-41-23"></a>ls<span class="w"> </span>/dev/i2c-*
-</span><span id="__span-41-24"><a id="__codelineno-41-24" name="__codelineno-41-24" href="#__codelineno-41-24"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-41-25"><a id="__codelineno-41-25" name="__codelineno-41-25" href="#__codelineno-41-25"></a>
-</span><span id="__span-41-26"><a id="__codelineno-41-26" name="__codelineno-41-26" href="#__codelineno-41-26"></a><span class="c1"># Disk usage</span>
-</span><span id="__span-41-27"><a id="__codelineno-41-27" name="__codelineno-41-27" href="#__codelineno-41-27"></a>df<span class="w"> </span>-h
-</span><span id="__span-41-28"><a id="__codelineno-41-28" name="__codelineno-41-28" href="#__codelineno-41-28"></a>du<span class="w"> </span>-sh<span class="w"> </span>*
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># Process monitoring</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>htop
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>top
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="c1"># GPU monitoring</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>nvidia-smi
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>nvidia-smi
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="c1"># Network</span>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>ip<span class="w"> </span>addr<span class="w"> </span>show
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>ping<span class="w"> </span>&lt;ip&gt;
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>iftop<span class="w"> </span>-i<span class="w"> </span>eth0
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>
+</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="c1"># USB devices</span>
+</span><span id="__span-39-15"><a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a>lsusb
+</span><span id="__span-39-16"><a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>lsusb<span class="w"> </span>-t
+</span><span id="__span-39-17"><a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a>
+</span><span id="__span-39-18"><a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="c1"># Serial devices</span>
+</span><span id="__span-39-19"><a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/tty*
+</span><span id="__span-39-20"><a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a>sudo<span class="w"> </span>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tty
+</span><span id="__span-39-21"><a id="__codelineno-39-21" name="__codelineno-39-21" href="#__codelineno-39-21"></a>
+</span><span id="__span-39-22"><a id="__codelineno-39-22" name="__codelineno-39-22" href="#__codelineno-39-22"></a><span class="c1"># I2C devices</span>
+</span><span id="__span-39-23"><a id="__codelineno-39-23" name="__codelineno-39-23" href="#__codelineno-39-23"></a>ls<span class="w"> </span>/dev/i2c-*
+</span><span id="__span-39-24"><a id="__codelineno-39-24" name="__codelineno-39-24" href="#__codelineno-39-24"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-39-25"><a id="__codelineno-39-25" name="__codelineno-39-25" href="#__codelineno-39-25"></a>
+</span><span id="__span-39-26"><a id="__codelineno-39-26" name="__codelineno-39-26" href="#__codelineno-39-26"></a><span class="c1"># Disk usage</span>
+</span><span id="__span-39-27"><a id="__codelineno-39-27" name="__codelineno-39-27" href="#__codelineno-39-27"></a>df<span class="w"> </span>-h
+</span><span id="__span-39-28"><a id="__codelineno-39-28" name="__codelineno-39-28" href="#__codelineno-39-28"></a>du<span class="w"> </span>-sh<span class="w"> </span>*
 </span></code></pre></div>
 <hr>
 <h2 id="related-guides">Related Guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <p>For sensor-specific troubleshooting, see:
 - <a href="../lidar/">LiDAR Sensors</a> - Robin-W, Velodyne, Blickfeld issues
 - <a href="../camera/">Camera Sensors</a> - ZED camera troubleshooting
-- <a href="../imu/">IMU Sensors</a> - MPU9250 and ZED IMU issues
+- <a href="../imu/">IMU Sensors</a> - ZED IMU issues
 - <a href="../gnss/">GNSS Sensors</a> - GNSS and RTK troubleshooting</p>
 <p>For integration help:
 - <a href="../adding-sensor/">Adding a New Sensor</a> - Step-by-step integration guide

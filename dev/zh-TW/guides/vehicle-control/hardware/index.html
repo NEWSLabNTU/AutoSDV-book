@@ -2067,10 +2067,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#完整配線圖" class="md-nav__link">
+  <a href="#配線圖" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完整配線圖
+        配線圖
       
     </span>
   </a>
@@ -3524,10 +3524,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#完整配線圖" class="md-nav__link">
+  <a href="#配線圖" class="md-nav__link">
     <span class="md-ellipsis">
       
-        完整配線圖
+        配線圖
       
     </span>
   </a>
@@ -3780,7 +3780,7 @@
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">pwm</span><span class="o">.</span><span class="n">set_pwm</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">steering_pwm</span><span class="p">)</span>
 </span></code></pre></div>
 <h2 id="電機-esc">電機 ESC<a class="headerlink" href="#%E9%9B%BB%E6%A9%9F-esc" title="Permanent link">#</a></h2>
-<p><strong>硬體</strong>：配備電子調速器（ESC）的無刷馬達</p>
+<p><strong>硬體</strong>：Dynamite Fuze 無刷 ESC，驅動 4274 / 1500 kV 無刷馬達</p>
 <p><strong>PWM 訊號需求</strong>：
 - 頻率：60 Hz（16.7 ms 週期）
 - PWM 值是每個週期 4096 中的計數，因此脈衝寬度為
@@ -3910,7 +3910,7 @@
 </span></code></pre></div>
 <p><strong>GPIO 配置範例</strong>：
 </p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># velocity_report.yaml</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w">                        </span><span class="c1"># physical header pin (Jetson.GPIO BOARD numbering)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w">                        </span><span class="c1"># physical header pin (Jetson.GPIO BOARD numbering)</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">wheel_diameter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5</span><span class="w">           </span><span class="c1"># cm</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">markers_per_rotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
 </span></code></pre></div>
@@ -3967,48 +3967,13 @@
 <p><strong>不需要 IMU 的情況</strong>：
 - **後備模式**轉向（v &lt; 0.3 m/s）
 - 低速時的開迴路前饋控制</p>
-<p><strong>典型 IMU 類型</strong>：
-- MPU9250（I2C/SPI）
-- ZED 相機內建 IMU
-- 其他 6 自由度或 9 自由度 IMU</p>
+<p><strong>來源</strong>：ZED X Mini 內建 IMU（<code>imu_source:=zed</code>）；車輛沒有另外的 IMU。</p>
 <p>IMU 設定請參閱<a href="../../sensor-integration/imu/">感測器整合指南</a>。</p>
 <h2 id="配線摘要">配線摘要<a class="headerlink" href="#%E9%85%8D%E7%B7%9A%E6%91%98%E8%A6%81" title="Permanent link">#</a></h2>
-<h3 id="完整配線圖">完整配線圖<a class="headerlink" href="#%E5%AE%8C%E6%95%B4%E9%85%8D%E7%B7%9A%E5%9C%96" title="Permanent link">#</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>                    ┌─────────────────┐
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                    │  Computer/Jetson│
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                    │                 │
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    │  Pin 16 ────────┼──→ Hall Effect Sensor
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>                    │  I2C SDA ───────┼──→ PCA9685 SDA
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>                    │  I2C SCL ───────┼──→ PCA9685 SCL
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>                    │  GND ───────────┼──→ Common GND
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>                    └─────────────────┘
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>                            │
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>                            │ I2C
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>                            ↓
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>                    ┌─────────────────┐
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>                    │    PCA9685      │
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>                    │  I2C: 0x40      │
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>                    │                 │
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>                    │  Channel 0 ─────┼──→ Motor ESC Signal
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>                    │  Channel 1 ─────┼──→ Steering Servo Signal
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>                    │  GND ───────────┼──→ Common GND
-</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>                    │  V+ ────────────┼──← 5V External (for servos)
-</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>                    └─────────────────┘
-</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>                            │
-</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>                    ┌───────┴──────────┐
-</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>                    │                  │
-</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>                    ↓                  ↓
-</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>            ┌─────────────┐    ┌─────────────┐
-</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>            │  Motor ESC  │    │ Servo       │
-</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>            │             │    │             │
-</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>            │  Battery+ ──┼──← Battery+      │  Power ──← 5V Ext
-</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>            │  Battery- ──┼──→ Common GND    │  GND ────→ Common GND
-</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>            │             │    │             │
-</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>            │  Motor A ───┼──→ Brushless     │
-</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>            │  Motor B ───┼──→ Motor         │
-</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>            │  Motor C ───┼──→              │
-</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>            └─────────────┘    └─────────────┘
-</span></code></pre></div>
+<h3 id="配線圖">配線圖<a class="headerlink" href="#%E9%85%8D%E7%B7%9A%E5%9C%96" title="Permanent link">#</a></h3>
+<p>訊號側與電源側的配線圖，出自<a href="../../../reference/hardware/wiring-diagrams/">配線圖</a>參考頁；該頁還有 Jetson 40 針接頭的逐針圖：</p>
+<p><img alt="訊號與資料連接" src="../../../../figures/wiring/overview.svg"></p>
+<p><img alt="電源分配" src="../../../../figures/wiring/power.svg"></p>
 <h3 id="連接表">連接表<a class="headerlink" href="#%E9%80%A3%E6%8E%A5%E8%A1%A8" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -4125,26 +4090,26 @@
 - 上電前再次檢查極性</p>
 <h2 id="測試硬體連接">測試硬體連接<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6%E7%A1%AC%E9%AB%94%E9%80%A3%E6%8E%A5" title="Permanent link">#</a></h2>
 <h3 id="測試-pca9685">測試 PCA9685<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6-pca9685" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check I2C device detection</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Should show device at 0x40</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Test PWM output (careful - vehicle may move!)</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Use control_test calibration mode instead of direct commands</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check I2C device detection</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">7</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Should show device at 0x40</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Test PWM output (careful - vehicle may move!)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># Use control_test calibration mode instead of direct commands</span>
 </span></code></pre></div>
 <h3 id="測試霍爾效應感測器">測試霍爾效應感測器<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6%E9%9C%8D%E7%88%BE%E6%95%88%E6%87%89%E6%84%9F%E6%B8%AC%E5%99%A8" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Monitor velocity topic</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/vehicle/status/velocity_status
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Rotate wheel by hand</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Velocity should show non-zero values as wheel rotates</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># LED on KY-003 should blink as magnets pass</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Monitor velocity topic</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/vehicle/status/velocity_status
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Rotate wheel by hand</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Velocity should show non-zero values as wheel rotates</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># LED on KY-003 should blink as magnets pass</span>
 </span></code></pre></div>
 <h3 id="測試-imu">測試 IMU<a class="headerlink" href="#%E6%B8%AC%E8%A9%A6-imu" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Check IMU topic</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/imu/imu_data
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Should see angular_velocity.z changing when vehicle rotates</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Check IMU topic</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/imu/imu_data
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Should see angular_velocity.z changing when vehicle rotates</span>
 </span></code></pre></div>
 <h2 id="下一步">下一步<a class="headerlink" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5" title="Permanent link">#</a></h2>
 <ul>

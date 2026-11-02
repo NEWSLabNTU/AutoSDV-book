@@ -3865,7 +3865,7 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=zedxm imu_source:=zed gnss_receiver:=ublox"</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Minimal setup (LiDAR only)</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=mpu9250 use_gnss:=false"</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>just<span class="w"> </span>launch<span class="w"> </span><span class="s2">"lidar_model:=robin-w camera_model:=none imu_source:=zed use_gnss:=false"</span>
 </span></code></pre></div>
 <h3 id="available-options">Available Options<a class="headerlink" href="#available-options" title="Permanent link">#</a></h3>
 <p><strong>LiDAR Models:</strong>
@@ -3877,8 +3877,7 @@
 - <code>usb</code> - USB webcam
 - <code>none</code> - No camera</p>
 <p><strong>IMU Sources:</strong>
-- <code>zed</code> - ZED built-in IMU (default)
-- <code>mpu9250</code> - External MPU9250 IMU</p>
+- <code>zed</code> - ZED built-in IMU (default)</p>
 <p><strong>GNSS Receivers:</strong>
 - <code>ublox</code> - u-blox ZED-F9R (RTK-capable, default)
 - <code>garmin</code> - Garmin GPS 18x (standard GPS)

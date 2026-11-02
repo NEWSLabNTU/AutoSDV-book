@@ -1600,85 +1600,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-imus" class="md-nav__link">
+  <a href="#supported-imu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported IMUs
+        Supported IMU
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mpu9250" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MPU9250
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MPU9250">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hardware-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware Connection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#driver-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Driver Package
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-standalone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Test Standalone
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1761,7 +1689,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting_1" class="md-nav__link">
+  <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
         Troubleshooting
@@ -3490,85 +3418,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-imus" class="md-nav__link">
+  <a href="#supported-imu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported IMUs
+        Supported IMU
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mpu9250" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MPU9250
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MPU9250">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hardware-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hardware Connection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#driver-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Driver Package
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-standalone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Test Standalone
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3651,7 +3507,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting_1" class="md-nav__link">
+  <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
         Troubleshooting
@@ -3788,124 +3644,48 @@
 
 
 <div><h1 id="imu-sensors">IMU Sensors<a class="headerlink" href="#imu-sensors" title="Permanent link">#</a></h1>
-<p>Configuration details for supported IMU sources.</p>
-<h2 id="supported-imus">Supported IMUs<a class="headerlink" href="#supported-imus" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th>Type</th>
-<th>Update Rate</th>
-<th>Features</th>
-<th>Config</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>MPU9250</strong></td>
-<td>9-axis (external)</td>
-<td>~100 Hz</td>
-<td>Accel, Gyro, Magnetometer</td>
-<td><code>imu_source:=mpu9250</code></td>
-</tr>
-<tr>
-<td><strong>ZED Built-in</strong></td>
-<td>6-axis (integrated)</td>
-<td>400 Hz</td>
-<td>Accel, Gyro, Camera-synced</td>
-<td><code>imu_source:=zed</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Recommendation</strong>: Use ZED built-in IMU when using ZED camera (factory-calibrated, synchronized, more stable).</p>
-<h2 id="mpu9250">MPU9250<a class="headerlink" href="#mpu9250" title="Permanent link">#</a></h2>
-<h3 id="hardware-connection">Hardware Connection<a class="headerlink" href="#hardware-connection" title="Permanent link">#</a></h3>
-<p><strong>Interface</strong>: I2C Bus 1 on Jetson</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>MPU9250          Jetson AGX Orin
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>───────          ───────────────
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>VCC (3.3V) ───── Pin 1 (3.3V)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GND ──────────── Pin 6 (GND)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>SDA ──────────── Pin 3 (I2C SDA)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SCL ──────────── Pin 5 (I2C SCL)
-</span></code></pre></div>
-<p><strong>I2C Address</strong>: 0x68 (default) or 0x69 (if AD0 pin high)</p>
-<h3 id="driver-package">Driver Package<a class="headerlink" href="#driver-package" title="Permanent link">#</a></h3>
-<p><strong>Location</strong>: <code>src/sensor_component/external/ros2_mpu9250_driver/</code></p>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h3>
-<p><strong>I2C settings</strong>:
-</p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">/**</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">i2c_bus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">i2c_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0x68</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"mpu9250_link"</span>
-</span></code></pre></div>
-<p><strong>Calibration</strong> (for accurate measurements):
-</p><div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">/**</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">accel_bias</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">gyro_bias</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">mag_bias</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
-</span></code></pre></div>
-<h3 id="test-standalone">Test Standalone<a class="headerlink" href="#test-standalone" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Check I2C device detected</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Should show 68 at address 0x68</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Build and launch driver</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>mpu9250driver
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>ros2<span class="w"> </span>run<span class="w"> </span>mpu9250driver<span class="w"> </span>mpu9250driver
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Verify IMU data</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/imu/data<span class="w">  </span><span class="c1"># ~100 Hz</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/imu/data<span class="w"> </span>--once
-</span></code></pre></div>
-<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h3>
-<p><strong>Device not detected</strong>:
-- Check wiring (SDA, SCL, VCC, GND)
-- Verify I2C enabled: <code>ls /dev/i2c-*</code>
-- Try alternate address 0x69</p>
-<p><strong>Noisy data</strong>:
-- Calibrate IMU (record bias values)
-- Secure mounting (minimize vibration)
-- Add low-pass filter in software</p>
+<p>Configuration details for the vehicle's IMU source.</p>
+<h2 id="supported-imu">Supported IMU<a class="headerlink" href="#supported-imu" title="Permanent link">#</a></h2>
+<p>The vehicle's IMU is the one built into the ZED X Mini camera: a 6-axis
+(accelerometer and gyroscope) sensor, camera-synced, publishing at 400 Hz.
+It is selected with <code>imu_source:=zed</code>, which every sensor suite does.</p>
 <h2 id="zed-built-in-imu">ZED Built-in IMU<a class="headerlink" href="#zed-built-in-imu" title="Permanent link">#</a></h2>
 <h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">#</a></h3>
 <p><strong>Integrated</strong> in ZED X Mini camera
 <strong>Specifications</strong>: BMI088 (or similar), 400 Hz, ±16g accelerometer, ±2000°/s gyroscope</p>
 <h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ZED Camera Driver → /sensing/camera/zedxm/imu/data
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                    ↓ (relay node)
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                 /sensing/imu/zed/imu_raw → Autoware EKF
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ZED Camera Driver → /sensing/camera/zedxm/imu/data
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    ↓ (relay node)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                 /sensing/imu/zed/imu_raw → Autoware EKF
 </span></code></pre></div>
 <h3 id="enable-in-zed-config">Enable in ZED Config<a class="headerlink" href="#enable-in-zed-config" title="Permanent link">#</a></h3>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">sensors.sensors_image_sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># Sync with camera frames</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">sensors.publish_imu_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">         </span><span class="c1"># Publish TF transform</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">sensors.sensors_image_sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">    </span><span class="c1"># Sync with camera frames</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">sensors.publish_imu_tf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">         </span><span class="c1"># Publish TF transform</span>
 </span></code></pre></div>
 <h3 id="imu-relay-configuration">IMU Relay Configuration<a class="headerlink" href="#imu-relay-configuration" title="Permanent link">#</a></h3>
-<div class="language-xml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"topic_tools"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"relay"</span><span class="w"> </span><span class="na">name=</span><span class="s">"zed_imu_relay"</span><span class="nt">&gt;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">"/sensing/camera/zedxm/imu/data"</span><span class="w"> </span><span class="na">to=</span><span class="s">"/sensing/imu/zed/imu_raw"</span><span class="nt">/&gt;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">&lt;/node&gt;</span>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"topic_tools"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"relay"</span><span class="w"> </span><span class="na">name=</span><span class="s">"zed_imu_relay"</span><span class="nt">&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">"/sensing/camera/zedxm/imu/data"</span><span class="w"> </span><span class="na">to=</span><span class="s">"/sensing/imu/zed/imu_raw"</span><span class="nt">/&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&lt;/node&gt;</span>
 </span></code></pre></div>
 <h3 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Factory-calibrated</strong>: No manual calibration needed</li>
 <li><strong>Synchronized</strong>: Hardware-synced with camera frames (precise timestamps)</li>
-<li><strong>Higher rate</strong>: 400 Hz vs 100 Hz (MPU9250)</li>
-<li><strong>More stable</strong>: Professional-grade sensor, lower drift</li>
+<li><strong>High rate</strong>: 400 Hz</li>
+<li><strong>Stable</strong>: Professional-grade sensor, low drift</li>
 </ul>
 <h3 id="test">Test<a class="headerlink" href="#test" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Launch ZED camera</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>zed_wrapper<span class="w"> </span>zed_camera.launch.py<span class="w"> </span>camera_model:<span class="o">=</span>zedxm
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Verify IMU topic</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>imu
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Expected: /zedxm/zed_node/imu/data</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Check rate</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/zedxm/zed_node/imu/data<span class="w">  </span><span class="c1"># ~400 Hz</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Launch ZED camera</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>zed_wrapper<span class="w"> </span>zed_camera.launch.py<span class="w"> </span>camera_model:<span class="o">=</span>zedxm
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Verify IMU topic</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>imu
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Expected: /zedxm/zed_node/imu/data</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Check rate</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/zedxm/zed_node/imu/data<span class="w">  </span><span class="c1"># ~400 Hz</span>
 </span></code></pre></div>
-<h3 id="troubleshooting_1">Troubleshooting<a class="headerlink" href="#troubleshooting_1" title="Permanent link">#</a></h3>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h3>
 <p><strong>No IMU data</strong>:
 - Check <code>sensors.sensors_image_sync: true</code> in ZED config
 - Verify ZED SDK version supports IMU (5.1.2+)
@@ -3914,26 +3694,22 @@
 - Check relay node running: <code>ros2 node list | grep relay</code>
 - Verify topic exists: <code>ros2 topic list | grep imu</code></p>
 <h2 id="imu-data-format">IMU Data Format<a class="headerlink" href="#imu-data-format" title="Permanent link">#</a></h2>
-<p>Both IMUs publish standard <code>sensor_msgs/Imu</code>:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">header</span><span class="p">:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">stamp</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">sec</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">nanosec</span><span class="p p-Indicator">}</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"mpu9250_link"</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">or "zed_imu_link"</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">orientation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">w</span><span class="p p-Indicator">}</span><span class="w">           </span><span class="c1"># Quaternion</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nt">angular_velocity</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">}</span><span class="w">         </span><span class="c1"># rad/s</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">linear_acceleration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">}</span><span class="w">      </span><span class="c1"># m/s²</span>
+<p>The IMU publishes standard <code>sensor_msgs/Imu</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">header</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">stamp</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">sec</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">nanosec</span><span class="p p-Indicator">}</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">"zed_imu_link"</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">orientation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">w</span><span class="p p-Indicator">}</span><span class="w">           </span><span class="c1"># Quaternion</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">angular_velocity</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">}</span><span class="w">         </span><span class="c1"># rad/s</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">linear_acceleration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">z</span><span class="p p-Indicator">}</span><span class="w">      </span><span class="c1"># m/s²</span>
 </span></code></pre></div>
 <h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># MPU9250</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span><span class="w">                    </span><span class="c1"># Check I2C device</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/imu/mpu9250/imu_raw
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># ZED IMU</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/imu/zed/imu_raw
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/camera/zedxm/imu/data<span class="w"> </span>--once
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Verify relay</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>relay
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ZED IMU</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/sensing/imu/zed/imu_raw
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/sensing/camera/zedxm/imu/data<span class="w"> </span>--once
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Verify relay</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>ros2<span class="w"> </span>node<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>relay
 </span></code></pre></div></div>
 
 
