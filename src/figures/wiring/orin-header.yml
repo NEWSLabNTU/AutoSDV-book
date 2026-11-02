@@ -1,0 +1,89 @@
+# What plugs into the Jetson AGX Orin's 40-pin header, wire by wire.
+# Build: uv run python scripts/build-diagrams.py orin-header
+#
+# Header pins are BOARD numbers, as in velocity_report.yaml and Jetson.GPIO.
+# The AUTO line pin is a proposal (pin 22, GPIO17): nothing reads it yet, and
+# pin 15 is avoided because it delivered no edges on car A.
+
+metadata:
+  title: AutoSDV, Jetson AGX Orin 40-pin header
+
+options:
+  fontname: DejaVu Sans
+  bgcolor: WH
+  color_mode: SHORT
+
+connectors:
+  J30:
+    type: Jetson AGX Orin
+    subtype: 40-pin header (BOARD numbers)
+    image:
+      src: photos/orin-header.jpg
+      caption: Pin 1 is at the end nearest the power button
+    pins: [2, 3, 4, 5, 6, 14, 16, 17, 20, 22, 25, 27, 28]
+    pinlabels: [5V, I2C5_DAT (bus 7), 5V, I2C5_CLK (bus 7), GND, GND, GPIO8,
+                3V3, GND, GPIO17, GND, I2C2_DAT (bus 1), I2C2_CLK (bus 1)]
+  PCA:
+    type: PCA9685
+    subtype: PWM driver, I2C 0x40
+    image:
+      src: photos/pca9685.jpg
+    pinlabels: [VCC, GND, SDA, SCL]
+    notes: V+ (servo rail) from the 7.4 V side; outputs on the power figure
+  IMU:
+    type: MPU9250
+    subtype: IMU, I2C bus 1
+    image:
+      src: photos/mpu9250.jpg
+    pinlabels: [VCC, GND, SDA, SCL]
+  HALL:
+    type: KY-003
+    subtype: hall sensor (A3144)
+    image:
+      src: photos/ky003.jpg
+    pinlabels: [+, '-', S]
+    notes: |-
+      velocity_report pin: 16 (every car since 2026-10-27).
+      At 5 V its pull-up puts 5 V on S, a 3.3 V pin:
+      add a 10k / 20k divider or move the pull-up to 3.3 V.
+  ARB:
+    type: Arbiter board
+    subtype: XIAO RP2350
+    image:
+      src: photos/arbiter.jpg
+    pinlabels: [D10 AUTO, GND]
+    notes: |-
+      High only in AUTO. 1 kohm series resistor on the board.
+      Header pin proposed, not yet read by the vehicle interface.
+
+cables:
+  W_PCA:
+    category: bundle
+    colors: [RD, BK, BU, YE]
+    wirelabels: [5 V, GND, SDA, SCL]
+  W_IMU:
+    category: bundle
+    colors: [RD, BK, BU, YE]
+    wirelabels: [3.3 V, GND, SDA, SCL]
+  W_HALL:
+    category: bundle
+    colors: [RD, BK, GN]
+    wirelabels: [5 V, GND, signal]
+  W_ARB:
+    category: bundle
+    colors: [OG, BK]
+    wirelabels: [AUTO, GND]
+
+connections:
+  - - J30: [4, 6, 3, 5]
+    - W_PCA: [1-4]
+    - PCA: [VCC, GND, SDA, SCL]
+  - - J30: [17, 20, 27, 28]
+    - W_IMU: [1-4]
+    - IMU: [VCC, GND, SDA, SCL]
+  - - J30: [2, 14, 16]
+    - W_HALL: [1-3]
+    - HALL: [+, '-', S]
+  - - J30: [22, 25]
+    - W_ARB: [1-2]
+    - ARB: [D10 AUTO, GND]
