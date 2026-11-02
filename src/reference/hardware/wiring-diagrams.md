@@ -35,17 +35,17 @@ way.
 ![Power distribution](../../figures/wiring/power.svg)
 
 Two batteries, two switches, and no connection between the two sides other
-than signal ground. The PCA9685 and the steering servo run on the Orin's 5 V,
-so they belong to the computer side:
+than signal ground. The PCA9685 only carries signals: its logic runs on the
+Orin's 5 V and its V+ terminal is unused, because the steering servo is
+powered from the drive battery through the ESC's BEC:
 
 | Rail | Source | Loads |
 |---|---|---|
 | 22.2 V (6S LiPo) | upper power switch, then the DC-DC converter | — |
 | 12 V | DC-DC converter output | Jetson AGX Orin (DC jack), ZED Link, LiDAR, 5G router |
-| 11.1 V (3S LiPo) | powertrain switch | motor ESC only |
-| 5 V | Jetson header pins 2 and 4 | KY-003; PCA9685 logic (VCC) and servo rail (V+) |
-| servo rail | PCA9685 V+ terminal | steering servo power pin |
-| 6 V | the ESC's built-in BEC, over its receiver lead | RC receiver |
+| 11.1 V (3S LiPo) | powertrain switch | motor ESC |
+| 6 V | the ESC's built-in BEC, over its receiver lead | RC receiver, steering servo |
+| 5 V | Jetson header pins 2 and 4 | KY-003; PCA9685 logic (VCC) |
 
 Each battery has its own cell monitor with an alarm on the JST-XH balance
 lead. The ZED X Mini draws its power over the GMSL2 cable from the ZED Link,
@@ -137,7 +137,7 @@ A u-blox receiver on USB, powered by the port. Its PPS output is not wired.
 | GND | Jetson pin 6 |
 | SDA | Jetson pin 3 (I2C5_DAT, bus 7) |
 | SCL | Jetson pin 5 (I2C5_CLK, bus 7) |
-| V+ | Jetson pin 2 (5 V), the servo rail |
+| V+ | unused: the servo is powered from the ESC's BEC, not from this board |
 | ch0 | motor ESC throttle, through the selector switch |
 | ch1 | steering servo, through the selector switch |
 | ch2–ch15 | free |
@@ -152,7 +152,8 @@ The motor ESC is a Dynamite Fuze brushless ESC. It takes the throttle pulse
 from the selector switch and 11.1 V from its own 3S battery through the
 powertrain switch, and drives the 4274 / 1500 kV brushless motor on three
 phase leads. Its built-in 6 V BEC powers the RC receiver over the receiver
-lead, so the receiver needs no supply of its own.
+lead, and the steering servo with it, so neither needs a supply of its own;
+the PCA9685 only sends them their pulses.
 
 ## 5G module (optional)
 
@@ -165,7 +166,7 @@ Jetson through a USB-to-Ethernet adapter.
 | Battery | Use | Monitor |
 |---|---|---|
 | 6S, 22.2 V | computer and sensors | cell monitor with alarm on the 6-cell balance lead |
-| 3S, 11.1 V | drive (ESC only) | cell monitor with alarm on the 3-cell balance lead |
+| 3S, 11.1 V | drive: ESC, and through its BEC the receiver and servo | cell monitor with alarm on the 3-cell balance lead |
 
 Each monitor is independent; neither battery charges or feeds the other.
 

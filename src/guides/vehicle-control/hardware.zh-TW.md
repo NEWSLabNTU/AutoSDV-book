@@ -37,7 +37,7 @@ SCL      ────── I2C SCL (pin 5, I2C bus 7)
 
 **電源**：
 - 邏輯電源：3.3V 或 5V（來自電腦）
-- 伺服馬達電源：本車的 V+ 與 GND 同樣來自 Jetson 的 5 V 接頭針（只有一顆伺服；接頭的 5 V 針額定 1 A）
+- 伺服馬達電源：不經此板。轉向伺服由動力電池經 ESC 的 BEC 供電，所以 V+ 端子未使用，此板只傳送兩路 PWM 訊號。
 
 **裝置偵測**：
 ```bash
@@ -148,14 +148,14 @@ Battery- ───────────────────────�
 Servo           PCA9685
 ─────           ───────
 Signal (white)  Channel 1
-Power (red)     V+ (5 V from the Jetson)
+Power (red)     6 V from the ESC's BEC
 Ground (black)  GND
 ```
 
 **電源需求**：
 - 工作電壓：4.8V - 6.0V（標準伺服馬達的典型值）
 - 電流消耗：0.5A - 1.5A（取決於負載與速度）
-- 由 PCA9685 的 V+ 電源軌供電，本車由 Jetson 的 5 V 接頭針供給。伺服馬達在運動時電流最大；抖動或沒有反應時先查這條電源。
+- 與接收器一樣，由動力電池（3S）經 ESC 的 6 V BEC 供電；PCA9685 只送轉向脈衝給它。伺服馬達在運動時電流最大；抖動或沒有反應時先查這條電源。
 
 **實體安裝**：
 - 將伺服馬達固定在底盤上
@@ -268,7 +268,7 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 | PCA9685 SDA        | Computer I2C SDA  | Pin 3 (Jetson)  | I2C 資料                        |
 | PCA9685 SCL        | Computer I2C SCL  | Pin 5 (Jetson)  | I2C 時脈                        |
 | PCA9685 VCC        | 3.3V or 5V        |                 | 邏輯電源                        |
-| PCA9685 V+         | Jetson 5 V        | Pin 2           | 伺服電源軌                      |
+| PCA9685 V+         | 未使用            |                 | 伺服由 ESC 的 BEC 供電          |
 | PCA9685 GND        | Common GND        |                 | 接地參考                        |
 | PCA9685 Ch 0       | ESC Signal        |                 | 電機控制 PWM                    |
 | PCA9685 Ch 1       | Servo Signal      |                 | 轉向控制 PWM                    |
@@ -277,14 +277,15 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 | Hall Effect Signal | Pin 16            | BOARD numbering | 可配置                          |
 | ESC Battery+       | Battery+          | 11.1 V (3S)     | 電機電源（檢查 ESC 額定值）     |
 | ESC Battery-       | Common GND        |                 |                                 |
-| Servo Power        | PCA9685 V+        |                 | 來自 Jetson 的 5 V              |
+| Servo Power        | ESC BEC           | 6 V             | 來自 3S 動力電池                |
 | Servo GND          | Common GND        |                 |                                 |
 
 ### 電源分配
 
 **電源軌**：
 1. **電池電源**（11.1 V，3S）：僅供電機 ESC 使用
-2. **Jetson 5 V**（接頭第 2、4 針）：PCA9685 VCC 與 V+、伺服馬達、霍爾感測器
+2. **ESC BEC**（6 V，來自 3S 電池）：接收器、轉向伺服
+3. **Jetson 5 V**（接頭第 2、4 針）：PCA9685 VCC、霍爾感測器
 4. **共地 GND**：所有元件共用共地
 
 **電流需求**：

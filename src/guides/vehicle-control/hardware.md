@@ -29,8 +29,9 @@ SCL      ────── I2C SCL (pin 5, I2C bus 7)
 
 **Power**:
 - Logic power: 3.3V or 5V (from computer)
-- Servo power: V+ and GND from the Jetson's 5 V header pins as well, on this
-  vehicle (one servo; the header's 5 V pins are rated 1 A)
+- Servo power: not from this board. The steering servo is powered by the
+  drive battery through the ESC's BEC, so the V+ terminal is unused and the
+  board only carries the two PWM signals.
 
 **Device Detection**:
 ```bash
@@ -146,16 +147,17 @@ settles it.
 Servo           PCA9685
 ─────           ───────
 Signal (white)  Channel 1
-Power (red)     V+ (5 V from the Jetson)
+Power (red)     6 V from the ESC's BEC
 Ground (black)  GND
 ```
 
 **Power Requirements**:
 - Operating voltage: 4.8V - 6.0V (typical for standard servos)
 - Current draw: 0.5A - 1.5A (depending on load and speed)
-- Powered from the PCA9685's V+ rail, which this vehicle feeds from the
-  Jetson's 5 V header pin. The servo draws its peak current while moving;
-  jitter or a servo that does not respond points at that supply first.
+- Powered by the drive battery (3S) through the ESC's 6 V BEC, like the
+  receiver; the PCA9685 only sends it the steering pulse. The servo draws its
+  peak current while moving; jitter or a servo that does not respond points
+  at that supply first.
 
 **Physical Installation**:
 - Secure servo to chassis
@@ -271,7 +273,7 @@ page, which also has the Jetson's 40-pin header pin by pin:
 | PCA9685 SDA        | Computer I2C SDA  | Pin 3 (Jetson)  | I2C data                        |
 | PCA9685 SCL        | Computer I2C SCL  | Pin 5 (Jetson)  | I2C clock                       |
 | PCA9685 VCC        | 3.3V or 5V        |                 | Logic power                     |
-| PCA9685 V+         | Jetson 5 V        | Pin 2           | Servo rail                      |
+| PCA9685 V+         | unused            |                 | Servo is on the ESC's BEC       |
 | PCA9685 GND        | Common GND        |                 | Ground reference                |
 | PCA9685 Ch 0       | ESC Signal        |                 | Motor control PWM               |
 | PCA9685 Ch 1       | Servo Signal      |                 | Steering control PWM            |
@@ -280,14 +282,15 @@ page, which also has the Jetson's 40-pin header pin by pin:
 | Hall Effect Signal | Pin 16            | BOARD numbering | Configurable                    |
 | ESC Battery+       | Battery+          | 11.1 V (3S)     | Motor power (check ESC rating)  |
 | ESC Battery-       | Common GND        |                 |                                 |
-| Servo Power        | PCA9685 V+        |                 | From the Jetson's 5 V           |
+| Servo Power        | ESC BEC           | 6 V             | From the 3S drive battery       |
 | Servo GND          | Common GND        |                 |                                 |
 
 ### Power Distribution
 
 **Power Rails**:
 1. **Battery Power** (11.1 V, 3S): Motor ESC only
-2. **Jetson 5 V** (header pins 2 and 4): PCA9685 VCC and V+, servo, hall sensor
+2. **ESC BEC** (6 V, from the 3S battery): receiver, steering servo
+3. **Jetson 5 V** (header pins 2 and 4): PCA9685 VCC, hall sensor
 4. **Common GND**: All components share common ground
 
 **Current Requirements**:
