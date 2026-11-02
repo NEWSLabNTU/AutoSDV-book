@@ -107,6 +107,10 @@ serve-versions:
 	@echo "Serving all deployed versions at http://localhost:8000"
 	@uv run mike serve
 
+# Render the wiring figures (src/figures/wiring/*.dot, *.yml) to SVG; needs Graphviz
+diagrams *STEMS:
+	@uv run python scripts/build-diagrams.py {{STEMS}}
+
 # Check dependencies, validate docs, and check translations
 check:
 	#!/usr/bin/env bash
