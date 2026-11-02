@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Render the wiring figures in src/figures/wiring/ to self-contained SVGs.
 
-    uv run python scripts/build-diagrams.py          # every source
-    uv run python scripts/build-diagrams.py power    # one, by stem
+    just diagrams           # every source
+    just diagrams power     # one, by stem
 
 Sources sit beside their output: `<stem>.dot` (Graphviz, the overview) and
 `<stem>.yml` (WireViz, the pin-level harness drawings). Both name part photos
@@ -17,7 +17,8 @@ Two things this script does that the tools do not:
   figures with <img>, and a browser does not load images an <img>-loaded SVG
   references, so an SVG pointing at photos/*.jpg renders with empty frames.
 
-Needs `dot` (Graphviz) on PATH; WireViz runs through `uvx wireviz`.
+Needs `dot` (Graphviz) on PATH; WireViz runs through `uvx wireviz`, and the
+recipe adds Pillow for this script only (`uv run --with pillow`).
 """
 
 from __future__ import annotations

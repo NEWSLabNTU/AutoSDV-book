@@ -2,7 +2,7 @@
 // Pin-level detail is in orin-header.yml and power.yml; the arbiter board's own
 // wiring is in AutoSDV docs/design/rc-override-arbiter.md.
 //
-// Build: uv run python scripts/build-diagrams.py overview
+// Build: just diagrams overview
 // Photos: photos/<part>.jpg (a grey placeholder until the photo is there).
 //
 // Edge colours, as in the legend:

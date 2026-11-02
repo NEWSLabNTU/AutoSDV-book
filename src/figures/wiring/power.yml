@@ -1,5 +1,5 @@
 # Both power systems, battery to load.
-# Build: uv run python scripts/build-diagrams.py power
+# Build: just diagrams power
 #
 # Two independent batteries: the 6S pack feeds the computer and sensors
 # through a 12 V DC-DC converter; the 2S pack feeds the drive. They share a

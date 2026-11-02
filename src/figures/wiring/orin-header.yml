@@ -1,5 +1,5 @@
 # What plugs into the Jetson AGX Orin's 40-pin header, wire by wire.
-# Build: uv run python scripts/build-diagrams.py orin-header
+# Build: just diagrams orin-header
 #
 # Header pins are BOARD numbers, as in velocity_report.yaml and Jetson.GPIO.
 # The AUTO line pin is a proposal (pin 22, GPIO17): nothing reads it yet, and
