@@ -38,7 +38,7 @@ Translation Metadata:
 | ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯                           |
 | **# 電池與電源供應**                                               |
 | Battery Gens ACE-5000mAh-45C-22.2V-6S1P-XT60                       |
-| Battery Gens ACE-7200mAh-50C-7.4V-2S1P-21                          |
+| Battery 3S 11.1V LiPo for the ESC (model to be recorded)           |
 | Breaker 4230-T110-K0BE-8AB8                                        |
 
 *表 1. 車輛的核心材料。*

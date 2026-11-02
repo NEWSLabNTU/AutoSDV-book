@@ -254,7 +254,7 @@ def servo() -> str:
 DRAWINGS = {
     "orin": (orin, 200, 150),
     "battery-6s": (lambda: battery("6S", "22.2 V"), 160, 120),
-    "battery-2s": (lambda: battery("2S", "7.4 V"), 160, 120),
+    "battery-3s": (lambda: battery("3S", "11.1 V"), 160, 120),
     "upper-power-switch": (breaker, 160, 120),
     "powertrain-switch": (breaker, 160, 120),
     "dcdc-12v": (dcdc, 160, 120),

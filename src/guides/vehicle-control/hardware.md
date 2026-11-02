@@ -29,9 +29,8 @@ SCL      ────── I2C SCL (pin 5, I2C bus 7)
 
 **Power**:
 - Logic power: 3.3V or 5V (from computer)
-- Servo power: External 5V supply (V+, GND)
-  - **Important**: Connect external 5V to V+ terminal for servos
-  - Do NOT power servos from computer's 5V rail (insufficient current)
+- Servo power: V+ and GND from the Jetson's 5 V header pins as well, on this
+  vehicle (one servo; the header's 5 V pins are rated 1 A)
 
 **Device Detection**:
 ```bash
@@ -111,7 +110,7 @@ Battery- ───────────────────────�
 ```
 
 **Power Requirements**:
-- Operating voltage: 7.4 V (2S LiPo) on this vehicle; check the ESC's rating before changing the battery
+- Operating voltage: 11.1 V (3S LiPo) on this vehicle, a separate battery for the ESC alone; check the ESC's rating before changing it
 - Current rating: Match to motor specifications
 - **Safety**: Always connect ESC battery last, disconnect first
 
@@ -144,19 +143,19 @@ settles it.
 
 **Wiring**:
 ```
-Servo           PCA9685          External Power
-─────           ───────          ──────────────
+Servo           PCA9685
+─────           ───────
 Signal (white)  Channel 1
-Power (red)                      5V supply+
-Ground (black)  GND              5V supply-/GND
+Power (red)     V+ (5 V from the Jetson)
+Ground (black)  GND
 ```
 
 **Power Requirements**:
 - Operating voltage: 4.8V - 6.0V (typical for standard servos)
 - Current draw: 0.5A - 1.5A (depending on load and speed)
-- **Important**: Use separate 5V power supply for servo
-  - Servo draws high current during motion
-  - Insufficient power causes jitter or failure to respond
+- Powered from the PCA9685's V+ rail, which this vehicle feeds from the
+  Jetson's 5 V header pin. The servo draws its peak current while moving;
+  jitter or a servo that does not respond points at that supply first.
 
 **Physical Installation**:
 - Secure servo to chassis
@@ -272,24 +271,23 @@ page, which also has the Jetson's 40-pin header pin by pin:
 | PCA9685 SDA        | Computer I2C SDA  | Pin 3 (Jetson)  | I2C data                        |
 | PCA9685 SCL        | Computer I2C SCL  | Pin 5 (Jetson)  | I2C clock                       |
 | PCA9685 VCC        | 3.3V or 5V        |                 | Logic power                     |
-| PCA9685 V+         | 5V external       | 2A+ capacity    | Servo power supply              |
+| PCA9685 V+         | Jetson 5 V        | Pin 2           | Servo rail                      |
 | PCA9685 GND        | Common GND        |                 | Ground reference                |
 | PCA9685 Ch 0       | ESC Signal        |                 | Motor control PWM               |
 | PCA9685 Ch 1       | Servo Signal      |                 | Steering control PWM            |
 | Hall Effect VCC    | 5V or 3.3V        |                 | Sensor power                    |
 | Hall Effect GND    | Common GND        |                 |                                 |
 | Hall Effect Signal | Pin 16            | BOARD numbering | Configurable                    |
-| ESC Battery+       | Battery+          | 7.4 V (2S)      | Motor power (check ESC rating)  |
+| ESC Battery+       | Battery+          | 11.1 V (3S)     | Motor power (check ESC rating)  |
 | ESC Battery-       | Common GND        |                 |                                 |
-| Servo Power        | 5V external       | 1A+ capacity    | Separate from PCA9685 V+        |
+| Servo Power        | PCA9685 V+        |                 | From the Jetson's 5 V           |
 | Servo GND          | Common GND        |                 |                                 |
 
 ### Power Distribution
 
 **Power Rails**:
-1. **Battery Power** (7.4 V, 2S): Motor ESC only
-2. **5V External**: Servo and PCA9685 V+
-3. **3.3V/5V Logic**: PCA9685 VCC, Hall effect sensor
+1. **Battery Power** (11.1 V, 3S): Motor ESC only
+2. **Jetson 5 V** (header pins 2 and 4): PCA9685 VCC and V+, servo, hall sensor
 4. **Common GND**: All components share common ground
 
 **Current Requirements**:

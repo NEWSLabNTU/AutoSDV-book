@@ -37,9 +37,7 @@ SCL      ────── I2C SCL (pin 5, I2C bus 7)
 
 **電源**：
 - 邏輯電源：3.3V 或 5V（來自電腦）
-- 伺服馬達電源：外部 5V 供電（V+、GND）
-  - **重要**：將外部 5V 連接至 V+ 端子以供伺服馬達使用
-  - 請勿從電腦的 5V 軌供電給伺服馬達（電流不足）
+- 伺服馬達電源：本車的 V+ 與 GND 同樣來自 Jetson 的 5 V 接頭針（只有一顆伺服；接頭的 5 V 針額定 1 A）
 
 **裝置偵測**：
 ```bash
@@ -117,7 +115,7 @@ Battery- ───────────────────────�
 ```
 
 **電源需求**：
-- 工作電壓：本車為 7.4 V（2S LiPo）；更換電池前請先確認 ESC 的額定值
+- 工作電壓：本車為 11.1 V（3S LiPo），為 ESC 專用的獨立電池；更換前請先確認 ESC 的額定值
 - 電流額定值：需與馬達規格匹配
 - **安全**：務必最後連接 ESC 電池，最先移除
 
@@ -147,19 +145,17 @@ Battery- ───────────────────────�
 
 **配線**：
 ```
-Servo           PCA9685          External Power
-─────           ───────          ──────────────
+Servo           PCA9685
+─────           ───────
 Signal (white)  Channel 1
-Power (red)                      5V supply+
-Ground (black)  GND              5V supply-/GND
+Power (red)     V+ (5 V from the Jetson)
+Ground (black)  GND
 ```
 
 **電源需求**：
 - 工作電壓：4.8V - 6.0V（標準伺服馬達的典型值）
 - 電流消耗：0.5A - 1.5A（取決於負載與速度）
-- **重要**：使用獨立的 5V 電源供應給伺服馬達
-  - 伺服馬達在運動時會消耗高電流
-  - 電源不足會導致抖動或無法回應
+- 由 PCA9685 的 V+ 電源軌供電，本車由 Jetson 的 5 V 接頭針供給。伺服馬達在運動時電流最大；抖動或沒有反應時先查這條電源。
 
 **實體安裝**：
 - 將伺服馬達固定在底盤上
@@ -272,24 +268,23 @@ IMU 設定請參閱[感測器整合指南](../sensor-integration/imu.md)。
 | PCA9685 SDA        | Computer I2C SDA  | Pin 3 (Jetson)  | I2C 資料                        |
 | PCA9685 SCL        | Computer I2C SCL  | Pin 5 (Jetson)  | I2C 時脈                        |
 | PCA9685 VCC        | 3.3V or 5V        |                 | 邏輯電源                        |
-| PCA9685 V+         | 5V external       | 2A+ capacity    | 伺服馬達電源供應                |
+| PCA9685 V+         | Jetson 5 V        | Pin 2           | 伺服電源軌                      |
 | PCA9685 GND        | Common GND        |                 | 接地參考                        |
 | PCA9685 Ch 0       | ESC Signal        |                 | 電機控制 PWM                    |
 | PCA9685 Ch 1       | Servo Signal      |                 | 轉向控制 PWM                    |
 | Hall Effect VCC    | 5V or 3.3V        |                 | 感測器電源                      |
 | Hall Effect GND    | Common GND        |                 |                                 |
 | Hall Effect Signal | Pin 16            | BOARD numbering | 可配置                          |
-| ESC Battery+       | Battery+          | 7.4 V (2S)      | 電機電源（檢查 ESC 額定值）     |
+| ESC Battery+       | Battery+          | 11.1 V (3S)     | 電機電源（檢查 ESC 額定值）     |
 | ESC Battery-       | Common GND        |                 |                                 |
-| Servo Power        | 5V external       | 1A+ capacity    | 與 PCA9685 V+ 分開              |
+| Servo Power        | PCA9685 V+        |                 | 來自 Jetson 的 5 V              |
 | Servo GND          | Common GND        |                 |                                 |
 
 ### 電源分配
 
 **電源軌**：
-1. **電池電源**（7.4 V，2S）：僅供電機 ESC 使用
-2. **5V 外部電源**：伺服馬達與 PCA9685 V+
-3. **3.3V/5V 邏輯電源**：PCA9685 VCC、霍爾效應感測器
+1. **電池電源**（11.1 V，3S）：僅供電機 ESC 使用
+2. **Jetson 5 V**（接頭第 2、4 針）：PCA9685 VCC 與 V+、伺服馬達、霍爾感測器
 4. **共地 GND**：所有元件共用共地
 
 **電流需求**：

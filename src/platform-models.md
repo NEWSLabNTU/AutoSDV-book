@@ -68,7 +68,7 @@ The core AutoSDV platform with compute, vision, and control capabilities. Ideal 
 | **IMU**             | ZED X Mini built-in          |
 | **Hall Sensor**     | KY-003 wheel encoder         |
 | **Upper Battery**   | 22.2V 6S 5000mAh LiPo        |
-| **Lower Battery**   | 7.4V 2S 7200mAh LiPo         |
+| **Lower Battery**   | 11.1V 3S LiPo (ESC)          |
 | **Motor**           | Brushless 4274/1500kv        |
 | **ESC**             | 60A Brushless controller     |
 | **Servo**           | High-torque digital          |
