@@ -107,9 +107,9 @@ serve-versions:
 	@echo "Serving all deployed versions at http://localhost:8000"
 	@uv run mike serve
 
-# Render the wiring figures (src/figures/wiring/*.dot, *.yml) to SVG; needs Graphviz
+# Render the wiring figures in src/figures/wiring/ to SVG; needs Graphviz and ImageMagick
 diagrams *STEMS:
-	@uv run --with pillow python scripts/build-diagrams.py {{STEMS}}
+	@python3 scripts/build-diagrams.py {{STEMS}}
 
 # Check dependencies, validate docs, and check translations
 check:

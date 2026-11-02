@@ -1,109 +1,79 @@
-// AutoSDV vehicle: every part and every connection between parts, one picture.
-// Pin-level detail is in orin-header.yml and power.yml; the arbiter board's own
-// wiring is in AutoSDV docs/design/rc-override-arbiter.md.
+// AutoSDV vehicle: every data and signal connection between parts. Power and
+// battery wiring is power.dot; the Orin's 40-pin header, pin by pin, is the
+// orin-header figure; the arbiter board's own wiring is in AutoSDV
+// docs/design/rc-override-arbiter.md.
 //
 // Build: just diagrams overview
-// Photos: photos/<part>.jpg (a grey placeholder until the photo is there).
+// Icons: icons/<part>.png, our own drawings (scripts/wiring_parts.py).
 //
 // Edge colours, as in the legend:
-//   power #d62728  Ethernet #1f77b4  USB #17becf  GMSL / CSI #9467bd
-//   I2C #2ca02c  PWM / GPIO / UART signals #ff7f0e  motor phases #7f7f7f
+//   Ethernet #1f77b4  USB #17becf  camera #9467bd  I2C #2ca02c
+//   PWM / GPIO / UART #ff7f0e  motor phases #7f7f7f
 
 digraph overview {
-    graph [rankdir=LR, fontname="DejaVu Sans", fontsize=13, nodesep=0.35,
-           ranksep=0.9, bgcolor="white", newrank=true, compound=true]
-    node  [shape=plain, fontname="DejaVu Sans", fontsize=11]
-    edge  [fontname="DejaVu Sans", fontsize=9, penwidth=2, arrowsize=0.6]
+    graph [rankdir=LR, splines=ortho, fontname="DejaVu Sans", fontsize=14,
+           nodesep=0.5, ranksep=1.1, bgcolor="white", forcelabels=true]
+    node  [shape=plain, fontname="DejaVu Sans", fontsize=12]
+    edge  [fontname="DejaVu Sans", fontsize=10, penwidth=2.5, arrowsize=0.7, dir=none]
 
-    // A part: its photo with the name under it.
-    // (Graphviz needs the HTML label on one node per part, written out.)
+    orin    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/orin.png"/></TD></TR><TR><TD><B>Jetson AGX Orin</B></TD></TR></TABLE>>]
+    zedlink [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/zed-link.png"/></TD></TR><TR><TD>ZED Link capture card</TD></TR></TABLE>>]
+    zed     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/zed-x-mini.png"/></TD></TR><TR><TD>ZED X Mini</TD></TR></TABLE>>]
+    lidar   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/lidar.png"/></TD></TR><TR><TD>LiDAR<BR/><FONT POINT-SIZE="10">VLP-32C, Robin-W or Cube1</FONT></TD></TR></TABLE>>]
+    g5      [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/moxa-5g.png"/></TD></TR><TR><TD>5G router (optional)<BR/><FONT POINT-SIZE="10">MOXA OnCell G4302</FONT></TD></TR></TABLE>>]
+    gps     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/gps.png"/></TD></TR><TR><TD>GNSS receiver (optional)</TD></TR></TABLE>>]
+    imu     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/mpu9250.png"/></TD></TR><TR><TD>MPU9250 IMU</TD></TR></TABLE>>]
+    hall    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/ky003.png"/></TD></TR><TR><TD>KY-003 hall sensor<BR/><FONT POINT-SIZE="10">rear wheel, 12 magnets</FONT></TD></TR></TABLE>>]
+    pca     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/pca9685.png"/></TD></TR><TR><TD>PCA9685 PWM driver</TD></TR></TABLE>>]
+    modesw  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/auto-mode-switch.png"/></TD></TR><TR><TD>auto-mode switch (3PDT)</TD></TR></TABLE>>]
+    rx      [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/receiver.png"/></TD></TR><TR><TD>RC receiver</TD></TR></TABLE>>]
+    arb     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/arbiter.png"/></TD></TR><TR><TD><B>arbiter board</B><BR/><FONT POINT-SIZE="10">XIAO RP2350 + 74LVC245</FONT></TD></TR></TABLE>>]
+    vesc    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/vesc.png"/></TD></TR><TR><TD>VESC</TD></TR></TABLE>>]
+    motor   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/motor.png"/></TD></TR><TR><TD>brushless motor<BR/><FONT POINT-SIZE="10">4274, 1500 kV</FONT></TD></TR></TABLE>>]
+    servo   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/servo.png"/></TD></TR><TR><TD>steering servo</TD></TR></TABLE>>]
 
-    subgraph cluster_upper {
-        label="Upper power, 22.2 V (6S)"; style="rounded,dashed"; color="#d62728"; fontcolor="#d62728"
-        bat6s  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/battery-6s.jpg" SCALE="TRUE"/></TD></TR><TR><TD>6S LiPo 22.2 V</TD></TR></TABLE>>]
-        upsw   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/upper-power-switch.jpg" SCALE="TRUE"/></TD></TR><TR><TD>upper power switch</TD></TR></TABLE>>]
-        dcdc   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/dcdc-12v.jpg" SCALE="TRUE"/></TD></TR><TR><TD>DC-DC 12 V</TD></TR></TABLE>>]
-    }
-
-    subgraph cluster_compute {
-        label="Compute and sensors"; style="rounded,dashed"; color="#555555"
-        orin   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="170" HEIGHT="128"><IMG SRC="photos/orin.jpg" SCALE="TRUE"/></TD></TR><TR><TD><B>Jetson AGX Orin</B></TD></TR></TABLE>>]
-        zedlink[label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/zed-link.jpg" SCALE="TRUE"/></TD></TR><TR><TD>ZED Link capture card</TD></TR></TABLE>>]
-        zed    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/zed-x-mini.jpg" SCALE="TRUE"/></TD></TR><TR><TD>ZED X Mini</TD></TR></TABLE>>]
-        lidar  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/lidar.jpg" SCALE="TRUE"/></TD></TR><TR><TD>LiDAR<BR/><FONT POINT-SIZE="9">VLP-32C, Robin-W or Cube1</FONT></TD></TR></TABLE>>]
-        imu    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/mpu9250.jpg" SCALE="TRUE"/></TD></TR><TR><TD>MPU9250 IMU</TD></TR></TABLE>>]
-        hall   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/ky003.jpg" SCALE="TRUE"/></TD></TR><TR><TD>KY-003 hall sensor<BR/><FONT POINT-SIZE="9">rear wheel, 12 magnets</FONT></TD></TR></TABLE>>]
-        g5     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/moxa-5g.jpg" SCALE="TRUE"/></TD></TR><TR><TD>5G modem (optional)<BR/><FONT POINT-SIZE="9">MOXA OnCell G4302</FONT></TD></TR></TABLE>>]
-        gps    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/gps.jpg" SCALE="TRUE"/></TD></TR><TR><TD>GNSS receiver (optional)</TD></TR></TABLE>>]
-    }
-
-    subgraph cluster_drive {
-        label="Drive, 7.4 V (2S)"; style="rounded,dashed"; color="#d62728"; fontcolor="#d62728"
-        bat2s  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/battery-2s.jpg" SCALE="TRUE"/></TD></TR><TR><TD>2S LiPo 7.4 V</TD></TR></TABLE>>]
-        ptsw   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/powertrain-switch.jpg" SCALE="TRUE"/></TD></TR><TR><TD>powertrain switch</TD></TR></TABLE>>]
-        pca    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/pca9685.jpg" SCALE="TRUE"/></TD></TR><TR><TD>PCA9685 PWM driver</TD></TR></TABLE>>]
-        rx     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/receiver.jpg" SCALE="TRUE"/></TD></TR><TR><TD>RC receiver</TD></TR></TABLE>>]
-        modesw [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/auto-mode-switch.jpg" SCALE="TRUE"/></TD></TR><TR><TD>auto-mode switch<BR/><FONT POINT-SIZE="9">3PDT</FONT></TD></TR></TABLE>>]
-        arb    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/arbiter.jpg" SCALE="TRUE"/></TD></TR><TR><TD><B>arbiter board</B><BR/><FONT POINT-SIZE="9">XIAO RP2350 + 74LVC245</FONT></TD></TR></TABLE>>]
-        vesc   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="110" HEIGHT="82"><IMG SRC="photos/vesc.jpg" SCALE="TRUE"/></TD></TR><TR><TD>VESC</TD></TR></TABLE>>]
-        motor  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/motor.jpg" SCALE="TRUE"/></TD></TR><TR><TD>brushless motor<BR/><FONT POINT-SIZE="9">4274, 1500 kV</FONT></TD></TR></TABLE>>]
-        servo  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD FIXEDSIZE="TRUE" WIDTH="90" HEIGHT="68"><IMG SRC="photos/servo.jpg" SCALE="TRUE"/></TD></TR><TR><TD>steering servo</TD></TR></TABLE>>]
-    }
-
-    // Power
-    edge [color="#d62728", fontcolor="#d62728"]
-    bat6s -> upsw -> dcdc
-    dcdc -> orin    [label="12 V, DC jack"]
-    dcdc -> zedlink [label="12 V"]
-    dcdc -> lidar   [label="12 V"]
-    dcdc -> g5      [label="12 V", style=dashed]
-    bat2s -> ptsw -> vesc
-    ptsw -> pca     [label="V+ (servo rail)"]
-    pca -> servo    [label="servo power", style=dashed]
-    rx -> arb       [label="5 V via diode", style=dashed]
+    // Sensors to the left of the Orin, the drive chain to the right.
+    {rank=same; lidar; zedlink; g5; gps}
+    {rank=same; imu; hall}
+    {rank=same; pca; rx}
+    {rank=same; modesw}
+    {rank=same; vesc; servo}
 
     // Ethernet and USB
-    edge [color="#1f77b4", fontcolor="#1f77b4", dir=both]
-    orin -> lidar   [label="Ethernet"]
-    orin -> g5      [label="USB-Ethernet adapter", style=dashed, color="#17becf", fontcolor="#17becf"]
-    edge [color="#17becf", fontcolor="#17becf"]
-    orin -> gps     [label="USB", style=dashed]
-    orin -> arb     [label="USB: ROS 2 (zenoh) + log"]
+    lidar   -> orin    [color="#1f77b4", fontcolor="#1f77b4", xlabel="Ethernet"]
+    g5      -> orin    [color="#17becf", fontcolor="#17becf", xlabel="Ethernet via USB adapter", style=dashed]
+    gps     -> orin    [color="#17becf", fontcolor="#17becf", xlabel="USB", style=dashed]
 
     // Camera
-    edge [color="#9467bd", fontcolor="#9467bd"]
-    orin -> zedlink [label="Samtec CSI"]
-    zedlink -> zed  [label="GMSL2 (power + video)"]
+    zed     -> zedlink [color="#9467bd", fontcolor="#9467bd", xlabel="GMSL2"]
+    zedlink -> orin    [color="#9467bd", fontcolor="#9467bd", xlabel="Samtec CSI"]
 
-    // I2C
-    edge [color="#2ca02c", fontcolor="#2ca02c", dir=forward]
-    orin -> pca     [label="I2C bus 7 (pins 3, 5)"]
-    orin -> imu     [label="I2C bus 1 (pins 27, 28)", dir=both]
+    // I2C and GPIO on the 40-pin header
+    orin    -> imu     [color="#2ca02c", fontcolor="#2ca02c", xlabel="I2C bus 1"]
+    orin    -> hall    [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="GPIO, pin 16"]
+    orin    -> pca     [color="#2ca02c", fontcolor="#2ca02c", xlabel="I2C bus 7"]
 
-    // Signals
-    edge [color="#ff7f0e", fontcolor="#ff7f0e", dir=forward]
-    hall -> orin    [label="GPIO, pin 16"]
-    pca -> modesw   [label="ch0 throttle, ch1 steer"]
-    modesw -> arb   [label="cut when OFF; pole C = position"]
-    pca -> arb      [label="ch2 heartbeat"]
-    rx -> arb       [label="CH1 steer, CH2 throttle"]
-    arb -> servo    [label="steering pulse"]
-    arb -> vesc     [label="UART commands", dir=both]
-    arb -> orin     [label="AUTO line (GPIO)"]
+    // The drive chain through the arbiter
+    pca     -> modesw  [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="ch0 throttle, ch1 steer"]
+    modesw  -> arb     [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="cut when OFF"]
+    pca     -> arb     [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="ch2 heartbeat"]
+    rx      -> arb     [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="steer, throttle"]
+    arb     -> vesc    [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="UART"]
+    arb     -> servo   [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="steering pulse"]
+    vesc    -> motor   [color="#7f7f7f", fontcolor="#7f7f7f", xlabel="3 phases"]
+    orin    -> arb     [color="#17becf", fontcolor="#17becf", xlabel="USB: ROS 2 + log", constraint=false]
+    arb     -> orin    [color="#ff7f0e", fontcolor="#ff7f0e", xlabel="AUTO line, GPIO", constraint=false]
 
-    // Motor
-    edge [color="#7f7f7f", fontcolor="#7f7f7f", dir=forward]
-    vesc -> motor   [label="3 phases"]
-
-    legend [label=<<TABLE BORDER="1" COLOR="#999999" CELLBORDER="0" CELLSPACING="2" CELLPADDING="2">
+    legend [label=<<TABLE BORDER="1" COLOR="#9e9e9e" CELLBORDER="0" CELLSPACING="3" CELLPADDING="2">
         <TR><TD COLSPAN="2"><B>Connections</B></TD></TR>
-        <TR><TD><FONT COLOR="#d62728">━━━</FONT></TD><TD ALIGN="LEFT">power</TD></TR>
-        <TR><TD><FONT COLOR="#1f77b4">━━━</FONT></TD><TD ALIGN="LEFT">Ethernet</TD></TR>
-        <TR><TD><FONT COLOR="#17becf">━━━</FONT></TD><TD ALIGN="LEFT">USB</TD></TR>
-        <TR><TD><FONT COLOR="#9467bd">━━━</FONT></TD><TD ALIGN="LEFT">camera (CSI, GMSL2)</TD></TR>
-        <TR><TD><FONT COLOR="#2ca02c">━━━</FONT></TD><TD ALIGN="LEFT">I2C</TD></TR>
-        <TR><TD><FONT COLOR="#ff7f0e">━━━</FONT></TD><TD ALIGN="LEFT">PWM, GPIO, UART</TD></TR>
-        <TR><TD><FONT COLOR="#7f7f7f">━━━</FONT></TD><TD ALIGN="LEFT">motor phases</TD></TR>
-        <TR><TD>┄┄┄</TD><TD ALIGN="LEFT">optional, or secondary</TD></TR>
+        <TR><TD><FONT COLOR="#1f77b4" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">Ethernet</TD></TR>
+        <TR><TD><FONT COLOR="#17becf" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">USB</TD></TR>
+        <TR><TD><FONT COLOR="#9467bd" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">camera (CSI, GMSL2)</TD></TR>
+        <TR><TD><FONT COLOR="#2ca02c" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">I2C</TD></TR>
+        <TR><TD><FONT COLOR="#ff7f0e" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">PWM, GPIO, UART</TD></TR>
+        <TR><TD><FONT COLOR="#7f7f7f" POINT-SIZE="16">━━━</FONT></TD><TD ALIGN="LEFT">motor phases</TD></TR>
+        <TR><TD COLSPAN="2" ALIGN="LEFT">dashed: optional</TD></TR>
+        <TR><TD COLSPAN="2" ALIGN="LEFT">power wiring: see the power figure</TD></TR>
         </TABLE>>]
+    {rank=same; legend; lidar}
 }

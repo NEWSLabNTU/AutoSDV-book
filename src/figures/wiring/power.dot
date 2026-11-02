@@ -1,0 +1,51 @@
+// AutoSDV vehicle: battery and power wiring only. Data and signal wiring is
+// overview.dot.
+//
+// Two independent batteries: the 6S pack feeds the computer and sensors
+// through a 12 V DC-DC converter; the 2S pack feeds the drive. Each has its
+// own cell monitor with an alarm on the balance lead.
+//
+// Build: just diagrams power
+
+digraph power {
+    graph [rankdir=LR, splines=ortho, fontname="DejaVu Sans", fontsize=14,
+           nodesep=0.45, ranksep=1.0, bgcolor="white", forcelabels=true]
+    node  [shape=plain, fontname="DejaVu Sans", fontsize=12]
+    edge  [fontname="DejaVu Sans", fontsize=11, penwidth=3, arrowsize=0.8,
+           color="#d32f2f", fontcolor="#b71c1c"]
+
+    subgraph cluster_upper {
+        label="Upper power: computer and sensors"; style="rounded,dashed"; color="#9e9e9e"
+        bat6s  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/battery-6s.png"/></TD></TR><TR><TD><B>6S LiPo, 22.2 V</B></TD></TR></TABLE>>]
+        upsw   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/upper-power-switch.png"/></TD></TR><TR><TD>upper power switch</TD></TR></TABLE>>]
+        dcdc   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/dcdc-12v.png"/></TD></TR><TR><TD>DC-DC, 22.2 V to 12 V</TD></TR></TABLE>>]
+        orin   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/orin.png"/></TD></TR><TR><TD><B>Jetson AGX Orin</B><BR/><FONT POINT-SIZE="10">DC jack</FONT></TD></TR></TABLE>>]
+        zedlink[label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/zed-link.png"/></TD></TR><TR><TD>ZED Link<BR/><FONT POINT-SIZE="10">powers the ZED X Mini over GMSL2</FONT></TD></TR></TABLE>>]
+        lidar  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/lidar.png"/></TD></TR><TR><TD>LiDAR</TD></TR></TABLE>>]
+        g5     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/moxa-5g.png"/></TD></TR><TR><TD>5G router (optional)<BR/><FONT POINT-SIZE="10">12 V at 2 A</FONT></TD></TR></TABLE>>]
+    }
+
+    subgraph cluster_drive {
+        label="Drive"; style="rounded,dashed"; color="#9e9e9e"
+        bat2s  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/battery-2s.png"/></TD></TR><TR><TD><B>2S LiPo, 7.4 V</B></TD></TR></TABLE>>]
+        ptsw   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/powertrain-switch.png"/></TD></TR><TR><TD>powertrain switch</TD></TR></TABLE>>]
+        vesc   [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/vesc.png"/></TD></TR><TR><TD>VESC</TD></TR></TABLE>>]
+        pca    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/pca9685.png"/></TD></TR><TR><TD>PCA9685, V+ terminal<BR/><FONT POINT-SIZE="10">servo rail</FONT></TD></TR></TABLE>>]
+        servo  [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/servo.png"/></TD></TR><TR><TD>steering servo</TD></TR></TABLE>>]
+        rx     [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/receiver.png"/></TD></TR><TR><TD>RC receiver<BR/><FONT POINT-SIZE="10">5 V rail: source to confirm</FONT></TD></TR></TABLE>>]
+        arb    [label=<<TABLE BORDER="0" CELLSPACING="0"><TR><TD><IMG SRC="icons/arbiter.png"/></TD></TR><TR><TD>arbiter board, 5V pin (about 4.7 V)<BR/><FONT POINT-SIZE="10">use a data-only USB cable to the Orin</FONT></TD></TR></TABLE>>]
+    }
+
+    bat6s -> upsw   [xlabel="22.2 V"]
+    upsw  -> dcdc   [xlabel="22.2 V switched"]
+    dcdc  -> orin   [xlabel="12 V"]
+    dcdc  -> zedlink[xlabel="12 V"]
+    dcdc  -> lidar  [xlabel="12 V"]
+    dcdc  -> g5     [xlabel="12 V", style=dashed]
+
+    bat2s -> ptsw   [xlabel="7.4 V"]
+    ptsw  -> vesc   [xlabel="7.4 V switched"]
+    ptsw  -> pca    [xlabel="7.4 V"]
+    pca   -> servo  [xlabel="servo power"]
+    rx    -> arb    [xlabel="5 V via 1N5819"]
+}
