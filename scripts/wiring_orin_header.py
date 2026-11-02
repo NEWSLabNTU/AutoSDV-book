@@ -1,11 +1,11 @@
 """The Jetson AGX Orin 40-pin header figure: every pin, every wire.
 
-The header is drawn as it sits on the developer kit: one row of 20 pins
-along the side beside the USB-A pair, pin 1 at the USB end, odd pins on the
-lower row (NVIDIA marks pin 1 with a white triangle on the PCB). Pin names
-are NVIDIA's (carrier board specification, figure 3-4). Wires leave every
-pin downward and run with right angles only; a wire from the upper row drops
-through the gap between two columns.
+The header is drawn as it is seen on the developer kit: two rows of 20 pins,
+pin 1 at the top right (NVIDIA marks it with a white triangle on the PCB),
+odd pins on the top row, numbers rising to the left. Pin names are NVIDIA's
+(carrier board specification, figure 3-4). Wires leave every pin downward
+and run with right angles only; a wire from the top row drops between the
+rows and then through the gap between two columns.
 
 `render()` returns the SVG text; build-diagrams.py writes it out.
 """
@@ -47,13 +47,13 @@ def pin_fill(name: str) -> str:
 
 # Parts below the header: (key, drawing, x, title, subtitle, [(pin label, header pin, colour)])
 PARTS = [
-    ("pca", "pca9685", 60, "PCA9685 PWM driver", "I2C bus 7, address 0x40",
+    ("pca", "pca9685", 960, "PCA9685 PWM driver", "I2C bus 7, address 0x40",
      [("VCC", 4, RED), ("GND", 6, BLACK), ("SDA", 3, BLUE), ("SCL", 5, YELLOW)]),
-    ("hall", "ky003", 360, "KY-003 hall sensor", "rear wheel, 12 magnets",
+    ("hall", "ky003", 660, "KY-003 hall sensor", "rear wheel, 12 magnets",
      [("+", 2, RED), ("-", 14, BLACK), ("S", 16, GREEN)]),
-    ("imu", "mpu9250", 660, "MPU9250 IMU", "I2C bus 1",
+    ("imu", "mpu9250", 360, "MPU9250 IMU", "I2C bus 1",
      [("VCC", 17, ORANGE), ("GND", 20, BLACK), ("SDA", 27, BLUE), ("SCL", 28, YELLOW)]),
-    ("arb", "arbiter", 960, "Arbiter board", "XIAO RP2350",
+    ("arb", "arbiter", 60, "Arbiter board", "XIAO RP2350",
      [("D10 AUTO", 22, PURPLE), ("GND", 25, BLACK)]),
 ]
 
@@ -71,19 +71,19 @@ NOTES = {
 
 PITCH = 54          # column spacing of the enlarged header
 PIN = 22            # pin square
-HX0 = 130           # x of column 0 (pins 1, 2)
-ROW_EVEN = 330      # y of the upper row (even pins)
-ROW_ODD = ROW_EVEN + 34
+X1 = 1110           # x of the pin 1 column, the rightmost
+ROW_TOP = 330       # y of the top row (odd pins)
+ROW_BOT = ROW_TOP + 34
 PART_Y = 760        # top of the part boxes
 W, H = 1240, 1160
 
 
 def col_x(pin: int) -> float:
-    return HX0 + ((pin - 1) // 2) * PITCH
+    return X1 - ((pin - 1) // 2) * PITCH
 
 
 def row_y(pin: int) -> float:
-    return ROW_EVEN if pin % 2 == 0 else ROW_ODD
+    return ROW_TOP if pin % 2 else ROW_BOT
 
 
 def text(x, y, s, size=12, anchor="middle", weight="normal", color="#212121", rotate=None,
@@ -108,21 +108,20 @@ def render() -> str:
     # Context: the kit, and where the header is on it.
     out.append('<g transform="translate(40 30) scale(0.9)">' + parts.orin() + "</g>")
     out.append(text(250, 60, "Jetson AGX Orin developer kit, 40-pin header", 18, "start", "bold"))
-    out.append(text(250, 86, "The header runs along the side beside the USB-A pair. Pin 1 is at the "
-                    "USB end, on the lower row,", 13, "start"))
-    out.append(text(250, 106, "marked by a white triangle on the PCB. Pin numbers are BOARD numbers, "
-                    "as in Jetson.GPIO.", 13, "start"))
+    out.append(text(250, 86, "Seen facing the header: pin 1 is at the top right, marked by a white "
+                    "triangle on the PCB; odd pins", 13, "start"))
+    out.append(text(250, 106, "on the top row, numbers rising to the left. Pin numbers are BOARD "
+                    "numbers, as in Jetson.GPIO.", 13, "start"))
     # callout from the small header to the enlarged one
-    out.append(f'<path d="M89 130 V{ROW_EVEN - 60} H{HX0 - 40} V{ROW_EVEN - 24}" fill="none" '
+    out.append(f'<path d="M196 130 V{ROW_TOP - 125} H{X1 + 40} V{ROW_TOP - 24}" fill="none" '
                'stroke="#9e9e9e" stroke-dasharray="5 4" stroke-width="1.5"/>')
 
     # Enlarged header.
-    x_last = col_x(39)
-    out.append(f'<rect x="{HX0 - 22}" y="{ROW_EVEN - 22}" width="{x_last - HX0 + 44}" '
-               f'height="{ROW_ODD - ROW_EVEN + 44}" rx="4" fill="#212121"/>')
-    out.append(f'<path d="M{HX0 - 8} {ROW_ODD + 30} l8 -10 l8 10 z" fill="white"/>')
-    out.append(text(HX0 - 30, ROW_ODD + 6, "pin 1", 11, "end", color="#616161"))
-    out.append(text(HX0 - 30, ROW_ODD + 46, "USB end", 11, "end", color="#616161"))
+    x_left = col_x(39)
+    out.append(f'<rect x="{x_left - 22}" y="{ROW_TOP - 22}" width="{X1 - x_left + 44}" '
+               f'height="{ROW_BOT - ROW_TOP + 44}" rx="4" fill="#212121"/>')
+    out.append(f'<path d="M{X1 + 13} {ROW_TOP - 8} l10 8 l-10 8 z" fill="white"/>')
+    out.append(text(X1 + 30, ROW_TOP + 5, "pin 1", 12, "start", "bold", color="#424242"))
     used = {p for *_, pins in PARTS for _, p, _ in pins}
     pin_labels = []  # drawn after the wires, so a wire never covers a label
     for pin, name in NAMES.items():
@@ -131,12 +130,12 @@ def render() -> str:
         out.append(f'<rect x="{x - PIN / 2}" y="{y - PIN / 2}" width="{PIN}" height="{PIN}" '
                    f'rx="3" fill="{pin_fill(name)}" {stroke}/>')
         pin_labels.append(text(x, y + 4, str(pin), 10, weight="bold", color="white", halo=False))
-        if pin % 2 == 0:
-            pin_labels.append(text(x + 4, ROW_EVEN - 30, name, 11, "start", rotate=-60,
+        if pin % 2:
+            pin_labels.append(text(x + 4, ROW_TOP - 30, name, 11, "start", rotate=-60,
                             weight="bold" if pin in used else "normal",
                             color="#212121" if pin in used else "#757575"))
         else:
-            pin_labels.append(text(x - 4, ROW_ODD + 30, name, 11, "end", rotate=-60,
+            pin_labels.append(text(x - 4, ROW_BOT + 30, name, 11, "end", rotate=-60,
                             weight="bold" if pin in used else "normal",
                             color="#212121" if pin in used else "#757575"))
 
@@ -165,18 +164,18 @@ def render() -> str:
     # nearer the parts, which keeps most crossings out.
     runs = []
     for (key, hp), (ex, color) in entries.items():
-        sx = col_x(hp) + (PITCH / 2 if hp % 2 == 0 else 0)
+        sx = col_x(hp) - (PITCH / 2 if hp % 2 else 0)
         runs.append((abs(ex - sx), key, hp, sx, ex, color))
     runs.sort(reverse=True)
-    top, bottom = ROW_ODD + 130, PART_Y - 40
+    top, bottom = ROW_BOT + 130, PART_Y - 40
     step = (bottom - top) / max(1, len(runs) - 1)
     for i, (_, key, hp, sx, ex, color) in enumerate(runs):
         level = top + i * step
         x0, y0 = col_x(hp), row_y(hp)
-        if hp % 2 == 0:  # upper row: down between the rows, into the column gap, down
-            mid = (ROW_EVEN + ROW_ODD) / 2
+        if hp % 2:  # top row: down between the rows, into the column gap, down
+            mid = (ROW_TOP + ROW_BOT) / 2
             pts = [(x0, y0), (x0, mid), (sx, mid), (sx, level), (ex, level), (ex, PART_Y - 8)]
-        else:  # lower row: straight down
+        else:  # bottom row: straight down
             pts = [(x0, y0), (x0, level), (ex, level), (ex, PART_Y - 8)]
         out.append(wire(pts, color))
         out.append(f'<circle cx="{x0}" cy="{y0}" r="4" fill="{color}"/>')
